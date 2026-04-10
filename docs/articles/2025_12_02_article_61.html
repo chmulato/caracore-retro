@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Redis como Soluï¿½ï¿½o de Cache para E-commerce em Cidades Mï¿½dias Brasileiras ï¿½ Cara Core Informï¿½tica</title>
-	<meta name="description" content="Como o Redis reduziu 95% das queries e acelerou o e-commerce com retirada local em cidades mï¿½dias brasileiras (Campo Largo, Vï¿½rzea Grande, Maricï¿½). Arquitetura, TTL, Pub/Sub, ROI e liï¿½ï¿½es prï¿½ticas." />
+	<title>Redis como Solução de Cache para E-commerce em Cidades Médias Brasileiras — Cara Core Informática</title>
+	<meta name="description" content="Como o Redis reduziu 95% das queries e acelerou o e-commerce com retirada local em cidades médias brasileiras (Campo Largo, Várzea Grande, Maricá). Arquitetura, TTL, Pub/Sub, ROI e lições práticas." />
 	<meta name="keywords" content="Redis, Cache, E-commerce, Retirada Local, Performance, Escalabilidade, Campo Largo, Pub/Sub, TTL, CaraCore Hub, Medium Cities" />
-	<meta name="author" content="Cara Core Informï¿½tica" />
+	<meta name="author" content="Cara Core Informática" />
 	<link rel="canonical" href="https://caracore.com.br/publications/articles/2025_12_02_article_61.html" />
 	<!-- Open Graph -->
-	<meta property="og:title" content="Redis como Soluï¿½ï¿½o de Cache para E-commerce em Cidades Mï¿½dias" />
-	<meta property="og:description" content="Arquitetura com Redis para retirada local: 14x mais rï¿½pido, 95% menos queries, ROI em 3,5 meses." />
+	<meta property="og:title" content="Redis como Solução de Cache para E-commerce em Cidades Médias" />
+	<meta property="og:description" content="Arquitetura com Redis para retirada local: 14x mais rápido, 95% menos queries, ROI em 3,5 meses." />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="https://caracore.com.br/publications/articles/2025_12_02_article_61.html" />
 	<meta property="og:image" content="https://caracore.com.br/publications/articles/assets/img/article_61_01.png" />
@@ -18,7 +18,7 @@
 	<!-- Twitter Card -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content="Redis como Cache para E-commerce Local" />
-	<meta name="twitter:description" content="Como reduzir latï¿½ncia e custo em retirada local usando Redis (TTL + Pub/Sub)." />
+	<meta name="twitter:description" content="Como reduzir latência e custo em retirada local usando Redis (TTL + Pub/Sub)." />
 	<meta name="twitter:image" content="https://caracore.com.br/publications/articles/assets/img/article_61_01.png" />
 	<meta name="twitter:image:alt" content="Arquitetura de cache com Redis" />
 	<link rel="stylesheet" href="assets/css/articles.css" />
@@ -45,73 +45,73 @@
 </head>
 <body>
 	<div class="container">
-		<a class="back-link" href="../index.html">&larr; Voltar para publicaï¿½ï¿½es</a>
+		<a class="back-link" href="../index.html">&larr; Voltar para publicações</a>
 		<img src="assets/img/article_61_01.png" alt="Esquema de arquitetura com Redis, Tomcat, WildFly e PostgreSQL" class="article-hero" />
-		<h1>Redis como Soluï¿½ï¿½o de Cache para E-commerce em Cidades Mï¿½dias Brasileiras</h1>
+		<h1>Redis como Solução de Cache para E-commerce em Cidades Médias Brasileiras</h1>
 		<div class="linkedin-box inline">
 			<img src="assets/img/logo.png" alt="Logo Cara Core" class="logo">
-			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informï¿½tica</a>
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
 			<span class="date">02 de dezembro de 2025</span>
 		</div>
 		<div class="note"><strong>Tempo estimado de leitura:</strong> ~10 minutos</div>
 
 		<h2>Parte I: O Desafio do E-commerce nas Cidades do Interior</h2>
-		<h3>O Cenï¿½rio: Campo Largo e o Brasil que Cresce Online</h3>
-		<p>Campo Largo, municï¿½pio paranaense com aproximadamente 140 mil habitantes, a 30 km de Curitiba, representa o novo perfil de consumo digital. Cidades de mï¿½dio porte (50ï¿½200 mil habitantes) impulsionam a compra online com <strong>retirada local</strong> ï¿½ um comportamento que jï¿½ chega a 35% das preferï¿½ncias em vï¿½rias regiï¿½es.</p>
+		<h3>O Cenário: Campo Largo e o Brasil que Cresce Online</h3>
+		<p>Campo Largo, município paranaense com aproximadamente 140 mil habitantes, a 30 km de Curitiba, representa o novo perfil de consumo digital. Cidades de médio porte (50–200 mil habitantes) impulsionam a compra online com <strong>retirada local</strong> — um comportamento que já chega a 35% das preferências em várias regiões.</p>
 		<h3>Por Que a Retirada Local Importa?</h3>
 		<ul>
-			<li><strong>Desconfianï¿½a com entrega residencial</strong> ï¿½ risco de extravio em portas.</li>
-			<li><strong>Flexibilidade</strong> ï¿½ retirar no trajeto trabalho/casa.</li>
-			<li><strong>Economia de frete</strong> ï¿½ descontos por retirada.</li>
-			<li><strong>Gratificaï¿½ï¿½o instantï¿½nea</strong> ï¿½ comprar online, obter hoje.</li>
-			<li><strong>Verificaï¿½ï¿½o imediata</strong> ï¿½ conferï¿½ncia antes de sair da loja.</li>
+			<li><strong>Desconfiança com entrega residencial</strong> — risco de extravio em portas.</li>
+			<li><strong>Flexibilidade</strong> — retirar no trajeto trabalho/casa.</li>
+			<li><strong>Economia de frete</strong> — descontos por retirada.</li>
+			<li><strong>Gratificação instantânea</strong> — comprar online, obter hoje.</li>
+			<li><strong>Verificação imediata</strong> — conferência antes de sair da loja.</li>
 		</ul>
-		<h3>O Problema Tï¿½cnico Invisï¿½vel</h3>
-		<p>Como lidar com <strong>centenas de consultas simultï¿½neas</strong> ao estoque quando clientes, operadores e integraï¿½ï¿½es acessam ao mesmo tempo? Sem otimizaï¿½ï¿½o: 180 usuï¿½rios ï¿½ 3 consultas ? 540 queries/minuto a um banco relacional. Latï¿½ncia explode, telas travam, desistï¿½ncias aumentam.</p>
-		<h3>A Matemï¿½tica do Caos</h3>
+		<h3>O Problema Técnico Invisível</h3>
+		<p>Como lidar com <strong>centenas de consultas simultâneas</strong> ao estoque quando clientes, operadores e integrações acessam ao mesmo tempo? Sem otimização: 180 usuários × 3 consultas → 540 queries/minuto a um banco relacional. Latência explode, telas travam, desistências aumentam.</p>
+		<h3>A Matemática do Caos</h3>
 		<ul>
 			<li>500 pedidos recebidos/dia</li>
 			<li>300 retiradas/dia</li>
-			<li>180 usuï¿½rios simultï¿½neos no pico</li>
+			<li>180 usuários simultâneos no pico</li>
 			<li>12 operadores internos</li>
 		</ul>
-		<p><strong>Sem cache:</strong> tempo mï¿½dio de query 200ms ? usuï¿½rios esperam 8ï¿½12s por tela; abandono ~40%; custos 3x maiores.</p>
+		<p><strong>Sem cache:</strong> tempo médio de query 200ms → usuários esperam 8–12s por tela; abandono ~40%; custos 3x maiores.</p>
 		<h3>Por Que Bancos Relacionais Sofrem?</h3>
 		<ul>
-			<li>Alta proporï¿½ï¿½o de leituras (90%) vs escritas (10%).</li>
+			<li>Alta proporção de leituras (90%) vs escritas (10%).</li>
 			<li>Dados mudam pouco minuto a minuto.</li>
-			<li>Lock/ï¿½ndices pesam com volume.</li>
-			<li>Parse + plano de execuï¿½ï¿½o a cada requisiï¿½ï¿½o.</li>
+			<li>Lock/índices pesam com volume.</li>
+			<li>Parse + plano de execução a cada requisição.</li>
 		</ul>
-		<h3>O Que Precisï¿½vamos</h3>
+		<h3>O Que Precisávamos</h3>
 		<ol>
 			<li>Cache inteligente.</li>
-			<li>Invalidaï¿½ï¿½o automï¿½tica.</li>
-			<li>Distribuiï¿½ï¿½o multi-servidor (Tomcat + WildFly).</li>
-			<li>Simplicidade de manutenï¿½ï¿½o.</li>
+			<li>Invalidação automática.</li>
+			<li>Distribuição multi-servidor (Tomcat + WildFly).</li>
+			<li>Simplicidade de manutenção.</li>
 			<li>Custo baixo.</li>
 		</ol>
 		<p><strong>Entrou o Redis.</strong></p>
 
-		<h2>Parte II: Redis ï¿½ A Transformaï¿½ï¿½o na Arquitetura</h2>
-		<h3>O Que ï¿½ Redis?</h3>
-		<p><strong>Redis ï¿½ a ï¿½geladeiraï¿½ do software</strong>: dados na RAM para acesso em milissegundos (contra centenas em disco). Resposta instantï¿½nea para leituras quentes.</p>
-		<h3>Comparaï¿½ï¿½o de Alternativas</h3>
+		<h2>Parte II: Redis — A Transformação na Arquitetura</h2>
+		<h3>O Que É Redis?</h3>
+		<p><strong>Redis é a “geladeira” do software</strong>: dados na RAM para acesso em milissegundos (contra centenas em disco). Resposta instantânea para leituras quentes.</p>
+		<h3>Comparação de Alternativas</h3>
 		<div class="compare-table">
 			<table style="width:100%; border-collapse:collapse;">
 				<thead>
 					<tr style="border-bottom:1px solid #e5e7eb;">
-						<th style="text-align:left; padding:.4rem;">Soluï¿½ï¿½o</th>
-						<th style="text-align:left; padding:.4rem;">Prï¿½s</th>
+						<th style="text-align:left; padding:.4rem;">Solução</th>
+						<th style="text-align:left; padding:.4rem;">Prós</th>
 						<th style="text-align:left; padding:.4rem;">Contras</th>
-						<th style="text-align:left; padding:.4rem;">Decisï¿½o</th>
+						<th style="text-align:left; padding:.4rem;">Decisão</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr><td style="padding:.4rem;">Memcached</td><td style="padding:.4rem;">Simples, rï¿½pido</td><td style="padding:.4rem;">Sem persistï¿½ncia, primitivo</td><td style="padding:.4rem;">?</td></tr>
-					<tr><td style="padding:.4rem;">Hazelcast</td><td style="padding:.4rem;">Distribuï¿½do, Java-native</td><td style="padding:.4rem;">Pesado, complexo</td><td style="padding:.4rem;">?</td></tr>
-					<tr><td style="padding:.4rem;">EhCache</td><td style="padding:.4rem;">Fï¿½cil embutir</td><td style="padding:.4rem;">Nï¿½o compartilha entre servidores</td><td style="padding:.4rem;">?</td></tr>
-					<tr><td style="padding:.4rem;">Redis</td><td style="padding:.4rem;">Rï¿½pido, leve, Pub/Sub, TTL</td><td style="padding:.4rem;">Servidor extra</td><td style="padding:.4rem;">?</td></tr>
+					<tr><td style="padding:.4rem;">Memcached</td><td style="padding:.4rem;">Simples, rápido</td><td style="padding:.4rem;">Sem persistência, primitivo</td><td style="padding:.4rem;">❌</td></tr>
+					<tr><td style="padding:.4rem;">Hazelcast</td><td style="padding:.4rem;">Distribuído, Java-native</td><td style="padding:.4rem;">Pesado, complexo</td><td style="padding:.4rem;">❌</td></tr>
+					<tr><td style="padding:.4rem;">EhCache</td><td style="padding:.4rem;">Fácil embutir</td><td style="padding:.4rem;">Não compartilha entre servidores</td><td style="padding:.4rem;">❌</td></tr>
+					<tr><td style="padding:.4rem;">Redis</td><td style="padding:.4rem;">Rápido, leve, Pub/Sub, TTL</td><td style="padding:.4rem;">Servidor extra</td><td style="padding:.4rem;">✅</td></tr>
 				</tbody>
 			</table>
 		</div>
@@ -120,10 +120,10 @@
 			<h3>Arquitetura simplificada</h3>
 			<div class="mermaid" aria-hidden="true">
 flowchart LR
-	A[Usuï¿½rios\n180 simultï¿½neos] --> B[Aplicaï¿½ï¿½o\nTomcat 9090 / WildFly 8080]
+	A[Usuários\n180 simultâneos] --> B[Aplicação\nTomcat 9090 / WildFly 8080]
 	B --> C{Cache Redis\nTTL mapa 15s\nTTL KPIs 120s}
 	C -->|HIT 95% / 2ms| D[Resposta imediata]
-	C -->|MISS 5% / 200ms| E[PostgreSQL 5432\nPedidos / Estoque / Posiï¿½ï¿½es]
+	C -->|MISS 5% / 200ms| E[PostgreSQL 5432\nPedidos / Estoque / Posições]
 	E --> C
 	subgraph PubSub
 		F[Operador retira pedido] --> G[Publica evento]
@@ -140,50 +140,50 @@ flowchart LR
 	style G fill:#ffeb3b,stroke:#f9a825,stroke-width:1
 	style H fill:#ffeb3b,stroke:#f9a825,stroke-width:1
 			</div>
-			<p class="visually-hidden">Fluxo: Usuï¿½rios acessam aplicaï¿½ï¿½o (Tomcat/WildFly) que consulta Redis. Em HIT responde em 2ms; em MISS consulta PostgreSQL, atualiza cache. Eventos Pub/Sub de retirada invalidam chaves mantendo consistï¿½ncia.</p>
+			<p class="visually-hidden">Fluxo: Usuários acessam aplicação (Tomcat/WildFly) que consulta Redis. Em HIT responde em 2ms; em MISS consulta PostgreSQL, atualiza cache. Eventos Pub/Sub de retirada invalidam chaves mantendo consistência.</p>
 		</div>
-		<pre><code>Request ? App ? Redis (HIT 95%) ? 2ms
-                  ? (MISS 5%) ? PostgreSQL 200ms ? atualiza cache
-Pub/Sub: retirada ? mensagem ? invalidaï¿½ï¿½o distribuï¿½da (&lt;50ms)</code></pre>
-		<div class="chalkboard" aria-label="Pilares da Implementaï¿½ï¿½o">
+		<pre><code>Request → App → Redis (HIT 95%) → 2ms
+                  ↘ (MISS 5%) → PostgreSQL 200ms ↘ atualiza cache
+Pub/Sub: retirada → mensagem → invalidação distribuída (&lt;50ms)</code></pre>
+		<div class="chalkboard" aria-label="Pilares da Implementação">
 			<h2>3 Pilares</h2>
 			<dl>
-				<dt>TTL por tipo de dado</dt><dd>Mapa 15s, KPIs 120s, Lead time 300s, Sessï¿½o 1800s</dd>
-				<dt>Pub/Sub</dt><dd>Sincroniza invalidaï¿½ï¿½o entre Tomcat e WildFly em milissegundos</dd>
+				<dt>TTL por tipo de dado</dt><dd>Mapa 15s, KPIs 120s, Lead time 300s, Sessão 1800s</dd>
+				<dt>Pub/Sub</dt><dd>Sincroniza invalidação entre Tomcat e WildFly em milissegundos</dd>
 				<dt>Fallback</dt><dd>Redis caiu? Busca banco direto; funcionalidade preservada</dd>
 			</dl>
 		</div>
-		<h3>Exemplo de Lï¿½gica (Pseudo-Java)</h3>
+		<h3>Exemplo de Lógica (Pseudo-Java)</h3>
 		<pre><code>try {
   var cache = redis.get("estoque:mapa");
   if (cache != null) return cache; // HIT ~2ms
 } catch (RedisConnectionException e) {
-  logger.warn("Redis indisponï¿½vel - fallback DB");
+  logger.warn("Redis indisponível - fallback DB");
 }
 var data = db.query("SELECT * FROM posicao WHERE tenant_id=1");
 redis.set("estoque:mapa", data, 15); // TTL 15s
 return data; // MISS ~200ms</code></pre>
-		<h3>Nï¿½meros Antes vs Depois</h3>
+		<h3>Números Antes vs Depois</h3>
 		<ul>
-			<li><strong>Latï¿½ncia mï¿½dia:</strong> 1200ms ? 85ms (14x melhor)</li>
-			<li><strong>Pico:</strong> 8500ms ? 350ms (24x melhor)</li>
-			<li><strong>Queries/min:</strong> 540 ? 27 (-95%)</li>
-			<li><strong>Abandono:</strong> 42% ? 8% (-80%)</li>
-			<li><strong>CPU banco:</strong> 78% ? 12%</li>
+			<li><strong>Latência média:</strong> 1200ms → 85ms (14x melhor)</li>
+			<li><strong>Pico:</strong> 8500ms → 350ms (24x melhor)</li>
+			<li><strong>Queries/min:</strong> 540 → 27 (−95%)</li>
+			<li><strong>Abandono:</strong> 42% → 8% (−80%)</li>
+			<li><strong>CPU banco:</strong> 78% → 12%</li>
 		</ul>
 		<div class="chart-block" role="group" aria-labelledby="chart-impact-title">
-			<h3 id="chart-impact-title">Grï¿½fico: Impacto do Redis (Baseline=100)</h3>
-			<p class="visually-hidden">Visualizaï¿½ï¿½o comparativa dos principais indicadores antes (100) e depois (reduï¿½ï¿½o percentual) da adoï¿½ï¿½o do Redis.</p>
+			<h3 id="chart-impact-title">Gráfico: Impacto do Redis (Baseline=100)</h3>
+			<p class="visually-hidden">Visualização comparativa dos principais indicadores antes (100) e depois (redução percentual) da adoção do Redis.</p>
 			<div class="chart-wrapper" data-chart="redis-impact">
-				<div class="metric-row" data-before="100" data-after="7.1" data-label="Latï¿½ncia mï¿½dia (ms)">
-					<div class="metric-label">Latï¿½ncia mï¿½dia</div>
+				<div class="metric-row" data-before="100" data-after="7.1" data-label="Latência média (ms)">
+					<div class="metric-label">Latência média</div>
 					<div class="metric-bars">
 						<div class="bar before"><div class="bar-inner" aria-label="Antes: 1200ms">100%</div></div>
 						<div class="bar after"><div class="bar-inner" aria-label="Depois: 85ms">7%</div></div>
 					</div>
 				</div>
-				<div class="metric-row" data-before="100" data-after="4.1" data-label="Latï¿½ncia pico (ms)">
-					<div class="metric-label">Latï¿½ncia pico</div>
+				<div class="metric-row" data-before="100" data-after="4.1" data-label="Latência pico (ms)">
+					<div class="metric-label">Latência pico</div>
 					<div class="metric-bars">
 						<div class="bar before"><div class="bar-inner" aria-label="Antes: 8500ms">100%</div></div>
 						<div class="bar after"><div class="bar-inner" aria-label="Depois: 350ms">4%</div></div>
@@ -213,76 +213,76 @@ return data; // MISS ~200ms</code></pre>
 			</div>
 			<div class="metric-legend" aria-hidden="true">
 				<span><span class="legend-box"></span> Antes (baseline=100)</span>
-				<span><span class="legend-box after"></span> Depois (reduï¿½ï¿½o)</span>
+				<span><span class="legend-box after"></span> Depois (redução)</span>
 			</div>
-			<p class="improvement-note">Os valores "Depois" mostram o percentual do original (ex.: latï¿½ncia mï¿½dia agora ï¿½ ~7% do valor anterior).</p>
-			<p class="chart-accessibility" aria-live="polite">Melhorias: latï¿½ncia mï¿½dia -93%, pico -96%, queries/min -95%, abandono -81%, CPU -84%.</p>
+			<p class="improvement-note">Os valores "Depois" mostram o percentual do original (ex.: latência média agora é ~7% do valor anterior).</p>
+			<p class="chart-accessibility" aria-live="polite">Melhorias: latência média −93%, pico −96%, queries/min −95%, abandono −81%, CPU −84%.</p>
 		</div>
-		<h3>Impacto no Negï¿½cio</h3>
+		<h3>Impacto no Negócio</h3>
 		<ul>
-			<li>Cliente: telas instantï¿½neas, mapa fluido.</li>
+			<li>Cliente: telas instantâneas, mapa fluido.</li>
 			<li>Operador: sem travamentos em pico.</li>
 			<li>Gestor: infra 60% mais barata, escala sem reescrever.</li>
 		</ul>
 		<h3>Custos e ROI</h3>
 		<ul>
-			<li>Implantaï¿½ï¿½o: R$ 9.500 (desenvolvimento + treinamento).</li>
-			<li>Economia/ano: R$ 33.600 (infra + conversï¿½o + produtividade).</li>
+			<li>Implantação: R$ 9.500 (desenvolvimento + treinamento).</li>
+			<li>Economia/ano: R$ 33.600 (infra + conversão + produtividade).</li>
 			<li>Payback: ~3,5 meses.</li>
 		</ul>
-		<h3>Liï¿½ï¿½es Principais</h3>
+		<h3>Lições Principais</h3>
 		<ol>
-			<li>Cache ï¿½til jï¿½ com >100 usuï¿½rios simultï¿½neos.</li>
-			<li>Defasagem de 10ï¿½30s ï¿½ aceitï¿½vel para 90% dos casos.</li>
+			<li>Cache útil já com >100 usuários simultâneos.</li>
+			<li>Defasagem de 10–30s é aceitável para 90% dos casos.</li>
 			<li>Comece pequeno (estoque) e expanda.</li>
-			<li>Hit rate monitorado guia otimizaï¿½ï¿½es.</li>
-			<li>Documente TTLs e critï¿½rios de invalidaï¿½ï¿½o.</li>
+			<li>Hit rate monitorado guia otimizações.</li>
+			<li>Documente TTLs e critérios de invalidação.</li>
 		</ol>
 
-		<h2>Epï¿½logo: O Futuro do E-commerce no Interior</h2>
-		<p>Cidades mï¿½dias como Campo Largo, Vï¿½rzea Grande e Maricï¿½ sustentam o crescimento do e-commerce com modelos hï¿½bridos: compra digital, retirada fï¿½sica. Arquiteturas enxutas com Redis permitem experiï¿½ncia de grande varejista com orï¿½amento de operaï¿½ï¿½o mï¿½dia, escalando 10x sem reescrever nï¿½cleo.</p>
-		<p>Se sua operaï¿½ï¿½o tem picos previsï¿½veis, muitas consultas de estoque e orï¿½amento limitado ï¿½ <strong>cache nï¿½o ï¿½ luxo, ï¿½ necessidade.</strong></p>
+		<h2>Epílogo: O Futuro do E-commerce no Interior</h2>
+		<p>Cidades médias como Campo Largo, Várzea Grande e Maricá sustentam o crescimento do e-commerce com modelos híbridos: compra digital, retirada física. Arquiteturas enxutas com Redis permitem experiência de grande varejista com orçamento de operação média, escalando 10x sem reescrever núcleo.</p>
+		<p>Se sua operação tem picos previsíveis, muitas consultas de estoque e orçamento limitado — <strong>cache não é luxo, é necessidade.</strong></p>
 
 		<h2>Sobre o CaraCore Hub</h2>
-		<p><strong>CaraCore Hub</strong> ï¿½ a plataforma logï¿½stica da Cara Core Informï¿½tica focada em retirada local e estoque em tempo quase real.</p>
+		<p><strong>CaraCore Hub</strong> é a plataforma logística da Cara Core Informática focada em retirada local e estoque em tempo quase real.</p>
 		<p><strong>Recursos:</strong></p>
 		<ul>
-			<li>Mapa visual de posiï¿½ï¿½es</li>
-			<li>Gestï¿½o multi-marketplace (Mercado Livre, Shopee, Temu)</li>
-			<li>Inventï¿½rio sincronizado</li>
+			<li>Mapa visual de posições</li>
+			<li>Gestão multi-marketplace (Mercado Livre, Shopee, Temu)</li>
+			<li>Inventário sincronizado</li>
 			<li>Dashboards com KPIs</li>
-			<li>Arquitetura escalï¿½vel (Tomcat + WildFly + PostgreSQL + Redis)</li>
+			<li>Arquitetura escalável (Tomcat + WildFly + PostgreSQL + Redis)</li>
 			<li>Deploy Docker</li>
 		</ul>
 		<p><strong>Tecnologias:</strong> Java 17, Jakarta EE 10, PostgreSQL 16, Redis 7, Bootstrap 5, REST APIs.</p>
-		<p><strong>Apresentaï¿½ï¿½o pï¿½blica:</strong> <a href="https://hub.caracore.com.br/" target="_blank" rel="noopener">caracore.com.br/https://hub.caracore.com.br/</a><br>
-		<em>Cï¿½digo fonte proprietï¿½rio e privado ï¿½ Cara Core Informï¿½tica.</em></p>
+		<p><strong>Apresentação pública:</strong> <a href="https://hub.caracore.com.br/" target="_blank" rel="noopener">caracore.com.br/https://hub.caracore.com.br/</a><br>
+		<em>Código fonte proprietário e privado — Cara Core Informática.</em></p>
 
 		<h2>Hashtags</h2>
-		<div class="hash-box">#Redis #Cache #Ecommerce #RetiradaLocal #Performance #Escalabilidade #CaraCoreHub #CaraCoreInformï¿½tica #TTL #PubSub</div>
+		<div class="hash-box">#Redis #Cache #Ecommerce #RetiradaLocal #Performance #Escalabilidade #CaraCoreHub #CaraCoreInformática #TTL #PubSub</div>
 
 		<hr />
 		<h3>Contato</h3>
 		<ul>
 			<li><strong>E-mail:</strong> suporte@caracore.com.br</li>
 			<li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
-			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informï¿½tica</a></li>
+			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
 		</ul>
 		<div class="cta-box">
-			<strong>?? Gostou do conteï¿½do?</strong><br>
-			<span class="cta-note">Siga para mais arquitetura prï¿½tica e otimizaï¿½ï¿½o de operaï¿½ï¿½es digitais.</span><br>
+			<strong>🤝 Gostou do conteúdo?</strong><br>
+			<span class="cta-note">Siga para mais arquitetura prática e otimização de operações digitais.</span><br>
 			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" class="cta-btn">Seguir no LinkedIn</a>
 		</div>
 		<p class="article-foot">
-			<em>Artigo tï¿½cnico | 02 de dezembro de 2025 | CaraCore Hub v2.4</em><br>
-			ï¿½ 2025 Cara Core Informï¿½tica. Todos os direitos reservados.
+			<em>Artigo técnico | 02 de dezembro de 2025 | CaraCore Hub v2.4</em><br>
+			© 2025 Cara Core Informática. Todos os direitos reservados.
 		</p>
 	</div>
 </body>
 </html>
 
 <script>
-// Inicializa grï¿½fico Redis impacto
+// Inicializa gráfico Redis impacto
 (function(){
 	const rows = document.querySelectorAll('.chart-wrapper .metric-row');
 	rows.forEach(row => {

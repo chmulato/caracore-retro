@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard de Vendas em Tempo Real com Python, FastAPI e WebSockets â€” Cara Core InformÃ¡tica</title>
-  <meta name="description" content="Dashboard de vendas e estoque em tempo real com FastAPI, WebSockets e Chart.js. Layout responsivo, atualizaÃ§Ã£o automÃ¡tica e arquitetura profissional." />
+  <title>Dashboard de Vendas em Tempo Real com Python, FastAPI e WebSockets — Cara Core Informática</title>
+  <meta name="description" content="Dashboard de vendas e estoque em tempo real com FastAPI, WebSockets e Chart.js. Layout responsivo, atualização automática e arquitetura profissional." />
   <meta name="keywords" content="Dashboard Tempo Real, FastAPI, WebSockets, Python, Chart.js, Vendas, Estoque, Data Visualization" />
-  <meta name="author" content="Cara Core InformÃ¡tica" />
+  <meta name="author" content="Cara Core Informática" />
   <link rel="canonical" href="https://caracore.com.br/publications/articles/2025_08_25_article_43.html" />
   <!-- Open Graph -->
   <meta property="og:title" content="Dashboard de Vendas em Tempo Real com Python, FastAPI e WebSockets" />
-  <meta property="og:description" content="Sistema completo de dashboard com atualizaÃ§Ãµes em tempo real, grÃ¡ficos interativos e arquitetura profissional." />
+  <meta property="og:description" content="Sistema completo de dashboard com atualizações em tempo real, gráficos interativos e arquitetura profissional." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://caracore.com.br/publications/articles/2025_08_25_article_43.html" />
   <meta property="og:image" content="https://caracore.com.br/publications/articles/assets/img/article_43_01.png" />
@@ -40,46 +40,46 @@
 </head>
 <body>
   <div class="container">
-    <a class="back-link" href="../index.html">&larr; Voltar para publicaÃ§Ãµes</a>
+    <a class="back-link" href="../index.html">&larr; Voltar para publicações</a>
     <img src="assets/img/article_43_01.png" alt="Dashboard de vendas em tempo real" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
     <h1>Dashboard de Vendas em Tempo Real com Python, FastAPI e WebSockets</h1>
 		<div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
 			<img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
-			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core InformÃ¡tica</a>
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
 			<span style="margin-left: 1.5rem;">82 seguidores<br>25 de agosto de 2025</span>
 		</div>
 
-    <p>Este artigo apresenta um sistema completo de dashboard de vendas que atualiza automaticamente em tempo real. Usando FastAPI, WebSockets e Chart.js v4.4.1, construÃ­mos uma soluÃ§Ã£o profissional para monitorar vendas e estoque de maneira contÃ­nua.</p>
+    <p>Este artigo apresenta um sistema completo de dashboard de vendas que atualiza automaticamente em tempo real. Usando FastAPI, WebSockets e Chart.js v4.4.1, construímos uma solução profissional para monitorar vendas e estoque de maneira contínua.</p>
 
-    <div class="note"><strong>Projeto implementado:</strong> Monitoramento de arquivo CSV exportado do Excel, detecÃ§Ã£o de alteraÃ§Ãµes, push via WebSocket para todos os navegadores conectados, layout responsivo, grÃ¡ficos (pizza + sÃ©ries temporais) e fallback automÃ¡tico para polling.</div>
+    <div class="note"><strong>Projeto implementado:</strong> Monitoramento de arquivo CSV exportado do Excel, detecção de alterações, push via WebSocket para todos os navegadores conectados, layout responsivo, gráficos (pizza + séries temporais) e fallback automático para polling.</div>
 
     <h2>Arquitetura do Sistema</h2>
     <ul>
-      <li>Monitoramento automÃ¡tico de arquivo CSV (watchdog + polling)</li>
-      <li>API REST para snapshot e histÃ³rico</li>
-      <li>Canal WebSocket para atualizaÃ§Ãµes em tempo real</li>
+      <li>Monitoramento automático de arquivo CSV (watchdog + polling)</li>
+      <li>API REST para snapshot e histórico</li>
+      <li>Canal WebSocket para atualizações em tempo real</li>
       <li>Interface responsiva com Chart.js (v4.4.1)</li>
       <li>Fallback inteligente para polling</li>
-      <li>Logging estruturado JSON com rotaÃ§Ã£o</li>
-      <li>Layout "dashboard-layout" focado em visualizaÃ§Ã£o</li>
+      <li>Logging estruturado JSON com rotação</li>
+      <li>Layout "dashboard-layout" focado em visualização</li>
     </ul>
 
     <h2>Objetivos</h2>
     <ul>
       <li>Comparar vendas em janelas de tempo</li>
       <li>Identificar produtos com maior e menor giro</li>
-      <li>Antecipar reposiÃ§Ã£o de estoque</li>
-      <li>Expor mÃ©tricas de forma simples e clara</li>
+      <li>Antecipar reposição de estoque</li>
+      <li>Expor métricas de forma simples e clara</li>
     </ul>
 
     <h2>Componentes da Interface</h2>
     <ul>
-      <li>Cards de mÃ©tricas (vendas totais, linhas, Ãºltima atualizaÃ§Ã£o)</li>
-      <li>GrÃ¡fico de pizza principal (distribuiÃ§Ã£o por produto)</li>
-      <li>GrÃ¡ficos de linha (histÃ³rico de vendas e estoque)</li>
+      <li>Cards de métricas (vendas totais, linhas, última atualização)</li>
+      <li>Gráfico de pizza principal (distribuição por produto)</li>
+      <li>Gráficos de linha (histórico de vendas e estoque)</li>
       <li>Sidebar de tabelas (vendas e estoque por produto)</li>
-      <li>Status de conexÃ£o (WebSocket / Polling)</li>
-      <li>AtualizaÃ§Ã£o reativa em segundos apÃ³s alteraÃ§Ãµes</li>
+      <li>Status de conexão (WebSocket / Polling)</li>
+      <li>Atualização reativa em segundos após alterações</li>
     </ul>
 
     <h2>Estrutura de Dados</h2>
@@ -91,8 +91,8 @@
 2025-08-15 14:39:00,Produto D,110,15
 2025-08-15 14:42:00,Produto E,75,22</code></pre>
 
-    <h2>ConfiguraÃ§Ã£o RÃ¡pida</h2>
-    <pre><code class="language-bash"># Projeto disponÃ­vel sob licenÃ§a MIT â€” contato: suporte@caracore.com.br
+    <h2>Configuração Rápida</h2>
+    <pre><code class="language-bash"># Projeto disponível sob licença MIT — contato: suporte@caracore.com.br
 cd cara-core-dashboard
 pip install -r requirements.txt
 python main.py</code></pre>
@@ -152,50 +152,50 @@ connect();</code></pre>
 
     <h2>Estrutura do Projeto</h2>
     <pre><code class="language-text">cara-core-dashboard/
-â”œâ”€â”€ main.py
-â”œâ”€â”€ app/
-â”‚   â”œâ”€â”€ main.py
-â”‚   â”œâ”€â”€ data_loader.py
-â”‚   â”œâ”€â”€ logging_setup.py
-â”‚   â”œâ”€â”€ sample_data.csv
-â”‚   â”œâ”€â”€ templates/index.html
-â”‚   â””â”€â”€ static/
-â”œâ”€â”€ src/
-â”‚   â”œâ”€â”€ generate_batch_data.py
-â”‚   â”œâ”€â”€ update_simulator.py
-â”‚   â””â”€â”€ quick_demo_data.py
-â”œâ”€â”€ tests/
-â”œâ”€â”€ requirements.txt
-â”œâ”€â”€ Dockerfile
-â””â”€â”€ README.md</code></pre>
+├── main.py
+├── app/
+│   ├── main.py
+│   ├── data_loader.py
+│   ├── logging_setup.py
+│   ├── sample_data.csv
+│   ├── templates/index.html
+│   └── static/
+├── src/
+│   ├── generate_batch_data.py
+│   ├── update_simulator.py
+│   └── quick_demo_data.py
+├── tests/
+├── requirements.txt
+├── Dockerfile
+└── README.md</code></pre>
 
-    <h2>ExecuÃ§Ã£o & Deploy</h2>
-    <pre><code class="language-bash">python main.py                          # Porta 8000 (ou prÃ³xima livre)
+    <h2>Execução & Deploy</h2>
+    <pre><code class="language-bash">python main.py                          # Porta 8000 (ou próxima livre)
 LOG_LEVEL=DEBUG LOG_FORMAT=plain python main.py  # Logs detalhados
 docker build -t dashboard-vendas .
 docker run -p 8001:8000 dashboard-vendas</code></pre>
 
     <figure style="margin:2rem 0; text-align:center;">
       <img src="assets/img/article_43_04.png" alt="Screenshot final do dashboard" style="max-width:820px; width:100%; border-radius:10px; box-shadow:0 4px 20px -4px rgba(0,0,0,0.15);" />
-      <figcaption style="font-size:.8rem; color:#555; margin-top:.55rem;">Interface final responsiva (grÃ¡fico pizza, sÃ©ries temporais e tabelas).</figcaption>
+      <figcaption style="font-size:.8rem; color:#555; margin-top:.55rem;">Interface final responsiva (gráfico pizza, séries temporais e tabelas).</figcaption>
     </figure>
 
     <h2>Checklist</h2>
     <ul>
-      <li>âœ… CSV padronizado</li>
-      <li>âœ… Watchdog + Polling</li>
-      <li>âœ… WebSocket com reconexÃ£o</li>
-      <li>âœ… GrÃ¡ficos Chart.js</li>
-      <li>âœ… Layout responsivo</li>
-      <li>âœ… Logging estruturado</li>
-      <li>âœ… Dockerfile</li>
+      <li>✅ CSV padronizado</li>
+      <li>✅ Watchdog + Polling</li>
+      <li>✅ WebSocket com reconexão</li>
+      <li>✅ Gráficos Chart.js</li>
+      <li>✅ Layout responsivo</li>
+      <li>✅ Logging estruturado</li>
+      <li>✅ Dockerfile</li>
     </ul>
 
-    <h2>RepositÃ³rio</h2>
+    <h2>Repositório</h2>
     <div class="repo-box">
       <p style="margin:0 0 .5rem 0; font-weight:600;">Contato:</p>
       <a href="mailto:suporte@caracore.com.br">suporte@caracore.com.br</a>
-      <p style="margin:.75rem 0 0; font-size:.8rem; color:#555;">LicenÃ§a MIT â€¢ Python â€¢ FastAPI â€¢ Chart.js</p>
+      <p style="margin:.75rem 0 0; font-size:.8rem; color:#555;">Licença MIT • Python • FastAPI • Chart.js</p>
     </div>
 
     <h2>Hashtags</h2>
@@ -206,7 +206,7 @@ docker run -p 8001:8000 dashboard-vendas</code></pre>
     <ul>
       <li><strong>E-mail:</strong> suporte@caracore.com.br</li>
       <li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
-      <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core InformÃ¡tica</a></li>
+      <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
     </ul>
   </div>
 </body>

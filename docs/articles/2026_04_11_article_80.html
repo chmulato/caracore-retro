@@ -3,21 +3,21 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Reino OIDC e Ãrea 51: A Nova Era da Identidade Digital Brasileira â€” Cara Core</title>
-	<meta name="description" content="Problema da identidade digital no Brasil. O que Ã© OIDC e Ãrea 51, casos de uso, seguranÃ§a e futuro da identidade no paÃ­s." />
-	<meta name="author" content="Cara Core InformÃ¡tica" />
+	<title>Reino OIDC e Área 51: A Nova Era da Identidade Digital Brasileira — Cara Core</title>
+	<meta name="description" content="Problema da identidade digital no Brasil. O que é OIDC e Área 51, casos de uso, segurança e futuro da identidade no país." />
+	<meta name="author" content="Cara Core Informática" />
 	<link rel="canonical" href="https://caracore.com.br/sala/redes/retro/articles/2026_04_11_article_80.html" />
-	<meta property="og:title" content="Reino OIDC e Ãrea 51: A Nova Era da Identidade Digital Brasileira" />
-	<meta property="og:description" content="OIDC, Ãrea 51, casos de uso e governanÃ§a. ReferÃªncia em autenticaÃ§Ã£o e identidade no Brasil." />
+	<meta property="og:title" content="Reino OIDC e Área 51: A Nova Era da Identidade Digital Brasileira" />
+	<meta property="og:description" content="OIDC, Área 51, casos de uso e governança. Referência em autenticação e identidade no Brasil." />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="https://caracore.com.br/sala/redes/retro/articles/2026_04_11_article_80.html" />
 	<meta property="og:image" content="https://caracore.com.br/sala/redes/retro/articles/assets/img/article_80_01.png" />
-	<meta property="og:image:alt" content="Reino OIDC e Ãrea 51: nova era da identidade digital no Brasil" />
+	<meta property="og:image:alt" content="Reino OIDC e Área 51: nova era da identidade digital no Brasil" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="Reino OIDC e Ãrea 51: A Nova Era da Identidade Digital Brasileira" />
-	<meta name="twitter:description" content="OIDC, Ãrea 51, casos de uso e governanÃ§a. ReferÃªncia em autenticaÃ§Ã£o e identidade no Brasil." />
+	<meta name="twitter:title" content="Reino OIDC e Área 51: A Nova Era da Identidade Digital Brasileira" />
+	<meta name="twitter:description" content="OIDC, Área 51, casos de uso e governança. Referência em autenticação e identidade no Brasil." />
 	<meta name="twitter:image" content="https://caracore.com.br/sala/redes/retro/articles/assets/img/article_80_01.png" />
-	<meta name="twitter:image:alt" content="Reino OIDC e Ãrea 51: nova era da identidade digital no Brasil" />
+	<meta name="twitter:image:alt" content="Reino OIDC e Área 51: nova era da identidade digital no Brasil" />
 	<link rel="stylesheet" href="assets/css/articles.css" />
 	<style>
 		body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif; line-height:1.65; color:#1f2937; margin:0; }
@@ -37,60 +37,60 @@
 </head>
 <body>
 	<div class="container">
-		<a class="back-link" href="../index.html">&larr; Voltar para publicaÃ§Ãµes</a>
-		<img src="assets/img/article_80_01.png" alt="Reino OIDC e Ãrea 51: nova era da identidade digital no Brasil" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
-		<h1>Reino OIDC e Ãrea 51: A Nova Era da Identidade Digital Brasileira</h1>
+		<a class="back-link" href="../index.html">&larr; Voltar para publicações</a>
+		<img src="assets/img/article_80_01.png" alt="Reino OIDC e Área 51: nova era da identidade digital no Brasil" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+		<h1>Reino OIDC e Área 51: A Nova Era da Identidade Digital Brasileira</h1>
 		<div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
 			<img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
-			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core InformÃ¡tica</a>
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
 			<span style="margin-left: 1.5rem;">11 de abril de 2026</span>
 		</div>
-		<div class="note"><strong>Tempo estimado de leitura:</strong> ~8â€“10 minutos</div>
+		<div class="note"><strong>Tempo estimado de leitura:</strong> ~8–10 minutos</div>
 
-		<h2>IntroduÃ§Ã£o: O Caos das Senhas e a Necessidade de Identidade Federada</h2>
-		<p>No Brasil, a identidade digital ainda vive um paradoxo: cada aplicaÃ§Ã£o pede login e senha; o usuÃ¡rio repete credenciais em dezenas de sistemas; vazamentos e reutilizaÃ§Ã£o de senha amplificam o risco. Empresas mÃ©dias querem single sign-on, auditoria e conformidade com LGPD, mas muitas nÃ£o sabem por onde comeÃ§ar â€” e as soluÃ§Ãµes globais nem sempre falam a lÃ­ngua local ou cabem no orÃ§amento.</p>
-		<p>O Reino OIDC e a Ãrea 51 sÃ£o a resposta da Cara Core para esse cenÃ¡rio: o Reino Ã© um produto de estudo para entender a dinÃ¢mica do protocolo (OIDC, OAuth 2.1, PKCE), voltado a entusiastas de tecnologia e seguranÃ§a; a Ãrea 51 Ã© suporte especializado para empresas que precisam implantar e operar identidade federada no dia a dia. Este artigo explica o problema da identidade no Brasil, o que Ã© OIDC, o que Ã© o Reino e o que Ã© a Ãrea 51, casos de uso, seguranÃ§a e o futuro da identidade no paÃ­s.</p>
+		<h2>Introdução: O Caos das Senhas e a Necessidade de Identidade Federada</h2>
+		<p>No Brasil, a identidade digital ainda vive um paradoxo: cada aplicação pede login e senha; o usuário repete credenciais em dezenas de sistemas; vazamentos e reutilização de senha amplificam o risco. Empresas médias querem single sign-on, auditoria e conformidade com LGPD, mas muitas não sabem por onde começar — e as soluções globais nem sempre falam a língua local ou cabem no orçamento.</p>
+		<p>O Reino OIDC e a Área 51 são a resposta da Cara Core para esse cenário: o Reino é um produto de estudo para entender a dinâmica do protocolo (OIDC, OAuth 2.1, PKCE), voltado a entusiastas de tecnologia e segurança; a Área 51 é suporte especializado para empresas que precisam implantar e operar identidade federada no dia a dia. Este artigo explica o problema da identidade no Brasil, o que é OIDC, o que é o Reino e o que é a Área 51, casos de uso, segurança e o futuro da identidade no país.</p>
 		<div class="quote-box">
-			<strong>O gancho:</strong> Identidade digital nÃ£o Ã© "mais um login". Ã‰ a base sobre a qual seguranÃ§a, auditoria e LGPD se sustentam.
+			<strong>O gancho:</strong> Identidade digital não é "mais um login". É a base sobre a qual segurança, auditoria e LGPD se sustentam.
 		</div>
 		<div class="insight">
-			<strong>A tese:</strong> Reino OIDC (produto de estudo) e Ãrea 51 (suporte enterprise) colocam a Cara Core como referÃªncia em identidade digital no Brasil: aprendizado hands-on do protocolo e implementaÃ§Ã£o real para quem quer OAuth 2.1, OIDC e PKCE sem depender sÃ³ de gigantes globais.
+			<strong>A tese:</strong> Reino OIDC (produto de estudo) e Área 51 (suporte enterprise) colocam a Cara Core como referência em identidade digital no Brasil: aprendizado hands-on do protocolo e implementação real para quem quer OAuth 2.1, OIDC e PKCE sem depender só de gigantes globais.
 		</div>
 
 		<h2>1. O Problema da Identidade Digital no Brasil</h2>
-		<p>FragmentaÃ§Ã£o Ã© a regra: cada sistema tem seu prÃ³prio cadastro, sua prÃ³pria polÃ­tica de senha e seu prÃ³prio fluxo de recuperaÃ§Ã£o. O colaborador acumula dezenas de credenciais; o departamento de TI nÃ£o tem visÃ£o unificada de quem acessa o quÃª; a auditoria vira quebra-cabeÃ§a. Quando a LGPD exige rastreabilidade e consentimento, a empresa descobre que nÃ£o sabe nem quantos "logins" existem espalhados.</p>
-		<p>SeguranÃ§a padece: senha fraca ou reutilizada abre porta em vÃ¡rios sistemas; falta de single sign-on incentiva anotar senha em papel ou em arquivo; revogaÃ§Ã£o de acesso ao desligar um colaborador vira corrida contra o tempo em vÃ¡rias ferramentas. O problema nÃ£o Ã© sÃ³ tÃ©cnico â€” Ã© de governanÃ§a. Identidade bem desenhada centraliza quem Ã© quem, o que pode acessar e como isso Ã© auditado.</p>
-		<p>No Brasil, empresas mÃ©dias e Ã³rgÃ£os pÃºblicos precisam dessa governanÃ§a sem necessariamente contratar um provedor global caro ou montar um time interno gigante. Ã‰ aÃ­ que entra oferta local especializada: padrÃµes abertos (OIDC, OAuth 2.1), implementaÃ§Ã£o e suporte em portuguÃªs, e preÃ§o e escopo que cabem no contexto nacional.</p>
+		<p>Fragmentação é a regra: cada sistema tem seu próprio cadastro, sua própria política de senha e seu próprio fluxo de recuperação. O colaborador acumula dezenas de credenciais; o departamento de TI não tem visão unificada de quem acessa o quê; a auditoria vira quebra-cabeça. Quando a LGPD exige rastreabilidade e consentimento, a empresa descobre que não sabe nem quantos "logins" existem espalhados.</p>
+		<p>Segurança padece: senha fraca ou reutilizada abre porta em vários sistemas; falta de single sign-on incentiva anotar senha em papel ou em arquivo; revogação de acesso ao desligar um colaborador vira corrida contra o tempo em várias ferramentas. O problema não é só técnico — é de governança. Identidade bem desenhada centraliza quem é quem, o que pode acessar e como isso é auditado.</p>
+		<p>No Brasil, empresas médias e órgãos públicos precisam dessa governança sem necessariamente contratar um provedor global caro ou montar um time interno gigante. É aí que entra oferta local especializada: padrões abertos (OIDC, OAuth 2.1), implementação e suporte em português, e preço e escopo que cabem no contexto nacional.</p>
 
-		<h2>2. O Que Ã‰ OIDC</h2>
-		<p>OpenID Connect (OIDC) Ã© um padrÃ£o aberto construÃ­do sobre OAuth 2.0. Em resumo: em vez de cada aplicaÃ§Ã£o guardar senha do usuÃ¡rio, ela delega a autenticaÃ§Ã£o a um provedor de identidade (IdP). O usuÃ¡rio faz login uma vez no IdP; o IdP emite um token (JWT) que atesta quem Ã© o usuÃ¡rio e quais atributos ele tem. A aplicaÃ§Ã£o confia no token e nÃ£o precisa armazenar senha.</p>
-		<p>Os benefÃ­cios sÃ£o diretos: login Ãºnico (single sign-on), menos superfÃ­cie de ataque (senhas concentradas no IdP, nÃ£o em cada app), revogaÃ§Ã£o centralizada e auditoria em um sÃ³ lugar. OIDC define fluxos seguros, incluindo PKCE (Proof Key for Code Exchange) para aplicaÃ§Ãµes pÃºblicas e clientes mÃ³veis, reduzindo risco de interceptaÃ§Ã£o.</p>
-		<p>O Reino OIDC Ã© o produto da Cara Core que implementa esse padrÃ£o com outro propÃ³sito: entender na prÃ¡tica a dinÃ¢mica do protocolo. Ã‰ um produto de estudo, voltado a entusiastas de tecnologia e seguranÃ§a que querem ver OIDC, tokens e fluxos de autenticaÃ§Ã£o funcionando de ponta a ponta. Material gratuito (FREE) e versÃ£o paga (O Trono da Identidade) permitem explorar o ecossistema de identidade de forma hands-on.</p>
+		<h2>2. O Que É OIDC</h2>
+		<p>OpenID Connect (OIDC) é um padrão aberto construído sobre OAuth 2.0. Em resumo: em vez de cada aplicação guardar senha do usuário, ela delega a autenticação a um provedor de identidade (IdP). O usuário faz login uma vez no IdP; o IdP emite um token (JWT) que atesta quem é o usuário e quais atributos ele tem. A aplicação confia no token e não precisa armazenar senha.</p>
+		<p>Os benefícios são diretos: login único (single sign-on), menos superfície de ataque (senhas concentradas no IdP, não em cada app), revogação centralizada e auditoria em um só lugar. OIDC define fluxos seguros, incluindo PKCE (Proof Key for Code Exchange) para aplicações públicas e clientes móveis, reduzindo risco de interceptação.</p>
+		<p>O Reino OIDC é o produto da Cara Core que implementa esse padrão com outro propósito: entender na prática a dinâmica do protocolo. É um produto de estudo, voltado a entusiastas de tecnologia e segurança que querem ver OIDC, tokens e fluxos de autenticação funcionando de ponta a ponta. Material gratuito (FREE) e versão paga (O Trono da Identidade) permitem explorar o ecossistema de identidade de forma hands-on.</p>
 
-		<h2>3. O Que Ã‰ a Ãrea 51</h2>
-		<p>A Ãrea 51 Ã© a "oficina" da Cara Core para identidade enterprise: nÃ£o Ã© sÃ³ software, Ã© suporte especializado para empresas que precisam configurar e operar portais de autenticaÃ§Ã£o com OAuth 2.1, OIDC e PKCE. Muitas organizaÃ§Ãµes querem sair do caos de senhas e adotar identidade federada, mas nÃ£o tÃªm equipe interna para desenhar fluxos, integrar aplicaÃ§Ãµes e manter conformidade. A Ãrea 51 entra aÃ­: consultoria e implementaÃ§Ã£o que conectam um provedor de identidade (IdP) ao mundo real da empresa â€” usando os mesmos conceitos que o entusiasta estuda no Reino OIDC, em escala operacional.</p>
-		<p>O foco sÃ£o empresas mÃ©dias no Brasil: quem precisa de single sign-on, auditoria e LGPD sem virar projeto de multinacional. O produto (portais, configuraÃ§Ã£o, boas prÃ¡ticas) e o suporte (implementaÃ§Ã£o, treinamento, evoluÃ§Ã£o) andam juntos. A loja da Ãrea 51 e o portal no site Cara Core apresentam o serviÃ§o; quem contrata ganha um parceiro tÃ©cnico que fala a lÃ­ngua dos padrÃµes e da regulamentaÃ§Ã£o local.</p>
+		<h2>3. O Que É a Área 51</h2>
+		<p>A Área 51 é a "oficina" da Cara Core para identidade enterprise: não é só software, é suporte especializado para empresas que precisam configurar e operar portais de autenticação com OAuth 2.1, OIDC e PKCE. Muitas organizações querem sair do caos de senhas e adotar identidade federada, mas não têm equipe interna para desenhar fluxos, integrar aplicações e manter conformidade. A Área 51 entra aí: consultoria e implementação que conectam um provedor de identidade (IdP) ao mundo real da empresa — usando os mesmos conceitos que o entusiasta estuda no Reino OIDC, em escala operacional.</p>
+		<p>O foco são empresas médias no Brasil: quem precisa de single sign-on, auditoria e LGPD sem virar projeto de multinacional. O produto (portais, configuração, boas práticas) e o suporte (implementação, treinamento, evolução) andam juntos. A loja da Área 51 e o portal no site Cara Core apresentam o serviço; quem contrata ganha um parceiro técnico que fala a língua dos padrões e da regulamentação local.</p>
 
 		<h2>4. Casos de Uso</h2>
-		<p>Identidade federada com OIDC e OAuth 2.1 serve a vÃ¡rios cenÃ¡rios:</p>
+		<p>Identidade federada com OIDC e OAuth 2.1 serve a vários cenários:</p>
 		<ul>
-			<li><strong>Empresas com mÃºltiplos sistemas:</strong> ERP, portal do cliente, ferramenta interna: um Ãºnico login, um Ãºnico lugar para revogar acesso e auditar.</li>
-			<li><strong>Desenvolvedores e entusiastas:</strong> usar o Reino OIDC para estudar OIDC e OAuth 2.1 na prÃ¡tica; em produÃ§Ã£o, integrar sua aplicaÃ§Ã£o a um IdP (com suporte da Ãrea 51 se precisar de implementaÃ§Ã£o enterprise).</li>
-			<li><strong>Ã“rgÃ£os pÃºblicos e compliance:</strong> exigÃªncias de auditoria, LGPD e governanÃ§a sÃ£o atendidas com rastreabilidade de acesso e consentimento.</li>
-			<li><strong>Parceiros e ecossistema:</strong> APIs e integraÃ§Ãµes podem usar OAuth 2.1/OIDC para autorizar acesso entre sistemas de forma padronizada e segura.</li>
+			<li><strong>Empresas com múltiplos sistemas:</strong> ERP, portal do cliente, ferramenta interna: um único login, um único lugar para revogar acesso e auditar.</li>
+			<li><strong>Desenvolvedores e entusiastas:</strong> usar o Reino OIDC para estudar OIDC e OAuth 2.1 na prática; em produção, integrar sua aplicação a um IdP (com suporte da Área 51 se precisar de implementação enterprise).</li>
+			<li><strong>Órgãos públicos e compliance:</strong> exigências de auditoria, LGPD e governança são atendidas com rastreabilidade de acesso e consentimento.</li>
+			<li><strong>Parceiros e ecossistema:</strong> APIs e integrações podem usar OAuth 2.1/OIDC para autorizar acesso entre sistemas de forma padronizada e segura.</li>
 		</ul>
-		<p>Reino OIDC cobre o aprendizado do protocolo; Ãrea 51 cobre a implantaÃ§Ã£o e a operaÃ§Ã£o no dia a dia da organizaÃ§Ã£o.</p>
+		<p>Reino OIDC cobre o aprendizado do protocolo; Área 51 cobre a implantação e a operação no dia a dia da organização.</p>
 
-		<h2>5. SeguranÃ§a e GovernanÃ§a</h2>
-		<p>LGPD exige que o controlador saiba quem acessa dados pessoais, com que finalidade e por quanto tempo. Identidade centralizada e auditÃ¡vel Ã© a base para responder a isso: logs de login, emissÃ£o de token e revogaÃ§Ã£o de acesso permitem demonstrar conformidade e reagir a incidentes.</p>
-		<p>Boas prÃ¡ticas â€” OAuth 2.1, PKCE, tokens de vida curta, refresh controlado â€” reduzem risco de vazamento e abuso. O Reino OIDC e a Ãrea 51 seguem esses padrÃµes; quem implementa com o suporte da Cara Core alinha tÃ©cnica e governanÃ§a. Auditoria deixa de ser "onde estÃ¡ a planilha de acessos" e vira "consulta ao sistema de identidade".</p>
+		<h2>5. Segurança e Governança</h2>
+		<p>LGPD exige que o controlador saiba quem acessa dados pessoais, com que finalidade e por quanto tempo. Identidade centralizada e auditável é a base para responder a isso: logs de login, emissão de token e revogação de acesso permitem demonstrar conformidade e reagir a incidentes.</p>
+		<p>Boas práticas — OAuth 2.1, PKCE, tokens de vida curta, refresh controlado — reduzem risco de vazamento e abuso. O Reino OIDC e a Área 51 seguem esses padrões; quem implementa com o suporte da Cara Core alinha técnica e governança. Auditoria deixa de ser "onde está a planilha de acessos" e vira "consulta ao sistema de identidade".</p>
 
-		<h2>6. O Futuro da Identidade no PaÃ­s</h2>
-		<p>O Brasil tende a exigir cada vez mais transparÃªncia e controle sobre dados e acessos. Identidade federada, single sign-on e padrÃµes abertos (OIDC, OAuth 2.1) deixam de ser opÃ§Ã£o de grandes corporaÃ§Ãµes e passam a ser necessidade de empresas mÃ©dias e Ã³rgÃ£os pÃºblicos. Quem adota cedo ganha vantagem em seguranÃ§a, produtividade e compliance.</p>
-		<p>A Cara Core segue investindo no Reino OIDC e na Ãrea 51 como eixos do portfÃ³lio: produto de estudo (Reino) para entusiastas e desenvolvedores que querem entender OIDC e OAuth 2.1, e suporte (Ãrea 51) que leva identidade enterprise para quem precisa de parceiro tÃ©cnico no Brasil. A nova era da identidade digital brasileira passa por padrÃµes abertos, oferta local e governanÃ§a clara â€” e Ã© nisso que estamos trabalhando.</p>
+		<h2>6. O Futuro da Identidade no País</h2>
+		<p>O Brasil tende a exigir cada vez mais transparência e controle sobre dados e acessos. Identidade federada, single sign-on e padrões abertos (OIDC, OAuth 2.1) deixam de ser opção de grandes corporações e passam a ser necessidade de empresas médias e órgãos públicos. Quem adota cedo ganha vantagem em segurança, produtividade e compliance.</p>
+		<p>A Cara Core segue investindo no Reino OIDC e na Área 51 como eixos do portfólio: produto de estudo (Reino) para entusiastas e desenvolvedores que querem entender OIDC e OAuth 2.1, e suporte (Área 51) que leva identidade enterprise para quem precisa de parceiro técnico no Brasil. A nova era da identidade digital brasileira passa por padrões abertos, oferta local e governança clara — e é nisso que estamos trabalhando.</p>
 
-		<h2>ConclusÃ£o: Identidade Como Infraestrutura</h2>
-		<p>Reino OIDC e Ãrea 51 nÃ£o sÃ£o "mais um login". SÃ£o a aposta da Cara Core em identidade digital: OIDC e OAuth 2.1 no centro, produto de estudo (Reino) para quem quer entender o protocolo na prÃ¡tica, e suporte (Ãrea 51) para empresas e aplicaÃ§Ãµes que querem seguranÃ§a, auditoria e LGPD sem depender apenas de soluÃ§Ãµes globais. O problema da identidade no Brasil Ã© real; a resposta Ã© padrÃ£o aberto, aprendizado hands-on e parceiro que fala a sua lÃ­ngua.</p>
+		<h2>Conclusão: Identidade Como Infraestrutura</h2>
+		<p>Reino OIDC e Área 51 não são "mais um login". São a aposta da Cara Core em identidade digital: OIDC e OAuth 2.1 no centro, produto de estudo (Reino) para quem quer entender o protocolo na prática, e suporte (Área 51) para empresas e aplicações que querem segurança, auditoria e LGPD sem depender apenas de soluções globais. O problema da identidade no Brasil é real; a resposta é padrão aberto, aprendizado hands-on e parceiro que fala a sua língua.</p>
 
 		<hr>
 
@@ -103,18 +103,18 @@
 		<ul>
 			<li><strong>E-mail:</strong> suporte@caracore.com.br</li>
 			<li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
-			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core InformÃ¡tica</a></li>
+			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
 		</ul>
 
 		<div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
-			<strong>Gostou do conteÃºdo?</strong><br />
-			<span style="font-size:.85rem;">Conecte-se conosco no LinkedIn para mais conteÃºdos sobre identidade digital, OIDC e seguranÃ§a.</span><br />
+			<strong>Gostou do conteúdo?</strong><br />
+			<span style="font-size:.85rem;">Conecte-se conosco no LinkedIn para mais conteúdos sobre identidade digital, OIDC e segurança.</span><br />
 			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Seguir no LinkedIn</a>
 		</div>
 
 		<p style="text-align:center; font-size:.85rem; color:#6b7280; margin-top:3rem;">
 			<em>Artigo publicado em 11 de abril de 2026</em><br>
-			Â© 2026 Cara Core InformÃ¡tica. Todos os direitos reservados.
+			© 2026 Cara Core Informática. Todos os direitos reservados.
 		</p>
 	</div>
 </body>

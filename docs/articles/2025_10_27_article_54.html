@@ -3,24 +3,24 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>OIDC na prÃ¡tica â€” exemplos tÃ©cnicos e implementaÃ§Ã£o (Parte II) â€” Cara Core InformÃ¡tica</title>
-	<meta name="description" content="ImplementaÃ§Ã£o tÃ©cnica de OIDC: Authorization Code + PKCE, validaÃ§Ã£o de ID Token (JWT), integraÃ§Ã£o GitHub Actions â†’ AWS, exemplos prÃ¡ticos em Python e JavaScript." />
-	<meta name="keywords" content="OIDC, OAuth 2.0, JWT, PKCE, JWKS, Python, JavaScript, GitHub Actions, AWS, CI/CD, FastAPI, ImplementaÃ§Ã£o" />
-	<meta name="author" content="Cara Core InformÃ¡tica" />
+	<title>OIDC na prática — exemplos técnicos e implementação (Parte II) — Cara Core Informática</title>
+	<meta name="description" content="Implementação técnica de OIDC: Authorization Code + PKCE, validação de ID Token (JWT), integração GitHub Actions → AWS, exemplos práticos em Python e JavaScript." />
+	<meta name="keywords" content="OIDC, OAuth 2.0, JWT, PKCE, JWKS, Python, JavaScript, GitHub Actions, AWS, CI/CD, FastAPI, Implementação" />
+	<meta name="author" content="Cara Core Informática" />
 	<link rel="canonical" href="https://caracore.com.br/publications/articles/2025_10_27_article_54.html" />
 	<!-- Open Graph -->
-	<meta property="og:title" content="OIDC na prÃ¡tica â€” exemplos tÃ©cnicos e implementaÃ§Ã£o (Parte II)" />
-	<meta property="og:description" content="Guia tÃ©cnico completo: Authorization Code + PKCE, validaÃ§Ã£o JWT, GitHub Actions â†’ AWS via OIDC. CÃ³digo real em Python e JavaScript." />
+	<meta property="og:title" content="OIDC na prática — exemplos técnicos e implementação (Parte II)" />
+	<meta property="og:description" content="Guia técnico completo: Authorization Code + PKCE, validação JWT, GitHub Actions → AWS via OIDC. Código real em Python e JavaScript." />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="https://caracore.com.br/publications/articles/2025_10_27_article_54.html" />
 	<meta property="og:image" content="https://caracore.com.br/publications/articles/assets/img/article_54_01.png" />
-	<meta property="og:image:alt" content="ImplementaÃ§Ã£o tÃ©cnica OIDC: cÃ³digo Python, JavaScript e GitHub Actions (Cara Core)" />
+	<meta property="og:image:alt" content="Implementação técnica OIDC: código Python, JavaScript e GitHub Actions (Cara Core)" />
 	<!-- Twitter Card -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="OIDC na prÃ¡tica â€” exemplos tÃ©cnicos e implementaÃ§Ã£o (Parte II)" />
-	<meta name="twitter:description" content="Guia tÃ©cnico completo: Authorization Code + PKCE, validaÃ§Ã£o JWT, GitHub Actions â†’ AWS via OIDC. CÃ³digo real em Python e JavaScript." />
+	<meta name="twitter:title" content="OIDC na prática — exemplos técnicos e implementação (Parte II)" />
+	<meta name="twitter:description" content="Guia técnico completo: Authorization Code + PKCE, validação JWT, GitHub Actions → AWS via OIDC. Código real em Python e JavaScript." />
 	<meta name="twitter:image" content="https://caracore.com.br/publications/articles/assets/img/article_54_01.png" />
-	<meta name="twitter:image:alt" content="ImplementaÃ§Ã£o tÃ©cnica OIDC: cÃ³digo Python, JavaScript e GitHub Actions (Cara Core)" />
+	<meta name="twitter:image:alt" content="Implementação técnica OIDC: código Python, JavaScript e GitHub Actions (Cara Core)" />
 	<link rel="stylesheet" href="assets/css/articles.css" />
 	<style>
 		body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif; line-height:1.55; color:#1f2937; margin:0; }
@@ -57,27 +57,27 @@
 </head>
 <body>
 	<div class="container">
-		<a class="back-link" href="../index.html">&larr; Voltar para publicaÃ§Ãµes</a>
-		<img src="assets/img/article_54_01.png" alt="ImplementaÃ§Ã£o tÃ©cnica OIDC: cÃ³digo Python, JavaScript e GitHub Actions (Cara Core)" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
-		<h1>OIDC na prÃ¡tica â€” exemplos tÃ©cnicos e implementaÃ§Ã£o (Parte II)</h1>
+		<a class="back-link" href="../index.html">&larr; Voltar para publicações</a>
+		<img src="assets/img/article_54_01.png" alt="Implementação técnica OIDC: código Python, JavaScript e GitHub Actions (Cara Core)" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+		<h1>OIDC na prática — exemplos técnicos e implementação (Parte II)</h1>
 		<div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
 				<img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
-				<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core InformÃ¡tica</a>
+				<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
 				<span style="margin-left: 1.5rem;">84 seguidores<br>27 de outubro de 2025</span>
 		</div>
 
 		<div class="note"><strong>Tempo estimado de leitura:</strong> ~12 minutos</div>
 
-		<p>Na <a href="2025_10_15_article_52.html">Parte I</a> vimos como OIDC resolve o caos de senhas mÃºltiplas de forma simples e elegante. Agora Ã© hora de colocar a mÃ£o na massa: fluxos tÃ©cnicos, cÃ³digo real, validaÃ§Ã£o de tokens e integraÃ§Ã£o com pipelines de CI/CD.</p>
-		<p>Se vocÃª Ã© desenvolvedor, administrador de sistema ou arquiteto de soluÃ§Ãµes, esta parte complementa a visÃ£o de negÃ³cio com implementaÃ§Ã£o prÃ¡tica.</p>
+		<p>Na <a href="2025_10_15_article_52.html">Parte I</a> vimos como OIDC resolve o caos de senhas múltiplas de forma simples e elegante. Agora é hora de colocar a mão na massa: fluxos técnicos, código real, validação de tokens e integração com pipelines de CI/CD.</p>
+		<p>Se você é desenvolvedor, administrador de sistema ou arquiteto de soluções, esta parte complementa a visão de negócio com implementação prática.</p>
 
-		<h2>RevisÃ£o: o que Ã© OIDC (foco tÃ©cnico)</h2>
-		<p>OIDC Ã© uma camada de identidade sobre OAuth 2.0. Enquanto OAuth 2.0 trata de autorizaÃ§Ã£o (acesso a recursos via Access Tokens), OIDC adiciona autenticaÃ§Ã£o: <strong>quem Ã© o usuÃ¡rio?</strong></p>
+		<h2>Revisão: o que é OIDC (foco técnico)</h2>
+		<p>OIDC é uma camada de identidade sobre OAuth 2.0. Enquanto OAuth 2.0 trata de autorização (acesso a recursos via Access Tokens), OIDC adiciona autenticação: <strong>quem é o usuário?</strong></p>
 		<p><strong>Fluxo Authorization Code + PKCE (detalhado):</strong></p>
 		<ol>
-			<li>Cliente gera <code>code_verifier</code> aleatÃ³rio e deriva <code>code_challenge</code> (SHA256 + base64url)</li>
-			<li>Redireciona usuÃ¡rio para <code>authorization_endpoint</code> com <code>code_challenge</code></li>
-			<li>UsuÃ¡rio autentica no IdP (MFA, polÃ­ticas, consentimentos)</li>
+			<li>Cliente gera <code>code_verifier</code> aleatório e deriva <code>code_challenge</code> (SHA256 + base64url)</li>
+			<li>Redireciona usuário para <code>authorization_endpoint</code> com <code>code_challenge</code></li>
+			<li>Usuário autentica no IdP (MFA, políticas, consentimentos)</li>
 			<li>IdP redireciona com <code>code</code> para <code>redirect_uri</code></li>
 			<li>Cliente troca <code>code</code> + <code>code_verifier</code> por tokens no <code>token_endpoint</code></li>
 			<li>Cliente valida ID Token (assinatura, <code>iss</code>, <code>aud</code>, <code>exp</code>) usando JWKS</li>
@@ -85,13 +85,13 @@
 		<p><strong>Componentes-chave:</strong></p>
 		<ul>
 			<li><strong>ID Token</strong>: JWT com claims de identidade (<code>sub</code>, <code>email</code>, <code>name</code>, <code>roles</code>)</li>
-			<li><strong>Access Token</strong>: autorizaÃ§Ã£o para APIs (opaco ou JWT)</li>
-			<li><strong>Refresh Token</strong>: renovaÃ§Ã£o de tokens (opcional)</li>
-			<li><strong>JWKS</strong>: chaves pÃºblicas para validar assinatura do JWT</li>
+			<li><strong>Access Token</strong>: autorização para APIs (opaco ou JWT)</li>
+			<li><strong>Refresh Token</strong>: renovação de tokens (opcional)</li>
+			<li><strong>JWKS</strong>: chaves públicas para validar assinatura do JWT</li>
 		</ul>
 
 		<h2>Exemplo 1: Login Web com Python (FastAPI)</h2>
-		<p>ImplementaÃ§Ã£o completa de OIDC com FastAPI, usando Keycloak como IdP.</p>
+		<p>Implementação completa de OIDC com FastAPI, usando Keycloak como IdP.</p>
 		<pre><code>from fastapi import FastAPI, Request, HTTPException, Depends
 from fastapi.responses import RedirectResponse
 from authlib.integrations.starlette_client import OAuth
@@ -103,7 +103,7 @@ import base64
 app = FastAPI()
 app.add_middleware(SessionMiddleware, secret_key="your-secret-key")
 
-# ConfiguraÃ§Ã£o OIDC
+# Configuração OIDC
 oauth = OAuth()
 oauth.register(
     name='keycloak',
@@ -182,12 +182,12 @@ async def logout(request: Request):
     return RedirectResponse(f"{logout_url}?redirect_uri={request.base_url}")
 </code></pre>
 
-		<h2>Exemplo 2: ValidaÃ§Ã£o manual de ID Token (JavaScript)</h2>
-		<p>Quando vocÃª precisa validar ID Tokens sem biblioteca de alto nÃ­vel:</p>
+		<h2>Exemplo 2: Validação manual de ID Token (JavaScript)</h2>
+		<p>Quando você precisa validar ID Tokens sem biblioteca de alto nível:</p>
 		<pre><code>const jwt = require('jsonwebtoken');
 const jwksClient = require('jwks-rsa');
 
-// Cliente JWKS para buscar chaves pÃºblicas
+// Cliente JWKS para buscar chaves públicas
 const client = jwksClient({
   jwksUri: 'https://login.example.com/.well-known/jwks.json',
   cache: true,
@@ -211,12 +211,12 @@ async function validateIdToken(idToken, expectedAudience, expectedIssuer) {
     }, (err, decoded) => {
       if (err) return reject(err);
       
-      // ValidaÃ§Ãµes adicionais
+      // Validações adicionais
       const now = Math.floor(Date.now() / 1000);
       if (decoded.exp < now) {
         return reject(new Error('Token expired'));
       }
-      if (decoded.iat > now + 300) { // 5 min de tolerÃ¢ncia
+      if (decoded.iat > now + 300) { // 5 min de tolerância
         return reject(new Error('Token issued in the future'));
       }
       
@@ -248,8 +248,8 @@ app.use('/protected', async (req, res, next) => {
 });
 </code></pre>
 
-		<h2>Exemplo 3: GitHub Actions â†’ AWS via OIDC (sem chaves)</h2>
-		<p>ConfiguraÃ§Ã£o completa para assumir Role AWS via OIDC no GitHub Actions:</p>
+		<h2>Exemplo 3: GitHub Actions → AWS via OIDC (sem chaves)</h2>
+		<p>Configuração completa para assumir Role AWS via OIDC no GitHub Actions:</p>
 		<p><strong>1. Trust Policy da Role AWS:</strong></p>
 		<pre><code>{
   "Version": "2012-10-17",
@@ -285,7 +285,7 @@ on:
     branches: [main]
 
 permissions:
-  id-token: write   # NecessÃ¡rio para OIDC
+  id-token: write   # Necessário para OIDC
   contents: read
 
 jobs:
@@ -317,7 +317,7 @@ jobs:
         run: |
           echo "Running integration tests"
 </code></pre>
-		<p><strong>3. Script para criar OIDC Provider (se nÃ£o existir):</strong></p>
+		<p><strong>3. Script para criar OIDC Provider (se não existir):</strong></p>
 		<pre><code>#!/bin/bash
 # create-oidc-provider.sh
 
@@ -330,121 +330,121 @@ aws iam create-open-id-connect-provider \
     --client-id-list sts.amazonaws.com
 </code></pre>
 
-		<h2>Boas prÃ¡ticas e pegadinhas</h2>
-		<p><strong>ValidaÃ§Ã£o do ID Token:</strong></p>
+		<h2>Boas práticas e pegadinhas</h2>
+		<p><strong>Validação do ID Token:</strong></p>
 		<ul>
 			<li>Sempre verifique <code>iss</code>, <code>aud</code>, <code>exp</code>, <code>iat</code> e assinatura</li>
-			<li>Use biblioteca confiÃ¡vel ou implemente validaÃ§Ã£o completa</li>
+			<li>Use biblioteca confiável ou implemente validação completa</li>
 			<li>Cache JWKS com TTL adequado (10-60 min)</li>
 		</ul>
-		<p><strong>PKCE obrigatÃ³rio:</strong></p>
+		<p><strong>PKCE obrigatório:</strong></p>
 		<ul>
 			<li>Use PKCE em todos os fluxos Authorization Code</li>
 			<li><code>code_verifier</code>: 43-128 chars, base64url sem padding</li>
 			<li><code>code_challenge_method</code>: sempre <code>S256</code></li>
 		</ul>
-		<p><strong>Scopes mÃ­nimos:</strong></p>
+		<p><strong>Scopes mínimos:</strong></p>
 		<ul>
-			<li>PeÃ§a apenas o necessÃ¡rio: <code>openid</code> (obrigatÃ³rio) + <code>profile</code>, <code>email</code>, <code>roles</code></li>
-			<li>Mapeie claims do ID Token para permissÃµes do seu app</li>
+			<li>Peça apenas o necessário: <code>openid</code> (obrigatório) + <code>profile</code>, <code>email</code>, <code>roles</code></li>
+			<li>Mapeie claims do ID Token para permissões do seu app</li>
 		</ul>
 		<p><strong>CI/CD seguro:</strong></p>
 		<ul>
-			<li>Restrinja <code>sub</code> com repo/branch especÃ­ficos</li>
+			<li>Restrinja <code>sub</code> com repo/branch específicos</li>
 			<li>Use <code>role-session-name</code> para auditoria</li>
-			<li>Rotacione OIDC thumbprints se necessÃ¡rio</li>
+			<li>Rotacione OIDC thumbprints se necessário</li>
 		</ul>
 		<p><strong>Multi-tenant:</strong></p>
 		<ul>
 			<li>Use discovery endpoint (<code>/.well-known/openid-configuration</code>)</li>
-			<li>Cache configuraÃ§Ãµes por tenant/issuer</li>
-			<li>ValidaÃ§Ã£o dinÃ¢mica de <code>iss</code> baseada no tenant</li>
+			<li>Cache configurações por tenant/issuer</li>
+			<li>Validação dinâmica de <code>iss</code> baseada no tenant</li>
 		</ul>
 
 		<h2>Troubleshooting comum</h2>
 		<ul>
-			<li><strong>"Invalid audience"</strong>: <code>aud</code> no ID Token nÃ£o confere com <code>client_id</code></li>
-			<li><strong>"Invalid issuer"</strong>: <code>iss</code> no ID Token nÃ£o confere com esperado</li>
+			<li><strong>"Invalid audience"</strong>: <code>aud</code> no ID Token não confere com <code>client_id</code></li>
+			<li><strong>"Invalid issuer"</strong>: <code>iss</code> no ID Token não confere com esperado</li>
 			<li><strong>"Token expired"</strong>: <code>exp</code> passou ou <code>iat</code> no futuro (sincronize clocks)</li>
-			<li><strong>"Invalid signature"</strong>: JWKS desatualizado ou <code>kid</code> nÃ£o encontrado</li>
-			<li><strong>PKCE "code_verifier mismatch"</strong>: <code>code_challenge</code> nÃ£o confere com <code>code_verifier</code></li>
+			<li><strong>"Invalid signature"</strong>: JWKS desatualizado ou <code>kid</code> não encontrado</li>
+			<li><strong>PKCE "code_verifier mismatch"</strong>: <code>code_challenge</code> não confere com <code>code_verifier</code></li>
 		</ul>
 
-		<h2 id="conclusao">ConclusÃ£o tÃ©cnica</h2>
-		<p>OIDC elimina a complexidade de gerenciar identidades distribuÃ­das. Com <strong>Authorization Code + PKCE</strong>, <strong>validaÃ§Ã£o correta do ID Token</strong> e <strong>polÃ­ticas bem definidas</strong>, vocÃª obtÃ©m:</p>
+		<h2 id="conclusao">Conclusão técnica</h2>
+		<p>OIDC elimina a complexidade de gerenciar identidades distribuídas. Com <strong>Authorization Code + PKCE</strong>, <strong>validação correta do ID Token</strong> e <strong>políticas bem definidas</strong>, você obtém:</p>
 		<ul>
-			<li><strong>SeguranÃ§a</strong>: MFA centralizado, tokens assinados, permissÃµes granulares</li>
-			<li><strong>GovernanÃ§a</strong>: auditoria unificada, onboarding/offboarding Ã¡gil</li>
-			<li><strong>Produtividade</strong>: menos cÃ³digo de autenticaÃ§Ã£o, bibliotecas maduras</li>
-			<li><strong>CI/CD sem chaves</strong>: assume roles via OIDC, credenciais temporÃ¡rias</li>
+			<li><strong>Segurança</strong>: MFA centralizado, tokens assinados, permissões granulares</li>
+			<li><strong>Governança</strong>: auditoria unificada, onboarding/offboarding ágil</li>
+			<li><strong>Produtividade</strong>: menos código de autenticação, bibliotecas maduras</li>
+			<li><strong>CI/CD sem chaves</strong>: assume roles via OIDC, credenciais temporárias</li>
 		</ul>
 
 		<div class="checklist">
-			<p><strong>Checklist de implementaÃ§Ã£o:</strong></p>
+			<p><strong>Checklist de implementação:</strong></p>
 			<ul>
-				<li>â˜ Configure IdP (Keycloak, Auth0, Azure AD/Entra, Google)</li>
-				<li>â˜ Implemente Authorization Code + PKCE</li>
-				<li>â˜ Valide ID Token (iss, aud, exp, assinatura via JWKS)</li>
-				<li>â˜ Mapeie claims para permissÃµes da aplicaÃ§Ã£o</li>
-				<li>â˜ Configure CI/CD com OIDC (GitHub Actions, GitLab CI)</li>
-				<li>â˜ Monitore e auditoria (logs de autenticaÃ§Ã£o, token usage)</li>
+				<li>☐ Configure IdP (Keycloak, Auth0, Azure AD/Entra, Google)</li>
+				<li>☐ Implemente Authorization Code + PKCE</li>
+				<li>☐ Valide ID Token (iss, aud, exp, assinatura via JWKS)</li>
+				<li>☐ Mapeie claims para permissões da aplicação</li>
+				<li>☐ Configure CI/CD com OIDC (GitHub Actions, GitLab CI)</li>
+				<li>☐ Monitore e auditoria (logs de autenticação, token usage)</li>
 			</ul>
 		</div>
 
-		<p><strong>PrÃ³ximos passos:</strong> comece com um app piloto, meÃ§a a experiÃªncia do usuÃ¡rio e evolua com telemetria e polÃ­ticas de seguranÃ§a.</p>
-		<p>Este artigo complementa a <a href="2025_10_15_article_52.html">Parte I</a> com detalhes tÃ©cnicos. Juntos, cobrem desde a visÃ£o de negÃ³cio atÃ© implementaÃ§Ã£o prÃ¡tica.</p>
-		<p>A <strong>Cara Core InformÃ¡tica</strong> oferece consultoria e implementaÃ§Ã£o de OIDC, incluindo suporte tÃ©cnico aos finais de semana e feriados.</p>
+		<p><strong>Próximos passos:</strong> comece com um app piloto, meça a experiência do usuário e evolua com telemetria e políticas de segurança.</p>
+		<p>Este artigo complementa a <a href="2025_10_15_article_52.html">Parte I</a> com detalhes técnicos. Juntos, cobrem desde a visão de negócio até implementação prática.</p>
+		<p>A <strong>Cara Core Informática</strong> oferece consultoria e implementação de OIDC, incluindo suporte técnico aos finais de semana e feriados.</p>
 
-		<div class="chalkboard" role="complementary" aria-label="DicionÃ¡rio tÃ©cnico">
-			<h2>DicionÃ¡rio tÃ©cnico</h2>
+		<div class="chalkboard" role="complementary" aria-label="Dicionário técnico">
+			<h2>Dicionário técnico</h2>
 			<dl>
 				<dt><strong>OIDC (OpenID Connect)</strong></dt>
-				<dd>camada de identidade sobre OAuth 2.0 que entrega ID Token (JWT) com claims do usuÃ¡rio</dd>
+				<dd>camada de identidade sobre OAuth 2.0 que entrega ID Token (JWT) com claims do usuário</dd>
 				<dt><strong>OAuth 2.0</strong></dt>
-				<dd>protocolo de autorizaÃ§Ã£o (Access Token para recursos) â€” OIDC adiciona autenticaÃ§Ã£o</dd>
+				<dd>protocolo de autorização (Access Token para recursos) — OIDC adiciona autenticação</dd>
 				<dt><strong>IdP (Identity Provider)</strong></dt>
-				<dd>serviÃ§o que autentica e emite tokens (Azure AD/Entra, Google, Keycloak, Auth0)</dd>
+				<dd>serviço que autentica e emite tokens (Azure AD/Entra, Google, Keycloak, Auth0)</dd>
 				<dt><strong>RP (Relying Party)</strong></dt>
-				<dd>aplicaÃ§Ã£o que confia no IdP (seu site/API/app)</dd>
+				<dd>aplicação que confia no IdP (seu site/API/app)</dd>
 				<dt><strong>ID Token</strong></dt>
 				<dd>JWT com claims de identidade (<code>sub</code>, <code>iss</code>, <code>aud</code>, <code>exp</code>, <code>email</code>, <code>name</code>, <code>roles</code>)</dd>
 				<dt><strong>Access Token</strong></dt>
-				<dd>token de autorizaÃ§Ã£o para APIs. Diferente do ID Token</dd>
+				<dd>token de autorização para APIs. Diferente do ID Token</dd>
 				<dt><strong>Refresh Token</strong></dt>
-				<dd>token para renovar Access/ID Tokens sem nova autenticaÃ§Ã£o</dd>
+				<dd>token para renovar Access/ID Tokens sem nova autenticação</dd>
 				<dt><strong>Claims</strong></dt>
 				<dd>atributos no token (subject, issuer, audience, expiration, custom...)</dd>
 				<dt><strong>Scope</strong></dt>
-				<dd>conjunto de permissÃµes/atributos solicitados (<code>openid</code>, <code>profile</code>, <code>email</code>, <code>roles</code>)</dd>
+				<dd>conjunto de permissões/atributos solicitados (<code>openid</code>, <code>profile</code>, <code>email</code>, <code>roles</code>)</dd>
 				<dt><strong>PKCE</strong></dt>
-				<dd>Proof Key for Code Exchange â€” reforÃ§o ao Authorization Code para apps pÃºblicos</dd>
+				<dd>Proof Key for Code Exchange — reforço ao Authorization Code para apps públicos</dd>
 				<dt><strong>Code Verifier</strong></dt>
-				<dd>string aleatÃ³ria (43-128 chars) gerada pelo cliente</dd>
+				<dd>string aleatória (43-128 chars) gerada pelo cliente</dd>
 				<dt><strong>Code Challenge</strong></dt>
-				<dd>SHA256(code_verifier) em base64url â€” enviado na autorizaÃ§Ã£o</dd>
+				<dd>SHA256(code_verifier) em base64url — enviado na autorização</dd>
 				<dt><strong>JWKS</strong></dt>
-				<dd>JSON Web Key Set â€” endpoint com chaves pÃºblicas para validar JWT</dd>
+				<dd>JSON Web Key Set — endpoint com chaves públicas para validar JWT</dd>
 				<dt><strong>Discovery</strong></dt>
-				<dd>endpoint <code>/.well-known/openid-configuration</code> com configuraÃ§Ãµes do IdP</dd>
+				<dd>endpoint <code>/.well-known/openid-configuration</code> com configurações do IdP</dd>
 				<dt><strong>Authorization Code</strong></dt>
-				<dd>cÃ³digo temporÃ¡rio trocado por tokens no <code>token_endpoint</code></dd>
+				<dd>código temporário trocado por tokens no <code>token_endpoint</code></dd>
 			</dl>
 		</div>
 
 		<h2>Hashtags</h2>
-		<div class="hash-box">#OIDC #OAuth2 #JWT #PKCE #JWKS #SSO #AutenticaÃ§Ã£o #AutorizaÃ§Ã£o #GitHub #AWS #CI #CD #SeguranÃ§a #CaraCoreInformÃ¡tica</div>
+		<div class="hash-box">#OIDC #OAuth2 #JWT #PKCE #JWKS #SSO #Autenticação #Autorização #GitHub #AWS #CI #CD #Segurança #CaraCoreInformática</div>
 
 		<hr />
 		<h3>Contato</h3>
 		<ul>
 			<li><strong>E-mail:</strong> suporte@caracore.com.br</li>
 			<li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
-			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core InformÃ¡tica</a></li>
+			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
 		</ul>
 
 		<div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
-			<strong>ðŸ¤ Gostou do conteÃºdo?</strong><br />
-			<span style="font-size:.85rem;">Conecte-se conosco no LinkedIn para mais conteÃºdos sobre desenvolvimento e inovaÃ§Ã£o tecnolÃ³gica!</span><br />
+			<strong>🤝 Gostou do conteúdo?</strong><br />
+			<span style="font-size:.85rem;">Conecte-se conosco no LinkedIn para mais conteúdos sobre desenvolvimento e inovação tecnológica!</span><br />
 			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Seguir no LinkedIn</a>
 		</div>
 	</div>
