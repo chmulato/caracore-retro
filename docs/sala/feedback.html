@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Canais de feedback — Sala de Operações</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Canais para reportar o trabalho feito na Sala. Respeitamos sua privacidade (LGPD).">
+    <link rel="stylesheet" href="assets/css/sala.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="sala-page">
+    <a href="#conteudo" class="sala-skip-link">Ir para o conteúdo</a>
+    <header class="sala-header" role="banner">
+        <div class="sala-header-inner">
+            <a class="sala-header-brand" href="index.html"><img src="../assets/images/logo_branca.png" alt="" class="sala-header-logo" width="40" height="36" decoding="async"><span class="sala-header-text">Sala de Operações · Cara Core Informática</span></a>
+        </div>
+    </header>
+    <div class="sala-body">
+        <nav class="sala-nav" aria-label="Navegação da sala">
+            <div class="sala-nav-logo">Cara Core Informática</div>
+            <p class="sala-nav-title">Plano e campanhas</p>
+            <ul>
+                <li><a href="index.html">Controle</a></li>
+                <li><a href="opera-sala.html">Para quem opera</a></li>
+                <li><a href="feedback.html" class="active">Canal de feedback</a></li>
+                <li><a href="facebook/facebook.html">Facebook</a></li>
+                <li><a href="instagram/instagram.html">Instagram</a></li>
+                <li><a href="linkedin/linkedin.html">LinkedIn</a></li>
+            </ul>
+            <div class="sala-nav-footer">
+                <a href="LEIGO_C1_C2_C3_C4.html">Passo a passo C1–C4</a>
+                <a href="CAIXA_FERRAMENTAS_6_SCRIPTS.html">Caixa de ferramentas</a>
+                <a href="prompts-imagem-ia.html">Prompts IA</a>
+                <a href="ESTRUTURA_SALA.html">Estrutura da sala</a>
+                <a href="LEIA_PRIMEIRO_REPOSITORIO.html">Leia primeiro</a>
+            </div>
+        </nav>
+        <main class="sala-main" id="conteudo" tabindex="-1">
+            <h1>Canais de feedback</h1>
+            <p class="sala-lead">Reporte o trabalho de forma linear. Escolha um canal abaixo após confirmar que leu o aviso de uso dos dados.</p>
+
+            <section class="feedback-consent" aria-labelledby="consent-heading">
+                <h2 id="consent-heading" class="sala-section-title">Acesso aos canais</h2>
+                <div class="feedback-consent-box">
+                    <label class="feedback-consent-label">
+                        <input type="checkbox" id="feedback-consent" name="consent" aria-describedby="consent-desc">
+                        <span id="consent-desc">Estou ciente de que as informações compartilhadas serão usadas <strong>exclusivamente</strong> para fins operacionais e de pagamento (CC).</span>
+                    </label>
+                </div>
+            </section>
+
+            <section class="feedback-channels" id="feedback-channels" hidden aria-labelledby="channels-heading">
+                <h2 id="channels-heading" class="sala-section-title">Escolha um canal</h2>
+                <div class="feedback-channel-grid" role="list">
+                    <article class="feedback-channel-card feedback-channel-card--whatsapp" role="listitem">
+                        <span class="feedback-channel-card__label">WhatsApp</span>
+                        <p class="feedback-channel-card__desc">Envie mensagem rápida para reportar horas e entregas. Resposta em horário comercial.</p>
+                        <button type="button" class="feedback-channel-card__btn" data-channel="whatsapp" aria-label="Abrir WhatsApp para contato">Abrir WhatsApp</button>
+                    </article>
+                    <article class="feedback-channel-card feedback-channel-card--telegram" role="listitem">
+                        <span class="feedback-channel-card__label">Telegram</span>
+                        <p class="feedback-channel-card__desc">Canal alternativo para envio de resumos e dúvidas operacionais.</p>
+                        <button type="button" class="feedback-channel-card__btn" data-channel="telegram" aria-label="Abrir Telegram para contato">Abrir Telegram</button>
+                    </article>
+                    <article class="feedback-channel-card feedback-channel-card--email" role="listitem">
+                        <span class="feedback-channel-card__label">E-mail</span>
+                        <p class="feedback-channel-card__desc">Para relatórios mais longos ou anexos. Use o template da Sala quando enviar artefatos.</p>
+                        <button type="button" class="feedback-channel-card__btn" data-channel="email" aria-label="Abrir cliente de e-mail para contato">Enviar e-mail</button>
+                    </article>
+                </div>
+            </section>
+
+            <div class="sala-feedback-box">
+                <h2 class="sala-section-title">Registrar feedback (sessão)</h2>
+                <p class="sala-quiet feedback-form-intro">Se você tem acesso ao portal com login, use o formulário abaixo para registrar o resumo do trabalho. Caso contrário, use um dos canais acima.</p>
+                <form id="form-feedback">
+                    <label for="data">Data da sessão</label>
+                    <input type="date" id="data" name="data" required>
+                    <label for="resumo">Resumo do trabalho feito</label>
+                    <textarea id="resumo" name="resumo" required placeholder="Ex.: Publiquei 2 posts no Facebook, gerei as imagens na IA e salvei em sala/assets/img/. Rodei o script de validar."></textarea>
+                    <label for="horas">Horas trabalhadas (opcional)</label>
+                    <input type="text" id="horas" name="horas" placeholder="Ex.: 1,5">
+                    <label for="observacoes">Observações (opcional)</label>
+                    <textarea id="observacoes" name="observacoes" placeholder="Dúvidas, bloqueios, sugestões."></textarea>
+                    <button type="submit">Enviar feedback</button>
+                </form>
+                <p id="feedback-msg" class="sala-msg" aria-live="polite"></p>
+            </div>
+
+            <footer class="feedback-privacy-note" role="contentinfo">
+                <p>Respeitamos sua privacidade. Seus logs de conversa são armazenados apenas para fins de auditoria de horas trabalhadas.</p>
+            </footer>
+        </main>
+    </div>
+    <footer class="sala-footer" role="contentinfo">
+        <a href="index.html">Sala de Operações</a> · Documentação institucional · Nenhum dado pessoal coletado
+    </footer>
+    <script src="assets/js/feedback.js"></script>
+</body>
+</html>

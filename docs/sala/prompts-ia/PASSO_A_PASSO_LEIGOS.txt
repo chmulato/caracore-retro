@@ -1,0 +1,67 @@
+================================================================================
+PASSO A PASSO — USAR OS TXT PARA GERAR IMAGENS EM IA (PARA LEIGOS)
+================================================================================
+Sala de Notícias · Cara Core Informática · Prompts para IA de imagem
+================================================================================
+
+O que é isso?
+-------------
+Os arquivos .TXT desta pasta contêm "prompts" — frases em texto que você cola
+em ferramentas de IA que geram imagens (como DALL·E, Midjourney, Ideogram,
+Stable Diffusion, etc.). A IA usa o texto para criar uma imagem.
+
+Passo a passo (resumido)
+------------------------
+1. Escolha o arquivo .TXT da campanha ou pilar que você quer (ex.: soberania.txt).
+2. Abra o .TXT no Bloco de Notas ou outro editor. Selecione todo o texto (Ctrl+A) e copie (Ctrl+C).
+3. Abra o site ou app da ferramenta de IA de imagens que você vai usar.
+4. Onde houver campo para "prompt", "descrição" ou "o que você quer gerar", cole o texto (Ctrl+V).
+5. Ajuste opções se a ferramenta pedir (tamanho, estilo). Clique em Gerar/Criar.
+6. Quando a imagem aparecer, baixe e salve em sala/assets/img/ com nome YYYY_MM_DD_nome_artefato.png
+
+Passo a passo (detalhado)
+------------------------
+
+PASSO 1 — Escolher o prompt
+  · Entre na pasta prompts-ia/ da Sala de Notícias.
+  · Cada .TXT tem um nome que indica o tema (ex.: soberania.txt, precisao.txt).
+  · Abra o arquivo que corresponde à campanha ou ao mês que você está produzindo.
+
+PASSO 2 — Copiar o texto
+  · Com o .TXT aberto, use Ctrl+A (selecionar tudo) e depois Ctrl+C (copiar).
+  · Ou selecione só o trecho que quiser usar com o mouse e copie (Ctrl+C).
+  · O texto fica na "área de transferência" do Windows até você colar em outro lugar.
+
+PASSO 3 — Abrir a ferramenta de IA
+  · Exemplos de ferramentas: DALL·E (OpenAI), Midjourney (Discord), Ideogram, Microsoft Designer, Leonardo.ai.
+  · Acesse o site ou o app e faça login se for necessário.
+  · Procure a área onde se "pede" uma imagem — em geral há uma caixa de texto grande.
+
+PASSO 4 — Colar e gerar
+  · Clique na caixa de texto da ferramenta e cole o que você copiou (Ctrl+V).
+  · Se a ferramenta tiver opções (proporção, estilo), escolha conforme o uso (ex.: post quadrado para Instagram).
+  · Clique no botão que gera a imagem (ex.: "Gerar", "Create", "Generate").
+
+PASSO 5 — Baixar e salvar na pasta correta
+  · Quando a IA terminar, a imagem aparece na tela.
+  · Use o botão de download ou "Salvar" que a ferramenta oferece.
+  · Pasta: sala/assets/img/
+  · Facebook: imagem = YYYY_MM_DD_artefato_(01)_(01).png | HTML = YYYY_MM_DD_artefato_(01)_F.html (sala/facebook/).
+  · Instagram: imagem = YYYY_MM_DD_artefato_(01)_(01).png | HTML = YYYY_MM_DD_artefato_(01)_G.html (sala/instagram/). Sequência a partir de 01; sufixo G.
+  · LinkedIn: imagem = YYYY_MM_DD_article_(87)_(01).png | HTML = YYYY_MM_DD_article_(87)_L.html (sala/linkedin/). Sequência do article começa em 87.
+  · Outras redes: YYYY_MM_DD_nome.png ou .html
+  · Estratégia completa: ESTRATEGIA_COPIAR_SALVAR.txt
+
+Dicas rápidas
+-------------
+· Se a imagem não ficar como você quer, edite um pouco o texto do .TXT (por exemplo trocar "minimalista" por "colorido") e gere de novo.
+· Guarde sempre uma cópia do prompt que gerou a imagem que você aprovou, para repetir o estilo depois.
+· Os .TXT da Sala são sugestões; você pode adaptar o texto ao gosto da rede (Instagram, Facebook, LinkedIn).
+
+Onde ficam os arquivos .TXT
+---------------------------
+Na mesma pasta que este arquivo: prompts-ia/ dentro da Sala de Notícias (sala/prompts-ia/).
+
+================================================================================
+Cara Core Informática · Sala de Notícias · Documentação institucional
+================================================================================

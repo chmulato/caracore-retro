@@ -1,0 +1,121 @@
+================================================================================
+SALA DE PROMPTS — LINGUAGEM DE INSTRUÇÕES DA IA (LIA)
+Rastreador central para gerar artefatos Temporada I
+================================================================================
+
+LEIA ISTO PRIMEIRO:
+Toda IA que trabalhe com conteúdo Cara Core deve **sempre** ler:
+1. ALINHAMENTO_CREATIVO.txt — O DNA narrativo
+2. TEMPORADA_I_ATOS.txt    — O cronograma + mapa de produtos
+3. Este arquivo            — Como os artefatos se conectam
+
+================================================================================
+ESTRUTURA DA SALA (Hierarquia de Decisão)
+================================================================================
+
+ZONA 1: CONTEXTO (O que a IA NUNCA pode esquecer)
+├─ ALINHAMENTO_CREATIVO.txt
+│  └─ Emancipação do Soberano vs. Fragilidade do Cercadinho
+│  └─ 4 Pilares: Localhost, Lastro, Vigilância, Identidade
+│  └─ Tone: Ironia dark + honestidade desconfortável
+└─ soberania.txt, precisao.txt, lucratividade.txt
+   └─ 3 pilares visuais (quando relevante)
+
+ZONA 2: PLANEJAMENTO (O mapa da Temporada I)
+├─ TEMPORADA_I_ATOS.txt
+│  └─ 7 episódios + datas (Saturados: 05-30, 06-06, 07-04, 08-01, 09-05, 10-03, 11-07)
+│  └─ Cada ato: tema, conceito, gancho, amarra
+│  └─ Inclui: produto por ato, contexto narrativo, meta de impacto
+└─ Tabela: Ato → Produto → Contexto Marketing
+
+ZONA 3: ARTEFATOS DE CONTEÚDO (O que foi criado)
+├─ TEMPORADA_I_LINKEDIN_2026_EPISODIOS.txt
+│  └─ 7 episódios completos: Titulo, Gancho, Manifesto, Fragmento, Amarra, Bloco 03/03
+│  └─ Pronto para copiar → HTML retro/articles
+├─ TEMPORADA_I_META_2026_ENTRADAS.txt
+│  └─ 7 episódios resumidos para FB/IG + WhatsApp entries
+│  └─ Brevidade + hook imediato
+└─ TEMPORADA_I_PROMPTS_IMG.txt
+   └─ 7 prompts de imagem por episódio
+   └─ Direção de arte + elementos (jovem, 03/03 seal)
+
+ZONA 4: GERAÇÃO (Como executar)
+├─ TEMPORADA_I_PROMPTS_CHATGPT_COMPILADO.txt
+│  └─ Prompts prontos para colar em DALL-E / Midjourney / ChatGPT
+│  └─ 7 episódios + 1 hero mosaico
+│  └─ Variantes para diferentes ferramentas
+└─ PASSO_A_PASSO_LEIGOS.txt / ESTRATEGIA_COPIAR_SALVAR.txt
+   └─ Como usar as imagens geradas
+
+================================================================================
+FLUXO DE CRIAÇÃO (Passo a passo)
+================================================================================
+
+NOVO CONTEÚDO (Ex: Temporada II)?
+1. Leia ALINHAMENTO_CREATIVO.txt (contexto nunca muda)
+2. Crie novo arquivo TEMPORADA_II_ATOS.txt (seguindo estrutura de I)
+3. Derive os episódios em TEMPORADA_II_LINKEDIN_2027_EPISODIOS.txt
+4. Derive os Meta/WhatsApp em TEMPORADA_II_META_2027_ENTRADAS.txt
+5. Derive os prompts de imagem em TEMPORADA_II_PROMPTS_IMG.txt
+6. Compile tudo em TEMPORADA_II_PROMPTS_CHATGPT_COMPILADO.txt
+
+EDITANDO CONTEÚDO EXISTENTE?
+1. Sempre comece pelo ATOS (é o master)
+2. Propague mudanças para EPISODIOS → META → PROMPTS
+3. Nunca edite ALINHAMENTO_CREATIVO.txt sem supervisão do autor
+
+================================================================================
+REGRAS (O que a IA SEMPRE responde "não" a)
+================================================================================
+
+❌ Não mude o tom (ironia dark + honestidade)
+❌ Não exponha o "gancho implícito" (PDV/HUB/CSO mapeamento fica interno)
+❌ Não quebre a paleta de cor (azul/âmbar em imagens)
+❌ Não forget o "03/03" (sempre incluir discreto em imagens e blocos fixos)
+❌ Não omita o elemento jovem (sempre há observador/aprendiz/coordenador em cena)
+
+================================================================================
+CHECKLIST ANTES DE PUBLICAR
+================================================================================
+
+Para cada episódio (LinkedIn + Meta + Imagem):
+☐ Está alinhado ao ato correspondente em ATOS.txt?
+☐ O gancho soa irônico + honesto?
+☐ Há elemento jovem na imagem?
+☐ Há referência 03/03 (discreta)?
+☐ A paleta HTML é azul/âmbar?
+☐ O manifesto cita o produto sem ser óbvio?
+☐ O fragmento (log) é técnico + conforme narrativa?
+☐ A amarra conecta ao próximo episódio?
+
+================================================================================
+ARQUIVOS FILHOS (gerados a cada novo ciclo)
+================================================================================
+
+Por Temporada:
+- TEMPORADA_X_ATOS.txt
+- TEMPORADA_X_LINKEDIN_YYYY_EPISODIOS.txt
+- TEMPORADA_X_META_YYYY_ENTRADAS.txt
+- TEMPORADA_X_PROMPTS_IMG.txt
+- TEMPORADA_X_PROMPTS_CHATGPT_COMPILADO.txt
+
+Exemplo (Temporada II, 2027):
+- TEMPORADA_II_ATOS.txt
+- TEMPORADA_II_LINKEDIN_2027_EPISODIOS.txt
+- TEMPORADA_II_META_2027_ENTRADAS.txt
+- TEMPORADA_II_PROMPTS_IMG.txt
+- TEMPORADA_II_PROMPTS_CHATGPT_COMPILADO.txt
+
+================================================================================
+CONTATO PARA DESCUMPRIMENTO
+================================================================================
+
+Se um artefato não segue as regras acima, devolva ao autor para revisão.
+A LIA é a garantia de que a IA não inventa história própria.
+
+Autor: Você (dono do DNA)
+Executora: IA (segue a LIA)
+Data última atualização: 2026-02-21
+Temporada I Status: COMPLETA (artefatos prontos)
+
+================================================================================

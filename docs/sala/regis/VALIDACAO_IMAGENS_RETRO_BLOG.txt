@@ -1,0 +1,11 @@
+Validation: 2026-04-04 20:57
+Retro: https://retro.caracore.com.br\articles
+Blog:  D:\dev\caracore-site\personal\articles
+
+Rules:
+- Retro: article_NN in image path must match NN in filename (except logo.png).
+- Blog: referenced files must exist under the article folder.
+- Blog date: assets/img/YYYY_MM_DD_* must match the article filename date, except *_index.html (series index: Brasil SDK + Protocolo Lucerna â€” see personal/articles/assets/img/README.txt).
+OK: no problems detected.
+
+Summary: RETRO lines=0 BLOG lines=0 (MISSING = file not found under article folder).

@@ -1,0 +1,4 @@
+Publicar artefatos conforme o plano da semana (Facebook, Instagram ou LinkedIn).
+Copiar texto dos artefatos (Ctrl+C), colar na rede (Ctrl+V).
+Para imagens: copiar o texto da caixa "Texto para colar na IA", colar na ferramenta de IA, gerar e salvar em sala/assets/img/ com o nome correto (ver ESTRATEGIA_COPIAR_SALVAR.txt).
+Ao terminar, rodar o script de validar trabalho e o que transporta para as salas; depois validar entrega em cada sala.

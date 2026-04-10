@@ -1,0 +1,66 @@
+================================================================================
+LEIA PRIMEIRO — Repositório Sala de Notícias (GitHub privado)
+================================================================================
+Cara Core Informática · Instruções para quem opera (ex.: jovem 16 anos, 3h/semana)
+O Seed e o MKT são da Cara Core; não vendemos.
+
+Premissa: A sala é pública e transparente. O diferencial competitivo está no
+valor da execução; a recompensa é proporcional à entrega validada. Ver
+regis/TEXTO_RECEPCAO.txt, regis/ESTRATEGIA_EXECUCAO.txt, regis/GUIA_EXECUCAO_JOVEM.txt
+e regis/ARQUITETURA_SALA_C4.txt.
+
+Cenário legado nesta pasta: D:\dev\caracore-site\sala.
+Cenário canónico: D:\dev\caracore-tools\docs\sala. Estrutura completa: ESTRUTURA_SALA.txt
+Entrada pública da matriz: https://caracore.com.br/sala/ -> https://tools.caracore.com.br/sala/
+================================================================================
+
+1. CONTEÚDO DESTE REPOSITÓRIO (sala)
+  · Instruções em formato para leigos, com desenhos (Passos 1–4) para
+    trabalhar com informação completa (veja LEIGO_C1_C2_C3_C4.html ou
+    regis/LEIGO_C1_C2_C3_C4.txt). C1–C4 no projeto = modelo C4 de
+    arquitetura (Contexto, Contêineres, Componentes, Código); ver C4_MODELO.
+  · Material sempre em HTML; em cada página de artefato há uma caixa em formato
+    "Texto para colar na IA" e as instruções passo a passo para salvar os
+    artefatos no formato correto.
+  · Assets por rede: um conjunto para cada rede (LinkedIn, Instagram, Facebook)
+    dentro do que planejamos (sala/assets/, face/, gram/, retro/).
+  · Script único em Python que roda no final para validar se o trabalho foi
+    executado com sucesso.
+
+2. PYTHON — VERSÃO CORRETA (BASELINE)
+  Use a versão correta do Python instalada pela Microsoft Store (baseline).
+  Assim o script de validação roda igual para todos.
+  · Oficina organizada em Python (produto Cara Core MKT): use o projeto
+    D:\dev\caracore-mkt (py -3 scripts\validar_sala.py etc.). Veja
+    caracore-mkt\README.txt.
+  · Dentro do repo canónico da sala: python scripts/validar_sala.py (ou
+    py scripts/validar_sala.py). Rode a partir de D:\dev\caracore-tools\docs\sala.
+
+3. AUTOMAÇÃO — ONDE CADA REDE ENCAIXA
+  · Facebook (F):  face/   — D:\dev\caracore-site\face   (ou caminho do repo)\face
+  · Instagram (G): gram/   — D:\dev\caracore-site\gram   (ou caminho do repo)\gram
+  · LinkedIn (retro, depois do 86): https://retro.caracore.com.br — https://retro.caracore.com.br
+
+  Tudo precisa encaixar com perfeição: artefatos _F em face/artefatos/, _G em
+  gram/artefatos/, articles 87+ em retro/articles/.
+
+4. VALIDAÇÃO NO FINAL DO TRABALHO
+  Ao terminar a sessão:
+  1. Salve todos os arquivos (texto colado na rede, imagens em sala/assets/img/
+     com o nome correto, páginas HTML nos lugares certos).
+  2. Rode a oficina a partir de D:\dev\caracore-mkt (recomendado):
+     py -3 scripts\validar_sala.py   ou  py -3 scripts\validar_trabalho_executado.py
+    3. Ou, na raiz da sala canónica: python scripts/validar_sala.py
+  4. Se aparecer "Validação OK", o trabalho foi executado com sucesso.
+
+5. ONDE COMEÇAR
+  · Para quem opera: opera-sala.html ou regis/OPERA_SALA.txt
+  · Passo a passo com desenhos (Passos 1–4): LEIGO_C1_C2_C3_C4.html · Modelo C4: C4_MODELO.html
+  · Convenção de nomes: prompts-ia/ESTRATEGIA_COPIAR_SALVAR.txt
+  · Prompts para IA de imagem: prompts-imagem-ia.html
+
+================================================================================
+Resumo: repositório privado com instruções para leigos; material em HTML com
+caixa "Texto para colar na IA" e passo a passo; script Python no final valida
+face (F), gram (G) e retro (LinkedIn depois do 86).
+================================================================================

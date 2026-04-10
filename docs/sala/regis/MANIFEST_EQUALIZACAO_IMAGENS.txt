@@ -1,0 +1,13 @@
+Equalizacao: 2026-04-01 21:25
+Blog img: D:\dev\caracore-site\personal\articles\assets\img
+
+OK exists: 2026_04_02_IMAGE_001.png
+OK exists: 2026_03_08_IMAGE_001.png
+OK exists: 2026_05_10_IMAGE_001.png
+OK exists: 2026_04_25_IMAGE_001.png
+OK exists: 2026_04_03_IMAGE_001.png
+
+Copies performed: 0
+
+Manual (artigos 2025_12_09 / 2025_12_10): se ainda tiver PNG com nome 2026_02_05_*,
+renomeie para 2025_12_09_* conforme README em personal/articles/assets/img/

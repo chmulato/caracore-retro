@@ -1,0 +1,46 @@
+================================================================================
+MODELO C4 — C1, C2, C3, C4 (Arquitetura de software)
+================================================================================
+Cara Core Informática · Sala de Notícias · regis
+Definição usada no projeto. Para o fluxo do dia (quem opera a sala) usamos
+Passos 1–4; ver LEIGO_C1_C2_C3_C4.html e CAIXA_FERRAMENTAS_6_SCRIPTS.html.
+================================================================================
+
+C1: CONTEXTO (System Context)
+  Visão mais ampla e menos técnica. Mostra como o sistema interage com o
+  mundo exterior.
+  Foco: Quem são os usuários (atores) e quais outros sistemas (dependências)
+        se comunicam com o seu software.
+  Público: Todo mundo (incluindo stakeholders não técnicos).
+
+C2: CONTÊINERES (Containers)
+  Primeiro "zoom". Um contêiner é algo que precisa estar rodando para o
+  sistema funcionar (não é necessariamente Docker).
+  Foco: Aplicações web, apps móveis, bancos de dados, sistemas de arquivos
+        ou APIs. Como essas partes se comunicam (ex.: via JSON/HTTPS).
+  Público: Desenvolvedores e equipe de operações.
+
+C3: COMPONENTES (Components)
+  Decompondo um contêiner, vemos os componentes internos.
+  Foco: Agrupamentos lógicos de funcionalidades (ex.: "Controlador de
+        Pagamentos", "Serviço de Autenticação"). Responsabilidades e
+        interações internas.
+  Público: Arquitetos e desenvolvedores.
+
+C4: CÓDIGO (Code)
+  Nível de detalhe máximo. Geralmente diagramas de classes (UML) ou
+  diagramas entidade-relacionamento.
+  Foco: Como o código é implementado.
+  Observação: Muitas equipes ignoram este nível ou o geram automaticamente,
+  pois muda muito rápido e é difícil de manter manualmente.
+
+================================================================================
+Resumo: C1 = Contexto | C2 = Contêineres | C3 = Componentes | C4 = Código
+
+APLICAÇÃO NA SALA DE NOTÍCIAS
+  C1 (Contexto): A Sala Pública — mural público; jovem entra, vê o trabalho;
+  os 6 robôs registram a execução; mundo exterior (e-mail, redes) fornece
+  insumos e recebe resultado. Ver regis/ARQUITETURA_SALA_C4.txt.
+  C2 (Contêineres): Front-end (HTML/CSS/JS), Node (quando usado), 6 scripts
+  Python, planilha operacional. Ver ARQUITETURA_SALA_C4.txt.
+================================================================================

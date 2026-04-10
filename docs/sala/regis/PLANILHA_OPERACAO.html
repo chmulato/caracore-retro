@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Planilha de operação — Sala de Operações</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="../assets/css/sala.css">
+</head>
+<body class="sala-page">
+    <header class="sala-header" role="banner">
+        <div class="sala-header-inner">
+            <a class="sala-header-brand" href="../index.html"><img src="../../assets/images/logo_branca.png" alt="" class="sala-header-logo" width="40" height="36" decoding="async"><span class="sala-header-text">Sala de Operações · Cara Core Informática</span></a>
+        </div>
+    </header>
+    <div class="sala-body">
+        <nav class="sala-nav" aria-label="Navegação da sala">
+            <div class="sala-nav-logo">Cara Core Informática</div>
+            <p class="sala-nav-title">Plano e campanhas</p>
+            <ul>
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="../opera-sala.html">Para quem opera</a></li>
+                <li><a href="../feedback.html">Canal de feedback</a></li>
+                <li><a href="../facebook/facebook.html">Facebook</a></li>
+                <li><a href="../instagram/instagram.html">Instagram</a></li>
+                <li><a href="../linkedin/linkedin.html">LinkedIn</a></li>
+            </ul>
+            <div class="sala-nav-footer">
+                <a href="../LEIGO_C1_C2_C3_C4.html">Passo a passo C1–C4</a>
+                <a href="../CAIXA_FERRAMENTAS_6_SCRIPTS.html">Caixa de ferramentas</a>
+                <a href="../prompts-imagem-ia.html">Prompts IA</a>
+                <a href="../ESTRUTURA_SALA.html">Estrutura da sala</a>
+                <a href="../LEIA_PRIMEIRO_REPOSITORIO.html">Leia primeiro</a>
+            </div>
+        </nav>
+        <main class="sala-main" id="conteudo">
+            <p class="sala-breadcrumb"><a href="../index.html">← Voltar à Sala de Operações</a></p>
+            <h1>Planilha de operação</h1>
+            <p class="sala-lead">Transparência total. A planilha é o coração da confiança. Se o robô não registrar, o trabalho não existiu.</p>
+
+            <article class="sala-doc">
+                <section>
+                    <h2>Arquivo</h2>
+                    <p><code>sala/planilha_sala.csv</code> (delimitador: ;, encoding UTF-8)</p>
+                </section>
+                <section>
+                    <h2>Colunas (nome no CSV → significado para o jovem)</h2>
+                    <table>
+                        <thead>
+                            <tr><th>Coluna CSV</th><th>Significado</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>data</td><td>Data da sessão (YYYY-MM-DD)</td></tr>
+                            <tr><td>tarefa_do_dia</td><td>Descrição da tarefa / o que está planejado</td></tr>
+                            <tr><td>trabalho_feito</td><td>Status / trabalho feito (resumo do que você executou)</td></tr>
+                            <tr><td>horas_previstas</td><td>Meta de horas para o dia</td></tr>
+                            <tr><td>horas_trabalhadas</td><td>Horas (tempo real que você trabalhou)</td></tr>
+                            <tr><td>valor_sessao_cc</td><td>Valor CC (pagamento desta sessão em dinheiro CC)</td></tr>
+                            <tr><td>acumulado_cc</td><td>Acumulado (total em dinheiro CC até aqui)</td></tr>
+                            <tr><td>inicio_sessao</td><td>Início (data e hora em que você começou)</td></tr>
+                            <tr><td>fim_sessao</td><td>Fim (data e hora em que você encerrou)</td></tr>
+                        </tbody>
+                    </table>
+                </section>
+                <section>
+                    <h2>Equivalência com nomes amigáveis</h2>
+                    <p>ID Tarefa / linha: cada linha da planilha é uma sessão (data + início). Descrição da Tarefa = tarefa_do_dia. Status / Trabalho Feito = trabalho_feito. Início = inicio_sessao. Fim = fim_sessao. Horas = horas_trabalhadas. Valor CC = valor_sessao_cc. Acumulado = acumulado_cc.</p>
+                </section>
+                <section>
+                    <h2>Quem atualiza</h2>
+                    <p><strong>Robô 01 (iniciar_trabalho):</strong> preenche data, tarefa_do_dia, horas_previstas, acumulado_cc (até a sessão anterior), inicio_sessao.</p>
+                    <p><strong>Robô 02 (validar_trabalho_executado):</strong> preenche trabalho_feito, horas_trabalhadas, valor_sessao_cc, acumulado_cc, fim_sessao.</p>
+                    <p>Você não precisa editar a planilha à mão. Os robôs fazem isso de forma transparente.</p>
+                </section>
+            </article>
+
+            <p class="sala-breadcrumb"><a href="../index.html">← Voltar à Sala de Operações</a> · <a href="OS_6_ROBOS.html">Os 6 robôs</a> · <a href="../CAIXA_FERRAMENTAS_6_SCRIPTS.html">Caixa de ferramentas</a></p>
+        </main>
+    </div>
+    <footer class="sala-footer" role="contentinfo">
+        <a href="../index.html">Sala de Operações</a> · Documentação institucional · Nenhum dado pessoal coletado
+    </footer>
+</body>
+</html>

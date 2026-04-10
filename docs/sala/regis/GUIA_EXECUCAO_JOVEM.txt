@@ -1,0 +1,52 @@
+================================================================================
+GUIA DE EXECUÇÃO PARA O JOVEM (16 a 21 anos) — Linguagem simples
+================================================================================
+Cara Core Informática · Sala de Notícias · regis
+Texto de recepção completo: regis/TEXTO_RECEPCAO.txt (tom de mentor e estrategista).
+================================================================================
+
+BEM-VINDO
+  Esta sala é o seu ambiente de trabalho. Ela é pública e transparente.
+  O que o mercado chama de "segredo" é a consistência operacional. O
+  diferencial competitivo está no valor da execução — não na ideia.
+
+SEU PAPEL
+  Executar o que os robôs pedirem: copiar, colar, salvar com o nome certo.
+  A Lia escreve os textos; você leva para as redes (Facebook, Instagram,
+  LinkedIn) e usa a caixa "Texto para colar na IA" para gerar as imagens.
+  Seu esforço fica focado no que é humano e produtivo.
+
+A LACUNA E O VALOR
+  O mercado é movido por trocas de valor tangíveis: a recompensa é
+  proporcional à entrega validada. A paciência para o processo tornou-se
+  um recurso raro. Aqui trabalhamos por mérito e validação. Quem domina
+  a esteira de produção (C1 ao C4) se torna dono do próprio destino
+  financeiro (CC).
+
+PAPEL DOS 6 ROBÔS
+  Os robôs existem para proteger o seu tempo. Eles auditam, transportam
+  e validam; garantem que cada minuto do seu talento seja registrado e
+  transformado em capital (CC). Você não perde tempo com planilha ou
+  checagem manual — só com o que é humano e produtivo.
+
+REGRAS (4 passos simples)
+  1. Acesse a sala (ela é pública). Se houver portal com login para quem
+     opera, use seu login para receber as instruções.
+  2. Receba as instruções do Robô 01 (O Anfitrião): rode o script
+     iniciar_trabalho.py. A sala abre, aparece o trabalho do dia e a meta
+     em horas e CC.
+  3. Envie os artefatos (imagens/textos) para suporte@caracore.com.br
+     usando o template (regis/TEMPLATE_EMAIL_ARTEFATOS.txt). Salve também
+     na pasta correta com o nome correto (prompts-ia/ESTRATEGIA_COPIAR_SALVAR.txt).
+  4. Se o robô te avisar de um erro (exceção), corrija com calma. O robô
+     mostra uma mensagem clara para você copiar e enviar no WhatsApp,
+     Telegram ou e-mail da Cara Core. É só reportar e seguir as instruções.
+
+RESUMO
+  Sala pública. Você executa. Os 6 robôs protegem seu tempo e registram
+  sua entrega. A planilha é o coração da confiança. Ver regis/OS_6_ROBOS.txt,
+  regis/TEXTO_RECEPCAO.txt e OPERA_SALA.txt.
+
+================================================================================
+Cara Core Informática · O Seed e o MKT são da Cara Core; não vendemos.
+================================================================================

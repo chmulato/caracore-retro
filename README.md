@@ -1,4 +1,4 @@
-# Artigos Retrô — Cara Core Informática
+﻿# Artigos Retrô — Cara Core Informática
 
 Portal e acervo de artigos publicados no LinkedIn pela Cara Core Informática. Uma coleção de 95 artigos organizados por data, com foco em temas de inovação, engenharia de software, arquitectura, negócios e estratégia.
 
@@ -18,7 +18,7 @@ Portal e acervo de artigos publicados no LinkedIn pela Cara Core Informática. U
 ## 🔍 Como Visualizar
 
 1. **Localmente**: Abra `articles.html` em um navegador
-2. **Online**: Visite https://caracore.com.br/sala/redes/retro/articles.html
+2. **Online**: Visite https://retro.caracore.com.br/articles.html
 
 ## 🏷️ Filtros e Tags
 

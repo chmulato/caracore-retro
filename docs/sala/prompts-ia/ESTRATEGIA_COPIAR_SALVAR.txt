@@ -1,0 +1,138 @@
+================================================================================
+ESTRATÉGIA — COPIAR PROMPT, COLAR NA IA, SALVAR NA PASTA CERTA
+================================================================================
+Para quem vai gerar as imagens na IA e salvar os arquivos no padrão do projeto
+(ex.: um jovem de 16 anos fazendo Ctrl+C, colar na IA e salvar no lugar certo).
+
+Validação da lógica com o acervo retro canônico (article 87, convenções): regis/VALIDACAO_LOGICA_VS_RETRO.txt
+
+--------------------------------------------------------------------------------
+1. O QUE VOCÊ VAI FAZER
+--------------------------------------------------------------------------------
+  · Copiar o texto do prompt (na página de Prompts IA ou no .TXT).
+  · Colar no site/app que gera imagem por IA (DALL·E, Midjourney, Ideogram, etc.).
+  · Gerar a imagem.
+  · Salvar a imagem na pasta correta, com o nome no formato certo.
+  · Se criar página HTML para o post, usar o mesmo formato no nome do arquivo.
+
+--------------------------------------------------------------------------------
+2. ATALHOS DE TECLADO
+--------------------------------------------------------------------------------
+  Ctrl+C  = copiar (depois de selecionar o texto do prompt)
+  Ctrl+V  = colar (no campo de prompt da IA)
+  Ctrl+S  = salvar (quando for salvar a imagem ou o arquivo)
+
+  Dica: triplo clique no texto da caixa seleciona o parágrafo todo; depois Ctrl+C.
+
+--------------------------------------------------------------------------------
+3. PASTA ONDE SALVAR
+--------------------------------------------------------------------------------
+  Imagens (PNG) geradas pela IA:
+    sala/assets/img/
+
+  Exemplo de caminho completo (no seu computador):
+    D:\dev\caracore-site\sala\assets\img\
+
+  Se a pasta img/ ainda não existir, crie dentro de sala/assets/ com o nome: img
+
+  Páginas HTML (quando for criar post em HTML):
+    sala/facebook/   → plano e campanha Facebook; material/legado em face/
+    sala/instagram/  → plano e campanha Instagram; material/legado em gram/
+    sala/linkedin/   → plano e campanha LinkedIn; material/legado em retro/
+  Legado por rede (como o retro para LinkedIn):
+    face/            → material campanha Facebook (desde março/2026, artefato (01)_F). Listagem: face/facebook.html
+    gram/            → material campanha Instagram (desde março, artefato (01)_G). Listagem: gram/instagram.html
+    https://retro.caracore.com.br → material LinkedIn (articles 11–86). Listagem: https://retro.caracore.com.br/
+
+--------------------------------------------------------------------------------
+4. FORMATO DO NOME DOS ARQUIVOS
+--------------------------------------------------------------------------------
+  FACEBOOK (lógica específica):
+    · Páginas HTML do artefato:  YYYY_MM_DD_artefato_(01)_F.html
+      A sequência (01), (02), (03)... indica a ordem do artefato no dia ou na campanha.
+    · Imagem do artefato:        YYYY_MM_DD_artefato_(01)_(01).png
+      Primeiro (01) = sequência do artefato. Segundo (01) = sequência na página (1ª, 2ª, 3ª imagem naquele artefato).
+
+  Exemplos Facebook:
+    2026_03_15_soberania_mar_(01)_F.html        → página do post
+    2026_03_15_soberania_mar_(01)_(01).png     → 1ª imagem desse artefato
+    2026_03_15_soberania_mar_(01)_(02).png     → 2ª imagem na mesma página
+    2026_04_01_precisao_abr_(01)_F.html
+    2026_04_01_precisao_abr_(01)_(01).png
+
+  LINKEDIN (mesma lógica; usa "article" e sequência a partir de 87):
+    · Páginas HTML do article:  YYYY_MM_DD_article_(87)_L.html
+      A sequência do article começa em 87: (87), (88), (89)...
+    · Imagem do article:        YYYY_MM_DD_article_(87)_(01).png
+      Primeiro (87) = número do article. Segundo (01) = sequência na página (1ª, 2ª, 3ª imagem naquele article).
+
+  Exemplos LinkedIn:
+    2026_03_09_soberania_(87)_L.html            → página do article 87
+    2026_03_09_soberania_(87)_(01).png         → 1ª imagem do article 87
+    2026_03_09_soberania_(87)_(02).png         → 2ª imagem na mesma página
+    2026_04_04_precisao_(88)_L.html
+    2026_04_04_precisao_(88)_(01).png
+
+  INSTAGRAM (mesma lógica que Facebook; sequência a partir de 01; sufixo G):
+    · Páginas HTML do artefato:  YYYY_MM_DD_artefato_(01)_G.html
+      A sequência (01), (02), (03)... indica a ordem do artefato no dia ou na campanha.
+    · Imagem do artefato:        YYYY_MM_DD_artefato_(01)_(01).png
+      Primeiro (01) = sequência do artefato. Segundo (01) = sequência na página.
+
+  Exemplos Instagram:
+    2026_03_04_soberania_mar_(01)_G.html        → página do post
+    2026_03_04_soberania_mar_(01)_(01).png     → 1ª imagem desse artefato
+    2026_03_04_soberania_mar_(01)_(02).png     → 2ª imagem na mesma página
+    2026_04_03_precisao_abr_(01)_G.html
+    2026_04_03_precisao_abr_(01)_(01).png
+
+  OUTRAS REDES (genérico):
+    YYYY_MM_DD_nome.png ou .html
+
+  Regra: ano 4 dígitos, mês 2, dia 2; depois nome em minúsculas, sem espaços (use _).
+  Facebook: artefato, (01)..., _F. Instagram: artefato, (01)..., _G. LinkedIn: article, (87)..., _L.
+
+--------------------------------------------------------------------------------
+5. PASSO A PASSO (resumido)
+--------------------------------------------------------------------------------
+  1. Abra a página de Prompts (prompts-imagem-ia.html) ou o .TXT do prompt.
+  2. Selecione todo o texto do prompt (triplo clique ou arraste o mouse).
+  3. Ctrl+C (copiar).
+  4. Abra o site da IA geradora de imagens.
+  5. Clique no campo onde se escreve o prompt.
+  6. Ctrl+V (colar).
+  7. Clique em Gerar/Criar.
+  8. Quando a imagem aparecer, baixe ou salve.
+  9. Na hora de salvar:
+       · Pasta: sala/assets/img/ (imagens); sala/facebook/, sala/instagram/ ou sala/linkedin/ (HTML).
+       · Facebook: imagem = YYYY_MM_DD_artefato_(01)_(01).png | HTML = YYYY_MM_DD_artefato_(01)_F.html
+       · Instagram: imagem = YYYY_MM_DD_artefato_(01)_(01).png | HTML = YYYY_MM_DD_artefato_(01)_G.html (sequência a partir de 01; sufixo G)
+       · LinkedIn: imagem = YYYY_MM_DD_article_(87)_(01).png | HTML = YYYY_MM_DD_article_(87)_L.html (article a partir de 87)
+       · Outras redes: YYYY_MM_DD_nome.png ou .html
+  10. Pronto. A imagem e o HTML estão no lugar certo e com o nome certo.
+
+--------------------------------------------------------------------------------
+6. TABELA DE DATAS (ano_mês_dia)
+--------------------------------------------------------------------------------
+  Hoje é 13 de fevereiro de 2026  →  2026_02_13
+  Exemplo de nome: 2026_02_13_soberania_teste.png
+
+  Março 2026:  2026_03_01 até 2026_03_31
+  Abril 2026:  2026_04_01 até 2026_04_30
+  Maio 2026:   2026_05_01 até 2026_05_31
+  Junho 2026:  2026_06_01 até 2026_06_30
+
+  Use a data em que você está gerando ou a data do post.
+
+--------------------------------------------------------------------------------
+7. CHECKLIST ANTES DE SALVAR
+--------------------------------------------------------------------------------
+  [ ] Pasta: sala/assets/img/ (PNG) ou sala/facebook/, sala/instagram/, sala/linkedin/ (HTML)?
+  [ ] Nome começa com YYYY_MM_DD_?
+  [ ] Facebook: _(01)_F. Instagram: _(01)_G. LinkedIn: _(87)_L (article a partir de 87). PNG: _(01)_(01) ou _(87)_(01)?
+  [ ] Termina com .png (imagem) ou .html (página)?
+  [ ] Não tem espaços no nome (use _ no lugar)?
+
+================================================================================
+Cara Core Informática · Sala de Notícias · Documentação institucional
+================================================================================

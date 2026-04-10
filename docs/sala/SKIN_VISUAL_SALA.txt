@@ -1,0 +1,38 @@
+================================================================================
+SALA DE NOTÍCIAS — SKIN VISUAL (identidade para imagens e UI)
+================================================================================
+Referência para coerência: páginas da sala (index.htm, opera-sala, feedback, etc.),
+CSS (assets/css/sala.css) e imagens geradas por IA (ex.: prompt em caracore-mkt/docs/assets/img/prompt_img.txt).
+
+PALETA
+------
+  Fundo principal:     #0d1117  (fundo da página, corpo)
+  Painel/sidebar:      #161b22  (nav, cards, caixas)
+  Texto principal:     #e6edf3
+  Texto secundário:    #c9d1d9
+  Texto discreto:      #8b949e
+  Cor de destaque:     #ffd700  (dourado — títulos, links, bordas, CTAs)
+  Borda dourada suave: rgba(255, 215, 0, 0.15) a 0.3
+
+ELEMENTOS DE DISTRIBUIÇÃO DAS INFORMAÇÕES (layout da sala)
+----------------------------------------------------------
+  A sala usa layout de duas zonas, sempre visível em index.htm, opera-sala.html, feedback, etc.:
+  - Zona A — Faixa lateral (sidebar, ~220px): fundo #161b22; logo no topo; título "Plano e campanhas" em dourado; lista principal (Controle, Para quem opera, Canal de feedback, Facebook, Instagram, LinkedIn); borda superior; lista secundária (Passo a passo C1–C4, Caixa de ferramentas, Prompts IA, Estrutura da sala, Leia primeiro, Lista de artigos).
+  - Zona B — Área principal: fundo #0d1117; título (h1) em dourado com linha inferior dourada; parágrafos e listas; às vezes blocos .box com borda dourada.
+  - Separação: borda direita da sidebar em rgba(255,215,0,.15).
+  A imagem da loja (prompt_img.txt) deve sugerir essa mesma distribuição: painel/faixa à esquerda com itens em seções; área principal com destaque para "conteúdo"; linha ou borda dourada entre as zonas.
+
+REGRA PARA IMAGENS (loja, oficina, ilustrações da sala)
+-------------------------------------------------------
+  A imagem que representa a loja/oficina MKT deve ser coerente com este skin e com a distribuição acima:
+  - Ambiente escuro (fundo tipo #0d1117), não claro.
+  - Duas zonas: faixa lateral (como sidebar) + área principal mais larga.
+  - Detalhes ou bordes em dourado (#ffd700), incluindo a separação entre zonas.
+  - Minimalista, profissional, sem pessoas.
+  - Sensação: "entre, fique à vontade" — espaço aberto e convidativo, no mesmo tom visual da Sala.
+
+Arquivo do prompt da imagem da loja: caracore-mkt/docs/assets/img/prompt_img.txt
+
+================================================================================
+Cara Core Informática · Sala de Notícias
+================================================================================

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 72" width="360" height="72" aria-hidden="true">
+  <title>Seu estúdio não é uma ilha na nuvem</title>
+  <rect width="360" height="72" rx="6" fill="none" stroke="#1e293b" stroke-width="1" stroke-dasharray="4 2"/>
+  <text x="180" y="42" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" font-weight="500" fill="#334155">Seu estúdio não é uma ilha na nuvem</text>
+  <line x1="80" y1="56" x2="280" y2="56" stroke="#cbd5e1" stroke-width=".8" stroke-linecap="round"/>
+</svg>

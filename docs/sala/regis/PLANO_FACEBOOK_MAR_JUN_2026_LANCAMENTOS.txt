@@ -1,0 +1,147 @@
+================================================================================
+PLANO — PÁGINAS HTML FACEBOOK CARA CORE · 01/MAR–30/JUN 2026 · FOCO LANÇAMENTOS
+================================================================================
+Documento de planejamento para construcao das paginas em HTML para rede
+Facebook da Cara Core. Periodo: 01/mar/2026 a 30/jun/2026. Foco: registro
+institucional de passos reais (sem publicidade).
+
+Referências: sala/facebook/facebook.html (campanha Ink), regis/CAMPANHA_FACEBOOK_INK_MAR_MAI_2026.TXT,
+TOM_OFFICIAL_SALA.txt, LIA_CORELLI_VOZ.txt. Rede: Facebook (página Cara Core).
+
+--------------------------------------------------------------------------------
+1. OBJETIVO E ESCOPO
+--------------------------------------------------------------------------------
+- Produzir páginas HTML por post planejado, cada uma com texto pronto para
+  copiar e colar no Facebook + referência a arte/SVG quando houver.
+- Período: 01/mar/2026 a 30/jun/2026 (4 meses).
+- Foco editorial: abril, maio e junho = registro de evolucao real,
+  sem tom promocional e sem promessa nao validada.
+- Cada HTML fica em sala/facebook/ com nome 2026_MM_DD_ink_facebook_*.html ou
+  equivalente, e link opcional na página facebook.html (lista de materiais).
+
+--------------------------------------------------------------------------------
+2. FASES DA CAMPANHA (PILARES E MENSAGEM)
+--------------------------------------------------------------------------------
+  Março 2026 — Pausa Editorial (Férias de Recuperação)
+    Mensagem: sem publicação externa no período.
+    Tom: interno, sem pauta pública. Estado: congelado para comunicação.
+
+  Abril 2026 — Precisao (Tudo no lugar, sem surpresa)
+    Mensagem: agenda e aftercare que o dono do estúdio entende; conflito de horário, lembrete.
+    Tom: autoridade suave. Estado produto: em construção / em breve.
+
+  Maio 2026 — Lucratividade (Ver o que entra e o que sai)
+    Mensagem: um lugar só para agenda e financeiro; menos planilha paralela.
+    Tom: utilitário, clareza. Estado produto: em breve / preparando lançamento.
+
+  Junho 2026 — Consolidacao de Registro
+    Mensagem: alinhada ao estado real do produto e das validacoes tecnicas.
+    Tom: objetivo, sem hype e sem publicidade.
+    Conteudo: registrar o que foi validado, o que esta em andamento e o proximo passo seguro.
+
+--------------------------------------------------------------------------------
+3. CRONOGRAMA SUGERIDO DE PUBLICAÇÕES (POSTS POR MÊS)
+--------------------------------------------------------------------------------
+  Ritmo: 1–2 posts por mês (texto ou texto + 1 imagem), com folga editorial planejada.
+  Datas sugeridas (ajustar conforme calendário real):
+
+  MARÇO 2026 (Férias de Recuperação)
+    Sem publicações.
+    Observação: os conteúdos de março ficam arquivados e não entram na agenda oficial.
+    Alinhamento entre redes: março/2026 não publica em Facebook, Instagram nem LinkedIn.
+
+  ABRIL 2026
+    01/abr — Abertura / pilar Precisão (tudo no lugar, sem surpresa)
+    06/abr — Lançamento CaraCore HUB v2.1 (integração marketplaces offline)
+    12/abr — Depois do atendimento: 3 passos (aftercare, remarcação, registro)
+    25/abr — Fechamento (organização = confiança; em breve)
+
+  MAIO 2026
+    01/mai — Abertura / pilar Lucratividade (ver o que entra e o que sai)
+    15/mai — 3 números que todo dono de estúdio deveria ver (receita, despesa, saldo)
+    28/mai — Pré-lançamento (mensagem de "em breve" ou "próximo passo"; sem data fixa até definir)
+
+  JUNHO 2026
+    01/jun — Abertura de junho (estado real + riscos + mitigacoes)
+    15/jun — Atualizacao tecnica validada (sem promessa comercial)
+    30/jun — Fechamento do periodo (registro do que foi concluido e do que segue)
+
+--------------------------------------------------------------------------------
+4. LISTA DE PÁGINAS HTML A CONSTRUIR
+--------------------------------------------------------------------------------
+  Convenção: sala/facebook/2026_MM_DD_ink_facebook_[tema ou descrição].html
+
+  JÁ EXISTENTES (Mar–Mai 2026):
+    2026_03_02_ink_facebook_mar.html   — Março · Soberania
+    2026_04_02_ink_facebook_abr.html   — Abril · Precisão
+    2026_05_03_ink_facebook_mai.html   — Maio · Lucratividade
+
+  A CONSTRUIR (complementar e Jun 2026):
+
+  Março 2026
+    Nenhuma página será publicada.
+    Conteúdos de março permanecem somente como arquivo interno.
+    Redistribuição: conteúdos válidos de março serão reescritos e alocados de abril em diante.
+
+  Abril 2026 (complementar)
+    2026_04_06_hub_lancamento.html               — Lançamento HUB v2.1 (objetivo + LGPD)
+    2026_04_12_ink_facebook_abr_aftercare.html  — 3 passos depois do atendimento
+    2026_04_25_ink_facebook_abr_fechamento.html — Fechamento mês Precisão
+
+  Maio 2026 (complementar)
+    2026_05_15_ink_facebook_mai_numeros.html    — 3 números (receita, despesa, saldo)
+    2026_05_28_ink_facebook_mai_prelancamento.html — Pré-lançamento (em breve / próximo passo)
+
+  Junho 2026 (foco lançamentos) — TODOS A CONSTRUIR
+    2026_06_01_ink_facebook_jun_abertura.html   — Abertura junho (mensagem lançamento/beta/disponibilidade)
+    2026_06_15_ink_facebook_jun_lancamento.html — Post de lançamento ou atualização
+    2026_06_30_ink_facebook_jun_fechamento.html — Fechamento período Mar–Jun
+
+  Total novo: até 7 páginas (1 abril lançamento + 3 abril/maio + 3 junho).
+  Manter mesmo padrão das existentes: título, meta, texto para copiar, bloco editorial (pilar, tom, hashtags), link "Voltar" para ../https://retro.caracore.com.br/ ou para facebook.html.
+
+--------------------------------------------------------------------------------
+5. CONTEÚDO MÍNIMO DE CADA PÁGINA HTML
+--------------------------------------------------------------------------------
+  - head: charset, viewport, title, description, robots noindex nofollow, canonical (sala/facebook/...), link para ../assets/css/articles.css se usar estilo de artigos.
+  - body: link "Voltar" (para facebook.html ou https://retro.caracore.com.br/); título H1; subtítulo (mês, pilar, rede); seção "Texto do post (copiar e colar)" com div.post-text; se houver arte: seção "SVG / Imagem" com referência ao arquivo em assets/svg/; bloco editorial (pilar do mês, tom, hashtags); rodapé institucional + LGPD.
+  - Tom: ver LIA_CORELLI_VOZ.txt e campanha Facebook Ink; prático, texto legível, sem prometer data até haver definição; em junho, alinhar ao tipo de lançamento (disponível / beta / próximo passo).
+
+--------------------------------------------------------------------------------
+6. HASHTAGS E MARCA
+--------------------------------------------------------------------------------
+  Fixos: #InkEmBreve #CaraCore #AgendaInk (ou #InkDisponivel / #InkBeta em junho, se aplicável).
+  Por pilar: #SoberaniaTécnica #AgendaPro (mar); #Precisão #EstúdioPro (abr); #Lucratividade #GestãoDeEstúdio (mai).
+  Junho: a definir conforme mensagem (ex. #InkDisponivel ou manter #InkEmBreve até anúncio).
+
+--------------------------------------------------------------------------------
+7. DIRETRIZES GERAIS
+--------------------------------------------------------------------------------
+  - Não prometer data de lançamento nas páginas Mar–Mai até haver definição; em Jun, só após decisão.
+  - LGPD: nenhum dado pessoal nas páginas; frase padrão no rodapé (Sala de Notícias, documentação institucional).
+  - Links internos: voltar para facebook/facebook.html ou ../https://retro.caracore.com.br/ conforme padrão atual.
+  - Arte/SVG: usar pasta ../assets/svg/; nomes existentes (ink_fb_mar_frase.svg, ink_fb_abr_frase.svg, ink_fb_mai_frase.svg); para junho criar ou reutilizar conforme necessidade.
+  - Atualizar facebook.html após criar as novas páginas: adicionar bloco "Junho — Lançamento" e, se desejado, lista de links para os novos HTMLs de mar/abr/mai.
+  - Não publicar conteúdo que possa incentivar conduta insegura, exposição de dados ou interpretação enganosa.
+  - Toda afirmação de status (disponível, seguro, pronto) deve ter evidência interna de validação.
+  - Em caso de dúvida de data/versão/status, pausar publicação até revisão técnica.
+
+--------------------------------------------------------------------------------
+8. PRÓXIMOS PASSOS (CHECKLIST)
+--------------------------------------------------------------------------------
+  [ ] Definir mensagem exata de junho com base em evidencias tecnicas (sem publicidade).
+  [ ] Criar 2026_06_01_ink_facebook_jun_abertura.html.
+  [ ] Criar 2026_06_15_ink_facebook_jun_lancamento.html.
+  [ ] Criar 2026_06_30_ink_facebook_jun_fechamento.html.
+  [ ] Criar páginas complementares de abril e maio (2026_04_12, 2026_04_25, 2026_05_15, 2026_05_28).
+  [x] Publicar 2026_04_06_hub_lancamento.html com linguagem objetiva e seção LGPD.
+  [ ] Criar ou escolher SVG para junho (se post com imagem).
+  [ ] Atualizar facebook.html com seção Junho e links para os novos HTMLs.
+  [x] Março/2026 definido como período sem publicação externa.
+  [x] Março/2026 bloqueado em todas as redes, incluindo LinkedIn.
+  [ ] Aplicar reescrita final de cada artigo com checagem de coerencia e seguranca da informacao.
+  [ ] Executar gate Go/No-Go antes de cada publicação.
+
+================================================================================
+Cara Core Informática · Sala de Notícias · Plano Facebook Mar–Jun 2026
+================================================================================

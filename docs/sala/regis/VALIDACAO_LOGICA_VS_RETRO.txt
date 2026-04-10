@@ -1,0 +1,92 @@
+================================================================================
+VALIDAÇÃO — LÓGICA SALA (ARTEFATO / ARTICLE / NOMES) vs ACERVO RETRO
+================================================================================
+Data: 2026-02-13
+Objetivo: verificar se a convenção de nomes da Sala (Facebook _F, Instagram _G,
+LinkedIn article _L, sequências) é coerente com o acervo consolidado em https://retro.caracore.com.br
+
+--------------------------------------------------------------------------------
+1. ACERVO RETRO — O QUE EXISTE
+--------------------------------------------------------------------------------
+  Local: https://retro.caracore.com.br (articles/, articles.html)
+
+  Páginas HTML (artigos):
+    Formato:  YYYY_MM_DD_article_NN.html
+    Exemplos: 2026_02_12_article_72.html, 2026_05_23_article_86.html
+    Onde NN = número sequencial do article (11, 12, … 86 no acervo atual).
+    Sem parênteses; sem sufixo _F/_G/_L (retro é só lista de artigos, não por rede).
+
+  Imagens referenciadas nos HTMLs do retro:
+    Formato:  article_NN_01.png  (e possivelmente article_NN_02.png, etc.)
+    Caminho:  retro/articles/assets/img/article_NN_01.png
+    Exemplo: article_72_01.png (1ª imagem do article 72)
+    Sem data no nome da imagem no legado; a data fica só no nome do HTML.
+
+  Conclusão do acervo:
+    · Numeração de articles é uma sequência global (11…86).
+    · Próximo número disponível na sequência: 87.
+    · Nome do HTML: data + article_ + número. Nome da imagem: article_ + número + _ + sequência na página.
+
+--------------------------------------------------------------------------------
+2. LÓGICA ATUAL DA SALA (FACEBOOK, INSTAGRAM, LINKEDIN)
+--------------------------------------------------------------------------------
+  Facebook:   artefato, sequência (01)…, sufixo _F. HTML: YYYY_MM_DD_artefato_(01)_F.html. Imagem: YYYY_MM_DD_artefato_(01)_(01).png
+  Instagram:  artefato, sequência (01)…, sufixo _G. HTML: YYYY_MM_DD_artefato_(01)_G.html. Imagem: YYYY_MM_DD_artefato_(01)_(01).png
+  LinkedIn:   article, sequência (87)…, sufixo _L. HTML: YYYY_MM_DD_article_(87)_L.html. Imagem: YYYY_MM_DD_article_(87)_(01).png
+
+--------------------------------------------------------------------------------
+3. COERÊNCIA COM O ACERVO RETRO
+--------------------------------------------------------------------------------
+  (1) Sequência do article (LinkedIn) a partir de 87
+      O retro termina hoje em article_86. A Sala LinkedIn começa em (87).
+      Conclusão: COERENTE — o próximo article do acervo é 87; evita duplicar números.
+
+  (2) Uso da palavra "article" para LinkedIn
+      No retro, todos os itens são "article_NN". Na Sala, LinkedIn usa "article" e número (87)…
+      Conclusão: COERENTE — mesma entidade (article) e continuação da mesma sequência.
+
+  (3) Formato do nome no retro vs Sala
+      Retro HTML:   YYYY_MM_DD_article_72.html         (sem parênteses, sem _L)
+      Sala LinkedIn: YYYY_MM_DD_article_(87)_L.html     (com parênteses, com _L)
+      Diferença: Sala usa (87) e _L para identificar rede e manter padrão F/G/L.
+      Conclusão: COERENTE — extensão da convenção (parênteses + sufixo), não quebra do acervo consolidado. Os artigos do retro continuam como article_11 … article_86; os novos da Sala LinkedIn como article_(87)_L, (88)_L, etc.
+
+  (4) Imagens
+      Retro:  article_72_01.png (sem data no nome; pasta retro/articles/assets/img/)
+      Sala:   YYYY_MM_DD_article_(87)_(01).png (com data; pasta sala/assets/img/)
+      Conclusão: COERENTE — convenções diferentes por contexto (retro = acervo histórico; Sala = novo com data em tudo). Não há conflito de nomes: retro usa article_NN_01, Sala usa data + article_(87)_(01).
+
+  (5) Facebook e Instagram (artefato, 01, _F e _G)
+      No retro não há artefatos por rede (Facebook/Instagram); há só lista de articles.
+      Conclusão: COERENTE — Sala introduz artefato + _F/_G para campanhas por rede; não conflita com o legado.
+
+--------------------------------------------------------------------------------
+4. ONDE FICA CADA COISA
+--------------------------------------------------------------------------------
+  Legado por rede (mesma ideia do retro aplicada a cada rede):
+    · LinkedIn:  https://retro.caracore.com.br/articles/ + articles.html. Articles 11–86; 87+ em sala/linkedin/.
+    · Instagram: gram/artefatos/ + gram/instagram.html. Início março, artefato (01)_G.
+    · Facebook:  face/artefatos/ + face/facebook.html. Início março/2026, artefato (01)_F.
+
+  Sala (plano e campanhas; pode conter HTMLs de referência):
+    · sala/facebook/   — plano; material/legado em face/
+    · sala/instagram/  — plano; material/legado em gram/
+    · sala/linkedin/   — plano; articles 87+ em sala/linkedin/
+    · Imagens (todas as redes): sala/assets/img/ com YYYY_MM_DD_..._(01)_(01).png ou _(87)_(01).png
+
+  Referência completa: regis/LEGADO_RETRO_GRAM_FACE.txt.
+  Não há sobreposição: retro 11–86; gram desde (01)_G; face desde (01)_F; Sala LinkedIn 87+.
+
+--------------------------------------------------------------------------------
+5. RESUMO
+--------------------------------------------------------------------------------
+  A lógica da Sala é coerente com o acervo retro:
+  · O número 87 para o primeiro article da Sala LinkedIn continua a sequência do retro (11…86).
+  · O uso de "article" no LinkedIn mantém a mesma entidade do retro.
+  · As diferenças (parênteses, sufixos _F/_G/_L, data no nome das imagens) são extensões da convenção para múltiplas redes e para padronização na Sala, sem conflito com o que já existe no retro.
+
+  Nenhuma alteração no portal retro é necessária para adotar a convenção da Sala. Para manter coerência ao publicar um novo article no LinkedIn na Sala, usar sempre o próximo número na sequência (87, 88, 89…).
+
+================================================================================
+Cara Core Informática · Sala de Notícias · Documentação institucional
+================================================================================

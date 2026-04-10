@@ -1,0 +1,104 @@
+TEMPORADA I - LINKEDIN 2026 (7 EPISODIOS)
+Distribuicao maio-novembro (Retro)
+
+================================================================================
+EPISODIO 1 | 2026-05-30 | O Apagao do Suserano (PDV)
+Titulo: O Apagao do Suserano
+Gancho: "Enquanto os drones vigiam o ceu, quem garante a sua gaveta no chao?"
+Manifesto:
+O dia em que a luz do modem apaga e o caixa continua rodando e o dia em que o
+soberano volta a respirar. PDV nao e luxo. E agua encanada do comercio.
+Fragmento (log/alerta):
+[LOG] MODEM_OFFLINE 19:14:02 | OPERACAO_LOCAL=OK | BACKUP_USB=ATIVO
+Amarra:
+Nao e sobre nuvem, e sobre ficar de pe. O PDV e a interface entre o HUB e o CSO.
+Bloco fixo 03/03:
+"03/03 e o dia em que a temporada muda de marcha. Guarda essa data."
+
+================================================================================
+EPISODIO 2 | 2026-06-06 | A Identidade Roubada (Reino OIDC)
+Titulo: A Identidade Roubada
+Gancho: "No Reino OIDC, voce nao e um dado, voce e o Rei da sua propria chave."
+Manifesto:
+A seguranca nao pode viver de favor. OIDC e o escudo. A chave e sua, o reino
+tambem. O jovem aprende cedo a blindar a propria identidade.
+Fragmento (log/alerta):
+[ALERTA] TOKEN_FEDERADO|OK | CHAVE_LOCAL=VALIDA | PORTAL=SEGURO
+Amarra:
+Quando a identidade e sua, o resto encaixa. Soberania comeca pelo acesso.
+Bloco fixo 03/03:
+"03/03 e o dia em que a temporada muda de marcha. Guarda essa data."
+
+================================================================================
+EPISODIO 3 | 2026-07-04 | Ouro, Prata e Silicio (Minerador 4.0 / ETE)
+Titulo: Ouro, Prata e Silicio
+Gancho: "ETE mede tudo. Menos o que importa."
+Manifesto:
+O ETE e o gancho da historia, a ironia. Ele mede: caixas saidas, rotas otimizadas,
+lucro extraido. Ele nao mede: sacrificio, improviso, o pacto invisivel que mantem
+tudo de pe. ETE e poderoso. Mas cego.
+Fragmento (log/alerta):
+[LOG] ETE_MEASURES=PRODUCTION | ETE_BLIND_TO=SURVIVAL | RESISTANCE=OPERATIONAL
+Amarra:
+A treta toda mora aqui: quando a maquina tenta explicar o que so a rua entende.
+Bloco fixo 03/03:
+"03/03 e o dia em que a temporada muda de marcha. Guarda essa data."
+
+================================================================================
+EPISODIO 4 | 2026-08-01 | O ETE e a IA de 2GB (O Invasor)
+Titulo: O ETE e a IA de 2GB
+Gancho: "A IA sabe tudo sobre numeros. Nada sobre por que voce sobrevive fora deles."
+Manifesto:
+ETE mapeia: widget por widget, filha doente que o motorista esconde, % do lucro
+que voce empresta para o colega que sumiu, o roubo invisivel que ninguem denuncia.
+ETE tenta. ETE falha. Porque numeros nao falam de vida. Chamam de "variavel
+desconhecida". Voce chama de amanhã.
+Fragmento (log/alerta):
+[TRACE] ETE_OMNISCIENT=FALSE | HUMAN_VARIABLES=UNMEASURABLE | SURVIVAL_LOGIC=LOCAL
+Amarra:
+Quando a IA fica sem contexto, a soberania vira metodo.
+Bloco fixo 03/03:
+"03/03 e o dia em que a temporada muda de marcha. Guarda essa data."
+
+================================================================================
+EPISODIO 5 | 2026-09-05 | O Circuito Ferradura (Forca em equipe)
+Titulo: O Circuito Ferradura
+Gancho: "A distancia mais segura entre dois pontos nao e uma linha reta monitorada."
+Manifesto:
+O Circuito Ferradura e a forca em equipe. Rede local, rotas fora do radar.
+A turma conecta os pontos e vira rede de distribuicao.
+Fragmento (log/alerta):
+[ROTA] FERRADURA=ATIVA | NODOS=ALINHADOS | DRONES=CONFUSOS
+Amarra:
+A logistica de fuga nao e fuga. E estrategia.
+Bloco fixo 03/03:
+"03/03 e o dia em que a temporada muda de marcha. Guarda essa data."
+
+================================================================================
+EPISODIO 6 | 2026-10-03 | A Marca na Pele (Ink Agenda 2.0)
+Titulo: A Marca na Pele
+Gancho: "Se a nuvem apaga, a arte fica. Sua agenda tambem deveria ficar."
+Manifesto:
+O que e eterno nao pede permissao para existir. A agenda do artista e cofre.
+Offline first, pele real, registro vivo.
+Fragmento (log/alerta):
+[REG] AGENDA_LOCAL=OK | ARTE=PERENE | NUVEM=IRRELEVANTE
+Amarra:
+Quando o registro e seu, o tempo trabalha a seu favor.
+Bloco fixo 03/03:
+"03/03 e o dia em que a temporada muda de marcha. Guarda essa data."
+
+================================================================================
+EPISODIO 7 | 2026-11-07 | Epilogo: O Acerto de Contas
+Titulo: O Acerto de Contas
+Gancho: "A musica parou. Sobrou uma cadeira para voce?"
+Manifesto:
+PDV segura o caixa. OIDC segura a identidade. Minerador expande o lastro.
+Ferradura conecta a equipe. Ink registra o eterno. E no fundo, o mapa abre:
+Hub e CSO sao espelhos, cada um no seu mundo de negocio.
+Fragmento (log/alerta):
+[FINAL] HUB=HORIZONTE_2027 | CSO=HORIZONTE_2028 | INTERFACE=PDV
+Amarra:
+O ultimo ciclo ja aparece no reflexo. Quem entendeu, chega antes.
+Bloco fixo 03/03:
+"03/03 e o dia em que a temporada muda de marcha. Guarda essa data."

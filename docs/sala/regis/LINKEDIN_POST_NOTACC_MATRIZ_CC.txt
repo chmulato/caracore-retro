@@ -1,0 +1,46 @@
+================================================================================
+LINKEDIN — POST: ORGANIZAÇÃO DAS CAMPANHAS (NOTA_CC / MATRIZ CC)
+Tema: Controle de campanhas orgânicas. Base: NOTACC + Matriz CC.
+Uso: copiar e colar no LinkedIn; ajustar link da Sala de Notícias se necessário.
+================================================================================
+
+---
+
+Quem divulga em várias redes — LinkedIn, Facebook, Instagram — sabe: sem um ponto único de controle, as diretrizes se espalham, o conteúdo perde alinhamento e fica difícil manter site e canais na mesma página.
+
+A Cara Core trata isso com uma estrutura interna chamada Matriz CC: uma página de controle (nota_cc) que centraliza as campanhas orgânicas. Dali saem as diretrizes por rede — tema por mês, ponto estratégico, lista de artigos — e o link para a Sala de Notícias. A mesma ordem de artigos e o mesmo conteúdo valem para a matriz (site institucional) e para a sala (publicações); nada fica solto em planilha ou documento avulso.
+
+A empresa desenvolve tecnologia local e offline-first para regiões com baixa conectividade. Essa disciplina — uma fonte de verdade, clareza, alinhamento — se estende à comunicação: um hub, várias redes, conteúdo coerente.
+
+Exemplo prático: os artigos publicados no LinkedIn entram na lista da Sala de Notícias e na matriz em caracore.com.br/publications, com datas e textos idênticos. Quem define o que vai a cada mês consulta a nota_cc; quem publica em cada rede segue as diretrizes daquele hub.
+
+Se quiser ver como a Cara Core organiza artigos e campanhas, a Sala de Notícias está em caracore.com.br/publications (ou no link da bio). Lá você encontra os artigos e a lógica por trás da Matriz CC.
+
+---
+
+================================================================================
+Fim da Versão 1. Link sugerido: caracore.com.br/publications ou GitHub Pages.
+================================================================================
+
+
+--------------------------------------------------------------------------------
+VERSÃO 2 — Ênfase em fonte única de verdade + offline-first
+--------------------------------------------------------------------------------
+
+---
+
+Campanhas em múltiplos canais sem um controle central geram desalinhamento: diretrizes em lugares diferentes, conteúdo e site em versões distintas. O custo é duplicação de esforço e mensagem inconsistente.
+
+A Cara Core adota uma estrutura interna (Matriz CC / nota_cc): uma página de controle que concentra as campanhas orgânicas por rede — tema por mês, lista de artigos, link para a Sala de Notícias. Matriz (site) e sala (publicações) compartilham a mesma ordem e o mesmo conteúdo. Uma fonte de verdade, sem planilhas ou documentos avulsos.
+
+O posicionamento da empresa é offline-first e local: tecnologia que funciona em baixa conectividade. A mesma lógica se aplica à comunicação — um hub, várias redes, coerência.
+
+Aplicação prática: cada artigo publicado no LinkedIn é registrado na Sala de Notícias e na matriz (caracore.com.br/publications), com data e texto idênticos. A definição mensal do que publicar passa pela nota_cc; a publicação em cada canal segue as diretrizes desse hub.
+
+Para ver como isso funciona na prática, a Sala de Notícias está em caracore.com.br/publications. Lá estão os artigos e a estrutura por trás da Matriz CC.
+
+---
+
+================================================================================
+Fim da Versão 2. Tom: profissional, direto, sem hype; reforço offline-first/local.
+================================================================================

@@ -1,0 +1,37 @@
+-----------------------------------------
+SALA DE NOTÍCIAS — TOM OFICIAL E DIRETRIZES
+-----------------------------------------
+Referência para o Construtor. A Sala é painel de controle editorial, não rede social.
+Tom: neutro, técnico, claro, objetivo. Institucional, sóbrio, impessoal.
+
+1. TOM
+- Frases curtas, diretas, sem emoção.
+- Sem storytelling, persuasão ou linguagem de marketing.
+- A Sala descreve, organiza e documenta — não vende.
+- Não usar "eu", "nós", "você". Preferir: "A Sala", "Esta página", "O plano".
+- Linguagem de documentação. Evitar adjetivos desnecessários e tom promocional.
+
+2. FUNÇÃO
+- Centralizar o plano e as campanhas orgânicas.
+- Organizar links para Facebook, Instagram e retro.
+- Documentar pilares, meses, campanhas e diretrizes.
+- Referência interna e externa. Não emitir opinião nem conteúdo emocional.
+
+3. LGPD
+- Não coletar, solicitar ou exibir dados pessoais.
+- Não mencionar nomes de usuários, clientes ou terceiros.
+- Toda referência genérica e institucional.
+Frase padrão: "A Sala de Notícias exibe apenas documentação institucional. Nenhum dado pessoal é coletado, armazenado ou processado neste ambiente."
+
+4. ESTRUTURA DE PÁGINA
+- Título institucional.
+- Subtítulo curto.
+- Parágrafo objetivo.
+- Lista clara de itens ou diretrizes.
+- Links internos (Facebook, Instagram, retro).
+- Sem elemento emocional ou promocional.
+
+5. EVITAR
+Emojis, frases motivacionais, linguagem de rede social, tom comercial, storytelling, exemplos com pessoas, linguagem emocional, promessas.
+
+Cara Core Informática · Sala de Notícias

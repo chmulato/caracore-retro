@@ -1,0 +1,106 @@
+TEMPORADA I - PROMPTS DE IMAGEM (EPISODIOS)
+Alinhado ao plano em TEMPORADA_I_ATOS.TXT
+
+================================================================================
+1) PERSONA E DIRECAO DE ARTE
+================================================================================
+Persona criativa: Diretor de Arte Ciberpunk-Brasilis
+- Mistura tecnologia de ponta com Brasil real (tijolo, fiacao exposta, cafe do lado do teclado).
+- Estetica de Guerra dos Mundos na nossa rua.
+
+Objetivo
+- Criar thumbnails que parecem quadros de HQ/filme, nao anuncios.
+- Gerar curiosidade imediata sobre o episodio e o produto.
+
+Formato
+- 1:1 (quadrado), alto contraste, leitura clara em celular.
+- Sem texto grande embutido. O titulo vai no HTML do artigo.
+
+================================================================================
+2) PROMPT BASE (COLAR E ADAPTAR)
+================================================================================
+"Cinematic digital art, hyper-realistic, cyber-noir style. High-contrast scene in a tech office in Brazil. Moody blue and amber lighting. Subtle, embedded text 'CARA CORE' in the background (not a logo). Professional photography look. [DESCRICAO DO ATO AQUI]. 8k, detailed textures, sense of sovereignty and mystery."
+
+================================================================================
+3) EPISODIOS + PROMPTS (ALINHADOS AOS SLOTS LIVRES)
+================================================================================
+2026-05-30 | Ato 1 | O Apagao do Suserano | CaraCore-PDV
+"A dark office. A man in a dress shirt staring at a monitor running Java code. A wifi router with a red light 'OFF'. Outside the window: a city in blackout. A cash drawer slightly open on the desk. A young operator in the background watching, learning."
+
+2026-06-06 | Ato 2 | A Identidade Roubada | Reino OIDC
+"A teenager holding a glowing digital key (token). Holographic crowns and federated identity icons around him. A faint padlock halo (security). He looks empowered, not scared."
+
+2026-07-04 | Ato 3 | Ouro, Prata e Silicio | Minerador 4.0
+"Close-up of a hand holding a gold coin next to a high-end GPU chip (silicon). Fine metallic dust in the air. Warm reflections on the coin, cool light on the chip. Subtle ironic cue: a small, curious 'observer' silhouette reflected in the metal. A teen reflection on a nearby screen, learning."
+
+2026-08-01 | Ato 4 | O ETE e a IA de 2GB | O Invasor
+"A stylized alien silhouette reflected on a server rack glass door. The alien wears headphones, listening. Its expression is curious, almost ironic. Minimal neon in the corridor. A young operator silhouette far back, observing the server glow."
+
+2026-09-05 | Ato 5 | O Circuito Ferradura | A Logistica de Fuga
+"Aerial view of a local city map (small Brazilian city). A glowing horseshoe-shaped route connects lockers/points. Small group silhouettes at nodes (teamwork), including teens. Drones in the sky, slightly out of focus."
+
+2026-10-03 | Ato 6 | A Marca na Pele | Ink Agenda 2.0
+"A tattoo studio. A tablet shows a clean agenda software UI. In the background, a tattoo being done on skin. Ink cups, gloves, warm light. A young apprentice watching and taking notes."
+
+2026-11-07 | Ato 7 | Epilogo: O Acerto de Contas | Gancho para Hub (2027) e CSO (2028)
+"All key figures in a circle around a glowing 'Torre Localhost' PC. Subtle silhouettes: operator, teen, miner, tattoo artist, courier. The 'boss' is distant and out of focus. In the far background, a faint logistics grid and a transport route icon glow (hinting Hub 2027 and CSO 2028) without text."
+
+================================================================================
+4) NOTAS RAPIDAS DE CONSISTENCIA
+================================================================================
+- Manter paleta azul/ambar e contraste alto.
+- Referencias discretas a hardware local (torre, cabos, roteador).
+- Evitar iconografia generica de nuvem; foco no local e fisico.
+- Incluir selo discreto "03/03" integrado ao cenario (carimbo, etiqueta, reflexo).
+
+Operacao na sala de prompts (entrada)
+- Pasta de recebimento: D:\dev\caracore-site\sala\prompts-ia
+- Padrao de arquivo: img_prompts_ed_0 (num).txt
+- Cada arquivo deve conter 1 prompt por episodio, seguindo a ordem 1..7.
+
+================================================================================
+5) LANCAMENTO DA TEMPORADA I (DIA UNICO COM TODAS AS IMAGENS)
+================================================================================
+Objetivo
+- Publicar um artigo de abertura da Temporada I com as 7 imagens juntas.
+- Servir como indice visual e primeiro contato da narrativa.
+
+Foco de distribuicao
+- LinkedIn: lancamento principal (superproducao, texto longo, artigo retro).
+- WhatsApp: 1 entrada unica no zap para assinar o produto e fazer o delivery.
+- Instagram/Facebook: reaproveitar a mesma imagem da semana, com texto curto.
+
+Chamadas fixas (03/03)
+- 03/03/2026: Chamada Temporada I (PDV).
+- 03/03/2027: Chamada Temporada II (HUB).
+- 03/03/2028: Chamada Temporada III (CSO, final).
+
+Nota de narrativa
+- HUB e CSO sao as duas caras em Core. No espelho.
+- Infanto-juvenis aparecem como gancho visual discreto nas tres temporadas.
+- O PDV e a interface entre o HUB e o CSO. Cara Core Informatica.
+- HUB e o espelho do CSO, cada um no seu mundo de negocio (metaforas proprias).
+- PDV: contador. HUB: "minha entrega chegou". CSO: delivery (courier).
+
+Gancho infanto-juvenil (operacional)
+- 2026: 1 personagem jovem em plano secundario (operador/observador).
+- 2027: 2-3 jovens em coordenacao visual (mapa/rotas).
+- 2028: equipe jovem lidera o fluxo (logistica/transportes).
+
+Data de chamada (fixa)
+- 03/03/2026 (inicio da Temporada I / chamada anual).
+
+Pacote do dia (Retro)
+- 1 imagem hero (mosaico 2x3 + 1 destaque central, ou grade 3x3 com a 7a no centro).
+- 7 imagens individuais (as dos episodios), com o mesmo tratamento de cor.
+- 1 manifesto curto anunciando a temporada e o calendario.
+- 1 fragmento (log/alerta) chamando para o Episodio 1.
+
+Prompt para imagem hero (mosaico)
+"Cinematic collage, cyber-noir, Brazilian tech underground. A 7-panel mosaic of the season episodes: blackout office, identity key, gold + silicon, alien listener, horseshoe logistics map, tattoo studio + tablet agenda, and the Torre Localhost gathering. Unified palette (blue/amber), film grain, high contrast. No large text."
+
+Checklist do dia de lancamento
+- Gerar 7 imagens individuais.
+- Gerar 1 hero mosaico.
+- Nomear arquivos conforme padrao do Retro.
+- Publicar artigo indice com links para cada episodio.

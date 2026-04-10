@@ -1,582 +1,582 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title><![CDATA[Artigos Retrô — Cara Core Informática]]></title>
-    <link>https://caracore.com.br/sala/redes/retro/articles.html</link>
+    <link>https://retro.caracore.com.br/articles.html</link>
     <description><![CDATA[Coleção de artigos publicados pela Cara Core nas redes, organizada por ano.]]></description>
     <language>pt-BR</language>
     <lastBuildDate>Sun, 05 Apr 2026 12:00:00 +0000</lastBuildDate>
-    <atom:link href="https://caracore.com.br/sala/redes/retro/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://retro.caracore.com.br/feed.xml" rel="self" type="application/rss+xml" />
     <generator>Cara Core RSS generator</generator>
 
     <item>
       <title><![CDATA[Seis Pilares Alinhados]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_11_30_article_95.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_11_30_article_95.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_11_30_article_95.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_11_30_article_95.html</guid>
       <pubDate>Mon, 30 Nov 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Amarelinha: Os Cinco Atos]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_11_14_article_94.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_11_14_article_94.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_11_14_article_94.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_11_14_article_94.html</guid>
       <pubDate>Sat, 14 Nov 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Epílogo: O Acerto de Contas]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_11_07_article_93.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_11_07_article_93.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_11_07_article_93.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_11_07_article_93.html</guid>
       <pubDate>Sat, 07 Nov 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[A Marca na Pele]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_10_03_article_92.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_10_03_article_92.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_10_03_article_92.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_10_03_article_92.html</guid>
       <pubDate>Sat, 03 Oct 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Circuito Ferradura]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_09_05_article_91.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_09_05_article_91.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_09_05_article_91.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_09_05_article_91.html</guid>
       <pubDate>Sat, 05 Sep 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[O ETE e a IA de 2GB]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_08_01_article_90.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_08_01_article_90.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_08_01_article_90.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_08_01_article_90.html</guid>
       <pubDate>Sat, 01 Aug 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Ouro, Prata e Silício]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_07_04_article_89.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_07_04_article_89.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_07_04_article_89.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_07_04_article_89.html</guid>
       <pubDate>Sat, 04 Jul 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[A Identidade Roubada]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_06_06_article_88.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_06_06_article_88.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_06_06_article_88.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_06_06_article_88.html</guid>
       <pubDate>Sat, 06 Jun 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[O Apagão do Suserano]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_05_30_article_87.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_05_30_article_87.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_05_30_article_87.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_05_30_article_87.html</guid>
       <pubDate>Sat, 30 May 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[O Futuro da Cara Core: Para Onde Estamos Indo]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_05_23_article_86.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_05_23_article_86.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_05_23_article_86.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_05_23_article_86.html</guid>
       <pubDate>Sat, 23 May 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[O Brasil Emergente e a Oportunidade de Inovar Onde Ninguém Está Olhando]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_05_16_article_85.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_05_16_article_85.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_05_16_article_85.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_05_16_article_85.html</guid>
       <pubDate>Sat, 16 May 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Como Construir Software Técnico em Escala com Equipes Enxutas]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_05_09_article_84.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_05_09_article_84.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_05_09_article_84.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_05_09_article_84.html</guid>
       <pubDate>Sat, 09 May 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[ETE: A Metodologia Brasileira que Simplifica a Hidrometalurgia Seletiva]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_05_02_article_83.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_05_02_article_83.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_05_02_article_83.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_05_02_article_83.html</guid>
       <pubDate>Sat, 02 May 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Construindo Produtos com Propósito: A Filosofia por Trás do Portfólio da Cara Core]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_04_28_article_78.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_04_28_article_78.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_04_28_article_78.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_04_28_article_78.html</guid>
       <pubDate>Tue, 28 Apr 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Circuito Ferradura: Democratizando a Programação no Brasil]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_04_25_article_82.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_04_25_article_82.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_04_25_article_82.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_04_25_article_82.html</guid>
       <pubDate>Sat, 25 Apr 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[A Última Milha Digital: O Que as 'Tias Sócias' Revelam Sobre o Brasil]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_04_21_article_77.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_04_21_article_77.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_04_21_article_77.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_04_21_article_77.html</guid>
       <pubDate>Tue, 21 Apr 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Hub Cara Core: A Máquina de Automação que Conecta Pessoas, Negócios e Comunidades]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_04_18_article_81.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_04_18_article_81.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_04_18_article_81.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_04_18_article_81.html</guid>
       <pubDate>Sat, 18 Apr 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Por que o Brasil Precisa de Software Boutique: Oportunidades em Nichos Técnicos]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_04_14_article_76.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_04_14_article_76.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_04_14_article_76.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_04_14_article_76.html</guid>
       <pubDate>Tue, 14 Apr 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Reino OIDC e Área 51: A Nova Era da Identidade Digital Brasileira]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_04_11_article_80.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_04_11_article_80.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_04_11_article_80.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_04_11_article_80.html</guid>
       <pubDate>Sat, 11 Apr 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[A Nova Cara Core: Como uma Startup Boutique Está Redesenhando o Software Brasileiro]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_04_07_article_75.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_04_07_article_75.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_04_07_article_75.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_04_07_article_75.html</guid>
       <pubDate>Tue, 07 Apr 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Por Dentro do CaraCore PDV: O Primeiro Sistema Preparado para a Reforma Tributária 2026–2033]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_04_04_article_79.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_04_04_article_79.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_04_04_article_79.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_04_04_article_79.html</guid>
       <pubDate>Sat, 04 Apr 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[PDV Enviar SMS: o Aplicativo Auxiliar Android que é o Braço Direito do CaraCore PDV]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_02_28_article_74.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_02_28_article_74.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_02_28_article_74.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_02_28_article_74.html</guid>
       <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Cara Core Informática: Nossa Jornada de Evolução e Inovação]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_02_20_article_73.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_02_20_article_73.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_02_20_article_73.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_02_20_article_73.html</guid>
       <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[CaraCore PDV: Novidades e Atualizações que Transformam o Varejo]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_02_12_article_72.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_02_12_article_72.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_02_12_article_72.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_02_12_article_72.html</guid>
       <pubDate>Thu, 12 Feb 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[CaraCore PDV: O Primeiro Sistema Pronto para a Reforma Tributária 2026-2033 e o Futuro do Pix Split]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_02_07_article_71.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_02_07_article_71.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_02_07_article_71.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_02_07_article_71.html</guid>
       <pubDate>Sat, 07 Feb 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Segurança de Senhas no Celular: Por Que Armazenar Localmente é a Melhor Decisão]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_01_30_article_70.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_01_30_article_70.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_01_30_article_70.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_01_30_article_70.html</guid>
       <pubDate>Fri, 30 Jan 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[InkAgenda: A Agenda que Herdou a Disciplina do Servidor]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_01_25_article_69.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_01_25_article_69.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_01_25_article_69.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_01_25_article_69.html</guid>
       <pubDate>Sun, 25 Jan 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[A "Seriedade" do Java EE Encontra o Caos do Mobile: Lições de uma Transição para o Flutter]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_01_17_article_68.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_01_17_article_68.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_01_17_article_68.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_01_17_article_68.html</guid>
       <pubDate>Sat, 17 Jan 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Cara Core Seed: Sistema de Controle de Licenças Empresariais]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_01_11_article_67.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_01_11_article_67.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_01_11_article_67.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_01_11_article_67.html</guid>
       <pubDate>Sun, 11 Jan 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Cara Core HUB: Inovação, Simplicidade e Oportunidade]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2026_01_03_article_66.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2026_01_03_article_66.html</guid>
+      <link>https://retro.caracore.com.br/articles/2026_01_03_article_66.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_01_03_article_66.html</guid>
       <pubDate>Sat, 03 Jan 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Quando os Interesses se Cruzam: Uma Reflexão sobre Ética em Auditoria de Sistemas]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_12_30_article_65.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_12_30_article_65.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_12_30_article_65.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_12_30_article_65.html</guid>
       <pubDate>Tue, 30 Dec 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Quando o Outlook Decide Reinventar a Roda: Uma História Real de Suporte Técnico]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_12_25_article_64.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_12_25_article_64.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_12_25_article_64.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_12_25_article_64.html</guid>
       <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Como o Power Automate Transforma o Dia a Dia das Equipes no Microsoft 365]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_12_18_article_63.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_12_18_article_63.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_12_18_article_63.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_12_18_article_63.html</guid>
       <pubDate>Thu, 18 Dec 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Automatizando Notificações com Power Automate: Uma Jornada de Correção e Otimização]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_12_10_article_62.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_12_10_article_62.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_12_10_article_62.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_12_10_article_62.html</guid>
       <pubDate>Wed, 10 Dec 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Redis como Solução de Cache para E-commerce em Cidades Médias Brasileiras]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_12_02_article_61.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_12_02_article_61.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_12_02_article_61.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_12_02_article_61.html</guid>
       <pubDate>Tue, 02 Dec 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[A Jornada de Construir um Sistema de Controle de Assinaturas: Do Zero à Produção]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_11_30_article_60.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_11_30_article_60.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_11_30_article_60.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_11_30_article_60.html</guid>
       <pubDate>Sun, 30 Nov 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Quando o Login Deixa de Ser Só um Login]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_11_24_article_59.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_11_24_article_59.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_11_24_article_59.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_11_24_article_59.html</guid>
       <pubDate>Mon, 24 Nov 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[A Saga da Planilha Mestra: Do Excel ao SaaS, a Transformação de uma Empresa]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_11_15_article_58.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_11_15_article_58.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_11_15_article_58.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_11_15_article_58.html</guid>
       <pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[A Jornada de Ana: Como Uma CEO Transformou a Segurança de Dados em Vantagem Competitiva]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_11_09_article_57.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_11_09_article_57.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_11_09_article_57.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_11_09_article_57.html</guid>
       <pubDate>Sun, 09 Nov 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Quando a IA Não Tem Todas as Respostas: A Jornada Real do OIDC]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_11_03_article_56.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_11_03_article_56.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_11_03_article_56.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_11_03_article_56.html</guid>
       <pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[A Jornada OIDC: Como Transformamos a Autenticação da Cara Core]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_10_31_article_55.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_10_31_article_55.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_10_31_article_55.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_10_31_article_55.html</guid>
       <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[OIDC na prática — exemplos técnicos e implementação (Parte II)]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_10_27_article_54.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_10_27_article_54.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_10_27_article_54.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_10_27_article_54.html</guid>
       <pubDate>Mon, 27 Oct 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Microsoft 365 para PMEs — colaboração simples, resultados reais]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_10_20_article_53.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_10_20_article_53.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_10_20_article_53.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_10_20_article_53.html</guid>
       <pubDate>Mon, 20 Oct 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[OIDC descomplicado — como acabar com o caos de senhas (Parte I)]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_10_15_article_52.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_10_15_article_52.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_10_15_article_52.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_10_15_article_52.html</guid>
       <pubDate>Wed, 15 Oct 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Gerenciando EC2 — AWS CDK (Python) para EC2/ALB/RDS + GitHub Actions (Parte II)]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_10_10_article_51.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_10_10_article_51.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_10_10_article_51.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_10_10_article_51.html</guid>
       <pubDate>Fri, 10 Oct 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Gerenciando EC2 — Utilizando Tomcat/WildFly e PostgreSQL com AWS CDK (Parte I)]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_10_03_article_50.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_10_03_article_50.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_10_03_article_50.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_10_03_article_50.html</guid>
       <pubDate>Fri, 03 Oct 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Decisões mais rápidas com Python: relatórios e comparações automáticas ao alcance do negócio]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_09_30_article_49.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_09_30_article_49.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_09_30_article_49.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_09_30_article_49.html</guid>
       <pubDate>Tue, 30 Sep 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Mudança de ferramenta de roteamento REST: como planejar para não travar seu projeto]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_09_23_article_48.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_09_23_article_48.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_09_23_article_48.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_09_23_article_48.html</guid>
       <pubDate>Tue, 23 Sep 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Mapeando Endpoints com Python e Swagger: Solução Prática para Integração de HUB de Varejos Online]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_09_16_article_47.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_09_16_article_47.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_09_16_article_47.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_09_16_article_47.html</guid>
       <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Inovação em Gestão de Conteúdo: Python para Blogs Automatizados]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_09_09_article_46.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_09_09_article_46.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_09_09_article_46.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_09_09_article_46.html</guid>
       <pubDate>Tue, 09 Sep 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Áreas Quentes do Currículo e o Poder da Tecnologia ATS: Evolução do Sistema]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_09_02_article_45.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_09_02_article_45.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_09_02_article_45.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_09_02_article_45.html</guid>
       <pubDate>Tue, 02 Sep 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[MVP Sistema Odontológico: A Combinação Perfeita entre Experiência Humana e IA]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_08_31_article_44.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_08_31_article_44.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_08_31_article_44.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_08_31_article_44.html</guid>
       <pubDate>Sun, 31 Aug 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Dashboard de Vendas em Tempo Real com Python, FastAPI e WebSockets]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_08_25_article_43.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_08_25_article_43.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_08_25_article_43.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_08_25_article_43.html</guid>
       <pubDate>Mon, 25 Aug 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Estratégias de Versionamento e Deploy Contínuo para Conteúdo Técnico]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_08_18_article_42.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_08_18_article_42.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_08_18_article_42.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_08_18_article_42.html</guid>
       <pubDate>Mon, 18 Aug 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Monitoramento Proativo com Python: Logs Inteligentes e Alertas Automatizados]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_08_11_article_41.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_08_11_article_41.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_08_11_article_41.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_08_11_article_41.html</guid>
       <pubDate>Mon, 11 Aug 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Como o Python Automatizou a Logística de Entregas: Case Real de Transformação Digital]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_08_04_article_40.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_08_04_article_40.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_08_04_article_40.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_08_04_article_40.html</guid>
       <pubDate>Mon, 04 Aug 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Como Automatizar sua Busca por Emprego com Python: Sending_CV - A Solução que Transformou a Carreira de Milhares]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_07_16_article_39.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_07_16_article_39.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_07_16_article_39.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_07_16_article_39.html</guid>
       <pubDate>Wed, 16 Jul 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Automação Inteligente com Python: Como o 'SEO Article Builder' Está Transformando a Publicação de Conteúdo Técnico]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_07_06_article_38.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_07_06_article_38.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_07_06_article_38.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_07_06_article_38.html</guid>
       <pubDate>Sun, 06 Jul 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Automação de Auditoria Financeira com Python: Uma Experiência Prática]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_06_29_article_37.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_06_29_article_37.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_06_29_article_37.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_06_29_article_37.html</guid>
       <pubDate>Sun, 29 Jun 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[A Hipocrisia Digital: Como As Plataformas Digitais Contribuem para a Invisibilidade dos Pequenos Negócios]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_06_22_article_36.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_06_22_article_36.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_06_22_article_36.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_06_22_article_36.html</guid>
       <pubDate>Sun, 22 Jun 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Monitoramento de Redes Wi-Fi e Segurança Digital para Pequenas Empresas]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_06_15_article_35.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_06_15_article_35.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_06_15_article_35.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_06_15_article_35.html</guid>
       <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Python: Mais Versátil e Popular que o VBA]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_06_08_article_34.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_06_08_article_34.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_06_08_article_34.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_06_08_article_34.html</guid>
       <pubDate>Sun, 08 Jun 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Suporte Remoto: Por que o Suporte Especializado]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2025_05_06_article_33.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2025_05_06_article_33.html</guid>
+      <link>https://retro.caracore.com.br/articles/2025_05_06_article_33.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2025_05_06_article_33.html</guid>
       <pubDate>Tue, 06 May 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[A Importância da Documentação em Projetos de TI]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_10_02_article_32.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_10_02_article_32.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_10_02_article_32.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_10_02_article_32.html</guid>
       <pubDate>Wed, 02 Oct 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Automação de Tarefas com VBA]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_09_23_article_31.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_09_23_article_31.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_09_23_article_31.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_09_23_article_31.html</guid>
       <pubDate>Mon, 23 Sep 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[A Importância de um Suporte Terceirizado para a Utilização dos Serviços do Microsoft 365]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_09_16_article_30.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_09_16_article_30.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_09_16_article_30.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_09_16_article_30.html</guid>
       <pubDate>Mon, 16 Sep 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Facilidades de Utilização do Microsoft 365 para Gestão de Equipes de Trabalho]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_09_09_article_29.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_09_09_article_29.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_09_09_article_29.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_09_09_article_29.html</guid>
       <pubDate>Mon, 09 Sep 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Garantia de Qualidade em Aplicações Web e Desktop]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_09_01_article_28.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_09_01_article_28.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_09_01_article_28.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_09_01_article_28.html</guid>
       <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[VBA com API RESTful]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_08_26_article_27.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_08_26_article_27.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_08_26_article_27.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_08_26_article_27.html</guid>
       <pubDate>Mon, 26 Aug 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Eficiência e Precisão na Análise de Dados]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_08_18_article_26.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_08_18_article_26.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_08_18_article_26.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_08_18_article_26.html</guid>
       <pubDate>Sun, 18 Aug 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Automatização e Análise de Dados de Vendas]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_08_11_article_25.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_08_11_article_25.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_08_11_article_25.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_08_11_article_25.html</guid>
       <pubDate>Sun, 11 Aug 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Gestão de Condomínios com Microsoft Office]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_08_04_article_24.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_08_04_article_24.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_08_04_article_24.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_08_04_article_24.html</guid>
       <pubDate>Sun, 04 Aug 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Microsoft Office como um CRM]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_07_28_article_23.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_07_28_article_23.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_07_28_article_23.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_07_28_article_23.html</guid>
       <pubDate>Sun, 28 Jul 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Utilizando VBA para Otimizar a Logística e Gestão de Estoque]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_07_21_article_22.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_07_21_article_22.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_07_21_article_22.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_07_21_article_22.html</guid>
       <pubDate>Sun, 21 Jul 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[O Uso do VBA para Ajudar um Sistema SAP com Auditoria e Monitoramento de Impostos]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_07_14_article_21.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_07_14_article_21.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_07_14_article_21.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_07_14_article_21.html</guid>
       <pubDate>Sun, 14 Jul 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Cálculos Tributários no Varejo com VBA]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_07_07_article_20.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_07_07_article_20.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_07_07_article_20.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_07_07_article_20.html</guid>
       <pubDate>Sun, 07 Jul 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[A Segurança e Manutenção de Computadores da Sua Empresa]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_06_30_article_19.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_06_30_article_19.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_06_30_article_19.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_06_30_article_19.html</guid>
       <pubDate>Sun, 30 Jun 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[A Importância do Planejamento de Backup]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_06_23_article_18.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_06_23_article_18.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_06_23_article_18.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_06_23_article_18.html</guid>
       <pubDate>Sun, 23 Jun 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Aplicação de Programação VBA para Controle Administrativo]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_06_16_article_17.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_06_16_article_17.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_06_16_article_17.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_06_16_article_17.html</guid>
       <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Revolucionar a Gestão de Processos Judiciais e Clientes]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_06_10_article_16.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_06_10_article_16.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_06_10_article_16.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_06_10_article_16.html</guid>
       <pubDate>Mon, 10 Jun 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Automação de Relatórios e Análise de Desempenho de Vendas]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_06_02_article_15.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_06_02_article_15.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_06_02_article_15.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_06_02_article_15.html</guid>
       <pubDate>Sun, 02 Jun 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[O Futuro do VBA em um Mundo Impulsionado pela IA e "Baixo Código"]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_05_26_article_14.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_05_26_article_14.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_05_26_article_14.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_05_26_article_14.html</guid>
       <pubDate>Sun, 26 May 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Automação de Processos com VBA]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_05_19_article_13.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_05_19_article_13.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_05_19_article_13.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_05_19_article_13.html</guid>
       <pubDate>Sun, 19 May 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Simplificação de Cálculo de Tributos com Programação VBA]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_05_12_article_12.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_05_12_article_12.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_05_12_article_12.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_05_12_article_12.html</guid>
       <pubDate>Sun, 12 May 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Gestão de Rotas para Logística com Aplicação do VBA]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_05_05_article_11.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_05_05_article_11.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_05_05_article_11.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_05_05_article_11.html</guid>
       <pubDate>Sun, 05 May 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Sistema de Controle de Movimentação de Inventário]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_04_28_article_10.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_04_28_article_10.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_04_28_article_10.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_04_28_article_10.html</guid>
       <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Cálculos de Tributos com Programação VBA]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_04_19_article_09.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_04_19_article_09.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_04_19_article_09.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_04_19_article_09.html</guid>
       <pubDate>Fri, 19 Apr 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Integrando Dados: Excel e Banco de Dados Remoto]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_04_14_article_08.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_04_14_article_08.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_04_14_article_08.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_04_14_article_08.html</guid>
       <pubDate>Sun, 14 Apr 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Controle de Qualidade de Aplicações]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_04_07_article_07.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_04_07_article_07.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_04_07_article_07.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_04_07_article_07.html</guid>
       <pubDate>Sun, 07 Apr 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Sistema de Despesas com Envio de Boletos por E-mail]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_03_26_article_06.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_03_26_article_06.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_03_26_article_06.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_03_26_article_06.html</guid>
       <pubDate>Tue, 26 Mar 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Soluções dentro do MS Office]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_03_24_article_05.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_03_24_article_05.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_03_24_article_05.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_03_24_article_05.html</guid>
       <pubDate>Sun, 24 Mar 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Cálculo de Logística com VBA]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_03_17_article_04.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_03_17_article_04.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_03_17_article_04.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_03_17_article_04.html</guid>
       <pubDate>Sun, 17 Mar 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Linguagens de Automação: VBA vs Python]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_03_10_article_03.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_03_10_article_03.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_03_10_article_03.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_03_10_article_03.html</guid>
       <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Mala-direta - Marketing Digital]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_03_04_article_02.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_03_04_article_02.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_03_04_article_02.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_03_04_article_02.html</guid>
       <pubDate>Mon, 04 Mar 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Automatização de Processos com VBA: mais eficiência no suporte da Cara Core Informática]]></title>
-      <link>https://caracore.com.br/sala/redes/retro/articles/2024_02_12_article_01.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/sala/redes/retro/articles/2024_02_12_article_01.html</guid>
+      <link>https://retro.caracore.com.br/articles/2024_02_12_article_01.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2024_02_12_article_01.html</guid>
       <pubDate>Mon, 12 Feb 2024 00:00:00 +0000</pubDate>
     </item>
 

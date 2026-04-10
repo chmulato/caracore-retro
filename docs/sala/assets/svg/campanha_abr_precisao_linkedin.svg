@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true">
+  <title>Precisão ? fluxos que não quebram</title>
+  <rect width="64" height="64" rx="8" fill="#0d1117" stroke="#0A66C2" stroke-width="1"/>
+  <path fill="none" stroke="#0A66C2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M16 24 L28 24 L28 32 L40 32 L40 40 L48 40"/>
+  <circle cx="16" cy="24" r="3" fill="#0A66C2"/>
+  <circle cx="40" cy="32" r="3" fill="#0A66C2"/>
+  <circle cx="48" cy="40" r="3" fill="#0A66C2"/>
+</svg>

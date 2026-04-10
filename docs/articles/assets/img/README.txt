@@ -1,7 +1,7 @@
 ================================================================================
 IMAGENS DO RETRÔ (Cara Core / LinkedIn) — convenção única
 ================================================================================
-Pasta: sala/redes/retro/articles/assets/img/
+Pasta: docs/articles/assets/img/
 
 LÓGICA DOS NOMES
 ----------------
@@ -15,7 +15,7 @@ LÓGICA DOS NOMES
 
 3) Meta (og:image / twitter) no HTML:
    URL absoluta apontando para o mesmo ficheiro em
-   .../sala/redes/retro/articles/assets/img/article_NN_01.png
+   https://retro.caracore.com.br/articles/assets/img/article_NN_01.png
 
 O número do artigo no path da imagem deve sempre coincidir com o article_NN do
 nome do ficheiro HTML (validar com tools/validate_article_images.ps1).

@@ -1,0 +1,39 @@
+================================================================================
+TEMPLATE — Página de artefato HTML (Face ou Gram)
+================================================================================
+Cada artefato deve ter:
+  1. Texto do post (copiar e colar na rede)
+  2. Caixa "Texto para colar na IA" (prompt para gerar imagem)
+  3. Instruções passo a passo abaixo para salvar no formato correto
+================================================================================
+
+Use a classe CSS "prompt-box" e o rótulo "Texto para colar na IA" para o script
+validar_sala.py reconhecer a caixa. Exemplo de trecho HTML:
+
+--------------------------------------------------------------------------------
+<h2>Texto do post (copiar e colar)</h2>
+<div class="post-text">
+  <p>… texto escrito pela Lia …</p>
+</div>
+
+<h2>Imagem — Texto para colar na IA</h2>
+<p class="prompt-box-label">Copie o texto da caixa abaixo (Ctrl+C) e cole no gerador de imagens por IA (Ctrl+V). Depois salve a imagem com o nome correto (ver passo a passo abaixo).</p>
+<div class="prompt-box">
+Ilustração minimalista e profissional para rede social. Tema: … Estilo: flat design…
+</div>
+
+<h2>Passo a passo para salvar no formato correto</h2>
+<ol>
+  <li>Copie o texto da caixa acima (Ctrl+C).</li>
+  <li>Abra o site/app de IA de imagens e cole o prompt (Ctrl+V). Gere a imagem.</li>
+  <li>Salve a imagem na pasta <strong>sala/assets/img/</strong>.</li>
+  <li>Nome da imagem: <code>YYYY_MM_DD_artefato_(01)_(01).png</code> (Facebook ou Instagram) ou <code>YYYY_MM_DD_article_(87)_(01).png</code> (LinkedIn). Use a data do post e o número do artefato/article.</li>
+  <li>Se criar página HTML do artefato, salve em face/artefatos/ com nome <code>YYYY_MM_DD_artefato_(01)_F.html</code> (Facebook) ou em gram/artefatos/ com <code>YYYY_MM_DD_artefato_(01)_G.html</code> (Instagram).</li>
+</ol>
+--------------------------------------------------------------------------------
+
+Facebook: artefato _(nn)_F.html em face/artefatos/; imagem _(nn)_(01).png em sala/assets/img/
+Instagram: artefato _(nn)_G.html em gram/artefatos/; imagem _(nn)_(01).png em sala/assets/img/
+LinkedIn:  article _(87+)_L em sala/linkedin/ ou retro/articles/; imagem _(87)_(01).png
+
+================================================================================

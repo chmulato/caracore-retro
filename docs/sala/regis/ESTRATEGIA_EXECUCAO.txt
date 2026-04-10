@@ -1,0 +1,41 @@
+================================================================================
+ESTRATÉGIA E EXECUÇÃO — Premissa da Sala de Notícias
+================================================================================
+Cara Core Informática · Sala de Notícias · regis
+Tom: político, educado. Texto de recepção para jovens: regis/TEXTO_RECEPCAO.txt.
+================================================================================
+
+DIFERENCIAL COMPETITIVO
+  A estratégia em Marketing Digital não precisa ser guardada a sete chaves.
+  O diferencial não é o plano: é o valor da execução. O que o mercado
+  chama de "segredo" é, na verdade, a consistência operacional.
+
+LACUNA DE MERCADO
+  O mercado está repleto de estratégias teóricas (promessas) e vazio de
+  pessoas dispostas a executar o trabalho linear e diário. A paciência
+  para o processo tornou-se um recurso raro. A recompensa é proporcional
+  à entrega validada — o mercado é movido por trocas de valor tangíveis.
+  Aqui não trabalhamos por caridade, mas por mérito e validação.
+
+A SALA ESTÁ ABERTA
+  Nossa estratégia é pública e nossos processos são transparentes. Quem
+  entra e vê o plano não "paga o preço" da execução por curiosidade: é
+  a entrega diária que gera valor. Criamos esta sala para quem compreende
+  que o valor real não está na ideia, mas na capacidade de tirá-la do
+  papel todos os dias.
+
+PAPEL DO SOFTWARE (6 ROBÔS)
+  Os assistentes digitais (D:\dev\caracore-mkt) existem para proteger o
+  tempo do jovem: auditar, transportar e validar. O esforço fica focado
+  apenas no que é humano e produtivo. Registro, planilha e validação
+  ficam com os robôs. Validação CTO: caracore-mkt/CTO_VALIDACAO_MKT.txt.
+
+EMPODERAMENTO
+  Quem domina a esteira de produção (do contexto ao código, C1 ao C4)
+  se torna dono do próprio destino financeiro (CC). Enquanto outros
+  buscam o arranque momentâneo, nós construímos uma esteira de resultados
+  constantes.
+
+================================================================================
+Cara Core Informática · O Seed e o MKT são da Cara Core; não vendemos.
+================================================================================

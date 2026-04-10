@@ -1,0 +1,184 @@
+/* Face — skin que lembra o Facebook. Cara Core · Campanha Facebook */
+:root {
+    --fb-blue: #1877F2;
+    --fb-blue-hover: #166fe5;
+    --fb-blue-light: #e7f3ff;
+    --fb-gray-bg: #f0f2f5;
+    --fb-card: #ffffff;
+    --fb-text: #050505;
+    --fb-text-secondary: #65676b;
+    --fb-border: #dddfe2;
+    --fb-radius: 8px;
+    --fb-radius-lg: 12px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--fb-gray-bg);
+    color: var(--fb-text);
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+
+.face-header {
+    background: var(--fb-blue);
+    color: #fff;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.face-header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.face-header p {
+    margin: .35rem 0 0;
+    font-size: .9rem;
+    opacity: .95;
+}
+
+.face-container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 3rem;
+}
+
+.face-card {
+    background: var(--fb-card);
+    border-radius: var(--fb-radius-lg);
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--fb-border);
+}
+
+.face-card h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--fb-text);
+    margin: 0 0 .75rem;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid var(--fb-border);
+}
+
+.face-card p, .face-card li {
+    color: var(--fb-text);
+    font-size: .95rem;
+    margin: 0 0 .5rem;
+}
+
+.face-card ul { padding-left: 1.25rem; margin: 0 0 .5rem; }
+
+.face-card a {
+    color: var(--fb-blue);
+    text-decoration: none;
+}
+
+.face-card a:hover { text-decoration: underline; }
+
+.face-card code {
+    background: var(--fb-gray-bg);
+    padding: .15rem .4rem;
+    border-radius: 4px;
+    font-size: .9em;
+}
+
+/* Fluxo leigo: destaque */
+.face-flow {
+    background: var(--fb-blue-light);
+    border: 1px solid rgba(24,119,242,.25);
+    border-radius: var(--fb-radius-lg);
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.face-flow h3 {
+    margin: 0 0 .75rem;
+    font-size: 1rem;
+    color: var(--fb-blue);
+    font-weight: 600;
+}
+
+.face-flow ol {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.face-flow li { margin-bottom: .4rem; }
+
+.face-flow kbd {
+    background: var(--fb-card);
+    border: 1px solid var(--fb-border);
+    border-radius: 4px;
+    padding: .15rem .4rem;
+    font-size: .85em;
+}
+
+.face-nav {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--fb-border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.face-nav a {
+    color: var(--fb-blue);
+    text-decoration: none;
+    font-size: .9rem;
+}
+
+.face-nav a:hover { text-decoration: underline; }
+
+.face-artefato-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.face-artefato-list li {
+    margin-bottom: .75rem;
+    padding: 1rem 1.25rem;
+    background: var(--fb-card);
+    border-radius: var(--fb-radius);
+    border: 1px solid var(--fb-border);
+}
+
+.face-artefato-list a {
+    font-weight: 500;
+    color: var(--fb-blue);
+}
+
+.face-artefato-list span {
+    display: block;
+    font-size: .85rem;
+    color: var(--fb-text-secondary);
+    margin-top: .25rem;
+}
+
+.prompt-box {
+    background: #f9fafb;
+    border: 1px solid var(--fb-border);
+    border-radius: var(--fb-radius);
+    padding: 1rem 1.25rem;
+    font-family: ui-monospace, monospace;
+    font-size: .9rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+    user-select: text;
+    cursor: text;
+    margin: .75rem 0;
+}
+
+.prompt-box-label {
+    font-size: .75rem;
+    color: var(--fb-text-secondary);
+    margin-bottom: .35rem;
+}

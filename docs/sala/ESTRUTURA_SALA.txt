@@ -1,0 +1,76 @@
+================================================================================
+ESTRUTURA DA SALA — Novo cenário
+================================================================================
+LÓGICA DA SALA: D:\dev\caracore-site\sala (conteúdo, planos, planilha, regis,
+assets, feedback, opera-sala, LEIGO, etc.). Toda a lógica do MKT da sala está aqui.
+
+Sala: D:\dev\caracore-site\sala
+Repositório do site: D:\dev\caracore-site (contém sala/; dentro de sala/, redes/ = retro, gram, face)
+Portal (apenas login/sessão): caracore-site/caracore-mkt (Node.js); senha inicial: nota_cc
+Oficina (6 scripts Python): D:\dev\caracore-mkt (projeto separado); py -3 scripts\validar_sala.py etc.
+O Seed e o MKT são da Cara Core; não vendemos.
+================================================================================
+
+LAYOUT PADRÃO (todas as páginas internas)
+  Topo (header): "Sala de Notícias · Manual · Plano e campanhas" — link para index.htm.
+  Navegação à esquerda: Controle, Para quem opera, Canal de feedback, Facebook, Instagram, LinkedIn; rodapé da nav: Passo a passo C1–C4, Caixa de ferramentas, Prompts IA, Estrutura da sala, Leia primeiro. Apenas links relativos; navegação não sai da sala.
+  Meio (main): conteúdo da página. Máx. 720px, tipografia legível (jovens 16–20 anos, ensino médio). Perfil minimalista e organizado (bibliotecária).
+  Rodapé (footer): "Sala de Notícias · Documentação institucional · Nenhum dado pessoal coletado".
+  CSS: assets/css/sala.css. Referência de nav para subpastas: NAV_PADRAO_SUBPASTA.txt.
+
+O QUE FICA DENTRO DA SALA (D:\dev\caracore-site\sala)
+  index.htm                 — Controle (plano e campanhas)
+  opera-sala.html           — Para quem opera
+  feedback.html             — Canal de feedback (após login)
+  login.html                — Tela de login (portal serve com senha nota_cc)
+  LEIA_PRIMEIRO_REPOSITORIO.txt
+  LEIGO_C1_C2_C3_C4.html    — Passo a passo (Passos 1–4)
+  C4_MODELO.html            — Modelo C4 (C1=Contexto, C2=Contêineres, C3=Componentes, C4=Código)
+  CAIXA_FERRAMENTAS_6_SCRIPTS.html
+  regis/ESTRATEGIA_EXECUCAO.txt — Premissa: valor na execução, não no segredo do código
+  regis/ARQUITETURA_SALA_C4.txt  — C1 (sala pública), C2 (contêineres)
+  regis/TEXTO_RECEPCAO.txt     — Recepção (tom mentor, 16–21 anos)
+  regis/GUIA_EXECUCAO_JOVEM.txt — Guia para o jovem (16+), 4 regras
+  regis/OS_6_ROBOS.txt          — 6 robôs (Anfitrião, Auditor, Transportador, Validadores)
+  regis/PLANILHA_OPERACAO.txt   — Planilha: transparência total
+  regis/VALIDACAO_COERENCIA_TECNICA.txt — Exceções amigáveis, LGPD, integração
+  ESTRUTURA_SALA.txt        — este arquivo
+  SKIN_VISUAL_SALA.txt      — Paleta e regra para imagens (coerência com prompt_img em caracore-mkt/docs)
+  planilha_sala.csv         — tarefa, trabalho feito, horas, valor CC
+  prompts-imagem-ia.html    — Prompts para IA de imagem
+  prompts-ia/               — .TXT (ESTRATEGIA_COPIAR_SALVAR, soberania, etc.)
+  regis/                    — Planos, LIA_CORELLI_VOZ, OPERA_SALA, templates
+  facebook/                 — Campanha Facebook (plano, diretrizes, manual)
+  instagram/                — Campanha Instagram (plano, diretrizes, manual)
+  linkedin/                 — Campanha LinkedIn (plano, diretrizes, manual; articles 87, 88, 89)
+  redes/                    — Apenas materiais locais de marketing digital por rede:
+    redes/gram              — Gram · Portal Cara Core Instagram (artefatos _G, instagram.html)
+    redes/face              — Face · Portal Cara Core Facebook (artefatos _F, facebook.html)
+  assets/
+    css/                    — articles.css, sala.css
+    img/                    — Imagens das campanhas (convenção em ESTRATEGIA)
+    js/                     — login.js, feedback.js
+    svg/                    — Artes por rede
+  entrega/                  — face/, gram/, retro/ (arquivos para transportar para redes/)
+  scripts/                  — Scripts Python legados (oficina principal em caracore-mkt)
+
+MATERIAIS DE MARKETING DIGITAL (dentro da sala)
+  Os portais locais de material por rede ficam em sala/redes/: gram (Instagram) e face (Facebook).
+  O portal canônico do LinkedIn fica em https://retro.caracore.com.br/.
+  Ver sala/redes/README.txt. Plano e campanhas ficam em sala/facebook/, sala/instagram/, sala/linkedin/.
+  Resguardo: materiais públicos, domínio da matriz Cara Core; apenas o que publicamos nas redes, em obediência às redes detentoras (LinkedIn, Instagram, Facebook).
+
+OFICINA (fora do repo da sala)
+  D:\dev\caracore-mkt       — Projeto Python (Baseline, Microsoft Store)
+  Scripts: iniciar_trabalho, validar_trabalho_executado, validar_sala,
+           transportar_para_salas, validar_entrega_face, validar_entrega_gram,
+           validar_entrega_retro. Defina CARACORE_REPO=D:\dev\caracore-site
+  se necessário.
+
+ACESSO À SALA
+  Via portal (caracore-site/caracore-mkt): node server.js → http://localhost:3333
+  Login: admin / nota_cc (senha inicial). Depois acesse index.htm, feedback, etc.
+
+================================================================================
+Cara Core Informática · Sala de Notícias
+================================================================================
