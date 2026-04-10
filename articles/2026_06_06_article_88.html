@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>A Identidade Roubada | Temporada I — Cara Core</title>
+	<meta name="description" content="Episódio 2 — A Jornada pela Identidade. No Reino OIDC, você não é um dado, você é o Rei. Soberania começa pelo acesso que você controla." />
+	<meta name="author" content="Cara Core Informática" />
+	<link rel="canonical" href="https://caracore.com.br/sala/redes/retro/articles/2026_06_06_article_88.html" />
+	<meta property="og:title" content="A Identidade Roubada | Temporada I" />
+	<meta property="og:description" content="Episódio 2 — Você é o dono da sua chave. Segurança nasce de confiança e autonomia." />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="https://caracore.com.br/sala/redes/retro/articles/2026_06_06_article_88.html" />
+	<meta property="og:image" content="https://caracore.com.br/sala/redes/retro/articles/assets/img/article_88_01.png" />
+	<meta property="og:image:alt" content="A Identidade Roubada" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="A Identidade Roubada | Temporada I" />
+	<meta name="twitter:description" content="Episódio 2 — Soberania começa pelo acesso e pela confiança mútua." />
+	<meta name="twitter:image" content="https://caracore.com.br/sala/redes/retro/articles/assets/img/article_88_01.png" />
+	<link rel="stylesheet" href="assets/css/articles.css" />
+	<link rel="stylesheet" href="assets/css/temporada-i.css" />
+</head>
+<body>
+	<div class="container">
+		<a class="back-link" href="../articles.html">&larr; Voltar para publicações</a>
+		<img src="assets/img/article_88_01.png" alt="A Identidade Roubada" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+		<h1>A Identidade Roubada</h1>
+		<div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
+			<img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
+			<span style="margin-left: 1.5rem;">6 de junho de 2026</span>
+		</div>
+		<div class="note"><strong>Episódio 2 de 7 | Temporada I | Tempo estimado:</strong> ~8–9 minutos</div>
+
+		<div class="quote-box">
+			<strong>Gancho:</strong> "No Reino OIDC, você não é um dado. Você é guardião da sua chave, com confiança."
+		</div>
+
+		<h2>A Senha Que Ninguém Pode Roubar</h2>
+		<p>
+			Deixa eu te contar o momento em que tudo mudou. Estava fazendo suporte remoto em uma loja no Tatuapé. Cliente é um senhor de 58 anos, dono de um mercadinho desde 87. Sistema rodando bem, PDV offline funcionando perfeito durante dois meses. Até que um dia, aquele senhor liga para a Cara Core e diz uma coisa que me arrepiou:
+		</p>
+		<p>
+			"Meu nome apareceu em uma fraude de crédito. Eu não abri nenhum cartão. Disseram que foi uma violação. Dados vazados. Preciso trocar senha em todo lugar."
+		</p>
+		<p>
+			Sabe qual era o problema? Ele usava a mesma senha do PDV em três outras plataformas. Quando um data center de um gigante americano foi hackeado, para começo de conversa, aquela senha saiu de circulação. E com ela, a identidade inteira do sujeito.
+		</p>
+		<p>
+			Aquele foi o momento em que eu entendi: <strong>o PDV offline resolve o problema de disponibilidade. Mas quem resolve o problema da identidade?</strong>
+		</p>
+
+		<hr>
+
+		<h2>Manifesto: A Identidade Como Escudo</h2>
+		<p>
+			Existe uma tensão acontecendo bem agora, neste segundo em que você está lendo isso. E ela não é sobre processadores. Não é sobre armazenamento. É sobre <strong>quem controla a porta de entrada para você ser você.</strong>
+		</p>
+		<p>
+			De um lado, temos o modelo de feudos digitais: identidades centralizadas em um único lugar. Um gigante faz o login, um outro valida, um terceiro monitora, um quarto vende os dados. Você não é usuário. Você é commodity. Seu CPF é um campo em um banco de dados que você não tem acesso, não controla, e que pode ser violado a qualquer momento por um estagiário incompetente em uma empresa que você nunca ouviu falar.
+		</p>
+		<p>
+			Do outro lado, temos a colaboração entre quadrados — o Reino das Identidades Federadas. Um modelo onde <strong>você é o detentor da sua própria chave</strong>, mas escolhe com quem compartilhar confiança. Seu token federado é como um passaporte — você o carrega, o mostra, e prova quem você é. A autoridade por trás daquele passaporte? É você, em parceria com quem você decide confiar.
+		</p>
+		<p>
+			OIDC é isso. OAuth 2.0 é o mecanismo, mas OIDC é a revolução. Porque deixa você ser o seu próprio provedor de identidade. Ou, se quiser delegar, delega para alguém que <strong>você escolhe e que você controla.</strong>
+		</p>
+		<div class="insight">
+			<strong>A Verdade Técnica:</strong> Quando você faz login via OIDC em uma aplicação local, você não está mandando sua senha para ninguém. Está enviando um token JWT assinado criptograficamente que prova: "Eu sou José da Silva, e posso provar isso porque tenho uma chave privada que corresponde a essa chave pública que você conhece."
+		</div>
+
+		<hr>
+
+		<h2>A Metáfora da Portaria</h2>
+		<p>
+			Pense no prédio onde você trabalha. Quem decide se você entra? A resposta muda tudo. Se a portaria é de um único dono, você depende daquela chave, daquele horário, daquela regra.
+		</p>
+		<p>
+			Quando a identidade fica centralizada, você vira um cadastro na mão de terceiros. Eles abrem, fecham, auditam e, às vezes, expõem. Não é sobre tecnologia nova ou velha; é sobre quem está segurando a chave.
+		</p>
+		<p>
+			OIDC muda a lógica: você passa a carregar a sua credencial e escolhe com quem ela conversa. Você mantém o controle, mas coopera quando faz sentido.
+		</p>
+		<p>
+			A nuvem continua útil, mas deixa de ser única. Ela vira um apoio, não um destino obrigatório.
+		</p>
+
+		<hr>
+
+		<h2>O Riso Irônico</h2>
+		<p>
+			Tem um problema muito engraçado com toda essa história de "confiança na nuvem". Sabe qual é? A confiança termina quando a luz acaba.
+		</p>
+		<p>
+			Você provavelmente tem um daqueles observadores de cima — o ETE, os drones, a IA de 2GB — dizendo que você deveria estar 100% na nuvem. Auditar, monitorar, escalar. Tudo na nuvem. Porque é seguro. Porque é escalável. Porque é moderno.
+		</p>
+		<p>
+			Mas aí, quando aquele data center do provedor cloud sofre um ataque DDoS, toda a sua autenticação desaba. Todos os seus usuários ficam trancados para fora. E você está ali, na loja, vendo a porta digital fechar. Uma porta que você não tem chave, porque a chave está em um cofre que pertence a outra pessoa.
+		</p>
+		<p>
+			Com OIDC federado local? A porta tem duas chaves. Uma sua, uma do provedor. Se uma falha — não importa. A outra continua funcionando.
+		</p>
+
+		<hr>
+
+		<h2>O Pia Descobre o Poder</h2>
+		<p>
+			Lucas — aquele aprendiz do artigo anterior, que viu o modem morrer — está agora com a gente há dois meses. Ele está aprendendo sobre identidade federada. No começo, ele estava confuso. "Por que não é mais simples? Por que não é um único login em um único lugar?"
+		</p>
+		<p>
+			Semana passada, eu levei ele em uma auditoria de segurança em uma loja. Exatamente o que estava acontecendo com aquele senhor do Tatuapé. Um vazamento de dados. Aquele lojista usava a mesma senha em vários lugares. Estava ferrado.
+		</p>
+		<p>
+			Quando voltamos ao carro, Lucas perguntou: "Como a gente protege a gente disso?"
+		</p>
+		<p>
+			E eu expliquei: No nosso sistema com OIDC federado, cada aplicação tem seu próprio contexto. Cada login é um token separado, criptograficamente assinado, que não pode ser reutilizado em outro lugar. Se um servidor é hackeado, a senha não vaza, porque não há senha centralizada. Há chaves assimétricas.
+		</p>
+		<p>
+			Lucas abriu um sorriso. Aquele sorriso que você vê quando alguém finalmente entende que o seu trabalho não é apenas consertar problemas — é <strong>preveni-los de acontecer em primeiro lugar.</strong>
+		</p>
+
+		<hr>
+
+		<h2>Ouro e Prata de Nova Era</h2>
+		<p>
+			Na primeira série desta temporada, falei sobre Java 21 como ouro e banco de dados relacional local como prata. O PDV é a respiração.
+		</p>
+		<p>
+			Agora vamos expandir esse mapa de tesouro. <strong>OIDC é o mapa do tesouro.</strong> É o sistema de coordenadas que garante que você nunca perca o caminho de volta para casa. Que você sempre consegue provar que a casa é sua.
+		</p>
+		<p>
+			Temos Java 21 como a segurança computacional. Temos OIDC como a segurança criptográfica. Temos banco de dados relacional como a persistência confiável. Juntas, essas três coisas formam um trio inquebrável.
+		</p>
+		<p>
+			O silício? O silício é a materialidade disso tudo. O fato consumado contra o ensejo.
+		</p>
+
+		<hr>
+
+		<h2>A Primeira Vez Que O Pia Entendeu</h2>
+		<p>
+			Lucas estava olhando os logs. Aqueles que mostro abaixo. Ele leu a versão legacy first, depois a versão OIDC. Depois pediu a gente para rodar um teste. Criamos uma máquina virtual comprometida — fingimos que o servidor cloud tinha sido hackeado. E depois tentamos usar a sessão OIDC daquele usuário.
+		</p>
+		<p>
+			Nada funcionou. O token tinha expirado. O refresh token foi revogado. Latência zero no bloqueio. Sem chance de ataque.
+		</p>
+		<p>
+			Lucas virou para mim e disse: "Ah, agora entendi. OIDC não é apenas um protocolo. É um escudo que você já está carregando, mas que ninguém te contou que tinha."
+		</p>
+		<p>
+			Exatamente isso, meu garoto. Exatamente isso.
+		</p>
+
+		<hr>
+
+		<h2>Contraste de Paradigmas: A Sequência de Logs</h2>
+		<h3>O Momento Crítico: Escolher Entre Feudos e Colaboração</h3>
+		<p>
+			Deixa eu mostrar a verdade visual. Dois cenários. Mesma data. Mesma loja. Mesma pessoa. A diferença é o que separa o risco alto da segurança.
+		</p>
+
+		<div class="quote-box">
+			<strong>Caminho do Feudo: BasicAuth Centralizado (ALTO RISCO)</strong><br><br>
+			<pre><code>[2026-06-06T14:30:00Z] LEGACY_AUTH_REQUEST | Username=lojista_001 | Method=BasicAuth | Provider=Cloud_Corporate
+[2026-06-06T14:30:01Z] PASSWORD_TRANSMITTED | HTTP_Method=POST | Encrypted=NO | Status=RISKY
+[2026-06-06T14:30:02Z] CLOUD_PROVIDER_BREACH_DETECTED | Vulnerability=CVE-2024-9847 | Impact=MEDIUM | Users_Exposed=847392
+[2026-06-06T14:30:03Z] LOJISTA_001_PASSWORD_LEAKED | Credential_Reuse_Detected=TRUE | Accounts_Compromised=7
+[2026-06-06T14:30:04Z] STATUS=HIGH_RISK | FINANCIAL_LOSS=R$45000 | CREDIT_FRAUD_INITIATED</code></pre>
+		</div>
+
+		<p style="text-align:center; color:#d97706; font-weight:bold; margin:0.5rem 0 2rem;">⚠️ EM CONTRASTE ⚠️</p>
+
+		<div class="quote-box">
+			<strong>Caminho da Colaboração: OIDC Federado (CONFIÁVEL)</strong><br><br>
+			<pre><code>[2026-06-06T14:30:00Z] OIDC_AUTH_REQUEST | User_ID=lojista_001 | GrantType=authorization_code | Flow=PKCE
+[2026-06-06T14:30:01Z] TOKEN_GENERATION | Algorithm=RS256 | SignedBy=Local_Private_Key | Expires=1h
+[2026-06-06T14:30:02Z] JWT_ISSUED | Header=RS256 | Payload=User_Claims | Signature=Verified | Status=VALID
+[2026-06-06T14:30:03Z] REFRESH_MECHANISM | RefreshToken_Expires=1y | Revocation_List_Updated | Status=SECURE
+[2026-06-06T14:30:04Z] OOBMFA_CHALLENGE | Method=TOTP | TimeWindow=30s | Verification=SUCCESS
+[2026-06-06T14:30:05Z] APPLICATION_AUTHENTICATED | User=lojista_001 | Latitude=23.5505 | Longitude=-46.6333 | GeoIP_Match=YES | Local_Trust_Chain=VERIFIED
+[2026-06-06T14:30:06Z] CLOUD_PROVIDER_BREACH_DETECTED | Vulnerability=CVE-2024-9847 | Local_System_Status=UNAFFECTED
+[2026-06-06T14:30:07Z] STATUS=SECURE | PASSWORD_NEVER_TRANSMITTED | TOKEN_COMPROMISED_RISK=ZERO | FEDERATED_IDENTITY=SOVEREIGN</code></pre>
+		</div>
+
+		<div class="insight">
+			<strong>Vê a Diferença?</strong><br><br>
+			No primeiro cenário: a senha sai, o risco se espalha. No segundo: não existe senha. Existe prova criptográfica. A nuvem quebra? Não importa. Seu token local continua válido. Sua revogação é instantânea. Sua identidade nunca deixa seu controle.
+		</div>
+
+		<hr>
+
+		<h2>Amarra: O Reino Se Expande</h2>
+		<p>
+			O PDV é a residência. OIDC é a chave daquela residência. Você não apenas sobrevive offline — você <strong>prova que é você</strong> com uma chave que ninguém mais tem e ninguém mais pode roubar, porque essa chave nunca deixa seu sistema.
+		</p>
+		<p>
+			Mas um governo precisa de mais que uma casa. Precisa de produção. De valor. De alquimia.
+		</p>
+		<p>
+			No próximo episódio, conheceremos o Minerador 4.0. Aquele que transforma dados em ouro. E ele vai usar a identidade que você protegeu aqui para assinar cada transação, cada movimento.
+		</p>
+
+		<h2>Chamada Fixa</h2>
+		<div class="quote-box">
+			<strong>03/03 é o dia em que a temporada muda de marcha. Guarda essa data.</strong><br><br>
+			Próximo episódio: 4 de julho — Ouro, Prata e Silício: quando os dados viram ouro e a alquimia se torna engenharia.
+		</div>
+
+		<hr>
+
+		<h2>Sobre Temporada I</h2>
+		<p>Temporada I é uma série de 7 episódios (maio–novembro 2026) que narra a emancipação do soberano. Cada episódio conecta-se em um tecido de resistência técnica:</p>
+		<ul>
+			<li><strong>Episódio 1 — O Apagão do Suserano (PDV):</strong> Sobrevivência através de soberania técnica.</li>
+			<li><strong>Episódio 2 — A Identidade Roubada (OIDC):</strong> Liberdade através de identidade federada e criptografia.</li>
+			<li><strong>Episódio 3 — Ouro, Prata e Silício (Minerador 4.0):</strong> Valor através da extração e transformação de dados.</li>
+			<li><strong>Episódio 4 — O ETE e a IA de 2GB (ETE):</strong> Ironia através da limitação como força.</li>
+			<li><strong>Episódio 5 — Circuito Ferradura (Ferradura):</strong> Logística através de redes descentralizadas.</li>
+			<li><strong>Episódio 6 — A Marca na Pele (Ink Agenda):</strong> Permanência através de memória offline-first.</li>
+			<li><strong>Episódio 7 — Epílogo: O Acerto de Contas (Convergência):</strong> Convergência final de todos os pilares.</li>
+		</ul>
+
+		<hr>
+
+		<h2>Hashtags</h2>
+		<div class="hash-box">#CaraCore #TemporadaI #OIDC #Soberania #TokenFederado #Java21 #IdentidadeDigital #Criptografia #SoftwareBoutique #BrasilEmergente #ReinoOIDC #Segurança</div>
+
+		<hr />
+
+		<h3>Contato</h3>
+		<ul>
+			<li><strong>E-mail:</strong> suporte@caracore.com.br</li>
+			<li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
+			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
+		</ul>
+
+		<div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
+			<strong>Acompanhe a Temporada I</strong><br />
+			<span style="font-size:.85rem;">Próximo episódio: 4 de julho, 2026 — Ouro, Prata e Silício: O Minerador 4.0</span><br />
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Seguir no LinkedIn</a>
+		</div>
+
+		<p style="text-align:center; font-size:.85rem; color:#6b7280; margin-top:3rem;">
+			<em>Artigo publicado em 6 de junho de 2026</em><br>
+			© 2026 Cara Core Informática. Todos os direitos reservados.
+		</p>
+	</div>
+</body>
+</html>

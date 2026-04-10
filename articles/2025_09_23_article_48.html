@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mudança de ferramenta de roteamento REST: como planejar para não travar seu projeto — Cara Core Informática</title>
+  <meta name="description" content="Guia prático para planejar a mudança de ferramenta de roteamento REST sem travar o projeto: contratos OpenAPI, separação de camadas, testes e estratégia de migração gradual." />
+  <meta name="keywords" content="REST, Roteamento, OpenAPI, Micronaut, Spring Boot, Camel, Quarkus, API Gateway, Observabilidade, OpenTelemetry, Testes de Contrato" />
+  <meta name="author" content="Cara Core Informática" />
+  <link rel="canonical" href="https://caracore.com.br/publications/articles/2025_09_23_article_48.html" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mudança de ferramenta de roteamento REST: como planejar para não travar seu projeto" />
+  <meta property="og:description" content="Boas práticas e estratégia de migração na troca de frameworks de roteamento REST com foco em estabilidade e custo." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://caracore.com.br/publications/articles/2025_09_23_article_48.html" />
+  <meta property="og:image" content="https://caracore.com.br/publications/articles/assets/img/article_48_01.png" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mudança de ferramenta de roteamento REST: como planejar para não travar seu projeto" />
+  <meta name="twitter:description" content="Planeje e execute a troca de ferramenta de roteamento REST com segurança e visibilidade." />
+  <meta name="twitter:image" content="https://caracore.com.br/publications/articles/assets/img/article_48_01.png" />
+  <link rel="stylesheet" href="assets/css/articles.css" />
+  <style>
+    body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif; line-height:1.55; color:#1f2937; margin:0; }
+    .container { max-width: 980px; margin:0 auto; padding:2rem 1.25rem 4rem; }
+    h1 { line-height:1.2; font-size:clamp(1.9rem,2.4vw,2.5rem); margin-top:0; }
+    h2 { margin-top:2.25rem; line-height:1.25; }
+    pre { background:#0f172a; color:#f1f5f9; padding:1rem 1.1rem; overflow:auto; border-radius:8px; font-size:.85rem; }
+    code { font-family: ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace; }
+    figure img { max-width:100%; height:auto; }
+    ul,ol { padding-left:1.1rem; }
+    .back-link { text-decoration:none; font-size:.85rem; color:#2563eb; }
+    .note { background:#f8f9fa; padding:1rem 1.25rem; border-left:4px solid #10B981; border-radius:6px; }
+    .hash-box { background:#f8f9fa; padding:1rem 1.25rem; border-left:4px solid #0EA5E9; border-radius:6px; font-size:.85rem; line-height:1.5; }
+    .repo-box { background:#f8f9fa; padding:1.25rem 1.25rem 1rem; border-left:4px solid #10B981; border-radius:6px; }
+    .repo-box a { color:#10B981; font-weight:600; text-decoration:none; }
+    hr { border:none; border-top:1px solid #e5e7eb; margin:3rem 0 2rem; }
+    blockquote { font-style: italic; border-left: 3px solid #e5e7eb; padding-left: 1.25rem; margin-left: 0; }
+    @media (max-width:640px){ pre { font-size:.78rem; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back-link" href="../articles.html">&larr; Voltar para publicações</a>
+    <img src="assets/img/article_48_01.png" alt="Troca de ferramenta de roteamento REST" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+    <h1>Mudança de ferramenta de roteamento REST: como planejar para não travar seu projeto</h1>
+    <div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
+        <img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
+        <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
+  <span style="margin-left: 1.5rem;">84 seguidores<br>23 de setembro de 2025</span>
+    </div>
+
+    <p>Toda empresa que cresce e precisa escalar suas integrações passa por um dilema: qual ferramenta de roteamento REST utilizar.</p>
+    <p>Há alguns anos, a TechMall (empresa fictícia de e-commerce) adotou uma stack baseada em Spring Boot com Camel, que resolvia bem a orquestração de APIs REST. Mas, com a evolução do negócio e a adoção de arquiteturas cloud-native, surgiu a necessidade de migrar para outra plataforma de roteamento, mais enxuta e com melhor suporte para Kubernetes e AWS Lambda.</p>
+    <p>Trocar a ferramenta de roteamento não é algo incomum: frameworks evoluem, novos players surgem, a arquitetura da empresa muda. Mas, se mal planejada, essa transição pode causar quebras silenciosas, retrabalho e aumento de custos.</p>
+
+    <h2>Quais cuidados ter na mudança de ferramenta de roteamento?</h2>
+    <h3>1. Separação de responsabilidades</h3>
+    <p>O roteamento (quem recebe e para onde vai) não deve carregar a lógica de negócio.</p>
+    <p>A lógica de negócio precisa estar isolada em services ou beans independentes.</p>
+    <p>Assim, se trocar Camel por Quarkus, ou Spring MVC por Micronaut, você troca só a “porta de entrada” e não o core do sistema.</p>
+
+    <h3>2. Contratos bem definidos (OpenAPI)</h3>
+    <p>Ter contratos OpenAPI atualizados é essencial.</p>
+    <p>Se a ferramenta mudar, o contrato garante que consumidores externos não percebam a diferença.</p>
+    <p>Ajuda também na automação de testes e na documentação.</p>
+
+    <h3>3. Camada de adaptação (adapters/facades)</h3>
+    <p>Crie adapters para lidar com transformações de payload (JSON, XML, Avro).</p>
+    <p>Isso reduz o acoplamento com o roteador.</p>
+    <p>No caso de troca, basta reimplementar o adapter e não toda a aplicação.</p>
+
+    <h3>4. Testes de contrato e integração</h3>
+    <p>Automatize testes com ferramentas como RestAssured ou Postman/Newman.</p>
+    <p>Antes de migrar, garanta que a suíte de testes cubra os endpoints mais críticos.</p>
+    <p>Após a troca, execute a mesma suíte para validar que nada se quebrou.</p>
+
+    <h3>5. Estratégia de transição gradual</h3>
+    <p>Rodar duas stacks em paralelo por um tempo (antigo e novo roteador).</p>
+    <p>Usar feature flags ou API Gateway para direcionar parte do tráfego ao novo roteador.</p>
+    <p>Monitorar métricas de latência, erros e consumo.</p>
+
+    <h3>6. Observabilidade desde o início</h3>
+    <p>Configurar logs estruturados, métricas e tracing distribuído (OpenTelemetry).</p>
+    <p>Isso ajuda a identificar problemas que não apareceriam em ambiente de teste.</p>
+
+    <h2>A lição da TechMall</h2>
+    <p>No caso da TechMall, a mudança foi de Camel para Micronaut. Graças à separação clara entre rotas e lógica de negócio, a equipe conseguiu reimplementar os endpoints principais em poucas semanas.</p>
+    <p>O segredo não foi a escolha da nova ferramenta em si, mas o planejamento da migração: contratos bem definidos, testes robustos e uma arquitetura desacoplada.</p>
+
+    <h2>Conclusão</h2>
+    <p>Trocar de ferramenta de roteamento REST é quase inevitável em sistemas de longa vida. A tecnologia muda, mas o que garante a sucessão saudável não é o framework — é a disciplina arquitetural.</p>
+    <p>Quem projeta APIs pensando em contratos claros, camadas bem separadas e testes automatizados transforma a troca de roteador em um ajuste natural, e não em uma reescrita traumática.</p>
+    <p>No fim das contas, mais importante do que “qual ferramenta usar” é como preparar o código para mudar de ferramenta quando o futuro exigir.</p>
+
+    <h2>Hashtags</h2>
+    <div class="hash-box">#ArquiteturaDeSoftware #APIs #OpenAPI #Micronaut #SpringBoot #Camel #Quarkus #Observabilidade #OpenTelemetry #Integração #RoteamentoREST</div>
+
+    <hr />
+    <h3>Contato</h3>
+    <ul>
+      <li><strong>E-mail:</strong> suporte@caracore.com.br</li>
+      <li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
+      <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
+    </ul>
+
+    <div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
+      <strong>🤝 Gostou do conteúdo?</strong><br />
+      <span style="font-size:.85rem;">Conecte-se conosco no LinkedIn para mais conteúdos sobre desenvolvimento e inovação tecnológica!</span><br />
+      <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Seguir no LinkedIn</a>
+    </div>
+  </div>
+</body>
+</html>

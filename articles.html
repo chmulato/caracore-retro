@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Artigos Retrô — Cara Core Informática</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="https://caracore.com.br/sala/redes/retro/articles.html">
+    <link rel="alternate" type="application/rss+xml" title="Artigos Retrô — Cara Core Informática" href="https://caracore.com.br/sala/redes/retro/feed.xml">
+        <link rel="stylesheet" href="articles/assets/css/articles.css">
+        <style>
+            /* Local styles for search/filter UI */
+            .filter-section { margin:1rem 0 1.25rem; }
+            .filter-section summary { list-style:none; cursor:pointer; -webkit-user-select:none; user-select:none; padding:.6rem .9rem; border:1px solid #e5e7eb; border-radius:8px; background:#f9fafb; display:flex; align-items:center; gap:.5rem; font-weight:600; }
+            .filter-section summary::-webkit-details-marker { display:none; }
+            .filter-section[open] summary { background:#eef2ff; border-color:#c7d2fe; }
+            .filter-section .summary-count { margin-left:auto; font-weight:400; color:#6b7280; font-size:.85rem; }
+            .filter-section .filter-bar { margin:.85rem 0 .75rem; }
+            .filter-bar { display:flex; flex-wrap:wrap; gap:.75rem; align-items:center; margin:1rem 0 1.25rem; }
+            .filter-input { flex:1 1 260px; padding:.6rem .8rem; border:1px solid #e5e7eb; border-radius:8px; font-size:.95rem; }
+            .chips { display:flex; flex-wrap:wrap; gap:.5rem; }
+            .chip { padding:.4rem .7rem; border:1px solid #e5e7eb; border-radius:999px; background:#f9fafb; cursor:pointer; font-size:.85rem; -webkit-user-select:none; user-select:none; }
+            .chip[aria-pressed="true"] { background:#e0f2fe; border-color:#7dd3fc; color:#075985; }
+            .reset-btn { border:1px solid #dc2626; background:linear-gradient(120deg,#fee2e2 0%, #fecaca 100%); color:#7f1d1d; font-weight:600; position:relative; padding:.45rem .9rem .45rem 1.9rem; }
+            .reset-btn:before { content:"✕"; position:absolute; left:.7rem; top:50%; transform:translateY(-50%); font-size:.85rem; background:#dc2626; color:#fff; width:18px; height:18px; line-height:18px; text-align:center; border-radius:50%; box-shadow:0 0 0 2px #fecaca; }
+            .reset-btn:hover { background:linear-gradient(120deg,#fb7185 0%, #dc2626 100%); color:#fff; border-color:#dc2626; }
+            .reset-btn:hover:before { background:#fff; color:#dc2626; box-shadow:0 0 0 2px #dc2626; }
+            .result-count { font-size:.85rem; color:#6b7280; margin-left:auto; }
+            .is-hidden { display:none !important; }
+            .ops-note { margin: 1rem 0 1.25rem; padding: .9rem 1rem; border-radius: 8px; border: 1px solid #fde68a; background: #fffbeb; color: #78350f; }
+            .ops-note strong { color: #92400e; }
+            .cycle-divider { margin: 1rem 0 1.25rem; padding: .85rem 1rem; border-left: 4px solid #0f766e; background: #ecfeff; color: #134e4a; border-radius: 8px; }
+            .cycle-links { display:flex; flex-wrap:wrap; gap:.75rem; margin:.9rem 0 0; }
+            .cycle-links a { display:inline-flex; align-items:center; gap:.35rem; padding:.55rem .85rem; border-radius:999px; background:#ecfeff; color:#0f766e; text-decoration:none; font-weight:600; }
+        </style>
+</head>
+<body class="sala-page">
+    <header>
+         <h1>Artigos Retrô — Cara Core Informática</h1>
+        <p>Uma coleção dos artigos publicados no LinkedIn, organizados por ano, mês e dia.</p>
+   </header>
+    <div class="container">
+           <!-- Busca e filtros (seção colapsável) -->
+        <details class="filter-section" id="filters" role="region" aria-label="Filtro de artigos">
+          <summary>🔎 Filtros e busca <span id="filterSummaryCount" class="summary-count" aria-live="polite"></span></summary>
+          <div class="filter-bar">
+              <input id="searchInput" class="filter-input" type="search" placeholder="Buscar por título ou assunto (ex.: AWS, Python, VBA)" aria-label="Buscar artigos" />
+              <div class="chips" role="group" aria-label="Assuntos">
+                  <button class="chip" type="button" data-tag="aws" aria-pressed="false" aria-label="Filtrar por AWS">AWS</button>
+                  <button class="chip" type="button" data-tag="cdk" aria-pressed="false" aria-label="Filtrar por CDK">CDK</button>
+                  <button class="chip" type="button" data-tag="python" aria-pressed="false" aria-label="Filtrar por Python">Python</button>
+                  <button class="chip" type="button" data-tag="ec2" aria-pressed="false" aria-label="Filtrar por EC2">EC2</button>
+                  <button class="chip" type="button" data-tag="rds" aria-pressed="false" aria-label="Filtrar por RDS">RDS</button>
+                  <button class="chip" type="button" data-tag="postgresql" aria-pressed="false" aria-label="Filtrar por PostgreSQL">PostgreSQL</button>
+                  <button class="chip" type="button" data-tag="vba" aria-pressed="false" aria-label="Filtrar por VBA">VBA</button>
+                  <button class="chip" type="button" data-tag="microsoft 365" aria-pressed="false" aria-label="Filtrar por Microsoft 365">Microsoft 365</button>
+                  <button class="chip" type="button" data-tag="excel" aria-pressed="false" aria-label="Filtrar por Excel">Excel</button>
+                  <button class="chip" type="button" data-tag="logística" aria-pressed="false" aria-label="Filtrar por Logística">Logística</button>
+                  <button class="chip" type="button" data-tag="websockets" aria-pressed="false" aria-label="Filtrar por WebSockets">WebSockets</button>
+                  <button class="chip" type="button" data-tag="github actions" aria-pressed="false" aria-label="Filtrar por GitHub Actions">GitHub Actions</button>
+                  <button class="chip" type="button" data-tag="oidc" aria-pressed="false" aria-label="Filtrar por OIDC">OIDC</button>
+                  <button class="chip" type="button" data-tag="ia" aria-pressed="false" aria-label="Filtrar por IA">IA</button>
+                  <button class="chip" type="button" data-tag="lgpd" aria-pressed="false" aria-label="Filtrar por LGPD">LGPD</button>
+                  <button class="chip" type="button" data-tag="saas" aria-pressed="false" aria-label="Filtrar por SaaS">SaaS</button>
+                  <button class="chip" type="button" data-tag="licenciamento" aria-pressed="false" aria-label="Filtrar por Licenciamento">Licenciamento</button>
+                  <button class="chip" type="button" data-tag="monitoramento" aria-pressed="false" aria-label="Filtrar por Monitoramento">Monitoramento</button>
+                  <button class="chip" type="button" data-tag="heartbeat" aria-pressed="false" aria-label="Filtrar por Heartbeat">Heartbeat</button>
+                  <button class="chip" type="button" data-tag="dashboard" aria-pressed="false" aria-label="Filtrar por Dashboard">Dashboard</button>
+                  <button class="chip" type="button" data-tag="criptografia" aria-pressed="false" aria-label="Filtrar por Criptografia">Criptografia</button>
+                  <button class="chip" type="button" data-tag="segurança" aria-pressed="false" aria-label="Filtrar por Segurança">Segurança</button>
+                  <button class="chip" type="button" data-tag="privacidade" aria-pressed="false" aria-label="Filtrar por Privacidade">Privacidade</button>
+                  <button class="chip" type="button" data-tag="redis" aria-pressed="false" aria-label="Filtrar por Redis">Redis</button>
+                  <button class="chip" type="button" data-tag="cache" aria-pressed="false" aria-label="Filtrar por Cache">Cache</button>
+                  <button class="chip" type="button" data-tag="ecommerce" aria-pressed="false" aria-label="Filtrar por E-commerce">E-commerce</button>
+                  <button class="chip" type="button" data-tag="retirada local" aria-pressed="false" aria-label="Filtrar por Retirada Local">Retirada Local</button>
+                  <button class="chip" type="button" data-tag="performance" aria-pressed="false" aria-label="Filtrar por Performance">Performance</button>
+                  <button class="chip" type="button" data-tag="escalabilidade" aria-pressed="false" aria-label="Filtrar por Escalabilidade">Escalabilidade</button>
+                  <button class="chip" type="button" data-tag="pubsub" aria-pressed="false" aria-label="Filtrar por Pub/Sub">Pub/Sub</button>
+                  <button class="chip" type="button" data-tag="ttl" aria-pressed="false" aria-label="Filtrar por TTL">TTL</button>
+                  <button class="chip" type="button" data-tag="power automate" aria-pressed="false" aria-label="Filtrar por Power Automate">Power Automate</button>
+                  <button class="chip" type="button" data-tag="sharepoint" aria-pressed="false" aria-label="Filtrar por SharePoint">SharePoint</button>
+                  <button class="chip" type="button" data-tag="teams" aria-pressed="false" aria-label="Filtrar por Teams">Teams</button>
+                  <button class="chip" type="button" data-tag="automação" aria-pressed="false" aria-label="Filtrar por Automação">Automação</button>
+                  <button class="chip" type="button" data-tag="outlook" aria-pressed="false" aria-label="Filtrar por Outlook">Outlook</button>
+                  <button class="chip" type="button" data-tag="e-mail" aria-pressed="false" aria-label="Filtrar por E-mail">E-mail</button>
+                  <button class="chip" type="button" data-tag="suporte técnico" aria-pressed="false" aria-label="Filtrar por Suporte Técnico">Suporte Técnico</button>
+                  <button class="chip" type="button" data-tag="ética" aria-pressed="false" aria-label="Filtrar por Ética">Ética</button>
+                  <button class="chip" type="button" data-tag="auditoria" aria-pressed="false" aria-label="Filtrar por Auditoria">Auditoria</button>
+                  <button class="chip" type="button" data-tag="consultoria" aria-pressed="false" aria-label="Filtrar por Consultoria">Consultoria</button>
+                  <button class="chip" type="button" data-tag="compliance" aria-pressed="false" aria-label="Filtrar por Compliance">Compliance</button>
+                  <button class="chip" type="button" data-tag="java ee" aria-pressed="false" aria-label="Filtrar por Java EE">Java EE</button>
+                  <button class="chip" type="button" data-tag="flutter" aria-pressed="false" aria-label="Filtrar por Flutter">Flutter</button>
+                  <button class="chip" type="button" data-tag="clean architecture" aria-pressed="false" aria-label="Filtrar por Clean Architecture">Clean Architecture</button>
+                  <button class="chip" type="button" data-tag="solid" aria-pressed="false" aria-label="Filtrar por SOLID">SOLID</button>
+                  <button class="chip" type="button" data-tag="design patterns" aria-pressed="false" aria-label="Filtrar por Design Patterns">Design Patterns</button>
+                  <button class="chip" type="button" data-tag="arquitetura" aria-pressed="false" aria-label="Filtrar por Arquitetura">Arquitetura</button>
+                  <button class="chip" type="button" data-tag="mobile" aria-pressed="false" aria-label="Filtrar por Mobile">Mobile</button>
+                  <button class="chip" type="button" data-tag="cross-platform" aria-pressed="false" aria-label="Filtrar por Cross-platform">Cross-platform</button>
+                  <button class="chip" type="button" data-tag="pdv" aria-pressed="false" aria-label="Filtrar por PDV">PDV</button>
+                  <button class="chip" type="button" data-tag="reforma tributária" aria-pressed="false" aria-label="Filtrar por Reforma Tributária">Reforma Tributária</button>
+                  <button class="chip" type="button" data-tag="pix split" aria-pressed="false" aria-label="Filtrar por Pix Split">Pix Split</button>
+                  <button class="chip" type="button" data-tag="varejo" aria-pressed="false" aria-label="Filtrar por Varejo">Varejo</button>
+              </div>
+              <button id="resetFilters" type="button" class="chip" aria-label="Limpar filtros e busca">Reset</button>
+              <div id="resultCount" class="result-count" aria-live="polite"></div>
+          </div>
+        </details>
+        <!-- Ano mais recente primeiro -->
+        <div class="year-group">
+            <div class="year-title">2026</div>
+            <div class="month-group">
+                <div class="month-title">Novembro</div>
+                <ul class="article-list">
+                    <li class="article-item" data-tags="temporada i,epílogo,seis pilares,convergência,soberano,descentralização,hub,cso,espelhos,transmídia,sistema">
+                        <span class="article-date">30/11</span>
+                        <a class="article-title" href="articles/2026_11_30_article_95.html">
+                            Seis Pilares Alinhados
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="amarelinha,cinco atos,protocolo,arquitetura,soberania,engenharia,confiança,logística,operação">
+                        <span class="article-date">14/11</span>
+                        <a class="article-title" href="articles/2026_11_14_article_94.html">
+                            Amarelinha: Os Cinco Atos
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="temporada i,epílogo,acerto de contas,hub,cso,cara core,convergência,interface,espelhos,transmídia">
+                        <span class="article-date">07/11</span>
+                        <a class="article-title" href="articles/2026_11_07_article_93.html">
+                            Epílogo: O Acerto de Contas
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="month-group">
+                <div class="month-title">Outubro</div>
+                <ul class="article-list">
+                    <li class="article-item" data-tags="temporada i,marca na pele,ink agenda,offline-first,eterno,tatuagem,registro,pele real">
+                        <span class="article-date">03/10</span>
+                        <a class="article-title" href="articles/2026_10_03_article_92.html">
+                            A Marca na Pele
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="month-group">
+                <div class="month-title">Setembro</div>
+                <ul class="article-list">
+                    <li class="article-item" data-tags="temporada i,circuito ferradura,logística,rede local,equipe,força,estratégia,fuga">
+                        <span class="article-date">05/09</span>
+                        <a class="article-title" href="articles/2026_09_05_article_91.html">
+                            Circuito Ferradura
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="month-group">
+                <div class="month-title">Agosto</div>
+                <ul class="article-list">
+                    <li class="article-item" data-tags="temporada i,ete,ia,ironia,produção,sobrevivência,variáveis humanas,contexto local">
+                        <span class="article-date">01/08</span>
+                        <a class="article-title" href="articles/2026_08_01_article_90.html">
+                            O ETE e a IA de 2GB
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="month-group">
+                <div class="month-title">Julho</div>
+                <ul class="article-list">
+                    <li class="article-item" data-tags="temporada i,ouro prata silício,minerador 4.0,valor,produção,rendimento,eficiência,mineração">
+                        <span class="article-date">04/07</span>
+                        <a class="article-title" href="articles/2026_07_04_article_89.html">
+                            Ouro, Prata e Silício
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="month-group">
+                <div class="month-title">Junho</div>
+                <ul class="article-list">
+                    <li class="article-item" data-tags="temporada i,identidade roubada,oidc,token,soberania,acesso,criptografia,autenticação">
+                        <span class="article-date">06/06</span>
+                        <a class="article-title" href="articles/2026_06_06_article_88.html">
+                            A Identidade Roubada
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="cycle-divider">Acervo historico preservado: os itens abaixo sao anteriores a 04/06/2026 e permanecem visiveis como arquivo, fora da contagem oficial do ciclo ativo.</div>
+            <div class="month-group">
+                <div class="month-title">Maio</div>
+                <ul class="article-list">
+                    <li class="article-item" data-tags="temporada i,apagão do suserano,pdv,soberania,modem,offline,caixa,água encanada,software boutique">
+                        <span class="article-date">30/05</span>
+                        <a class="article-title" href="articles/2026_05_30_article_87.html">
+                            O Apagão do Suserano
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="cara core,futuro,visão,portfólio,tendências,brasil emergente,startup,jornada">
+                        <span class="article-date">23/05</span>
+                        <a class="article-title" href="articles/2026_05_23_article_86.html">
+                            O Futuro da Cara Core: Para Onde Estamos Indo
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="brasil emergente,inovação,nichos,startup boutique,mineração,varejo,identidade,automação,cara core">
+                        <span class="article-date">16/05</span>
+                        <a class="article-title" href="articles/2026_05_16_article_85.html">
+                            O Brasil Emergente e a Oportunidade de Inovar Onde Ninguém Está Olhando
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="software técnico,equipes enxutas,modularidade,desenvolvimento,caracore,arquitetura,lean">
+                        <span class="article-date">09/05</span>
+                        <a class="article-title" href="articles/2026_05_09_article_84.html">
+                            Como Construir Software Técnico em Escala com Equipes Enxutas
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="ete,hidrometalurgia,terras raras,mineração,deep tech,simulador,metodologia,minerador 4.0">
+                        <span class="article-date">02/05</span>
+                        <a class="article-title" href="articles/2026_05_02_article_83.html">
+                            ETE: A Metodologia Brasileira que Simplifica a Hidrometalurgia Seletiva
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="month-group">
+                <div class="month-title">Abril</div>
+                <ul class="article-list">
+                    <li class="article-item" data-tags="produtos,propósito,portfólio,filosofia modular,pdv,hub,oidc,ete,circuito ferradura,cara core">
+                        <span class="article-date">28/04</span>
+                        <a class="article-title" href="articles/2026_04_28_article_78.html">
+                            Construindo Produtos com Propósito: A Filosofia por Trás do Portfólio da Cara Core
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="circuito ferradura,democratização,programação,educação,inclusão digital,gamificação,python,caracore">
+                        <span class="article-date">25/04</span>
+                        <a class="article-title" href="articles/2026_04_25_article_82.html">
+                            Circuito Ferradura: Democratizando a Programação no Brasil
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="última milha digital,tia sócia,hub,exclusão digital,impacto social,economia digital,caracore">
+                        <span class="article-date">21/04</span>
+                        <a class="article-title" href="articles/2026_04_21_article_77.html">
+                            A Última Milha Digital: O Que as 'Tias Sócias' Revelam Sobre o Brasil
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="hub,automação,última milha,tia sócia,orquestração,varejo,caracore hub,plataforma">
+                        <span class="article-date">18/04</span>
+                        <a class="article-title" href="articles/2026_04_18_article_81.html">
+                            Hub Cara Core: A Máquina de Automação que Conecta Pessoas, Negócios e Comunidades
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="software boutique,brasil,nichos técnicos,mineração,varejo,automação,identidade,startup,cara core">
+                        <span class="article-date">14/04</span>
+                        <a class="article-title" href="articles/2026_04_14_article_76.html">
+                            Por que o Brasil Precisa de Software Boutique: Oportunidades em Nichos Técnicos
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="reino oidc,área 51,identidade digital,oidc,oauth,autenticação,segurança,lgpd">
+                        <span class="article-date">11/04</span>
+                        <a class="article-title" href="articles/2026_04_11_article_80.html">
+                            Reino OIDC e Área 51: A Nova Era da Identidade Digital Brasileira
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="cara core,startup boutique,software brasileiro,posicionamento,produtos modulares,transição,identidade">
+                        <span class="article-date">07/04</span>
+                        <a class="article-title" href="articles/2026_04_07_article_75.html">
+                            A Nova Cara Core: Como uma Startup Boutique Está Redesenhando o Software Brasileiro
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="caracore pdv,pdv,reforma tributária,cbs,ibs,pix split,varejo,2026,auditoria">
+                        <span class="article-date">04/04</span>
+                        <a class="article-title" href="articles/2026_04_04_article_79.html">
+                            Por Dentro do CaraCore PDV: O Primeiro Sistema Preparado para a Reforma Tributária 2026–2033
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="month-group">
+                <div class="month-title">Fevereiro</div>
+                <ul class="article-list">
+                    <li class="article-item" data-tags="caracore pdv,android,sms,enlace de contingência,adb,licença premium,aplicativo móvel,contingência,caracore,mobile,arquitetura">
+                        <span class="article-date">28/02</span>
+                        <a class="article-title" href="articles/2026_02_28_article_74.html">
+                            PDV Enviar SMS: o Aplicativo Auxiliar Android que é o Braço Direito do CaraCore PDV
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="evolução,inovação,cara core informática,pdv,varejo,tecnologia,história,desenvolvimento,vba,excel,access,caracore pdv,jornada,parceria">
+                        <span class="article-date">20/02</span>
+                        <a class="article-title" href="articles/2026_02_20_article_73.html">
+                            Cara Core Informática: Nossa Jornada de Evolução e Inovação
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="pdv,ponto de venda,novidades,atualizações,melhorias,performance,varejo,inovação,caracore pdv,ux,interface,segurança,lgpd">
+                        <span class="article-date">12/02</span>
+                        <a class="article-title" href="articles/2026_02_12_article_72.html">
+                            CaraCore PDV: Novidades e Atualizações que Transformam o Varejo
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="pdv,ponto de venda,reforma tributária,cbs,ibs,pix split,taxa de consumo brasileira,varejo,tributação,caracore pdv,automação,futuro do varejo">
+                        <span class="article-date">07/02</span>
+                        <a class="article-title" href="articles/2026_02_07_article_71.html">
+                            CaraCore PDV: O Primeiro Sistema Pronto para a Reforma Tributária 2026-2033 e o Futuro do Pix Split
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="month-group">
+                <div class="month-title">Janeiro</div>
+                <ul class="article-list">
+                    <li class="article-item" data-tags="segurança,privacidade,senhas,criptografia,armazenamento local,sqlite,sha-256,ink agenda,proteção,offline-first,autenticação,mobile">
+                        <span class="article-date">30/01</span>
+                        <a class="article-title" href="articles/2026_01_30_article_70.html">
+                            Segurança de Senhas no Celular: Por Que Armazenar Localmente é a Melhor Decisão
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="flutter,clean architecture,solid,inkagenda,agenda profissional,sincronização,offline-first,tatuagem,estúdio,design patterns,arquitetura,mobile,cross-platform,java ee">
+                        <span class="article-date">25/01</span>
+                        <a class="article-title" href="articles/2026_01_25_article_69.html">
+                            InkAgenda: A Agenda que Herdou a Disciplina do Servidor
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="java ee,flutter,clean architecture,solid,mobile development,software engineering,enterprise,design patterns,arquitetura,mobile,cross-platform">
+                        <span class="article-date">17/01</span>
+                        <a class="article-title" href="articles/2026_01_17_article_68.html">
+                            A "Seriedade" do Java EE Encontra o Caos do Mobile: Lições de uma Transição para o Flutter
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="licenciamento,saas,cara core seed,monitoramento,segurança,compliance,receita recorrente,automação,heartbeat,dashboard,auditoria,rsa,criptografia">
+                        <span class="article-date">11/01</span>
+                        <a class="article-title" href="articles/2026_01_11_article_67.html">
+                            Cara Core Seed: Sistema de Controle de Licenças Empresariais
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="inovação,integração,hub,tecnologia,caracore hub,parceria,joint venture,segurança,produtividade,investimento,transformação digital,cara core informática">
+                        <span class="article-date">03/01</span>
+                        <a class="article-title" href="articles/2026_01_03_article_66.html">
+                            Cara Core HUB: Inovação, Simplicidade e Oportunidade
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="year-title">2025</div>
+            <div class="month-group">
+                <div class="month-title">Dezembro</div>
+                <ul class="article-list">
+                    <li class="article-item" data-tags="ética,auditoria,consultoria,conflito de interesses,má-fé,transparência,lgpd,compliance,segurança,ti,cara core informática,mercado,relato real,proteção,perguntas certas">
+                        <span class="article-date">30/12</span>
+                        <a class="article-title" href="articles/2025_12_30_article_65.html">
+                            Quando os Interesses se Cruzam: Uma Reflexão sobre Ética em Auditoria de Sistemas
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="outlook,e-mail,microsoft 365,suporte técnico,python,automação,new outlook,troubleshooting,ost,diagnóstico,cara core informática">
+                        <span class="article-date">25/12</span>
+                        <a class="article-title" href="articles/2025_12_25_article_64.html">
+                            Quando o Outlook Decide Reinventar a Roda: Uma História Real de Suporte Técnico
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="power automate,microsoft 365,automação,produtividade,sharepoint,teams,workflows,low-code,cara core informática">
+                        <span class="article-date">18/12</span>
+                        <a class="article-title" href="articles/2025_12_18_article_63.html">
+                            Como o Power Automate Transforma o Dia a Dia das Equipes no Microsoft 365
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="power automate,microsoft 365,automação,sharepoint,teams,workflows,low-code,otimização,debugging,cara core informática">
+                        <span class="article-date">10/12</span>
+                        <a class="article-title" href="articles/2025_12_10_article_62.html">
+                            Automatizando Notificações com Power Automate: Uma Jornada de Correção e Otimização
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="redis,cache,ecommerce,retirada local,performance,escalabilidade,cara core informática,caracore hub,ttl,pubsub">
+                        <span class="article-date">02/12</span>
+                        <a class="article-title" href="articles/2025_12_02_article_61.html">
+                            Redis como Solução de Cache para E-commerce em Cidades Médias Brasileiras
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="month-group">
+                <div class="month-title">Novembro</div>
+                <ul class="article-list">
+                    <li class="article-item" data-tags="saas,sistema de licenças,assinaturas,receita recorrente,escalabilidade,transformação digital,cara core informática,caracore seed,jakarta ee,postgresql,docker">
+                        <span class="article-date">30/11</span>
+                        <a class="article-title" href="articles/2025_11_30_article_60.html">
+                            A Jornada de Construir um Sistema de Controle de Assinaturas: Do Zero à Produção
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="oidc,pkce,segurança,identidade digital,autenticação,transformação digital,cara core informática,brasil,experiência do usuário">
+                        <span class="article-date">24/11</span>
+                        <a class="article-title" href="articles/2025_11_24_article_59.html">
+                            Quando o Login Deixa de Ser Só um Login
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="saas,excel,vba,transformação digital,logística,modernização,planilha mestra,negócios,cloud,parceria,consultoria,cara core informática">
+                        <span class="article-date">15/11</span>
+                        <a class="article-title" href="articles/2025_11_15_article_58.html">
+                            A Saga da Planilha Mestra: Do Excel ao SaaS, a Transformação de uma Empresa
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="segurança,lgpd,criptografia,auditoria,incidentes,storytelling,ceo,vantagem competitiva,dados,compliance,gestão,estratégia,leadership,transformação digital">
+                        <span class="article-date">09/11</span>
+                        <a class="article-title" href="articles/2025_11_09_article_57.html">
+                            A Jornada de Ana: Como Uma CEO Transformou a Segurança de Dados em Vantagem Competitiva
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="ia,chatgpt,oidc,oauth2,autenticação,limitações,aprendizado,transparência,debugging,gestão">
+                        <span class="article-date">03/11</span>
+                        <a class="article-title" href="articles/2025_11_03_article_56.html">
+                            Quando a IA Não Tem Todas as Respostas: A Jornada Real do OIDC
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="month-group">
+                <div class="month-title">Outubro</div>
+                <ul class="article-list">
+                    <li class="article-item" data-tags="oidc,oauth2,autenticação,javascript,segurança,google auth,microsoft entra,openid connect,implementação,debugging">
+                        <span class="article-date">31/10</span>
+                        <a class="article-title" href="articles/2025_10_31_article_55.html">
+                            A Jornada OIDC: Como Transformamos a Autenticação da Cara Core
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="oidc,oauth2,jwt,pkce,jwks,python,nodejs,github actions,aws,ci,cd,implementação,técnico">
+                        <span class="article-date">27/10</span>
+                        <a class="article-title" href="articles/2025_10_27_article_54.html">
+                            OIDC na prática — exemplos técnicos e implementação (Parte II)
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="microsoft 365,ms365,teams,sharepoint,onedrive,planner,power automate,forms,pme,produtividade">
+                        <span class="article-date">20/10</span>
+                        <a class="article-title" href="articles/2025_10_20_article_53.html">
+                            Microsoft 365 para PMEs — colaboração simples, resultados reais
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="oidc,oauth2,sso,jwt,segurança,identidade,login,autenticação">
+                        <span class="article-date">15/10</span>
+                        <a class="article-title" href="articles/2025_10_15_article_52.html">
+                            OIDC descomplicado — como acabar com o caos de senhas (Parte I)
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">10/10</span>
+                        <a class="article-title" href="articles/2025_10_10_article_51.html">
+                            Gerenciando EC2 — AWS CDK (Python) para EC2/ALB/RDS + GitHub Actions (Parte II)
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">03/10</span>
+                        <a class="article-title" href="articles/2025_10_03_article_50.html">
+                            Gerenciando EC2 — Utilizando Tomcat/WildFly e PostgreSQL com AWS CDK (Parte I)
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="month-group">
+                <div class="month-title">Setembro</div>
+                <ul class="article-list">
+                    <li class="article-item">
+                        <span class="article-date">30/09</span>
+                        <a class="article-title" href="articles/2025_09_30_article_49.html">
+                            Decisões mais rápidas com Python: relatórios e comparações automáticas ao alcance do negócio
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">23/09</span>
+                        <a class="article-title" href="articles/2025_09_23_article_48.html">
+                            Mudança de ferramenta de roteamento REST: como planejar para não travar seu projeto
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">16/09</span>
+                        <a class="article-title" href="articles/2025_09_16_article_47.html">
+                            Mapeando Endpoints com Python e Swagger: Solução Prática para Integração de HUB de Varejos Online
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">09/09</span>
+                        <a class="article-title" href="articles/2025_09_09_article_46.html">
+                            Inovação em Gestão de Conteúdo: Python para Blogs Automatizados
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">02/09</span>
+                        <a class="article-title" href="articles/2025_09_02_article_45.html">
+                            Áreas Quentes do Currículo e o Poder da Tecnologia ATS: Evolução do Sistema
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="month-group">
+                <div class="month-title">Agosto</div>
+                <ul class="article-list">
+                    <li class="article-item">
+                        <span class="article-date">31/08</span>
+                        <a class="article-title" href="articles/2025_08_31_article_44.html">
+                            MVP Sistema Odontológico: A Combinação Perfeita entre Experiência Humana e IA
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">25/08</span>
+                        <a class="article-title" href="articles/2025_08_25_article_43.html">
+                            Dashboard de Vendas em Tempo Real com Python, FastAPI e WebSockets
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">18/08</span>
+                        <a class="article-title" href="articles/2025_08_18_article_42.html">
+                            Estratégias de Versionamento e Deploy Contínuo para Conteúdo Técnico
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">11/08</span>
+                        <a class="article-title" href="articles/2025_08_11_article_41.html">
+                            Monitoramento Proativo com Python: Logs Inteligentes e Alertas Automatizados
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">04/08</span>
+                        <a class="article-title" href="articles/2025_08_04_article_40.html">
+                            Como o Python Automatizou a Logística de Entregas: Case Real de Transformação Digital
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="month-group">
+                <div class="month-title">Julho</div>
+                <ul class="article-list">
+                    <li class="article-item">
+                        <span class="article-date">16/07</span>
+                        <a class="article-title" href="articles/2025_07_16_article_39.html">
+                            Como Automatizar sua Busca por Emprego com Python: Sending_CV - A Solução que Transformou a Carreira de Milhares
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">06/07</span>
+                        <a class="article-title" href="articles/2025_07_06_article_38.html">
+                            Automação Inteligente com Python: Como o 'SEO Article Builder' Está Transformando a Publicação de Conteúdo Técnico
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="month-group">
+                <div class="month-title">Junho</div>
+                <ul class="article-list">                   
+                    <li class="article-item">
+                        <span class="article-date">29/06</span>
+                        <a class="article-title" href="articles/2025_06_29_article_37.html">
+                            Automação de Auditoria Financeira com Python: Uma Experiência Prática
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">22/06</span>
+                        <a class="article-title" href="articles/2025_06_22_article_36.html">
+                            A Hipocrisia Digital: Como As Plataformas Digitais Contribuem para a Invisibilidade dos Pequenos Negócios
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">15/06</span>
+                        <a class="article-title" href="articles/2025_06_15_article_35.html">
+                            Monitoramento de Redes Wi-Fi e Segurança Digital para Pequenas Empresas
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">08/06</span>
+                        <a class="article-title" href="articles/2025_06_08_article_34.html">
+                            Python: Mais Versátil e Popular que o VBA
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="month-group">
+                <div class="month-title">Maio</div>
+                <ul class="article-list">
+                    <li class="article-item">
+                        <span class="article-date">06/05</span>
+                        <a class="article-title" href="articles/2025_05_06_article_33.html">
+                            Suporte Remoto: Por que o Suporte Especializado
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="year-group">
+            <div class="year-title">2024</div>
+            
+            <div class="month-group">
+                <div class="month-title">Outubro</div>
+                <ul class="article-list">
+                    <li class="article-item">
+                        <span class="article-date">02/10</span>
+                        <a class="article-title" href="articles/2024_10_02_article_32.html">
+                            A Importância da Documentação em Projetos de TI
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="month-group">
+                <div class="month-title">Setembro</div>
+                <ul class="article-list">
+                    <li class="article-item">
+                        <span class="article-date">23/09</span>
+                        <a class="article-title" href="articles/2024_09_23_article_31.html">
+                            Automação de Tarefas com VBA
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">16/09</span>
+                        <a class="article-title" href="articles/2024_09_16_article_30.html">
+                            A Importância de um Suporte Terceirizado para a Utilização dos Serviços do Microsoft 365
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">09/09</span>
+                        <a class="article-title" href="articles/2024_09_09_article_29.html">
+                            Facilidades de Utilização do Microsoft 365 para Gestão de Equipes de Trabalho
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">01/09</span>
+                        <a class="article-title" href="articles/2024_09_01_article_28.html">
+                            Garantia de Qualidade em Aplicações Web e Desktop
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="month-group">
+                <div class="month-title">Agosto</div>
+                <ul class="article-list">
+                    <li class="article-item">
+                        <span class="article-date">26/08</span>
+                        <a class="article-title" href="articles/2024_08_26_article_27.html">
+                            VBA com API RESTful
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">18/08</span>
+                        <a class="article-title" href="articles/2024_08_18_article_26.html">
+                            Eficiência e Precisão na Análise de Dados
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">11/08</span>
+                        <a class="article-title" href="articles/2024_08_11_article_25.html">
+                            Automatização e Análise de Dados de Vendas
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">04/08</span>
+                        <a class="article-title" href="articles/2024_08_04_article_24.html">
+                            Gestão de Condomínios com Microsoft Office
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="month-group">
+                <div class="month-title">Julho</div>
+                <ul class="article-list">
+                    <li class="article-item">
+                        <span class="article-date">28/07</span>
+                        <a class="article-title" href="articles/2024_07_28_article_23.html">
+                            Microsoft Office como um CRM
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">21/07</span>
+                        <a class="article-title" href="articles/2024_07_21_article_22.html">
+                            Utilizando VBA para Otimizar a Logística e Gestão de Estoque
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">14/07</span>
+                        <a class="article-title" href="articles/2024_07_14_article_21.html">
+                            O Uso do VBA para Ajudar um Sistema SAP com Auditoria e Monitoramento de Impostos
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">07/07</span>
+                        <a class="article-title" href="articles/2024_07_07_article_20.html">
+                            Cálculos Tributários no Varejo com VBA
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="month-group">
+                <div class="month-title">Junho</div>
+                <ul class="article-list">
+                    <li class="article-item">
+                        <span class="article-date">30/06</span>
+                        <a class="article-title" href="articles/2024_06_30_article_19.html">
+                            A Segurança e Manutenção de Computadores da Sua Empresa
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">23/06</span>
+                        <a class="article-title" href="articles/2024_06_23_article_18.html">
+                            A Importância do Planejamento de Backup
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">16/06</span>
+                        <a class="article-title" href="articles/2024_06_16_article_17.html">
+                            Aplicação de Programação VBA para Controle Administrativo
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">10/06</span>
+                        <a class="article-title" href="articles/2024_06_10_article_16.html">
+                            Revolucionar a Gestão de Processos Judiciais e Clientes
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">02/06</span>
+                        <a class="article-title" href="articles/2024_06_02_article_15.html">
+                            Automação de Relatórios e Análise de Desempenho de Vendas
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="month-group">
+                <div class="month-title">Maio</div>
+                <ul class="article-list">
+                    <li class="article-item">
+                        <span class="article-date">26/05</span>
+                        <a class="article-title" href="articles/2024_05_26_article_14.html">
+                            O Futuro do VBA em um Mundo Impulsionado pela IA e "Baixo Código"
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">19/05</span>
+                        <a class="article-title" href="articles/2024_05_19_article_13.html">
+                            Automação de Processos com VBA
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">12/05</span>
+                        <a class="article-title" href="articles/2024_05_12_article_12.html">
+                            Simplificação de Cálculo de Tributos com Programação VBA
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">05/05</span>
+                        <a class="article-title" href="articles/2024_05_05_article_11.html">
+                            Gestão de Rotas para Logística com Aplicação do VBA
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="month-group">
+                <div class="month-title">Abril</div>
+                <ul class="article-list">
+                    <li class="article-item">
+                        <span class="article-date">28/04</span>
+                        <a class="article-title" href="articles/2024_04_28_article_10.html">
+                            Sistema de Controle de Movimentação de Inventário
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">19/04</span>
+                        <a class="article-title" href="articles/2024_04_19_article_09.html">
+                            Cálculos de Tributos com Programação VBA
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">14/04</span>
+                        <a class="article-title" href="articles/2024_04_14_article_08.html">
+                            Integrando Dados: Excel e Banco de Dados Remoto
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">07/04</span>
+                        <a class="article-title" href="articles/2024_04_07_article_07.html">
+                            Controle de Qualidade de Aplicações
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="month-group">
+                <div class="month-title">Março</div>
+                <ul class="article-list">
+                    <li class="article-item">
+                        <span class="article-date">26/03</span>
+                        <a class="article-title" href="articles/2024_03_26_article_06.html">
+                            Sistema de Despesas com Envio de Boletos por E-mail
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">24/03</span>
+                        <a class="article-title" href="articles/2024_03_24_article_05.html">
+                            Soluções dentro do MS Office
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">17/03</span>
+                        <a class="article-title" href="articles/2024_03_17_article_04.html">
+                            Cálculo de Logística com VBA
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">10/03</span>
+                        <a class="article-title" href="articles/2024_03_10_article_03.html">
+                            Linguagens de Automação: VBA vs Python
+                        </a>
+                    </li>
+                    <li class="article-item">
+                        <span class="article-date">04/03</span>
+                        <a class="article-title" href="articles/2024_03_04_article_02.html">
+                            Mala-direta - Marketing Digital
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="month-group">
+                <div class="month-title">Fevereiro</div>
+                <ul class="article-list">
+                    <li class="article-item">
+                        <span class="article-date">12/02</span>
+                        <a class="article-title" href="articles/2024_02_12_article_01.html">
+                            Automatização de Processos com VBA: mais eficiência no suporte da Cara Core Informática
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="../../index.html" class="back-link">← Voltar à Sala de Operações</a>
+        <footer class="footer">
+                <p class="resguardo">Estes materiais são públicos e estão no domínio da matriz Cara Core. São apenas os conteúdos que publicamos nas redes sociais, em obediência à rede detentora (LinkedIn) — termos de uso e políticas da plataforma.</p>
+        <div class="ops-note" role="note" aria-label="Reposicionamento editorial conjunto">
+            <strong>Reposicionamento conjunto ativo:</strong> os artigos da Cara Core e do canal tecnico pessoal estao alinhados ao ciclo 04/06/2026 a 04/06/2029, em dois ciclos equilateros, com foco operacional e cadencia enxuta. Detalhes em <a href="../../regis/REPOSICIONAMENTO_CONJUNTO_CC_CM_2026_2029.html">REPOSICIONAMENTO_CONJUNTO_CC_CM_2026_2029.html</a>.
+            <div class="cycle-links">
+                <a href="ciclo-ativo.html">Ver somente ciclo ativo</a>
+                <a href="../../../publications/nota_mudanca_ancora_ciclos_2026_2029.html">Ler nota institucional</a>
+            </div>
+        </div>
+                <p>
+                        © 2025 Cara Core Informática. Todos os direitos reservados.
+                        <br>
+                </p>
+        </footer>
+        <script>
+            (function(){
+                const input = document.getElementById('searchInput');
+                const chips = Array.from(document.querySelectorAll('.chip'));
+                const resultCount = document.getElementById('resultCount');
+                const summaryCount = document.getElementById('filterSummaryCount');
+
+                const normalize = (s) => (s || '').toString().toLowerCase()
+                    .normalize('NFD').replace(/\p{Diacritic}/gu, '');
+
+                const TAG_RULES = [
+                    { tag: 'aws', patterns: ['aws','alb','ec2','rds','route 53','acm'] },
+                    { tag: 'cdk', patterns: ['cdk'] },
+                    { tag: 'python', patterns: ['python'] },
+                    { tag: 'ec2', patterns: ['ec2'] },
+                    { tag: 'alb', patterns: ['alb'] },
+                    { tag: 'rds', patterns: ['rds'] },
+                    { tag: 'postgresql', patterns: ['postgresql','postgres'] },
+                    { tag: 'github actions', patterns: ['github actions'] },
+                    { tag: 'oidc', patterns: ['oidc'] },
+                    { tag: 'iac', patterns: ['iac','infraestrutura como codigo'] },
+                    { tag: 'vba', patterns: ['vba'] },
+                    { tag: 'microsoft 365', patterns: ['microsoft 365','ms office','office'] },
+                    { tag: 'excel', patterns: ['excel'] },
+                    { tag: 'logistica', patterns: ['logistica','entregas','rotas','estoque'] },
+                    { tag: 'websockets', patterns: ['websocket','websockets'] },
+                    { tag: 'ia', patterns: ['ia','inteligencia artificial'] },
+                    { tag: 'seo', patterns: ['seo'] },
+                    { tag: 'auditoria', patterns: ['auditoria'] },
+                    { tag: 'financeiro', patterns: ['financeiro'] },
+                    { tag: 'redes', patterns: ['redes','wi-fi','wifi'] },
+                    { tag: 'seguranca', patterns: ['seguranca','segurança'] },
+                    { tag: 'backup', patterns: ['backup'] },
+                    { tag: 'inventario', patterns: ['inventario'] },
+                    { tag: 'sap', patterns: ['sap'] },
+                    { tag: 'impostos', patterns: ['impostos','tribut'] },
+                    { tag: 'crm', patterns: ['crm'] },
+                    { tag: 'marketing', patterns: ['marketing','mala-direta','mala direta'] },
+                    { tag: 'redis', patterns: ['redis'] },
+                    { tag: 'cache', patterns: ['cache'] },
+                    { tag: 'ecommerce', patterns: ['ecommerce','e-commerce'] },
+                    { tag: 'retirada local', patterns: ['retirada local','retirada','pickup'] },
+                    { tag: 'performance', patterns: ['performance','latencia','latência'] },
+                    { tag: 'escalabilidade', patterns: ['escalabilidade','escala'] },
+                    { tag: 'pubsub', patterns: ['pubsub','pub/sub'] },
+                    { tag: 'ttl', patterns: ['ttl','time to live'] },
+                    { tag: 'power automate', patterns: ['power automate','automate'] },
+                    { tag: 'sharepoint', patterns: ['sharepoint'] },
+                    { tag: 'teams', patterns: ['teams','microsoft teams'] },
+                    { tag: 'automacao', patterns: ['automacao','automação','workflow','workflows'] },
+                    { tag: 'outlook', patterns: ['outlook','new outlook'] },
+                    { tag: 'e-mail', patterns: ['e-mail','email','correio eletronico'] },
+                    { tag: 'suporte tecnico', patterns: ['suporte tecnico','suporte técnico','troubleshooting','diagnostico','diagnóstico'] },
+                    { tag: 'pdv', patterns: ['pdv','ponto de venda','pos'] },
+                    { tag: 'reforma tributária', patterns: ['reforma tributária','reforma tributaria','cbs','ibs'] },
+                    { tag: 'pix split', patterns: ['pix split','split','taxa de consumo'] },
+                    { tag: 'varejo', patterns: ['varejo','retail','comércio','comercio'] }
+                ].map(rule => ({ tag: normalize(rule.tag), patterns: rule.patterns.map(p => normalize(p)) }));
+
+                const articleItems = Array.from(document.querySelectorAll('.article-item'));
+                const monthGroups = Array.from(document.querySelectorAll('.month-group'));
+                const yearGroups = Array.from(document.querySelectorAll('.year-group'));
+
+                const getSelectedTags = () => chips.filter(c => c.getAttribute('aria-pressed') === 'true').map(c => normalize(c.dataset.tag));
+
+                function deriveTags(text, dataTagsStr){
+                    const base = normalize((text || '') + ' ' + (dataTagsStr || ''));
+                    const set = new Set();
+                    // from data-tags
+                    (dataTagsStr || '').split(',').map(s => normalize(s.trim())).filter(Boolean).forEach(t => set.add(t));
+                    // from rules
+                    TAG_RULES.forEach(rule => {
+                        if (rule.patterns.some(p => base.includes(p))) set.add(rule.tag);
+                    });
+                    return Array.from(set);
+                }
+
+                function applyFilter(){
+                    const q = normalize(input.value);
+                    const required = getSelectedTags();
+                    let visibleCount = 0;
+
+                    // Filter items
+                    articleItems.forEach(li => {
+                        const titleEl = li.querySelector('.article-title');
+                        const titleText = titleEl ? titleEl.textContent : '';
+                        const dataTags = li.dataset.tags || '';
+                        const tagsArr = deriveTags(titleText, dataTags);
+                        const baseText = normalize(titleText + ' ' + dataTags + ' ' + tagsArr.join(' '));
+                        const textMatch = !q || baseText.includes(q);
+                        const tagsMatch = required.every(t => tagsArr.includes(t));
+                        const show = textMatch && tagsMatch;
+                        li.classList.toggle('is-hidden', !show);
+                        if (show) visibleCount++;
+                    });
+
+                    // Hide months with no visible items
+                    monthGroups.forEach(mg => {
+                        const items = Array.from(mg.querySelectorAll('.article-item'));
+                        const anyVisible = items.some(li => !li.classList.contains('is-hidden'));
+                        mg.classList.toggle('is-hidden', !anyVisible);
+                    });
+
+                    // Hide years with no visible months
+                    yearGroups.forEach(yg => {
+                        const months = Array.from(yg.querySelectorAll(':scope > .month-group'));
+                        const anyVisibleMonth = months.some(m => !m.classList.contains('is-hidden'));
+                        yg.classList.toggle('is-hidden', !anyVisibleMonth);
+                    });
+
+                    const label = visibleCount + ' artigo' + (visibleCount === 1 ? '' : 's');
+                    if (resultCount) resultCount.textContent = label;
+                    if (summaryCount) summaryCount.textContent = '• ' + label;
+                }
+
+                // Events
+                input.addEventListener('input', applyFilter);
+                chips.forEach(chip => {
+                    chip.addEventListener('click', () => {
+                        const current = chip.getAttribute('aria-pressed') === 'true';
+                        chip.setAttribute('aria-pressed', (!current).toString());
+                        applyFilter();
+                    });
+                });
+                const resetBtn = document.getElementById('resetFilters');
+                if (resetBtn){
+                    resetBtn.addEventListener('click', () => {
+                        input.value = '';
+                        chips.forEach(chip => chip.setAttribute('aria-pressed','false'));
+                        applyFilter();
+                        input.focus();
+                    });
+                }
+
+                // Initial filter
+                applyFilter();
+            })();
+        </script>
+</body>
+</html>

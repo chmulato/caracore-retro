@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Segurança de Senhas no Celular: Por Que Armazenar Localmente é a Melhor Decisão — Cara Core Informática</title>
+	<meta name="description" content="Descubra por que armazenar senhas localmente no celular é mais seguro que depender de serviços em nuvem. Entenda o modelo híbrido do Ink Agenda com proteção em camadas." />
+	<meta name="keywords" content="Segurança de Senhas, Armazenamento Local, Privacidade, Criptografia, SHA-256, SQLite, Ink Agenda, Cara Core Informática" />
+	<meta name="author" content="Cara Core Informática" />
+	<link rel="canonical" href="https://caracore.com.br/sala/redes/retro/articles/2026_01_30_article_70.html" />
+	<!-- Open Graph -->
+	<meta property="og:title" content="Segurança de Senhas no Celular: Por Que Armazenar Localmente é a Melhor Decisão" />
+	<meta property="og:description" content="Descubra por que armazenar senhas localmente no celular é mais seguro que depender de serviços em nuvem. Entenda o modelo híbrido do Ink Agenda com proteção em camadas." />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="https://caracore.com.br/sala/redes/retro/articles/2026_01_30_article_70.html" />
+	<meta property="og:image" content="https://caracore.com.br/sala/redes/retro/articles/assets/img/article_70_01.png" />
+	<meta property="og:image:alt" content="Segurança de Senhas, Armazenamento Local" />
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Segurança de Senhas no Celular: Por Que Armazenar Localmente é a Melhor Decisão" />
+	<meta name="twitter:description" content="Descubra por que armazenar senhas localmente no celular é mais seguro que depender de serviços em nuvem. Entenda o modelo híbrido do Ink Agenda com proteção em camadas." />
+	<meta name="twitter:image" content="https://caracore.com.br/sala/redes/retro/articles/assets/img/article_70_01.png" />
+	<meta name="twitter:image:alt" content="Segurança de Senhas, Armazenamento Local" />
+	<link rel="stylesheet" href="assets/css/articles.css" />
+	<style>
+		body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif; line-height:1.65; color:#1f2937; margin:0; }
+		.container { max-width: 980px; margin:0 auto; padding:2rem 1.25rem 4rem; }
+		h1 { line-height:1.2; font-size:clamp(1.9rem,2.4vw,2.5rem); margin-top:0; }
+		h2 { margin-top:2.5rem; line-height:1.3; color:#111827; border-bottom:2px solid #e5e7eb; padding-bottom:.5rem; }
+		h3 { margin-top:1.75rem; color:#374151; }
+		pre { background: #f5f5f5; color:#1f2937; padding:1rem 1.1rem; overflow:auto; border-radius:6px; border:1px solid #e5e7eb; font-size:.95rem; font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; }
+		code { font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; color: inherit; background: transparent; }
+		figure img { max-width:100%; height:auto; }
+		ul,ol { padding-left:1.3rem; }
+		ul li, ol li { margin-bottom:.65rem; }
+		.back-link { text-decoration:none; font-size:.85rem; color:#2563eb; }
+		.note { background:#fef3c7; padding:1rem 1.25rem; border-left:4px solid #d97706; border-radius:6px; margin:1.5rem 0; }
+		.alert { background:#fee2e2; padding:1rem 1.25rem; border-left:4px solid #dc2626; border-radius:6px; margin:1.5rem 0; }
+		.insight { background:#dbeafe; padding:1rem 1.25rem; border-left:4px solid #2563eb; border-radius:6px; margin:1.5rem 0; }
+		.quote-box { background:#f9fafb; padding:1.25rem 1.5rem; border-left:4px solid #6b7280; border-radius:6px; font-style:italic; margin:1.5rem 0; }
+		hr { border:none; border-top:1px solid #d1d5db; margin:3rem 0; }
+		blockquote { font-style: italic; border-left: 3px solid #e5e7eb; padding-left: 1.25rem; margin-left: 0; background:#f9fafb; padding:1rem 1.25rem; border-radius:6px; }
+		@media (max-width:640px){ pre { font-size:.78rem; padding:.85rem .9rem; } }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<a class="back-link" href="../articles.html">&larr; Voltar para publicações</a>
+		<img src="assets/img/article_70_01.png" alt="Segurança de Senhas, Armazenamento Local" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+		<h1>Segurança de Senhas no Celular: Por Que Armazenar Localmente é a Melhor Decisão</h1>
+		<div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
+			<img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
+			<span style="margin-left: 1.5rem;">30 de janeiro de 2026</span>
+		</div>
+
+		<div class="note"><strong>Tempo estimado de leitura:</strong> ~10 minutos</div>
+
+		<h2>Seu Celular Sabe Mais Sobre Você do Que Você Imagina</h2>
+		<p>Você já parou para pensar quantas senhas digita por dia no seu celular? E-mail, banco, redes sociais, aplicativos de trabalho... Cada uma dessas senhas é uma chave que abre uma porta para sua vida digital. Agora imagine se todas essas chaves estivessem penduradas em um mural público, na "nuvem", onde qualquer um com acesso suficiente poderia copiá-las.</p>
+
+		<p>Parece exagero? Infelizmente, não é.</p>
+
+		<p>Este artigo explora uma decisão arquitetural crítica que tomamos no desenvolvimento do aplicativo <strong>Ink Agenda</strong>: armazenar senhas de forma protegida no banco de dados LOCAL do dispositivo, ao invés de depender exclusivamente de serviços em nuvem. Vamos entender por que isso importa para sua privacidade e segurança.</p>
+
+		<h2>O Problema com a Nuvem: Quando a Conveniência Vira Vulnerabilidade</h2>
+
+		<h3>A Ilusão da Segurança na Nuvem</h3>
+
+		<p>Quando você usa um serviço de autenticação em nuvem (como Firebase Auth, Auth0, ou similares), suas credenciais são transmitidas pela internet até um servidor remoto. Este servidor valida suas credenciais e retorna um "token" de acesso.</p>
+
+		<p>Parece seguro, certo? Afinal, empresas como Google e Microsoft investem bilhões em segurança. Mas há problemas fundamentais que a maioria dos usuários ignora:</p>
+
+		<h3>1. Interceptação de Tráfego</h3>
+
+		<p>Cada vez que você faz login, sua senha viaja pela internet. Mesmo com HTTPS, existem cenários onde essa comunicação pode ser interceptada:</p>
+
+		<ul>
+			<li>Redes Wi-Fi públicas comprometidas</li>
+			<li>Ataques "man-in-the-middle" em redes corporativas</li>
+			<li>Certificados SSL fraudulentos</li>
+			<li>Vulnerabilidades no próprio protocolo TLS</li>
+		</ul>
+
+		<h3>2. Vazamentos de Dados em Larga Escala</h3>
+
+		<p>Grandes provedores de nuvem são alvos constantes de hackers. Alguns vazamentos históricos incluem:</p>
+
+		<ul>
+			<li><strong>Yahoo (2013-2014):</strong> 3 bilhões de contas</li>
+			<li><strong>LinkedIn (2012):</strong> 164 milhões de senhas</li>
+			<li><strong>Adobe (2013):</strong> 153 milhões de registros</li>
+			<li><strong>Facebook (2019):</strong> 533 milhões de usuários</li>
+		</ul>
+
+		<h3>3. Acesso Governamental e Corporativo</h3>
+
+		<p>Provedores de nuvem estão sujeitos a:</p>
+
+		<ul>
+			<li>Ordens judiciais para entregar dados de usuários</li>
+			<li>Programas de vigilância em massa (PRISM, XKeyscore)</li>
+			<li>Políticas internas que permitem acesso de funcionários</li>
+			<li>Termos de serviço que concedem direitos amplos sobre seus dados</li>
+		</ul>
+
+		<h3>O Que a Nuvem Sabe Sobre Você</h3>
+
+		<p>Quando você usa autenticação em nuvem, o provedor tem acesso a:</p>
+
+		<ul>
+			<li>Seu e-mail (identificador único)</li>
+			<li>Endereço IP (sua localização aproximada)</li>
+			<li>Tipo de dispositivo e sistema operacional</li>
+			<li>Horários de acesso (seus hábitos)</li>
+			<li>Frequência de uso (quanto você depende do serviço)</li>
+			<li>Padrões de comportamento (análise de uso)</li>
+		</ul>
+
+		<p>Essas informações, agregadas ao longo do tempo, criam um perfil detalhado da sua vida digital. E esse perfil tem valor comercial imenso.</p>
+
+		<h2>A Solução Local: Seu Dispositivo, Suas Regras</h2>
+
+		<h3>Por Que Escolhemos Armazenamento Local</h3>
+
+		<p>No Ink Agenda, tomamos uma decisão arquitetural deliberada: após o primeiro login bem-sucedido via servidor, armazenamos as credenciais de forma PROTEGIDA no banco de dados SQLite LOCAL do dispositivo.</p>
+
+		<p>Isso significa que:</p>
+
+		<ol>
+			<li><strong>Funcionamento Offline:</strong> Você pode acessar o aplicativo mesmo sem internet. Seus dados e sua identidade permanecem disponíveis.</li>
+			<li><strong>Menor Exposição à Rede:</strong> Após o login inicial, não há necessidade de enviar credenciais pela internet repetidamente.</li>
+			<li><strong>Controle Total:</strong> Seus dados de autenticação ficam no SEU dispositivo, sob SEU controle.</li>
+		</ol>
+
+		<h3>Como Protegemos as Senhas Localmente</h3>
+
+		<p>Armazenar senhas localmente seria extremamente perigoso se feito de forma ingênua. Por isso, implementamos múltiplas camadas de proteção:</p>
+
+		<h3>Camada 1: Hash SHA-256</h3>
+
+		<p>A senha NUNCA é armazenada em texto plano. Usamos o algoritmo SHA-256, que transforma qualquer senha em uma sequência de 64 caracteres hexadecimais:</p>
+
+		<pre>"minhasenha123" → "a5f3c2d1e9b8..."</pre>
+
+		<p>Este processo é IRREVERSÍVEL. Não existe forma matemática de recuperar a senha original a partir do hash.</p>
+
+		<h3>Camada 2: Salt Único por Usuário</h3>
+
+		<p>Mesmo com hash, existe um problema: duas pessoas com a mesma senha teriam o mesmo hash, permitindo ataques de "rainbow table". Por isso, adicionamos um "salt" (tempero) único para cada usuário:</p>
+
+		<pre>hash = SHA256(senha + salt_único_do_usuário)</pre>
+
+		<p>Assim, mesmo que dois usuários tenham a senha "123456", seus hashes serão completamente diferentes.</p>
+
+		<h3>Camada 3: Armazenamento Seguro do SQLite</h3>
+
+		<p>O banco SQLite fica em uma área protegida do sistema operacional:</p>
+
+		<ul>
+			<li><strong>Android:</strong> pasta /data/data/[app]/ (acesso restrito)</li>
+			<li><strong>iOS:</strong> sandbox do aplicativo (isolado)</li>
+			<li><strong>Windows:</strong> pasta AppData do usuário</li>
+		</ul>
+
+		<p>Sem root/jailbreak, outros aplicativos NÃO conseguem acessar esses dados.</p>
+
+		<h3>Camada 4: Criptografia do Sistema Operacional</h3>
+
+		<p>Dispositivos modernos criptografam todo o armazenamento:</p>
+
+		<ul>
+			<li><strong>Android:</strong> Full Disk Encryption (FDE) ou File-Based Encryption (FBE)</li>
+			<li><strong>iOS:</strong> Data Protection com Secure Enclave</li>
+			<li><strong>Windows:</strong> BitLocker ou Windows Hello</li>
+		</ul>
+
+		<p>Mesmo que alguém roube seu dispositivo, sem a senha de desbloqueio, os dados permanecem inacessíveis.</p>
+
+		<h2>Análise de Riscos: Comparando Cenários</h2>
+
+		<h3>Cenário 1: Autenticação Apenas em Nuvem</h3>
+
+		<strong>Riscos:</strong>
+		<ul>
+			<li>Dependência de conexão com internet</li>
+			<li>Exposição a vazamentos de dados em larga escala</li>
+			<li>Vigilância por parte do provedor de serviço</li>
+			<li>Vulnerabilidade a ataques de rede</li>
+		</ul>
+
+		<strong>Benefícios:</strong>
+		<ul>
+			<li>Implementação mais simples</li>
+			<li>Sincronização automática entre dispositivos</li>
+			<li>Recuperação de senha via e-mail</li>
+		</ul>
+
+		<h3>Cenário 2: Autenticação Apenas Local</h3>
+
+		<strong>Riscos:</strong>
+		<ul>
+			<li>Perda total de dados se dispositivo for perdido/danificado</li>
+			<li>Sem sincronização entre dispositivos</li>
+			<li>Complexidade de gerenciamento de múltiplas instalações</li>
+		</ul>
+
+		<strong>Benefícios:</strong>
+		<ul>
+			<li>Privacidade máxima</li>
+			<li>Funcionamento 100% offline</li>
+			<li>Sem exposição a vazamentos externos</li>
+		</ul>
+
+		<h3>Cenário 3: Modelo Híbrido (Nossa Escolha)</h3>
+
+		<p>O Ink Agenda usa um modelo híbrido inteligente:</p>
+
+		<ol>
+			<li>Login inicial via servidor (validação centralizada)</li>
+			<li>Cache de credenciais protegidas localmente (conveniência + privacidade)</li>
+			<li>Fallback para autenticação offline (resiliência)</li>
+		</ol>
+
+		<div class="insight">
+			<strong>Riscos mitigados:</strong>
+			<ul style="margin-top:1rem; margin-bottom:0;">
+				<li>Se o servidor cair → login offline funciona</li>
+				<li>Se o dispositivo for roubado → hash + criptografia protegem</li>
+				<li>Se a rede for comprometida → credenciais não trafegam novamente</li>
+			</ul>
+		</div>
+
+		<h2>A Espionagem Que Você Não Vê</h2>
+
+		<h3>Big Tech e Seus Dados</h3>
+
+		<p>As grandes empresas de tecnologia construíram impérios sobre um modelo de negócio simples: coletar dados, criar perfis, vender publicidade direcionada.</p>
+
+		<p>Quando você usa autenticação de um provedor de nuvem gratuito, você não é o cliente. Você é o PRODUTO.</p>
+
+		<h3>Google (Firebase Auth)</h3>
+
+		<ul>
+			<li>Sabe quando você acessa cada aplicativo</li>
+			<li>Correlaciona com sua conta Gmail, YouTube, Maps</li>
+			<li>Cria um perfil para publicidade direcionada</li>
+			<li>Pode ser obrigado a entregar dados ao governo americano</li>
+		</ul>
+
+		<h3>Facebook (Meta)</h3>
+
+		<ul>
+			<li>Rastreia logins mesmo fora do Facebook</li>
+			<li>Compartilha dados entre WhatsApp, Instagram, Messenger</li>
+			<li>Histórico de escândalos de privacidade (Cambridge Analytica)</li>
+		</ul>
+
+		<h3>Apple</h3>
+
+		<ul>
+			<li>Melhor histórico de privacidade</li>
+			<li>Mas ainda sujeito a ordens judiciais</li>
+			<li>iCloud Backup pode incluir senhas</li>
+		</ul>
+
+		<h3>O Mito do "Não Tenho Nada a Esconder"</h3>
+
+		<p>Esta é a resposta mais comum quando se fala em privacidade. Mas considere:</p>
+
+		<ul>
+			<li>Você fecharia a porta do banheiro se não tivesse nada a esconder?</li>
+			<li>Você daria suas senhas bancárias para um estranho na rua?</li>
+			<li>Você permitiria câmeras em todos os cômodos da sua casa?</li>
+		</ul>
+
+		<p>Privacidade não é sobre esconder coisas erradas. É sobre ter CONTROLE sobre suas próprias informações.</p>
+
+		<h2>Implementação Técnica: Como Fizemos</h2>
+
+		<p>Para desenvolvedores interessados, aqui está um resumo da nossa implementação:</p>
+
+		<h3>Estrutura do Banco de Dados (SQLite/Drift)</h3>
+
+		<pre>Tabela: users
+├── uid (TEXT, PRIMARY KEY)
+├── email (TEXT, UNIQUE)
+├── display_name (TEXT, nullable)
+├── photo_url (TEXT, nullable)
+├── password_hash (TEXT) ← Hash SHA-256 da senha
+├── password_salt (TEXT) ← Salt único de 32 caracteres
+├── created_time (DATETIME)
+└── last_sync (DATETIME)</pre>
+
+		<h3>Algoritmo de Hash</h3>
+
+		<pre>function hashPassword(password, salt):
+    data = password + salt
+    return SHA256(data).toHexString()  // 64 caracteres</pre>
+
+		<h3>Fluxo de Autenticação</h3>
+
+		<pre>1. Usuário digita email + senha
+2. Tenta autenticar via API (servidor)
+3. Se sucesso:
+   a. Gera salt único (se novo usuário)
+   b. Calcula hash = SHA256(senha + salt)
+   c. Salva no SQLite local
+   d. Retorna sucesso
+4. Se API offline:
+   a. Busca usuário no SQLite por email
+   b. Calcula hash com salt armazenado
+   c. Compara com hash armazenado
+   d. Se igual, autenticação offline OK</pre>
+
+		<h3>Migração de Schema</h3>
+
+		<p>Para usuários existentes, implementamos migration automática:</p>
+
+		<pre>Migration v1 → v2:
+- ALTER TABLE users ADD COLUMN password_hash TEXT
+- ALTER TABLE users ADD COLUMN password_salt TEXT
+- CREATE UNIQUE INDEX idx_users_email ON users(email)</pre>
+
+		<h2>Recomendações para Usuários</h2>
+
+		<h3>Boas Práticas de Segurança</h3>
+
+		<h3>1. Use Senhas Fortes</h3>
+
+		<ul>
+			<li>Mínimo 12 caracteres</li>
+			<li>Misture maiúsculas, minúsculas, números, símbolos</li>
+			<li>Evite informações pessoais (datas, nomes)</li>
+			<li>Use frases: "MeuCachorroLate3Vezes!"</li>
+		</ul>
+
+		<h3>2. Ative Bloqueio de Tela</h3>
+
+		<ul>
+			<li>PIN de no mínimo 6 dígitos</li>
+			<li>Biometria (impressão digital, Face ID)</li>
+			<li>Tempo de bloqueio automático curto</li>
+		</ul>
+
+		<h3>3. Mantenha o Sistema Atualizado</h3>
+
+		<ul>
+			<li>Atualizações incluem correções de segurança</li>
+			<li>Ative atualizações automáticas</li>
+		</ul>
+
+		<h3>4. Cuidado com Redes Públicas</h3>
+
+		<ul>
+			<li>Evite fazer login em Wi-Fi de aeroporto/café</li>
+			<li>Use VPN se necessário</li>
+		</ul>
+
+		<h3>5. Faça Backup Regularmente</h3>
+
+		<ul>
+			<li>Backup local criptografado</li>
+			<li>Evite backup em nuvem para dados sensíveis</li>
+		</ul>
+
+		<h2>Conclusão: Privacidade é um Direito, Não um Privilégio</h2>
+
+		<p>A decisão de armazenar senhas localmente, de forma protegida, não é apenas uma escolha técnica. É uma declaração de valores.</p>
+
+		<p>Acreditamos que:</p>
+
+		<ul>
+			<li>Seus dados pertencem a VOCÊ</li>
+			<li>Você tem direito de funcionar OFFLINE</li>
+			<li>A nuvem não precisa saber TUDO sobre você</li>
+			<li>Segurança e conveniência podem COEXISTIR</li>
+		</ul>
+
+		<p>O Ink Agenda foi projetado com esses princípios em mente. Cada decisão arquitetural considera não apenas o que é mais fácil de implementar, mas o que é MELHOR para a privacidade e segurança dos nossos usuários.</p>
+
+		<div class="quote-box">
+			"Na era da vigilância digital, escolher onde seus dados ficam armazenados é um ato de resistência. Escolha sabiamente."
+		</div>
+
+		<h2>Glossário</h2>
+
+		<ul>
+			<li><strong>SHA-256:</strong> Algoritmo de hash criptográfico que produz uma saída de 256 bits (64 caracteres hexadecimais). É considerado seguro contra colisões.</li>
+			<li><strong>Salt:</strong> Valor aleatório adicionado à senha antes do hash para prevenir ataques de rainbow table.</li>
+			<li><strong>SQLite:</strong> Banco de dados relacional leve, armazenado em um único arquivo, ideal para aplicativos móveis.</li>
+			<li><strong>Drift:</strong> Biblioteca Flutter para acesso a banco de dados SQLite com segurança de tipos e geração de código.</li>
+			<li><strong>Man-in-the-middle:</strong> Ataque onde um invasor intercepta comunicações entre duas partes, podendo ler ou modificar mensagens.</li>
+			<li><strong>Rainbow Table:</strong> Tabela pré-computada de hashes para senhas comuns, usada para quebrar hashes rapidamente.</li>
+			<li><strong>Sandbox:</strong> Ambiente isolado onde um aplicativo executa, sem acesso a dados de outros aplicativos.</li>
+		</ul>
+
+		<h2>Referências</h2>
+
+		<ol>
+			<li><strong>OWASP Password Storage Cheat Sheet</strong><br>
+			<a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html" target="_blank" rel="noopener">https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html</a></li>
+
+			<li><strong>NIST Digital Identity Guidelines (SP 800-63B)</strong><br>
+			<a href="https://pages.nist.gov/800-63-3/sp800-63b.html" target="_blank" rel="noopener">https://pages.nist.gov/800-63-3/sp800-63b.html</a></li>
+
+			<li><strong>Have I Been Pwned - Verificador de vazamentos</strong><br>
+			<a href="https://haveibeenpwned.com/" target="_blank" rel="noopener">https://haveibeenpwned.com/</a></li>
+
+			<li><strong>Electronic Frontier Foundation - Privacy</strong><br>
+			<a href="https://www.eff.org/issues/privacy" target="_blank" rel="noopener">https://www.eff.org/issues/privacy</a></li>
+
+			<li><strong>SQLite Security Considerations</strong><br>
+			<a href="https://www.sqlite.org/security.html" target="_blank" rel="noopener">https://www.sqlite.org/security.html</a></li>
+		</ol>
+
+		<hr>
+
+		<h2>Hashtags</h2>
+		<div class="hash-box">#Segurança #Privacidade #Senhas #Criptografia #InkAgenda #CaraCoreInformática #ArmazenamentoLocal #Proteção #TI #Inovação</div>
+
+		<hr />
+
+		<h3>Contato</h3>
+		<ul>
+			<li><strong>E-mail:</strong> suporte@caracore.com.br</li>
+			<li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
+			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
+		</ul>
+
+		<div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
+			<strong>Gostou do conteúdo?</strong><br />
+			<span style="font-size:.85rem;">Conecte-se conosco no LinkedIn para mais conteúdos sobre segurança, privacidade e inovação em tecnologia!</span><br />
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Seguir no LinkedIn</a>
+		</div>
+
+		<p style="text-align:center; font-size:.85rem; color:#6b7280; margin-top:3rem;">
+			<em>Artigo publicado em 30 de janeiro de 2026</em><br>
+			© 2026 Cara Core Informática. Todos os direitos reservados.
+		</p>
+	</div>
+</body>
+</html>

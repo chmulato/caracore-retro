@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gerenciando EC2 com Tomcat/WildFly e PostgreSQL com AWS CDK (Parte I) — Cara Core Informática</title>
+  <meta name="description" content="Arquitetura prática para cidades de 50–150 mil habitantes: ALB, EC2 com Tomcat/WildFly, RDS PostgreSQL, segurança e observabilidade — tudo versionado com AWS CDK em Python." />
+  <meta name="keywords" content="AWS, CDK, Python, EC2, Tomcat, WildFly, Jakarta EE, PostgreSQL, RDS, VPC, Auto Scaling, CloudWatch, CI/CD" />
+  <meta name="author" content="Cara Core Informática" />
+  <link rel="canonical" href="https://caracore.com.br/publications/articles/2025_10_03_article_50.html" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Gerenciando EC2 (Parte I) - Utilizando Tomcat/WildFly e PostgreSQL com AWS CDK" />
+  <meta property="og:description" content="Arquitetura prática: ALB → EC2 (Tomcat/WildFly) → RDS PostgreSQL, segurança mínima e observabilidade com AWS CDK em Python." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://caracore.com.br/publications/articles/2025_10_03_article_50.html" />
+  <meta property="og:image" content="https://caracore.com.br/publications/articles/assets/img/article_50_01.png" />
+  <meta property="og:image:alt" content="Arquitetura AWS CDK: Route 53/ACM → ALB → EC2 (Tomcat/WildFly) → RDS PostgreSQL" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gerenciando EC2 (Parte I) - Utilizando Tomcat/WildFly e PostgreSQL com AWS CDK" />
+  <meta name="twitter:description" content="Arquitetura prática: ALB → EC2 (Tomcat/WildFly) → RDS PostgreSQL, segurança mínima e observabilidade com AWS CDK em Python." />
+  <meta name="twitter:image" content="https://caracore.com.br/publications/articles/assets/img/article_50_01.png" />
+  <meta name="twitter:image:alt" content="Arquitetura AWS CDK: Route 53/ACM → ALB → EC2 (Tomcat/WildFly) → RDS PostgreSQL" />
+  <link rel="stylesheet" href="assets/css/articles.css" />
+  <style>
+    body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif; line-height:1.55; color:#1f2937; margin:0; }
+    .container { max-width: 980px; margin:0 auto; padding:2rem 1.25rem 4rem; }
+    h1 { line-height:1.2; font-size:clamp(1.9rem,2.4vw,2.5rem); margin-top:0; }
+    h2 { margin-top:2.25rem; line-height:1.25; }
+    /* Chalkboard style for code blocks */
+    pre { 
+      background: linear-gradient(180deg, #244d30 0%, #1c3a27 100%); /* green chalkboard */
+      color:#f5fff0; 
+      padding:1rem 1.1rem; 
+      overflow:auto; 
+      border-radius:10px; 
+      border:12px solid #6b4226; /* thick brown frame */
+      box-shadow:0 6px 16px rgba(0,0,0,.18), inset 0 0 0 1px rgba(255,255,255,.03); 
+      font-size:.95rem; 
+      font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; 
+      text-shadow: 0 1px 0 rgba(255,255,255,.05), 0 0 1px rgba(255,255,255,.08); /* subtle chalk effect */
+    }
+    /* Reusable chalkboard container (non-monospace) */
+    .chalkboard {
+      background: linear-gradient(180deg, #244d30 0%, #1c3a27 100%);
+      color:#f5fff0;
+      padding:1rem 1.1rem;
+      border-radius:10px;
+      border:12px solid #6b4226;
+      box-shadow:0 6px 16px rgba(0,0,0,.18), inset 0 0 0 1px rgba(255,255,255,.03);
+      text-shadow: 0 1px 0 rgba(255,255,255,.05), 0 0 1px rgba(255,255,255,.08);
+      margin-top: 2rem;
+    }
+    .chalkboard h2 { margin-top: 0; color: #f5fff0; }
+    .chalkboard dl { margin: 0; }
+    .chalkboard dt { margin-top: .6rem; }
+    .chalkboard dd { margin: .2rem 0 .6rem 0; opacity: .95; }
+    code { font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; color: inherit; background: transparent; }
+    figure img { max-width:100%; height:auto; }
+    ul,ol { padding-left:1.1rem; }
+    .back-link { text-decoration:none; font-size:.85rem; color:#2563eb; }
+    .note { background:#f8f9fa; padding:1rem 1.25rem; border-left:4px solid #10B981; border-radius:6px; }
+    .hash-box { background:#f8f9fa; padding:1rem 1.25rem; border-left:4px solid #0EA5E9; border-radius:6px; font-size:.85rem; line-height:1.5; }
+    .repo-box { background:#f8f9fa; padding:1.25rem 1.25rem 1rem; border-left:4px solid #10B981; border-radius:6px; }
+    .repo-box a { color:#10B981; font-weight:600; text-decoration:none; }
+    hr { border:none; border-top:1px solid #e5e7eb; margin:3rem 0 2rem; }
+    blockquote { font-style: italic; border-left: 3px solid #e5e7eb; padding-left: 1.25rem; margin-left: 0; }
+    @media (max-width:640px){ 
+      pre { font-size:.78rem; border-width:9px; padding:.85rem .9rem; }
+      .chalkboard { border-width:9px; padding:.85rem .9rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back-link" href="../articles.html">&larr; Voltar para publicações</a>
+    <img src="assets/img/article_50_01.png" alt="Arquitetura AWS CDK: ALB, EC2 Tomcat/WildFly e RDS PostgreSQL" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+    <h1>Gerenciando EC2 (Parte I) - Utilizando Tomcat/WildFly e PostgreSQL com AWS CDK</h1>
+    <div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
+        <img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
+        <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
+        <span style="margin-left: 1.5rem;">84 seguidores<br>03 de outubro de 2025</span>
+    </div>
+
+    <div class="note"><strong>Tempo estimado de leitura:</strong> ~10 minutos</div>
+
+    <h2>A história por trás da arquitetura: do centro às bordas</h2>
+    <p>Imagine cidades de 50 a 150 mil habitantes, onde o comércio local pulsa entre entregas rápidas, estoque enxuto e rotas que mudam a cada hora. Foi nesse cenário que um pequeno consórcio de supermercados regionais decidiu construir seu próprio Hub de Varejo — uma plataforma para sincronizar preços, estoque, pedidos e logística de última milha entre as lojas e um centro regional.</p>
+    <p>O desafio? Internet intermitente, orçamento controlado e times pequenos. A solução precisava ser:</p>
+    <ul>
+      <li>Simples de operar em campo e robusta na nuvem.</li>
+      <li>Compatível com o ecossistema Java (Jakarta EE), reaproveitando know-how em Tomcat/WildFly.</li>
+      <li>Com banco relacional confiável (PostgreSQL) e plano B para conectividade.</li>
+      <li>Gerenciada via código, auditável e com implantação por CI/CD.</li>
+    </ul>
+
+    <h2>A decisão arquitetural</h2>
+    <p>Para reduzir variabilidade e ganhar velocidade, optamos por uma base na AWS com infraestrutura como código (IaC) usando AWS CDK em Python. O núcleo do Hub roda em EC2 com Tomcat (ou WildFly quando necessário), banco RDS PostgreSQL, e um plano de distribuição local para as lojas — caches e serviços satélites que funcionam mesmo quando o link balança.</p>
+
+    <h2>Diagrama mental (simplificado)</h2>
+    <ul>
+      <li>Route 53 + HTTPS (ACM) → Application Load Balancer (ALB)</li>
+      <li>Auto Scaling Group (EC2 Amazon Linux 2023) com Tomcat 9 / Java 17 (Corretto) e Agente SSM para acesso seguro (sem abrir SSH)</li>
+      <li>RDS PostgreSQL 15 (Multi-AZ opcional), sub-redes privadas</li>
+      <li>Security Groups mínimos: ALB→EC2 (80/443), EC2→RDS (5432)</li>
+      <li>Parameter Store / Secrets Manager: credenciais sem hardcode</li>
+      <li>CloudWatch: logs + alarmes (CPU, erro 5xx no ALB)</li>
+    </ul>
+
+    <h2>Por que isso desperta curiosidade?</h2>
+    <p>Porque deixa de ser “mais um servidor” e passa a ser um <strong>sistema vivo</strong>, onde cada mudança de código aciona uma cadeia de eventos que cria (ou ajusta) capacidade computacional automaticamente. É o momento em que tecnologia vira estratégia.</p>
+
+    <h2>O que é o AWS CDK?</h2>
+    <p>O AWS CDK permite definir e provisionar recursos na AWS usando Python. Em vez de YAML/JSON extensos, você usa classes, loops e componentes reusáveis — perfeito para times pequenos que precisam ir longe.</p>
+
+    <h2>Estrutura do projeto (seed)</h2>
+    <pre><code class="language-bash">cdk init app --language python</code></pre>
+    <pre><code class="language-text">cara-core-informatica/
+ ├── app.py
+ ├── requirements.txt
+ └── cara_core_informatica/
+     └── cara_core_informatica_stack.py</code></pre>
+
+    <h2>Provisionando recursos com Python (visão)</h2>
+    <ol>
+      <li>VPC com sub-redes públicas (ALB) e privadas (EC2/RDS).</li>
+      <li>Security Groups mínimos e explícitos.</li>
+      <li>EC2 com UserData para Tomcat/Java e CloudWatch Agent.</li>
+      <li>RDS PostgreSQL com credenciais em Secrets Manager.</li>
+      <li>Logs, parâmetros e segredos fora do código.</li>
+    </ol>
+
+    <div class="repo-box">
+      <strong>Na Parte II</strong>: código CDK completo e um pipeline GitHub Actions que transforma PRs em infraestrutura aplicada com IAM OIDC (sem chaves estáticas).
+    </div>
+
+    <div class="chalkboard" role="complementary" aria-label="Dicionário rápido">
+    <h2>Dicionário rápido</h2>
+    <dl>
+      <dt><strong>AWS CDK</strong></dt>
+      <dd>Cloud Development Kit — framework para definir infraestrutura como código (IaC) em linguagens como Python.</dd>
+      <dt><strong>IaC</strong></dt>
+      <dd>Infraestrutura como Código — pratica de descrever e versionar infraestrutura em arquivos de código.</dd>
+      <dt><strong>EC2</strong></dt>
+      <dd>Elastic Compute Cloud — servidores/VMs na AWS.</dd>
+      <dt><strong>ALB</strong></dt>
+      <dd>Application Load Balancer — balanceador L7 para tráfego HTTP/HTTPS.</dd>
+      <dt><strong>ASG</strong></dt>
+      <dd>Auto Scaling Group — ajusta automaticamente a quantidade de instâncias EC2.</dd>
+      <dt><strong>RDS (PostgreSQL)</strong></dt>
+      <dd>Relational Database Service — banco relacional gerenciado (ex.: PostgreSQL).</dd>
+      <dt><strong>VPC</strong></dt>
+      <dd>Virtual Private Cloud — rede virtual isolada na AWS.</dd>
+      <dt><strong>Security Group (SG)</strong></dt>
+      <dd>Firewall de nível de instância/ENI que controla o tráfego de entrada/saída.</dd>
+      <dt><strong>SSM</strong></dt>
+      <dd>AWS Systems Manager — inclui o SSM Agent, automações e o Parameter Store.</dd>
+      <dt><strong>Parameter Store / Secrets Manager</strong></dt>
+      <dd>Serviços para armazenar parâmetros e segredos fora do código.</dd>
+      <dt><strong>Route 53 / ACM</strong></dt>
+      <dd>DNS gerenciado (Route 53) e gerenciamento de certificados TLS (ACM).</dd>
+      <dt><strong>CloudWatch</strong></dt>
+      <dd>Serviço de logs, métricas e alarmes.</dd>
+      <dt><strong>UserData</strong></dt>
+      <dd>Script executado no boot das instâncias EC2 para configurar o ambiente.</dd>
+    </dl>
+    </div>
+
+    <h2 id="conclusao">Conclusão</h2>
+    <p>Na Parte I, alinhamos o contexto e as decisões que sustentam um hub regional simples de operar e robusto na nuvem. Definimos domínio e TLS (Route 53/ACM), entrada com ALB, capacidade com EC2 (Tomcat/WildFly em ASG e acesso seguro via SSM), persistência com RDS PostgreSQL, limites de rede com Security Groups mínimos e observabilidade com CloudWatch. Tudo preparado para ser versionado em código com AWS CDK.</p>
+    <ul>
+      <li>Arquitetura enxuta e comprovada para times pequenos.</li>
+      <li>Segurança por padrão: TLS, SG explícitos e acesso sem abrir SSH (SSM).</li>
+      <li>Operabilidade desde o dia zero: logs e alarmes no CloudWatch.</li>
+      <li>Infraestrutura como código com CDK: reprodutível e revisável em PR.</li>
+      <li>Pronto para CI/CD sem chaves estáticas via OIDC (ver Parte II).</li>
+    </ul>
+    <p>Próximo passo → <a href="2025_10_10_article_51.html">Parte II: do CDK ao pipeline GitHub Actions com IAM OIDC</a>. Se quiser trocar ideias, conecte-se no <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">LinkedIn</a> ou escreva para <a href="mailto:suporte@caracore.com.br">suporte@caracore.com.br</a>.</p>
+
+    <h2>Hashtags</h2>
+    <div class="hash-box">#AWS #CDK #Python #EC2 #Tomcat #WildFly #JakartaEE #PostgreSQL #RDS #VPC #CloudWatch #CaraCoreInformática</div>
+
+    <hr />
+    <h3>Contato</h3>
+    <ul>
+      <li><strong>E-mail:</strong> suporte@caracore.com.br</li>
+      <li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
+      <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
+    </ul>
+
+    <div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
+      <strong>🤝 Gostou do conteúdo?</strong><br />
+      <span style="font-size:.85rem;">Conecte-se conosco no LinkedIn para mais conteúdos sobre desenvolvimento e inovação tecnológica!</span><br />
+      <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Seguir no LinkedIn</a>
+    </div>
+  </div>
+</body>
+</html>

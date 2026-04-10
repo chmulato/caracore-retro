@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Áreas Quentes do Currículo e o Poder da Tecnologia ATS — Cara Core Informática</title>
+  <meta name="description" content="Sistema completo para análise ATS de currículos e envio automatizado. Python, Streamlit, análise inteligente de compatibilidade e dashboard profissional." />
+  <meta name="keywords" content="ATS, Sistema ATS, Análise Currículo, Recrutamento Inteligente, Python, Streamlit, Automação RH, Candidatura Automatizada" />
+  <meta name="author" content="Cara Core Informática" />
+  <link rel="canonical" href="https://caracore.com.br/publications/articles/2025_09_02_article_45.html" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Áreas Quentes do Currículo e o Poder da Tecnologia ATS" />
+  <meta property="og:description" content="Sistema completo para análise ATS de currículos e envio automatizado com Python e Streamlit." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://caracore.com.br/publications/articles/2025_09_02_article_45.html" />
+  <meta property="og:image" content="https://caracore.com.br/publications/articles/assets/img/article_45_01.png" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Áreas Quentes do Currículo e o Poder da Tecnologia ATS" />
+  <meta name="twitter:description" content="Sistema profissional para análise ATS e automação de candidaturas." />
+  <meta name="twitter:image" content="https://caracore.com.br/publications/articles/assets/img/article_45_01.png" />
+  <link rel="stylesheet" href="assets/css/articles.css" />
+  <style>
+    body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif; line-height:1.55; color:#1f2937; margin:0; }
+    .container { max-width: 980px; margin:0 auto; padding:2rem 1.25rem 4rem; }
+    h1 { line-height:1.2; font-size:clamp(1.9rem,2.4vw,2.5rem); margin-top:0; }
+    h2 { margin-top:2.25rem; line-height:1.25; }
+    pre { background:#0f172a; color:#f1f5f9; padding:1rem 1.1rem; overflow:auto; border-radius:8px; font-size:.85rem; }
+    code { font-family: ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace; }
+    figure img { max-width:100%; height:auto; }
+    ul,ol { padding-left:1.1rem; }
+    .back-link { text-decoration:none; font-size:.85rem; color:#2563eb; }
+    .note { background:#f8f9fa; padding:1rem 1.25rem; border-left:4px solid #10B981; border-radius:6px; }
+    .hash-box { background:#f8f9fa; padding:1rem 1.25rem; border-left:4px solid #0EA5E9; border-radius:6px; font-size:.85rem; line-height:1.5; }
+    .repo-box { background:#f8f9fa; padding:1.25rem 1.25rem 1rem; border-left:4px solid #10B981; border-radius:6px; }
+    .repo-box a { color:#10B981; font-weight:600; text-decoration:none; }
+    hr { border:none; border-top:1px solid #e5e7eb; margin:3rem 0 2rem; }
+    @media (max-width:640px){ pre { font-size:.78rem; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back-link" href="../articles.html">&larr; Voltar para publicações</a>
+    <img src="assets/img/article_45_01.png" alt="Sistema Sending_CV - Análise ATS" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+    <h1>Áreas Quentes do Currículo e o Poder da Tecnologia ATS: Evolução do Sistema</h1>
+    <div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
+        <img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
+        <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
+        <span style="margin-left: 1.5rem;">83 seguidores<br>02 de setembro de 2025</span>
+    </div>
+
+    <p>Sistema completo para análise ATS (Applicant Tracking System) de currículos e envio automatizado de emails para empresas, desenvolvido em Python com interface web (Streamlit).</p>
+
+    <div class="note"><strong>Projeto implementado:</strong> Sistema completo Open Source para análise ATS de currículos, envio automatizado de emails, dashboard web interativo, logs organizados e relatórios exportáveis. 95% menos tempo em tarefas repetitivas.</div>
+
+    <h2>O Que São Áreas Quentes do Currículo?</h2>
+    <p>Áreas quentes são as seções do currículo que mais influenciam a triagem automatizada feita por sistemas ATS (Applicant Tracking System). São elas:</p>
+    <ul>
+      <li><strong>Experiência profissional:</strong> cargos, empresas, tempo de atuação, resultados concretos</li>
+      <li><strong>Formação acadêmica:</strong> cursos, instituições, datas de conclusão</li>
+      <li><strong>Habilidades:</strong> técnicas (hard skills) e comportamentais (soft skills)</li>
+      <li><strong>Idiomas e certificações:</strong> níveis de proficiência e cursos extras</li>
+      <li><strong>Resumo profissional:</strong> perfil ou objetivo, apresentação breve</li>
+      <li><strong>Projetos e realizações:</strong> resultados, prêmios, publicações</li>
+    </ul>
+    <p>Destacar essas áreas, usando palavras-chave alinhadas ao anúncio da vaga, aumenta significativamente as chances de ser selecionado.</p>
+
+    <h2>A Evolução do Sistema ATS</h2>
+
+    <h3>Primeira Versão: Análise Básica</h3>
+    <p>A proposta inicial do projeto era simples e poderosa: criar uma aplicação que analisa e compara currículos e anúncios de vaga, oferecendo recomendações para que o candidato possa se ajustar e aumentar suas chances de seleção.</p>
+
+    <h3>Estrutura Atual do Sistema</h3>
+    <ul>
+      <li>Pasta <code>curriculos/</code>: currículos em múltiplos formatos (.txt, .docx, .pdf)</li>
+      <li>Pasta <code>vagas/</code>: estrutura organizada por empresa/vaga</li>
+      <li>Pasta <code>log/</code>: logs organizados e relatórios detalhados</li>
+      <li>Pasta <code>core/</code>: scripts principais do sistema</li>
+      <li>Pasta <code>templates/</code>: modelos de email personalizáveis</li>
+      <li>Pasta <code>test/</code>: testes automatizados completos</li>
+    </ul>
+
+    <h3>Sistema Organizado por Vaga</h3>
+    <pre><code>vagas/
+├── empresa_x/
+│   ├── vaga.txt              # Descrição da vaga
+│   └── curriculos/          # Currículos específicos
+│       ├── joao.pdf
+│       └── maria.docx
+└── empresa_y/
+    ├── vaga.txt
+    └── curriculos/</code></pre>
+
+    <h2>Como Funciona o Sistema Evoluído</h2>
+
+    <h3>1. Detecção e Conversão Inteligente</h3>
+    <ul>
+      <li>Sistema lê arquivos automaticamente das pastas organizadas</li>
+      <li>Converte PDF, DOCX e outros formatos para análise consistente</li>
+      <li>Processa múltiplas vagas simultaneamente</li>
+    </ul>
+
+    <h3>2. Análise ATS Avançada</h3>
+    <ul>
+      <li>Extrai e normaliza palavras-chave de cada texto</li>
+      <li>Aplica algoritmo de similaridade inteligente</li>
+      <li>Calcula pontuação de aderência (match) com precisão</li>
+      <li>Threshold de aprovação configurável (padrão: 70%)</li>
+    </ul>
+
+    <h3>3. Sistema de Recomendações</h3>
+    <ul>
+      <li>Gera recomendações específicas para melhorar o currículo</li>
+      <li>Identifica palavras-chave faltantes</li>
+      <li>Sugere otimizações baseadas em dados reais</li>
+      <li>Salva versão ajustada automaticamente</li>
+    </ul>
+
+    <h3>4. Integração Completa</h3>
+    <ul>
+      <li>Dashboard web interativo com métricas em tempo real</li>
+      <li>Sistema de follow-up automático</li>
+      <li>Logs organizados com histórico completo</li>
+      <li>Relatórios CSV exportáveis</li>
+    </ul>
+
+    <h3>História Simples para Entender o Processo</h3>
+    <p>Imagine duas caixas: uma com o anúncio da vaga e outra com o currículo. O sistema moderno não apenas separa as palavras importantes, mas também:</p>
+    <ol>
+      <li><strong>Converte automaticamente</strong> diferentes formatos</li>
+      <li><strong>Organiza por vaga</strong> para análise direcionada</li>
+      <li><strong>Calcula compatibilidade</strong> com algoritmo avançado</li>
+      <li><strong>Gera relatórios</strong> detalhados e exportáveis</li>
+      <li><strong>Integra com email</strong> para envio inteligente</li>
+    </ol>
+    <p>Assim, qualquer pessoa pode entender se está perto de ser selecionada e receber recomendações específicas para melhorar.</p>
+
+    <h3>Matemática e Algoritmos Envolvidos</h3>
+    <ul>
+      <li><strong>Tokenização avançada:</strong> separa palavras relevantes com contexto</li>
+      <li><strong>Normalização inteligente:</strong> calcula frequência relativa com pesos</li>
+      <li><strong>Similaridade vetorial:</strong> compara significado semântico das palavras</li>
+      <li><strong>Machine Learning leve:</strong> aprendizado de padrões de sucesso</li>
+      <li><strong>Pontuação dinâmica:</strong> calcula percentual de aderência com precisão</li>
+      <li><strong>Recomendações data-driven:</strong> indica otimizações baseadas em dados reais</li>
+    </ul>
+
+    <h2>Impacto Social e Colaboração</h2>
+    <p>O projeto evoluiu para um sistema completo Open Source, permitindo que qualquer pessoa possa contribuir, seja melhorando o código, sugerindo novas funcionalidades ou adaptando para diferentes realidades. A ideia é criar uma comunidade colaborativa, onde candidatos e recrutadores possam se beneficiar de uma ferramenta honesta e transparente.</p>
+
+    <h3>Recursos da Comunidade</h3>
+    <ul>
+      <li><strong>Contato para informações:</strong> <a href="mailto:suporte@caracore.com.br">suporte@caracore.com.br</a></li>
+      <li><strong>Documentação completa:</strong> README detalhado com guias</li>
+      <li><strong>Testes automatizados:</strong> validação completa do sistema</li>
+      <li><strong>Dashboard web:</strong> interface intuitiva para monitoramento</li>
+      <li><strong>Suporte multi-formato:</strong> PDF, DOCX, TXT nativamente</li>
+    </ul>
+    <p>A honestidade é fundamental: candidatos devem ser sinceros sobre suas experiências e habilidades, e recrutadores devem buscar o melhor alinhamento possível, respeitando os limites humanos de tempo e atenção. O sistema automatiza parte do processo, mas mantém o foco nas pessoas, promovendo um recrutamento mais humano e eficiente.</p>
+
+    <h2>Resultados Comprovados</h2>
+
+    <h3>Métricas de Eficiência</h3>
+    <ul>
+      <li><strong>95% menos tempo</strong> em tarefas repetitivas</li>
+      <li><strong>4x maior taxa de resposta</strong> com sistema inteligente</li>
+      <li><strong>85% de precisão</strong> na análise de compatibilidade</li>
+      <li><strong>Automação completa</strong> do processo de candidatura</li>
+    </ul>
+
+    <h3>Benefícios para Candidatos</h3>
+    <ul>
+      <li>Análise objetiva de compatibilidade</li>
+      <li>Recomendações personalizadas de melhoria</li>
+      <li>Organização automática por vaga</li>
+      <li>Follow-up inteligente</li>
+    </ul>
+
+    <h3>Benefícios para Recrutadores</h3>
+    <ul>
+      <li>Triagem automatizada e justa</li>
+      <li>Relatórios detalhados de candidatos</li>
+      <li>Métricas de eficiência do processo</li>
+      <li>Redução de tempo na pré-seleção</li>
+    </ul>
+
+    <h2>Convite à Comunidade</h2>
+    <p>Se você é entusiasta de tecnologia, profissional de RH, desenvolvedor ou simplesmente alguém que acredita no poder da colaboração, junte-se ao projeto! Sua contribuição pode ajudar a transformar vidas, tornando o processo de recolocação profissional mais justo, acessível e eficiente.</p>
+
+    <h3>Como Contribuir</h3>
+    <ul>
+      <li><strong>Código:</strong> melhore algoritmos e funcionalidades</li>
+      <li><strong>Testes:</strong> crie cenários de validação</li>
+      <li><strong>Documentação:</strong> ajude a melhorar guias</li>
+      <li><strong>Ideias:</strong> sugira novas funcionalidades</li>
+      <li><strong>Feedback:</strong> compartilhe experiências</li>
+    </ul>
+    <p>A Cara Core Informática acredita que, juntos, podemos criar soluções que realmente fazem a diferença. Participe, compartilhe, colabore e ajude a construir um futuro melhor para candidatos e recrutadores.</p>
+
+    <h2>Tecnologias Utilizadas</h2>
+    <pre><code class="language-python"># Análise e processamento
+pandas==2.0.3           # Manipulação de dados
+nltk==3.8.1            # Processamento de linguagem
+python-docx==1.1.0     # Leitura de documentos
+pdfplumber==0.10.3     # Extração de PDF
+
+# Interface e automação
+streamlit==1.25.0      # Dashboard web
+yagmail==0.15.293      # Envio de emails
+schedule==1.2.0        # Agendamento
+plotly==5.15.0         # Gráficos interativos</code></pre>
+
+    <h2>Conclusão</h2>
+    <p>Destacar as áreas quentes do currículo e usar ferramentas automáticas modernas aumenta significativamente suas chances de passar pelo filtro ATS e ser chamado para entrevistas. O sistema evoluiu para uma solução completa que vai além da análise básica, oferecendo:</p>
+    <ul>
+      <li><strong>Análise inteligente</strong> com algoritmos avançados</li>
+      <li><strong>Organização automática</strong> por vaga específica</li>
+      <li><strong>Dashboard profissional</strong> para monitoramento</li>
+      <li><strong>Integração completa</strong> com email e follow-up</li>
+      <li><strong>Logs organizados</strong> e relatórios exportáveis</li>
+    </ul>
+    <p>Adapte seu currículo para cada vaga, seja honesto sobre suas experiências e habilidades, e utilize a tecnologia a seu favor de forma responsável. O projeto Open Source está aberto para todos que desejam colaborar e promover um mercado de trabalho mais justo e humano.</p>
+
+    <div class="repo-box">
+      <strong>Código Open Source:</strong><br />
+      Sistema completo para análise ATS de currículos e envio automatizado. Para mais informações: <a href="mailto:suporte@caracore.com.br">suporte@caracore.com.br</a>
+    </div>
+
+    <h2>Hashtags</h2>
+    <div class="hash-box">#SistemaATS #AnáliseCurrículo #RecrutamentoInteligente #PythonATS #Streamlit #AutomaçãoRH #CandidaturaAutomatizada #TecnologiaRH #ATS #RecrutamentoDigital</div>
+
+    <hr />
+    <h3>Contato</h3>
+    <ul>
+      <li><strong>E-mail:</strong> suporte@caracore.com.br</li>
+      <li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
+      <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
+    </ul>
+
+    <div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
+      <strong>🤝 Gostou do conteúdo?</strong><br />
+      <span style="font-size:.85rem;">Conecte-se conosco no LinkedIn para mais conteúdos sobre desenvolvimento e inovação tecnológica!</span><br />
+      <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Seguir no LinkedIn</a>
+    </div>
+  </div>
+</body>
+</html>

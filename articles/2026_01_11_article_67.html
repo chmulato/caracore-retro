@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Cara Core Seed: Sistema de Controle de Licenças Empresariais — Cara Core Informática</title>
+	<meta name="description" content="Conheça o Cara Core Seed, ferramenta interna da Cara Core para controle de licenças do Caracore-Hub. Parte do ecossistema CC — não disponível para venda ou licenciamento externo." />
+	<meta name="keywords" content="Licenciamento SaaS, Controle de Acesso, Cara Core Seed, Assinatura Recorrente, Monitoramento, Compliance, Cara Core Informática, Marketplaces" />
+	<meta name="author" content="Cara Core Informática" />
+	<link rel="canonical" href="https://caracore.com.br/sala/redes/retro/articles/2026_01_11_article_67.html" />
+	<!-- Open Graph -->
+	<meta property="og:title" content="Cara Core Seed: Sistema de Controle de Licenças Empresariais" />
+	<meta property="og:description" content="Conheça o Cara Core Seed, ferramenta interna da Cara Core para controle de licenças do Caracore-Hub. Parte do ecossistema CC — não disponível para venda ou licenciamento externo." />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="https://caracore.com.br/sala/redes/retro/articles/2026_01_11_article_67.html" />
+	<meta property="og:image" content="https://caracore.com.br/sala/redes/retro/articles/assets/img/article_67_01.png" />
+	<meta property="og:image:alt" content="Sistema de Licenciamento, Cara Core Seed" />
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Cara Core Seed: Sistema de Controle de Licenças Empresariais" />
+	<meta name="twitter:description" content="Conheça o Cara Core Seed, ferramenta interna da Cara Core para controle de licenças do Caracore-Hub. Parte do ecossistema CC — não disponível para venda ou licenciamento externo." />
+	<meta name="twitter:image" content="https://caracore.com.br/sala/redes/retro/articles/assets/img/article_67_01.png" />
+	<meta name="twitter:image:alt" content="Sistema de Licenciamento, Cara Core Seed" />
+	<link rel="stylesheet" href="assets/css/articles.css" />
+	<style>
+		body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif; line-height:1.65; color:#1f2937; margin:0; }
+		.container { max-width: 980px; margin:0 auto; padding:2rem 1.25rem 4rem; }
+		h1 { line-height:1.2; font-size:clamp(1.9rem,2.4vw,2.5rem); margin-top:0; }
+		h2 { margin-top:2.5rem; line-height:1.3; color:#111827; border-bottom:2px solid #e5e7eb; padding-bottom:.5rem; }
+		h3 { margin-top:1.75rem; color:#374151; }
+		pre { background: #f5f5f5; color:#1f2937; padding:1rem 1.1rem; overflow:auto; border-radius:6px; border:1px solid #e5e7eb; font-size:.95rem; font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; }
+		code { font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; color: inherit; background: transparent; }
+		figure img { max-width:100%; height:auto; }
+		ul,ol { padding-left:1.3rem; }
+		ul li, ol li { margin-bottom:.65rem; }
+		.back-link { text-decoration:none; font-size:.85rem; color:#2563eb; }
+		.note { background:#fef3c7; padding:1rem 1.25rem; border-left:4px solid #d97706; border-radius:6px; margin:1.5rem 0; }
+		.alert { background:#fee2e2; padding:1rem 1.25rem; border-left:4px solid #dc2626; border-radius:6px; margin:1.5rem 0; }
+		.insight { background:#dbeafe; padding:1rem 1.25rem; border-left:4px solid #2563eb; border-radius:6px; margin:1.5rem 0; }
+		.quote-box { background:#f9fafb; padding:1.25rem 1.5rem; border-left:4px solid #6b7280; border-radius:6px; font-style:italic; margin:1.5rem 0; }
+		hr { border:none; border-top:1px solid #d1d5db; margin:3rem 0; }
+		blockquote { font-style: italic; border-left: 3px solid #e5e7eb; padding-left: 1.25rem; margin-left: 0; background:#f9fafb; padding:1rem 1.25rem; border-radius:6px; }
+		@media (max-width:640px){ pre { font-size:.78rem; padding:.85rem .9rem; } }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<a class="back-link" href="../articles.html">&larr; Voltar para publicações</a>
+		<img src="assets/img/article_67_01.png" alt="Sistema de Licenciamento, Cara Core Seed" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+		<h1>Cara Core Seed: Sistema de Controle de Licenças Empresariais</h1>
+		<div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
+			<img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
+			<span style="margin-left: 1.5rem;">11 de janeiro de 2026</span>
+		</div>
+
+		<div class="note"><strong>Tempo estimado de leitura:</strong> ~8 minutos</div>
+
+		<div class="alert"><strong>Atenção:</strong> O Cara Core Seed é uma ferramenta interna da Cara Core — não está disponível para venda, licenciamento ou adoção por terceiros. Este artigo documenta a solução técnica que sustenta o controle de acesso ao Caracore-Hub.</div>
+
+		<h2>Controle de Licenças do Ecossistema Cara Core</h2>
+		<p>O Cara Core Seed é a ferramenta interna desenvolvida pela Cara Core para proteger e controlar o acesso ao <strong>Caracore-Hub</strong>. Inspirado pela filosofia de inovação e simplicidade do ecossistema CC, o Seed foi desenvolvido para ser o guardião que garante que apenas clientes autorizados e em dia acessem a plataforma.</p>
+
+		<h2>O Desafio do Licenciamento Empresarial</h2>
+		<p>Empresas que oferecem software como serviço enfrentam desafios críticos: como garantir que apenas clientes autorizados acessem o sistema? Como monetizar o uso de forma justa e previsível? Como evitar uso não autorizado? Como monitorar o uso em tempo real? O Cara Core Seed foi criado para resolver todos esses desafios, implementando um sistema robusto de licenciamento com validação em tempo real.</p>
+
+		<h2>O Que é o Cara Core Seed?</h2>
+		<p>O <strong>Cara Core Seed</strong> é um <strong>sistema empresarial de controle de licenças</strong> que protege e monetiza o acesso ao <strong>Caracore-Hub</strong>, nossa plataforma unificada de gestão de marketplaces (Mercado Livre, Shopee, Amazon, etc.). Ele implementa um modelo de negócio Software-as-a-Service (SaaS) com cobrança mensal recorrente por Centro de Distribuição.</p>
+
+		<div class="insight">
+			<strong>Como funciona:</strong> Imagine um "porteiro inteligente" que verifica continuamente se cada cliente está autorizado, controla quanto tempo pode usar o sistema, monitora o uso em tempo real e garante que apenas clientes em dia com pagamentos tenham acesso.
+		</div>
+
+		<h3>Componentes Principais</h3>
+		<ul>
+			<li><strong>Licenciamento com Assinatura Digital RSA-2048:</strong> Cada Centro de Distribuição recebe uma licença criptograficamente segura</li>
+			<li><strong>Sistema de Heartbeat:</strong> A cada 30 minutos, o sistema valida em tempo real se a licença está ativa</li>
+			<li><strong>Dashboard de Monitoramento:</strong> Acompanhamento completo de uso, métricas e recursos</li>
+			<li><strong>Controle de Recursos:</strong> Limites de usuários simultâneos e operações diárias por plano</li>
+			<li><strong>Auditoria Completa:</strong> Todas as operações são registradas para compliance</li>
+		</ul>
+
+		<h2>Modelo de Negócio SaaS</h2>
+		<p>O Cara Core Seed implementa um modelo de assinatura mensal por Centro de Distribuição (CD), similar ao Netflix ou Spotify, mas para sistemas empresariais:</p>
+		<ul>
+			<li><strong>Receita Recorrente Previsível:</strong> Cada CD paga mensalmente pela licença de uso</li>
+			<li><strong>Sem Investimento Inicial Alto:</strong> Modelo pay-as-you-grow que cresce com o negócio</li>
+			<li><strong>Bloqueio Automático:</strong> Se o pagamento não for feito, o acesso é bloqueado automaticamente</li>
+			<li><strong>Escalabilidade:</strong> Novos CDs podem ser ativados conforme a empresa cresce</li>
+		</ul>
+
+		<h3>Planos Disponíveis</h3>
+		<table style="width:100%; border-collapse:collapse; margin:1.5rem 0;">
+			<thead>
+				<tr style="background:#f3f4f6;">
+					<th style="padding:.75rem; text-align:left; border:1px solid #e5e7eb;">Plano</th>
+					<th style="padding:.75rem; text-align:left; border:1px solid #e5e7eb;">Usuários</th>
+					<th style="padding:.75rem; text-align:left; border:1px solid #e5e7eb;">Operações/Dia</th>
+					<th style="padding:.75rem; text-align:left; border:1px solid #e5e7eb;">Preço Mensal</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="padding:.75rem; border:1px solid #e5e7eb;"><strong>Iniciante</strong></td>
+					<td style="padding:.75rem; border:1px solid #e5e7eb;">5 usuários</td>
+					<td style="padding:.75rem; border:1px solid #e5e7eb;">500 operações</td>
+					<td style="padding:.75rem; border:1px solid #e5e7eb;">R$ 299/mês</td>
+				</tr>
+				<tr style="background:#f9fafb;">
+					<td style="padding:.75rem; border:1px solid #e5e7eb;"><strong>Profissional</strong></td>
+					<td style="padding:.75rem; border:1px solid #e5e7eb;">15 usuários</td>
+					<td style="padding:.75rem; border:1px solid #e5e7eb;">2.000 operações</td>
+					<td style="padding:.75rem; border:1px solid #e5e7eb;">R$ 599/mês</td>
+				</tr>
+				<tr>
+					<td style="padding:.75rem; border:1px solid #e5e7eb;"><strong>Empresarial</strong></td>
+					<td style="padding:.75rem; border:1px solid #e5e7eb;">50 usuários</td>
+					<td style="padding:.75rem; border:1px solid #e5e7eb;">10.000 operações</td>
+					<td style="padding:.75rem; border:1px solid #e5e7eb;">R$ 1.499/mês</td>
+				</tr>
+				<tr style="background:#f9fafb;">
+					<td style="padding:.75rem; border:1px solid #e5e7eb;"><strong>Enterprise</strong></td>
+					<td style="padding:.75rem; border:1px solid #e5e7eb;">Ilimitado</td>
+					<td style="padding:.75rem; border:1px solid #e5e7eb;">Ilimitado</td>
+					<td style="padding:.75rem; border:1px solid #e5e7eb;">Personalizado</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h2>Tecnologias e Arquitetura</h2>
+		<ul>
+			<li><strong>Segurança Robusta:</strong> Validação de assinatura digital RSA-2048 para cada licença</li>
+			<li><strong>Monitoramento em Tempo Real:</strong> Sistema de heartbeat a cada 30 minutos com detecção automática de anomalias</li>
+			<li><strong>Alta Disponibilidade:</strong> Containerização com Docker Compose para deploy confiável</li>
+			<li><strong>Cobertura de Testes:</strong> 89% de cobertura total, 98% na camada controller (619 testes unitários)</li>
+			<li><strong>Testes E2E Completos:</strong> 16 telas testadas com Selenium, 40+ cenários validados</li>
+			<li><strong>API RESTful:</strong> 17 endpoints testados e documentados</li>
+		</ul>
+
+		<h2>Métricas e Monitoramento</h2>
+		<p>O dashboard administrativo oferece visão completa sobre:</p>
+		<ul>
+			<li><strong>Status de Licenças:</strong> Quais CDs estão ativos, inativos ou próximos da expiração</li>
+			<li><strong>Uso de Recursos:</strong> CPU, memória, conexões de banco de dados por CD</li>
+			<li><strong>Alertas Automáticos:</strong> Notificações preventivas para renovações e problemas</li>
+			<li><strong>MRR (Monthly Recurring Revenue):</strong> Receita recorrente mensal em tempo real</li>
+			<li><strong>Auditoria Completa:</strong> Registro de todas as operações do sistema</li>
+			<li><strong>Padrões de Uso:</strong> Identificação de picos e tendências de utilização</li>
+		</ul>
+
+		<h2>Por Que Adotar o Cara Core Seed?</h2>
+		<ul>
+			<li><strong>Proteção Total:</strong> Apenas clientes autorizados e em dia acessam o sistema</li>
+			<li><strong>Receita Previsível:</strong> Modelo SaaS com assinaturas recorrentes garante fluxo de caixa estável</li>
+			<li><strong>Monitoramento Proativo:</strong> Identifique problemas antes que afetem os clientes</li>
+			<li><strong>Escalabilidade Garantida:</strong> Sistema pronto para produção e preparado para crescimento</li>
+			<li><strong>Compliance e Auditoria:</strong> Todas as operações rastreáveis para conformidade regulatória</li>
+		</ul>
+
+		<hr>
+
+		<h2>Status do Projeto</h2>
+		<div class="insight">
+			<strong>Sistema 100% Operacional e Pronto para Produção</strong>
+			<ul style="margin-top:1rem; margin-bottom:0;">
+				<li>Cobertura de testes: 89% total (619 testes passando)</li>
+				<li>Testes HTTP: 100% (20/20 passando)</li>
+				<li>Testes E2E: 100% (16/16 telas testadas)</li>
+				<li>Endpoints REST: 100% (17/17 testados)</li>
+				<li>Testes de carga implementados e validados</li>
+			</ul>
+		</div>
+
+		<h2>Conclusão</h2>
+		<p>O Cara Core Seed é a fundação técnica do controle de acesso ao Caracore-Hub. Com validação em tempo real, monitoramento completo e controle de receita recorrente, o Seed garante que apenas clientes do Hub autorizados e em dia acessem a plataforma — parte interna e estratégica do ecossistema Cara Core.</p>
+
+		<div class="quote-box">
+			"Em um mundo onde software é commoditizado, o controle sobre quem usa, como usa e por quanto tempo usa é o diferencial competitivo. O Cara Core Seed entrega esse controle." — Equipe Cara Core
+		</div>
+
+		<div class="note">
+			<strong>Compromisso da Cara Core Informática:</strong><br>
+			Nós da Cara Core nos comprometemos a operar sempre com transparência total sobre nossos incentivos e boas práticas. Quando auditamos, só auditamos. Quando implementamos, apresentamos múltiplas soluções com justificativas técnicas detalhadas. E sempre documentamos nossas recomendações com evidências verificáveis.<br><br>
+			Porque no final do dia, nossa reputação vale mais do que qualquer contrato individual.
+		</div>
+
+		<hr>
+
+		<h2>Hashtags</h2>
+		<div class="hash-box">#Licenciamento #SaaS #CaraCoreSeed #Segurança #Compliance #Monitoramento #ReceitaRecorrente #TI #Inovação</div>
+
+		<hr />
+
+		<h3>Contato</h3>
+		<ul>
+			<li><strong>E-mail:</strong> suporte@caracore.com.br</li>
+			<li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
+			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
+		</ul>
+
+		<div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
+			<strong>Gostou do conteúdo?</strong><br />
+			<span style="font-size:.85rem;">Conecte-se conosco no LinkedIn para mais conteúdos sobre licenciamento SaaS, segurança e inovação em TI!</span><br />
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Seguir no LinkedIn</a>
+		</div>
+
+		<p style="text-align:center; font-size:.85rem; color:#6b7280; margin-top:3rem;">
+			<em>Artigo publicado em 11 de janeiro de 2026</em><br>
+			© 2026 Cara Core Informática. Todos os direitos reservados.
+		</p>
+
+		<div style="background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
+			<strong>Convite Join Venture</strong><br />
+			<span style="font-size:.95rem;">Se você é empreendedor, investidor ou profissional de tecnologia e deseja cocriar soluções inovadoras para o ecossistema Cara Core, entre em contato e venha construir conosco novas oportunidades de negócio. Juntos, podemos ir além!</span><br />
+			<a href="mailto:suporte@caracore.com.br" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Quero participar do Join Venture</a>
+		</div>
+	</div>
+</body>
+</html>

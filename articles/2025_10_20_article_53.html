@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Microsoft 365 para PMEs: colaboração simples, resultados reais — Cara Core Informática</title>
+	<meta name="description" content="História prática e exemplos de como o Microsoft 365 melhora a gestão e a colaboração em pequenas e médias empresas. Guia de início rápido e dicionário." />
+	<meta name="keywords" content="Microsoft 365, MS365, Teams, SharePoint, OneDrive, Planner, Power Automate, Forms, PME, Produtividade" />
+	<meta name="author" content="Cara Core Informática" />
+	<link rel="canonical" href="https://caracore.com.br/publications/articles/2025_10_20_article_53.html" />
+	<!-- Open Graph -->
+	<meta property="og:title" content="Microsoft 365 para PMEs: colaboração simples, resultados reais" />
+	<meta property="og:description" content="Como o Microsoft 365 transforma conversas, arquivos e aprovações em fluidez operacional. Exemplos práticos e guia de 7 dias." />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="https://caracore.com.br/publications/articles/2025_10_20_article_53.html" />
+	<meta property="og:image" content="https://caracore.com.br/publications/articles/assets/img/article_53_01.png" />
+	<meta property="og:image:alt" content="Equipe distribuída colaborando no Microsoft 365: Teams, SharePoint, OneDrive, Planner e Power Automate" />
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Microsoft 365 para PMEs: colaboração simples, resultados reais" />
+	<meta name="twitter:description" content="Como o Microsoft 365 transforma conversas, arquivos e aprovações em fluidez operacional. Exemplos práticos e guia de 7 dias." />
+	<meta name="twitter:image" content="https://caracore.com.br/publications/articles/assets/img/article_53_01.png" />
+	<meta name="twitter:image:alt" content="Equipe distribuída colaborando no Microsoft 365: Teams, SharePoint, OneDrive, Planner e Power Automate" />
+	<link rel="stylesheet" href="assets/css/articles.css" />
+	<style>
+		body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif; line-height:1.55; color:#1f2937; margin:0; }
+		.container { max-width: 980px; margin:0 auto; padding:2rem 1.25rem 4rem; }
+		h1 { line-height:1.2; font-size:clamp(1.9rem,2.4vw,2.5rem); margin-top:0; }
+		h2 { margin-top:2.25rem; line-height:1.25; }
+		pre { 
+			background: linear-gradient(180deg, #244d30 0%, #1c3a27 100%);
+			color:#f5fff0; padding:1rem 1.1rem; overflow:auto; border-radius:10px; border:12px solid #6b4226;
+			box-shadow:0 6px 16px rgba(0,0,0,.18), inset 0 0 0 1px rgba(255,255,255,.03); font-size:.95rem;
+			font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; text-shadow: 0 1px 0 rgba(255,255,255,.05), 0 0 1px rgba(255,255,255,.08);
+		}
+		.chalkboard { background: linear-gradient(180deg, #244d30 0%, #1c3a27 100%); color:#f5fff0; padding:1rem 1.1rem; border-radius:10px; border:12px solid #6b4226; box-shadow:0 6px 16px rgba(0,0,0,.18), inset 0 0 0 1px rgba(255,255,255,.03); text-shadow: 0 1px 0 rgba(255,255,255,.05), 0 0 1px rgba(255,255,255,.08); margin-top:2rem; }
+		.chalkboard h2 { margin-top:0; color:#f5fff0; }
+		.chalkboard dl { margin:0; }
+		.chalkboard dt { margin-top:.6rem; }
+		.chalkboard dd { margin:.2rem 0 .6rem 0; opacity:.95; }
+		/* ROI colored cards (Microsoft palette) */
+		.roi-cards { display:grid; gap:1rem; margin-top:.5rem; }
+		.roi-card { padding:1rem 1.1rem; border-radius:10px; border:1px solid #e5e7eb; background:#f9fafb; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+		.roi-card h3 { margin:.2rem 0 .4rem; font-size:1.05rem; }
+		.roi-card p { margin:.25rem 0; }
+		.roi-card.c1 { background:linear-gradient(0deg, rgba(242,80,34,.08), rgba(242,80,34,.08)); border-left:6px solid #F25022; }
+		.roi-card.c2 { background:linear-gradient(0deg, rgba(127,186,0,.10), rgba(127,186,0,.10)); border-left:6px solid #7FBA00; }
+		.roi-card.c3 { background:linear-gradient(0deg, rgba(0,164,239,.10), rgba(0,164,239,.10)); border-left:6px solid #00A4EF; }
+		.roi-card.c4 { background:linear-gradient(0deg, rgba(255,185,0,.12), rgba(255,185,0,.12)); border-left:6px solid #FFB900; }
+		code { font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; color: inherit; background: transparent; }
+		figure img { max-width:100%; height:auto; }
+		ul,ol { padding-left:1.1rem; }
+		.back-link { text-decoration:none; font-size:.85rem; color:#2563eb; }
+		.note { background:#f8f9fa; padding:1rem 1.25rem; border-left:4px solid #10B981; border-radius:6px; }
+		.hash-box { background:#f8f9fa; padding:1rem 1.25rem; border-left:4px solid #0EA5E9; border-radius:6px; font-size:.85rem; line-height:1.5; }
+		hr { border:none; border-top:1px solid #e5e7eb; margin:3rem 0 2rem; }
+		blockquote { font-style: italic; border-left: 3px solid #e5e7eb; padding-left: 1.25rem; margin-left: 0; }
+		@media (max-width:640px){ pre { font-size:.78rem; border-width:9px; padding:.85rem .9rem; } .chalkboard { border-width:9px; padding:.85rem .9rem; } }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<a class="back-link" href="../articles.html">&larr; Voltar para publicações</a>
+		<img src="assets/img/article_53_01.png" alt="Equipe distribuída usando Microsoft 365: Teams, SharePoint, OneDrive, Planner e Power Automate" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+		<h1>Microsoft 365 para PMEs: colaboração simples, resultados reais</h1>
+		<div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
+				<img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
+				<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
+				<span style="margin-left: 1.5rem;">84 seguidores<br>20 de outubro de 2025</span>
+		</div>
+
+		<div class="note"><strong>Tempo estimado de leitura:</strong> ~8 minutos</div>
+
+		<h2>A história: “Três lojas, muitas conversas”</h2>
+		<p>A rede de lojas “Ponto do Bairro” começou com uma unidade, depois três, e o time passou a trabalhar parte do tempo em casa e nas ruas. Cada filial tinha seu “jeitinho”: o estoque numa planilha, as fotos de produtos no celular, as cotações no e-mail pessoal.</p>
+		<p>O problema não era falta de esforço. Era a falta de um lugar único para conversar, guardar, encontrar e aprovar. O plano: investir 2% do lucro de um mês para padronizar o básico com Microsoft 365.</p>
+		<p><strong>Resultados em 30 dias:</strong></p>
+		<ul>
+			<li>Conversas e reuniões no Teams, com canais por assunto.</li>
+			<li>Documentos no SharePoint/OneDrive, com controle de versão e pesquisa.</li>
+			<li>Tarefas no Planner, com responsáveis e prazos visíveis.</li>
+			<li>Aprovações e avisos automáticos via Power Automate.</li>
+		</ul>
+
+		<h2>O kit inicial (em 7 dias) — o que montar primeiro</h2>
+		<ol>
+			<li>Domínio e usuários: cada pessoa com e-mail corporativo e MFA.</li>
+			<li>Teams: um time por área (Vendas, Compras, Operações) com canais fixos.</li>
+			<li>SharePoint: sites por área e uma “central” (intranet) com documentos oficiais.</li>
+			<li>OneDrive: arquivos pessoais de trabalho, com compartilhamento por link seguro.</li>
+			<li>Planner: quadro por área; tarefas com checklists e comentários.</li>
+			<li>Power Automate: aprovações simples (compras, descontos) e avisos no Teams.</li>
+			<li>Forms/Bookings: formulários e agendamentos para clientes e equipe.</li>
+		</ol>
+
+		<h2>Exemplos práticos que geram valor imediato</h2>
+		<ul>
+			<li>Catálogo e preço sempre atualizados: PDF no SharePoint; link compartilhado só para a equipe. Atualizou o arquivo, todos têm a versão certa.</li>
+			<li>Pedido especial do cliente: formulário (Forms) preenche planilha no SharePoint e aciona aprovação no Teams.</li>
+			<li>Compras com aprovação: o gerente recebe notificação, aprova pelo celular, o fornecedor já é avisado.</li>
+			<li>Visita técnica: fotos e relatório direto no canal do Teams; o arquivo vai para a biblioteca do SharePoint automaticamente.</li>
+			<li>Onboarding de novos colaboradores: página “Comece aqui” no SharePoint (+ checklists no Planner).</li>
+			<li>Reunião que vira ação: notas no OneNote/Loop e tarefas no Planner com responsáveis em 1 clique.</li>
+		</ul>
+
+			<h2>Casos reais com números de ROI</h2>
+			<p>Estes exemplos são conservadores e servem para visualizar a ordem de grandeza do ganho.</p>
+			<div class="roi-cards">
+				<div class="roi-card c1">
+					<h3>Catálogo e preços centralizados</h3>
+					<p><strong>Antes:</strong> 10 vendedores × 15 min/dia procurando a versão certa = 2,5 h/dia.<br> <strong>Custo:</strong> (R$ 45/h) ~R$ 112,50/dia → ~R$ 2.475/mês (22 dias úteis).</p>
+					<p><strong>Depois:</strong> 10 × 5 min/dia = 0,83 h/dia → ~R$ 37,35/dia → ~R$ 822/mês.</p>
+					<p><strong>Economia:</strong> ~R$ 1.653/mês.</p>
+				</div>
+				<div class="roi-card c2">
+					<h3>Compras com aprovação no celular (Power Automate + Teams)</h3>
+					<p><strong>Antes:</strong> ~6 h/semana somadas de espera e retrabalho (três pessoas envolvidas).<br> <strong>Custo:</strong> 6 × R$ 45 = R$ 270/semana → ~R$ 1.161/mês (4,3 semanas).</p>
+					<p><strong>Depois:</strong> ~2 h/semana → ~R$ 90/semana → ~R$ 387/mês.</p>
+					<p><strong>Economia:</strong> ~R$ 774/mês. Payback típico: &lt; 1 mês considerando licenças básicas.</p>
+				</div>
+				<div class="roi-card c3">
+					<h3>Onboarding de novos colaboradores</h3>
+					<p><strong>Antes:</strong> ~8 h para organizar acessos e materiais.</p>
+					<p><strong>Depois:</strong> (página “Comece aqui” + modelos): ~4 h.</p>
+					<p><strong>Economia:</strong> 4 h por contratação. Em 3 contratações/trim: 12 h/trim. <strong>Valor:</strong> 12 × R$ 45 = R$ 540/trim (~R$ 180/mês).</p>
+				</div>
+			</div>
+
+		<h2>Segurança e governança, sem complicar</h2>
+		<ul>
+			<li>MFA (dupla verificação) ativada para todos.</li>
+			<li>Compartilhamento padrão: “Somente pessoas da organização”. Externo apenas quando necessário e com prazo.</li>
+			<li>Pastas oficiais em sites de área (SharePoint). Evite “salvar no desktop”.</li>
+			<li>Políticas simples de retenção e acesso; evite grupos “soltos” sem dono.</li>
+		</ul>
+
+		<h2>Custos, licenças e ROI</h2>
+		<ul>
+			<li>Licença por usuário (planos Business) — comece pelo básico e evolua conforme a necessidade.</li>
+			<li>O ganho vem da velocidade: menos tempo procurando arquivos, menos retrabalho, decisões mais rápidas.</li>
+			<li>Dica: escolha 3 fluxos críticos (ex.: compras, catálogo, propostas) e meça o antes/depois.</li>
+		</ul>
+
+		<h2>Antes vs Depois (rápido para compartilhar)</h2>
+		<div class="note" style="overflow-x:auto;">
+			<table style="width:100%; border-collapse:collapse;">
+				<thead>
+					<tr>
+						<th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:.5rem;">Cenário</th>
+						<th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:.5rem;">Antes</th>
+						<th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:.5rem;">Depois</th>
+						<th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:.5rem;">Ganho típico</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="padding:.5rem;">Catálogo e preços</td>
+						<td style="padding:.5rem;">10 vendedores × 15 min/dia = 2,5 h/dia</td>
+						<td style="padding:.5rem;">10 × 5 min/dia = 0,83 h/dia</td>
+						<td style="padding:.5rem;">~1,7 h/dia a menos (≈ R$ 1.653/mês)</td>
+					</tr>
+					<tr>
+						<td style="padding:.5rem;">Aprovação de compras</td>
+						<td style="padding:.5rem;">~6 h/semana somadas (espera + retrabalho)</td>
+						<td style="padding:.5rem;">~2 h/semana</td>
+						<td style="padding:.5rem;">~4 h/semana a menos (≈ R$ 774/mês)</td>
+					</tr>
+					<tr>
+						<td style="padding:.5rem;">Onboarding</td>
+						<td style="padding:.5rem;">~8 h por contratação</td>
+						<td style="padding:.5rem;">~4 h por contratação</td>
+						<td style="padding:.5rem;">4 h por contratação (≈ R$ 540/trim para 3 admissões)</td>
+					</tr>
+				</tbody>
+			</table>
+			<p style="margin:.5rem 0 0; font-size:.9rem; color:#4b5563;">Obs.: números ilustrativos e conservadores; adapte às horas e custo/hora da sua equipe.</p>
+		</div>
+
+		<h2>Como começar esta semana</h2>
+		<ol>
+			<li>Nomeie um(a) dono(a) por área (Vendas, Compras, Operações).</li>
+			<li>Crie a estrutura mínima no Teams e SharePoint, com 4–6 canais essenciais.</li>
+			<li>Centralize documentos oficiais (modelos, políticas, listas de preço).</li>
+			<li>Configure 1 aprovação simples no Power Automate.</li>
+			<li>Treine a equipe em 90 minutos: “onde conversamos”, “onde guardamos”, “como aprovamos”.</li>
+		</ol>
+		<blockquote>Se preferir, a Cara Core ajuda com um sprint guiado, treinamento e suporte agendado.</blockquote>
+
+		<h2 id="conclusao">Conclusão</h2>
+		<p>Investir uma fração do lucro em organização digital com Microsoft 365 não é gasto — é aceleração operacional. Ao padronizar “onde conversamos”, “onde guardamos” e “como aprovamos”, o negócio ganha previsibilidade, rapidez e menos retrabalho.</p>
+		<p><strong>Próximo passo</strong> → agende um bate-papo. A Cara Core Informática oferece suporte com atendimento agendado e treinamentos sob encomenda aos Sábados, Domingos e Feriados.</p>
+
+			<div class="chalkboard" role="complementary" aria-label="Dicionário rápido">
+				<h2>Dicionário rápido</h2>
+				<dl>
+					<dt><strong>Teams</strong></dt>
+					<dd>Conversas, reuniões e canais por assunto.</dd>
+					<dt><strong>SharePoint</strong></dt>
+					<dd>Sites e bibliotecas para documentos oficiais da área.</dd>
+					<dt><strong>OneDrive</strong></dt>
+					<dd>Arquivos pessoais de trabalho com compartilhamento seguro.</dd>
+					<dt><strong>Planner</strong></dt>
+					<dd>Tarefas com responsáveis, prazos e checklists.</dd>
+					<dt><strong>Power Automate</strong></dt>
+					<dd>Automações (avisos, aprovações, cópias) sem programar.</dd>
+					<dt><strong>Forms</strong></dt>
+					<dd>Formulários para clientes/equipe; respostas vão para planilha.</dd>
+					<dt><strong>Bookings</strong></dt>
+					<dd>Agenda online para serviços e atendimentos.</dd>
+					<dt><strong>OneNote/Loop</strong></dt>
+					<dd>Anotações e páginas colaborativas em tempo real.</dd>
+					<dt><strong>MFA</strong></dt>
+					<dd>Autenticação em duas etapas; muito mais segurança.</dd>
+				</dl>
+			</div>
+
+		<h2>Hashtags</h2>
+		<div class="hash-box">#Microsoft365 #MS365 #Teams #SharePoint #OneDrive #Planner #PowerAutomate #Forms #PME #Produtividade #CaraCoreInformática</div>
+
+		<hr />
+		<h3>Contato</h3>
+		<ul>
+			<li><strong>E-mail:</strong> suporte@caracore.com.br</li>
+			<li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
+			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
+		</ul>
+
+		<div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
+			<strong>🤝 Gostou do conteúdo?</strong><br />
+			<span style="font-size:.85rem;">Conecte-se conosco no LinkedIn para mais conteúdos sobre produtividade e colaboração!</span><br />
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Seguir no LinkedIn</a>
+		</div>
+	</div>
+</body>
+</html>

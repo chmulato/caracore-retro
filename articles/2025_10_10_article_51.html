@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parte II — Gestão da infraestrutura do Hub com AWS CDK (Python) no EC2 + GitHub Actions — Cara Core Informática</title>
+    <meta name="description" content="Como versionar e operar infraestrutura do Hub com AWS CDK (Python) para EC2/ALB/RDS e automatizar com GitHub Actions (OIDC) sem chaves estáticas." />
+    <meta name="keywords" content="AWS, CDK, Python, EC2, ALB, RDS, PostgreSQL, GitHub Actions, OIDC, IaC" />
+  <meta name="author" content="Cara Core Informática" />
+  <link rel="canonical" href="https://caracore.com.br/publications/articles/2025_10_10_article_51.html" />
+  <!-- Open Graph -->
+    <meta property="og:title" content="Gerenciando EC2 (Parte II) — AWS CDK (Python) para EC2/ALB/RDS + GitHub Actions" />
+    <meta property="og:description" content="Infraestrutura como código para o Hub: VPC, ALB, ASG EC2 e RDS PostgreSQL com CDK em Python e CI com GitHub Actions (OIDC)." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://caracore.com.br/publications/articles/2025_10_10_article_51.html" />
+  <meta property="og:image" content="https://caracore.com.br/publications/articles/assets/img/article_51_01.png" />
+    <meta property="og:image:alt" content="Mesa digital com cartões: CSV↔API, Conciliação, Excel, Alertas e FastAPI (cores Cara Core)" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Gerenciando EC2 (Parte II) — AWS CDK (Python) para EC2/ALB/RDS + GitHub Actions" />
+    <meta name="twitter:description" content="Infraestrutura como código para o Hub: VPC, ALB, ASG EC2 e RDS PostgreSQL com CDK em Python e CI com GitHub Actions (OIDC)." />
+  <meta name="twitter:image" content="https://caracore.com.br/publications/articles/assets/img/article_51_01.png" />
+    <meta name="twitter:image:alt" content="Mesa digital com cartões: CSV↔API, Conciliação, Excel, Alertas e FastAPI (cores Cara Core)" />
+  <link rel="stylesheet" href="assets/css/articles.css" />
+  <style>
+    body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif; line-height:1.55; color:#1f2937; margin:0; }
+    .container { max-width: 980px; margin:0 auto; padding:2rem 1.25rem 4rem; }
+    h1 { line-height:1.2; font-size:clamp(1.9rem,2.4vw,2.5rem); margin-top:0; }
+    h2 { margin-top:2.25rem; line-height:1.25; }
+    /* Chalkboard style for code blocks */
+    pre { 
+            background: linear-gradient(180deg, #244d30 0%, #1c3a27 100%); /* green chalkboard */
+            color:#f5fff0; 
+            padding:1rem 1.1rem; 
+            overflow:auto; 
+            border-radius:10px; 
+            border:12px solid #6b4226; /* thick brown frame */
+            box-shadow:0 6px 16px rgba(0,0,0,.18), inset 0 0 0 1px rgba(255,255,255,.03); 
+            font-size:.9rem; 
+        }
+    /* Reusable chalkboard container for non-code sections */
+    .chalkboard {
+      background: linear-gradient(180deg, #244d30 0%, #1c3a27 100%);
+      color:#f5fff0;
+      padding:1rem 1.1rem;
+      border-radius:10px;
+      border:12px solid #6b4226;
+      box-shadow:0 6px 16px rgba(0,0,0,.18), inset 0 0 0 1px rgba(255,255,255,.03);
+      text-shadow: 0 1px 0 rgba(255,255,255,.05), 0 0 1px rgba(255,255,255,.08);
+      margin-top: 2rem;
+    }
+    .chalkboard h2 { margin-top: 0; color: #f5fff0; }
+    .chalkboard dl { margin: 0; }
+    .chalkboard dt { margin-top: .6rem; }
+    .chalkboard dd { margin: .2rem 0 .6rem 0; opacity: .95; }
+        code { font-family: ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace; color: inherit; background: transparent; }
+    figure img { max-width:100%; height:auto; }
+    ul,ol { padding-left:1.1rem; }
+    .back-link { text-decoration:none; font-size:.85rem; color:#2563eb; }
+    .note { background:#f8f9fa; padding:1rem 1.25rem; border-left:4px solid #10B981; border-radius:6px; }
+    .hash-box { background:#f8f9fa; padding:1rem 1.25rem; border-left:4px solid #0EA5E9; border-radius:6px; font-size:.85rem; line-height:1.5; }
+    .repo-box { background:#f8f9fa; padding:1.25rem 1.25rem 1rem; border-left:4px solid #10B981; border-radius:6px; }
+    .repo-box a { color:#10B981; font-weight:600; text-decoration:none; }
+    hr { border:none; border-top:1px solid #e5e7eb; margin:3rem 0 2rem; }
+    blockquote { font-style: italic; border-left: 3px solid #e5e7eb; padding-left: 1.25rem; margin-left: 0; }
+    @media (max-width:640px){ 
+      pre { font-size:.78rem; border-width:9px; padding:.85rem .9rem; }
+      .chalkboard { border-width:9px; padding:.85rem .9rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back-link" href="../articles.html">&larr; Voltar para publicações</a>
+    <img src="assets/img/article_51_01.png" alt="Python prático: sincronização, conciliação, relatórios e alertas" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+    <h1>Gerenciando EC2 (Parte II) — AWS CDK (Python) para EC2/ALB/RDS + GitHub Actions</h1>
+    <div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
+        <img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
+        <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
+        <span style="margin-left: 1.5rem;">84 seguidores<br>10 de outubro de 2025</span>
+    </div>
+
+  <div class="note"><strong>Tempo estimado de leitura:</strong> ~10 minutos</div>
+
+  <p>Na Parte I (Artigo 50), apresentamos a visão e os blocos principais do Hub: DNS/SSL (Route 53/ACM) → Application Load Balancer → EC2 (Tomcat/WildFly, Java 17) → RDS PostgreSQL, com segurança mínima bem definida, observabilidade e um desenho que funciona do centro às bordas. Também discutimos por que times pequenos ganham muito ao tratar a infraestrutura como código: previsibilidade, reprodutibilidade e auditoria.</p>
+  <p>Agora, na Parte II, transformamos aquele desenho em código com AWS CDK (Python). Vamos provisionar VPC, Security Groups, ALB, Auto Scaling Group de EC2 e RDS PostgreSQL, e fechar o ciclo com um pipeline de GitHub Actions via OIDC (sem chaves estáticas) para executar synth/diff/deploy. Objetivo: tornar a infraestrutura do Hub versionada, segura e rápida de evoluir.</p>
+
+    <h2>1) Pré‑requisitos e estrutura do projeto</h2>
+    <pre><code class="language-bash">cdk bootstrap aws://SEU_ACCOUNT_ID/sa-east-1</code></pre>
+    <pre><code class="language-text">hub-infra/
+├─ app.py
+├─ requirements.txt
+└─ hub_infra/
+   └─ hub_infra_stack.py</code></pre>
+    <p>requirements.txt:</p>
+    <pre><code class="language-text">aws-cdk-lib==2.154.1
+constructs&gt;=10.0.0,&lt;11.0.0</code></pre>
+
+    <h2>2) app.py — ponto de entrada do CDK</h2>
+    <pre><code class="language-python">#!/usr/bin/env python3
+import os
+import aws_cdk as cdk
+from hub_infra.hub_infra_stack import HubInfraStack
+
+app = cdk.App()
+
+env = cdk.Environment(
+    account=os.getenv('CDK_DEFAULT_ACCOUNT'),
+    region=os.getenv('CDK_DEFAULT_REGION', 'sa-east-1')
+)
+
+HubInfraStack(app, "HubInfraStack", env=env)
+
+app.synth()</code></pre>
+
+    <h2>3) hub_infra_stack.py — ALB → EC2 (ASG) → RDS PostgreSQL</h2>
+    <p>Exemplo compacto que cria VPC, Security Groups, um ALB público, um Auto Scaling Group de EC2 (Amazon Linux 2023) com SSM e Tomcat via UserData, e um banco RDS PostgreSQL 15.</p>
+    <pre><code class="language-python">from constructs import Construct
+from aws_cdk import (
+    Stack, Duration, RemovalPolicy,
+    aws_ec2 as ec2,
+    aws_autoscaling as asg,
+    aws_elasticloadbalancingv2 as elbv2,
+    aws_rds as rds,
+    aws_iam as iam
+)
+
+
+class HubInfraStack(Stack):
+    def __init__(self, scope: Construct, construct_id: str, **kwargs) -&gt; None:
+        super().__init__(scope, construct_id, **kwargs)
+
+        # VPC padrão com sub-redes públicas/privadas
+        vpc = ec2.Vpc(self, "Vpc", max_azs=2)
+
+        # Security Groups
+        alb_sg = ec2.SecurityGroup(self, "AlbSg", vpc=vpc, allow_all_outbound=True)
+        alb_sg.add_ingress_rule(ec2.Peer.any_ipv4(), ec2.Port.tcp(80), "HTTP público")
+
+        app_sg = ec2.SecurityGroup(self, "AppSg", vpc=vpc, allow_all_outbound=True)
+        app_sg.add_ingress_rule(alb_sg, ec2.Port.tcp(8080), "Tráfego do ALB para app")
+
+        db_sg = ec2.SecurityGroup(self, "DbSg", vpc=vpc, allow_all_outbound=True)
+        db_sg.add_ingress_rule(app_sg, ec2.Port.tcp(5432), "App → Postgres")
+
+        # RDS PostgreSQL 15
+        db = rds.DatabaseInstance(
+            self, "Postgres",
+            engine=rds.DatabaseInstanceEngine.postgres(version=rds.PostgresEngineVersion.V15_5),
+            vpc=vpc,
+            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),
+            security_groups=[db_sg],
+            allocated_storage=20,
+            max_allocated_storage=100,
+            multi_az=False,
+            deletion_protection=False,
+            removal_policy=RemovalPolicy.DESTROY,
+            credentials=rds.Credentials.from_generated_secret("dbadmin"),
+            publicly_accessible=False,
+            database_name="hub"
+        )
+
+        # Perfil/Role para EC2 com SSM e acesso básico a logs/SSM
+        role = iam.Role(self, "Ec2Role",
+                        assumed_by=iam.ServicePrincipal("ec2.amazonaws.com"))
+        role.add_managed_policy(
+            iam.ManagedPolicy.from_aws_managed_policy_name("AmazonSSMManagedInstanceCore")
+        )
+
+        # Launch template + UserData para Tomcat 9 e Java 17
+        user_data = ec2.UserData.for_linux()
+        user_data.add_commands(
+            "yum update -y",
+            "yum install -y java-17-amazon-corretto-headless",  # Java 17
+            "yum install -y tomcat",  # Tomcat 9
+            "systemctl enable tomcat",
+            "systemctl start tomcat",
+        )
+
+        lt = ec2.LaunchTemplate(self, "AppLt",
+                                 machine_image=ec2.MachineImage.latest_amazon_linux2023(),
+                                 instance_type=ec2.InstanceType("t3.small"),
+                                 role=role,
+                                 security_group=app_sg,
+                                 user_data=user_data)
+
+        group = asg.AutoScalingGroup(
+            self, "Asg",
+            vpc=vpc,
+            launch_template=lt,
+            desired_capacity=1,
+            min_capacity=1,
+            max_capacity=3,
+            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS)
+        )
+
+        # ALB + Target Group para porta 8080
+        alb = elbv2.ApplicationLoadBalancer(self, "Alb", vpc=vpc, internet_facing=True, security_group=alb_sg)
+        listener = alb.add_listener("Http", port=80, open=True)
+        listener.add_targets("AppTg", port=8080, targets=[group])
+
+        # Health check básico (padrão GET /)
+        # Para customizar: listener.targets[0].configure_health_check(path='/health')
+
+        # Saída útil
+        self.alb_dns = alb.load_balancer_dns_name</code></pre>
+
+    <h2>4) Parâmetros e segredos (SSM/Secrets Manager)</h2>
+    <p>Armazene strings de conexão/segredos fora do código. No exemplo acima, as credenciais do RDS são geradas em um segredo gerenciado. Use o SSM/Secrets no runtime do app (via SSM Agent/SDK) para buscar configurações.</p>
+
+    <h2>5) GitHub Actions (OIDC) — synth/diff/deploy</h2>
+    <p>Workflow com dois fluxos: PR (synth/diff) e main (deploy). Requer um Role no AWS IAM confiando no provedor OIDC do GitHub e um segredo <code>AWS_CDK_ROLE_ARN</code> no repositório.</p>
+    <pre><code class="language-yaml">name: cdk
+
+on:
+  pull_request:
+    paths:
+      - 'hub-infra/**'
+  push:
+    branches: [ main ]
+    paths:
+      - 'hub-infra/**'
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  AWS_REGION: sa-east-1
+
+jobs:
+  pr-check:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install CDK CLI
+        run: npm install -g aws-cdk
+      - name: Install Python deps
+        working-directory: hub-infra
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Configure AWS (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_CDK_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      - name: CDK synth
+        working-directory: hub-infra
+        run: cdk synth
+      - name: CDK diff
+        working-directory: hub-infra
+        run: cdk diff
+
+  deploy:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install CDK CLI
+        run: npm install -g aws-cdk
+      - name: Install Python deps
+        working-directory: hub-infra
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Configure AWS (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_CDK_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      - name: Deploy
+        working-directory: hub-infra
+        run: cdk deploy --require-approval never</code></pre>
+
+    <h2>6) Operação do dia a dia</h2>
+    <ul>
+      <li><code>cdk diff</code> nos PRs dá previsibilidade antes do deploy na main.</li>
+      <li>Parâmetros por ambiente com <code>-c stage=dev|prod</code> para tamanhos e nomes.</li>
+      <li>Monitore ALB/EC2/RDS no CloudWatch com alarmes de CPU/HTTP 5xx/latência.</li>
+    </ul>
+
+    <h2>Conclusão geral da série (Partes I e II)</h2>
+    <p><strong>Parte I:</strong> alinhamos a narrativa e as decisões arquiteturais — Route 53/ACM → ALB → EC2 (Tomcat/WildFly) → RDS PostgreSQL — com foco em simplicidade operável por times enxutos.</p>
+    <p><strong>Parte II:</strong> codificamos essa arquitetura com AWS CDK (Python), externalizamos segredos e parametrizações, e automatizamos o ciclo com GitHub Actions (OIDC) para synth/diff/deploy.</p>
+    <p><strong>Benefícios concretos:</strong><br>
+      • Previsibilidade e menor risco: <code>cdk diff</code> antecipa mudanças antes do deploy.<br>
+      • Segurança aprimorada: OIDC elimina chaves estáticas e reduz superfície de ataque.<br>
+      • Escala e custo sob controle: ASG de EC2 ajusta capacidade; RDS gerenciado simplifica operações.<br>
+      • Governança: versionamento e auditoria ponta a ponta (infra + pipeline).</p>
+    <p><strong>Próximos passos recomendados:</strong><br>
+      • Ativar HTTPS com ACM no ALB; criar estágios (dev/hml/prd) via context (<code>-c stage=...</code>).<br>
+      • Implantar o aplicativo (WAR/JAR) e avaliar estratégias blue/green no ALB.<br>
+      • Fortalecer observabilidade (CloudWatch: alarmes CPU/5xx/latência) e rotinas de backup/retention no RDS.</p>
+    <p>Com esses pilares, o Hub evolui com segurança, consistência e velocidade — do planejamento à operação diária.</p>
+
+    <div class="chalkboard" role="complementary" aria-label="Dicionário rápido">
+    <h2>Dicionário rápido</h2>
+    <dl>
+      <dt><strong>AWS CDK</strong></dt>
+      <dd>Cloud Development Kit — framework para definir infraestrutura como código (IaC) em linguagens como Python.</dd>
+      <dt><strong>IaC</strong></dt>
+      <dd>Infraestrutura como Código — prática de descrever e versionar infraestrutura em arquivos de código.</dd>
+      <dt><strong>EC2</strong></dt>
+      <dd>Elastic Compute Cloud — servidores/VMs na AWS.</dd>
+      <dt><strong>ALB</strong></dt>
+      <dd>Application Load Balancer — balanceador L7 para tráfego HTTP/HTTPS.</dd>
+      <dt><strong>ASG</strong></dt>
+      <dd>Auto Scaling Group — ajusta automaticamente a quantidade de instâncias EC2.</dd>
+      <dt><strong>RDS (PostgreSQL)</strong></dt>
+      <dd>Relational Database Service — banco relacional gerenciado (ex.: PostgreSQL).</dd>
+      <dt><strong>VPC</strong></dt>
+      <dd>Virtual Private Cloud — rede virtual isolada na AWS.</dd>
+      <dt><strong>Security Group (SG)</strong></dt>
+      <dd>Firewall de nível de instância/ENI que controla o tráfego de entrada/saída.</dd>
+      <dt><strong>SSM</strong></dt>
+      <dd>AWS Systems Manager — inclui o SSM Agent, automações e o Parameter Store.</dd>
+      <dt><strong>Parameter Store / Secrets Manager</strong></dt>
+      <dd>Serviços para armazenar parâmetros e segredos fora do código.</dd>
+      <dt><strong>OIDC</strong></dt>
+      <dd>OpenID Connect — padrão usado para autenticação federada do GitHub Actions com a AWS IAM Role, sem chaves estáticas.</dd>
+      <dt><strong>GitHub Actions</strong></dt>
+      <dd>Plataforma de CI/CD do GitHub; usada aqui para cdk synth/diff/deploy com OIDC.</dd>
+    </dl>
+    </div>
+
+    <h2>Hashtags</h2>
+  <div class="hash-box">#AWS #CDK #Python #EC2 #ALB #RDS #PostgreSQL #GitHubActions #OIDC #IaC #CaraCoreInformática</div>
+
+    <hr />
+    <h3>Contato</h3>
+    <ul>
+      <li><strong>E-mail:</strong> suporte@caracore.com.br</li>
+      <li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
+      <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
+    </ul>
+
+    <div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
+      <strong>🤝 Gostou do conteúdo?</strong><br />
+      <span style="font-size:.85rem;">Conecte-se conosco no LinkedIn para mais conteúdos sobre desenvolvimento e inovação tecnológica!</span><br />
+      <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Seguir no LinkedIn</a>
+    </div>
+  </div>
+</body>
+</html>

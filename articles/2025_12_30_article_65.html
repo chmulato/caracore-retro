@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Quando os Interesses se Cruzam: Uma Reflexão sobre Ética em Auditoria de Sistemas — Cara Core Informática</title>
+	<meta name="description" content="Uma narrativa sobre conflitos de interesse em auditorias de segurança digital, má-fé contratual e as consequências de decisões técnicas influenciadas por ganhos pessoais. Um alerta sobre transparência no setor de TI." />
+	<meta name="keywords" content="Ética em TI, Auditoria de Segurança, Conflito de Interesses, Má-fé, Consultoria, LGPD, Compliance, Transparência, Cara Core Informática" />
+	<meta name="author" content="Cara Core Informática" />
+	<link rel="canonical" href="https://caracore.com.br/publications/articles/2025_12_30_article_65.html" />
+	<!-- Open Graph -->
+	<meta property="og:title" content="Quando os Interesses se Cruzam: Uma Reflexão sobre Ética em Auditoria de Sistemas" />
+	<meta property="og:description" content="Uma narrativa sobre conflitos de interesse em auditorias de segurança digital, má-fé contratual e as consequências de decisões técnicas influenciadas por ganhos pessoais." />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="https://caracore.com.br/publications/articles/2025_12_30_article_65.html" />
+	<meta property="og:image" content="https://caracore.com.br/publications/articles/assets/img/article_65_01.png" />
+	<meta property="og:image:alt" content="Ética em TI, Conflito de Interesses, Auditoria de Segurança" />
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Quando os Interesses se Cruzam: Uma Reflexão sobre Ética em Auditoria de Sistemas" />
+	<meta name="twitter:description" content="Uma narrativa sobre conflitos de interesse em auditorias de segurança digital, má-fé contratual e as consequências de decisões técnicas influenciadas por ganhos pessoais." />
+	<meta name="twitter:image" content="https://caracore.com.br/publications/articles/assets/img/article_65_01.png" />
+	<meta name="twitter:image:alt" content="Ética em TI, Conflito de Interesses, Auditoria de Segurança" />
+	<link rel="stylesheet" href="assets/css/articles.css" />
+	<style>
+		body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif; line-height:1.65; color:#1f2937; margin:0; }
+		.container { max-width: 980px; margin:0 auto; padding:2rem 1.25rem 4rem; }
+		h1 { line-height:1.2; font-size:clamp(1.9rem,2.4vw,2.5rem); margin-top:0; }
+		h2 { margin-top:2.5rem; line-height:1.3; color:#111827; border-bottom:2px solid #e5e7eb; padding-bottom:.5rem; }
+		h3 { margin-top:1.75rem; color:#374151; }
+		pre { 
+			background: #f5f5f5;
+			color:#1f2937; padding:1rem 1.1rem; overflow:auto; border-radius:6px; border:1px solid #e5e7eb;
+			font-size:.95rem;
+			font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+		}
+		code { font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; color: inherit; background: transparent; }
+		figure img { max-width:100%; height:auto; }
+		ul,ol { padding-left:1.3rem; }
+		ul li, ol li { margin-bottom:.65rem; }
+		.back-link { text-decoration:none; font-size:.85rem; color:#2563eb; }
+		.note { background:#fef3c7; padding:1rem 1.25rem; border-left:4px solid #d97706; border-radius:6px; margin:1.5rem 0; }
+		.alert { background:#fee2e2; padding:1rem 1.25rem; border-left:4px solid #dc2626; border-radius:6px; margin:1.5rem 0; }
+		.insight { background:#dbeafe; padding:1rem 1.25rem; border-left:4px solid #2563eb; border-radius:6px; margin:1.5rem 0; }
+		.quote-box { background:#f9fafb; padding:1.25rem 1.5rem; border-left:4px solid #6b7280; border-radius:6px; font-style:italic; margin:1.5rem 0; }
+		hr { border:none; border-top:1px solid #d1d5db; margin:3rem 0; }
+		blockquote { font-style: italic; border-left: 3px solid #e5e7eb; padding-left: 1.25rem; margin-left: 0; background:#f9fafb; padding:1rem 1.25rem; border-radius:6px; }
+		.timeline { background:#f3f4f6; padding:1.25rem; border-radius:6px; margin:1.5rem 0; }
+		.timeline-item { margin-bottom:1rem; padding-left:1.5rem; border-left:3px solid #9ca3af; }
+		.timeline-item:last-child { margin-bottom:0; }
+		.red-flag { color:#dc2626; font-weight:600; }
+		.ethical-box { background:linear-gradient(135deg, #10b981 0%, #059669 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; }
+		@media (max-width:640px){ pre { font-size:.78rem; padding:.85rem .9rem; } }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<a class="back-link" href="../articles.html">&larr; Voltar para publicações</a>
+		<img src="assets/img/article_65_01.png" alt="Ética em TI, Conflito de Interesses, Auditoria de Segurança" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+		<h1>Quando os Interesses se Cruzam: Uma Reflexão sobre Ética em Auditoria de Sistemas</h1>
+		<div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
+			<img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
+			<span style="margin-left: 1.5rem;">30 de dezembro de 2025</span>
+		</div>
+
+		<div class="note"><strong>Tempo estimado de leitura:</strong> ~10 minutos</div>
+
+		<div class="alert">
+			<strong>Nota de Confidencialidade:</strong> Este artigo baseia-se em situações reais observadas no mercado de TI brasileiro, mas todos os nomes, empresas e detalhes identificáveis foram alterados ou omitidos para preservar a privacidade dos envolvidos. O objetivo é educar e promover reflexão sobre práticas éticas, não expor indivíduos ou organizações.
+		</div>
+
+		<h2>Prólogo: A Ligação que Mudou Tudo</h2>
+		<p>Era uma segunda-feira típica de dezembro quando meu telefone tocou. Do outro lado da linha, um amigo empresário — vamos chamá-lo de Ricardo — parecia visivelmente angustiado. Sua empresa, uma startup de médio porte no setor de serviços digitais, havia acabado de receber um relatório de auditoria de segurança que o deixou profundamente desconfortável.</p>
+		
+		<p><em>"Olha, eu não sou técnico, mas algo não está fazendo sentido aqui,"</em> ele começou. <em>"Contratei uma consultoria para avaliar nossa segurança digital. O relatório diz que estamos vulneráveis em pelo menos doze pontos críticos. Mas quando questionei sobre as soluções, o próprio auditor me ofereceu os serviços de implementação... da empresa dele. Isso é normal?"</em></p>
+
+		<p>A pergunta de Ricardo tocou em um dos temas mais delicados e pouco discutidos do setor de TI: <strong>conflitos de interesse em auditorias técnicas</strong>. O que começou como uma simples consulta entre amigos se transformou em uma investigação mais profunda sobre práticas questionáveis que, infelizmente, não são tão raras quanto deveriam ser.</p>
+
+		<h2>Capítulo 1: O Cenário — Quando a Auditoria Vira Venda</h2>
+		
+		<h3>A Promessa de Segurança</h3>
+		<p>Ricardo havia contratado a consultoria através de uma indicação. O escopo era claro: realizar uma auditoria de segurança digital completa dos sistemas da empresa, incluindo infraestrutura web, APIs, políticas de acesso e conformidade com a LGPD. O prazo era de 15 dias úteis, e o investimento, R$ 8.500,00.</p>
+
+		<p>O auditor — vamos chamá-lo de Márcio — apresentou credenciais impressionantes: certificações em segurança da informação, experiência em empresas multinacionais, e um portfólio robusto. Tudo parecia profissional. Até que não pareceu mais.</p>
+
+		<h3>Os Primeiros Sinais</h3>
+		<div class="timeline">
+			<div class="timeline-item">
+				<strong>Dia 1-3:</strong> Márcio solicitou acessos administrativos completos aos sistemas. Justificativa: "para uma análise profunda". Ricardo, confiando na recomendação, autorizou.
+			</div>
+			<div class="timeline-item">
+				<strong>Dia 4-7:</strong> Silêncio quase total. Poucas atualizações sobre o progresso. Quando questionado, Márcio respondeu: "auditoria leva tempo, preciso de concentração."
+			</div>
+			<div class="timeline-item">
+				<strong>Dia 8-12:</strong> Márcio começou a fazer perguntas sobre orçamento disponível para "eventuais correções". Perguntou sobre fornecedores atuais de infraestrutura e se havia contratos de exclusividade.
+			</div>
+			<div class="timeline-item">
+				<strong>Dia 13-15:</strong> O relatório foi entregue. 47 páginas, 12 vulnerabilidades "críticas", e uma proposta anexa de R$ 35.000,00 para "implementação imediata das correções necessárias".
+			</div>
+		</div>
+
+		<p>Foi nesse momento que Ricardo me ligou.</p>
+
+		<h2>Capítulo 2: A Análise — Desvendando o Jogo</h2>
+
+		<h3>O Relatório sob Escrutínio</h3>
+		<p>Com a permissão de Ricardo, revisei o relatório de auditoria. O que encontrei foi revelador — e perturbador.</p>
+
+		<div class="alert">
+			<strong>Red Flags Identificadas:</strong>
+			<ul style="margin:.5rem 0;">
+				<li><span class="red-flag">Vulnerabilidades infladas:</span> Problemas menores classificados como "críticos"</li>
+				<li><span class="red-flag">Falta de contexto:</span> Sem análise de impacto real no negócio específico do cliente</li>
+				<li><span class="red-flag">Soluções genéricas:</span> Recomendações que beneficiavam fornecedores específicos (dos quais o auditor recebia comissão)</li>
+				<li><span class="red-flag">Urgência artificial:</span> Prazos extremamente curtos para implementação ("48 horas ou risco iminente")</li>
+				<li><span class="red-flag">Conflito não divulgado:</span> O auditor vendia tanto o diagnóstico quanto a cura</li>
+			</ul>
+		</div>
+
+		<h3>A Vulnerabilidade Real vs. A Vulnerabilidade Vendida</h3>
+		<p>Vamos pegar um exemplo real do relatório (anonimizado):</p>
+
+		<blockquote>
+			<strong>Vulnerabilidade reportada por Márcio:</strong><br>
+			"CRÍTICO: Sistema operacional desatualizado em servidor de produção. Versão Windows Server 2019 (Build 17763) exposta a 127 CVEs conhecidas. Risco de invasão iminente. Recomendação: Upgrade imediato para Windows Server 2022 + serviços de monitoramento 24/7. Investimento estimado: R$ 18.000."
+		</blockquote>
+
+		<p>Parece assustador, não? Agora, a realidade técnica:</p>
+
+		<div class="insight">
+			<strong>Análise Técnica Real:</strong><br>
+			O servidor estava, de fato, no Windows Server 2019. Mas estava com <em>todas as atualizações de segurança aplicadas</em> (o relatório omitiu isso). Das 127 CVEs mencionadas, <strong>124 já estavam corrigidas via patches</strong>. As 3 restantes eram de componentes não utilizados pelo sistema.<br><br>
+			
+			<strong>Solução adequada:</strong> Aplicar patches específicos para as 3 CVEs residuais (tarefa de 2 horas, custo zero além da manutenção já contratada). Upgrade para Server 2022 seria recomendado eventualmente por questões de ciclo de vida do produto, mas não era "crítico" nem "imediato".<br><br>
+			
+			<strong>Custo real vs. proposto:</strong> R$ 0 (já coberto) vs. R$ 18.000 (70% de margem para o consultor).
+		</div>
+
+		<p>E assim era com 9 das 12 "vulnerabilidades críticas". Problemas reais? Sim. Críticos? Não. Necessitando de investimento imediato de R$ 35.000? Absolutamente não.</p>
+
+		<h2>Capítulo 3: O Conflito — Ética vs. Ganho Pessoal</h2>
+
+		<h3>A Anatomia do Conflito de Interesses</h3>
+		<p>Aqui está o problema fundamental: <strong>Márcio não estava sendo pago apenas para diagnosticar</strong>. Ele tinha um interesse financeiro direto em maximizar o número e a severidade dos problemas encontrados, porque isso aumentava a probabilidade de vender seus serviços de correção.</p>
+
+		<div class="quote-box">
+			"É como levar seu carro ao mecânico para uma avaliação, e ele dizer que você precisa trocar o motor — quando na verdade só precisa de uma troca de óleo. A diferença? O motor novo custa 50 vezes mais... e ele ganha comissão sobre a venda."
+		</div>
+
+		<h3>As Perguntas que Márcio Nunca Respondeu</h3>
+		<p>Quando confrontado (de forma profissional) por Ricardo e por mim em uma reunião de esclarecimento, Márcio foi questionado sobre vários pontos:</p>
+
+		<ol>
+			<li><strong>Por que não foi divulgado antecipadamente que ele venderia os serviços de correção?</strong><br>
+			<em>Resposta:</em> "É uma prática comum no mercado. Todo mundo faz assim."</li>
+
+			<li><strong>Por que vulnerabilidades de baixa criticidade foram classificadas como críticas?</strong><br>
+			<em>Resposta:</em> "Segurança é algo sério. Prefiro pecar pelo excesso de cautela."</li>
+
+			<li><strong>Por que as soluções propostas sempre envolviam produtos/serviços de parceiros comerciais dele?</strong><br>
+			<em>Resposta:</em> "São empresas que eu confio. Estou recomendando o melhor."</li>
+
+			<li><strong>Por que o relatório não mencionou que 90% dos patches já estavam aplicados?</strong><br>
+			<em>Resposta (após hesitação):</em> "Meu foco foi nos riscos residuais."</li>
+		</ol>
+
+		<p>As respostas foram tecnicamente verdadeiras, mas eticamente evasivas. E aí está o cerne da questão.</p>
+
+		<h2>Capítulo 4: As Consequências — O Custo da Má-Fé</h2>
+
+		<h3>O Impacto Imediato</h3>
+		<p>Ricardo decidiu não contratar Márcio para as correções. Em vez disso, pediu uma segunda opinião de outra consultoria (desta vez, com separação clara entre auditoria e implementação). O novo relatório confirmou nossas suspeitas:</p>
+
+		<ul>
+			<li>3 vulnerabilidades reais de médio risco (investimento necessário: R$ 4.200)</li>
+			<li>2 vulnerabilidades reais de baixo risco (investimento opcional: R$ 1.800)</li>
+			<li>7 "vulnerabilidades" do relatório original eram exageros ou já estavam corrigidas</li>
+		</ul>
+
+		<p><strong>Economia total: R$ 29.000</strong> — quase o valor da auditoria inicial multiplicado por 3.</p>
+
+		<h3>O Impacto Reputacional</h3>
+		<p>Mas a história não termina aqui. Ricardo, naturalmente indignado, compartilhou sua experiência em grupos de empresários. Márcio perdeu pelo menos 4 contratos confirmados nas semanas seguintes. Sua reputação no setor começou a deteriorar.</p>
+
+		<p>A empresa de Márcio enviou uma carta ameaçando processar Ricardo por "difamação". Ricardo, munido do parecer técnico da segunda consultoria, respondeu oferecendo discutir o caso em arbitragem técnica. Nunca mais ouviu falar deles.</p>
+
+		<h3>O Impacto no Mercado</h3>
+		<p>O caso de Ricardo não é isolado. Conversando com outros colegas da área, descobri padrões similares:</p>
+
+		<div class="timeline">
+			<div class="timeline-item">
+				<strong>Caso A:</strong> Consultoria de LGPD que encontrou "85 não-conformidades críticas" em uma pequena clínica médica. A correção? R$ 60.000. Segunda opinião encontrou 12 não-conformidades reais (custo de correção: R$ 8.000).
+			</div>
+			<div class="timeline-item">
+				<strong>Caso B:</strong> Auditoria de infraestrutura que recomendou migração completa para cloud (R$ 120.000) quando o problema era simplesmente uma configuração de DNS mal feita (correção: 30 minutos).
+			</div>
+			<div class="timeline-item">
+				<strong>Caso C:</strong> Consultoria de e-commerce que identificou "falhas de segurança graves" que só poderiam ser corrigidas com uma "plataforma proprietária" desenvolvida pelo próprio consultor (R$ 45.000). A plataforma era um template WordPress de R$ 89.
+			</div>
+		</div>
+
+		<h2>Capítulo 5: As Lições — Como se Proteger</h2>
+
+		<h3>Para Quem Contrata Auditorias</h3>
+		<div class="insight">
+			<strong>Checklist de Proteção:</strong>
+			<ol>
+				<li><strong>Exija separação de funções:</strong> O auditor NÃO deve vender a solução. Se vender, isso deve ser divulgado antecipadamente e com valores fixos tabelados.</li>
+				<li><strong>Peça classificação de risco baseada em impacto real:</strong> Não aceite "tudo é crítico". Exija análise contextual do seu negócio.</li>
+				<li><strong>Solicite evidências técnicas:</strong> Prints, logs, testes reproduzíveis. Não confie apenas em afirmações.</li>
+				<li><strong>Sempre busque segunda opinião:</strong> Especialmente em propostas acima de R$ 10.000.</li>
+				<li><strong>Verifique referências:</strong> Converse com clientes anteriores. Pergunte sobre transparência e honestidade.</li>
+				<li><strong>Documente tudo:</strong> E-mails, propostas, relatórios. Se algo parecer errado, você terá evidências.</li>
+				<li><strong>Desconfie de urgências artificiais:</strong> "Precisa ser feito em 48h ou você será hackeado" é quase sempre exagero.</li>
+			</ol>
+		</div>
+
+		<h3>Para Profissionais de TI e Consultores</h3>
+		<div class="ethical-box">
+			<strong>Código de Ética Implícito:</strong><br><br>
+			<ul style="margin:.5rem 0;">
+				<li>Sempre divulgue conflitos de interesse antecipadamente</li>
+				<li>Seja transparente sobre o que você ganha com cada recomendação</li>
+				<li>Classifique riscos com base em impacto real, não em potencial de venda</li>
+				<li>Ofereça múltiplas soluções, incluindo opções de baixo custo</li>
+				<li>Documente suas análises com evidências técnicas verificáveis</li>
+				<li>Lembre-se: sua reputação é seu ativo mais valioso</li>
+			</ul>
+		</div>
+
+		<h2>Capítulo 6: A Reflexão — O Que Realmente Importa</h2>
+
+		<p>Depois de toda essa narrativa, você pode estar se perguntando: <em>"Mas então, auditorias são todas fraudulentas?"</em> Absolutamente não. A grande maioria dos profissionais de segurança e consultoria opera com ética e transparência.</p>
+
+		<p>O problema não são as auditorias. O problema é a <strong>ausência de transparência sobre incentivos</strong>.</p>
+
+		<h3>A Questão Fundamental</h3>
+		<blockquote>
+			Quando alguém está te vendendo tanto o diagnóstico quanto a cura, você precisa se perguntar: essa pessoa está trabalhando para proteger meus interesses ou para maximizar os dela?
+		</blockquote>
+
+		<p>Em outras indústrias, isso é regulamentado. Auditores financeiros independentes não podem vender serviços de consultoria para empresas que auditam. Médicos que recomendam procedimentos não podem ter participação financeira nas clínicas que os realizam. Mas em TI, ainda estamos no "Velho Oeste".</p>
+
+		<h3>O Caminho para Mudança</h3>
+		<p>A solução não é regulamentação pesada — o setor de TI se move rápido demais para isso funcionar. A solução é <strong>cultura de transparência</strong>:</p>
+
+		<ul>
+			<li>Consultores que divulgam abertamente seus conflitos de interesse</li>
+			<li>Empresas que exigem separação entre auditoria e implementação</li>
+			<li>Profissionais que denunciam práticas antiéticas quando as veem</li>
+			<li>Comunidades técnicas que promovem discussões abertas sobre ética</li>
+		</ul>
+
+		<h2>Epílogo: Seis Meses Depois</h2>
+
+		<p>Conversei com Ricardo recentemente. Ele implementou as correções recomendadas pela segunda consultoria (custo final: R$ 5.400, incluindo melhorias não urgentes). Não houve incidentes de segurança. Seu sistema está mais robusto, e ele economizou R$ 29.600.</p>
+
+		<p>Mas o mais importante? Ele aprendeu a fazer as perguntas certas. E está compartilhando esse conhecimento com outros empresários.</p>
+
+		<p>Márcio? Ainda está no mercado, mas com uma carteira de clientes significativamente reduzida. A reputação, uma vez manchada, é difícil de recuperar.</p>
+
+		<hr>
+
+		<h2>Conclusão: A Revolução Silenciosa</h2>
+
+		<p>Escrevi este artigo não para demonizar consultores ou criar paranoia em quem contrata serviços de TI. Escrevi porque acredito que <strong>transparência é a única defesa real contra má-fé</strong>.</p>
+
+		<p>Se você é um consultor lendo isso: considere tornar seus incentivos completamente transparentes. Sim, você pode perder alguns contratos a curto prazo. Mas ganhará algo muito mais valioso: confiança duradoura.</p>
+
+		<p>Se você é um empresário ou gestor de TI: faça as perguntas difíceis. Exija evidências. Busque segundas opiniões. Sua empresa merece proteção real, não teatro de segurança.</p>
+
+		<p>E se você já passou por algo similar ao caso do Ricardo: você não está sozinho. Compartilhe sua experiência (com a devida confidencialidade). Cada relato nos aproxima de um mercado mais ético.</p>
+
+		<div class="note">
+			<strong>Compromisso da Cara Core Informática:</strong><br>
+			Nós da Cara Core nos comprometemos a operar sempre com transparência total sobre nossos incentivos e conflitos de interesse. Quando auditamos, só auditamos. Quando implementamos, apresentamos múltiplas soluções com justificativas técnicas detalhadas. E sempre documentamos nossas recomendações com evidências verificáveis.<br><br>
+			Porque no final do dia, nossa reputação vale mais do que qualquer contrato individual.
+		</div>
+
+		<hr>
+
+		<blockquote>
+			<strong>Nota de Confidencialidade:</strong> Este artigo foi escrito com base em experiências reais do mercado brasileiro de TI, mas todos os detalhes identificáveis foram alterados para proteção dos envolvidos. Se você identificou situações similares em sua experiência, isso não é coincidência — é um padrão que precisa ser discutido abertamente.
+		</blockquote>
+
+		<h2>Hashtags</h2>
+		<div class="hash-box">#Ética #AuditoriaDeTI #ConflitosDeInteresse #Consultoria #Transparência #Segurança #LGPD #Compliance #TI #CíbeSegurança</div>
+
+		<hr />
+
+		<h3>Contato</h3>
+		<ul>
+			<li><strong>E-mail:</strong> suporte@caracore.com.br</li>
+			<li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
+			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
+		</ul>
+
+		<div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
+			<strong>Gostou do conteúdo?</strong><br />
+			<span style="font-size:.85rem;">Conecte-se conosco no LinkedIn para mais conteúdos sobre ética em TI e boas práticas em consultoria!</span><br />
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Seguir no LinkedIn</a>
+		</div>
+
+		<p style="text-align:center; font-size:.85rem; color:#6b7280; margin-top:3rem;">
+			<em>Artigo publicado em 30 de dezembro de 2025</em><br>
+			© 2025 Cara Core Informática. Todos os direitos reservados.
+		</p>
+	</div>
+</body>
+</html>

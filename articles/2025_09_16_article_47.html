@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapeando Endpoints com Python e Swagger: Solução Prática para Integração de HUB de Varejos Online — Cara Core Informática</title>
+  <meta name="description" content="Como a Cara Core Informática utilizou Python para mapear e documentar endpoints de APIs legadas, gerando documentação Swagger automatizada para integração de HUB de Varejos Online." />
+  <meta name="keywords" content="Python, Swagger, OpenAPI, Integração, HUB de Varejo, Automação, APIs, Documentação" />
+  <meta name="author" content="Cara Core Informática" />
+  <link rel="canonical" href="https://caracore.com.br/publications/articles/2025_09_16_article_47.html" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mapeando Endpoints com Python e Swagger: Solução Prática para Integração de HUB de Varejos Online" />
+  <meta property="og:description" content="Solução prática para mapear e documentar APIs legadas usando Python e gerar documentação Swagger automatizada." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://caracore.com.br/publications/articles/2025_09_16_article_47.html" />
+  <meta property="og:image" content="https://caracore.com.br/publications/articles/assets/img/article_47_01.png" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mapeando Endpoints com Python e Swagger: Solução Prática para Integração de HUB de Varejos Online" />
+  <meta name="twitter:description" content="Automatize a documentação de APIs legadas com Python e Swagger." />
+  <meta name="twitter:image" content="https://caracore.com.br/publications/articles/assets/img/article_47_01.png" />
+  <link rel="stylesheet" href="assets/css/articles.css" />
+  <style>
+    body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif; line-height:1.55; color:#1f2937; margin:0; }
+    .container { max-width: 980px; margin:0 auto; padding:2rem 1.25rem 4rem; }
+    h1 { line-height:1.2; font-size:clamp(1.9rem,2.4vw,2.5rem); margin-top:0; }
+    h2 { margin-top:2.25rem; line-height:1.25; }
+    pre { background:#0f172a; color:#f1f5f9; padding:1rem 1.1rem; overflow:auto; border-radius:8px; font-size:.85rem; }
+    code { font-family: ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace; }
+    figure img { max-width:100%; height:auto; }
+    ul,ol { padding-left:1.1rem; }
+    .back-link { text-decoration:none; font-size:.85rem; color:#2563eb; }
+    .note { background:#f8f9fa; padding:1rem 1.25rem; border-left:4px solid #10B981; border-radius:6px; }
+    .hash-box { background:#f8f9fa; padding:1rem 1.25rem; border-left:4px solid #0EA5E9; border-radius:6px; font-size:.85rem; line-height:1.5; }
+    .repo-box { background:#f8f9fa; padding:1.25rem 1.25rem 1rem; border-left:4px solid #10B981; border-radius:6px; }
+    .repo-box a { color:#10B981; font-weight:600; text-decoration:none; }
+    hr { border:none; border-top:1px solid #e5e7eb; margin:3rem 0 2rem; }
+    blockquote { font-style: italic; border-left: 3px solid #e5e7eb; padding-left: 1.25rem; margin-left: 0; }
+    @media (max-width:640px){ pre { font-size:.78rem; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back-link" href="../articles.html">&larr; Voltar para publicações</a>
+    <img src="assets/img/article_47_01.png" alt="Python e Swagger para APIs" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+  <h1>Mapeando Endpoints com Python e Swagger: Solução Prática para Integração de HUB de Varejos Online</h1>
+    <div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
+        <img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
+        <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
+        <span style="margin-left: 1.5rem;">83 seguidores<br>16 de setembro de 2025</span>
+    </div>
+
+    <p>Em projetos de integração entre sistemas de varejo online, um dos maiores desafios é <strong>descobrir e documentar os endpoints disponíveis</strong> nas aplicações envolvidas. Muitas vezes, a documentação é incompleta ou simplesmente inexistente.</p>
+
+    <div class="note"><strong>Case real:</strong> A Cara Core Informática utilizou Python para mapear endpoints de APIs legadas e gerar documentação Swagger automatizada, acelerando a integração de HUB de varejos online.</div>
+
+    <h2>O desafio</h2>
+    <ul>
+      <li>Diferentes varejistas possuíam APIs pouco documentadas.</li>
+      <li>O processo manual de descobrir endpoints em projetos legados seria lento e sujeito a erros.</li>
+      <li>A integração exigia clareza e padronização, para garantir consistência nos fluxos de entrega, estoque e pedidos.</li>
+    </ul>
+    <p>Precisávamos de uma ferramenta simples, rápida e confiável para gerar uma visão consolidada das rotas de cada sistema.</p>
+
+    <h2>A solução em Python</h2>
+    <p>Desenvolvemos um script que varre o projeto em busca de <strong>decoradores de rota</strong> (APIs Flask) e gera um arquivo <code>openapi.json</code>. Esse arquivo pode ser carregado no <strong>Swagger UI</strong>, transformando endpoints encontrados em uma documentação navegável.</p>
+
+    <h3>Exemplo simplificado do script</h3>
+    <pre><code class="language-python">import re, os, json
+
+ROUTE_RE = re.compile(r'@app\.route\(["']([^"']+)["'].*?\)')
+
+def scan_dir(path):
+    endpoints = []
+    for root, _, files in os.walk(path):
+        for f in files:
+            if f.endswith(".py"):
+                text = open(os.path.join(root,f)).read()
+                for match in ROUTE_RE.findall(text):
+                    endpoints.append(match)
+    return endpoints
+
+def to_openapi(endpoints):
+    return {
+        "openapi": "3.0.0",
+        "info": {"title": "API Map", "version": "1.0"},
+        "paths": {ep: {"get": {"responses": {"200": {"description": "OK"}}}} for ep in endpoints}
+    }
+
+if __name__ == "__main__":
+    eps = scan_dir("projeto_varejo")
+    spec = to_openapi(eps)
+    with open("openapi.json", "w") as f:
+        json.dump(spec, f, indent=2)
+    print("Mapa Swagger gerado em openapi.json")
+</code></pre>
+
+    <h2>Visualizando no Swagger UI</h2>
+    <p>Com o <code>openapi.json</code> pronto, basta criar um HTML simples apontando para o arquivo:</p>
+    <pre><code class="language-html">&lt;script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  SwaggerUIBundle({ url: "openapi.json", dom_id: "#swagger-ui" })
+&lt;/script&gt;
+</code></pre>
+    <p>Ao abrir no navegador, obtém-se uma documentação interativa, navegável e pronta para testes.</p>
+
+    <h2>Benefícios para o HUB de Varejo Online</h2>
+    <ul>
+      <li><strong>Rapidez:</strong> Em minutos, um mapa dos endpoints disponíveis.</li>
+      <li><strong>Padronização:</strong> APIs diferentes convertidas para um formato único (OpenAPI).</li>
+      <li><strong>Transparência:</strong> Equipes de desenvolvimento, QA e negócios passaram a ter uma visão clara das integrações.</li>
+      <li><strong>Escalabilidade:</strong> A abordagem pode ser aplicada a novos parceiros de varejo no futuro.</li>
+    </ul>
+
+    <h2>Conclusão</h2>
+    <p>O uso de Python como ferramenta de <strong>investigação de endpoints</strong> foi decisivo na integração do HUB de Varejos Online da Cara Core Informática. Essa prática permitiu transformar um desafio técnico em uma <strong>documentação viva e interativa</strong>, acelerando a integração e trazendo segurança para o ecossistema digital de varejo.</p>
+    <blockquote>
+      👉 Esse modelo pode ser replicado por qualquer empresa que precise mapear APIs legadas ou integrar múltiplos sistemas em projetos complexos de varejo e logística.
+    </blockquote>
+
+    <h2>Hashtags</h2>
+    <div class="hash-box">#Python #Swagger #OpenAPI #Integração #APIs #DocumentaçãoAutomática #VarejoOnline #Automação #CaraCoreInformática</div>
+
+    <hr />
+    <h3>Contato</h3>
+    <ul>
+      <li><strong>E-mail:</strong> suporte@caracore.com.br</li>
+      <li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
+      <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
+    </ul>
+
+    <div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
+      <strong>🤝 Gostou do conteúdo?</strong><br />
+      <span style="font-size:.85rem;">Conecte-se conosco no LinkedIn para mais conteúdos sobre desenvolvimento e inovação tecnológica!</span><br />
+      <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Seguir no LinkedIn</a>
+    </div>
+  </div>
+</body>
+</html>

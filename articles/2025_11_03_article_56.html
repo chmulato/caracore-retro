@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Quando a IA Não Tem Todas as Respostas: A Jornada Real do OIDC — Cara Core Informática</title>
+	<meta name="description" content="A história honesta de como confiamos demais na IA para implementar OIDC, os desafios enfrentados e por que conhecimento profundo ainda supera atalhos de inteligência artificial." />
+	<meta name="keywords" content="IA, Inteligência Artificial, ChatGPT, OIDC, OAuth 2.0, Desenvolvimento de Software, Autenticação, Segurança, Aprendizado, Limitações da IA, Honestidade Técnica" />
+	<meta name="author" content="Cara Core Informática" />
+	<link rel="canonical" href="https://caracore.com.br/publications/articles/2025_11_03_article_56.html" />
+	<!-- Open Graph -->
+	<meta property="og:title" content="Quando a IA Não Tem Todas as Respostas: A Jornada Real do OIDC" />
+	<meta property="og:description" content="Experiência real: por que IA não substitui conhecimento profundo em projetos complexos. A jornada honesta de falhas e aprendizado com OIDC." />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="https://caracore.com.br/publications/articles/2025_11_03_article_56.html" />
+	<meta property="og:image" content="https://caracore.com.br/publications/articles/assets/img/article_56_01.png" />
+	<meta property="og:image:alt" content="Quando a IA Não Tem Todas as Respostas - Expectativa vs Realidade no Desenvolvimento (Cara Core)" />
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Quando a IA Não Tem Todas as Respostas: A Jornada Real do OIDC" />
+	<meta name="twitter:description" content="Experiência real: por que IA não substitui conhecimento profundo em projetos complexos. A jornada honesta de falhas e aprendizado com OIDC." />
+	<meta name="twitter:image" content="https://caracore.com.br/publications/articles/assets/img/article_56_01.png" />
+	<meta name="twitter:image:alt" content="Quando a IA Não Tem Todas as Respostas - Expectativa vs Realidade no Desenvolvimento (Cara Core)" />
+	<link rel="stylesheet" href="assets/css/articles.css" />
+	<style>
+		body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif; line-height:1.55; color:#1f2937; margin:0; }
+		.container { max-width: 980px; margin:0 auto; padding:2rem 1.25rem 4rem; }
+		h1 { line-height:1.2; font-size:clamp(1.9rem,2.4vw,2.5rem); margin-top:0; }
+		h2 { margin-top:2.25rem; line-height:1.25; }
+		h3 { margin-top:1.5rem; }
+		pre { 
+			background: linear-gradient(180deg, #244d30 0%, #1c3a27 100%);
+			color:#f5fff0; padding:1rem 1.1rem; overflow:auto; border-radius:10px; border:12px solid #6b4226;
+			box-shadow:0 6px 16px rgba(0,0,0,.18), inset 0 0 0 1px rgba(255,255,255,.03); font-size:.95rem;
+			font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; text-shadow: 0 1px 0 rgba(255,255,255,.05), 0 0 1px rgba(255,255,255,.08);
+		}
+		.chalkboard { 
+			background: linear-gradient(180deg, #244d30 0%, #1c3a27 100%); color:#f5fff0; padding:1rem 1.1rem; border-radius:10px; border:12px solid #6b4226; 
+			box-shadow:0 6px 16px rgba(0,0,0,.18), inset 0 0 0 1px rgba(255,255,255,.03); text-shadow: 0 1px 0 rgba(255,255,255,.05), 0 0 1px rgba(255,255,255,.08); 
+			margin-top:2rem; 
+		}
+		.chalkboard h2 { margin-top:0; color:#f5fff0; }
+		.chalkboard h3 { margin-top:0; color:#f5fff0; }
+		.chalkboard dl { margin:0; }
+		.chalkboard dt { margin-top:.6rem; font-weight:600; }
+		.chalkboard dd { margin:.2rem 0 .6rem 0; opacity:.95; }
+		code { font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; color: inherit; background: transparent; }
+		figure img { max-width:100%; height:auto; }
+		ul,ol { padding-left:1.1rem; }
+		.back-link { text-decoration:none; font-size:.85rem; color:#2563eb; }
+		.note { background:#f8f9fa; padding:1rem 1.25rem; border-left:4px solid #10B981; border-radius:6px; margin:1.5rem 0; }
+		.warning-box { background:#fff7ed; padding:1rem 1.25rem; border-left:4px solid #f97316; border-radius:6px; margin:1.5rem 0; }
+		.hash-box { background:#f8f9fa; padding:1rem 1.25rem; border-left:4px solid #0EA5E9; border-radius:6px; font-size:.85rem; line-height:1.5; }
+		.timeline-box { background:#f0f9ff; padding:1rem 1.25rem; border-left:4px solid #0ea5e9; border-radius:6px; margin:1.5rem 0; }
+		.timeline-box p { margin:.5rem 0; }
+		hr { border:none; border-top:1px solid #e5e7eb; margin:3rem 0 2rem; }
+		blockquote { font-style: italic; border-left: 3px solid #e5e7eb; padding-left: 1.25rem; margin-left: 0; background:#f9fafb; padding:1rem 1.25rem; border-radius:6px; }
+		em { color:#374151; }
+		strong { color:#111827; }
+		@media (max-width:640px){ pre { font-size:.78rem; border-width:9px; padding:.85rem .9rem; } .chalkboard { border-width:9px; padding:.85rem .9rem; } }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<a class="back-link" href="../articles.html">&larr; Voltar para publicações</a>
+		<img src="assets/img/article_56_01.png" alt="Quando a IA Não Tem Todas as Respostas - Expectativa vs Realidade no Desenvolvimento" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+		<h1>Quando a IA Não Tem Todas as Respostas: A Jornada Real do OIDC</h1>
+		<div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
+				<img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
+				<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
+				<span style="margin-left: 1.5rem;">84 seguidores<br>03 de novembro de 2025</span>
+		</div>
+
+		<div class="note"><strong>Tempo estimado de leitura:</strong> ~10 minutos
+			<p><strong>Sobre este artigo:</strong> Escrito como reflexão honesta sobre limitações de IA em projetos técnicos complexos. Baseado em experiência real da Cara Core Informática entre agosto e outubro de 2025.</p>
+		</div>
+
+		<h2>O Dia em que a IA Nos Disse que Estava Tudo Certo (Mas Não Estava)</h2>
+
+		<p>Era uma terça-feira ensolarada de setembro quando Marcelo, desenvolvedor sênior da Cara Core, entrou na sala de reuniões com uma expressão que a equipe conhecia bem. Aquela mistura de frustração e confusão que aparece quando algo que "deveria funcionar" simplesmente não funciona.</p>
+
+		<p><em>"Olha, fiz exatamente o que o ChatGPT mandou. Três vezes. Com três prompts diferentes. O código está impecável, a documentação bate, mas quando vou autenticar com o Google... erro 400. Nada faz sentido."</em></p>
+
+		<p>Ali começou a jornada de três meses da Cara Core tentando implementar OIDC (OpenID Connect) - um sistema de autenticação segura que grandes empresas como Google, Microsoft e Facebook usam para permitir que você faça login em outros sites usando suas contas. A equipe publicou três artigos confiantes sobre o tema (<a href="2025_10_15_article_52.html">Parte I</a>, <a href="2025_10_27_article_54.html">Parte II</a> e <a href="2025_10_31_article_55.html">A Jornada OIDC</a>). Geraram código com IA. Seguiram tutoriais online. E falharam.</p>
+
+		<p>Esta é a história do que a Cara Core aprendeu quando a inteligência artificial encontrou seus limites - e por que isso importa para qualquer empresário investindo em tecnologia.</p>
+
+		<hr />
+
+		<h2>A Promessa Sedutora da IA</h2>
+
+		<p>A Cara Core não vai mentir: quando a equipe começou esse projeto, estavam empolgados. As IAs generativas prometem o mundo:</p>
+
+		<ul>
+			<li>"Descreva o que você quer e eu crio o código"</li>
+			<li>"Implementação de OIDC em 5 minutos"</li>
+			<li>"Siga este tutorial passo a passo"</li>
+		</ul>
+
+		<p>E sabe o que é mais perigoso? <strong>O código que a IA gera realmente parece profissional.</strong> Tem comentários explicativos, segue boas práticas, usa bibliotecas modernas. Para um olho menos treinado (e às vezes até para o treinado), está perfeito.</p>
+
+		<p>A equipe rodou o código localmente. Funcionou. Publicaram o primeiro artigo: <em>"OIDC descomplicado — como acabar com o caos de senhas"</em>. Receberam elogios. Compartilhamentos. Comentários positivos.</p>
+
+		<p>Mas quando tentaram colocar em produção, conectar com os servidores reais do Google e Microsoft, autenticar usuários de verdade... nada funcionava.</p>
+
+		<hr />
+
+		<h2>O Abismo Entre "Funciona na Minha Máquina" e "Funciona na Produção"</h2>
+
+		<p>Aqui está a verdade inconveniente sobre IA e desenvolvimento de software: <strong>ela é excelente em gerar código que funciona em ambientes controlados, mas terrível em prever os 10 mil detalhes que fazem diferença no mundo real.</strong></p>
+
+		<h3>O Que Aconteceu na Jornada da Cara Core</h3>
+
+		<div class="timeline-box">
+			<p><strong>Artigo 1 - Outubro 15:</strong> <a href="2025_10_15_article_52.html">OIDC descomplicado — como acabar com o caos de senhas</a><br />
+			→ Código testado apenas localmente<br />
+			→ Funcionou em ambiente simulado<br />
+			→ Confiança: 95%</p>
+
+			<p><strong>Artigo 2 - Outubro 27:</strong> <a href="2025_10_27_article_54.html">OIDC na prática — exemplos técnicos e implementação</a><br />
+			→ Integraram com provedores reais<br />
+			→ Primeiros erros críticos aparecem<br />
+			→ Confiança: 70%</p>
+
+			<p><strong>Artigo 3 - Outubro 31:</strong> <a href="2025_10_31_article_55.html">A Jornada OIDC: Como Transformamos a Autenticação da Cara Core</a><br />
+			→ Ainda não estava funcionando completamente<br />
+			→ Maquiaram dificuldades como "desafios superados"<br />
+			→ Confiança: 40%</p>
+
+			<p><strong>Realidade atual:</strong> A equipe comprou um livro físico especializado nos EUA. Chegará em 2 semanas. Reconheceram que <strong>precisam estudar de verdade</strong>, não apenas copiar código.</p>
+		</div>
+
+		<hr />
+
+		<h2>Por Que OIDC É Tão Difícil (E Por Que IA Não Resolve)</h2>
+
+		<p>Deixe-me explicar de forma simples por que algo "tão usado pelas grandes empresas" é tão difícil de implementar:</p>
+
+		<h3>1. Cada Provedor É Um Mundo Diferente</h3>
+
+		<p>Imagine que você está construindo uma fechadura universal que precisa funcionar com chaves do Google, Microsoft, Facebook e Apple. Todos dizem que seguem o "padrão OIDC", mas:</p>
+
+		<ul>
+			<li>O Google exige configurações de redirect_uri exatas (um caractere errado = falha)</li>
+			<li>A Microsoft tem 3 tipos diferentes de contas (pessoal, trabalho, Azure AD)</li>
+			<li>Cada um valida tokens de forma ligeiramente diferente</li>
+			<li>As mensagens de erro são genéricas e não dizem o que está errado</li>
+		</ul>
+
+		<p><strong>A IA não sabe dessas nuances</strong> porque elas não estão em tutoriais - estão em documentação técnica densa, issues do GitHub, e experiência prática.</p>
+
+		<h3>2. Segurança Não Tolera "Quase Certo"</h3>
+
+		<p>Quando você implementa autenticação, não pode errar. Um pequeno erro pode:</p>
+
+		<ul>
+			<li>Expor dados de usuários</li>
+			<li>Permitir acesso não autorizado</li>
+			<li>Violar leis como LGPD/GDPR</li>
+			<li>Destruir a reputação da empresa</li>
+		</ul>
+
+		<p>A IA gera código que <strong>parece seguro</strong>, mas pode ter vulnerabilidades sutis que só especialistas identificam.</p>
+
+		<h3>3. Debugging Exige Contexto Profundo</h3>
+
+		<p>Quando algo quebra (e vai quebrar), você precisa entender:</p>
+
+		<ul>
+			<li>Como funciona o fluxo OAuth 2.0 por baixo dos panos</li>
+			<li>O que significam códigos de erro crípticos como "invalid_grant"</li>
+			<li>Como inspecionar e validar tokens JWT manualmente</li>
+			<li>Diferenças entre authorization code flow, implicit flow, PKCE</li>
+		</ul>
+
+		<p><strong>ChatGPT pode explicar isso superficialmente, mas não te prepara para debugar problemas reais às 2h da manhã quando o sistema está fora do ar.</strong></p>
+
+		<hr />
+
+		<h2>A Lição de US$ 45 Dólares</h2>
+
+		<p>Depois de semanas girando em círculos, a equipe da Cara Core fez algo que não fazia há anos: <strong>comprou um livro técnico</strong>.</p>
+
+		<p>Não um e-book. Um livro físico. De uma editora americana especializada. Custou US$ 45 + frete internacional. Chegará em 2 semanas.</p>
+
+		<p>Por quê? Porque perceberam que:</p>
+
+		<ol>
+			<li><strong>Tutoriais online são rasos</strong> - ensinam o "como" mas não o "por quê"</li>
+			<li><strong>Documentação oficial é densa</strong> - assume conhecimento que você não tem</li>
+			<li><strong>IA gera respostas genéricas</strong> - não adaptadas ao seu contexto específico</li>
+			<li><strong>Livros técnicos sérios</strong> - foram revisados por especialistas, testados em dezenas de cenários, organizados pedagogicamente</li>
+		</ol>
+
+		<p>Isso soa antiquado? Talvez. Mas sabe o que é mais antiquado? <strong>Fingir que entende algo que não entende.</strong></p>
+
+		<hr />
+
+		<h2>O Que Isso Significa Para Empresários e Gestores</h2>
+
+		<p>Se você gerencia projetos de tecnologia ou está considerando investir em desenvolvimento, esta história tem lições práticas:</p>
+
+		<h3>1. Desconfie de Prazos Irrealistas</h3>
+
+		<p>Se um desenvolvedor diz: <em>"Com IA, faço isso em 2 dias"</em>, pergunte:</p>
+
+		<ul>
+			<li>Você já implementou algo similar antes?</li>
+			<li>Quanto tempo reservou para testes em produção?</li>
+			<li>O que acontece se houver problemas que a IA não previu?</li>
+		</ul>
+
+		<p><strong>Tecnologia de segurança crítica não tem atalhos.</strong></p>
+
+		<h3>2. Investimento em Conhecimento Real Não é Opcional</h3>
+
+		<p>Aquele livro de US$ 45? É barato. Sabe o que é caro?</p>
+
+		<ul>
+			<li>3 meses de trabalho de um desenvolvedor sênior (R$ 30.000+)</li>
+			<li>Refazer código que "funcionava" mas não funciona (R$ 15.000+)</li>
+			<li>Publicar artigos confiantes e depois ter que admitir erros (credibilidade)</li>
+			<li>Lançar um produto com falhas de segurança (incalculável)</li>
+		</ul>
+
+		<p><strong>Tempo de estudo com material de qualidade não é custo - é economia.</strong></p>
+
+		<h3>3. IA é Ferramenta, Não Substituto</h3>
+
+		<p>Pense na IA como um estagiário muito inteligente que:</p>
+
+		<div class="chalkboard">
+			<h3>O que IA FAZ BEM:</h3>
+			<ul>
+				<li>Acelera tarefas repetitivas</li>
+				<li>Gera protótipos rápidos</li>
+				<li>Explica conceitos básicos</li>
+				<li>Encontra erros óbvios de sintaxe</li>
+			</ul>
+			<h3 style="margin-top:1rem;">O que IA NÃO FAZ:</h3>
+			<ul>
+				<li>NÃO substitui experiência</li>
+				<li>NÃO entende contexto complexo</li>
+				<li>NÃO assume responsabilidade</li>
+				<li>NÃO sabe o que não sabe</li>
+			</ul>
+		</div>
+
+		<h3>4. Honestidade Técnica Constrói Confiança</h3>
+
+		<p>A Cara Core poderia ter mantido os três artigos como estão, fingindo que tudo funcionou perfeitamente. Muitas empresas fazem isso - mostram apenas sucessos, escondem fracassos.</p>
+
+		<p>Mas credibilidade a longo prazo vem de <strong>admitir limitações</strong>, aprender de verdade, e voltar com soluções reais.</p>
+
+		<blockquote>
+			<p><strong>Nota:</strong> Se você leu os artigos anteriores da Cara Core sobre OIDC (<a href="2025_10_15_article_52.html">Parte I</a>, <a href="2025_10_27_article_54.html">Parte II</a> e <a href="2025_10_31_article_55.html">Jornada</a>) e está se perguntando "mas eles não disseram que funcionou?" - você está certo em questionar. Este artigo é a correção honesta daquela narrativa.</p>
+		</blockquote>
+
+		<hr />
+
+		<h2>A Jornada Continua: O Que Vem a Seguir</h2>
+
+		<p>Então, onde a Cara Core está agora?</p>
+
+		<div class="note">
+			<p><strong>Status do Projeto OIDC:</strong></p>
+			<ul style="margin:.5rem 0;">
+				<li>Em pausa para estudo aprofundado</li>
+				<li>Aguardando livro especializado</li>
+				<li>Laboratório de testes em ambiente isolado</li>
+				<li>Documentando cada descoberta real</li>
+			</ul>
+		</div>
+
+		<p><strong>Próximos Artigos:</strong></p>
+		<ul>
+			<li>Temas que a equipe domina de verdade (AWS, Python, M365)</li>
+			<li>Série futura: "OIDC: O Que Aprendemos Errando" (quando realmente funcionar)</li>
+		</ul>
+
+		<div class="warning-box">
+			<p><strong>Se você ainda não leu a jornada inicial da Cara Core:</strong></p>
+			<p>A equipe convida você a conhecer os três artigos que publicaram sobre OIDC, onde mostraram conceitos e implementações - mas agora com a consciência de que eram apenas os primeiros passos de uma caminhada muito mais longa:</p>
+			<ol style="margin:.5rem 0;">
+				<li><a href="2025_10_15_article_52.html"><strong>OIDC descomplicado (Parte I)</strong></a> - Introdução conceitual para leigos</li>
+				<li><a href="2025_10_27_article_54.html"><strong>OIDC na prática (Parte II)</strong></a> - Exemplos técnicos com Python e JavaScript</li>
+				<li><a href="2025_10_31_article_55.html"><strong>A Jornada OIDC</strong></a> - O "relato de sucesso" (que agora a equipe sabe foi prematuro)</li>
+			</ol>
+			<p>Eles continuam sendo úteis para entender o básico - mas leia este artigo primeiro para ter contexto do que realmente aconteceu!</p>
+		</div>
+
+		<hr />
+
+		<h2>As Três Verdades que a Cara Core Aprendeu</h2>
+
+		<h3>Verdade 1: Complexidade Real Exige Esforço Real</h3>
+
+		<p>Sistemas de segurança como OIDC existem há anos. Empresas gastam milhões desenvolvendo-os. Não é arrogância de "tecnologia complicada" - é necessidade de cobrir milhares de casos de borda.</p>
+
+		<p>Pensar que IA resolve isso em minutos é como achar que um aplicativo de tradução te torna fluente em japonês. Ajuda? Sim. Substitui anos de estudo? Não.</p>
+
+		<h3>Verdade 2: Conhecimento Profundo Tem Fontes Profundas</h3>
+
+		<p>Informação de qualidade custa tempo ou dinheiro (às vezes ambos):</p>
+
+		<ul>
+			<li>Livros técnicos revisados por especialistas</li>
+			<li>Cursos estruturados com instrutores experientes</li>
+			<li>Consultorias de quem já errou e acertou</li>
+			<li>Conferências onde profissionais compartilham casos reais</li>
+		</ul>
+
+		<p>IA treinada em "conteúdo gratuito da internet" só vai te dar a média do que está disponível - e a média nem sempre é boa.</p>
+
+		<h3>Verdade 3: Admitir Limites É Força, Não Fraqueza</h3>
+
+		<p>Os melhores desenvolvedores que a equipe da Cara Core conhece dizem "não sei" com frequência. Os piores fingem que sabem tudo.</p>
+
+		<p>Empresas que admitem desafios e mostram como os superam geram mais confiança que as que vendem perfeição inexistente.</p>
+
+		<hr />
+
+		<h2>Para Levar Para Casa</h2>
+
+		<p><strong>Se você é empresário ou gestor:</strong></p>
+		<ul>
+			<li>IA é excelente aceleradora, péssima substituta de especialistas</li>
+			<li>Projetos complexos precisam de tempo real de aprendizado</li>
+			<li>Desconfie de soluções "mágicas" para problemas difíceis</li>
+			<li>Invista em equipe que admite quando não sabe algo</li>
+		</ul>
+
+		<p><strong>Se você é desenvolvedor:</strong></p>
+		<ul>
+			<li>Copiar código de IA sem entender é bomba-relógio</li>
+			<li>Estude fundamentos, não apenas ferramentas</li>
+			<li>Livros e cursos estruturados ainda têm valor enorme</li>
+			<li>Honestidade técnica constrói reputação duradoura</li>
+		</ul>
+
+		<p><strong>Se você é pessoa curiosa sobre tecnologia:</strong></p>
+		<ul>
+			<li>IA mudou o mundo, mas não acabou com especialização</li>
+			<li>Segurança e sistemas críticos não têm atalhos</li>
+			<li>Conhecimento real leva tempo - e tudo bem</li>
+			<li>As melhores histórias incluem os fracassos</li>
+		</ul>
+
+		<hr />
+
+		<h2>Epílogo: A Conta Chegou (E Foi Mais Barata Que Fingir)</h2>
+
+		<p>Neste momento, há um livro técnico viajando de navio dos EUA para o Brasil. Quando chegar, a equipe da Cara Core vai estudá-lo página por página. Fazer testes. Documentar descobertas. Errar. Aprender.</p>
+
+		<p>E quando finalmente tiverem OIDC funcionando de verdade - não em ambiente simulado, mas em produção real, com usuários reais, sob condições reais - escreverão um artigo definitivo.</p>
+
+		<p>Esse artigo vai valer mais que os três anteriores juntos, porque terá algo que IA não pode gerar: <strong>experiência real de quem foi ao fundo do poço e voltou com conhecimento de verdade.</strong></p>
+
+		<p>Até lá, a Cara Core está escrevendo sobre o que <strong>realmente</strong> domina. E aprendendo humildemente sobre o que não domina.</p>
+
+		<p>Porque no fim, a tecnologia mais importante não é IA, OIDC ou qualquer sigla da moda.</p>
+
+		<p><strong>É a capacidade de reconhecer o que você não sabe - e fazer o trabalho duro de aprender de verdade.</strong></p>
+
+		<hr />
+
+		<h2>Notas Finais</h2>
+
+		<p><strong>O livro que a Cara Core encomendou:</strong> Um guia técnico especializado em OAuth 2.0 e OpenID Connect de editora americana respeitada (a equipe não vai citar o nome antes de validar se é realmente bom).</p>
+
+		<p><strong>Leia a jornada completa:</strong></p>
+
+		<p>Se você quiser acompanhar toda a trajetória da Cara Core com OIDC desde o início, aqui estão os artigos anteriores (agora você sabe o "final da história"):</p>
+
+		<ul>
+			<li><strong>15/10/2025</strong> - <a href="2025_10_15_article_52.html">OIDC descomplicado — como acabar com o caos de senhas (Parte I)</a><br />
+			<em>Onde a equipe explicou OIDC com analogias e casos de uso. Ainda é uma boa introdução conceitual!</em></li>
+			<li><strong>27/10/2025</strong> - <a href="2025_10_27_article_54.html">OIDC na prática — exemplos técnicos e implementação (Parte II)</a><br />
+			<em>Código Python, JavaScript e integração com GitHub Actions. Funciona em laboratório, mas...</em></li>
+			<li><strong>31/10/2025</strong> - <a href="2025_10_31_article_55.html">A Jornada OIDC: Como Transformamos a Autenticação da Cara Core</a><br />
+			<em>O "relato de sucesso" que agora a equipe sabe foi otimista demais. Lições valiosas sobre debugging.</em></li>
+		</ul>
+
+		<p><strong>Transparência:</strong> Este artigo é um reconhecimento público de que a Cara Core errou ao confiar excessivamente em IA para um problema complexo. A equipe está comprometida em voltar com implementação real e funcional.</p>
+
+		<p><strong>Quer Conversar?</strong> Se você passou por desafios similares (IA prometeu demais, projeto complicou), a Cara Core adoraria trocar experiências.</p>
+
+		<hr />
+
+		<h2>Hashtags</h2>
+		<div class="hash-box">#IA #InteligênciaArtificial #ChatGPT #OIDC #OAuth2 #DesenvolvimentoDeSoftware #Autenticação #Segurança #LiçõesAprendidas #Honestidade #TecnologiaReal #OpenIDConnect #Aprendizado #Gestão #CaraCoreInformática</div>
+
+		<hr />
+		<h3>Contato</h3>
+		<ul>
+			<li><strong>E-mail:</strong> suporte@caracore.com.br</li>
+			<li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
+			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
+		</ul>
+
+		<div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
+			<strong>🤝 Gostou do conteúdo?</strong><br />
+			<span style="font-size:.85rem;">Conecte-se conosco no LinkedIn para mais conteúdos sobre desenvolvimento e inovação tecnológica!</span><br />
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Seguir no LinkedIn</a>
+		</div>
+
+	</div>
+</body>
+</html>

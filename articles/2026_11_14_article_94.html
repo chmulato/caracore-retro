@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Amarelinha: Os Cinco Atos | Temporada I — Cara Core</title>
+	<meta name="description" content="Episódio Especial — A arquitetura de soberania operacional. Como sete pilares convergem no Protocolo Amarelinha para garantir confiança de ponta a ponta." />
+	<meta name="author" content="Cara Core Informática" />
+	<link rel="canonical" href="https://caracore.com.br/publications/articles/2026_11_14_article_94.html" />
+	<meta property="og:title" content="Amarelinha: Os Cinco Atos | Temporada I" />
+	<meta property="og:description" content="A arquitetura de soberania operacional do Protocolo Amarelinha." />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="https://caracore.com.br/publications/articles/2026_11_14_article_94.html" />
+	<meta property="og:image" content="https://caracore.com.br/publications/articles/assets/img/article_94_01.png" />
+	<meta property="og:image:alt" content="Amarelinha: Os Cinco Atos" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Amarelinha: Os Cinco Atos | Temporada I" />
+	<meta name="twitter:description" content="O Protocolo Amarelinha: engenharia de confiança entre dono da frota e carga." />
+	<meta name="twitter:image" content="https://caracore.com.br/publications/articles/assets/img/article_94_01.png" />
+	<link rel="stylesheet" href="assets/css/articles.css" />
+	<link rel="stylesheet" href="assets/css/temporada-i.css" />
+</head>
+<body>
+	<div class="container">
+		<a class="back-link" href="../articles.html">&larr; Voltar para publicações</a>
+		<img src="assets/img/article_94_01.png" alt="Amarelinha: Os Cinco Atos" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+		<h1>Amarelinha: Os Cinco Atos</h1>
+		<div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
+			<img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
+			<span style="margin-left: 1.5rem;">14 de novembro de 2026</span>
+		</div>
+		<div class="note"><strong>Episódio Especial | Temporada I | Tempo estimado:</strong> ~8–9 minutos</div>
+
+		<div class="quote-box">
+			<strong>Premissa:</strong> "Software não é amontoado de funções; é narrativa de confiança. Se a lógica falha, a confiança se fragiliza."
+		</div>
+
+		<h2>O Espelho da Jornada</h2>
+		<p>
+			Lucas, agora um operador completo, olha para trás. Sete episódios. Sete sábados. Sete pilares aprendidos: PDV, OIDC, Minerador, ETE, Ferradura, Ink e Convergência. Mas tudo isso era preparação. Era a respiração antes do mergulho.
+		</p>
+		<p>
+			Agora, diante do espelho, ele vê a estrutura real. Não é poesia de sobrevivência ou drama de identidade roubada. É engenharia pura. É o Protocolo Amarelinha.
+		</p>
+		<div class="insight">
+			<strong>A Pergunta de Viktor (O Arquiteto):</strong>
+			<p>
+				"Software não é amontoado de funções; é narrativa de confiança. Se a lógica falha, a confiança se fragiliza. Os cinco atos garantem que, do checkpoint de saída ao de chegada, cada kg, cada segundo, cada rota está documentado e protegido contra desvios."
+			</p>
+		</div>
+
+		<h2>Os Cinco Atos: Anatomia da Soberania</h2>
+
+		<h3>Ato I: Geometria — O Mapa</h3>
+		<p>
+			Um caminhão não navega no vazio. Antes de sair da garagem, cinco pontos são traçados no mapa local (SQLite, criptografado, soberano):
+		</p>
+		<ul>
+			<li><strong>Saída (Checkpoint 1):</strong> Curitiba Centro, -25.4284°, -49.2733°. Raio de validação: 500m.</li>
+			<li><strong>Passagem (Checkpoints 2-4):</strong> Três pontos de confirmação (Tatuapé, Campo Largo, Santo André).</li>
+			<li><strong>Chegada (Checkpoint 5):</strong> São Paulo Vila Mariana, -23.5889°, -46.6564°.</li>
+		</ul>
+		<p>
+			Cada checkpoint tem um "quadrado" no Dashboard JavaFX da sede. A cor começa em cinza (não alcançado), muda para verde quando o caminhão entra no raio, e pode ficar vermelha se a auditoria detectar divergência.
+		</p>
+		<div class="note">
+			<strong>Como funciona:</strong> O cálculo de distância Haversine (trigonometria esférica) detecta automaticamente quando o GPS do caminhão entra no raio. Sem validação manual. Sem central de despacho travando a operação. É soberania: a máquina valida, o operador da sede vê.
+		</div>
+
+		<h3>Ato II: Dinâmica — O Movimento</h3>
+		<p>
+			O caminhão está em movimento. A cada 30 segundos (ou menos), o APK envia bursts de telemetria:
+		</p>
+		<ul>
+			<li>Latitude / Longitude (do GPS)</li>
+			<li>Velocidade (em km/h)</li>
+			<li>RPM do motor</li>
+			<li>Massa atual (sensor Bluetooth calibrado)</li>
+			<li>Timestamp (hora local sincronizada)</li>
+		</ul>
+		<p>
+			Se houver rede, os dados chegam em tempo real. Se não houver, ficam bufferados no SQLite do caminhão. Offline-first: <strong>dados nunca são perdidos</strong>.
+		</p>
+		<p>
+			Na sede, o Sovereignty Engine valida cada dado: "Este caminhão chegou no checkpoint 2? Sim. Qual era a velocidade média? 78 km/h. Qual era a massa? 29.950 kg." E registra tudo em hash chain imutável.
+		</p>
+		<div class="quote-box">
+			<em>"A vida real não é GPS de verdade. A vida real é: o motorista faz paradas não planejadas e o sistema precisa registrar com clareza. O Ato II detecta quando a massa muda sem explicação."</em>
+		</div>
+
+		<h3>Ato III: Sombra — A Navegação Inercial</h3>
+		<p>
+			No Brasil de 2026, nem tudo é conectado. Um caminhão entra em túnel, perde o sinal GPS. Ou entra em zona rural e não há 4G. O que fazer?
+		</p>
+		<p>
+			Resposta: <strong>Navegar pela inércia.</strong>
+		</p>
+		<p>
+			O Ato III ativa quando o status GPS passa para "PERDIDO". O sistema toma a última velocidade conhecida (78 km/h) e a última direção (260° - sudoeste) e <strong>extrapola</strong>: "Se mantiver essa velocidade por 30 minutos em linha reta, o caminhão estará aproximadamente aqui."
+		</p>
+		<p>
+			No Dashboard, um ícone fantasma (cinzento, opaco, com alpha=0.4) começa a se mover lentamente. Um cronômetro regressivo marca o tempo máximo permitido na sombra (exemplo: esperado 30 min; alerta em 34,5 min). Se exceder, sinal.
+		</p>
+		<p>
+			É lidar com aleatoriedade brasileira: um desvio de rota não planejado agora tem áudio e visual. Transparência real.
+		</p>
+
+		<h3>Ato IV: Massa — A Auditoria de Lavoisier</h3>
+		<p>
+			Lavoisier, químico francês: "Na natureza, nada se cria, nada se perde, tudo se transforma."
+		</p>
+		<p>
+			Corolário brasileiro: se você começou com 30.000 kg e terminou com 29.500 kg, <strong>500 kg ficaram sem registro</strong>.
+		</p>
+		<p>
+			O Ato IV compara a "massa esperada" inicial com a "massa observada" em cada checkpoint. A tolerância é de 2% (600 kg em 30 toneladas). Se a divergência for maior, a UI sinaliza:
+		</p>
+		<ul>
+			<li><strong>Transição de cor:</strong> o quadrado muda de VERDE para VERMELHO (animação 500ms).</li>
+			<li><strong>Som industrial:</strong> "crack_industrial.wav" toca no Dashboard.</li>
+			<li><strong>Rachadura visual:</strong> um SVG zigzagueia sobre o quadrado (efeito traumático).</li>
+			<li><strong>Alerta crítico:</strong> WhatsApp / Push notification para o patrão: "VIOLAÇÃO: Entrega #123 perdeu 1.500 kg no checkpoint 3."</li>
+			<li><strong>Log imutável:</strong> A violação é registrada em hash chain — não pode ser deletada, não pode ser modificada.</li>
+		</ul>
+		<ul>
+			<li><strong>Transição de cor:</strong> o quadrado muda de VERDE para VERMELHO (animação 500ms).</li>
+			<li><strong>Som industrial:</strong> "alerta_industrial.wav" toca no Dashboard.</li>
+			<li><strong>Sinal visual:</strong> um SVG zigzagueia sobre o quadrado (efeito de atenção).</li>
+			<li><strong>Alerta crítico:</strong> WhatsApp / Push notification para o responsável: "DIVERGÊNCIA: Entrega #123 teve 1.500 kg a menos no checkpoint 3."
+			<li><strong>Log imutável:</strong> A divergência é registrada em hash chain — não pode ser deletada, não pode ser modificada.</li>
+		</ul>
+		<h3>Ato V: Céu — A Conclusão Celebrada</h3>
+		<p>
+			Se todos os 4 atos passam (geometria validada, dinâmica monitorada, sombra dentro do esperado, massa íntegra), o 5º ato é celebração.
+		<p>
+			Exemplo real: Entregador A diz "Perdi 500 kg por derramamento." Entregador B diz "Nunca saiu carga." A gestão não sabe. Com o Ato IV, o audit log mostra exatamente em qual checkpoint a massa variou — e se foi gradual ou abrupta.
+		</p>
+		<p>
+			<strong>Minerador (Valor):</strong> A IA de 2GB local calcula a rota otimizada, não aguarda comando de mega servidores. Valor extraído localmente.
+		</p>
+
+		<h2>Como os 6 Pilares Convergem no Protocolo</h2>
+		<p>
+			Agora o quebra-cabeça se encaixa:
+		<p>
+			<strong>ETE (Ironia):</strong> O Ato IV (Massa) é a ironia final: auditoria de Lavoisier que a ETE (limitada a nuances) não alcança. Uma fórmula simples é mais sábia.
+		</p>
+			<li><strong>OIDC (Liberdade):</strong> O token federado que valida o motorista (CPF + biometria) é quem assina o canhoto digital. Liberdade: o motorista não é escravo de central.</li>
+			<li><strong>Minerador (Valor):</strong> A IA de 2GB local calcula a rota otimizada, não aguarda comando de mega servidores. Valor extraído localmente.</li>
+			<li><strong>ETE (Ironia):</strong> O Ato IV (Massa) é a ironia final: auditoria de Lavoisier que a ETE (cega a nuances) nunca poderia fazer. Uma fórmula simples é mais sábia.</li>
+			<li><strong>Ferradura (Logística):</strong> Três entregadores se coordenam sem ETE (Ato II - Dinâmica). P2P puro. RSA_4096 valida cada contrato.</li>
+			<li><strong>Ink Agenda (Permanência):</strong> Tudo é registrado offline-first (Ato III - buffer local). Merkle tree criptográfica garante que nada foi adulterado.</li>
+		</ul>
+		<div class="insight">
+			<strong>O Insight de Viktor:</strong>
+			<p>
+				Os seis pilares não são produtos. São funções de um único propósito: <strong>soberania operacional</strong>. O Protocolo Amarelinha é o teatro onde todos atuam em harmonia. PDV é a entrada. OIDC é o ator. Minerador é o roteiro. ETE é o contraponto irônico. Ferradura é o coro. Ink é a plateia que registra. E o Protocolo é o drama completo.
+			</p>
+		</div>
+
+		<h2>O Lançamento: 8 de Novembro de 2026</h2>
+		<p>
+			Amanhã, o Protocolo Amarelinha entra em produção em uma frota piloto: 10 caminhões, 4 semanas, geração ilimitada de dados. Não é experimento. É operação.
+		</p>
+		<p>
+			O que o mundo verá:
+		</p>
+		<ul>
+			<li>Uma frota que tem <strong>zero perda de carga documentada</strong>.</li>
+			<li>Relatórios que <strong>ninguém consegue falsificar</strong>.</li>
+			<li>Decisões descentralizadas que <strong>rodam mais rápido</strong> que comitês.</li>
+			<li>Um motorista que sabe exatamente o que aconteceu — e pode se defender com prova.</li>
+		</ul>
+
+		<h2>A Reflexão Final</h2>
+		<p>
+			Lucas vê a arquitetura e reconhece tudo. Sete episódios. Sete pilares. Agora, um único e elegante protocolo. Cinco atos que garantem confiança.
+		</p>
+		<p>
+			Ele pensa em Viktor, em Mikhail, em Guilherme, em Christian. Todos trabalharam pela mesma coisa: <strong>dar ao brasileiro as ferramentas para confiar em sua própria operação</strong>.
+		</p>
+		<p>
+			Não em corporação de silicon valley. Não em algoritmo que ninguém entende. Mas em lógica transparente, executada localmente, preservada em hash chain imutável.
+		</p>
+		<div class="quote-box">
+			<em>"Amarelinha é jogo de criança porque ensina geometria sem parecer. O Protocolo Amarelinha é o mesmo: ensina confiança sem parecer. Cada ato é um pulo. Cada checkpoint é um quadrado. E no final, o céu."</em>
+		</div>
+
+		<p>
+			Seja bem-vindo, Lucas. Você aprendeu os seis pilares. Você conhece os cinco atos. Você é operador de soberania. Amanhã, a frota levanta. E a confiança vira código.
+		</p>
+
+		<hr>
+
+		<h2>Sobre Temporada I</h2>
+		<p>Temporada I é uma série de 8 episódios (maio–novembro 2026) que narra a emancipação do soberano através de tecnologia tangível:</p>
+		<ul>
+			<li><strong>Episódio 1 — O Apagão do Suserano (PDV):</strong> Sobrevivência através de resistência offline.</li>
+			<li><strong>Episódio 2 — A Identidade Roubada (OIDC):</strong> Segurança através de identidade federada e criptografia.</li>
+			<li><strong>Episódio 3 — Ouro, Prata e Silício (Minerador 4.0):</strong> Valor através de extração local de dados.</li>
+			<li><strong>Episódio 4 — O ETE e a IA de 2GB (ETE):</strong> Ironia através da limitação honesta do observador.</li>
+			<li><strong>Episódio 5 — Circuito Ferradura (Ferradura):</strong> Logística através de redes descentralizadas.</li>
+			<li><strong>Episódio 6 — A Marca na Pele (Ink Agenda):</strong> Permanência através de memória offline-first.</li>
+			<li><strong>Episódio 7 — Epílogo: O Acerto de Contas (Convergência):</strong> Convergência de todos os pilares.</li>
+			<li><strong>Episódio Especial — Amarelinha: Os Cinco Atos:</strong> A arquitetura técnica de soberania operacional.</li>
+		</ul>
+
+		<hr>
+
+		<h2>Hashtags</h2>
+		<div class="hash-box">#CaraCore #TemporadaI #Amarelinha #ProtocoloAmarelinha #Arquitetura #Soberania #Operacional #LogísticaDescentralizada #SoftwareBoutique #BrasilEmergente #ContextoLocal #DadosLocais #Confiança</div>
+
+		<hr />
+
+		<h3>Contato</h3>
+		<ul>
+			<li><strong>E-mail:</strong> suporte@caracore.com.br</li>
+			<li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
+			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
+		</ul>
+
+		<div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
+			<strong>Acompanhe a Temporada I</strong><br />
+			<span style="font-size:.85rem;">A série completa de sete episódios + especial arquitetônico</span><br />
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Seguir no LinkedIn</a>
+		</div>
+
+		<p style="text-align:center; font-size:.85rem; color:#6b7280; margin-top:3rem;">
+			<em>Artigo publicado em 14 de novembro de 2026</em><br>
+			© 2026 Cara Core Informática. Todos os direitos reservados.
+		</p>
+	</div>
+</body>
+</html>

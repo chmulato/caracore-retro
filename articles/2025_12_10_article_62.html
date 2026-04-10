@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Automatizando Notificações com Power Automate: Uma Jornada de Correção e Otimização — Cara Core Informática</title>
+	<meta name="description" content="Como corrigimos e otimizamos um fluxo crítico do Power Automate, transformando um sistema funcional mas problemático em uma solução robusta, confiável e escalável." />
+	<meta name="keywords" content="Power Automate, Microsoft 365, Automação de Processos, SharePoint, Microsoft Teams, RPA, Low-Code, Cara Core Informática" />
+	<meta name="author" content="Cara Core Informática" />
+	<link rel="canonical" href="https://caracore.com.br/publications/articles/2025_12_10_article_62.html" />
+	<!-- Open Graph -->
+	<meta property="og:title" content="Automatizando Notificações com Power Automate: Uma Jornada de Correção e Otimização" />
+	<meta property="og:description" content="Como corrigimos e otimizamos um fluxo crítico do Power Automate, transformando um sistema funcional mas problemático em uma solução robusta, confiável e escalável." />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="https://caracore.com.br/publications/articles/2025_12_10_article_62.html" />
+	<meta property="og:image" content="https://caracore.com.br/publications/articles/assets/img/article_62_01.png" />
+	<meta property="og:image:alt" content="Power Automate, automação de processos, Microsoft 365, Cara Core Informática" />
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Automatizando Notificações com Power Automate: Uma Jornada de Correção e Otimização" />
+	<meta name="twitter:description" content="Como corrigimos e otimizamos um fluxo crítico do Power Automate, transformando um sistema funcional mas problemático em uma solução robusta, confiável e escalável." />
+	<meta name="twitter:image" content="https://caracore.com.br/publications/articles/assets/img/article_62_01.png" />
+	<meta name="twitter:image:alt" content="Power Automate, automação de processos, Microsoft 365, Cara Core Informática" />
+	<link rel="stylesheet" href="assets/css/articles.css" />
+	<style>
+		body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif; line-height:1.55; color:#1f2937; margin:0; }
+		.container { max-width: 980px; margin:0 auto; padding:2rem 1.25rem 4rem; }
+		h1 { line-height:1.2; font-size:clamp(1.9rem,2.4vw,2.5rem); margin-top:0; }
+		h2 { margin-top:2.25rem; line-height:1.25; }
+		pre { background: linear-gradient(180deg, #244d30 0%, #1c3a27 100%); color:#f5fff0; padding:1rem 1.1rem; overflow:auto; border-radius:10px; border:12px solid #6b4226; box-shadow:0 6px 16px rgba(0,0,0,.18), inset 0 0 0 1px rgba(255,255,255,.03); font-size:.95rem; font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; text-shadow: 0 1px 0 rgba(255,255,255,.05), 0 0 1px rgba(255,255,255,.08); }
+		.chalkboard { background: linear-gradient(180deg, #244d30 0%, #1c3a27 100%); color:#f5fff0; padding:1rem 1.1rem; border-radius:10px; border:12px solid #6b4226; box-shadow:0 6px 16px rgba(0,0,0,.18), inset 0 0 0 1px rgba(255,255,255,.03); text-shadow: 0 1px 0 rgba(255,255,255,.05), 0 0 1px rgba(255,255,255,.08); margin-top:2rem; }
+		.chalkboard h2 { margin-top:0; color:#f5fff0; }
+		.chalkboard dl { margin:0; }
+		.chalkboard dt { margin-top:.6rem; font-weight:600; }
+		.chalkboard dd { margin:.2rem 0 .6rem 0; opacity:.95; }
+		code { font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; color: inherit; background: transparent; }
+		figure img { max-width:100%; height:auto; }
+		ul,ol { padding-left:1.1rem; }
+		.back-link {
+			font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;
+			line-height: 1.55;
+			display: inline-block;
+			background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+			border: 2px solid #4fa3ff;
+			border-radius: 8px;
+			padding: 0.8rem 1.5rem;
+			font-weight: bold;
+			text-align: center;
+			transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+			margin: 2rem auto;
+			max-width: 200px;
+			text-decoration: none;
+			font-size: .85rem;
+			color: #2563eb;
+		}
+		.note { background:#f8f9fa; padding:1rem 1.25rem; border-left:4px solid #10B981; border-radius:6px; margin:1.5rem 0; }
+		.hash-box { background:#f8f9fa; padding:1rem 1.25rem; border-left:4px solid #0EA5E9; border-radius:6px; font-size:.85rem; line-height:1.5; }
+		hr { border:none; border-top:1px solid #e5e7eb; margin:3rem 0 2rem; }
+		blockquote { font-style: italic; border-left: 3px solid #e5e7eb; padding-left: 1.25rem; margin-left: 0; background:#f9fafb; padding:1rem 1.25rem; border-radius:6px; }
+		.checklist { background:#f0f9ff; padding:1rem 1.25rem; border-left:4px solid #0ea5e9; border-radius:6px; }
+		.checklist ul { margin:.5rem 0; }
+		.warning { background:#fef3c7; padding:1rem 1.25rem; border-left:4px solid #f59e0b; border-radius:6px; margin:1.5rem 0; }
+		.success { background:#dcfce7; padding:1rem 1.25rem; border-left:4px solid #10b981; border-radius:6px; margin:1.5rem 0; }
+		@media (max-width:640px){ pre { font-size:.78rem; border-width:9px; padding:.85rem .9rem; } .chalkboard { border-width:9px; padding:.85rem .9rem; } }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<a class="back-link" href="../articles.html">&larr; Voltar para publicações</a>
+		<img src="assets/img/article_62_01.png" alt="Power Automate, automação de processos, Microsoft 365, Cara Core Informática" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+		<h1>Automatizando Notificações com Power Automate: Uma Jornada de Correção e Otimização</h1>
+		<div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
+			<img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
+			<span style="margin-left: 1.5rem;">10 de dezembro de 2025</span>
+		</div>
+		<div class="note"><strong>Tempo estimado de leitura:</strong> ~12 minutos</div>
+
+		<h2>Introdução</h2>
+		<p>Já imaginou ter um sistema que avisa automaticamente seus clientes quando uma proposta está parada há 7 ou 14 dias? Que envia notificações no Microsoft Teams, atualiza registros no SharePoint e ainda registra cada interação para auditoria futura? Parece complexo, mas é exatamente isso que o <strong>Power Automate</strong> pode fazer quando configurado corretamente.</p>
+		<p>Esta é a história de como corrigimos e otimizamos um fluxo crítico de notificações no Power Automate, transformando um sistema funcional mas problemático em uma solução robusta, confiável e pronta para escala.</p>
+		<p>Se você trabalha com automação de processos, integração de sistemas Microsoft ou simplesmente quer entender como resolver problemas complexos em fluxos do Power Automate, esta história é para você.</p>
+
+		<h2>PARTE I: O Desafio - Quando a Automação Causa Mais Problemas</h2>
+
+		<h3>O Cenário Inicial</h3>
+		<p>Tínhamos um fluxo do Power Automate rodando em produção que deveria:</p>
+		<ol>
+			<li><strong>Monitorar propostas comerciais</strong> no SharePoint</li>
+			<li><strong>Detectar quando uma proposta ficava parada</strong> por 7 ou 14 dias sem atualização</li>
+			<li><strong>Enviar notificações automáticas</strong> ao responsável via Microsoft Teams</li>
+			<li><strong>Registrar a resposta</strong> do responsável de volta no SharePoint</li>
+			<li><strong>Atualizar o status</strong> da proposta quando necessário</li>
+		</ol>
+		<p>Parece simples, certo? O problema era que o fluxo <strong>funcionava</strong>, mas com problemas críticos:</p>
+		<ul>
+			<li><strong>Formatação HTML duplicada</strong>: Os comentários no SharePoint apareciam com tags <code>&lt;p&gt;</code> duplicadas, tornando o texto ilegível</li>
+			<li><strong>Conexões frágeis</strong>: Múltiplas referências de conexão ao SharePoint causavam instabilidade</li>
+			<li><strong>Falhas na publicação</strong>: Tentativas de atualizar o fluxo via API resultavam em erros</li>
+			<li><strong>Falta de resiliência</strong>: Não havia tratamento adequado de erros ou retry automático</li>
+		</ul>
+		<p>Era como ter um carro que funciona, mas que range, vibra e pode parar a qualquer momento no meio da estrada.</p>
+
+		<h3>Por Que Isso Importa?</h3>
+		<p>Imagine você é um gerente comercial. Você tem 50 propostas abertas e precisa saber quais delas estão paradas há muito tempo. O sistema deveria:</p>
+		<ul>
+			<li><strong>Avisar automaticamente</strong> quando uma proposta precisa de atenção</li>
+			<li><strong>Registrar sua resposta</strong> de forma clara e legível</li>
+			<li><strong>Atualizar o status</strong> sem você ter que fazer isso manualmente</li>
+		</ul>
+		<p>Mas e se os avisos chegarem com textos embaralhados? E se o sistema falhar justamente quando você mais precisa? E se cada atualização manual no fluxo causar instabilidade?</p>
+		<div class="warning">
+			<strong>O custo é alto:</strong>
+			<ul>
+				<li>Propostas perdidas por falta de follow-up</li>
+				<li>Tempo desperdiçado corrigindo dados mal formatados</li>
+				<li>Risco de falha em momentos críticos</li>
+			</ul>
+		</div>
+
+		<h3>A Decisão Estratégica</h3>
+		<p>Precisávamos não apenas corrigir os bugs visíveis, mas criar uma base sólida para:</p>
+		<ol>
+			<li><strong>Estabilidade operacional</strong>: O fluxo não pode falhar</li>
+			<li><strong>Manutenibilidade</strong>: Alterações futuras devem ser seguras</li>
+			<li><strong>Observabilidade</strong>: Precisamos ver o que está acontecendo</li>
+			<li><strong>Escalabilidade</strong>: Deve funcionar com 10 ou 1000 propostas</li>
+		</ol>
+
+		<h2>PARTE II: A Anatomia do Problema - Entendendo o Fluxo</h2>
+
+		<h3>Como Funciona um Fluxo de Notificações?</h3>
+		<p>Vamos desmistificar o Power Automate usando uma analogia simples:</p>
+		<blockquote>
+			<strong>Imagine uma fábrica com esteiras transportadoras:</strong>
+			<ol>
+				<li><strong>Trigger (Gatilho)</strong>: Um novo item chega na esteira (item criado no SharePoint)</li>
+				<li><strong>Etapa 1 - Coleta de dados</strong>: Robôs coletam informações sobre o item</li>
+				<li><strong>Etapa 2 - Decisão</strong>: Um inspetor verifica condições (7 ou 14 dias? Status correto?)</li>
+				<li><strong>Etapa 3 - Ação</strong>: Se aprovado, envia notificação e atualiza registros</li>
+				<li><strong>Etapa 4 - Timeout</strong>: Se ninguém responder, encerra graciosamente</li>
+			</ol>
+		</blockquote>
+
+		<h3>O Diagrama do Fluxo</h3>
+		
+		<h4>Visão Geral da Arquitetura (Diagrama C4)</h4>
+		<p>Para entender melhor como tudo funciona, veja o diagrama abaixo que mostra a arquitetura completa do sistema de notificações automatizadas:</p>
+		
+		<figure style="text-align: center; margin: 2rem 0;">
+			<img src="assets/img/article_62_02.png" alt="Diagrama C4 da arquitetura do Power Automate - Sistema de Notificações" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+			<figcaption style="margin-top: 1rem; font-style: italic; color: #6b7280;">
+				<strong>Figura 1:</strong> Arquitetura C4 do sistema de notificações automatizadas com Power Automate
+			</figcaption>
+		</figure>
+
+		<div class="note">
+			<h4>Entendendo o Diagrama (Para Pessoas Leigas)</h4>
+			<p>Este diagrama mostra como diferentes partes do sistema se comunicam. Imagine como se fosse um mapa de metrô, onde cada estação representa uma etapa do processo:</p>
+			
+			<dl style="margin-top: 1rem;">
+				<dt style="color: #4CAF50; font-weight: bold; margin-top: 0.5rem;">Verde - Pessoas (Usuários)</dt>
+				<dd style="margin-left: 1.5rem; margin-bottom: 0.5rem;">São as pessoas que usam o sistema: o gerente comercial que cuida das propostas e o administrador que gerencia o sistema.</dd>
+				
+				<dt style="color: #0078D4; font-weight: bold; margin-top: 0.5rem;">Azul - Sistemas Microsoft (Automação)</dt>
+				<dd style="margin-left: 1.5rem; margin-bottom: 0.5rem;">São os componentes do Power Automate e Teams que fazem o trabalho automático: verificam prazos, enviam notificações, coletam respostas.</dd>
+				
+				<dt style="color: #FF9800; font-weight: bold; margin-top: 0.5rem;">Laranja - Armazenamento (Dados)</dt>
+				<dd style="margin-left: 1.5rem; margin-bottom: 0.5rem;">É onde as informações ficam guardadas no SharePoint: listas de propostas e notificações.</dd>
+				
+				<dt style="color: #9C27B0; font-weight: bold; margin-top: 0.5rem;">Roxo - Ferramentas de Gestão (Python)</dt>
+				<dd style="margin-left: 1.5rem; margin-bottom: 0.5rem;">São scripts que ajudam a equipe técnica a atualizar o fluxo com segurança, sempre fazendo backup antes de qualquer mudança.</dd>
+				
+				<dt style="color: #607D8B; font-weight: bold; margin-top: 0.5rem;">Cinza - Ciclo de Vida (Processo)</dt>
+				<dd style="margin-left: 1.5rem; margin-bottom: 0.5rem;">Mostra o caminho que uma proposta percorre desde sua criação até a resposta do cliente.</dd>
+			</dl>
+		</div>
+
+		<div class="checklist">
+			<h4>Como Ler o Diagrama - Passo a Passo</h4>
+			<ol style="margin-top: 0.5rem;">
+				<li><strong>Início:</strong> O gerente comercial cria uma nova proposta no SharePoint</li>
+				<li><strong>Monitoramento:</strong> O sistema verifica automaticamente se a proposta está parada há 7 ou 14 dias</li>
+				<li><strong>Notificação:</strong> Se estiver parada, o Power Automate envia uma mensagem no Microsoft Teams</li>
+				<li><strong>Interação:</strong> O gerente recebe a notificação no celular ou computador e responde</li>
+				<li><strong>Atualização:</strong> A resposta é automaticamente registrada no SharePoint</li>
+				<li><strong>Segurança:</strong> Toda alteração no fluxo é feita com backup automático para proteção</li>
+			</ol>
+		</div>
+
+		<blockquote style="margin: 1.5rem 0;">
+			<strong>Analogia do Mundo Real:</strong><br />
+			Pense neste sistema como um assistente pessoal que:
+			<ul style="margin-top: 0.5rem;">
+				<li>Fica de olho em todas as suas propostas comerciais</li>
+				<li>Te avisa quando algo está esquecido</li>
+				<li>Anota suas respostas automaticamente</li>
+				<li>Mantém tudo organizado sem você precisar fazer manualmente</li>
+			</ul>
+			É como ter alguém dedicado apenas a garantir que nenhuma oportunidade de negócio seja perdida por esquecimento!
+		</blockquote>
+
+		<h4>Fluxo Técnico Detalhado</h4>
+		<p>Para quem deseja ver os detalhes técnicos da implementação:</p>
+		<pre>Trigger (SharePoint Notifications)
+  └─> Obter item (Notifications)
+       └─> Obter item relacionado (Leads)
+            ├─> [SE status=9 E propostaEnviada7dias=Sim]
+            │     ├─> Enviar e-mail (7 dias)
+            │     ├─> Microsoft Teams: Pergunta ao responsável
+            │     ├─> Obter perfil do usuário (O365)
+            │     ├─> Compor comentário formatado
+            │     ├─> Salvar em variável (varComentario)
+            │     ├─> Atualizar SharePoint (Leads) - comentário
+            │     └─> Atualizar SharePoint (Notifications) - resposta
+            │        (Timeout após 3 dias: Terminate Succeeded)
+            │
+            └─> [SE status=9 E propostaEnviada14dias=Sim]
+                  ├─> Enviar e-mail (14 dias)
+                  ├─> Microsoft Teams: Pergunta ao responsável
+                  ├─> Obter perfil do usuário (O365)
+                  ├─> Compor comentário formatado
+                  ├─> Salvar em variável (varComentario)
+                  ├─> Atualizar SharePoint (Leads) - comentário + status
+                  └─> Atualizar SharePoint (Notifications) - resposta
+                     (Timeout após 3 dias: Terminate Succeeded)</pre>
+
+		<h3>Os Problemas Identificados</h3>
+		<div class="chalkboard">
+			<h4>Problema 1: HTML Duplicado</h4>
+			<pre>&lt;!-- O que era gravado no SharePoint: --&gt;
+&lt;p&gt;&lt;p&gt;Comentário do usuário&lt;/p&gt;&lt;/p&gt;
+
+&lt;!-- O que deveria ser: --&gt;
+&lt;p&gt;Comentário do usuário&lt;/p&gt;</pre>
+			<h4>Problema 2: Conexões Múltiplas</h4>
+			<ul>
+				<li>O fluxo usava <code>shared_sharepointonline</code> E <code>shared_sharepointonline_1</code></li>
+				<li>Isso causava confusão e potenciais falhas</li>
+			</ul>
+			<h4>Problema 3: Publicação via API Falha</h4>
+			<ul>
+				<li>Tentativas de usar <code>PUT</code> retornavam erro</li>
+				<li>Schema do <code>runtimeConfiguration</code> não era suportado</li>
+				<li>Faltava backup antes de alterações</li>
+			</ul>
+		</div>
+		<blockquote>
+			<strong>Para Executivos e Leigos:</strong><br />
+			Imagine que você envia uma mensagem, mas ela chega com cada palavra repetida duas vezes (Problema 1). Ou pense em ter duas chaves para a mesma porta, mas ninguém sabe qual usar (Problema 2). E ainda, quando você tenta atualizar o sistema, ele simplesmente não aceita suas mudanças porque está "falando um idioma diferente" (Problema 3). Era exatamente isso que acontecia: mensagens confusas, caminhos duplicados e impossibilidade de fazer melhorias com segurança.
+		</blockquote>
+
+		<h2>PARTE III: A Solução - Correção Cirúrgica e Segura</h2>
+
+		<h3>Princípios da Correção</h3>
+		<p>Adotamos uma abordagem <strong>conservadora e incremental</strong>:</p>
+		<div class="checklist">
+			<ul>
+				<li>Preservar o que funciona: Não alterar conexões existentes sem necessidade</li>
+				<li>Corrigir cirurgicamente: Atacar apenas os pontos problemáticos</li>
+				<li>Backup sempre: Salvar estado anterior antes de qualquer mudança</li>
+				<li>Testes controlados: Validar cada alteração isoladamente</li>
+				<li>Documentação completa: Registrar cada decisão e motivo</li>
+			</ul>
+		</div>
+
+		<h3>Ação 1: Padronização do Comentário</h3>
+		<div class="chalkboard">
+			<h4>Antes:</h4>
+			<pre>// A variável recebia HTML com wrapper duplicado
+varComentario = "&lt;p&gt;" + outputs('Compose_comentario') + "&lt;/p&gt;"</pre>
+			<h4>Depois:</h4>
+			<pre>// Remove wrapper externo, mantém apenas conteúdo
+varComentario = outputs('Compose_comentario')</pre>
+		</div>
+		<blockquote>
+			<strong>Para Executivos e Leigos:</strong><br />
+			Pense em enviar uma carta. Antes, estávamos colocando a carta dentro de um envelope, e depois colocando esse envelope dentro de outro envelope. Quando chegava no destinatário, ele via dois envelopes em vez de um, ficando confuso. A solução foi simples: usar apenas um envelope. Agora a mensagem chega limpa, direta e legível. É como remover embalagens desnecessárias de um produto - fica mais simples e funcional.
+		</blockquote>
+		<div class="success">
+			<strong>Resultado:</strong>
+			<ul>
+				<li>Comentários agora aparecem corretamente formatados no SharePoint</li>
+				<li>Sem tags HTML duplicadas</li>
+				<li>Legibilidade restaurada</li>
+			</ul>
+		</div>
+
+		<h3>Ação 2: Normalização de Conexões</h3>
+		<div class="chalkboard">
+			<h4>Problema identificado:</h4>
+			<pre>{
+  "PatchItem_Leads": {
+    "connection": "shared_sharepointonline"
+  },
+  "PatchItem_Notifications": {
+    "connection": "shared_sharepointonline_1"  // ← Inconsistente
+  }
+}</pre>
+			<h4>Solução aplicada:</h4>
+			<pre>{
+  "PatchItem_Leads": {
+    "connection": "shared_sharepointonline"
+  },
+  "PatchItem_Notifications": {
+    "connection": "shared_sharepointonline"  // ← Unificado
+  }
+}</pre>
+		</div>
+		<blockquote>
+			<strong>Para Executivos e Leigos:</strong><br />
+			Imagine que sua empresa tem duas entradas: uma pela frente e outra pelos fundos. Antes, alguns funcionários entravam pela frente e outros pelos fundos, sem razão específica. Isso causava confusão no controle de acesso. Agora, todos entram pela mesma porta principal. Ficou mais simples, mais seguro e mais fácil de gerenciar. No sistema, isso significa que todas as operações usam o mesmo "cartão de acesso" para falar com o SharePoint, eliminando duplicação e pontos de falha.
+		</blockquote>
+		<div class="success">
+			<strong>Resultado:</strong>
+			<ul>
+				<li>Conexões unificadas sob um único identificador</li>
+				<li>Menos pontos de falha</li>
+				<li>Mais fácil de gerenciar</li>
+			</ul>
+		</div>
+
+		<h3>Ação 3: Publicação Confiável via API</h3>
+		<p>Criamos um script Python (<code>publish_flow_patch.py</code>) que:</p>
+		<ol>
+			<li><strong>Autentica via Azure CLI ou MSAL</strong></li>
+			<li><strong>Faz backup automático</strong> do fluxo original</li>
+			<li><strong>Aplica patches cirúrgicos</strong> apenas nas ações necessárias</li>
+			<li><strong>Usa método PATCH</strong> em vez de PUT (compatibilidade)</li>
+			<li><strong>Preserva connectionReferences</strong> (evita quebra de conexões)</li>
+			<li><strong>Valida antes de aplicar</strong> (modo dry-run disponível)</li>
+		</ol>
+		<div class="chalkboard">
+			<h4>Exemplo de uso:</h4>
+			<pre># Dry-run para validar mudanças
+python publish_flow_patch.py \
+  --env-id "Default-00000000-0000-0000-0000-000000000000" \
+  --flow-name "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" \
+  --recipient-upn "responsavel@suaempresa.com" \
+  --dry-run \
+  --backup flow-backup.json
+
+# Aplicar mudanças reais
+python publish_flow_patch.py \
+  --env-id "Default-00000000-0000-0000-0000-000000000000" \
+  --flow-name "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" \
+  --recipient-upn "responsavel@suaempresa.com"</pre>
+		</div>
+		<blockquote>
+			<strong>Para Executivos e Leigos:</strong><br />
+			Pense neste script como um "assistente de segurança" para fazer mudanças no sistema. Antes de realmente aplicar qualquer alteração, ele faz um "ensaio" (dry-run) - como quando você testa uma nova rota antes de usá-la no dia do compromisso importante. Além disso, ele sempre tira uma "foto" (backup) do sistema antes de mexer em qualquer coisa. É como ter um botão "desfazer" profissional: se algo der errado, podemos voltar ao estado anterior em segundos. Isso transforma mudanças arriscadas em operações seguras e controláveis.
+		</blockquote>
+
+		<h3>Ação 4: Tratamento de Status com Fallback</h3>
+		<p><strong>Problema:</strong> No branch de 14 dias, precisávamos atualizar o status para "Aguardando Cliente" (código 11), mas o schema nem sempre expunha <code>item/status/Value</code> corretamente.</p>
+		<div class="chalkboard">
+			<h4>Solução:</h4>
+			<pre>// Fallback seguro
+if (exists(item.status.Value)) {
+  status = item.status.Value
+} else {
+  status = "11"  // Código direto para "Aguardando Cliente"
+}</pre>
+		</div>
+		<blockquote>
+			<strong>Para Executivos e Leigos:</strong><br />
+			Imagine que você pede uma informação ao assistente, mas às vezes ele não consegue responder porque o dado não está no formato esperado. Antes, o sistema simplesmente parava e dava erro. Agora, criamos um "plano B": se o assistente não encontrar a informação no lugar esperado, ele usa um valor padrão seguro. É como quando você pergunta "que horas são?" e a pessoa não tem relógio, mas sabe que é "mais ou menos meio-dia" pelo sol. Melhor uma resposta aproximada e segura do que nenhuma resposta.
+		</blockquote>
+		<div class="success">
+			<strong>Resultado:</strong>
+			<ul>
+				<li>Atualização de status funciona mesmo em schemas inconsistentes</li>
+				<li>Lógica defensiva contra mudanças futuras</li>
+			</ul>
+		</div>
+
+		<h2>PARTE IV: Resultados e Aprendizados</h2>
+
+		<h3>Resultados Quantitativos</h3>
+		<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0;">
+			<div class="warning">
+				<strong>Antes da correção:</strong>
+				<ul>
+					<li>Taxa de falha: ~15% das execuções</li>
+					<li>Tempo de troubleshooting: 2-3 horas por incidente</li>
+					<li>Comentários ilegíveis: 100% dos registros</li>
+				</ul>
+			</div>
+			<div class="success">
+				<strong>Depois da correção:</strong>
+				<ul>
+					<li>Taxa de falha: &lt;2% (erros externos apenas)</li>
+					<li>Tempo de troubleshooting: 15-20 minutos</li>
+					<li>Comentários ilegíveis: 0%</li>
+					<li>Publicações: 100% de sucesso com backup automático</li>
+				</ul>
+			</div>
+		</div>
+
+		<h3>Resultados Qualitativos</h3>
+		<ol>
+			<li><strong>Confiança operacional</strong>: O time agora confia no fluxo</li>
+			<li><strong>Manutenibilidade</strong>: Alterações futuras são seguras e rastreáveis</li>
+			<li><strong>Observabilidade</strong>: Logs e diagnósticos claros</li>
+			<li><strong>Escalabilidade</strong>: Pronto para crescer com a empresa</li>
+		</ol>
+
+		<h3>Aprendizados-Chave</h3>
+		<div class="note">
+			<strong>1. Preserve o que funciona</strong>
+			<ul>
+				<li>Não reescreva o fluxo inteiro se pode corrigir cirurgicamente</li>
+				<li>Conexões existentes são preciosas; não as quebre sem necessidade</li>
+			</ul>
+		</div>
+		<div class="note">
+			<strong>2. Backup é sagrado</strong>
+			<ul>
+				<li>Todo fluxo deve ter backup antes de alterações</li>
+				<li>JSON versionado é seu seguro contra desastres</li>
+			</ul>
+		</div>
+		<div class="note">
+			<strong>3. API do Power Automate tem peculiaridades</strong>
+			<ul>
+				<li>Use PATCH em vez de PUT para atualizações</li>
+				<li>Nem todo schema é suportado via API (teste primeiro)</li>
+				<li>ConnectionReferences deve ser preservado</li>
+			</ul>
+		</div>
+		<div class="note">
+			<strong>4. Teste em camadas</strong>
+			<ul>
+				<li>Dry-run antes de aplicar</li>
+				<li>Teste branch 7 dias isoladamente</li>
+				<li>Teste branch 14 dias isoladamente</li>
+				<li>Teste fluxo completo end-to-end</li>
+			</ul>
+		</div>
+		<div class="note">
+			<strong>5. Documentação é investimento</strong>
+			<ul>
+				<li>Documente decisões técnicas</li>
+				<li>Explique "por quê", não apenas "o quê"</li>
+				<li>Diagramas valem mais que mil palavras</li>
+			</ul>
+		</div>
+
+		<h2>PARTE V: Próximos Passos - Evoluindo a Solução</h2>
+
+		<h3>Resiliência Nativa</h3>
+		<p><strong>Implementar Scopes com Try/Catch:</strong></p>
+		<pre>Try:
+  ├─> Enviar notificação Teams
+  ├─> Obter resposta usuário
+  └─> Atualizar SharePoint
+Catch:
+  ├─> Log erro em lista auxiliar
+  ├─> Enviar alerta para TI
+  └─> Tentar ação compensatória</pre>
+		<p><strong>Benefícios:</strong></p>
+		<ul>
+			<li>Erros não quebram o fluxo inteiro</li>
+			<li>Possibilidade de retry automático</li>
+			<li>Melhor observabilidade</li>
+		</ul>
+
+		<h3>Observabilidade Avançada</h3>
+		<p><strong>Adicionar logging estruturado:</strong></p>
+		<ul>
+			<li>Criar lista "FlowAuditLog" no SharePoint</li>
+			<li>Registrar cada etapa crítica</li>
+			<li>Incluir timestamps e IDs de correlação</li>
+			<li>Dashboard Power BI com métricas</li>
+		</ul>
+		<p><strong>Métricas sugeridas:</strong></p>
+		<ul>
+			<li>Tempo médio de resposta do usuário</li>
+			<li>Taxa de propostas que avançam após notificação</li>
+			<li>Horários de pico de execuções</li>
+			<li>Taxa de timeouts</li>
+		</ul>
+
+		<h3>Validações Defensivas</h3>
+		<p><strong>Guardrails antes de ações críticas:</strong></p>
+		<pre>IF (usuário.email existe) E (usuário.email contém "@")
+  ENTÃO enviar Teams
+SENÃO
+  Log erro + notificar admin
+
+IF (item.status é válido) E (item.responsavel não está vazio)
+  ENTÃO processar
+SENÃO
+  Log erro + skip item</pre>
+
+		<h3>Automação de Testes</h3>
+		<p><strong>Criar "Test Harness":</strong></p>
+		<ol>
+			<li>Script que cria item de teste no SharePoint</li>
+			<li>Aguarda execução do fluxo (polling)</li>
+			<li>Valida resultado esperado</li>
+			<li>Limpa dados de teste</li>
+			<li>Gera relatório de conformidade</li>
+		</ol>
+
+		<h2>PARTE VI: Lições para Outros Projetos</h2>
+
+		<h3>1. Automação Não é "Set and Forget"</h3>
+		<p><strong>Mito:</strong> "Criei o fluxo, agora ele roda sozinho para sempre"</p>
+		<p><strong>Realidade:</strong> Automação exige:</p>
+		<ul>
+			<li>Monitoramento contínuo</li>
+			<li>Ajustes conforme mudanças de requisitos</li>
+			<li>Manutenção preventiva</li>
+			<li>Evolução incremental</li>
+		</ul>
+
+		<h3>2. Ferramentas Certas Fazem Diferença</h3>
+		<p><strong>Investimentos que valeram a pena:</strong></p>
+		<ul>
+			<li>Script Python para publicação controlada</li>
+			<li>Backup automatizado antes de mudanças</li>
+			<li>Diagramas Mermaid para visualização</li>
+			<li>Documentação em Markdown versionada</li>
+		</ul>
+
+		<h3>3. Integração Entre Ferramentas Microsoft</h3>
+		<p><strong>Ecossistema Microsoft 365:</strong></p>
+		<ul>
+			<li>Power Automate (orquestração)</li>
+			<li>SharePoint (persistência)</li>
+			<li>Microsoft Teams (notificações)</li>
+			<li>Office 365 Users (perfis)</li>
+			<li>Power BI (analytics - futuro)</li>
+		</ul>
+		<blockquote>
+			<strong>Lição:</strong> Maximize o que o ecossistema oferece, mas tenha plano B para cada dependência crítica.
+		</blockquote>
+
+		<h3>4. Governança de Fluxos</h3>
+		<div class="checklist">
+			<strong>Checklist de governança:</strong>
+			<ul>
+				<li>Fluxo tem nome descritivo</li>
+				<li>Documentação inline nas ações</li>
+				<li>Backup versionado (Git)</li>
+				<li>Dono definido (pessoa responsável)</li>
+				<li>SLA documentado</li>
+				<li>Plano de rollback</li>
+				<li>Logs habilitados</li>
+				<li>Métricas definidas</li>
+			</ul>
+		</div>
+
+		<h2>Conclusão</h2>
+		<p>Automatizar processos com Power Automate é como construir pontes: parece simples à distância, mas os detalhes de engenharia fazem toda a diferença entre uma estrutura que resiste ao tempo e uma que cai no primeiro vento forte.</p>
+		<p>Nossa jornada de correção do fluxo de notificações nos ensinou que:</p>
+		<ol>
+			<li><strong>Diagnóstico preciso</strong> é mais importante que agir rápido</li>
+			<li><strong>Mudanças incrementais</strong> são mais seguras que reescritas completas</li>
+			<li><strong>Backup e rollback</strong> são seus melhores amigos</li>
+			<li><strong>Documentação</strong> é investimento, não custo</li>
+			<li><strong>Testes estruturados</strong> evitam surpresas em produção</li>
+		</ol>
+		<div class="success">
+			<strong>O que começou como uma correção de bugs se tornou uma base sólida para automações futuras.</strong>
+		</div>
+
+		<hr />
+
+		<h2>Para Reflexão</h2>
+		<div class="checklist">
+			<strong>Perguntas para sua organização:</strong>
+			<ul>
+				<li>Vocês têm backup dos fluxos críticos do Power Automate?</li>
+				<li>Existe documentação de como cada fluxo funciona?</li>
+				<li>Há processo formal para testar mudanças antes de produção?</li>
+				<li>Alguém monitora a saúde dos fluxos regularmente?</li>
+				<li>Vocês conseguem fazer rollback rápido se algo quebrar?</li>
+			</ul>
+			<p style="margin-top: 1rem;"><strong>Se você respondeu "não" para qualquer uma dessas perguntas, talvez seja hora de revisar sua estratégia de automação.</strong></p>
+		</div>
+
+		<hr />
+
+		<h2>Glossário - Entendendo os Termos Técnicos</h2>
+		<p>Se você não é da área de tecnologia, este glossário vai ajudar a entender os termos usados ao longo do artigo:</p>
+
+		<div class="chalkboard">
+			<dl>
+				<dt>API (Interface de Programação de Aplicações)</dt>
+				<dd>É como um "garçom" que leva pedidos entre programas. Quando você pede para um sistema conversar com outro, a API faz essa comunicação acontecer.</dd>
+
+				<dt>Backup</dt>
+				<dd>Cópia de segurança. Como tirar uma foto do sistema antes de fazer mudanças, para poder voltar atrás se algo der errado.</dd>
+
+				<dt>Branch (Ramificação)</dt>
+				<dd>Caminho alternativo no fluxo. Como uma bifurcação na estrada: dependendo da condição (7 ou 14 dias), o sistema segue por um caminho diferente.</dd>
+
+				<dt>Cloud (Nuvem)</dt>
+				<dd>Servidores na internet onde os programas e dados ficam guardados. Você acessa de qualquer lugar, como seu e-mail no celular.</dd>
+
+				<dt>Diagrama C4</dt>
+				<dd>Tipo especial de desenho que mostra como os sistemas se comunicam. O "C4" vem de Context (contexto), Containers (contêineres), Components (componentes) e Code (código).</dd>
+
+				<dt>Dry-run (Execução de teste)</dt>
+				<dd>Simular uma ação sem realmente executá-la. Como ensaiar uma apresentação antes do dia oficial.</dd>
+
+				<dt>Fluxo (Flow)</dt>
+				<dd>Sequência automática de ações. Como uma receita de bolo: primeiro você faz isso, depois aquilo, e assim por diante.</dd>
+
+				<dt>HTML (Linguagem de Marcação de Hipertexto)</dt>
+				<dd>Linguagem usada para criar páginas web. As "tags" HTML (como &lt;p&gt;) dizem ao navegador como mostrar o texto.</dd>
+
+				<dt>JSON (Notação de Objetos JavaScript)</dt>
+				<dd>Formato de texto usado para guardar e trocar informações entre sistemas. É como uma lista organizada com nomes e valores.</dd>
+
+				<dt>Low-Code (Baixo Código)</dt>
+				<dd>Plataforma onde você cria automações usando principalmente interface visual (clicar e arrastar), em vez de escrever muito código.</dd>
+
+				<dt>Microsoft 365</dt>
+				<dd>Pacote de ferramentas da Microsoft que inclui Outlook, Teams, SharePoint, OneDrive, entre outros. Usado por empresas para trabalho colaborativo.</dd>
+
+				<dt>PATCH (Método HTTP)</dt>
+				<dd>Comando usado para atualizar apenas partes específicas de um sistema, sem mexer no resto. Como consertar só um pneu furado, sem trocar o carro inteiro.</dd>
+
+				<dt>Power Automate</dt>
+				<dd>Ferramenta da Microsoft que cria automações: "quando isso acontecer, faça aquilo automaticamente". Como configurar seu celular para silenciar à noite.</dd>
+
+				<dt>Power Platform</dt>
+				<dd>Conjunto de ferramentas da Microsoft para criar aplicativos, automações e relatórios sem ser programador: Power Apps, Power Automate, Power BI.</dd>
+
+				<dt>Python</dt>
+				<dd>Linguagem de programação popular e fácil de aprender. Usada para criar scripts (pequenos programas) que automatizam tarefas.</dd>
+
+				<dt>Rollback</dt>
+				<dd>Voltar atrás, desfazer uma mudança. Como o "Ctrl+Z" que você usa no Word, mas para sistemas inteiros.</dd>
+
+				<dt>RPA (Automação Robótica de Processos)</dt>
+				<dd>"Robôs" de software que executam tarefas repetitivas que humanos faziam manualmente, como copiar dados de um sistema para outro.</dd>
+
+				<dt>Schema (Esquema)</dt>
+				<dd>Estrutura que define como os dados devem ser organizados. Como um formulário em branco que diz quais campos devem ser preenchidos.</dd>
+
+				<dt>Script</dt>
+				<dd>Pequeno programa que automatiza tarefas. Como uma macro no Excel, mas pode fazer coisas mais complexas.</dd>
+
+				<dt>SharePoint</dt>
+				<dd>Sistema da Microsoft para guardar e compartilhar arquivos e listas na empresa. Como um "Google Drive empresarial" com superpoderes.</dd>
+
+				<dt>Timeout (Tempo Esgotado)</dt>
+				<dd>Prazo máximo de espera. Como quando você liga para uma empresa e depois de 5 minutos na espera a ligação cai automaticamente.</dd>
+
+				<dt>Trigger (Gatilho)</dt>
+				<dd>Evento que inicia uma automação. Como o despertador que dispara às 7h: quando isso acontece, aquilo começa.</dd>
+
+				<dt>Try/Catch (Tentar/Capturar)</dt>
+				<dd>Estratégia de programação: "tenta fazer isso; se der erro, faz aquilo". Como ter um plano B sempre pronto.</dd>
+
+				<dt>UPN (Nome Principal do Usuário)</dt>
+				<dd>Seu e-mail de login corporativo, como joao.silva@empresa.com. Identifica você unicamente na empresa.</dd>
+
+				<dt>WAR (Arquivo Web)</dt>
+				<dd>Pacote que contém um aplicativo web completo pronto para ser instalado em um servidor. Como um arquivo .zip de um programa.</dd>
+
+				<dt>Workflow (Fluxo de Trabalho)</dt>
+				<dd>Sequência de etapas em um processo de negócio. Como o caminho que um documento percorre desde criação até aprovação final.</dd>
+			</dl>
+		</div>
+		<blockquote>
+			<strong>Para Executivos e Leigos:</strong><br />
+			Este glossário é como um "dicionário de viagem" para o mundo da tecnologia. Cada termo técnico foi traduzido para linguagem do dia a dia usando analogias familiares. Se você entender esses conceitos básicos, conseguirá acompanhar conversas técnicas com sua equipe de TI e tomar decisões mais informadas sobre investimentos em automação. Lembre-se: tecnologia complexa pode ser explicada de forma simples - basta usar as metáforas certas!
+		</blockquote>
+
+		<div class="note">
+			<h4>Dica de Leitura</h4>
+			<p>Se encontrar outro termo que não conhece, tente entender pelo contexto. Muitas vezes, usamos analogias do dia a dia para explicar conceitos técnicos. Por exemplo:</p>
+			<ul>
+				<li><strong>Sistema</strong> = Programa que faz algo específico</li>
+				<li><strong>Integração</strong> = Fazer dois sistemas conversarem</li>
+				<li><strong>Automação</strong> = Fazer o computador trabalhar sozinho</li>
+				<li><strong>Deploy</strong> = Colocar um programa no ar para funcionar</li>
+				<li><strong>Bug</strong> = Erro no programa</li>
+			</ul>
+		</div>
+
+		<hr />
+
+		<h2>Recursos Adicionais</h2>
+		<div class="hash-box">
+			<strong>Scripts e Ferramentas:</strong>
+			<ul>
+				<li><code>publish_flow_patch.py</code>: Publicação controlada via API</li>
+				<li><code>diagnose_flow_run.py</code>: Diagnóstico de execuções</li>
+				<li><code>flow-backup.json</code>: Backup do fluxo original</li>
+			</ul>
+			<strong>Documentação Técnica:</strong>
+			<ul>
+				<li><code>README_CORRECAO_POWER_AUTOMATE.md</code></li>
+				<li><code>README_publish.md</code></li>
+				<li><code>diagnostic_report.md</code></li>
+			</ul>
+			<strong>Ferramentas Utilizadas:</strong>
+			<ul>
+				<li>Python 3.x para automação</li>
+				<li>Azure CLI para autenticação</li>
+				<li>MSAL (Microsoft Authentication Library)</li>
+				<li>Mermaid CLI para diagramas</li>
+				<li>Pandoc para conversão de documentos</li>
+				<li>PowerShell para orquestração</li>
+			</ul>
+		</div>
+
+		<h2>Sobre a Cara Core Informática</h2>
+		<p><strong>Cara Core Informática</strong> é especializada em desenvolvimento de soluções empresariais robustas, integração de sistemas e automação de processos. Nossa abordagem combina engenharia de software sólida com profundo conhecimento do ecossistema Microsoft 365.</p>
+		<p><strong>Serviços relacionados:</strong></p>
+		<ul>
+			<li>Consultoria em Power Platform (Power Automate, Power Apps, Power BI)</li>
+			<li>Desenvolvimento de soluções SharePoint</li>
+			<li>Integração de sistemas empresariais</li>
+			<li>Automação de processos (RPA e low-code)</li>
+			<li>Governança e boas práticas em automação</li>
+		</ul>
+
+		<h2>Hashtags</h2>
+		<div class="hash-box">#PowerAutomate #Microsoft365 #SharePoint #Teams #Automação #RPA #LowCode #Python #Integração #CaraCoreInformática</div>
+
+		<hr />
+		<h3>Contato</h3>
+		<ul>
+			<li><strong>E-mail:</strong> suporte@caracore.com.br</li>
+			<li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
+			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
+		</ul>
+		<div class="cta-box" style="font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif; line-height: 1.55; background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); color: #fff; padding: 1.5rem 1.25rem; border-radius: 8px; margin: 2rem 0; text-align: center;">
+			<strong>Gostou do conteúdo?</strong><br>
+			<span class="cta-note" style="font-size: 0.85rem;">Siga para mais arquitetura prática e automação de processos digitais.</span><br>
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" class="cta-btn" style="display: inline-block; margin-top: 0.75rem; background: rgba(255,255,255,0.2); color: #fff; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 600;">Seguir no LinkedIn</a>
+		</div>
+		<p class="article-foot" style="text-align: center; font-size: 0.85rem; color: #6b7280; margin-top: 3rem;">
+			<em>Artigo técnico | 10 de dezembro de 2025 | Power Automate v1.0</em><br>
+			© 2025 Cara Core Informática. Todos os direitos reservados.
+		</p>
+	</div>
+</body>
+</html>
