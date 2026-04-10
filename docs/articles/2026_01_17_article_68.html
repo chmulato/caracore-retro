@@ -3,24 +3,24 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>A "Seriedade" do Java EE Encontra o Caos do Mobile: Lições de uma Transição para o Flutter — Cara Core</title>
-	<meta name="description" content="Descubra como a Cara Core aplicou 20 anos de rigor arquitetural do Java EE no Flutter, criando soluções mobile que duram, que escalam e que prosperam." />
+	<title>A "Seriedade" do Java EE Encontra o Caos do Mobile: LiÃ§Ãµes de uma TransiÃ§Ã£o para o Flutter â€” Cara Core</title>
+	<meta name="description" content="Descubra como a Cara Core aplicou 20 anos de rigor arquitetural do Java EE no Flutter, criando soluÃ§Ãµes mobile que duram, que escalam e que prosperam." />
 	<meta name="keywords" content="Java EE, Flutter, Clean Architecture, SOLID, Mobile Development, Software Engineering, Enterprise, Design Patterns, Cara Core" />
-	<meta name="author" content="Cara Core Informática" />
+	<meta name="author" content="Cara Core InformÃ¡tica" />
 	<link rel="canonical" href="https://caracore.com.br/sala/redes/retro/articles/2026_01_17_article_68.html" />
 	<!-- Open Graph -->
-	<meta property="og:title" content="A Seriedade do Java EE Encontra o Caos do Mobile: Lições de uma Transição para o Flutter" />
-	<meta property="og:description" content="Descubra como a Cara Core aplicou 20 anos de rigor arquitetural do Java EE no Flutter, criando soluções mobile que duram, que escalam e que prosperam." />
+	<meta property="og:title" content="A Seriedade do Java EE Encontra o Caos do Mobile: LiÃ§Ãµes de uma TransiÃ§Ã£o para o Flutter" />
+	<meta property="og:description" content="Descubra como a Cara Core aplicou 20 anos de rigor arquitetural do Java EE no Flutter, criando soluÃ§Ãµes mobile que duram, que escalam e que prosperam." />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="https://caracore.com.br/sala/redes/retro/articles/2026_01_17_article_68.html" />
 	<meta property="og:image" content="https://caracore.com.br/sala/redes/retro/articles/assets/img/article_68_01.png" />
-	<meta property="og:image:alt" content="Cockpit moderno com engrenagens suíças: Flutter encontra Java" />
+	<meta property="og:image:alt" content="Cockpit moderno com engrenagens suÃ­Ã§as: Flutter encontra Java" />
 	<!-- Twitter Card -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="A Seriedade do Java EE Encontra o Caos do Mobile: Lições de uma Transição para o Flutter" />
-	<meta name="twitter:description" content="Descubra como a Cara Core aplicou 20 anos de rigor arquitetural do Java EE no Flutter, criando soluções mobile que duram, que escalam e que prosperam." />
+	<meta name="twitter:title" content="A Seriedade do Java EE Encontra o Caos do Mobile: LiÃ§Ãµes de uma TransiÃ§Ã£o para o Flutter" />
+	<meta name="twitter:description" content="Descubra como a Cara Core aplicou 20 anos de rigor arquitetural do Java EE no Flutter, criando soluÃ§Ãµes mobile que duram, que escalam e que prosperam." />
 	<meta name="twitter:image" content="https://caracore.com.br/sala/redes/retro/articles/assets/img/article_68_01.png" />
-	<meta name="twitter:image:alt" content="Cockpit moderno com engrenagens suíças: Flutter encontra Java" />
+	<meta name="twitter:image:alt" content="Cockpit moderno com engrenagens suÃ­Ã§as: Flutter encontra Java" />
 	<link rel="stylesheet" href="assets/css/articles.css" />
 	<style>
 		body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif; line-height:1.65; color:#1f2937; margin:0; }
@@ -49,101 +49,101 @@
 </head>
 <body>
 	<div class="container">
-		<a class="back-link" href="../articles.html">&larr; Voltar para publicações</a>
-		<img src="assets/img/article_68_01.png" alt="Cockpit moderno com engrenagens suíças: Flutter encontra Java" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
-		<h1>A "Seriedade" do Java EE Encontra o Caos do Mobile: Lições de uma Transição para o Flutter</h1>
+		<a class="back-link" href="../index.html">&larr; Voltar para publicaÃ§Ãµes</a>
+		<img src="assets/img/article_68_01.png" alt="Cockpit moderno com engrenagens suÃ­Ã§as: Flutter encontra Java" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+		<h1>A "Seriedade" do Java EE Encontra o Caos do Mobile: LiÃ§Ãµes de uma TransiÃ§Ã£o para o Flutter</h1>
 		<div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
 			<img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
-			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core InformÃ¡tica</a>
 			<span style="margin-left: 1.5rem;">17 de janeiro de 2026</span>
 		</div>
 
 		<div class="note"><strong>Tempo estimado de leitura:</strong> ~12 minutos</div>
 
-		<h2>Introdução: O Choque Cultural</h2>
-		<p>Por duas décadas, a engenharia de software viveu em uma confortável ilusão: o servidor é confiável, o contêiner gerencia o caos, e o cliente web é apenas um consumidor passivo. No mundo do Java EE, há mecanismos robustos para gerenciar a complexidade distribuída — pools de conexão, transações ACID, clustering, failover automático. O arquiteto dorme tranquilo.</p>
+		<h2>IntroduÃ§Ã£o: O Choque Cultural</h2>
+		<p>Por duas dÃ©cadas, a engenharia de software viveu em uma confortÃ¡vel ilusÃ£o: o servidor Ã© confiÃ¡vel, o contÃªiner gerencia o caos, e o cliente web Ã© apenas um consumidor passivo. No mundo do Java EE, hÃ¡ mecanismos robustos para gerenciar a complexidade distribuÃ­da â€” pools de conexÃ£o, transaÃ§Ãµes ACID, clustering, failover automÃ¡tico. O arquiteto dorme tranquilo.</p>
 
-		<p>Então, um dia, a pressão do mercado chega: <em>sua aplicação precisa funcionar no bolso do usuário.</em></p>
+		<p>EntÃ£o, um dia, a pressÃ£o do mercado chega: <em>sua aplicaÃ§Ã£o precisa funcionar no bolso do usuÃ¡rio.</em></p>
 
-		<p>O que acontece quando você leva essa mentalidade enterprise para o Flutter? Descobre-se que o smartphone não é um servidor. É um guerrilheiro — imprevisível, com bateria limitada, rede intermitente, e onde cada milissegundo de latência é sentido pelas mãos do usuário.</p>
+		<p>O que acontece quando vocÃª leva essa mentalidade enterprise para o Flutter? Descobre-se que o smartphone nÃ£o Ã© um servidor. Ã‰ um guerrilheiro â€” imprevisÃ­vel, com bateria limitada, rede intermitente, e onde cada milissegundo de latÃªncia Ã© sentido pelas mÃ£os do usuÃ¡rio.</p>
 
 		<div class="quote-box">
-			<strong>O Gancho:</strong> No Java EE, o contêiner gerencia o caos. No Flutter, você é o contêiner.
+			<strong>O Gancho:</strong> No Java EE, o contÃªiner gerencia o caos. No Flutter, vocÃª Ã© o contÃªiner.
 		</div>
 
-		<p>E foi exatamente essa revelação que guiou a Cara Core em uma jornada inesperada: aplicar 20 anos de rigor arquitetural em um ecossistema que, na maioria das vezes, não quer ouvir falar disso. Porque o que descobrimos é que a "corrida dos ratos" do desenvolvimento mobile — aquele ciclo frenético de mudanças, dependências voláteis e modismos — não é um destino inevitável. É uma escolha. E escolhemos diferente.</p>
+		<p>E foi exatamente essa revelaÃ§Ã£o que guiou a Cara Core em uma jornada inesperada: aplicar 20 anos de rigor arquitetural em um ecossistema que, na maioria das vezes, nÃ£o quer ouvir falar disso. Porque o que descobrimos Ã© que a "corrida dos ratos" do desenvolvimento mobile â€” aquele ciclo frenÃ©tico de mudanÃ§as, dependÃªncias volÃ¡teis e modismos â€” nÃ£o Ã© um destino inevitÃ¡vel. Ã‰ uma escolha. E escolhemos diferente.</p>
 
 		<div class="insight">
-			<strong>A Tese:</strong> Por que a Cara Core decidiu que o mobile precisava da mesma mentalidade Enterprise que construiu sistemas que movem bilhões em transações financeiras — porque o valor está no negócio, não na tecnologia.
+			<strong>A Tese:</strong> Por que a Cara Core decidiu que o mobile precisava da mesma mentalidade Enterprise que construiu sistemas que movem bilhÃµes em transaÃ§Ãµes financeiras â€” porque o valor estÃ¡ no negÃ³cio, nÃ£o na tecnologia.
 		</div>
 
-		<h2>1. O Mito da "Performaria" Mobile: App Não é Só "Fazer o Botão Brilhar"</h2>
-		<p>Existe um mito no ecossistema de desenvolvimento que app é um exercício de UI/UX. Que o maior desafio é ter um botão que brilhe na cor certa. Que sucesso significa uma interface visual deslumbrante.</p>
+		<h2>1. O Mito da "Performaria" Mobile: App NÃ£o Ã© SÃ³ "Fazer o BotÃ£o Brilhar"</h2>
+		<p>Existe um mito no ecossistema de desenvolvimento que app Ã© um exercÃ­cio de UI/UX. Que o maior desafio Ã© ter um botÃ£o que brilhe na cor certa. Que sucesso significa uma interface visual deslumbrante.</p>
 
-		<p>Não é assim que funciona no mundo real.</p>
+		<p>NÃ£o Ã© assim que funciona no mundo real.</p>
 
-		<p>Para a Cara Core, um aplicativo móvel é exatamente o que sempre foi na engenharia de software: um <strong>sistema distribuído de alta disponibilidade na borda da rede</strong> (edge computing). A diferença é que essa "beira" agora está no bolso de milhões de pessoas, cada uma com um hardware diferente, uma rede diferente, e zero paciência para carregamentos lentos.</p>
+		<p>Para a Cara Core, um aplicativo mÃ³vel Ã© exatamente o que sempre foi na engenharia de software: um <strong>sistema distribuÃ­do de alta disponibilidade na borda da rede</strong> (edge computing). A diferenÃ§a Ã© que essa "beira" agora estÃ¡ no bolso de milhÃµes de pessoas, cada uma com um hardware diferente, uma rede diferente, e zero paciÃªncia para carregamentos lentos.</p>
 
-		<p>Enquanto um servidor Java EE vive em um data center climatizado com conexão de fibra óptica, um app Flutter precisa lidar com:</p>
+		<p>Enquanto um servidor Java EE vive em um data center climatizado com conexÃ£o de fibra Ã³ptica, um app Flutter precisa lidar com:</p>
 
 		<ul>
-			<li><strong>Modo offline:</strong> Quando a rede cai (e cai frequentemente), o app não pode desaparecer. Precisa funcionar localmente, sincronizar quando houver conexão, e resolver conflitos sem o usuário sequer perceber.</li>
+			<li><strong>Modo offline:</strong> Quando a rede cai (e cai frequentemente), o app nÃ£o pode desaparecer. Precisa funcionar localmente, sincronizar quando houver conexÃ£o, e resolver conflitos sem o usuÃ¡rio sequer perceber.</li>
 
-			<li><strong>Sincronização de dados:</strong> Em um servidor, você tem um banco de dados central. No mobile, você tem uma réplica local, um servidor que pode estar em qualquer continente, e a garantia de que estarão dessincronizados em algum momento. Resolver isso sem perder dados é a diferença entre um app profissional e um brinquedo.</li>
+			<li><strong>SincronizaÃ§Ã£o de dados:</strong> Em um servidor, vocÃª tem um banco de dados central. No mobile, vocÃª tem uma rÃ©plica local, um servidor que pode estar em qualquer continente, e a garantia de que estarÃ£o dessincronizados em algum momento. Resolver isso sem perder dados Ã© a diferenÃ§a entre um app profissional e um brinquedo.</li>
 
-			<li><strong>Hardware limitado:</strong> O processador de um smartphone em 2026 é poderoso, mas você está dividindo-o com centenas de outras apps. A bateria é um recurso que paga cara. A memória é um luxo. Cada byte importa.</li>
+			<li><strong>Hardware limitado:</strong> O processador de um smartphone em 2026 Ã© poderoso, mas vocÃª estÃ¡ dividindo-o com centenas de outras apps. A bateria Ã© um recurso que paga cara. A memÃ³ria Ã© um luxo. Cada byte importa.</li>
 		</ul>
 
-		<p>Esses desafios não existem — ou são abstraídos — no Java EE. Lá, o contêiner toma conta. Aqui, você precisa entender cada pilar do sistema que está construindo.</p>
+		<p>Esses desafios nÃ£o existem â€” ou sÃ£o abstraÃ­dos â€” no Java EE. LÃ¡, o contÃªiner toma conta. Aqui, vocÃª precisa entender cada pilar do sistema que estÃ¡ construindo.</p>
 
 		<h2>2. Onde o Flutter Falha (E Onde o Java Brilha): Uma Conversa Honesta</h2>
-		<p>Se você tem experiência em tecnologias consagradas, já ouviu aquele conselho: <em>"nunca construa sua estratégia de longo prazo em tecnologias emergentes."</em> A Cara Core ouviu também. E mesmo assim, escolheu o Flutter. Por quê? Porque entendeu que Flutter não é uma tecnologia emergente — é uma tecnologia em transição. Existe diferença.</p>
+		<p>Se vocÃª tem experiÃªncia em tecnologias consagradas, jÃ¡ ouviu aquele conselho: <em>"nunca construa sua estratÃ©gia de longo prazo em tecnologias emergentes."</em> A Cara Core ouviu tambÃ©m. E mesmo assim, escolheu o Flutter. Por quÃª? Porque entendeu que Flutter nÃ£o Ã© uma tecnologia emergente â€” Ã© uma tecnologia em transiÃ§Ã£o. Existe diferenÃ§a.</p>
 
-		<p>Mas não nos ceguemos com nosso próprio entusiasmo. O leitor aqui é um engenheiro experiente, e engenheiros apreciam honestidade técnica. Então vamos aos problemas reais:</p>
+		<p>Mas nÃ£o nos ceguemos com nosso prÃ³prio entusiasmo. O leitor aqui Ã© um engenheiro experiente, e engenheiros apreciam honestidade tÃ©cnica. EntÃ£o vamos aos problemas reais:</p>
 
 		<h3>A Falta de LTS (Long Term Support)</h3>
-		<p>No Java, uma versão LTS é suportada por <strong>oito a dez anos</strong>. Java 8, lançado em 2014, ainda recebe patches de segurança em 2024. Se você construiu uma aplicação em Java 8 em 2014, ela ainda roda — praticamente sem mudanças — em 2024.</p>
+		<p>No Java, uma versÃ£o LTS Ã© suportada por <strong>oito a dez anos</strong>. Java 8, lanÃ§ado em 2014, ainda recebe patches de seguranÃ§a em 2024. Se vocÃª construiu uma aplicaÃ§Ã£o em Java 8 em 2014, ela ainda roda â€” praticamente sem mudanÃ§as â€” em 2024.</p>
 
-		<p>O Flutter não oferece essa garantia. As dependências mudam rapidamente. Um package que você usa hoje pode ser deprecado daqui a dois anos. Não porque seja uma má decisão técnica, mas porque o ecossistema se move mais rápido. A volatilidade é real.</p>
+		<p>O Flutter nÃ£o oferece essa garantia. As dependÃªncias mudam rapidamente. Um package que vocÃª usa hoje pode ser deprecado daqui a dois anos. NÃ£o porque seja uma mÃ¡ decisÃ£o tÃ©cnica, mas porque o ecossistema se move mais rÃ¡pido. A volatilidade Ã© real.</p>
 
-		<p>A ausência de um <strong>JCP (Java Community Process)</strong> — aquele órgão que dita padrões estáveis por décadas — significa que cada decisão tecnológica é mais como surfer que segue a onda, menos como engenheiro que constrói a barragem.</p>
+		<p>A ausÃªncia de um <strong>JCP (Java Community Process)</strong> â€” aquele Ã³rgÃ£o que dita padrÃµes estÃ¡veis por dÃ©cadas â€” significa que cada decisÃ£o tecnolÃ³gica Ã© mais como surfer que segue a onda, menos como engenheiro que constrÃ³i a barragem.</p>
 
-		<h3>A Corrida dos Ratos: Gerência de Estado a Cada Seis Meses</h3>
-		<p>Se você desenvolveu em Flutter entre 2019 e 2024, viveu isso: a cada seis meses, um novo padrão de gerência de estado prometia ser "a solução definitiva". Primeiro era <code>Provider</code>. Depois <code>Riverpod</code>. Depois <code>Bloc</code>. Depois <code>GetX</code>. Depois <code>Signals</code>. A cada um, um padrão novo, uma API nova, tutoriais outdated.</p>
+		<h3>A Corrida dos Ratos: GerÃªncia de Estado a Cada Seis Meses</h3>
+		<p>Se vocÃª desenvolveu em Flutter entre 2019 e 2024, viveu isso: a cada seis meses, um novo padrÃ£o de gerÃªncia de estado prometia ser "a soluÃ§Ã£o definitiva". Primeiro era <code>Provider</code>. Depois <code>Riverpod</code>. Depois <code>Bloc</code>. Depois <code>GetX</code>. Depois <code>Signals</code>. A cada um, um padrÃ£o novo, uma API nova, tutoriais outdated.</p>
 
-		<p>Compare com Java, onde <strong>o padrão de injeção de dependência é praticamente idêntico há 15 anos</strong>: <code>@Inject</code>, <code>@Bean</code>, <code>@Autowired</code>. Você aprende uma vez, e vive com ela pelo resto da carreira.</p>
+		<p>Compare com Java, onde <strong>o padrÃ£o de injeÃ§Ã£o de dependÃªncia Ã© praticamente idÃªntico hÃ¡ 15 anos</strong>: <code>@Inject</code>, <code>@Bean</code>, <code>@Autowired</code>. VocÃª aprende uma vez, e vive com ela pelo resto da carreira.</p>
 
-		<p>Essa volatilidade não é um detalhe técnico — é um risco de negócio. Significa que seu time gasta tempo aprendendo novos padrões em vez de resolver problemas do cliente.</p>
+		<p>Essa volatilidade nÃ£o Ã© um detalhe tÃ©cnico â€” Ã© um risco de negÃ³cio. Significa que seu time gasta tempo aprendendo novos padrÃµes em vez de resolver problemas do cliente.</p>
 
 		<h2>3. Aplicando Rigor de Engenharia: A Abordagem Cara Core</h2>
-		<p>Se entrar nesse caos sem rumo é receita para o fracasso, então não entramos. A Cara Core trouxe os princípios que funcionaram por duas décadas no Java enterprise e os reimplantou no Flutter. O resultado? Um app que sobrevive — e prospera — enquanto frameworks rivais viram pó.</p>
+		<p>Se entrar nesse caos sem rumo Ã© receita para o fracasso, entÃ£o nÃ£o entramos. A Cara Core trouxe os princÃ­pios que funcionaram por duas dÃ©cadas no Java enterprise e os reimplantou no Flutter. O resultado? Um app que sobrevive â€” e prospera â€” enquanto frameworks rivais viram pÃ³.</p>
 
 		<h3>Clean Architecture: Recusando o "Espaguete" Comum</h3>
-		<p>Quando você abre um tutorial de Flutter no YouTube, há 90% de chance de ver código assim:</p>
+		<p>Quando vocÃª abre um tutorial de Flutter no YouTube, hÃ¡ 90% de chance de ver cÃ³digo assim:</p>
 
-		<div class="code-blackboard"><pre><code>// Código típico de "get started"
+		<div class="code-blackboard"><pre><code>// CÃ³digo tÃ­pico de "get started"
 void fetchUser() {
   final user = await Firebase.database.ref('users/123').get();
   setState(() {
     _user = user.value;
   });
-  // UI acoplada diretamente à implementação do Firebase
+  // UI acoplada diretamente Ã  implementaÃ§Ã£o do Firebase
 }</code></pre></div>
 
-		<div class="note"><strong>Nota:</strong> Os exemplos de código neste artigo são simplificados para fins educacionais e refletem padrões reais aplicados na prática pela Cara Core. O código-fonte completo permanece privado, mas a experiência e os resultados descritos aqui são genuínos.</div>
+		<div class="note"><strong>Nota:</strong> Os exemplos de cÃ³digo neste artigo sÃ£o simplificados para fins educacionais e refletem padrÃµes reais aplicados na prÃ¡tica pela Cara Core. O cÃ³digo-fonte completo permanece privado, mas a experiÃªncia e os resultados descritos aqui sÃ£o genuÃ­nos.</div>
 
-		<p>É rápido. Funciona. E é um pesadelo para manutenção.</p>
+		<p>Ã‰ rÃ¡pido. Funciona. E Ã© um pesadelo para manutenÃ§Ã£o.</p>
 
-		<p>A Cara Core recusou. Implementou <strong>Clean Architecture</strong>: o código de negócio (domain layer) não conhece Firebase. Não conhece Riverpod. Não conhece nada do mundo externo. Vive em um casulo de interfaces puras.</p>
+		<p>A Cara Core recusou. Implementou <strong>Clean Architecture</strong>: o cÃ³digo de negÃ³cio (domain layer) nÃ£o conhece Firebase. NÃ£o conhece Riverpod. NÃ£o conhece nada do mundo externo. Vive em um casulo de interfaces puras.</p>
 
-		<p>O resultado prático? Quando Firebase mudou sua API três vezes nos últimos anos, a lógica de negócio da Cara Core não mexeu. Apenas a camada de dados (data layer) foi reescrita.</p>
+		<p>O resultado prÃ¡tico? Quando Firebase mudou sua API trÃªs vezes nos Ãºltimos anos, a lÃ³gica de negÃ³cio da Cara Core nÃ£o mexeu. Apenas a camada de dados (data layer) foi reescrita.</p>
 
 		<div class="code-blackboard"><pre><code>// Abordagem Cara Core: Domain Layer - puro, independente
 abstract interface class UserRepository {
   Future&lt;User&gt; getUserById(String id);
 }
 
-// Data Layer - implementação concreta
+// Data Layer - implementaÃ§Ã£o concreta
 class FirebaseUserRepository implements UserRepository {
   @override
   Future&lt;User&gt; getUserById(String id) async {
@@ -152,76 +152,76 @@ class FirebaseUserRepository implements UserRepository {
   }
 }</code></pre></div>
 
-		<p>Isso não é uma curiosidade acadêmica. É <strong>proteção contra risco tecnológico</strong>. É a diferença entre um app que envelhece graciosamente e um que apodrece em três anos.</p>
+		<p>Isso nÃ£o Ã© uma curiosidade acadÃªmica. Ã‰ <strong>proteÃ§Ã£o contra risco tecnolÃ³gico</strong>. Ã‰ a diferenÃ§a entre um app que envelhece graciosamente e um que apodrece em trÃªs anos.</p>
 
-		<h3>Inversão de Dependência (SOLID): Blindando Contra Mudanças</h3>
-		<p>O princípio <strong>D</strong> de SOLID — Dependency Inversion — é talvez o mais poderoso na arquitetura de software. Diz, simplificando: <em>"As camadas de alto nível não devem depender das de baixo nível. Ambas devem depender de abstrações."</em></p>
+		<h3>InversÃ£o de DependÃªncia (SOLID): Blindando Contra MudanÃ§as</h3>
+		<p>O princÃ­pio <strong>D</strong> de SOLID â€” Dependency Inversion â€” Ã© talvez o mais poderoso na arquitetura de software. Diz, simplificando: <em>"As camadas de alto nÃ­vel nÃ£o devem depender das de baixo nÃ­vel. Ambas devem depender de abstraÃ§Ãµes."</em></p>
 
 		<p>No Flutter, isso se traduz em:</p>
 
 		<ul>
-			<li><strong>Interfaces como contrato:</strong> Seu code usa interfaces (<code>abstract class</code>), nunca implementações concretas.</li>
-			<li><strong>Injeção de dependência:</strong> As implementações são fornecidas em tempo de execução, não hardcoded.</li>
-			<li><strong>Testes sem framework:</strong> Você pode testar sua lógica de negócio com um mock repository em memória, sem Firebase, sem rede, sem o caos.</li>
+			<li><strong>Interfaces como contrato:</strong> Seu code usa interfaces (<code>abstract class</code>), nunca implementaÃ§Ãµes concretas.</li>
+			<li><strong>InjeÃ§Ã£o de dependÃªncia:</strong> As implementaÃ§Ãµes sÃ£o fornecidas em tempo de execuÃ§Ã£o, nÃ£o hardcoded.</li>
+			<li><strong>Testes sem framework:</strong> VocÃª pode testar sua lÃ³gica de negÃ³cio com um mock repository em memÃ³ria, sem Firebase, sem rede, sem o caos.</li>
 		</ul>
 
-		<p>A Cara Core aplicou isso religiosamente. O resultado é que você pode trocar Firebase por qualquer outro serviço — ou um banco local — sem tocar na lógica que importa. Você pode testar offline, rápido, determinístico.</p>
+		<p>A Cara Core aplicou isso religiosamente. O resultado Ã© que vocÃª pode trocar Firebase por qualquer outro serviÃ§o â€” ou um banco local â€” sem tocar na lÃ³gica que importa. VocÃª pode testar offline, rÃ¡pido, determinÃ­stico.</p>
 
-		<p>Compare com um app que chama <code>Firebase.auth.signIn()</code> diretamente na UI. Agora você quer mudar para OAuth da Microsoft? Boa sorte reescrevendo meio app.</p>
+		<p>Compare com um app que chama <code>Firebase.auth.signIn()</code> diretamente na UI. Agora vocÃª quer mudar para OAuth da Microsoft? Boa sorte reescrevendo meio app.</p>
 
-		<h3>Builds Determinísticos: Tratando o Nativo com Seriedade</h3>
-		<p>Aqui é onde a maioria dos devs Flutter falha: a geração do executável nativo. Windows, Android, iOS — cada plataforma tem um motor nativo (C++, Kotlin, Swift). Aquele processo de build que parece "mágico" precisa ser tratado com o mesmo rigor de um pipeline de produção Java.</p>
+		<h3>Builds DeterminÃ­sticos: Tratando o Nativo com Seriedade</h3>
+		<p>Aqui Ã© onde a maioria dos devs Flutter falha: a geraÃ§Ã£o do executÃ¡vel nativo. Windows, Android, iOS â€” cada plataforma tem um motor nativo (C++, Kotlin, Swift). Aquele processo de build que parece "mÃ¡gico" precisa ser tratado com o mesmo rigor de um pipeline de produÃ§Ã£o Java.</p>
 
 		<p>A Cara Core:</p>
 
 		<ul>
-			<li>Versionou cada dependência nativa (CMake, Gradle, Xcode toolchain).</li>
-			<li>Criou scripts reproduzíveis que geram o mesmo binário dadas as mesmas fontes.</li>
-			<li>Configurou CI/CD para executar builds em ambientes isolados, garantindo que não há "funciona na minha máquina".</li>
-			<li>Aplicou code signing e verificação de integridade antes de distribuição.</li>
+			<li>Versionou cada dependÃªncia nativa (CMake, Gradle, Xcode toolchain).</li>
+			<li>Criou scripts reproduzÃ­veis que geram o mesmo binÃ¡rio dadas as mesmas fontes.</li>
+			<li>Configurou CI/CD para executar builds em ambientes isolados, garantindo que nÃ£o hÃ¡ "funciona na minha mÃ¡quina".</li>
+			<li>Aplicou code signing e verificaÃ§Ã£o de integridade antes de distribuiÃ§Ã£o.</li>
 		</ul>
 
-		<p>Resultado: um processo que um junior pode executar com confiança. Que um QA pode reproduzir. Que pode rodar em CI/CD sem surpresas.</p>
+		<p>Resultado: um processo que um junior pode executar com confianÃ§a. Que um QA pode reproduzir. Que pode rodar em CI/CD sem surpresas.</p>
 
-		<p>Isso é tedioso. Ninguém ama escrever CMakeLists.txt. Mas a diferença entre um projeto profissional e um hobby é exatamente essa tédio bem aplicado.</p>
+		<p>Isso Ã© tedioso. NinguÃ©m ama escrever CMakeLists.txt. Mas a diferenÃ§a entre um projeto profissional e um hobby Ã© exatamente essa tÃ©dio bem aplicado.</p>
 
-		<h2>4. O Valor de Negócio: Por Que Persistir Quando Todos Estão no Backend?</h2>
-		<p>A pergunta que a Cara Core teve que responder: <em>Por que não ficar onde estamos confortáveis? Por que não deixar o mobile para quem "gosta" de Flutter?</em></p>
+		<h2>4. O Valor de NegÃ³cio: Por Que Persistir Quando Todos EstÃ£o no Backend?</h2>
+		<p>A pergunta que a Cara Core teve que responder: <em>Por que nÃ£o ficar onde estamos confortÃ¡veis? Por que nÃ£o deixar o mobile para quem "gosta" de Flutter?</em></p>
 
-		<p>A resposta estava na matemática de negócio.</p>
+		<p>A resposta estava na matemÃ¡tica de negÃ³cio.</p>
 
-		<h3>Uma Lógica de Negócio, Múltiplas Plataformas</h3>
-		<p>No mundo do Java EE, quando você quer suportar web, você precisa de um time web. Mobile? Time mobile. Windows? Outro time. Cada time aprende a lógica de negócio do zero, em linguagens diferentes, com padrões diferentes.</p>
+		<h3>Uma LÃ³gica de NegÃ³cio, MÃºltiplas Plataformas</h3>
+		<p>No mundo do Java EE, quando vocÃª quer suportar web, vocÃª precisa de um time web. Mobile? Time mobile. Windows? Outro time. Cada time aprende a lÃ³gica de negÃ³cio do zero, em linguagens diferentes, com padrÃµes diferentes.</p>
 
-		<p>Com Flutter (bem arquitetado), a Cara Core conseguiu algo raro: <strong>a mesma lógica de negócio rodando em Windows, Android, Web, e iOS</strong>. Um único núcleo de engenharia. Não é necessário reescrever a regra de validação de formulário quatro vezes. Não é necessário manter quatro interpretações diferentes da mesma regra de negócio.</p>
+		<p>Com Flutter (bem arquitetado), a Cara Core conseguiu algo raro: <strong>a mesma lÃ³gica de negÃ³cio rodando em Windows, Android, Web, e iOS</strong>. Um Ãºnico nÃºcleo de engenharia. NÃ£o Ã© necessÃ¡rio reescrever a regra de validaÃ§Ã£o de formulÃ¡rio quatro vezes. NÃ£o Ã© necessÃ¡rio manter quatro interpretaÃ§Ãµes diferentes da mesma regra de negÃ³cio.</p>
 
 		<p>Isso reduz bugs. Reduz tempo de desenvolvimento. Reduz custo. Reduz complexidade.</p>
 
-		<p>Sim, existe o overhead do Flutter (um frame layer sobre o nativo). Mas comparar Flutter com apps "puros" em Kotlin/Swift é comparar uma app corporativa multi-plataforma com protótipos. A Cara Core não quis protótipos.</p>
+		<p>Sim, existe o overhead do Flutter (um frame layer sobre o nativo). Mas comparar Flutter com apps "puros" em Kotlin/Swift Ã© comparar uma app corporativa multi-plataforma com protÃ³tipos. A Cara Core nÃ£o quis protÃ³tipos.</p>
 
-		<h3>Velocidade de Iteração: O Hot Reload Como Superpotência</h3>
-		<p>No Java EE, o ciclo de desenvolvimento é: editar código → compilar (1-2 min) → fazer deploy no contêiner (1-2 min) → restartar → reabrir o browser → navegar até a página → testar.</p>
+		<h3>Velocidade de IteraÃ§Ã£o: O Hot Reload Como SuperpotÃªncia</h3>
+		<p>No Java EE, o ciclo de desenvolvimento Ã©: editar cÃ³digo â†’ compilar (1-2 min) â†’ fazer deploy no contÃªiner (1-2 min) â†’ restartar â†’ reabrir o browser â†’ navegar atÃ© a pÃ¡gina â†’ testar.</p>
 
-		<p>Total: 5-10 minutos. Por iteração. O desenvolvedor pensa, edita, e espera enquanto a máquina trabalha.</p>
+		<p>Total: 5-10 minutos. Por iteraÃ§Ã£o. O desenvolvedor pensa, edita, e espera enquanto a mÃ¡quina trabalha.</p>
 
-		<p>No Flutter com Hot Reload: editar código → salvar → ver mudança na tela em menos de um segundo.</p>
+		<p>No Flutter com Hot Reload: editar cÃ³digo â†’ salvar â†’ ver mudanÃ§a na tela em menos de um segundo.</p>
 
-		<p>Essa diferença de experiência desenvolvedora não é um "nice to have". É <strong>produtividade multiplicada</strong>. Significa que o desenvolvedor fica em fluxo, não em espera.</p>
+		<p>Essa diferenÃ§a de experiÃªncia desenvolvedora nÃ£o Ã© um "nice to have". Ã‰ <strong>produtividade multiplicada</strong>. Significa que o desenvolvedor fica em fluxo, nÃ£o em espera.</p>
 
-		<p>A Cara Core aproveitou isso para iterar rápido com clientes, validar hipóteses, e chegar ao produto certo mais rapidinho que seria possível com qualquer outra stack de mobile puro.</p>
+		<p>A Cara Core aproveitou isso para iterar rÃ¡pido com clientes, validar hipÃ³teses, e chegar ao produto certo mais rapidinho que seria possÃ­vel com qualquer outra stack de mobile puro.</p>
 
-		<h2>Conclusão: O Arquiteto de Software como o "Domador do Caos"</h2>
-		<p>Se você chegou até aqui, provavelmente está se fazendo uma pergunta: <em>tudo bem, mas qual é a lição que devo levar?</em></p>
+		<h2>ConclusÃ£o: O Arquiteto de Software como o "Domador do Caos"</h2>
+		<p>Se vocÃª chegou atÃ© aqui, provavelmente estÃ¡ se fazendo uma pergunta: <em>tudo bem, mas qual Ã© a liÃ§Ã£o que devo levar?</em></p>
 
-		<p>Eis: desenvolvimento mobile deixou de ser "brinquedo" no momento em que engenheiros sérios começaram a tratá-lo como tal.</p>
+		<p>Eis: desenvolvimento mobile deixou de ser "brinquedo" no momento em que engenheiros sÃ©rios comeÃ§aram a tratÃ¡-lo como tal.</p>
 
-		<p>Essa é a jornada da Cara Core. Não foi entrar no Flutter porque "era moda" ou "todo mundo está fazendo". Foi entrar porque, aplicando rigor arquitetural de uma indústria que move bilhões em transações, conseguimos entregar produto que dura, que escala, que não apodrece em dois anos.</p>
+		<p>Essa Ã© a jornada da Cara Core. NÃ£o foi entrar no Flutter porque "era moda" ou "todo mundo estÃ¡ fazendo". Foi entrar porque, aplicando rigor arquitetural de uma indÃºstria que move bilhÃµes em transaÃ§Ãµes, conseguimos entregar produto que dura, que escala, que nÃ£o apodrece em dois anos.</p>
 
-		<p>Vinte anos de padrões de projeto (Design Patterns), aprendidos na loucura do Java EE, não são um peso a carregar para o mobile. São um tesouro a aproveitar. Os mesmos princípios que fazem um backend sobreviver a uma década de mudanças fazem um app mobile prosperar em um ecossistema que muda a cada semestre.</p>
+		<p>Vinte anos de padrÃµes de projeto (Design Patterns), aprendidos na loucura do Java EE, nÃ£o sÃ£o um peso a carregar para o mobile. SÃ£o um tesouro a aproveitar. Os mesmos princÃ­pios que fazem um backend sobreviver a uma dÃ©cada de mudanÃ§as fazem um app mobile prosperar em um ecossistema que muda a cada semestre.</p>
 
-		<p>A diferença entre os apps que falham e os que sobrevivem não é a linguagem. Não é o framework. É a <strong>disciplina de engenharia</strong>. É recusar o código rápido e sujo porque você sabe que o sujo custa caro depois. É aplicar abstrações porque você já viu abstrações salvarem projetos. É escrever testes porque você já viu testes salvarem carreiras.</p>
+		<p>A diferenÃ§a entre os apps que falham e os que sobrevivem nÃ£o Ã© a linguagem. NÃ£o Ã© o framework. Ã‰ a <strong>disciplina de engenharia</strong>. Ã‰ recusar o cÃ³digo rÃ¡pido e sujo porque vocÃª sabe que o sujo custa caro depois. Ã‰ aplicar abstraÃ§Ãµes porque vocÃª jÃ¡ viu abstraÃ§Ãµes salvarem projetos. Ã‰ escrever testes porque vocÃª jÃ¡ viu testes salvarem carreiras.</p>
 
-		<p>O arquiteto de software em 2026 não escolhe sua tecnologia por hype. Escolhe pelo trade-off. Escolhe porque entendeu o problema. E escolhe com a confiança de quem já viveu dez ciclos de tecnologia mudar. Porque quando a próxima onda chegar — e virá — você não vai estar surfando cego. Vai estar pilotando.</p>
+		<p>O arquiteto de software em 2026 nÃ£o escolhe sua tecnologia por hype. Escolhe pelo trade-off. Escolhe porque entendeu o problema. E escolhe com a confianÃ§a de quem jÃ¡ viveu dez ciclos de tecnologia mudar. Porque quando a prÃ³xima onda chegar â€” e virÃ¡ â€” vocÃª nÃ£o vai estar surfando cego. Vai estar pilotando.</p>
 
 		<hr>
 
@@ -234,18 +234,18 @@ class FirebaseUserRepository implements UserRepository {
 		<ul>
 			<li><strong>E-mail:</strong> suporte@caracore.com.br</li>
 			<li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
-			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
+			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core InformÃ¡tica</a></li>
 		</ul>
 
 		<div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
-			<strong>Gostou do conteúdo?</strong><br />
-			<span style="font-size:.85rem;">Conecte-se conosco no LinkedIn para mais conteúdos sobre arquitetura de software, engenharia e inovação em tecnologia!</span><br />
+			<strong>Gostou do conteÃºdo?</strong><br />
+			<span style="font-size:.85rem;">Conecte-se conosco no LinkedIn para mais conteÃºdos sobre arquitetura de software, engenharia e inovaÃ§Ã£o em tecnologia!</span><br />
 			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Seguir no LinkedIn</a>
 		</div>
 
 		<p style="text-align:center; font-size:.85rem; color:#6b7280; margin-top:3rem;">
 			<em>Artigo publicado em 17 de janeiro de 2026</em><br>
-			© 2026 Cara Core Informática. Todos os direitos reservados.
+			Â© 2026 Cara Core InformÃ¡tica. Todos os direitos reservados.
 		</p>
 	</div>
 </body>

@@ -3,85 +3,85 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Estratégias de Versionamento e Deploy Contínuo para Conteúdo Técnico — Cara Core Informática</title>
-	<meta name="description" content="Guia prático e colaborativo sobre versionamento e deploy contínuo de conteúdo técnico: Git, branching, automação CI/CD, rollback, métricas e fluxos editoriais profissionais.">
-	<meta name="keywords" content="Versionamento de Conteúdo, Deploy Contínuo, CI/CD, Git, Documentação Técnica, Automação, Python, Workflow Editorial, Observabilidade de Conteúdo, Cara Core Informática">
-	<meta name="author" content="Cara Core Informática">
+	<title>EstratÃ©gias de Versionamento e Deploy ContÃ­nuo para ConteÃºdo TÃ©cnico â€” Cara Core InformÃ¡tica</title>
+	<meta name="description" content="Guia prÃ¡tico e colaborativo sobre versionamento e deploy contÃ­nuo de conteÃºdo tÃ©cnico: Git, branching, automaÃ§Ã£o CI/CD, rollback, mÃ©tricas e fluxos editoriais profissionais.">
+	<meta name="keywords" content="Versionamento de ConteÃºdo, Deploy ContÃ­nuo, CI/CD, Git, DocumentaÃ§Ã£o TÃ©cnica, AutomaÃ§Ã£o, Python, Workflow Editorial, Observabilidade de ConteÃºdo, Cara Core InformÃ¡tica">
+	<meta name="author" content="Cara Core InformÃ¡tica">
 	<link rel="canonical" href="https://caracore.com.br/publications/articles/2025_08_18_article_42.html">
 	<!-- Open Graph / Facebook -->
-	<meta property="og:title" content="Estratégias de Versionamento e Deploy Contínuo para Conteúdo Técnico — Cara Core Informática">
-	<meta property="og:description" content="Como estruturar um pipeline confiável de versionamento e deploy contínuo para conteúdo técnico usando Git, automação e padrões profissionais.">
+	<meta property="og:title" content="EstratÃ©gias de Versionamento e Deploy ContÃ­nuo para ConteÃºdo TÃ©cnico â€” Cara Core InformÃ¡tica">
+	<meta property="og:description" content="Como estruturar um pipeline confiÃ¡vel de versionamento e deploy contÃ­nuo para conteÃºdo tÃ©cnico usando Git, automaÃ§Ã£o e padrÃµes profissionais.">
 	<meta property="og:type" content="article">
 	<meta property="og:url" content="https://caracore.com.br/publications/articles/2025_08_18_article_42.html">
 	<meta property="og:image" content="https://caracore.com.br/publications/articles/assets/img/article_42_01.png">
 	<!-- Twitter Card -->
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="Estratégias de Versionamento e Deploy Contínuo para Conteúdo Técnico — Cara Core Informática">
-	<meta name="twitter:description" content="Como estruturar um pipeline confiável de versionamento e deploy contínuo para conteúdo técnico usando Git, automação e padrões profissionais.">
+	<meta name="twitter:title" content="EstratÃ©gias de Versionamento e Deploy ContÃ­nuo para ConteÃºdo TÃ©cnico â€” Cara Core InformÃ¡tica">
+	<meta name="twitter:description" content="Como estruturar um pipeline confiÃ¡vel de versionamento e deploy contÃ­nuo para conteÃºdo tÃ©cnico usando Git, automaÃ§Ã£o e padrÃµes profissionais.">
 	<meta name="twitter:image" content="https://caracore.com.br/publications/articles/assets/img/article_42_01.png">
 	<link rel="stylesheet" href="assets/css/articles.css">
 </head>
 <body>
 	<div class="container">
-		<a href="../articles.html" class="back-link">&larr; Voltar para publicações</a>
-		<img src="assets/img/article_42_01.png" alt="Versionamento e Deploy Contínuo de Conteúdo Técnico" style="max-width:320px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
-		<h1>Estratégias de Versionamento e Deploy Contínuo para Conteúdo Técnico</h1>
+		<a href="../index.html" class="back-link">&larr; Voltar para publicaÃ§Ãµes</a>
+		<img src="assets/img/article_42_01.png" alt="Versionamento e Deploy ContÃ­nuo de ConteÃºdo TÃ©cnico" style="max-width:320px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+		<h1>EstratÃ©gias de Versionamento e Deploy ContÃ­nuo para ConteÃºdo TÃ©cnico</h1>
 		<div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
 			<img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
-			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core InformÃ¡tica</a>
 			<span style="margin-left: 1.5rem;">82 seguidores<br>18 de agosto de 2025</span>
 		</div>
 
 		<p>
-			Publicar conteúdo técnico em escala com qualidade consistente exige tratar <strong>artigos como software</strong>: versionar, revisar, testar, auditar, implantar e reverter com segurança. Se o seu fluxo ainda envolve pastas soltas, datas duplicadas ou “subir direto no servidor”, este guia foi escrito para você.
+			Publicar conteÃºdo tÃ©cnico em escala com qualidade consistente exige tratar <strong>artigos como software</strong>: versionar, revisar, testar, auditar, implantar e reverter com seguranÃ§a. Se o seu fluxo ainda envolve pastas soltas, datas duplicadas ou â€œsubir direto no servidorâ€, este guia foi escrito para vocÃª.
 		</p>
 
-		<!-- Pequena história introdutória (enxuta) -->
+		<!-- Pequena histÃ³ria introdutÃ³ria (enxuta) -->
 		<p style="background:#f8f9fa; padding:1rem 1.25rem; border-left:4px solid #0EA5E9; border-radius:6px;">
-			<strong>História rápida:</strong> três versões diferentes de um mesmo guia foram publicadas sem querer. Um cliente citou instruções que já tinham sido removidas, links quebraram e a equipe gastou a manhã caçando qual arquivo era o “certo”. A solução não foi criar mais camadas manuais de revisão, e sim tratar conteúdo como software: Git, branches de rascunho e revisão, validações automáticas e rollback instantâneo.
+			<strong>HistÃ³ria rÃ¡pida:</strong> trÃªs versÃµes diferentes de um mesmo guia foram publicadas sem querer. Um cliente citou instruÃ§Ãµes que jÃ¡ tinham sido removidas, links quebraram e a equipe gastou a manhÃ£ caÃ§ando qual arquivo era o â€œcertoâ€. A soluÃ§Ã£o nÃ£o foi criar mais camadas manuais de revisÃ£o, e sim tratar conteÃºdo como software: Git, branches de rascunho e revisÃ£o, validaÃ§Ãµes automÃ¡ticas e rollback instantÃ¢neo.
 		</p>
 		<p>
-			Esse mini-incidente ilustra o ponto central: sem versionamento disciplinado e pipeline de deploy contínuo, conteúdo técnico acumula dívida operacional invisível. A seguir, estratégias práticas para implementar um fluxo profissional e escalável.
+			Esse mini-incidente ilustra o ponto central: sem versionamento disciplinado e pipeline de deploy contÃ­nuo, conteÃºdo tÃ©cnico acumula dÃ­vida operacional invisÃ­vel. A seguir, estratÃ©gias prÃ¡ticas para implementar um fluxo profissional e escalÃ¡vel.
 		</p>
 
 		<!-- Resumo simples para iniciantes -->
 		<div style="background:#fff8e1; border:1px solid #f6e3a3; padding:1rem 1.25rem; border-radius:8px; margin:1.5rem 0;">
-			<strong>Resumo em linguagem simples:</strong> imagine que seus artigos são receitas. Se cada pessoa altera a receita em silêncio, logo ninguém sabe qual é a versão certa. <em>Versionar</em> é guardar cada mudança com data e autor. <em>Deploy contínuo</em> é publicar automaticamente assim que as checagens mostram que está tudo ok. Resultado: menos confusão, correções rápidas e confiança para atualizar.
+			<strong>Resumo em linguagem simples:</strong> imagine que seus artigos sÃ£o receitas. Se cada pessoa altera a receita em silÃªncio, logo ninguÃ©m sabe qual Ã© a versÃ£o certa. <em>Versionar</em> Ã© guardar cada mudanÃ§a com data e autor. <em>Deploy contÃ­nuo</em> Ã© publicar automaticamente assim que as checagens mostram que estÃ¡ tudo ok. Resultado: menos confusÃ£o, correÃ§Ãµes rÃ¡pidas e confianÃ§a para atualizar.
 		</div>
 
-		<h2>Por que versionar conteúdo técnico? (explicação fácil)</h2>
+		<h2>Por que versionar conteÃºdo tÃ©cnico? (explicaÃ§Ã£o fÃ¡cil)</h2>
 		<ul>
-			<li><strong>Saber o histórico</strong> (rastreabilidade): quem alterou e por quê.</li>
-			<li><strong>Corrigir rápido</strong>: se algo saiu errado, voltar à versão anterior (rollback) em 1 clique.</li>
-			<li><strong>Padronizar nomes</strong>: evitar arquivo “final2_AGORA_CORRIGIDO.html”.</li>
+			<li><strong>Saber o histÃ³rico</strong> (rastreabilidade): quem alterou e por quÃª.</li>
+			<li><strong>Corrigir rÃ¡pido</strong>: se algo saiu errado, voltar Ã  versÃ£o anterior (rollback) em 1 clique.</li>
+			<li><strong>Padronizar nomes</strong>: evitar arquivo â€œfinal2_AGORA_CORRIGIDO.htmlâ€.</li>
 			<li><strong>Publicar sem medo</strong>: o sistema checa antes de ir ao ar.</li>
-			<li><strong>Medir impacto</strong>: comparar versão antiga vs. nova (visualizações / engajamento).</li>
+			<li><strong>Medir impacto</strong>: comparar versÃ£o antiga vs. nova (visualizaÃ§Ãµes / engajamento).</li>
 		</ul>
 
-		<h2>Diferença: versionar código vs. conteúdo (rapidinho)</h2>
+		<h2>DiferenÃ§a: versionar cÃ³digo vs. conteÃºdo (rapidinho)</h2>
 		<p>
-			No software a mudança pode “quebrar” o sistema. No conteúdo, a maior dor é <strong>informação errada ou desatualizada</strong>. Ainda assim isso afeta confiança e decisões. Usar hábitos de engenharia no texto reduz atrito e evita retrabalho.
+			No software a mudanÃ§a pode â€œquebrarâ€ o sistema. No conteÃºdo, a maior dor Ã© <strong>informaÃ§Ã£o errada ou desatualizada</strong>. Ainda assim isso afeta confianÃ§a e decisÃµes. Usar hÃ¡bitos de engenharia no texto reduz atrito e evita retrabalho.
 		</p>
 
-		<h2>Modelos de versionamento aplicáveis (formas de identificar versões)</h2>
+		<h2>Modelos de versionamento aplicÃ¡veis (formas de identificar versÃµes)</h2>
 		<ul>
-			<li><strong>Data no slug</strong> (ex.: <code>2025_08_18_article_42.html</code>): garante ordenação temporal.</li>
-			<li><strong>ID incremental</strong> (article_042): útil para index rápido.</li>
-			<li><strong>Versão semântica simples</strong> (1.0.0 → grande mudança; 1.1.0 → adicionou algo; 1.1.1 → ajuste pequeno).</li>
+			<li><strong>Data no slug</strong> (ex.: <code>2025_08_18_article_42.html</code>): garante ordenaÃ§Ã£o temporal.</li>
+			<li><strong>ID incremental</strong> (article_042): Ãºtil para index rÃ¡pido.</li>
+			<li><strong>VersÃ£o semÃ¢ntica simples</strong> (1.0.0 â†’ grande mudanÃ§a; 1.1.0 â†’ adicionou algo; 1.1.1 â†’ ajuste pequeno).</li>
 			<li><strong>Tag Git por marco editorial</strong> (ex.: <code>content-drop-2025-08</code>).</li>
 			<li><strong>Branch por campanha</strong> (ex.: <code>serie-observabilidade</code>).</li>
 		</ul>
 
 		<h2>Branching sugerido (organizando fases)</h2>
 		<ul>
-			<li><strong>main</strong>: a “estante oficial”.</li>
+			<li><strong>main</strong>: a â€œestante oficialâ€.</li>
 			<li><strong>content/draft/&lt;slug&gt;</strong>: rascunho em andamento.</li>
-			<li><strong>content/review/&lt;slug&gt;</strong>: revisão antes de publicar.</li>
-			<li><strong>hotfix/&lt;slug&gt;</strong>: correção urgente publicada rápido.</li>
-			<li><strong>archive/&lt;ano&gt;</strong>: guardado só para referência.</li>
+			<li><strong>content/review/&lt;slug&gt;</strong>: revisÃ£o antes de publicar.</li>
+			<li><strong>hotfix/&lt;slug&gt;</strong>: correÃ§Ã£o urgente publicada rÃ¡pido.</li>
+			<li><strong>archive/&lt;ano&gt;</strong>: guardado sÃ³ para referÃªncia.</li>
 		</ul>
 
-		<h2>Estrutura de repositório (onde cada coisa fica)</h2>
+		<h2>Estrutura de repositÃ³rio (onde cada coisa fica)</h2>
 		<pre><code class="language-text">content/
   articles/
 	2025/
@@ -101,28 +101,28 @@ site/
   (HTML gerado)
 </code></pre>
 
-		<h2>Metadata (front matter) recomendada (cabecalho de informações)</h2>
+		<h2>Metadata (front matter) recomendada (cabecalho de informaÃ§Ãµes)</h2>
 		<pre><code class="language-yaml">---
 slug: estrategias-versionamento-deploy-conteudo
 id: 42
 version: 1.0.0
-author: Cara Core Informática
+author: Cara Core InformÃ¡tica
 created_at: 2025-08-18
 updated_at: 2025-08-18
 status: published
-keywords: [versionamento, deploy contínuo, conteúdo técnico, ci/cd]
-summary: Guia de estratégias para versionar e automatizar deploy de conteúdo técnico.
+keywords: [versionamento, deploy contÃ­nuo, conteÃºdo tÃ©cnico, ci/cd]
+summary: Guia de estratÃ©gias para versionar e automatizar deploy de conteÃºdo tÃ©cnico.
 ---
 </code></pre>
 
-		<h2>Pipeline (linha de montagem) – passos automáticos</h2>
+		<h2>Pipeline (linha de montagem) â€“ passos automÃ¡ticos</h2>
 		<ol>
-			<li><strong>Checar formato</strong>: cabeçalho existe e nome não repete.</li>
+			<li><strong>Checar formato</strong>: cabeÃ§alho existe e nome nÃ£o repete.</li>
 			<li><strong>Ver links</strong>: internos/externos funcionando.</li>
 			<li><strong>Transformar</strong>: Markdown vira HTML pronto.</li>
-			<li><strong>Atualizar listas</strong>: página de artigos, sitemap, feed.</li>
-			<li><strong>Testar rápido</strong>: HTML válido e nada indevido.</li>
-			<li><strong>Empacotar</strong>: gerar pacote estático final.</li>
+			<li><strong>Atualizar listas</strong>: pÃ¡gina de artigos, sitemap, feed.</li>
+			<li><strong>Testar rÃ¡pido</strong>: HTML vÃ¡lido e nada indevido.</li>
+			<li><strong>Empacotar</strong>: gerar pacote estÃ¡tico final.</li>
 			<li><strong>Publicar</strong>: enviar ao local do site (servidor/CDN).</li>
 			<li><strong>Limpar cache</strong>: se usa CDN, limpar o velho.</li>
 			<li><strong>Avisar</strong>: mandar alerta de sucesso ou erro.</li>
@@ -154,7 +154,7 @@ jobs:
 		uses: actions/deploy-pages@v4
 </code></pre>
 
-		<h3>Script Python (exemplo opcional para subir versão)</h3>
+		<h3>Script Python (exemplo opcional para subir versÃ£o)</h3>
 		<pre><code class="language-python">import re, sys, pathlib
 
 LEVEL = sys.argv[1] if len(sys.argv) > 1 else 'patch'
@@ -180,111 +180,111 @@ print('Updated to', new_version)
 		<ul>
 			<li>[ ] Front matter completo.</li>
 			<li>[ ] Links internos resolvidos.</li>
-			<li>[ ] Sem conteúdo duplicado.</li>
+			<li>[ ] Sem conteÃºdo duplicado.</li>
 			<li>[ ] Imagens otimizadas (peso &lt; 250KB).</li>
 			<li>[ ] SEO: title, description, canonical, og:image.</li>
-			<li>[ ] Versão incrementada se alteração relevante.</li>
-			<li>[ ] Aprovado por revisão técnica + editorial.</li>
+			<li>[ ] VersÃ£o incrementada se alteraÃ§Ã£o relevante.</li>
+			<li>[ ] Aprovado por revisÃ£o tÃ©cnica + editorial.</li>
 		</ul>
 
 		<h2>Fluxo editorial sugerido (passo a passo humano)</h2>
 		<ol>
-			<li><strong>Rascunho</strong>: criar conteúdo inicial.</li>
-			<li><strong>Revisão técnica automática</strong>: ferramentas checam formato.</li>
-			<li><strong>Revisão humana</strong>: clareza e tom.</li>
-			<li><strong>Publicação</strong>: entra no site via pipeline.</li>
+			<li><strong>Rascunho</strong>: criar conteÃºdo inicial.</li>
+			<li><strong>RevisÃ£o tÃ©cnica automÃ¡tica</strong>: ferramentas checam formato.</li>
+			<li><strong>RevisÃ£o humana</strong>: clareza e tom.</li>
+			<li><strong>PublicaÃ§Ã£o</strong>: entra no site via pipeline.</li>
 			<li><strong>Acompanhar</strong>: ver acessos, ajustar se preciso.</li>
 		</ol>
 
-		<h2>Métricas para acompanhar (o que vale medir)</h2>
+		<h2>MÃ©tricas para acompanhar (o que vale medir)</h2>
 		<ul>
-			<li><strong>Lead time de publicação</strong>: criação → produção.</li>
-			<li><strong>Taxa de rollback</strong>: quantas publicações precisam de correção rápida.</li>
-			<li><strong>Tempo médio de atualização</strong> (MTTU) pós mudança de tecnologia referenciada.</li>
-			<li><strong>Erros de validação por PR</strong>: tendência de qualidade.</li>
-			<li><strong>Engajamento por versão</strong>: views antes/depois de atualização.</li>
+			<li><strong>Lead time de publicaÃ§Ã£o</strong>: criaÃ§Ã£o â†’ produÃ§Ã£o.</li>
+			<li><strong>Taxa de rollback</strong>: quantas publicaÃ§Ãµes precisam de correÃ§Ã£o rÃ¡pida.</li>
+			<li><strong>Tempo mÃ©dio de atualizaÃ§Ã£o</strong> (MTTU) pÃ³s mudanÃ§a de tecnologia referenciada.</li>
+			<li><strong>Erros de validaÃ§Ã£o por PR</strong>: tendÃªncia de qualidade.</li>
+			<li><strong>Engajamento por versÃ£o</strong>: views antes/depois de atualizaÃ§Ã£o.</li>
 		</ul>
 
-		<h2>Rollback e histórico (voltar atrás sem drama)</h2>
+		<h2>Rollback e histÃ³rico (voltar atrÃ¡s sem drama)</h2>
 		<p>
-			Rollback ideal: <strong>git revert</strong> do commit problemático + regeneração automática. Para correções rápidas, usar <code>hotfix/&lt;slug&gt;</code>. Evite editar direto em produção — perde rastreabilidade e invalida métricas.
+			Rollback ideal: <strong>git revert</strong> do commit problemÃ¡tico + regeneraÃ§Ã£o automÃ¡tica. Para correÃ§Ãµes rÃ¡pidas, usar <code>hotfix/&lt;slug&gt;</code>. Evite editar direto em produÃ§Ã£o â€” perde rastreabilidade e invalida mÃ©tricas.
 		</p>
 
 		<h2>Riscos comuns e como evitar</h2>
 		<ul>
 			<li><strong>Slug duplicado</strong>: validador de unicidade no CI.</li>
 			<li><strong>Links quebrados</strong>: crawler interno (ex.: <code>scripts/link_check.py</code>).</li>
-			<li><strong>Imagens pesadas</strong>: pipeline de compressão.</li>
+			<li><strong>Imagens pesadas</strong>: pipeline de compressÃ£o.</li>
 			<li><strong>Metadados inconsistentes</strong>: schema JSON para front matter.</li>
-			<li><strong>Deploy parcial</strong>: publicar sempre o build completo imutável.</li>
+			<li><strong>Deploy parcial</strong>: publicar sempre o build completo imutÃ¡vel.</li>
 		</ul>
 
-		<h2>Boas práticas adicionais (extras que ajudam)</h2>
+		<h2>Boas prÃ¡ticas adicionais (extras que ajudam)</h2>
 		<ul>
-			<li>Separar conteúdo fonte de HTML gerado.</li>
-			<li>Usar hash de build ou data no diretório de saída para cache busting.</li>
+			<li>Separar conteÃºdo fonte de HTML gerado.</li>
+			<li>Usar hash de build ou data no diretÃ³rio de saÃ­da para cache busting.</li>
 			<li>Gerar <code>sitemap.xml</code> e feed (RSS/Atom) no pipeline.</li>
 			<li>Inserir <strong>dados estruturados</strong> (Schema.org Article).</li>
-			<li>Automatizar verificação de termos proibidos (ex.: linguagem insegura, claims sem fonte).</li>
+			<li>Automatizar verificaÃ§Ã£o de termos proibidos (ex.: linguagem insegura, claims sem fonte).</li>
 		</ul>
 
-		<h2>FAQ rápido</h2>
+		<h2>FAQ rÃ¡pido</h2>
 		<details>
 			<summary>Preciso de semantic version para todo artigo?</summary>
-			<p>Não obrigatório. Útil quando há referência externa ou integração que depende de estado estável (ex.: documentação de API).</p>
+			<p>NÃ£o obrigatÃ³rio. Ãštil quando hÃ¡ referÃªncia externa ou integraÃ§Ã£o que depende de estado estÃ¡vel (ex.: documentaÃ§Ã£o de API).</p>
 		</details>
 		<details>
-			<summary>Como lidar com conteúdo obsoleto?</summary>
-			<p>Marcar status = deprecated, adicionar aviso no topo e link para versão nova.</p>
+			<summary>Como lidar com conteÃºdo obsoleto?</summary>
+			<p>Marcar status = deprecated, adicionar aviso no topo e link para versÃ£o nova.</p>
 		</details>
 		<details>
-			<summary>E se eu só corrigir um typo?</summary>
+			<summary>E se eu sÃ³ corrigir um typo?</summary>
 			<p>Atualize <code>updated_at</code> e, se usar semantic content version, incremente o patch.</p>
 		</details>
 
-		<h2>Seção colaborativa</h2>
+		<h2>SeÃ§Ã£o colaborativa</h2>
 		<p>
-			Este artigo é <strong>colaborativo</strong>. Sugestões bem-vindas:
+			Este artigo Ã© <strong>colaborativo</strong>. SugestÃµes bem-vindas:
 		</p>
 		<ul>
 			<li>Workflows de CI reais (GitLab, Jenkins, Azure).</li>
-			<li>Políticas de revisão/redação de times.</li>
-			<li>Métricas adicionais de governança.</li>
-			<li>Scripts de validação ou geração incremental.</li>
+			<li>PolÃ­ticas de revisÃ£o/redaÃ§Ã£o de times.</li>
+			<li>MÃ©tricas adicionais de governanÃ§a.</li>
+			<li>Scripts de validaÃ§Ã£o ou geraÃ§Ã£o incremental.</li>
 		</ul>
-		<p>Envie exemplos por e-mail ou LinkedIn para possível inclusão.</p>
+		<p>Envie exemplos por e-mail ou LinkedIn para possÃ­vel inclusÃ£o.</p>
 
-		<h2>Próximos passos recomendados</h2>
+		<h2>PrÃ³ximos passos recomendados</h2>
 		<ol>
-			<li>Inventariar conteúdo atual e normalizar nomes.</li>
-			<li>Adicionar front matter mínimo em todos os arquivos.</li>
-			<li>Criar script de build/validação.</li>
+			<li>Inventariar conteÃºdo atual e normalizar nomes.</li>
+			<li>Adicionar front matter mÃ­nimo em todos os arquivos.</li>
+			<li>Criar script de build/validaÃ§Ã£o.</li>
 			<li>Configurar pipeline CI.</li>
-			<li>Definir política de branching e revisão.</li>
+			<li>Definir polÃ­tica de branching e revisÃ£o.</li>
 			<li>Documentar playbook de rollback.</li>
 		</ol>
 
 		<hr style="margin: 40px 0; border: none; border-top: 1px solid #eee;">
 
-		<h2>Glossário rápido</h2>
+		<h2>GlossÃ¡rio rÃ¡pido</h2>
 		<ul>
-			<li><strong>Versionar</strong>: guardar cada mudança com histórico.</li>
+			<li><strong>Versionar</strong>: guardar cada mudanÃ§a com histÃ³rico.</li>
 			<li><strong>Slug</strong>: nome limpo usado no link do artigo.</li>
 			<li><strong>Front matter</strong>: bloco inicial de dados (autor, data, etc.).</li>
 			<li><strong>Branch</strong>: linha de trabalho paralela para editar sem afetar o principal.</li>
 			<li><strong>Deploy</strong>: ato de publicar/atualizar no site.</li>
-			<li><strong>Rollback</strong>: voltar para uma versão anterior.</li>
-			<li><strong>Pipeline</strong>: sequência automática de passos.</li>
-			<li><strong>CI/CD</strong>: automação para testar (CI) e publicar (CD).</li>
-			<li><strong>CDN</strong>: rede que entrega o site mais rápido em vários lugares.</li>
-			<li><strong>Métrica</strong>: número usado para acompanhar evolução.</li>
+			<li><strong>Rollback</strong>: voltar para uma versÃ£o anterior.</li>
+			<li><strong>Pipeline</strong>: sequÃªncia automÃ¡tica de passos.</li>
+			<li><strong>CI/CD</strong>: automaÃ§Ã£o para testar (CI) e publicar (CD).</li>
+			<li><strong>CDN</strong>: rede que entrega o site mais rÃ¡pido em vÃ¡rios lugares.</li>
+			<li><strong>MÃ©trica</strong>: nÃºmero usado para acompanhar evoluÃ§Ã£o.</li>
 		</ul>
 
 		<h3>Contato</h3>
 		<ul>
 			<li><strong>E-mail:</strong> suporte@caracore.com.br</li>
 			<li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
-			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
+			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core InformÃ¡tica</a></li>
 		</ul>
 	</div>
 </body>

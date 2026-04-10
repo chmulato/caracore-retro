@@ -3,54 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Integrando Dados: Excel e Banco de Dados Remoto — Cara Core Informática</title>
-    <meta name="description" content="Integre dados do Excel com bancos de dados remotos usando VBA. Automatize consultas, manipule informações e otimize processos empresariais.">
-    <meta name="keywords" content="VBA, Excel, banco de dados, integração, automação, MySQL, consultoria, Cara Core Informática">
-    <meta name="author" content="Cara Core Informática">
+    <title>Integrando Dados: Excel e Banco de Dados Remoto â€” Cara Core InformÃ¡tica</title>
+    <meta name="description" content="Integre dados do Excel com bancos de dados remotos usando VBA. Automatize consultas, manipule informaÃ§Ãµes e otimize processos empresariais.">
+    <meta name="keywords" content="VBA, Excel, banco de dados, integraÃ§Ã£o, automaÃ§Ã£o, MySQL, consultoria, Cara Core InformÃ¡tica">
+    <meta name="author" content="Cara Core InformÃ¡tica">
     <link rel="canonical" href="https://caracore.com.br/publications/articles/2024_04_14_article_08.html">
     <!-- Open Graph -->
     <meta property="og:title" content="Integrando Dados: Excel e Banco de Dados Remoto">
-    <meta property="og:description" content="Integre dados do Excel com bancos de dados remotos usando VBA. Automatize consultas, manipule informações e otimize processos empresariais.">
+    <meta property="og:description" content="Integre dados do Excel com bancos de dados remotos usando VBA. Automatize consultas, manipule informaÃ§Ãµes e otimize processos empresariais.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://caracore.com.br/publications/articles/2024_04_14_article_08.html">
     <meta property="og:image" content="https://caracore.com.br/publications/articles/assets/img/article_08_01.png">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Integrando Dados: Excel e Banco de Dados Remoto">
-    <meta name="twitter:description" content="Integre dados do Excel com bancos de dados remotos usando VBA. Automatize consultas, manipule informações e otimize processos empresariais.">
+    <meta name="twitter:description" content="Integre dados do Excel com bancos de dados remotos usando VBA. Automatize consultas, manipule informaÃ§Ãµes e otimize processos empresariais.">
     <meta name="twitter:image" content="https://caracore.com.br/publications/articles/assets/img/article_08_01.png">
     <link rel="stylesheet" href="assets/css/articles.css">
 </head>
 <body>
     <div class="container">
-        <a href="../articles.html" class="back-link">&larr; Voltar para publicações</a>
+        <a href="../index.html" class="back-link">&larr; Voltar para publicaÃ§Ãµes</a>
         <!-- Imagem principal -->
-        <img src="assets/img/article_08_01.png" alt="Integração de dados entre Excel e banco de dados remoto com VBA" style="max-width:320px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+        <img src="assets/img/article_08_01.png" alt="IntegraÃ§Ã£o de dados entre Excel e banco de dados remoto com VBA" style="max-width:320px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
         <h1>Integrando Dados: Excel e Banco de Dados Remoto</h1>
         <div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
             <img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
             <a href="https://www.linkedin.com/company/cara-core/" target="_blank" style="font-weight:bold;">
-                Cara Core Informática
+                Cara Core InformÃ¡tica
             </a>
             <span style="margin-left: 1.5rem;">73 seguidores<br>14 de abril de 2024</span>
         </div>
 
-        <h2>Introdução</h2>
+        <h2>IntroduÃ§Ã£o</h2>
         <p>
-            Em um mundo cada vez mais conectado, a gestão eficiente de dados é essencial para empresas e indivíduos. Uma abordagem comum é a integração entre planilhas do Excel e bancos de dados remotos descentralizados. Vamos explorar as vantagens dessa combinação poderosa.
+            Em um mundo cada vez mais conectado, a gestÃ£o eficiente de dados Ã© essencial para empresas e indivÃ­duos. Uma abordagem comum Ã© a integraÃ§Ã£o entre planilhas do Excel e bancos de dados remotos descentralizados. Vamos explorar as vantagens dessa combinaÃ§Ã£o poderosa.
         </p>
 
-        <h3>Implementação com VBA</h3>
-        <p>Vamos propor a criação de um código VBA no Excel que se conecte a um banco de dados MySQL e tenha um formulário para manipular as linhas. Aqui está um exemplo de código que você pode usar para começar:</p>
+        <h3>ImplementaÃ§Ã£o com VBA</h3>
+        <p>Vamos propor a criaÃ§Ã£o de um cÃ³digo VBA no Excel que se conecte a um banco de dados MySQL e tenha um formulÃ¡rio para manipular as linhas. Aqui estÃ¡ um exemplo de cÃ³digo que vocÃª pode usar para comeÃ§ar:</p>
 
-        <h3>Exemplo de código VBA</h3>
+        <h3>Exemplo de cÃ³digo VBA</h3>
         <pre><code class="vba">
 Sub ConectarBancoDeDados()
     Dim conn As Object
     Dim rs As Object
     Dim sql As String
 
-    ' Estabelecendo conexão com o banco de dados
+    ' Estabelecendo conexÃ£o com o banco de dados
     Set conn = CreateObject("ADODB.Connection")
     conn.ConnectionString = "Driver={MySQL ODBC 8.0 Driver};Server=seu_servidor;Database=seu_banco_de_dados;User=seu_usuario;Password=sua_senha;"
     conn.Open
@@ -65,7 +65,7 @@ Sub ConectarBancoDeDados()
         rs.MoveNext
     Loop
 
-    ' Fechando a conexão
+    ' Fechando a conexÃ£o
     rs.Close
     conn.Close
     Set rs = Nothing
@@ -74,25 +74,25 @@ End Sub
         </code></pre>
 
         <p>
-            Este código estabelece uma conexão com um banco de dados MySQL, executa uma consulta SQL e exibe os resultados no Immediate Window do VBA. Certifique-se de ajustar os parâmetros de conexão e as consultas SQL conforme necessário para o seu caso específico.
+            Este cÃ³digo estabelece uma conexÃ£o com um banco de dados MySQL, executa uma consulta SQL e exibe os resultados no Immediate Window do VBA. Certifique-se de ajustar os parÃ¢metros de conexÃ£o e as consultas SQL conforme necessÃ¡rio para o seu caso especÃ­fico.
         </p>
 
         <hr>
 
         <div style="border: 1px solid #ccc; padding: 1.5rem; border-radius: 12px; background-color: #f9f9f9; box-shadow: 0 2px 12px rgba(0,0,0,0.08); margin: 2rem 0;">
-            <h3 style="margin-top: 0;">Dicas de instalação do driver MySQL</h3>
-            <p>Para instalar o driver MySQL Connector no Windows, você pode seguir os passos abaixo:</p>
+            <h3 style="margin-top: 0;">Dicas de instalaÃ§Ã£o do driver MySQL</h3>
+            <p>Para instalar o driver MySQL Connector no Windows, vocÃª pode seguir os passos abaixo:</p>
             <ol>
-                <li><b>Download do Instalador:</b> Acesse a página de download do MySQL Connector e escolha a versão adequada para o seu sistema operacional.</li>
-                <li><b>Executar o Instalador:</b> Dê um duplo clique no arquivo baixado e siga os passos da instalação. Se necessário, execute o instalador como administrador.</li>
-                <li><b>Escolher o Tipo de Instalação:</b> Durante a instalação, você terá opções como "Typical", "Complete" e "Custom". Escolha a que melhor se adequa às suas necessidades.</li>
-                <li><b>Aceitar os Termos de Licença:</b> Leia e aceite os termos de licença para prosseguir com a instalação.</li>
-                <li><b>Configuração Personalizada (Opcional):</b> Se escolher a instalação personalizada, selecione os componentes específicos que deseja instalar.</li>
-                <li><b>Instalação dos Componentes:</b> Siga as instruções para instalar os componentes necessários.</li>
-                <li><b>Concluir a Instalação:</b> Após a instalação dos componentes, finalize o processo e, se necessário, reinicie o computador.</li>
+                <li><b>Download do Instalador:</b> Acesse a pÃ¡gina de download do MySQL Connector e escolha a versÃ£o adequada para o seu sistema operacional.</li>
+                <li><b>Executar o Instalador:</b> DÃª um duplo clique no arquivo baixado e siga os passos da instalaÃ§Ã£o. Se necessÃ¡rio, execute o instalador como administrador.</li>
+                <li><b>Escolher o Tipo de InstalaÃ§Ã£o:</b> Durante a instalaÃ§Ã£o, vocÃª terÃ¡ opÃ§Ãµes como "Typical", "Complete" e "Custom". Escolha a que melhor se adequa Ã s suas necessidades.</li>
+                <li><b>Aceitar os Termos de LicenÃ§a:</b> Leia e aceite os termos de licenÃ§a para prosseguir com a instalaÃ§Ã£o.</li>
+                <li><b>ConfiguraÃ§Ã£o Personalizada (Opcional):</b> Se escolher a instalaÃ§Ã£o personalizada, selecione os componentes especÃ­ficos que deseja instalar.</li>
+                <li><b>InstalaÃ§Ã£o dos Componentes:</b> Siga as instruÃ§Ãµes para instalar os componentes necessÃ¡rios.</li>
+                <li><b>Concluir a InstalaÃ§Ã£o:</b> ApÃ³s a instalaÃ§Ã£o dos componentes, finalize o processo e, se necessÃ¡rio, reinicie o computador.</li>
             </ol>
             <p>
-                Lembre-se de verificar se o driver é compatível com a versão do seu MySQL e do sistema operacional Windows. Para mais detalhes, você pode consultar a documentação oficial do MySQL.
+                Lembre-se de verificar se o driver Ã© compatÃ­vel com a versÃ£o do seu MySQL e do sistema operacional Windows. Para mais detalhes, vocÃª pode consultar a documentaÃ§Ã£o oficial do MySQL.
             </p>
         </div>
     </div>
