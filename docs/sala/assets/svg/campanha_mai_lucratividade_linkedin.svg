@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true">
-  <title>Lucratividade — o que sobra no caixa</title>
-  <rect width="64" height="64" rx="8" fill="#0d1117" stroke="#0A66C2" stroke-width="1"/>
-  <rect x="14" y="20" width="36" height="24" rx="2" fill="none" stroke="#0A66C2" stroke-width="2"/>
-  <path fill="#0A66C2" d="M20 28 h6 v2 h-6 z M20 32 h10 v1.5 h-10 z M20 35 h8 v1 h-8 z"/>
-  <path fill="none" stroke="rgba(10,102,194,.5)" stroke-width="1.5" d="M20 44 L44 44"/>
-  <circle cx="32" cy="44" r="3" fill="#0A66C2"/>
-</svg>

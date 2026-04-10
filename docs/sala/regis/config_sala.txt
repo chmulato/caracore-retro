@@ -1,3 +1,0 @@
-# Configuração da Sala de Notícias (para os scripts)
-# Valor por hora em dinheiro CC (pagamento Cara Core). Use ponto ou vírgula como decimal.
-valor_hora_cc=0

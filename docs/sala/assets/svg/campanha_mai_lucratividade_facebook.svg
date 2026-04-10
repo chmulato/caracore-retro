@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" aria-hidden="true">
-  <title>O que entra e sai no caixa</title>
-  <circle cx="24" cy="24" r="22" fill="#f0f4f8" stroke="#0A66C2" stroke-width="1.5"/>
-  <path fill="#fff" stroke="#0A66C2" stroke-width="1.2" d="M14 18 L34 18 L34 30 L14 30 Z"/>
-  <path fill="#dcfce7" d="M16 22 h16 v3 H16 z"/>
-  <path fill="#fef3c7" d="M16 26 h12 v3 H16 z"/>
-  <path fill="#dbeafe" d="M16 30 h14 v2 H16 z"/>
-  <text x="24" y="40" text-anchor="middle" font-size="8" fill="#0A66C2" font-family="system-ui,sans-serif">entra · sai</text>
-</svg>
