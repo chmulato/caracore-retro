@@ -1,139 +1,25 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title><![CDATA[Artigos Retrô — Cara Core Informática]]></title>
-    <link>https://retro.caracore.com.br/articles.html</link>
+    <link>https://retro.caracore.com.br/</link>
     <description><![CDATA[Coleção de artigos publicados pela Cara Core nas redes, organizada por ano.]]></description>
     <language>pt-BR</language>
-    <lastBuildDate>Sun, 05 Apr 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 10 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://retro.caracore.com.br/feed.xml" rel="self" type="application/rss+xml" />
     <generator>Cara Core RSS generator</generator>
 
     <item>
-      <title><![CDATA[Seis Pilares Alinhados]]></title>
-      <link>https://retro.caracore.com.br/articles/2026_11_30_article_95.html</link>
-      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_11_30_article_95.html</guid>
-      <pubDate>Mon, 30 Nov 2026 07:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[Amarelinha: Os Cinco Atos]]></title>
-      <link>https://retro.caracore.com.br/articles/2026_11_14_article_94.html</link>
-      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_11_14_article_94.html</guid>
-      <pubDate>Sat, 14 Nov 2026 07:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[Epílogo: O Acerto de Contas]]></title>
-      <link>https://retro.caracore.com.br/articles/2026_11_07_article_93.html</link>
-      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_11_07_article_93.html</guid>
-      <pubDate>Sat, 07 Nov 2026 07:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[A Marca na Pele]]></title>
-      <link>https://retro.caracore.com.br/articles/2026_10_03_article_92.html</link>
-      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_10_03_article_92.html</guid>
-      <pubDate>Sat, 03 Oct 2026 07:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[Circuito Ferradura]]></title>
-      <link>https://retro.caracore.com.br/articles/2026_09_05_article_91.html</link>
-      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_09_05_article_91.html</guid>
-      <pubDate>Sat, 05 Sep 2026 07:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[O ETE e a IA de 2GB]]></title>
-      <link>https://retro.caracore.com.br/articles/2026_08_01_article_90.html</link>
-      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_08_01_article_90.html</guid>
-      <pubDate>Sat, 01 Aug 2026 07:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[Ouro, Prata e Silício]]></title>
-      <link>https://retro.caracore.com.br/articles/2026_07_04_article_89.html</link>
-      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_07_04_article_89.html</guid>
-      <pubDate>Sat, 04 Jul 2026 07:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[A Identidade Roubada]]></title>
-      <link>https://retro.caracore.com.br/articles/2026_06_06_article_88.html</link>
-      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_06_06_article_88.html</guid>
-      <pubDate>Sat, 06 Jun 2026 07:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[O Apagão do Suserano]]></title>
-      <link>https://retro.caracore.com.br/articles/2026_05_30_article_87.html</link>
-      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_05_30_article_87.html</guid>
-      <pubDate>Sat, 30 May 2026 07:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[O Futuro da Cara Core: Para Onde Estamos Indo]]></title>
-      <link>https://retro.caracore.com.br/articles/2026_05_23_article_86.html</link>
-      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_05_23_article_86.html</guid>
-      <pubDate>Sat, 23 May 2026 07:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[O Brasil Emergente e a Oportunidade de Inovar Onde Ninguém Está Olhando]]></title>
-      <link>https://retro.caracore.com.br/articles/2026_05_16_article_85.html</link>
-      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_05_16_article_85.html</guid>
-      <pubDate>Sat, 16 May 2026 07:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[Como Construir Software Técnico em Escala com Equipes Enxutas]]></title>
-      <link>https://retro.caracore.com.br/articles/2026_05_09_article_84.html</link>
-      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_05_09_article_84.html</guid>
-      <pubDate>Sat, 09 May 2026 07:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[ETE: A Metodologia Brasileira que Simplifica a Hidrometalurgia Seletiva]]></title>
-      <link>https://retro.caracore.com.br/articles/2026_05_02_article_83.html</link>
-      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_05_02_article_83.html</guid>
-      <pubDate>Sat, 02 May 2026 07:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[Construindo Produtos com Propósito: A Filosofia por Trás do Portfólio da Cara Core]]></title>
-      <link>https://retro.caracore.com.br/articles/2026_04_28_article_78.html</link>
-      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_04_28_article_78.html</guid>
-      <pubDate>Tue, 28 Apr 2026 07:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[Circuito Ferradura: Democratizando a Programação no Brasil]]></title>
-      <link>https://retro.caracore.com.br/articles/2026_04_25_article_82.html</link>
-      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_04_25_article_82.html</guid>
-      <pubDate>Sat, 25 Apr 2026 07:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[A Última Milha Digital: O Que as 'Tias Sócias' Revelam Sobre o Brasil]]></title>
-      <link>https://retro.caracore.com.br/articles/2026_04_21_article_77.html</link>
-      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_04_21_article_77.html</guid>
-      <pubDate>Tue, 21 Apr 2026 07:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[Hub Cara Core: A Máquina de Automação que Conecta Pessoas, Negócios e Comunidades]]></title>
-      <link>https://retro.caracore.com.br/articles/2026_04_18_article_81.html</link>
-      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_04_18_article_81.html</guid>
-      <pubDate>Sat, 18 Apr 2026 07:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[Por que o Brasil Precisa de Software Boutique: Oportunidades em Nichos Técnicos]]></title>
-      <link>https://retro.caracore.com.br/articles/2026_04_14_article_76.html</link>
-      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_04_14_article_76.html</guid>
-      <pubDate>Tue, 14 Apr 2026 07:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[Reino OIDC e Área 51: A Nova Era da Identidade Digital Brasileira]]></title>
-      <link>https://retro.caracore.com.br/articles/2026_04_11_article_80.html</link>
-      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_04_11_article_80.html</guid>
-      <pubDate>Sat, 11 Apr 2026 07:00:00 +0000</pubDate>
-    </item>
-    <item>
       <title><![CDATA[A Nova Cara Core: Como uma Startup Boutique Está Redesenhando o Software Brasileiro]]></title>
       <link>https://retro.caracore.com.br/articles/2026_04_07_article_75.html</link>
       <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_04_07_article_75.html</guid>
-      <pubDate>Tue, 07 Apr 2026 07:00:00 +0000</pubDate>
+      <pubDate>Tue, 07 Apr 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Por Dentro do CaraCore PDV: O Primeiro Sistema Preparado para a Reforma Tributária 2026–2033]]></title>
       <link>https://retro.caracore.com.br/articles/2026_04_04_article_79.html</link>
       <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_04_04_article_79.html</guid>
-      <pubDate>Sat, 04 Apr 2026 07:00:00 +0000</pubDate>
+      <pubDate>Sat, 04 Apr 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[PDV Enviar SMS: o Aplicativo Auxiliar Android que é o Braço Direito do CaraCore PDV]]></title>

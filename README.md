@@ -47,7 +47,7 @@ Este repositório é parte do ecossistema Cara Core:
 - **Cara Core OIDC** — Identidade e autenticação
 - **Cara Core ETE** — Engenharia de terras raras
 
-Veja o portfólio completo em https://caracore.com.br.
+Veja o portfólio completo em https://www.caracore.com.br.
 
 ## 📝 Metadados
 
