@@ -5,10 +5,16 @@
     <link>https://retro.caracore.com.br/</link>
     <description><![CDATA[Coleção de artigos publicados pela Cara Core nas redes, organizada por ano.]]></description>
     <language>pt-BR</language>
-    <lastBuildDate>Fri, 10 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 11 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://retro.caracore.com.br/feed.xml" rel="self" type="application/rss+xml" />
     <generator>Cara Core RSS generator</generator>
 
+    <item>
+      <title><![CDATA[Reino OIDC e Área 51: A Nova Era da Identidade Digital Brasileira]]></title>
+      <link>https://retro.caracore.com.br/articles/2026_04_11_article_80.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_04_11_article_80.html</guid>
+      <pubDate>Sat, 11 Apr 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title><![CDATA[A Nova Cara Core: Como uma Startup Boutique Está Redesenhando o Software Brasileiro]]></title>
       <link>https://retro.caracore.com.br/articles/2026_04_07_article_75.html</link>
