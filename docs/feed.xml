@@ -5,10 +5,16 @@
     <link>https://retro.caracore.com.br/</link>
     <description><![CDATA[Coleção de artigos publicados pela Cara Core nas redes, organizada por ano.]]></description>
     <language>pt-BR</language>
-    <lastBuildDate>Sat, 11 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 03 Dec 2026 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://retro.caracore.com.br/feed.xml" rel="self" type="application/rss+xml" />
     <generator>Cara Core RSS generator</generator>
 
+    <item>
+      <title><![CDATA[O Renascimento da Tecnologia Independente: Como a Paixão e a Ética estão moldando o Futuro do Software]]></title>
+      <link>https://retro.caracore.com.br/articles/2026_12_03_article_96.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_12_03_article_96.html</guid>
+      <pubDate>Wed, 03 Dec 2026 12:00:00 +0000</pubDate>
+    </item>
     <item>
       <title><![CDATA[Reino OIDC e Área 51: A Nova Era da Identidade Digital Brasileira]]></title>
       <link>https://retro.caracore.com.br/articles/2026_04_11_article_80.html</link>

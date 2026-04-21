@@ -1,10 +1,10 @@
 ﻿# Artigos Retrô — Cara Core Informática
 
-Portal e acervo de artigos publicados no LinkedIn pela Cara Core Informática. Uma coleção de 95 artigos organizados por data, com foco em temas de inovação, engenharia de software, arquitectura, negócios e estratégia.
+Portal e acervo de artigos publicados no LinkedIn pela Cara Core Informática. Uma coleção de 96 artigos organizados por data, com foco em temas de inovação, engenharia de software, arquitectura, negócios e estratégia.
 
 ## 📋 Estrutura
 
-- **`articles/`** — Diretório contendo todos os 95 artigos HTML
+- **`articles/`** — Diretório contendo todos os 96 artigos HTML
   - Convenção de nomenclatura: `YYYY_MM_DD_article_(NN).html` (ex.: `2026_05_23_article_86.html`)
   - Data no nome = data de publicação no calendário estratégico
   - **`articles/assets/`** — Recursos compartilhados
@@ -34,10 +34,10 @@ Use a barra de busca em `articles.html` para filtrar por tema, tecnologia ou pal
 
 ## 📊 Conteúdo
 
-**Total**: 95 artigos (01 a 95)
-- **Período**: Fevereiro 2024 — Novembro 2026
+**Total**: 96 artigos (01 a 96)
+- **Período**: Fevereiro 2024 — Dezembro 2026
 - **Cobertura**: Publicações regulares semanais
-- **Divisão temporal**: 32 artigos em 2024, 32 em 2025, 31 em 2026
+- **Divisão temporal**: 32 artigos em 2024, 32 em 2025, 32 em 2026
 
 ## 🔗 Integração com Cara Core
 
@@ -64,5 +64,5 @@ Conteúdo © Cara Core Informática. Consulte o arquivo `LICENSE` para mais info
 
 ---
 
-**Última atualização**: Novembro 2026  
+**Última atualização**: Dezembro 2026  
 **Manutenção**: [GitHub Repository](https://github.com/chmulato/caracore-retro)
