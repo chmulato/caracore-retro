@@ -4,18 +4,18 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>A Marca na Pele — Cara Core</title>
-	<meta name="description" content="Se a nuvem apaga, a arte fica. Sua agenda também deveria ficar." />
+	<meta name="description" content="Ink Agenda como produto real: app para tatuadores e estúdios, Java 21, JavaFX, SQLite local, operação offline e OIDC opcional." />
 	<meta name="author" content="Cara Core Informática" />
 	<link rel="canonical" href="https://retro.caracore.com.br/articles/2026_10_03_article_92.html" />
 	<meta property="og:title" content="A Marca na Pele" />
-	<meta property="og:description" content="Ink Agenda 2.0: registro eterno, offline first." />
+	<meta property="og:description" content="A Marca na Pele revisita o Ink Agenda com transparência: agenda, finanças, clientes, SQLite local e autenticação offline-first." />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="https://retro.caracore.com.br/articles/2026_10_03_article_92.html" />
 	<meta property="og:image" content="https://retro.caracore.com.br/articles/assets/img/article_92_01.png" />
 	<meta property="og:image:alt" content="A Marca na Pele" />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content="A Marca na Pele" />
-	<meta name="twitter:description" content="O que é eterno não pede permissão para existir." />
+	<meta name="twitter:description" content="Ink Agenda: gestão para tatuadores, Windows Desktop em JavaFX, SQLite local e Google OIDC opcional." />
 	<meta name="twitter:image" content="https://retro.caracore.com.br/articles/assets/img/article_92_01.png" />
 	<link rel="stylesheet" href="assets/css/articles.css" />
 	<link rel="stylesheet" href="assets/css/temporada-i.css" />
@@ -33,7 +33,7 @@
 		<div class="note"><strong>Tempo estimado:</strong> ~8–9 minutos</div>
 
 		<div class="quote-box">
-			<strong>Gancho:</strong> "Se a nuvem apaga, a arte fica. A comunidade também."
+			<strong>Gancho:</strong> "Se a nuvem falha, a agenda do estúdio não pode parar."
 		</div>
 
 		<h2>O Artista e a Pergunta Proibida</h2>
@@ -53,8 +53,11 @@
 			E é porque a tinta de rua é física. Sobrevive. A tinta digital? Depende de um data center que está a 2 mil km de distância, em um servidor que você não controla, em um formato que pode virar obsoleto em 5 anos.
 		</p>
 		<p>
-			Isso é Ink Agenda. Ink é a tinta que fica. Na pele de você. No seu computador. No seu arquivo.
+			Isso conversa com o Ink Agenda, mas sem exagero de propaganda. Ink Agenda é um sistema profissional de gestão para tatuadores e estúdios: agenda de sessões, clientes, financeiro, painel de resultados e operação local no Windows.
 		</p>
+		<div class="insight">
+			<strong>Transparência de produto:</strong> o Ink Agenda v2.0.0 da matriz é um aplicativo Windows Desktop em Java 21 + JavaFX 21, com SQLite local. O app Android em produção existe na oficina/loja, mas o código Android não está neste repositório matriz.
+		</div>
 
 		<hr>
 
@@ -63,16 +66,16 @@
 			Uma verdade que ninguém fala sobre software moderno: a maior obsessão que você tem é com <strong>sincronização.</strong> Com dados no lugar certo no momento certo. Com redundância. Com backups automáticos. Com a ilusão de segurança.
 		</p>
 		<p>
-			Mas tem uma coisa que todo mundo esqueceu: <strong>o arquivo local é soberano.</strong> Se está no seu disco, está seguro. Se está criptografado no seu disco, está inviolável. Se você tem uma cópia criptografada em outro lugar? Você é praticamente imortal.
+			Mas tem uma coisa que todo mundo esqueceu: <strong>operação local reduz dependência.</strong> Se a agenda está no SQLite local, o estúdio continua consultando clientes, sessões e movimentações mesmo sem internet. Isso não torna o sistema imortal. Torna o dia de trabalho menos refém da conexão.
 		</p>
 		<p>
-			Ink Agenda é exatamente isso. É um arquivo. Um registro. Uma agenda. Um diário. Tudo isso sincronizado offline-first. Ou seja, o sistema presume que você <strong>não</strong> tem internet. Presume que você está no escuro. E funciona mesmo assim.
+			Ink Agenda é exatamente isso no escopo dele: uma ferramenta de gestão para tatuadores. Agenda sessões, organiza clientes, registra receitas e despesas, acompanha saldo, exibe indicadores e roda no computador do profissional.
 		</p>
 		<p>
-			Internet chega? Blim. Sincroniza tudo. Propaga para outros discos. Deixa cópias em vários lugares. Mas se internet não chegar, você continua trabalhando. Seu arquivo continua crescendo. Suas anotações continuam sendo registradas. Porque está tudo local. Porque você controla.
+			A autenticação padrão é local: celular e senha. A integração Google via OIDC existe como opção, com Authorization Code + PKCE, mas só entra quando o tatuador configura credenciais reais. Se não configurar, o app ignora o fluxo OIDC e segue com autenticação local.
 		</p>
 		<div class="insight">
-			<strong>A Filosofia:</strong> "O que desce?" Offline-first. "O que sobe?" Sincroniza quando der. "O que fica?" Tudo. Sempre. Para sempre.
+			<strong>A Filosofia:</strong> offline-first aqui não significa promessa mística de permanência eterna. Significa que nenhuma funcionalidade principal depende da internet para o estúdio trabalhar.
 		</div>
 		<p>
 			O que é eterno não pede permissão para existir. A marca na sua pele é sua. O arquivo no seu disco é seu. O registro que você faz é seu. Ninguém consegue apagar a tinta que já seca.
@@ -82,28 +85,25 @@
 
 		<h2>A Anatomia da Permanência</h2>
 		<p>
-			Vou explicar como Ink Agenda diferencia de uma app qualquer que promete "persistência".
+			Vou explicar como Ink Agenda se diferencia de uma app genérica de agenda.
 		</p>
 		<p>
-			A maioria apps: "Você coloca dado no cliente, a gente sincroniza com cloud, depois propaga para outros clientes. Se o cloud cai, você tá ferrado."
+			A maioria das agendas quer vender sincronização antes de entender a operação. O tatuador precisa do básico funcionando: cliente, sessão, horário, valor, histórico, despesas e resultado do mês.
 		</p>
 		<p>
-			Ink Agenda: "Você coloca dado no cliente, fica lá seguro. Quando tiver internet, a gente sincroniza. Se não tiver internet, não importa. Seu dado está criptografado localmente, à prova de tudo."
+			Ink Agenda começa pelo chão da loja: agenda visual, cadastro de clientes, controle financeiro e painel de resultados. O banco local é SQLite. A stack da matriz é Java 21, JavaFX 21 e Maven. Sem Docker, sem Firebase e sem banco externo obrigatório.
 		</p>
 		<p>
-			Como funciona tecnicamente? É Merkle Tree. Você sabe o que é Merkle Tree? É uma estrutura de dados que funciona tipo isto:
+			Como funciona tecnicamente? O produto trabalha com entidades de domínio como agendamentos e despesas, repositórios próprios e telas desktop em JavaFX. A base não é uma cadeia Merkle prometendo prova legal universal. É software de gestão local, com teste, build e distribuição controlados.
 		</p>
 		<p>
-			Cada entrada no seu arquivo gera um hash. Cada hash baseado no anterior. Cria uma corrente. Se alguém tenta mexer em uma entrada antiga? A corrente inteira quebra. É detectado. Violação comprovada.
+			A parte de identidade também é honesta. No modo padrão, celular e senha local resolvem o acesso. No modo avançado, Google OIDC com PKCE pode ser configurado por arquivo `oidc.properties` no AppData. Sem credencial real, não há teatro de login federado.
 		</p>
 		<p>
-			Você sincroniza com outro dispositivo? Os dois comparam correntes. Se estão diferentes, a gente revisa o que mudou, funde tudo de novo. Conflitos resolvidos automaticamente porque a estrutura é imutável. É journal-based. É auditoria permanente.
+			Isso protege o produto de duas tentações: vender nuvem quando a proposta é local, e vender criptografia como se ela substituísse processo de backup, operação e suporte.
 		</p>
 		<p>
-			Isso significa que seu arquivo é <strong>criptograficamente comprovado</strong> ao longo do tempo. Não é só "arquivo seguro". É arquivo que prova quando foi criado, quem criou, o que mudou. É documento legal. É composto admissível.
-		</p>
-		<p>
-			E tudo acontecendo <strong>localmente.</strong> Sem cloud. Sem servidor. Sem terceiro.
+			O que existe é suficiente: um aplicativo para Windows que ajuda o estúdio a trabalhar com menos dependência externa e mais clareza operacional.
 		</p>
 
 		<hr>
@@ -122,7 +122,7 @@
 			"Sim. Ontem."
 		</p>
 		<p>
-			"Então você não perdeu nada. Tá tudo no seu disco. Tá tudo encrypted. Tá tudo assinado. Você pode reconstruir o servidor do zero usando esse arquivo."
+			"Então você não perdeu a operação do dia. A agenda e os dados locais continuam acessíveis no computador. Depois a gente verifica backup, exportação e restauração com calma."
 		</p>
 		<p>
 			Lucas ficou em silêncio por uns segundos. Aí ele entendeu.
@@ -131,10 +131,10 @@
 			"Então... se o servidor morre, a gente só cria outro?"
 		</p>
 		<p>
-			"Exato. Você não tá presa ao servidor. O servidor é preso a você."
+			"Exato. O produto foi desenhado para não transformar internet em pré-requisito para atender cliente."
 		</p>
 		<p>
-			Isso inverte toda a dinâmica do software moderno. Você passa de "cliente dependente do servidor" para "cliente que contém verdade absoluta". O servidor vira uma cópia. Um cache. Um lugar bonito para sincronizar.
+			Isso inverte uma parte importante da dinâmica do software moderno. Você passa de "não consigo abrir agenda sem conexão" para "consigo trabalhar localmente e depois resolver integração, autenticação e publicação".
 		</p>
 		<p>
 			Mas se cai? Não importa. Você tem a verdade.
@@ -144,48 +144,35 @@
 
 		<h2>O Arquivo Perene</h2>
 		<p>
-			Tem um detalhe que eu gosto de reforçar: Ink Agenda não é "banco de dados" no sentido tradicional. Não é tabelas. Não é esquemas. Não é SQL.
+			Tem um detalhe que eu gosto de reforçar: Ink Agenda não é um manifesto genérico de dados eternos. É produto de gestão.
 		</p>
 		<p>
-			Ink Agenda é arquivo. É texto. É JSON. É estrutura que qualquer sistema consegue ler. A prova de futuro. Se você abrir esse arquivo em 50 anos, você ainda consegue ler. Porque é formato aberto. Porque é legibilidade. Porque é markdown + criptografia, não um blob binário de banco proprietário.
+			O coração dele é SQLite local, telas JavaFX e domínio de agenda/financeiro. O objetivo não é provar admissibilidade jurídica de cada linha. É permitir que o tatuador organize sessão, cliente, despesa e resultado sem depender de plataforma externa para o básico.
 		</p>
 		<p>
-			Isso é revolucionário porque meio da indústria está presa em formatos proprietários. Você tem dados em um banco que só funciona em uma versão da Oracle que só roda em um sistema que só fabricava até 2010. Seu dado está morto. Preso. Inacessível.
+			Isso é menos cinematográfico, mas mais útil. O estúdio sabe onde o dado está, sabe qual tecnologia roda o app e sabe o que precisa para executar: Windows, JDK 21 e o pacote gerado.
 		</p>
 		<p>
-			Ink é oposto. Ink é "arquivo que um editor de texto consegue abrir". Ink é "histórico que você consegue rastrear com git". Ink é "futuro-prova porque é texto".
+			Ink é "agenda que abre quando precisa abrir". É "financeiro que ajuda a enxergar o mês". É "cliente com histórico". Para um estúdio real, isso vale mais que uma promessa vaga de eternidade digital.
 		</p>
 		<p>
-			E porque é texto, você consegue fazer merge. Trabalhar colaborativo. Cada um com sua cópia, cada um editando, e depois a gente funde tudo usando regras de resolução de conflitos que você controla.
-		</p>
-		<p>
-			Isso é git para dados de negócio. Para agenda. Para registro de transações. Para história que importa.
+			O resto é disciplina de produto: backup, teste, versão, suporte e documentação. Tinta boa também precisa de cuidado depois da sessão.
 		</p>
 
 		<hr>
 
 		<h2>Fragmento: O Arquivo Que Sobrevive</h2>
 		<div class="quote-box">
-			<strong>A Sequência: Persistência Offline, Sincronização, Recuperação Autossuficiente</strong><br><br>
-			<pre><code>[2026-10-03T10:00:00Z] INK_AGENDA_INIT | Local_Archive=ACTIVE | Sync_Status=READY | Encryption=AES_256
-[2026-10-03T10:00:15Z] OFFLINE_DETECTION | Network_Status=CONNECTED | Primary_Sync_Node=AVAILABLE | Archive_Health=100%
-[2026-10-03T10:30:00Z] TRANSACTION_WRITE | Entry_ID=TRX_2026_10_03_001 | Digest=MERKLE_HASH_456...F789 | Local_Confirmation=IMMEDIATE
-[2026-10-03T10:30:01Z] REDUNDANCY_CHECK | Copia_1=VERIFIED | Copia_2=SYNCED | Copia_3=IN_TRANSIT | Status=SAFE
-
-[2026-10-03T14:15:00Z] NETWORK_LOSS_DETECTED | Signal=GONE | Graceful_Disconnect=NOW | Mode=OFFLINE_OPERATION
-[2026-10-03T14:15:01Z] ARCHIVE_CONTINUES | Transactions_Queued=12 | Merkle_Chain=GROWING_LOCAL | Local_Encryption=ENABLED
-[2026-10-03T14:15:02Z] STATUS_REPORT | Cloud_Server=OFFLINE | Edge_Cache=STALE | Local_Archive=PERFECT
-[2026-10-03T14:15:03Z] USER_CONFIDENCE | System_Never_Stopped=TRUE | Data_Never_Lost=TRUE | Archive_Is_Source_Of_Truth=YES
-
-[2026-10-03T18:45:00Z] NETWORK_RECOVERY | Signal=RESTORED | Replication_Start=NOW
-[2026-10-03T18:45:05Z] CONFLICT_RESOLUTION | Server_Version_vs_Local=COMPARING | Result=LOCAL (LATEST) | Merge=AUTOMATIC
-[2026-10-03T18:45:10Z] CONSENSUS_ACHIEVED | All_Copies_Synchronized | Merkle_Trees_Aligned | Safe_Propagation=COMPLETE
-[2026-10-03T18:45:11Z] PROOF_OF_RESILIENCE | Total_Downtime=4_Hours_30_Minutes | Data_Loss=ZERO | System_Never_Blinked_Local
-
-[2026-10-03T18:45:12Z] FINAL_STATE | Archive=PERMANENT | Cloud_Is_Echo | Your_Disk=The_Truth | Permanence=ACHIEVED</code></pre>
+			<strong>A Sequência: Agenda Local, Autenticação e Operação</strong><br><br>
+			<pre><code>[2026-10-03T10:00:00Z] INK_AGENDA_INIT | Runtime=Java_21 | UI=JavaFX_21 | Database=SQLite_local
+[2026-10-03T10:00:15Z] AUTH_MODE | Default=phone_password | OIDC_Google=optional | PKCE=available_when_configured
+[2026-10-03T10:30:00Z] APPOINTMENT_WRITE | Client=registered | Session=scheduled | Storage=local_sqlite
+[2026-10-03T11:10:00Z] FINANCE_ENTRY | Revenue=tattoo_session | Expense=materials | Dashboard=updated
+[2026-10-03T14:15:00Z] NETWORK_LOSS | Internet=unavailable | CoreFeatures=working | CloudDependency=false
+[2026-10-03T18:45:00Z] SUPPORT_CHECK | Backup=operator_responsibility | Distribution=controlled | ProductScope=studio_management</code></pre>
 		</div>
 		<p>
-			Viu a sequência? O arquivo local cresce enquanto a rede está fora. Quando rede volta, sincroniza sem conflito porque local é a verdade. Local é sempre o vencidor.
+			Viu a sequência? Ela não promete milagre. Promete o que o produto entrega: agenda, financeiro, cliente, autenticação local e banco SQLite rodando perto do usuário.
 		</p>
 
 		<hr>
@@ -201,50 +188,32 @@
 			E seu arquivo? Desaparece. Ou fica refém atrás de um paywall de API. Ou fica em formato que você não consegue recuperar.
 		</p>
 		<p>
-			Ink Agenda? Ink é arquivo. É tinta na sua pele. Você pode sair dessa empresa, levar seu arquivo, rodar em outro sistema amanhã. Porque é texto. Porque é aberto. Porque é seu.
+			Ink Agenda? Ink é agenda e gestão local. O foco não é competir com todo SaaS do planeta. É dar ao estúdio uma ferramenta menos dependente de internet para organizar trabalho e dinheiro.
 		</p>
 		<p>
-			A ironia que expõe a indústria: a mega empresa multi-bilionária gasta bilhões em infraestrutura. E você consegue a mesma coisa com um disco rígido de R$ 100 que você nunca precisa dizer para ninguém.
+			A ironia que expõe a indústria: às vezes o problema não pede uma arquitetura planetária. Pede um app local bem feito, backup bem explicado e usuário sabendo onde está o próprio dado.
 		</p>
 		<p>
-			Eles têm Golias. Você tem David. David tem arquivo local. E arquivo local nunca morre.
+			Eles têm Golias. Você tem David. David tem SQLite, JavaFX e rotina de backup. Menos épico. Mais usável.
 		</p>
 
 		<hr>
 
-		<h2>Amarra: Convergência — Os Seis Pilares Se Tocam</h2>
+		<h2>Amarra: O Lugar do Ink no Portfólio</h2>
 		<p>
-			Agora você tem TODOS os pilares.
+			Dentro da Cara Core, o Ink Agenda ocupa um lugar claro: gestão de agenda e finanças para tatuadores e estúdios, com operação local e autenticação simples por padrão.
 		</p>
 		<p>
-			<strong>PDV (Sobrevivência):</strong> Máquina sem internet funciona. Transações locais acumulam.
+			Ele pode conversar com conceitos de identidade, offline-first e autonomia local, mas não precisa virar todos os produtos ao mesmo tempo. Reino OIDC e Área 51 aprofundam identidade. PDV cuida de ponto de venda. CSO/Amarelinha trata soberania operacional. Ink cuida do estúdio.
 		</p>
 		<p>
-			<strong>OIDC (Liberdade):</strong> Você é você sem intermediário. Criptograficamente comprovado.
-		</p>
-		<p>
-			<strong>Minerador 4.0 (Valor):</strong> Você extrai dados locais, detecta padrões, gera insights que ninguém rouba.
-		</p>
-		<p>
-			<strong>ETE (Ironia):</strong> Observador central fica cego porque seu sistema é descentralizado e criptografado.
-		</p>
-		<p>
-			<strong>Ferradura (Logística):</strong> Você sincroniza com pares locais sem intermediário, confia em assinaturas de hash, coordena sem comando central.
-		</p>
-		<p>
-			<strong>Ink Agenda (Permanência):</strong> Tudo que você fez fica registrado localmente, seguro offline, comprovado criptograficamente.
-		</p>
-		<p>
-			Você junta os seis? Você não é mais cliente. Você é entidade autônoma. Você não depende de ninguém. Você é soberano completo.
-		</p>
-		<p>
-			E aí vem o acerto de contas interno: quando tudo fecha e você entende por que permanência importa.
+			Essa separação protege o produto. Quando cada oficina sabe o que entrega, o cliente entende melhor. E software entendido já começa mais forte.
 		</p>
 
 		<hr>
 
 		<h2>Hashtags</h2>
-		<div class="hash-box">#CaraCore #InkAgenda #OfflineFirst #Permanência #Eterno #MerkleTree #Criptografia #Arte #SoberaniaDigital #BrasilEmergente #SoftwareBoutique #FonteDaVerdade</div>
+		<div class="hash-box">#CaraCore #InkAgenda #Java21 #JavaFX #SQLite #OfflineFirst #Tatuagem #GestaoDeEstudio #Agenda #Financeiro #OIDC #SoftwareBoutique</div>
 
 		<hr />
 
