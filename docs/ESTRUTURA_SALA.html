@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Estrutura da sala — Sala de Notícias</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="assets/css/sala.css">
+</head>
+<body class="sala-page">
+    <header class="sala-header" role="banner">
+        <div class="sala-header-inner">
+            <a class="sala-header-brand" href="index.html"><img src="assets/img/logo.png" alt="" class="sala-header-logo" width="40" height="36" decoding="async"><span class="sala-header-text">Sala de Notícias · Manual · Plano e campanhas</span></a>
+        </div>
+    </header>
+    <div class="sala-body">
+        <nav class="sala-nav" aria-label="Navegação da sala">
+            <div class="sala-nav-logo">Cara Core Informática</div>
+            <p class="sala-nav-title">Plano e campanhas</p>
+            <ul>
+                <li><a href="index.html">Controle (esta página)</a></li>
+                <li><a href="opera-sala.html">Para quem opera</a></li>
+                <li><a href="feedback.html">Canal de feedback</a></li>
+                <li><a href="facebook/facebook.html">Facebook</a></li>
+                <li><a href="instagram/instagram.html">Instagram</a></li>
+                <li><a href="linkedin/linkedin.html">LinkedIn</a></li>
+            </ul>
+            <div class="sala-nav-footer">
+                <a href="LEIGO_C1_C2_C3_C4.html">Passo a passo C1–C4</a>
+                <a href="CAIXA_FERRAMENTAS_6_SCRIPTS.html">Caixa de ferramentas (6 scripts)</a>
+                <a href="prompts-imagem-ia.html">Prompts IA de imagem</a>
+                <a href="ESTRUTURA_SALA.html" class="active">Estrutura da sala</a>
+                <a href="LEIA_PRIMEIRO_REPOSITORIO.html">Leia primeiro (repo)</a>
+            </div>
+        </nav>
+        <main class="sala-main" id="conteudo">
+            <h1>Estrutura da sala</h1>
+            <p class="sala-doc-nav"><a href="index.html">← Voltar ao Controle</a> · <a href="LEIA_PRIMEIRO_REPOSITORIO.html">Leia primeiro (repo)</a></p>
+
+            <article class="sala-doc">
+                <h2>ESTRUTURA DA SALA — Novo cenário</h2>
+                <p><strong>LÓGICA DA SALA:</strong> D:\dev\caracore-site\sala (conteúdo, planos, planilha, regis, assets, feedback, opera-sala, LEIGO, etc.). Toda a lógica do MKT da sala está aqui.</p>
+                <ul>
+                    <li><strong>Sala:</strong> D:\dev\caracore-site\sala</li>
+                    <li><strong>Repositório do site:</strong> D:\dev\caracore-site (contém sala/; dentro de sala/, redes/ = retro, gram, face)</li>
+                    <li><strong>Portal</strong> (apenas login/sessão): caracore-site/caracore-mkt (Node.js); senha inicial: nota_cc</li>
+                    <li><strong>Oficina</strong> (6 scripts Python): canónico em D:\dev\caracore-tools\scripts\sala (rodar da raiz com py -3 scripts\sala\validar_sala.py).</li>
+                    <li>O Seed e o MKT são da Cara Core; não vendemos.</li>
+                </ul>
+
+                <h2>LAYOUT PADRÃO (todas as páginas internas)</h2>
+                <ul>
+                    <li><strong>Topo (header):</strong> "Sala de Notícias · Manual · Plano e campanhas" — link para index.html.</li>
+                    <li><strong>Navegação à esquerda:</strong> Controle, Para quem opera, Canal de feedback, Facebook, Instagram, LinkedIn; rodapé da nav: Passo a passo C1–C4, Caixa de ferramentas, Prompts IA, Estrutura da sala, Leia primeiro. Apenas links relativos; navegação não sai da sala.</li>
+                    <li><strong>Meio (main):</strong> conteúdo da página. Máx. 720px, tipografia legível (jovens 16–20 anos, ensino médio). Perfil minimalista e organizado (bibliotecária).</li>
+                    <li><strong>Rodapé (footer):</strong> "Sala de Notícias · Documentação institucional · Nenhum dado pessoal coletado".</li>
+                    <li><strong>CSS:</strong> assets/css/sala.css. Referência de nav para subpastas: NAV_PADRAO_SUBPASTA.txt.</li>
+                </ul>
+
+                <h2>O QUE FICA DENTRO DA SALA</h2>
+                <pre class="sala-pre">index.html                — Início / Sala de Operações (plano e campanhas)
+opera-sala.html           — Para quem opera
+feedback.html             — Canal de feedback (após login)
+login.html                — Tela de login (portal serve com senha nota_cc)
+LEIA_PRIMEIRO_REPOSITORIO.html
+LEIGO_C1_C2_C3_C4.html    — Passo a passo (Passos 1–4)
+C4_MODELO.html            — Modelo C4
+CAIXA_FERRAMENTAS_6_SCRIPTS.html
+regis/                    — Planos, LIA_CORELLI_VOZ, OPERA_SALA, templates
+prompts-ia/               — ESTRATEGIA_COPIAR_SALVAR.html, soberania, etc.
+facebook/                 — Campanha Facebook (plano, diretrizes, manual)
+instagram/                — Campanha Instagram (plano, diretrizes, manual)
+linkedin/                 — Campanha LinkedIn (plano, diretrizes; articles 87, 88, 89)
+redes/                    — Materiais de marketing digital por rede:
+    sources/sala/redes/retro — Retro · LinkedIn (fonte interna neste repositório; referência pública em https://tools.caracore.com.br/sala/linkedin/linkedin.html)
+  redes/gram              — Gram · Instagram (instagram.html)
+  redes/face              — Face · Facebook (facebook.html)
+assets/css/, assets/img/, assets/js/, assets/svg/
+entrega/                  — face/, gram/, retro/ (transportar para redes/)
+scripts/                  — Scripts Python legados</pre>
+
+                <h2>MATERIAIS DE MARKETING DIGITAL (dentro da sala)</h2>
+                <p>Os portais de material por rede ficam em sala/redes/: gram (Instagram), face (Facebook) e o legado Retro em <code>sources/sala/redes/retro</code>, com referência pública canônica em <strong>tools.caracore.com.br</strong> (<code>sala/linkedin/linkedin.html</code>). Ver sala/redes/README.txt. Plano e campanhas ficam em sala/facebook/, sala/instagram/, sala/linkedin/.</p>
+                <p><strong>Resguardo:</strong> materiais públicos, domínio da matriz Cara Core; apenas o que publicamos nas redes, em obediência às redes detentoras (LinkedIn, Instagram, Facebook).</p>
+
+                <h2>OFICINA (fora do repo da sala)</h2>
+                <p>D:\dev\caracore-mkt — Projeto Python (Baseline, Microsoft Store). Scripts: iniciar_trabalho, validar_trabalho_executado, validar_sala, transportar_para_salas, validar_entrega_face, validar_entrega_gram, validar_entrega_retro. Defina CARACORE_REPO=D:\dev\caracore-site se necessário.</p>
+
+                <h2>ACESSO À SALA</h2>
+                <p>Via portal (caracore-site/caracore-mkt): node server.js → http://localhost:3333. Login: admin / nota_cc (senha inicial). Depois acesse index.html, feedback, etc.</p>
+            </article>
+
+            <p class="sala-doc-nav"><a href="index.html">← Voltar ao Controle</a> · <a href="LEIA_PRIMEIRO_REPOSITORIO.html">Leia primeiro (repo)</a></p>
+        </main>
+    </div>
+    <footer class="sala-footer" role="contentinfo">
+        <a href="index.html">Sala de Notícias</a> · Documentação institucional · Nenhum dado pessoal coletado
+    </footer>
+</body>
+</html>

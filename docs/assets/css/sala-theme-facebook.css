@@ -1,0 +1,516 @@
+/* Facebook-inspired — Sala de Operações · Cara Core (uso interno, não é o site da Meta) */
+:root {
+    --fb-blue: #1877f2;
+    --fb-blue-hover: #166fe5;
+    --fb-blue-light: #e7f3ff;
+    --fb-gray-bg: #f0f2f5;
+    --fb-card: #ffffff;
+    --fb-text: #050505;
+    --fb-text-secondary: #65676b;
+    --fb-border: #dddfe2;
+    --fb-radius: 8px;
+    --fb-radius-lg: 12px;
+}
+
+/* ---------- Base: páginas só com tema (artefatos) ---------- */
+body.sala-theme-facebook {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--fb-gray-bg);
+    color: var(--fb-text);
+    margin: 0;
+    line-height: 1.55;
+}
+
+body.sala-theme-facebook .container {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 3rem;
+    text-align: center;
+}
+
+body.sala-theme-facebook .container > h1,
+body.sala-theme-facebook .container > .meta-line {
+    text-align: center;
+}
+
+body.sala-theme-facebook .container h2 {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--fb-text);
+    margin: 1.5rem 0 0.5rem;
+}
+
+body.sala-theme-facebook .container .post-text,
+body.sala-theme-facebook .container .editorial-block,
+body.sala-theme-facebook .container ul,
+body.sala-theme-facebook .container ol,
+body.sala-theme-facebook .container .caption-sample,
+body.sala-theme-facebook .container .standard-caption,
+body.sala-theme-facebook .container .avoid-box,
+body.sala-theme-facebook .container .table-wrap {
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 38rem;
+}
+
+body.sala-theme-facebook .back-link {
+    display: inline-block;
+    margin-bottom: 1.25rem;
+    color: var(--fb-blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+body.sala-theme-facebook .back-link:hover {
+    text-decoration: underline;
+}
+
+body.sala-theme-facebook .container h1 {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--fb-blue);
+    border-bottom: 2px solid rgba(24, 119, 242, 0.3);
+    padding-bottom: 0.65rem;
+    margin-top: 0;
+}
+
+body.sala-theme-facebook .post-text {
+    background: var(--fb-card);
+    border-radius: var(--fb-radius-lg);
+    padding: 1.35rem 1.5rem;
+    margin: 1rem auto;
+    border-left: 4px solid var(--fb-blue);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+body.sala-theme-facebook .post-text p {
+    margin: 0 0 0.75rem;
+    color: var(--fb-text);
+}
+
+body.sala-theme-facebook .post-text p:last-child {
+    margin-bottom: 0;
+}
+
+body.sala-theme-facebook .editorial-block {
+    background: var(--fb-blue-light);
+    border-radius: var(--fb-radius-lg);
+    padding: 1.15rem 1.35rem;
+    margin: 1.15rem auto;
+    border: 1px solid rgba(24, 119, 242, 0.22);
+}
+
+body.sala-theme-facebook .editorial-block .label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--fb-blue);
+    text-transform: uppercase;
+    margin: 0.85rem 0 0.3rem;
+}
+
+body.sala-theme-facebook .editorial-block .label:first-child {
+    margin-top: 0;
+}
+
+body.sala-theme-facebook .caption-sample,
+body.sala-theme-facebook .standard-caption {
+    background: var(--fb-card);
+    padding: 0.75rem 1rem;
+    border-radius: var(--fb-radius);
+    border-left: 3px solid var(--fb-blue);
+    font-size: 0.9rem;
+    color: var(--fb-text);
+    margin: 0.5rem auto;
+}
+
+body.sala-theme-facebook .svg-wrap {
+    margin: 1rem auto;
+    max-width: 28rem;
+}
+
+body.sala-theme-facebook .svg-wrap img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: var(--fb-radius);
+}
+
+body.sala-theme-facebook a:not(.back-link) {
+    color: var(--fb-blue);
+}
+
+body.sala-theme-facebook .meta-line,
+body.sala-theme-facebook .footer-note,
+body.sala-theme-facebook .lgpd {
+    color: var(--fb-text-secondary);
+    font-size: 0.9rem;
+}
+
+body.sala-theme-facebook .footer-note {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.8rem;
+}
+
+/* Artefatos sem .container: coluna central */
+body.sala-theme-facebook:not(.sala-page) > *:not(script):not(style) {
+    max-width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.sala-theme-facebook:not(.sala-page) {
+    padding: 2rem 1rem 3rem;
+    text-align: center;
+}
+
+body.sala-theme-facebook:not(.sala-page) h1,
+body.sala-theme-facebook:not(.sala-page) h2 {
+    text-align: center;
+}
+
+body.sala-theme-facebook:not(.sala-page) ul,
+body.sala-theme-facebook:not(.sala-page) ol,
+body.sala-theme-facebook:not(.sala-page) p { text-align: left; }
+
+body.sala-theme-facebook:not(.sala-page) a[href="facebook.html"] {
+    font-weight: 600;
+    color: var(--fb-blue);
+}
+
+/* ---------- Hub: layout completo da Sala + tema ---------- */
+body.sala-theme-facebook.sala-page {
+    background: var(--fb-gray-bg);
+    color: var(--fb-text);
+}
+
+body.sala-theme-facebook.sala-page .sala-header {
+    background: var(--fb-blue);
+    border-bottom: none;
+}
+
+body.sala-theme-facebook.sala-page .sala-header-brand,
+body.sala-theme-facebook.sala-page .sala-header-text,
+body.sala-theme-facebook.sala-page .sala-header-inner {
+    color: #fff !important;
+}
+
+body.sala-theme-facebook.sala-page .sala-header-logo {
+    filter: brightness(0) invert(1);
+}
+
+body.sala-theme-facebook.sala-page .sala-nav {
+    background: #fff;
+    border-right: 1px solid var(--fb-border);
+}
+
+body.sala-theme-facebook.sala-page .sala-nav-logo {
+    color: var(--fb-blue) !important;
+}
+
+body.sala-theme-facebook.sala-page .sala-nav-title {
+    color: var(--fb-text-secondary) !important;
+}
+
+body.sala-theme-facebook.sala-page .sala-nav a {
+    color: var(--fb-text);
+}
+
+body.sala-theme-facebook.sala-page .sala-nav a:hover,
+body.sala-theme-facebook.sala-page .sala-nav a.active {
+    color: var(--fb-blue);
+}
+
+body.sala-theme-facebook.sala-page .sala-nav .sala-nav-footer {
+    border-top-color: var(--fb-border);
+}
+
+body.sala-theme-facebook.sala-page .sala-nav .sala-nav-footer a {
+    color: var(--fb-text-secondary);
+}
+
+body.sala-theme-facebook.sala-page .sala-main {
+    background: transparent;
+    max-width: none;
+}
+
+body.sala-theme-facebook.sala-page .sala-main .wrap {
+    max-width: 42rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+body.sala-theme-facebook.sala-page .sala-main h1 {
+    color: var(--fb-blue);
+    border-bottom-color: rgba(24, 119, 242, 0.35);
+    font-family: inherit;
+}
+
+body.sala-theme-facebook.sala-page .sala-main p,
+body.sala-theme-facebook.sala-page .sala-main li {
+    color: var(--fb-text);
+}
+
+body.sala-theme-facebook.sala-page .sala-main .wrap > p,
+body.sala-theme-facebook.sala-page .sala-main .wrap > ul.idea-list {
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 38rem;
+}
+
+body.sala-theme-facebook.sala-page .month-block {
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.25rem;
+    border-radius: var(--fb-radius-lg);
+    background: var(--fb-card);
+    border: 1px solid var(--fb-border);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 38rem;
+}
+
+body.sala-theme-facebook.sala-page .month-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--fb-blue);
+    margin: 0 0 0.65rem;
+}
+
+body.sala-theme-facebook.sala-page .block-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--fb-blue);
+    margin: 1rem 0 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+body.sala-theme-facebook.sala-page .caption-sample {
+    background: var(--fb-blue-light);
+    padding: 0.75rem 1rem;
+    border-radius: var(--fb-radius);
+    border-left: 3px solid var(--fb-blue);
+    font-size: 0.88rem;
+    margin-top: 0.5rem;
+    color: var(--fb-text);
+    text-align: left;
+}
+
+body.sala-theme-facebook.sala-page .avoid-box {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    border-radius: var(--fb-radius-lg);
+    background: var(--fb-card);
+    border: 1px solid var(--fb-border);
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 38rem;
+}
+
+body.sala-theme-facebook.sala-page .avoid-box ul {
+    padding-left: 1.25rem;
+    color: var(--fb-text);
+}
+
+body.sala-theme-facebook.sala-page .table-wrap {
+    overflow-x: auto;
+    margin: 1rem auto;
+    max-width: 38rem;
+}
+
+body.sala-theme-facebook.sala-page .table-wrap th {
+    background: var(--fb-blue-light);
+    color: var(--fb-blue);
+}
+
+body.sala-theme-facebook.sala-page .table-wrap th,
+body.sala-theme-facebook.sala-page .table-wrap td {
+    border: 1px solid var(--fb-border);
+}
+
+body.sala-theme-facebook.sala-page ul.idea-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+    text-align: left;
+}
+
+body.sala-theme-facebook.sala-page ul.idea-list li {
+    margin-bottom: 0.55rem;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+body.sala-theme-facebook.sala-page ul.idea-list li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: var(--fb-blue);
+}
+
+body.sala-theme-facebook.sala-page .nav-links {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--fb-border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+body.sala-theme-facebook.sala-page .nav-links a {
+    color: var(--fb-blue);
+    font-weight: 600;
+}
+
+body.sala-theme-facebook.sala-page .sala-quiet {
+    color: var(--fb-text-secondary);
+    text-align: center;
+}
+
+body.sala-theme-facebook.sala-page .sala-footer {
+    background: #fff;
+    border-top: 1px solid var(--fb-border);
+    color: var(--fb-text-secondary);
+}
+
+body.sala-theme-facebook.sala-page .sala-footer a {
+    color: var(--fb-blue);
+}
+
+/* Compat: redes/face (face-header, face-card, …) */
+body.sala-theme-facebook .face-header {
+    background: var(--fb-blue);
+    color: #fff;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    text-align: center;
+}
+
+body.sala-theme-facebook .face-header h1 {
+    margin: 0;
+    font-size: 1.45rem;
+    font-weight: 600;
+}
+
+body.sala-theme-facebook .face-header p {
+    margin: 0.35rem 0 0;
+    font-size: 0.9rem;
+    opacity: 0.95;
+}
+
+body.sala-theme-facebook .face-container {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 3rem;
+    text-align: center;
+}
+
+body.sala-theme-facebook .face-card {
+    background: var(--fb-card);
+    border-radius: var(--fb-radius-lg);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--fb-border);
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.sala-theme-facebook .face-card h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--fb-text);
+    margin: 0 0 0.65rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid var(--fb-border);
+}
+
+body.sala-theme-facebook .face-card p,
+body.sala-theme-facebook .face-card li {
+    color: var(--fb-text);
+    font-size: 0.95rem;
+}
+
+body.sala-theme-facebook .face-card a {
+    color: var(--fb-blue);
+}
+
+body.sala-theme-facebook .face-flow {
+    background: var(--fb-blue-light);
+    border: 1px solid rgba(24, 119, 242, 0.25);
+    border-radius: var(--fb-radius-lg);
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem auto;
+    max-width: 38rem;
+    text-align: left;
+}
+
+body.sala-theme-facebook .face-flow h3 {
+    margin: 0 0 0.65rem;
+    font-size: 1rem;
+    color: var(--fb-blue);
+    font-weight: 600;
+}
+
+body.sala-theme-facebook .face-nav {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--fb-border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+body.sala-theme-facebook .face-nav a {
+    color: var(--fb-blue);
+    font-weight: 600;
+}
+
+body.sala-theme-facebook .face-footer {
+    margin-top: 2rem;
+    padding: 1.25rem 1rem 2rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--fb-text-secondary);
+    max-width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.sala-theme-facebook .face-footer .resguardo {
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+}
+
+body.sala-theme-facebook .prompt-box {
+    background: #f9fafb;
+    border: 1px solid var(--fb-border);
+    border-radius: var(--fb-radius);
+    padding: 1rem 1.25rem;
+    font-family: ui-monospace, monospace;
+    font-size: 0.9rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+    text-align: left;
+}
+
+@media (max-width: 640px) {
+    body.sala-theme-facebook.sala-page .sala-body {
+        flex-direction: column;
+    }
+}
