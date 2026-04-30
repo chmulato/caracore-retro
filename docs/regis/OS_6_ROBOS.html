@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Os 6 robôs — Sala de Operações</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="../assets/css/sala.css">
+</head>
+<body class="sala-page">
+    <header class="sala-header" role="banner">
+        <div class="sala-header-inner">
+            <a class="sala-header-brand" href="../index.html"><img src="../assets/img/logo.png" alt="" class="sala-header-logo" width="40" height="36" decoding="async"><span class="sala-header-text">Sala de Operações · Cara Core Informática</span></a>
+        </div>
+    </header>
+    <div class="sala-body">
+        <nav class="sala-nav" aria-label="Navegação da sala">
+            <div class="sala-nav-logo">Cara Core Informática</div>
+            <p class="sala-nav-title">Plano e campanhas</p>
+            <ul>
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="../opera-sala.html">Para quem opera</a></li>
+                <li><a href="../feedback.html">Canal de feedback</a></li>
+                <li><a href="../facebook/facebook.html">Facebook</a></li>
+                <li><a href="../instagram/instagram.html">Instagram</a></li>
+                <li><a href="../linkedin/linkedin.html">LinkedIn</a></li>
+            </ul>
+            <div class="sala-nav-footer">
+                <a href="../LEIGO_C1_C2_C3_C4.html">Passo a passo C1–C4</a>
+                <a href="../CAIXA_FERRAMENTAS_6_SCRIPTS.html">Caixa de ferramentas</a>
+                <a href="../prompts-imagem-ia.html">Prompts IA</a>
+                <a href="../ESTRUTURA_SALA.html">Estrutura da sala</a>
+                <a href="../LEIA_PRIMEIRO_REPOSITORIO.html">Leia primeiro</a>
+            </div>
+        </nav>
+        <main class="sala-main" id="conteudo">
+            <p class="sala-breadcrumb"><a href="../index.html">← Voltar à Sala de Operações</a></p>
+            <h1>Os 6 robôs</h1>
+            <p class="sala-lead">Cada script é um "robô" com nome e função clara. Sem mistério.</p>
+
+            <article class="sala-doc">
+                <section class="sala-card">
+                    <h2>Robô 01 (O Anfitrião) — iniciar_trabalho.py</h2>
+                    <p>Abre a sala, lê as tarefas pendentes e posta: "Bom dia! Temos X tarefas. Meta de hoje: R$ XX,XX em CC." Registra o início da sessão na planilha.</p>
+                </section>
+                <section class="sala-card">
+                    <h2>Robô 02 (O Auditor de Entrega) — validar_trabalho_executado.py</h2>
+                    <p>O robô do "Fim". Valida se o que foi feito está correto e fecha o cronômetro da tarefa. Atualiza trabalho feito, horas, valor CC e acumulado.</p>
+                </section>
+                <section class="sala-card">
+                    <h2>Robô 03 (O Transportador) — transportar_para_salas.py</h2>
+                    <p>Pega os artefatos (fotos/textos) da pasta de entrega e distribui para as pastas de rascunho: LinkedIn da Sala, Gram e Face (<code>sala/linkedin/</code>, <code>gram/artefatos/</code>, <code>face/artefatos/</code>).</p>
+                </section>
+                <section class="sala-card">
+                    <h2>Robô 04 (Validador Retro) — validar_entrega_retro.py</h2>
+                    <p>Checa se o post está ativo no Canal Retro (LinkedIn).</p>
+                </section>
+                <section class="sala-card">
+                    <h2>Robô 05 (Validador Gram) — validar_entrega_gram.py</h2>
+                    <p>Checa se o post está ativo no Instagram.</p>
+                </section>
+                <section class="sala-card">
+                    <h2>Robô 06 (Validador Face) — validar_entrega_face.py</h2>
+                    <p>Checa se o post está ativo no Facebook.</p>
+                </section>
+                <section>
+                    <h2>Como rodar</h2>
+                    <p>Python baseline (Microsoft Store). A partir de D:\dev\caracore-mkt:</p>
+                    <pre class="sala-pre">py -3 scripts\sala\iniciar_trabalho.py
+py -3 scripts\sala\validar_trabalho_executado.py
+py -3 scripts\sala\transportar_para_salas.py
+py -3 scripts\sala\validar_entrega_retro.py
+py -3 scripts\sala\validar_entrega_gram.py
+py -3 scripts\sala\validar_entrega_face.py</pre>
+                    <p>Ou a partir da raiz do repo canónico (caracore-tools): <code>python scripts/sala/nome.py</code></p>
+                </section>
+            </article>
+
+            <p class="sala-breadcrumb"><a href="../index.html">← Voltar à Sala de Operações</a> · <a href="GUIA_EXECUCAO_JOVEM.html">Guia (4 regras)</a> · <a href="../CAIXA_FERRAMENTAS_6_SCRIPTS.html">Caixa de ferramentas</a></p>
+        </main>
+    </div>
+    <footer class="sala-footer" role="contentinfo">
+        <a href="../index.html">Sala de Operações</a> · Documentação institucional · Nenhum dado pessoal coletado
+    </footer>
+</body>
+</html>
