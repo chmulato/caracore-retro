@@ -1,0 +1,7 @@
+﻿.feedback-consent-box { margin: 0.75rem 0 1.25rem; padding: 0.75rem 1rem; border: 1px solid #d7dbe2; border-radius: 10px; background: #fafbfc; }
+.feedback-channel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 0.75rem 0 1.5rem; }
+.feedback-channel-card { border: 1px solid #d7dbe2; border-radius: 12px; padding: 1rem; background: #fff; }
+.feedback-channel-card__label { font-weight: 700; display: inline-block; margin-bottom: 0.5rem; }
+.feedback-channel-card__btn { margin-top: 0.75rem; padding: 0.55rem 0.8rem; border: 1px solid #1f2937; border-radius: 8px; background: #1f2937; color: #fff; cursor: pointer; }
+.feedback-channel-card__btn:hover { background: #111827; }
+.sala-msg { margin-top: 0.8rem; min-height: 1.2rem; }
