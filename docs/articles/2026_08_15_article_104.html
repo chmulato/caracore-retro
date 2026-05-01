@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>A Façanha do PDV: Da Pressa à Precisão | Cara Core</title>
+	<meta name="description" content="Uma retrospectiva técnica da jornada do CaraCore PDV em 2026: mudanças de foco, pivôs de stack, crises de performance e o estado atual consolidado em maio." />
+	<meta name="author" content="Cara Core Informática" />
+	<link rel="canonical" href="https://retro.caracore.com.br/articles/2026_08_15_article_104.html" />
+	<meta property="og:title" content="A Façanha do PDV: Da Pressa à Precisão" />
+	<meta property="og:description" content="Como o CaraCore PDV atravessou mudanças de stack, reforçou qualidade e estabilizou performance até maio de 2026." />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="https://retro.caracore.com.br/articles/2026_08_15_article_104.html" />
+	<meta property="og:image" content="https://retro.caracore.com.br/articles/assets/img/article_104_01.png" />
+	<meta property="og:image:alt" content="A Façanha do PDV: Da Pressa à Precisão" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="A Façanha do PDV: Da Pressa à Precisão" />
+	<meta name="twitter:description" content="A história da virada técnica do PDV: Java 21, Spring Security 6, Quarkus, modularização e testes como contrato de performance." />
+	<meta name="twitter:image" content="https://retro.caracore.com.br/articles/assets/img/article_104_01.png" />
+	<link rel="stylesheet" href="assets/css/articles.css" />
+	<link rel="stylesheet" href="assets/css/temporada-i.css" />
+</head>
+<body>
+	<div class="container">
+		<a class="back-link" href="../index.html">&larr; Voltar para publicações</a>
+		<img src="assets/img/article_104_01.png" alt="A Façanha do PDV: Da Pressa à Precisão" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+		<h1>A Façanha do PDV: Da Pressa à Precisão</h1>
+		<div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
+			<img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
+			<span style="margin-left: 1.5rem;">15 de agosto de 2026</span>
+		</div>
+		<div class="note"><strong>Tempo estimado:</strong> ~10 minutos</div>
+
+		<div class="quote-box">
+			<strong>Gancho:</strong> a façanha do CaraCore PDV em 2026 não foi correr mais; foi aprender a correr sem quebrar o joelho técnico no meio da pista.
+		</div>
+
+		<h2>Por Que Esta História Merece Registro</h2>
+		<p>
+			Toda equipe de software gosta de contar vitórias em formato de release: versão nova, tela nova, funcionalidade nova. Mas raramente a gente documenta o que realmente separa um produto promissor de um produto confiável: os dias em que o foco muda no meio da execução, a stack é reavaliada com o sistema rodando, o desempenho vira assunto de sobrevivência e o teste deixa de ser adereço para virar contrato.
+		</p>
+		<p>
+			A história do CaraCore PDV no primeiro quadrimestre de 2026 é exatamente isso. Não é uma narrativa de linha reta. É uma travessia com curva, atrito e correção de rota. O objetivo inicial era evoluir rápido para atender a Reforma Tributária e consolidar o desktop brasileiro com Java 21. O que veio junto foi uma sequência real de decisões difíceis: migração de stack, ajuste de segurança, conflitos de execução no Windows, tensão entre velocidade e estabilidade, e uma mudança de mentalidade que hoje define a fase de maio.
+		</p>
+		<p>
+			Este artigo recompõe essa trajetória pelo histórico de commits e checkpoints técnicos: de fevereiro a maio, da fundação ao refinamento, da pressa à precisão.
+		</p>
+
+		<hr>
+
+		<h2>Capítulo 1: Fevereiro e o Terreno em Movimento</h2>
+		<p>
+			Em fevereiro, o PDV entra em uma zona de transição estrutural. O histórico mostra uma frente múltipla: reforço de distribuição Electron para Windows, evolução de segurança local, ajustes no SQLite, ampliação de testes e abertura da trilha Quarkus/Qute. Não era só trocar uma biblioteca. Era reposicionar o coração do produto para crescer sem perder o modo offline-first.
+		</p>
+		<p>
+			Nesse período surgem marcos técnicos que explicam o tamanho da aposta. A migração para Java 21 e Spring Boot 3.x aparece de forma explícita, acompanhada pela atualização para Spring Security 6 e revisão de dependências centrais. Em paralelo, aparecem commits de integração Quarkus e gestão de módulos de domínio (estoque, operador, vendedor), além de reforços na estratégia de build e release.
+		</p>
+		<p>
+			Essa sobreposição de frentes gera um padrão clássico de engenharia em crescimento: o time quer ampliar capacidade de entrega e, ao mesmo tempo, manter uma operação crítica funcionando para varejo real. É justamente aí que os desafios de performance e robustez começam a sair do rodapé e ocupar o centro da conversa.
+		</p>
+		<div class="insight">
+			<strong>Primeira virada de foco:</strong> de "entregar features" para "garantir base de execução". Sem base, feature vira dívida com prazo curto.
+		</div>
+
+		<hr>
+
+		<h2>Capítulo 2: Abril e o Pico de Complexidade</h2>
+		<p>
+			Se fevereiro foi transição, abril foi teste de resistência. Em poucas semanas, o histórico concentra uma densidade alta de mudanças: segurança, fiscal, UI JavaFX, automação, pipeline, release, modularização, integração desktop/backend e governança de branches.
+		</p>
+		<p>
+			A migração do código principal para Jakarta e Spring Security 6 aparece como marco explícito. Ao redor dela, cresce um cinturão de validação: testes de API, UI smoke, TestFX, Selenium, cobertura com JaCoCo, ajustes de CI para Windows e uma política prática de gates. O recado da arquitetura fica claro: não basta migrar stack, é preciso provar comportamento.
+		</p>
+		<p>
+			O segundo eixo crítico foi segurança operacional. O movimento de senha de operador para bcrypt/MCF, a consolidação de autenticação JWT, os ajustes de sessão e os testes de status code (401, 403, 404, 409) mostram que a equipe trocou "segurança por intenção" por "segurança por evidência".
+		</p>
+		<p>
+			No fiscal, o avanço acompanha o calendário regulatório brasileiro: motor CBS/IBS, simulação tributária, PIX Split e trilhas de auditoria. Mas o detalhe importante não é só o que entrou; é como entrou. Com o tempo, o padrão passa a ser extração de regras puras, validação explícita e integração por serviços de orquestração, reduzindo acoplamento direto.
+		</p>
+		<div class="quote-box">
+			<strong>Ponto de estresse real em abril:</strong><br><br>
+			<pre><code>Mais features + mais migração + mais release + mais testes
+= mais chance de regressão se não houver disciplina de fronteira.</code></pre>
+		</div>
+
+		<hr>
+
+		<h2>Capítulo 3: Onde a Performance Virou Tema de Governança</h2>
+		<p>
+			Toda história de software maduro tem um momento em que performance deixa de ser "otimização futura" e passa a ser governança de risco. No PDV, esse momento aparece quando os problemas de execução começam a aparecer em cadeia: conflitos de lock, ruídos de build em Windows, incompatibilidades de runtime, comportamento de testes contaminados por dados e acoplamentos indevidos entre camadas.
+		</p>
+		<p>
+			A resposta da equipe não foi tentar um "patch mágico". Foi desmontar os gargalos por tipo:
+		</p>
+		<p>
+			1) <strong>Execução e empacotamento:</strong> limpeza de processos Electron/Node para evitar lock de artefato, ajuste de diretórios de saída para builds estáveis e revisão de scripts de release.<br />
+			2) <strong>Runtime backend:</strong> ajustes de versão em Quarkus/H2, melhorias de compatibilidade com GraalVM e JasperReports, e correções em inicialização/paths para reduzir fragilidade operacional.<br />
+			3) <strong>Banco e testes:</strong> redução de colisão de IDs, isolamento melhor de seed em perfil de teste, uso de dados únicos e reforço de transacionalidade para evitar contaminação entre cenários.<br />
+			4) <strong>Resposta HTTP e API:</strong> consolidação de helpers de resposta e padronização de códigos, reduzindo ramificações repetidas nos handlers.
+		</p>
+		<p>
+			O efeito desse pacote é maior do que parece. Quando a equipe resolve o caminho de build, runtime, persistência e contrato de erro ao mesmo tempo, ela reduz o custo de cada próxima entrega. Performance aqui não significa só "mais rápido". Significa "menos imprevisível".
+		</p>
+		<div class="insight">
+			<strong>Segunda virada de foco:</strong> de "performance como métrica" para "performance como previsibilidade de operação".
+		</div>
+
+		<hr>
+
+		<h2>Capítulo 4: A Mudança de Stack Não Foi Troca, Foi Composição</h2>
+		<p>
+			Olhando de fora, alguém pode resumir a fase como "migração para Java 21" ou "adoção de Quarkus". Isso simplifica demais. O que aconteceu na prática foi uma composição de stack orientada por contexto de produto desktop brasileiro.
+		</p>
+		<p>
+			O PDV consolidou uma base híbrida e pragmática: Java 21 no núcleo, Spring Boot 3.x e Spring Security 6 nas frentes de segurança e serviços já maduros, Quarkus em trilhas de modernização e execução otimizada, JavaFX como camada de operação local, Electron como distribuição e experiência desktop, SQLite como soberania de dados local, e uma malha de testes para validar integração ponta a ponta.
+		</p>
+		<p>
+			Essa composição permite algo raro: evoluir sem destruir a base instalada. Em vez de apostar em uma ruptura única e arriscada, a equipe preferiu transições guiadas por evidência. Onde a stack nova dava ganho claro, ela avançava. Onde havia risco de regressão operacional, entrava gate de validação.
+		</p>
+		<p>
+			Do ponto de vista de negócio, essa decisão foi decisiva para um produto que precisa lidar com fiscal, vendas, autenticação e operação local em ambientes heterogêneos de hardware e conectividade.
+		</p>
+
+		<hr>
+
+		<h2>Capítulo 5: Maio e o Estado da Jornada na Época</h2>
+		<p>
+			Chegamos ao ponto que interessa para decisão executiva: onde estávamos em maio? O histórico do dia 01/05 mostrou um padrão de maturidade crescente. Em vez de uma enxurrada de funcionalidades soltas, apareceu uma sequência de refactors dirigidos por qualidade de domínio.
+		</p>
+		<p>
+			Duas frentes sintetizam isso com clareza:
+		</p>
+		<p>
+			<strong>Frente fiscal modular:</strong> extração de políticas puras de configuração fiscal e sincronização de tabela (validação de alíquota, vigência, NCM, janela de atualização), com serviços de aplicação delegando regra para o domínio e mantendo persistência/orquestração separadas.<br />
+			<strong>Frente de API consistente:</strong> consolidação de respostas REST em utilitário comum para padronizar tratamento de erro, reduzir duplicação e melhorar legibilidade/manutenibilidade dos handlers.
+		</p>
+		<p>
+			Esse movimento veio acompanhado de evidência de gate: crescimento de suíte de testes, validação de integração JavaFX, validação de status codes críticos e continuidade de smoke para cenários sensíveis. Em linguagem simples: o produto não estava só "funcionando"; estava aprendendo a se defender de regressão.
+		</p>
+		<div class="quote-box">
+			<strong>Onde estávamos em maio, em uma linha:</strong><br><br>
+			<pre><code>Menos acoplamento, mais política pura, mais teste útil, mais previsibilidade de entrega.</code></pre>
+		</div>
+
+		<hr>
+
+		<h2>O Que Esta Façanha Ensina</h2>
+		<p>
+			A maior lição dessa trajetória não está em um commit específico. Está na mudança de postura técnica ao longo dos meses. O PDV saiu de uma fase de aceleração orientada por necessidade imediata para uma fase de aceleração orientada por engenharia sustentável.
+		</p>
+		<p>
+			Isso aparece em cinco aprendizados concretos:
+		</p>
+		<p>
+			1) <strong>Migrar stack sem gate é aposta, não estratégia.</strong><br />
+			2) <strong>Performance sem previsibilidade é ilusão de curto prazo.</strong><br />
+			3) <strong>Segurança real nasce de contrato testável, não de intenção declarada.</strong><br />
+			4) <strong>Domínio fiscal exige regra pura e rastreável, não regra espalhada.</strong><br />
+			5) <strong>Produto desktop soberano precisa de disciplina de release tão forte quanto disciplina de código.</strong>
+		</p>
+		<p>
+			No fim, a façanha não foi "fazer tudo de uma vez". Foi atravessar uma janela intensa de mudança e terminar maio melhor organizado do que começou fevereiro.
+		</p>
+
+		<hr>
+
+		<h2>Amarra: Da Pressa à Precisão</h2>
+		<p>
+			A história do CaraCore PDV em 2026 prova um ponto simples e difícil: equipe madura não é a que evita crise; é a que transforma crise em método. O histórico de GitHub revela exatamente isso. A cada desafio, houve ajuste de foco. A cada pivot de stack, houve reforço de teste. A cada fricção de performance, houve intervenção estrutural.
+		</p>
+		<p>
+			Hoje, olhando para o que já estava consolidado em maio, o produto está em um lugar mais sólido para seguir rumo ao que realmente importa no varejo brasileiro: estabilidade operacional, conformidade fiscal, segurança de ponta a ponta e evolução contínua sem quebrar a confiança de quem depende do sistema para vender.
+		</p>
+		<p>
+			Essa é a façanha que vale contar na Sala Retro: não a fantasia de velocidade infinita, mas a construção paciente de um PDV que aguenta o mundo real.
+		</p>
+
+		<div class="insight">
+			<strong>Registro de método:</strong> este texto foi construído a partir do histórico técnico do repositório PDV (janeiro-maio/2026) e checkpoints de validação, com foco em desafios, mudança de foco, stack e estado operacional.
+		</div>
+
+		<h2>Hashtags</h2>
+		<div class="hash-box">#CaraCore #CaraCorePDV #EngenhariaDeSoftware #Java21 #SpringBoot3 #SpringSecurity6 #Quarkus #JavaFX #Electron #SQLite #ReformaTributaria #Performance #Testes #Arquitetura #SoftwareSoberano</div>
+
+		<hr />
+
+		<h3>Contato</h3>
+		<ul>
+			<li><strong>E-mail:</strong> suporte@caracore.com.br</li>
+			<li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
+			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
+		</ul>
+
+		<div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
+			<strong>Conheça a Cara Core Informática</strong><br />
+			<span style="font-size:.85rem;">Software soberano, arquitetura resiliente e produtos pensados para a realidade brasileira.</span><br />
+			<a href="https://www.caracore.com.br" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Conhecer a Cara Core</a>
+		</div>
+
+		<p style="text-align:center; font-size:.85rem; color:#6b7280; margin-top:3rem;">
+			<em>Artigo publicado em 15 de agosto de 2026</em><br>
+			© 2026 Cara Core Informática. Todos os direitos reservados.
+		</p>
+	</div>
+</body>
+</html>
