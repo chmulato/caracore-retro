@@ -63,10 +63,10 @@
 			Do outro lado, temos a colaboração entre quadrados — o Reino das Identidades Federadas. Um modelo onde <strong>você é o detentor da sua própria chave</strong>, mas escolhe com quem compartilhar confiança. Seu token federado é como um passaporte — você o carrega, o mostra, e prova quem você é. A autoridade por trás daquele passaporte? É você, em parceria com quem você decide confiar.
 		</p>
 		<p>
-			OIDC é isso. OAuth 2.0 é o mecanismo, mas OIDC é a revolução. Porque deixa você ser o seu próprio provedor de identidade. Ou, se quiser delegar, delega para alguém que <strong>você escolhe e que você controla.</strong>
+			OIDC organiza essa conversa. OAuth 2.x cuida da autorização; OIDC acrescenta identidade verificável ao fluxo. Isso não significa que cada pessoa vira seu próprio provedor de identidade, mas significa que a aplicação pode confiar em um emissor definido, com regras claras, sem transformar senha em mercadoria espalhada por todo sistema.
 		</p>
 		<div class="insight">
-			<strong>A Verdade Técnica:</strong> Quando você faz login via OIDC em uma aplicação local, você não está mandando sua senha para ninguém. Está enviando um token JWT assinado criptograficamente que prova: "Eu sou José da Silva, e posso provar isso porque tenho uma chave privada que corresponde a essa chave pública que você conhece."
+			<strong>A Verdade Técnica:</strong> Quando uma aplicação usa OIDC corretamente, ela redireciona a autenticação para um provedor confiável e depois valida tokens assinados, com emissor, público e expiração coerentes. A aplicação deixa de guardar senha própria e passa a trabalhar com prova criptográfica de identidade.
 		</div>
 
 		<hr>
@@ -98,7 +98,7 @@
 			Mas aí, quando aquele data center do provedor cloud sofre um ataque DDoS, toda a sua autenticação desaba. Todos os seus usuários ficam trancados para fora. E você está ali, na loja, vendo a porta digital fechar. Uma porta que você não tem chave, porque a chave está em um cofre que pertence a outra pessoa.
 		</p>
 		<p>
-			Com OIDC federado local? A porta tem duas chaves. Uma sua, uma do provedor. Se uma falha — não importa. A outra continua funcionando.
+			Com identidade federada bem desenhada, a porta pode ter mais de um caminho de confiança: provedor externo, política local, sessão curta, revogação e contingência operacional. O protocolo ajuda a organizar isso. Ele não faz milagre sozinho, mas evita que toda a segurança dependa de uma única senha largada em vários lugares.
 		</p>
 
 		<hr>
@@ -114,7 +114,7 @@
 			Quando voltamos ao carro, Lucas perguntou: "Como a gente protege a gente disso?"
 		</p>
 		<p>
-			E eu expliquei: No nosso sistema com OIDC federado, cada aplicação tem seu próprio contexto. Cada login é um token separado, criptograficamente assinado, que não pode ser reutilizado em outro lugar. Se um servidor é hackeado, a senha não vaza, porque não há senha centralizada. Há chaves assimétricas.
+			E eu expliquei: em um sistema com identidade federada bem configurada, cada aplicação valida emissor, público, expiração e contexto do token. A senha deixa de ficar espalhada entre sistemas; o que circula é um artefato assinado e com escopo definido. Se um serviço falha, a resposta deixa de ser "troca a mesma senha em todo lugar" e passa a ser revogar sessão, revisar confiança e corrigir o ponto certo.
 		</p>
 		<p>
 			Lucas abriu um sorriso. Aquele sorriso que você vê quando alguém finalmente entende que o seu trabalho não é apenas consertar problemas — é <strong>preveni-los de acontecer em primeiro lugar.</strong>
@@ -130,7 +130,7 @@
 			Agora vamos expandir esse mapa de tesouro. <strong>OIDC é o mapa do tesouro.</strong> É o sistema de coordenadas que garante que você nunca perca o caminho de volta para casa. Que você sempre consegue provar que a casa é sua.
 		</p>
 		<p>
-			Temos Java 21 como a segurança computacional. Temos OIDC como a segurança criptográfica. Temos banco de dados relacional como a persistência confiável. Juntas, essas três coisas formam um trio inquebrável.
+			Temos Java 21 como base computacional. Temos OIDC como linguagem de identidade e autorização. Temos banco de dados relacional como persistência confiável. Juntas, essas três coisas formam uma base coerente para disponibilidade, prova de identidade e rastreabilidade.
 		</p>
 		<p>
 			O silício? O silício é a materialidade disso tudo. O fato consumado contra o ensejo.
@@ -143,7 +143,7 @@
 			Lucas estava olhando os logs. Aqueles que mostro abaixo. Ele leu a versão legacy first, depois a versão OIDC. Depois pediu a gente para rodar um teste. Criamos uma máquina virtual comprometida — fingimos que o servidor cloud tinha sido hackeado. E depois tentamos usar a sessão OIDC daquele usuário.
 		</p>
 		<p>
-			Nada funcionou. O token tinha expirado. O refresh token foi revogado. Latência zero no bloqueio. Sem chance de ataque.
+			Nada funcionou. O token tinha expirado. O refresh token foi revogado. O contexto daquela sessão já não era mais aceito. Foi o momento em que ele viu, na prática, que revogação e expiração encurtam o estrago quando o fluxo é bem desenhado.
 		</p>
 		<p>
 			Lucas virou para mim e disse: "Ah, agora entendi. OIDC não é apenas um protocolo. É um escudo que você já está carregando, mas que ninguém te contou que tinha."
@@ -174,25 +174,25 @@
 		<div class="quote-box">
 			<strong>Caminho da Colaboração: OIDC Federado (CONFIÁVEL)</strong><br><br>
 			<pre><code>[2026-06-06T14:30:00Z] OIDC_AUTH_REQUEST | User_ID=lojista_001 | GrantType=authorization_code | Flow=PKCE
-[2026-06-06T14:30:01Z] TOKEN_GENERATION | Algorithm=RS256 | SignedBy=Local_Private_Key | Expires=1h
+[2026-06-06T14:30:01Z] TOKEN_GENERATION | Algorithm=RS256 | SignedBy=Trusted_Identity_Provider | Expires=1h
 [2026-06-06T14:30:02Z] JWT_ISSUED | Header=RS256 | Payload=User_Claims | Signature=Verified | Status=VALID
 [2026-06-06T14:30:03Z] REFRESH_MECHANISM | RefreshToken_Expires=1y | Revocation_List_Updated | Status=SECURE
 [2026-06-06T14:30:04Z] OOBMFA_CHALLENGE | Method=TOTP | TimeWindow=30s | Verification=SUCCESS
-[2026-06-06T14:30:05Z] APPLICATION_AUTHENTICATED | User=lojista_001 | Latitude=23.5505 | Longitude=-46.6333 | GeoIP_Match=YES | Local_Trust_Chain=VERIFIED
-[2026-06-06T14:30:06Z] CLOUD_PROVIDER_BREACH_DETECTED | Vulnerability=CVE-2024-9847 | Local_System_Status=UNAFFECTED
-[2026-06-06T14:30:07Z] STATUS=SECURE | PASSWORD_NEVER_TRANSMITTED | TOKEN_COMPROMISED_RISK=ZERO | FEDERATED_IDENTITY=SOVEREIGN</code></pre>
+[2026-06-06T14:30:05Z] APPLICATION_AUTHENTICATED | User=lojista_001 | Latitude=23.5505 | Longitude=-46.6333 | GeoIP_Match=YES | Trust_Chain=VERIFIED
+[2026-06-06T14:30:06Z] CLOUD_PROVIDER_INCIDENT | Vulnerability=CVE-2024-9847 | Session_Status=REVIEW_REQUIRED
+[2026-06-06T14:30:07Z] STATUS=CONTROLLED | PASSWORD_NOT_STORED_BY_APP | TOKEN_SCOPE=LIMITED | FEDERATED_IDENTITY=VALIDATED</code></pre>
 		</div>
 
 		<div class="insight">
 			<strong>Vê a Diferença?</strong><br><br>
-			No primeiro cenário: a senha sai, o risco se espalha. No segundo: não existe senha. Existe prova criptográfica. A nuvem quebra? Não importa. Seu token local continua válido. Sua revogação é instantânea. Sua identidade nunca deixa seu controle.
+			No primeiro cenário: a senha sai, o risco se espalha. No segundo: a aplicação deixa de armazenar segredo bruto e passa a validar prova criptográfica, com escopo e expiração. Isso não elimina incidente, mas reduz superfície, melhora revogação e torna o problema auditável.
 		</div>
 
 		<hr>
 
 		<h2>Amarra: O Reino Se Expande</h2>
 		<p>
-			O PDV é a residência. OIDC é a chave daquela residência. Você não apenas sobrevive offline — você <strong>prova que é você</strong> com uma chave que ninguém mais tem e ninguém mais pode roubar, porque essa chave nunca deixa seu sistema.
+			O PDV é a residência. OIDC é a forma de validar quem entra naquela residência. Você não apenas sobrevive offline — você <strong>organiza prova de identidade</strong> com emissor confiável, token assinado e regra de acesso verificável.
 		</p>
 		<p>
 			Mas um sistema precisa de mais que uma casa. Precisa de produção, valor e alquimia.
