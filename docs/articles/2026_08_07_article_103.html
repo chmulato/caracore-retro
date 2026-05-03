@@ -4,11 +4,11 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Do Código à Composição | Cara Core</title>
-	<meta name="description" content="A nova engenharia de software na Cara Core: IA, Java, Spring, arquitetura hexagonal e soberania de dados como base para produtos resilientes." />
+	<meta name="description" content="A nova engenharia de software na Cara Core: IA, Java, composição arquitetural e soberania de dados como base para produtos resilientes." />
 	<meta name="author" content="Cara Core Informática" />
 	<link rel="canonical" href="https://retro.caracore.com.br/articles/2026_08_07_article_103.html" />
 	<meta property="og:title" content="Do Código à Composição" />
-	<meta property="og:description" content="Como IA, composição de sistemas, Java e soberania de dados mudam a engenharia de software na Cara Core." />
+	<meta property="og:description" content="Como IA, composição de sistemas, Java, arquitetura e soberania de dados mudam a engenharia de software na Cara Core." />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="https://retro.caracore.com.br/articles/2026_08_07_article_103.html" />
 	<meta property="og:image" content="https://retro.caracore.com.br/articles/assets/img/article_103_01.png" />
@@ -41,7 +41,7 @@
 			O desenvolvimento de software em 2026 atravessa uma fronteira definitiva. Na Cara Core Informática, essa fronteira não aparece como uma ruptura barulhenta, mas como uma mudança silenciosa de postura. Antes, a pergunta principal era: "como escrever este trecho de código?". Agora, a pergunta ficou maior: "como compor um sistema inteiro, confiável, auditável e soberano, a partir de peças cada vez mais inteligentes?"
 		</p>
 		<p>
-			Essa mudança parece simples quando descrita em uma frase, mas altera quase tudo. Ela muda a forma como estudamos, como planejamos produtos, como olhamos para a infraestrutura e até como entendemos o papel humano dentro da engenharia. Não estamos apenas escrevendo linhas de comando; estamos regendo ecossistemas que unem a robustez do Java, a maturidade do Spring Framework, a precisão dos padrões de arquitetura e a agilidade da Inteligência Artificial.
+			Essa mudança parece simples quando descrita em uma frase, mas altera quase tudo. Ela muda a forma como estudamos, como planejamos produtos, como olhamos para a infraestrutura e até como entendemos o papel humano dentro da engenharia. Não estamos apenas escrevendo linhas de comando; estamos regendo ecossistemas que unem a robustez do Java, a maturidade de frameworks consolidados do nosso repertório, a precisão dos padrões de arquitetura e a agilidade da Inteligência Artificial.
 		</p>
 		<p>
 			O ponto central dessa jornada é a soberania de dados. Em um mercado cada vez mais dependente de plataformas externas, integrações remotas e serviços que podem falhar no momento menos conveniente, a Cara Core Informática segue uma direção própria: construir soluções que funcionem com clareza, segurança e controle.
@@ -71,23 +71,23 @@
 
 		<hr>
 
-		<h2>Spring Como Cola Universal</h2>
+		<h2>Frameworks Como Cola de Composição</h2>
 		<p>
-			Nesse cenário, o Spring Framework atua como uma espécie de cola universal. Através da Injeção de Dependência, conseguimos montar componentes sem transformar o sistema em um emaranhado rígido. Cada serviço conhece aquilo que precisa conhecer, recebe suas dependências de forma organizada e mantém uma fronteira clara entre responsabilidade e infraestrutura.
+			Nesse cenário, frameworks de composição e injeção de dependência atuam como uma espécie de cola estrutural. Historicamente, o Spring Framework cumpriu esse papel em parte importante da nossa evolução. No estado mais recente do CaraCore PDV, a base canônica já se apoia em Quarkus + JavaFX, mantendo a mesma exigência de fronteiras claras entre responsabilidade e infraestrutura.
 		</p>
 		<p>
-			A Programação Orientada a Aspectos, ou AOP, completa esse desenho. Logs, transações, segurança e auditoria são preocupações que atravessam o sistema inteiro. Se cada regra de negócio precisar cuidar manualmente desses temas, a lógica principal se perde no meio de detalhes repetidos.
+			A Programação Orientada a Aspectos, ou mecanismos equivalentes de tratamento transversal, completa esse desenho. Logs, transações, segurança e auditoria são preocupações que atravessam o sistema inteiro. Se cada regra de negócio precisar cuidar manualmente desses temas, a lógica principal se perde no meio de detalhes repetidos.
 		</p>
 		<div class="quote-box">
 			<strong>Em linguagem de oficina:</strong><br><br>
 			<pre><code>IA             -> acelera blocos de comportamento
-Spring         -> conecta dependências com disciplina
+Framework      -> conecta dependências com disciplina
 AOP            -> organiza preocupações transversais
 Arquitetura    -> protege o domínio
 Soberania      -> mantém o cliente no controle</code></pre>
 		</div>
 		<p>
-			Essa combinação permite que os grandes pedaços gerados ou acelerados pela IA sejam integrados com disciplina. A IA ajuda a levantar paredes; o Spring ajuda a manter o prédio de pé; a arquitetura garante que ainda saibamos onde ficam as vigas.
+			Essa combinação permite que os grandes pedaços gerados ou acelerados pela IA sejam integrados com disciplina. A IA ajuda a levantar paredes; o framework certo ajuda a manter o prédio de pé; a arquitetura garante que ainda saibamos onde ficam as vigas.
 		</p>
 
 		<hr>
@@ -97,7 +97,7 @@ Soberania      -> mantém o cliente no controle</code></pre>
 			Os padrões de projeto não morreram; eles subiram de nível. Em alguns momentos, pode parecer que a IA torna os design patterns menos necessários, porque ela consegue gerar código rapidamente. Na prática, acontece o contrário. Quanto mais rápido o código aparece, mais importante se torna ter padrões para avaliar, organizar e corrigir esse código.
 		</p>
 		<p>
-			Na Cara Core, utilizamos MVC e Arquitetura Hexagonal como moldes fundamentais para garantir desacoplamento. Esses padrões não são enfeites acadêmicos. Eles funcionam como instrumentos de sobrevivência em sistemas que precisam durar.
+			Na Cara Core, utilizamos MVC e Arquitetura Hexagonal como moldes fundamentais para garantir desacoplamento. Esses padrões não são enfeites acadêmicos. Eles funcionam como instrumentos de sobrevivência em sistemas que precisam durar. No caso do PDV, essa disciplina hoje aparece com mais nitidez no desenho modular entre núcleo, fiscal/pagamentos, segurança de plataforma e aplicação executável.
 		</p>
 		<p>
 			<strong>Arquitetura Hexagonal</strong> protege o "Core" de nossos sistemas. O coração da aplicação não sabe se o banco de dados é um SQLite local, um PostgreSQL em rede, uma API externa ou um serviço futuro que ainda nem existe. Ele interage com portas, contratos e interfaces. Do lado de fora, adaptadores fazem a tradução entre o mundo real e o domínio da aplicação.
@@ -141,16 +141,16 @@ Soberania      -> mantém o cliente no controle</code></pre>
 			<strong>CaraCore-PDV</strong> nasce da pergunta: como garantir que o comércio continue operando diante da complexidade fiscal? Com a Reforma Tributária 2026, o varejo brasileiro entra em um período de adaptação profunda. Não basta emitir uma venda; é preciso compreender regras, transições, documentos, cálculos e obrigações que mudam a rotina do empresário.
 		</p>
 		<p>
-			O CaraCore-PDV é a nossa resposta à complexidade fiscal. Ele utiliza um motor soberano para garantir que a operação não pare por causa de oscilações na rede ou dependências externas mal controladas. O foco é conformidade, estabilidade e clareza.
+			O CaraCore-PDV é a nossa resposta à complexidade fiscal. No estado técnico consolidado em maio de 2026, ele opera como um PDV desktop Windows com Quarkus, JavaFX e SQLite local, priorizando soberania operacional, rastreabilidade e disciplina de evolução. O foco é conformidade, estabilidade e clareza, com a ressalva de que homologação fiscal formal e integrações futuras precisam ser sempre distinguidas do que já está efetivamente comprovado no checkout atual.
 		</p>
 		<p>
-			<strong>Cara Core HUB</strong> nasce da pergunta: como conectar o comércio local ao mundo sem entregar o controle dos dados? Com marco de roadmap em 06/04/2027 (instalador Windows EXE), o HUB atua como uma central de inteligência logística. Ele conecta o e-commerce local aos grandes marketplaces, gerencia fluxos de dados e organiza integrações que poderiam se tornar caóticas se fossem tratadas de forma isolada.
+			<strong>Cara Core HUB</strong> nasce da pergunta: como conectar o comércio local ao mundo sem entregar o controle dos dados? Com marco de roadmap em 06/04/2027, o HUB atua como uma central de inteligência logística. Ele conecta o e-commerce local aos grandes marketplaces, gerencia fluxos de dados e organiza integrações que poderiam se tornar caóticas se fossem tratadas de forma isolada. Aqui, o ponto importante é de enquadramento: trata-se de um marco de roadmap, nao de capacidade presente já entregue ao cliente do PDV.
 		</p>
 		<p>
-			<strong>RU (Bioreator)</strong> nasce da pergunta: como transformar infraestrutura técnica em organismo vivo? Com marco de roadmap em 18/06/2027, o RU representa uma inovação interna na forma como pensamos base tecnológica. O nome Bioreator sugere justamente essa ideia de um núcleo que processa, reage, alimenta e sustenta outras partes do ecossistema.
+			<strong>RU (Bioreator)</strong> nasce da pergunta: como transformar infraestrutura técnica em organismo vivo? Com marco de roadmap em 18/06/2027, o RU representa uma inovação interna na forma como pensamos base tecnológica. O nome Bioreator sugere justamente essa ideia de um núcleo que processa, reage, alimenta e sustenta outras partes do ecossistema. Novamente, isso deve ser lido como direção de ecossistema e não como camada operacional já consolidada no produto atual.
 		</p>
 		<p>
-			<strong>Cara Core CSO</strong> nasce da pergunta: como levar essa mesma disciplina para transportes e logística de serviços? O sistema, voltado ao setor de transportes e logística de serviços, segue no roadmap com marco em 08/11/2028. Esse prazo estendido não é recuo; é compromisso.
+			<strong>Cara Core CSO</strong> nasce da pergunta: como levar essa mesma disciplina para transportes e logística de serviços? O sistema, voltado ao setor de transportes e logística de serviços, segue no roadmap com marco em 08/11/2028. Esse prazo estendido não é recuo; é compromisso. Também aqui a comunicação precisa permanecer factual: roadmap é roadmap, nao entrega vigente.
 		</p>
 		<p>
 			O CSO carrega de forma forte o "Poder da Tela Preta": priorizar eficiência e dados sobre ornamentos visuais desnecessários. No transporte, uma informação objetiva vale muito. Um status correto, uma rota bem registrada, uma ordem clara e uma consulta rápida podem resolver mais do que uma interface bonita e lenta.
@@ -191,7 +191,7 @@ Soberania      -> mantém o cliente no controle</code></pre>
 			O aprendizado de hoje é a base da estabilidade de amanhã. Cada experimento com IA, cada escolha de arquitetura, cada padrão aplicado e cada produto planejado fazem parte de uma mesma jornada. Estamos aprendendo a compor sistemas maiores sem perder a clareza dos pequenos detalhes.
 		</p>
 		<p>
-			No fim, a nova engenharia de software na Cara Core Informática talvez seja isso: transformar curiosidade em método, método em produto e produto em soberania. Estamos prontos para o futuro da Reforma Tributária, para os desafios da integração global e para a evolução da inteligência artificial, sem nunca perder o controle do nosso bunker.
+			No fim, a nova engenharia de software na Cara Core Informática talvez seja isso: transformar curiosidade em método, método em produto e produto em soberania. Estamos organizando base para atravessar a Reforma Tributária, os desafios da integração global e a evolução da inteligência artificial sem perder o controle do bunker local. O ponto central aqui nao é proclamar chegada definitiva, mas deixar claro o rumo técnico e a disciplina com que ele está sendo construído.
 		</p>
 
 		<p>
@@ -199,11 +199,11 @@ Soberania      -> mantém o cliente no controle</code></pre>
 		</p>
 
 		<div class="insight">
-			<strong>Nota técnica:</strong> este artigo respeita a preferência de interface estritamente em texto e dados, focando na clareza da informação técnica, na rastreabilidade das decisões e na soberania operacional.
+			<strong>Nota técnica:</strong> este artigo combina tese institucional com fatos técnicos e marcos de roadmap. Sempre que menciona HUB, RU, CSO ou desdobramentos futuros do PDV, a leitura correta é de direção estratégica, não de entrega operacional já concluída.
 		</div>
 
 		<h2>Hashtags</h2>
-		<div class="hash-box">#CaraCore #EngenhariaDeSoftware #InteligenciaArtificial #Java21 #SpringFramework #ArquiteturaHexagonal #SoberaniaDeDados #BunkerDigital #SoftwareBoutique #BrasilEmergente</div>
+		<div class="hash-box">#CaraCore #EngenhariaDeSoftware #InteligenciaArtificial #Java21 #Quarkus #ArquiteturaHexagonal #SoberaniaDeDados #BunkerDigital #SoftwareBoutique #BrasilEmergente</div>
 
 		<hr />
 

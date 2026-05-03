@@ -4,18 +4,18 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>A Façanha do PDV: Da Pressa à Precisão | Cara Core</title>
-	<meta name="description" content="Uma retrospectiva técnica da jornada do CaraCore PDV em 2026: mudanças de foco, pivôs de stack, crises de performance e o estado atual consolidado em maio." />
+	<meta name="description" content="Retrospectiva factual do histórico do CaraCore PDV entre janeiro e maio de 2026: fundação, pivô de stack, reforço de qualidade e consolidação modular." />
 	<meta name="author" content="Cara Core Informática" />
 	<link rel="canonical" href="https://retro.caracore.com.br/articles/2026_08_15_article_104.html" />
 	<meta property="og:title" content="A Façanha do PDV: Da Pressa à Precisão" />
-	<meta property="og:description" content="Como o CaraCore PDV atravessou mudanças de stack, reforçou qualidade e estabilizou performance até maio de 2026." />
+	<meta property="og:description" content="Como o CaraCore PDV saiu da fundação acelerada em janeiro para uma base modular, validada e mais previsível em maio de 2026." />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="https://retro.caracore.com.br/articles/2026_08_15_article_104.html" />
 	<meta property="og:image" content="https://retro.caracore.com.br/articles/assets/img/article_104_01.png" />
 	<meta property="og:image:alt" content="A Façanha do PDV: Da Pressa à Precisão" />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content="A Façanha do PDV: Da Pressa à Precisão" />
-	<meta name="twitter:description" content="A história da virada técnica do PDV: Java 21, Spring Security 6, Quarkus, modularização e testes como contrato de performance." />
+	<meta name="twitter:description" content="A história da virada técnica do PDV: SQLite soberano, Java 21, Quarkus, JavaFX, modularização e testes como contrato de entrega." />
 	<meta name="twitter:image" content="https://retro.caracore.com.br/articles/assets/img/article_104_01.png" />
 	<link rel="stylesheet" href="assets/css/articles.css" />
 	<link rel="stylesheet" href="assets/css/temporada-i.css" />
@@ -33,155 +33,148 @@
 		<div class="note"><strong>Tempo estimado:</strong> ~10 minutos</div>
 
 		<div class="quote-box">
-			<strong>Gancho:</strong> a façanha do CaraCore PDV em 2026 não foi correr mais; foi aprender a correr sem quebrar o joelho técnico no meio da pista.
+			<strong>Gancho:</strong> a façanha do CaraCore PDV em 2026 não foi acelerar sem freio; foi transformar uma sequência intensa de experimentos, pivôs e endurecimento técnico em um checkout mais coerente, modular e previsível.
 		</div>
 
 		<h2>Por Que Esta História Merece Registro</h2>
 		<p>
-			Toda equipe de software gosta de contar vitórias em formato de release: versão nova, tela nova, funcionalidade nova. Mas raramente a gente documenta o que realmente separa um produto promissor de um produto confiável: os dias em que o foco muda no meio da execução, a stack é reavaliada com o sistema rodando, o desempenho vira assunto de sobrevivência e o teste deixa de ser adereço para virar contrato.
+			Release conta o que saiu. Histórico de Git conta o que precisou acontecer para aquilo sair sem desmontar o produto no processo. É nessa segunda camada que aparece a diferença entre um sistema que apenas cresce e um sistema que começa a ficar governável.
 		</p>
 		<p>
-			A história do CaraCore PDV no primeiro quadrimestre de 2026 é exatamente isso. Não é uma narrativa de linha reta. É uma travessia com curva, atrito e correção de rota. O objetivo inicial era evoluir rápido para atender a Reforma Tributária e consolidar o desktop brasileiro com Java 21. O que veio junto foi uma sequência real de decisões difíceis: migração de stack, ajuste de segurança, conflitos de execução no Windows, tensão entre velocidade e estabilidade, e uma mudança de mentalidade que hoje define a fase de maio.
+			No caso do CaraCore PDV, o período entre 23 de janeiro e 3 de maio de 2026 mostra exatamente essa passagem. O repositório registra 434 commits no intervalo. A leitura cronológica revela quatro movimentos bem nítidos: fundação acelerada do produto desktop local, pivô de stack para Java 21 e Quarkus, endurecimento forte de segurança e qualidade em abril, e consolidação modular e documental no início de maio.
 		</p>
 		<p>
-			Este artigo recompõe essa trajetória pelo histórico de commits e checkpoints técnicos: de fevereiro a maio, da fundação ao refinamento, da pressa à precisão.
+			Este artigo atualiza a narrativa a partir desses fatos. O objetivo não é vender uma linha reta que não existiu. É deixar claro o que foi trilha histórica, o que virou aprendizado e o que já estava consolidado no checkout canônico do PDV em maio de 2026.
 		</p>
 
 		<hr>
 
-		<h2>Capítulo 1: Fevereiro e o Terreno em Movimento</h2>
+		<h2>Capítulo 1: Janeiro e a Fundação Acelerada</h2>
 		<p>
-			Em fevereiro, o PDV entra em uma zona de transição estrutural. O histórico mostra uma frente múltipla: reforço de distribuição Electron para Windows, evolução de segurança local, ajustes no SQLite, ampliação de testes e abertura da trilha Quarkus/Qute. Não era só trocar uma biblioteca. Era reposicionar o coração do produto para crescer sem perder o modo offline-first.
+			A história não começa em fevereiro. Começa em janeiro, e começa com pressa produtiva. Os commits de 23 a 31 de janeiro mostram um produto sendo montado em várias frentes ao mesmo tempo: documentação técnica, massa demo, rotinas de backup, entrada de SQLite como base local, scripts operacionais, integração inicial de Electron para desktop, páginas públicas, testes e primeiros fluxos de pagamento.
 		</p>
 		<p>
-			Nesse período surgem marcos técnicos que explicam o tamanho da aposta. A migração para Java 21 e Spring Boot 3.x aparece de forma explícita, acompanhada pela atualização para Spring Security 6 e revisão de dependências centrais. Em paralelo, aparecem commits de integração Quarkus e gestão de módulos de domínio (estoque, operador, vendedor), além de reforços na estratégia de build e release.
+			Essa fase é importante porque define a tese que permanece de pé depois dos pivôs seguintes: o PDV nasce com vocação offline-first, base local soberana e preocupação explícita com contingência e distribuição em Windows. Ainda não existe a clareza arquitetural que aparece mais tarde, mas a intenção de produto já está visível. O caixa precisa sobreviver localmente, o backup precisa existir, a demonstração precisa ser reproduzível e a entrega precisa caber no mundo real do varejo.
 		</p>
 		<p>
-			Essa sobreposição de frentes gera um padrão clássico de engenharia em crescimento: o time quer ampliar capacidade de entrega e, ao mesmo tempo, manter uma operação crítica funcionando para varejo real. É justamente aí que os desafios de performance e robustez começam a sair do rodapé e ocupar o centro da conversa.
+			Ao mesmo tempo, o histórico de janeiro também explica por que a trajetória posterior exigiu tanta correção. Muita coisa foi aberta junto: PIX, sincronização, segurança, demo, build, wiki, distribuição. Esse tipo de largada acelera aprendizado, mas cobra juros de organização. Janeiro foi o mês em que o PDV ganhou corpo. Não ainda o mês em que ganhou fronteiras claras.
 		</p>
 		<div class="insight">
-			<strong>Primeira virada de foco:</strong> de "entregar features" para "garantir base de execução". Sem base, feature vira dívida com prazo curto.
+			<strong>Primeira leitura correta do histórico:</strong> antes da precisão, houve uma fase de fundação intensa. O produto precisou existir em largura antes de começar a existir em camadas.
 		</div>
 
 		<hr>
 
-		<h2>Capítulo 2: Abril e o Pico de Complexidade</h2>
+		<h2>Capítulo 2: Fevereiro e o Pivô de Stack</h2>
 		<p>
-			Se fevereiro foi transição, abril foi teste de resistência. Em poucas semanas, o histórico concentra uma densidade alta de mudanças: segurança, fiscal, UI JavaFX, automação, pipeline, release, modularização, integração desktop/backend e governança de branches.
+			Fevereiro é onde o terreno realmente se mexe. Primeiro aparece a migração Java 21 com Spring Boot 3.2, Hibernate 6 SQLite, Spring Security 6 e reforço de JaCoCo. Logo depois, o repositório abre a trilha de refatoração para Quarkus e Qute. Isso não foi uma troca simples de framework. Foi um reposicionamento do núcleo técnico do produto ainda com a operação local, a segurança e a entrega desktop em aberto.
 		</p>
 		<p>
-			A migração do código principal para Jakarta e Spring Security 6 aparece como marco explícito. Ao redor dela, cresce um cinturão de validação: testes de API, UI smoke, TestFX, Selenium, cobertura com JaCoCo, ajustes de CI para Windows e uma política prática de gates. O recado da arquitetura fica claro: não basta migrar stack, é preciso provar comportamento.
+			O histórico desse mês mostra uma convivência deliberada entre transição e exploração. Entram Quarkus, gestão de estoque, operador e vendedor na nova trilha, surgem ponte mobile offline, gateway com APK, integração OIDC, arquitetura de segurança local, scripts de distribuição FREE e PREMIUM e ajustes de migração Flyway para SQLite. Ou seja: o time não estava só reescrevendo tecnologia. Estava testando que combinação de runtime, segurança e distribuição conseguiria sustentar o produto brasileiro de balcão sem abrir mão da soberania local.
 		</p>
 		<p>
-			O segundo eixo crítico foi segurança operacional. O movimento de senha de operador para bcrypt/MCF, a consolidação de autenticação JWT, os ajustes de sessão e os testes de status code (401, 403, 404, 409) mostram que a equipe trocou "segurança por intenção" por "segurança por evidência".
-		</p>
-		<p>
-			No fiscal, o avanço acompanha o calendário regulatório brasileiro: motor CBS/IBS, simulação tributária, PIX Split e trilhas de auditoria. Mas o detalhe importante não é só o que entrou; é como entrou. Com o tempo, o padrão passa a ser extração de regras puras, validação explícita e integração por serviços de orquestração, reduzindo acoplamento direto.
+			A leitura correta aqui é importante porque evita uma simplificação errada. O PDV não "virou Quarkus" de um dia para o outro. Ele atravessou uma zona de composição, onde stack antiga, trilha nova e exigências do desktop conviveram até que a base canônica ficasse mais evidente meses depois.
 		</p>
 		<div class="quote-box">
-			<strong>Ponto de estresse real em abril:</strong><br><br>
+			<strong>Ponto de inflexão real em fevereiro:</strong><br><br>
 			<pre><code>Mais features + mais migração + mais release + mais testes
 = mais chance de regressão se não houver disciplina de fronteira.</code></pre>
 		</div>
 
 		<hr>
 
-		<h2>Capítulo 3: Onde a Performance Virou Tema de Governança</h2>
+		<h2>Capítulo 3: Abril e o Pico de Complexidade</h2>
 		<p>
-			Toda história de software maduro tem um momento em que performance deixa de ser "otimização futura" e passa a ser governança de risco. No PDV, esse momento aparece quando os problemas de execução começam a aparecer em cadeia: conflitos de lock, ruídos de build em Windows, incompatibilidades de runtime, comportamento de testes contaminados por dados e acoplamentos indevidos entre camadas.
+			Se janeiro criou volume e fevereiro abriu o pivô, abril foi o mês em que tudo precisou ser provado sob pressão. A partir de 12 de abril o histórico concentra foundation validation, atualização do branch Java 21, MSI preferencial, assinatura opcional, orquestração de upgrade com backup, testes de upgrade, qualidade de UI, endurecimento de segurança e uma frente fiscal muito mais ambiciosa.
 		</p>
 		<p>
-			A resposta da equipe não foi tentar um "patch mágico". Foi desmontar os gargalos por tipo:
+			É nesse recorte que aparecem movimentos que mudam de patamar a leitura do repositório: senha de operador migrada de claro para bcrypt/MCF, trilha de auditoria PIX, ciclo LGPD em cliente, FiscalPaymentLink, PixSplitOrchestrator, webhook de PIX Split, TaxEngine IBS/CBS, projeção de margem, snapshot tributário, simulador interativo, exportação de relatórios para contador e pacote de evidências para piloto interno. O produto deixa de parecer apenas um checkout desktop com agenda fiscal. Ele passa a mostrar, em commit, uma tese integrada entre operação local, pagamento, compliance e reforma tributária.
 		</p>
 		<p>
-			1) <strong>Execução e empacotamento:</strong> limpeza de processos Electron/Node para evitar lock de artefato, ajuste de diretórios de saída para builds estáveis e revisão de scripts de release.<br />
-			2) <strong>Runtime backend:</strong> ajustes de versão em Quarkus/H2, melhorias de compatibilidade com GraalVM e JasperReports, e correções em inicialização/paths para reduzir fragilidade operacional.<br />
-			3) <strong>Banco e testes:</strong> redução de colisão de IDs, isolamento melhor de seed em perfil de teste, uso de dados únicos e reforço de transacionalidade para evitar contaminação entre cenários.<br />
-			4) <strong>Resposta HTTP e API:</strong> consolidação de helpers de resposta e padronização de códigos, reduzindo ramificações repetidas nos handlers.
+			Abril também deixa claro que a maturidade não veio só por adicionar domínio. Veio por cercar o domínio com prova. Crescem TestFX, smoke UI, validações Selenium, ajustes de JaCoCo, correções de CI em Windows, testes para RBAC, cobertura de autenticação JWT e validações de status code. A arquitetura manda um recado simples: migração sem evidência não fecha release.
 		</p>
 		<p>
-			O efeito desse pacote é maior do que parece. Quando a equipe resolve o caminho de build, runtime, persistência e contrato de erro ao mesmo tempo, ela reduz o custo de cada próxima entrega. Performance aqui não significa só "mais rápido". Significa "menos imprevisível".
+			Foi também em abril que os atritos operacionais ficaram explícitos. Locks em Windows, colisão de IDs em SQLite e H2, seed contaminando teste, ProductCode de MSI, readiness de backend, instrumentação de login e limites do empacotamento passaram a ser tratados como engenharia de produto, não como incômodo periférico.
 		</p>
 		<div class="insight">
-			<strong>Segunda virada de foco:</strong> de "performance como métrica" para "performance como previsibilidade de operação".
+			<strong>Segunda virada de foco:</strong> de "ter funcionalidade" para "conseguir provar funcionalidade, segurança e instalabilidade no mesmo ciclo".
 		</div>
 
 		<hr>
 
-		<h2>Capítulo 4: A Mudança de Stack Não Foi Troca, Foi Composição</h2>
+		<h2>Capítulo 4: Quando Build, Runtime e Teste Viraram Governança</h2>
 		<p>
-			Olhando de fora, alguém pode resumir a fase como "migração para Java 21" ou "adoção de Quarkus". Isso simplifica demais. O que aconteceu na prática foi uma composição de stack orientada por contexto de produto desktop brasileiro.
+			Uma leitura apressada do repositório poderia concluir que os problemas do período eram apenas de stack. Não eram. Boa parte da dificuldade estava na previsibilidade de execução. Entre 19 e 24 de abril, o histórico registra uma sequência muito clara de correções em migração de banco, sequences por entidade, pré-seed de configuração, bootstrap do diretório de dados, instance locking, ajustes de Quarkus e H2, compatibilidade com JasperReports e GraalVM, e revisão do empacotamento em Windows.
 		</p>
 		<p>
-			O PDV consolidou uma base híbrida e pragmática: Java 21 no núcleo, Spring Boot 3.x e Spring Security 6 nas frentes de segurança e serviços já maduros, Quarkus em trilhas de modernização e execução otimizada, JavaFX como camada de operação local, Electron como distribuição e experiência desktop, SQLite como soberania de dados local, e uma malha de testes para validar integração ponta a ponta.
+			Esse bloco do histórico é decisivo porque mostra uma mudança de maturidade. O time para de tratar instabilidade como acidente isolado e passa a atacar o sistema por classes de risco. Seed de teste precisa ser confiável. Dado local precisa abrir no diretório certo. Sessão expirada precisa responder com contrato previsível. O instalador precisa validar ambiente. O build precisa tolerar o comportamento real do Windows.
 		</p>
 		<p>
-			Essa composição permite algo raro: evoluir sem destruir a base instalada. Em vez de apostar em uma ruptura única e arriscada, a equipe preferiu transições guiadas por evidência. Onde a stack nova dava ganho claro, ela avançava. Onde havia risco de regressão operacional, entrava gate de validação.
+			É por isso que performance, aqui, não deve ser lida só como velocidade. O ponto central foi previsibilidade operacional. Quando o histórico reduz colisão de IDs, fecha rotas de autenticação, melhora tracing de login, estabiliza readiness do backend e adiciona retry para empacotamento, ele está reduzindo custo de entrega futura. Governança aparece quando o produto começa a falhar menos por classe inteira de problema, e não apenas por bug pontual.
 		</p>
 		<p>
-			Do ponto de vista de negócio, essa decisão foi decisiva para um produto que precisa lidar com fiscal, vendas, autenticação e operação local em ambientes heterogêneos de hardware e conectividade.
+			Esse talvez seja o ponto mais fácil de subestimar olhando só releases. O valor não estava apenas no que entrou, mas no fato de que build, runtime, banco e testes começaram a andar com menos improviso.
 		</p>
 
 		<hr>
 
-		<h2>Capítulo 5: Maio e o Estado da Jornada na Época</h2>
+		<h2>Capítulo 5: Maio e a Consolidação do Checkout Canônico</h2>
 		<p>
-			Chegamos ao ponto que interessa para decisão executiva: onde estávamos em maio? O histórico do dia 01/05 mostrou um padrão de maturidade crescente. Em vez de uma enxurrada de funcionalidades soltas, apareceu uma sequência de refactors dirigidos por qualidade de domínio.
+			O início de maio organiza a história. Em 29 e 30 de abril e 1 a 3 de maio, o repositório deixa mais nítido qual é o checkout que passa a valer como leitura principal do produto. O POM raiz vira parent e aggregator, a base é reestruturada em quatro módulos, parte da segurança é migrada para `pdv-platform-security`, regras fiscais e de pagamento ganham trilha própria em `pdv-fiscal-payment`, e o aplicativo executável fica concentrado em `pdv-apps` com Quarkus + JavaFX.
 		</p>
 		<p>
-			Duas frentes sintetizam isso com clareza:
+			Essa clarificação corrige uma confusão importante que o artigo antigo deixava implícita. Spring Boot 3.2, Spring Security 6 e Electron continuam existindo como trilhas históricas relevantes do primeiro semestre, mas o estado canônico documentado no próprio repositório em maio já é outro: Quarkus 3.8.3, JavaFX 21, SQLite local, `desktop-launcher` auxiliar e scripts Python de build e validação para Windows. Em outras palavras, a composição virou decisão operacional.
 		</p>
 		<p>
-			<strong>Frente fiscal modular:</strong> extração de políticas puras de configuração fiscal e sincronização de tabela (validação de alíquota, vigência, NCM, janela de atualização), com serviços de aplicação delegando regra para o domínio e mantendo persistência/orquestração separadas.<br />
-			<strong>Frente de API consistente:</strong> consolidação de respostas REST em utilitário comum para padronizar tratamento de erro, reduzir duplicação e melhorar legibilidade/manutenibilidade dos handlers.
+			O mesmo vale para o domínio. Em vez de uma enxurrada de frentes dispersas, surgem sinais claros de consolidação: `FiscalTableSyncPolicy` para regras de NCM e sincronização, facades nos recursos REST, utilitário `RestResponses` para 403, 404, 409 e parâmetros inválidos, gates da edição FREE para NFC-e e PIX, reorganização documental, novo motor de relatórios com Jasper e trilha recente de auditoria na interface de gestão.
 		</p>
 		<p>
-			Esse movimento veio acompanhado de evidência de gate: crescimento de suíte de testes, validação de integração JavaFX, validação de status codes críticos e continuidade de smoke para cenários sensíveis. Em linguagem simples: o produto não estava só "funcionando"; estava aprendendo a se defender de regressão.
+			Aqui entra o dado mais simples e mais forte do período: o checkpoint consolidado de 3 de maio registra 986 testes, 0 falhas, 0 erros e 3 ignorados. Isso não resolve sozinho questão de mercado, homologação ou operação em campo. Mas resolve uma coisa essencial para leitura histórica: em maio, o PDV já não estava apenas em reconstrução. Ele tinha uma base modular, mais nomeada, mais documentada e muito mais defendida por teste do que em janeiro.
 		</p>
 		<div class="quote-box">
 			<strong>Onde estávamos em maio, em uma linha:</strong><br><br>
-			<pre><code>Menos acoplamento, mais política pura, mais teste útil, mais previsibilidade de entrega.</code></pre>
+			<pre><code>Menos trilha concorrente, mais módulo explícito, mais contrato de teste e mais clareza sobre o runtime que realmente vale.</code></pre>
 		</div>
 
 		<hr>
 
 		<h2>O Que Esta Façanha Ensina</h2>
 		<p>
-			A maior lição dessa trajetória não está em um commit específico. Está na mudança de postura técnica ao longo dos meses. O PDV saiu de uma fase de aceleração orientada por necessidade imediata para uma fase de aceleração orientada por engenharia sustentável.
+			A maior lição dessa trajetória não está em um commit isolado. Está na mudança de postura entre janeiro e maio. O PDV saiu de uma fase de expansão simultânea de frentes para uma fase em que runtime, domínio, segurança, build e documentação começaram a convergir para uma leitura mais única do produto.
 		</p>
 		<p>
 			Isso aparece em cinco aprendizados concretos:
 		</p>
 		<p>
-			1) <strong>Migrar stack sem gate é aposta, não estratégia.</strong><br />
-			2) <strong>Performance sem previsibilidade é ilusão de curto prazo.</strong><br />
-			3) <strong>Segurança real nasce de contrato testável, não de intenção declarada.</strong><br />
-			4) <strong>Domínio fiscal exige regra pura e rastreável, não regra espalhada.</strong><br />
-			5) <strong>Produto desktop soberano precisa de disciplina de release tão forte quanto disciplina de código.</strong>
+			1) <strong>Fundação rápida ajuda, mas cobra modularização depois.</strong><br />
+			2) <strong>Migrar stack sem evidência de comportamento é trocar risco de lugar.</strong><br />
+			3) <strong>Banco local soberano só vira ativo real quando build, backup, locking e seed param de surpreender.</strong><br />
+			4) <strong>Fiscal e pagamento ganham escala quando viram política e serviço, não bloco difuso de controller.</strong><br />
+			5) <strong>Documento canônico importa: sem ele, o produto parece várias coisas ao mesmo tempo.</strong>
 		</p>
 		<p>
-			No fim, a façanha não foi "fazer tudo de uma vez". Foi atravessar uma janela intensa de mudança e terminar maio melhor organizado do que começou fevereiro.
+			No fim, a façanha não foi fazer tudo ao mesmo tempo. Foi sobreviver a uma janela intensa de mudança e terminar o começo de maio com mais nitidez arquitetural do que havia no fim de janeiro.
 		</p>
 
 		<hr>
 
 		<h2>Amarra: Da Pressa à Precisão</h2>
 		<p>
-			A história do CaraCore PDV em 2026 prova um ponto simples e difícil: equipe madura não é a que evita crise; é a que transforma crise em método. O histórico de GitHub revela exatamente isso. A cada desafio, houve ajuste de foco. A cada pivot de stack, houve reforço de teste. A cada fricção de performance, houve intervenção estrutural.
+			A história do CaraCore PDV em 2026 prova um ponto simples e difícil: maturidade não aparece quando o produto para de mudar. Ela aparece quando a mudança deixa de produzir uma identidade difusa. O histórico de GitHub mostra esse movimento com clareza. Janeiro abre muitas frentes. Fevereiro testa o pivô de stack. Abril submete tudo a stress técnico. Maio começa a dizer, sem muita ambiguidade, qual produto está de fato sendo sustentado.
 		</p>
 		<p>
-			Hoje, olhando para o que já estava consolidado em maio, o produto está em um lugar mais sólido para seguir rumo ao que realmente importa no varejo brasileiro: estabilidade operacional, conformidade fiscal, segurança de ponta a ponta e evolução contínua sem quebrar a confiança de quem depende do sistema para vender.
+			O saldo mais importante é este: em maio de 2026, o CaraCore PDV já se apresentava como uma base desktop local em Quarkus + JavaFX + SQLite, modularizada, mais testada, mais coerente com sua documentação principal e mais honesta sobre o que era passado de transição e o que era presente operacional. Isso é muito mais valioso do que uma narrativa inflada de "troca de stack bem-sucedida".
 		</p>
 		<p>
-			Essa é a façanha que vale contar na Sala Retro: não a fantasia de velocidade infinita, mas a construção paciente de um PDV que aguenta o mundo real.
+			Essa é a façanha que vale registrar na Sala Retro: não a fantasia de velocidade infinita, mas a passagem de um laboratório acelerado para um checkout mais disciplinado, mais modular e mais defensável para o mundo real.
 		</p>
 
 		<div class="insight">
-			<strong>Registro de método:</strong> este texto foi construído a partir do histórico técnico do repositório PDV (janeiro-maio/2026) e checkpoints de validação, com foco em desafios, mudança de foco, stack e estado operacional.
+			<strong>Registro de método:</strong> este texto foi atualizado a partir do histórico técnico do repositório PDV entre 23/01/2026 e 03/05/2026, incluindo marcos de stack, segurança, fiscal, empacotamento, modularização e checkpoints de validação do checkout canônico.
 		</div>
 
 		<h2>Hashtags</h2>
-		<div class="hash-box">#CaraCore #CaraCorePDV #EngenhariaDeSoftware #Java21 #SpringBoot3 #SpringSecurity6 #Quarkus #JavaFX #Electron #SQLite #ReformaTributaria #Performance #Testes #Arquitetura #SoftwareSoberano</div>
+		<div class="hash-box">#CaraCore #CaraCorePDV #EngenhariaDeSoftware #Java21 #Quarkus #JavaFX #SQLite #Modularizacao #ReformaTributaria #PIXSplit #Testes #Arquitetura #SoftwareSoberano #Windows #Fiscal</div>
 
 		<hr />
 
