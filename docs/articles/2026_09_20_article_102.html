@@ -1,0 +1,251 @@
+?<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Quando a Planilha Entra no Lab | ETE Minerador 4.0 | Cara Core</title>
+	<meta name="description" content="Um caso simulado para mostrar como o ETE Minerador 4.0 transforma pH, recuperação, pureza, custo e mercado em leitura técnica de decisão." />
+	<meta name="author" content="Cara Core Informática" />
+	<link rel="canonical" href="https://retro.caracore.com.br/articles/2026_09_20_article_107.html" />
+	<meta property="og:title" content="Quando a Planilha Entra no Lab" />
+	<meta property="og:description" content="ETE Minerador 4.0 em formato CTA: simulação didática, planilha HTML e raciocínio de viabilidade para terras raras." />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="https://retro.caracore.com.br/articles/2026_09_20_article_107.html" />
+	<meta property="og:image" content="https://retro.caracore.com.br/articles/assets/img/2026_09_20_article_102_01.png" />
+	<meta property="og:image:alt" content="Quando a Planilha Entra no Lab" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Quando a Planilha Entra no Lab" />
+	<meta name="twitter:description" content="Um caso simulado do ETE Minerador 4.0 para ensinar leitura técnica, econômica e ambiental sem prometer milagre." />
+	<meta name="twitter:image" content="https://retro.caracore.com.br/articles/assets/img/2026_09_20_article_102_01.png" />
+	<link rel="stylesheet" href="assets/css/articles.css" />
+	<link rel="stylesheet" href="assets/css/temporada-i.css" />
+</head>
+<body>
+	<div class="container">
+		<a class="back-link" href="../index.html">&larr; Voltar para publicações</a>
+		<img src="assets/img/2026_09_20_article_102_01.png" alt="Quando a Planilha Entra no Lab" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+		<h1>Quando a Planilha Entra no Lab</h1>
+		<div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
+			<img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
+			<span style="margin-left: 1.5rem;">20 de setembro de 2026</span>
+		</div>
+		<div class="note"><strong>Artigo CTA | Tempo estimado:</strong> ~7 minutos</div>
+
+		<div class="quote-box">
+			<strong>Gancho:</strong> quando o aluno olha para a planilha e entende que pureza, custo, recuperação e sustentabilidade brigam entre si, o Minerador 4.0 deixa de ser tela bonita e vira raciocínio técnico.
+		</div>
+
+		<h2>A Picareta Digital Precisa de Número</h2>
+		<p>
+			No artigo <a href="2026_07_11_article_100.html">A Picareta Digital no Chão do Lab</a>, publicado em 11 de julho de 2026, o Minerador 4.0 entrou no chão do lab: Campo, Lab, Mercado, pH, concentração, recuperação, pureza e score. Faltava uma peça importante para vender a ideia sem exagero: mostrar um caso com números.
+		</p>
+		<p>
+			Este artigo faz isso em formato de CTA. Não como laudo, não como promessa de planta, não como garantia de extração. O objetivo é mais honesto e mais útil: mostrar como uma simulação didática pode organizar a conversa entre química mineral, Python, sustentabilidade e decisão econômica.
+		</p>
+		<p>
+			Para isso, usamos um caso fictício de bancada: uma turma técnica recebe uma lixívia mineral didática e precisa avaliar três cenários de precipitação seletiva. A pergunta não é "qual botão dá lucro?". A pergunta é melhor: <strong>qual cenário merece estudo adicional?</strong>
+		</p>
+		<div class="insight">
+			<strong>Registro de método:</strong> todos os números abaixo são simulados para fins educacionais. Eles não representam laudo químico, amostra real, recomendação de investimento, ART, projeto de planta ou garantia de recuperação.
+		</div>
+
+		<hr>
+
+		<h2>O Caso Simulado: Lote Didático Campo-Lab</h2>
+		<p>
+			O cenário começa com 1,0 m³ de lixívia mineral simulada, concentração de óxidos de terras raras em 2,5 g/L e três rotas de precipitação seletiva. A escolha segue a lógica do Minerador 4.0: alterar volume, pH e concentração para observar massa recuperada, pureza, sustentabilidade e valor estimado.
+		</p>
+		<p>
+			O motor do ETE Minerador 4.0 não precisa fingir que resolve mineração sozinho. Ele precisa fazer algo mais importante para formação: traduzir premissas em consequência. Se a rota aumenta recuperação, pode aumentar custo. Se melhora pureza, pode piorar sustentabilidade. Se reduz reagente, talvez perca massa recuperável. É nessa tensão que a aprendizagem acontece.
+		</p>
+		<div class="quote-box">
+			<strong>Entrada didática da simulação:</strong><br><br>
+			<pre><code>[LOTE] volume_lixivia=1.0m3 | concentracao_oxido=2.5g/L | perfil=apatita_registro
+[LAB] rotas=conservadora,balanceada,agressiva | ph_final=8.8..10.2
+[MOTOR] calcula=TREO,NdPr_recuperado,receita_bruta,custo_operacional,margem_simulada
+[MERCADO] preco_oxido=parametro_didatico | cambio_e_custos=parametros_didaticos
+[SAIDA] decisao=estudar_melhor | nao_e_laudo=true</code></pre>
+		</div>
+
+		<hr>
+
+		<h2>A Planilha Que Ensina Sem Prometer</h2>
+		<p>
+			A planilha abaixo é o coração do CTA. Ela mostra como o ETE Minerador 4.0 pode apresentar uma simulação em linguagem que conversa com aluno, instrutor e empreendedor. A tela não dá uma sentença final. Ela organiza sinais. Os valores foram gerados pelo motor Python do projeto ETE, usando o perfil <code>apatita_registro</code>, 1,0 m³ de lixívia, eficiência de captura de 85% e três pontos de pH final. O balanço segue a regra <code>entrada - lodo - solução = 0</code>.
+		</p>
+
+		<div style="overflow-x:auto; margin:1.5rem 0; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);">
+			<table style="width:100%; border-collapse:collapse; min-width:980px; font-size:.92rem; background:#ffffff;">
+				<thead>
+					<tr style="background:linear-gradient(120deg,#0f172a 0%,#1e3a8a 100%); color:#ffffff;">
+						<th style="padding:.85rem; text-align:left; border:1px solid #dbeafe;">Cenário</th>
+						<th style="padding:.85rem; text-align:right; border:1px solid #dbeafe;">pH final</th>
+						<th style="padding:.85rem; text-align:right; border:1px solid #dbeafe;">Recuperação TR</th>
+						<th style="padding:.85rem; text-align:right; border:1px solid #dbeafe;">Pureza do lodo</th>
+						<th style="padding:.85rem; text-align:right; border:1px solid #dbeafe;">Massa capturada</th>
+						<th style="padding:.85rem; text-align:right; border:1px solid #dbeafe;">Receita app</th>
+						<th style="padding:.85rem; text-align:right; border:1px solid #dbeafe;">Custo total app</th>
+						<th style="padding:.85rem; text-align:right; border:1px solid #dbeafe;">Lucro bruto</th>
+						<th style="padding:.85rem; text-align:center; border:1px solid #dbeafe;">ROI app</th>
+						<th style="padding:.85rem; text-align:center; border:1px solid #dbeafe;">Erro balanço</th>
+						<th style="padding:.85rem; text-align:left; border:1px solid #dbeafe;">Leitura</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr style="background:#f8fafc;">
+						<td style="padding:.75rem; border:1px solid #dbeafe;"><strong>A - Conservador</strong></td>
+						<td style="padding:.75rem; text-align:right; border:1px solid #dbeafe;">8,8</td>
+						<td style="padding:.75rem; text-align:right; border:1px solid #dbeafe;">98,98%</td>
+						<td style="padding:.75rem; text-align:right; border:1px solid #dbeafe;">83,71%</td>
+						<td style="padding:.75rem; text-align:right; border:1px solid #dbeafe;">5,50 kg</td>
+						<td style="padding:.75rem; text-align:right; border:1px solid #dbeafe;">R$ 162,10</td>
+						<td style="padding:.75rem; text-align:right; border:1px solid #dbeafe;">R$ 32,86</td>
+						<td style="padding:.75rem; text-align:right; border:1px solid #dbeafe;">R$ 129,25</td>
+						<td style="padding:.75rem; text-align:center; border:1px solid #dbeafe;"><strong>393,36%</strong></td>
+						<td style="padding:.75rem; text-align:center; border:1px solid #dbeafe;">~0,00 g</td>
+						<td style="padding:.75rem; border:1px solid #dbeafe;">Melhor leitura financeira nesta simulação.</td>
+					</tr>
+					<tr style="background:#ecfdf5;">
+						<td style="padding:.75rem; border:1px solid #dbeafe;"><strong>B - Balanceado</strong></td>
+						<td style="padding:.75rem; text-align:right; border:1px solid #dbeafe;">9,5</td>
+						<td style="padding:.75rem; text-align:right; border:1px solid #dbeafe;">99,99%</td>
+						<td style="padding:.75rem; text-align:right; border:1px solid #dbeafe;">83,23%</td>
+						<td style="padding:.75rem; text-align:right; border:1px solid #dbeafe;">5,59 kg</td>
+						<td style="padding:.75rem; text-align:right; border:1px solid #dbeafe;">R$ 159,80</td>
+						<td style="padding:.75rem; text-align:right; border:1px solid #dbeafe;">R$ 33,67</td>
+						<td style="padding:.75rem; text-align:right; border:1px solid #dbeafe;">R$ 126,13</td>
+						<td style="padding:.75rem; text-align:center; border:1px solid #dbeafe;"><strong>374,60%</strong></td>
+						<td style="padding:.75rem; text-align:center; border:1px solid #dbeafe;">~0,00 g</td>
+						<td style="padding:.75rem; border:1px solid #dbeafe;">Recuperação quase total com leve queda financeira.</td>
+					</tr>
+					<tr style="background:#fff7ed;">
+						<td style="padding:.75rem; border:1px solid #dbeafe;"><strong>C - Agressivo</strong></td>
+						<td style="padding:.75rem; text-align:right; border:1px solid #dbeafe;">10,2</td>
+						<td style="padding:.75rem; text-align:right; border:1px solid #dbeafe;">100,00%</td>
+						<td style="padding:.75rem; text-align:right; border:1px solid #dbeafe;">78,23%</td>
+						<td style="padding:.75rem; text-align:right; border:1px solid #dbeafe;">5,94 kg</td>
+						<td style="padding:.75rem; text-align:right; border:1px solid #dbeafe;">R$ 150,19</td>
+						<td style="padding:.75rem; text-align:right; border:1px solid #dbeafe;">R$ 39,07</td>
+						<td style="padding:.75rem; text-align:right; border:1px solid #dbeafe;">R$ 111,12</td>
+						<td style="padding:.75rem; text-align:center; border:1px solid #dbeafe;"><strong>284,44%</strong></td>
+						<td style="padding:.75rem; text-align:center; border:1px solid #dbeafe;">~0,00 g</td>
+						<td style="padding:.75rem; border:1px solid #dbeafe;">Captura mais massa, mas dilui pureza e retorno.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<p style="font-size:.88rem; color:#64748b;">
+			<strong>Observação:</strong> os valores foram calculados pela aplicação em um cenário didático do perfil <code>apatita_registro</code>. Nos três cenários, o erro bruto do balanço foi <code>1,82e-12 g</code>, tratado como zero numérico: massa inicial = massa no lodo + massa na solução. Em campo real, a leitura dependeria de amostragem, caracterização mineralógica, análise química, validação de processo, escala, licenciamento e responsabilidade técnica.
+		</p>
+
+		<hr>
+
+		<h2>O Que a Turma Aprende Com a Tabela</h2>
+		<p>
+			O cenário C parece sedutor porque captura mais massa e chega praticamente ao limite de recuperação. Mas a planilha mostra o que a intuição apressada esconde: o aumento do pH dilui a pureza do lodo e reduz a atratividade financeira do cenário.
+		</p>
+		<p>
+			O cenário A, que parecia apenas conservador, aparece como o mais forte na leitura econômica gerada pela aplicação. Ele não maximiza recuperação, mas combina pureza de lodo, custo total menor, lucro bruto maior e ROI superior. Esse é exatamente o tipo de surpresa que uma simulação ajuda a enxergar.
+		</p>
+		<p>
+			O cenário B fica no meio: quase recuperação total, pureza próxima do cenário A e retorno ainda alto. Ele não "vence" a tabela, mas ajuda a turma a discutir compromisso técnico. A decisão deixa de ser escolher o maior número e passa a ser entender o que cada número cobra em troca.
+		</p>
+		<div class="insight">
+			<strong>A planilha muda a pergunta:</strong> sai o "dá dinheiro?" e entra o "quais premissas sustentam esta decisão?".
+		</div>
+
+		<hr>
+
+		<h2>Onde Entra a Loja Pública do ETE</h2>
+		<p>
+			A loja pública <a href="https://github.com/chmulato/caracore-ete-releases/releases" target="_blank" rel="noopener">caracore-ete-releases</a> entra como porta de acesso para o usuário final: site, instaladores, checksums e material de apresentação do Minerador 4.0. O código-fonte do simulador é proprietário; o que fica público é o que o aluno, o professor e o curioso técnico precisam para acessar, estudar, baixar e experimentar a oficina.
+		</p>
+		<p>
+			Para acompanhar a conta manual por trás da primeira estimativa, a loja também traz o paper técnico <a href="https://github.com/chmulato/caracore-ete-releases/blob/master/PAPERCODE.md" target="_blank" rel="noopener">Do Papel ao Simulador</a>, com exemplo de balanço de massa, erro numérico praticamente zero e comparação dos cenários antes da leitura econômica.
+		</p>
+		<p>
+			Esse detalhe importa. Em educação técnica, transparência vale muito. Quando o estudante entende que a simulação é uma estrutura de raciocínio, e não um oráculo, ele passa a fazer perguntas melhores: de onde veio o preço? O custo inclui reagente? A recuperação considera perdas? Pureza estimada basta? O score penaliza impacto ambiental?
+		</p>
+		<p>
+			Essas perguntas são o produto. A tela é só o começo.
+		</p>
+		<div class="quote-box">
+			<strong>CTA técnico:</strong><br><br>
+			<pre><code>1. Abra o ETE Minerador 4.0
+2. Escolha um cenário de bancada
+3. Ajuste volume, pH e concentração no Lab
+4. Compare pureza, massa recuperada, sustentabilidade e receita
+5. Use o ETE Mineração para aprofundar OPEX, CAPEX, ROI e payback
+6. Discuta a decisão antes de acreditar no número</code></pre>
+		</div>
+
+		<hr>
+
+		<h2>Para Quem Esse CTA Foi Feito</h2>
+		<p>
+			Para escolas técnicas, o Minerador 4.0 oferece uma ponte entre aula e tomada de decisão. A turma deixa de decorar termos como lixiviação, precipitação, pureza e recuperação e passa a observar como esses conceitos se pressionam mutuamente.
+		</p>
+		<p>
+			Para professores, a planilha vira roteiro de discussão. Cada coluna pode abrir uma aula: massa, teor, seletividade, custo, preço, risco, impacto e validação. O ganho não está em resolver tudo, mas em organizar a complexidade sem matar a curiosidade.
+		</p>
+		<p>
+			Para empreendedores e curiosos, a mensagem é ainda mais direta: número bonito sem premissa é enfeite. Simulação boa não promete fortuna. Simulação boa ajuda a decidir o que merece ser testado por gente habilitada.
+		</p>
+
+		<hr>
+
+		<h2>O Que Não Devemos Prometer</h2>
+		<p>
+			O ETE Minerador 4.0 não substitui laboratório acreditado, profissional habilitado, rota industrial, licenciamento, análise ambiental ou engenharia de planta. Ele não transforma resíduo em riqueza por decreto. Ele não garante viabilidade econômica. Ele não assina resultado.
+		</p>
+		<p>
+			O que ele pode entregar é valioso justamente porque é limitado: um ambiente de aprendizagem para simular, comparar e discutir. Em vez de vender ilusão, ele treina prudência técnica. Em vez de esconder premissa, ele coloca a premissa na tela.
+		</p>
+
+		<hr>
+
+		<h2>Amarra: A Planilha Como Ponte</h2>
+		<p>
+			No fim, a planilha não empobrece o Minerador 4.0. Ela o fortalece. Porque mineração, química e mercado não vivem apenas de metáfora. Vivem de massa, teor, perda, custo, escala e validação.
+		</p>
+		<p>
+			A picareta digital ganha maturidade quando aceita ser medida. O Campo dá contexto. O Lab dá consequência. O Mercado dá tensão. A ETE dá método. E a planilha, quando bem usada, impede que o brilho da promessa cegue a leitura da realidade.
+		</p>
+		<p>
+			Esse é o melhor CTA possível para um produto técnico: não pedir que a pessoa acredite. Convidar a pessoa a testar.
+		</p>
+
+		<div class="insight">
+			<strong>Registro de método:</strong> artigo construído como peça editorial e CTA para o ETE Minerador 4.0, com números simulados e tabela HTML para enriquecer a leitura. Não deve ser usado como referência técnica de processo real sem validação profissional.
+		</div>
+
+		<h2>Hashtags</h2>
+		<div class="hash-box">#CaraCore #Minerador40 #ETE #TerrasRaras #Hidrometalurgia #Python #EducacaoTecnica #CampoLabMercado #SoberaniaMineral #SoftwareBoutique #BrasilEmergente #chmulato</div>
+
+		<hr />
+
+		<h3>Contato</h3>
+		<ul>
+			<li><strong>E-mail:</strong> suporte@caracore.com.br</li>
+			<li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
+			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
+		</ul>
+
+		<div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
+			<strong>Conheça o ETE Minerador 4.0</strong><br />
+			<span style="font-size:.85rem;">Simule cenários, compare premissas e transforme curiosidade mineral em raciocínio técnico.</span><br />
+			<a href="https://ete.caracore.com.br/" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Acessar o Minerador 4.0</a>
+			<a href="https://github.com/chmulato/caracore-ete-releases/releases" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; margin-left:.5rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Baixar pela loja pública</a>
+			<a href="https://github.com/chmulato/caracore-ete-releases/blob/master/PAPERCODE.md" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; margin-left:.5rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Ler o paper técnico</a>
+		</div>
+
+		<p style="text-align:center; font-size:.85rem; color:#6b7280; margin-top:3rem;">
+			<em>Artigo publicado em 20 de setembro de 2026</em><br>
+			© 2026 Cara Core Informática. Todos os direitos reservados.
+		</p>
+	</div>
+</body>
+</html>
+

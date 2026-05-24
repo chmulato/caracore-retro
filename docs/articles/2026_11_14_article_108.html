@@ -1,0 +1,211 @@
+?<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Amarelinha: Os Cinco Atos — Cara Core</title>
+	<meta name="description" content="Protocolo Amarelinha dentro do CSO: trilha evolutiva para entregas, checkpoints, telemetria, massa, sombra e auditoria operacional." />
+	<meta name="author" content="Cara Core Informática" />
+	<link rel="canonical" href="https://retro.caracore.com.br/articles/2026_11_14_article_94.html" />
+	<meta property="og:title" content="Amarelinha: Os Cinco Atos" />
+	<meta property="og:description" content="A arquitetura do CSO/Amarelinha explicada com transparência de oficina: backend Quarkus, JavaFX, Vue e cinco atos de rastreabilidade." />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="https://retro.caracore.com.br/articles/2026_11_14_article_94.html" />
+	<meta property="og:image" content="https://retro.caracore.com.br/articles/assets/img/2026_11_14_article_108_01.png" />
+	<meta property="og:image:alt" content="Amarelinha: Os Cinco Atos" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Amarelinha: Os Cinco Atos" />
+	<meta name="twitter:description" content="CSO/Amarelinha como trilha técnica de soberania operacional, não como frota em produção prometida." />
+	<meta name="twitter:image" content="https://retro.caracore.com.br/articles/assets/img/2026_11_14_article_108_01.png" />
+	<link rel="stylesheet" href="assets/css/articles.css" />
+	<link rel="stylesheet" href="assets/css/temporada-i.css" />
+</head>
+<body>
+	<div class="container">
+		<a class="back-link" href="../index.html">&larr; Voltar para publicações</a>
+		<img src="assets/img/2026_11_14_article_108_01.png" alt="Amarelinha: Os Cinco Atos" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+		<h1>Amarelinha: Os Cinco Atos</h1>
+		<div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
+			<img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
+			<span style="margin-left: 1.5rem;">14 de novembro de 2026</span>
+		</div>
+		<div class="note"><strong>Tempo estimado:</strong> ~8–9 minutos</div>
+
+		<div class="quote-box">
+			<strong>Premissa:</strong> "Software não é amontoado de funções; é narrativa de confiança. Se a lógica falha, a confiança se fragiliza."
+		</div>
+
+		<h2>O Espelho da Jornada</h2>
+		<p>
+			Lucas olha para o CSO sem fantasia. Aqui não estamos falando de curso, agenda de tatuador ou simulador mineral. Estamos falando de gestão de entregas, rastreabilidade e uma trilha técnica chamada Protocolo Amarelinha.
+		</p>
+		<p>
+			O produto real tem backend Quarkus, persistência, segurança JWT, cliente JavaFX mantido, SPA Vue e documentação técnica. O Amarelinha aparece como evolução arquitetural dentro dessa oficina, não como promessa genérica de soberania para tudo.
+		</p>
+		<div class="insight">
+			<strong>Transparência de produto:</strong> CSO é sistema de soberania operacional para gestão de entregas. O Protocolo Amarelinha organiza uma trilha de cinco atos: Geometria, Dinâmica, Sombra, Massa e Céu.
+		</div>
+		<div class="insight">
+			<strong>A Pergunta de Viktor (O Arquiteto):</strong>
+			<p>
+				"Software não é amontoado de funções; é narrativa de confiança. Se a lógica falha, a confiança se fragiliza. Os cinco atos garantem que, do checkpoint de saída ao de chegada, cada kg, cada segundo, cada rota está documentado e protegido contra desvios."
+			</p>
+		</div>
+
+		<h2>Os Cinco Atos: Anatomia da Soberania</h2>
+
+		<h3>Ato I: Geometria — O Mapa</h3>
+		<p>
+			Um caminhão não navega no vazio. Antes de sair da garagem, cinco pontos podem ser traçados no mapa local, usando a lógica de checkpoints prevista na documentação:
+		</p>
+		<ul>
+			<li><strong>Saída (Checkpoint 1):</strong> Curitiba Centro, -25.4284°, -49.2733°. Raio de validação: 500m.</li>
+			<li><strong>Passagem (Checkpoints 2-4):</strong> Três pontos de confirmação (Tatuapé, Campo Largo, Santo André).</li>
+			<li><strong>Chegada (Checkpoint 5):</strong> São Paulo Vila Mariana, -23.5889°, -46.6564°.</li>
+		</ul>
+		<p>
+			Cada checkpoint vira um ponto de validação no dashboard. A cor começa em cinza, muda quando o caminhão entra no raio e pode sinalizar divergência se a auditoria detectar problema.
+		</p>
+		<div class="note">
+			<strong>Como funciona:</strong> o cálculo de distância Haversine detecta quando o GPS entra no raio. Isso é arquitetura de validação operacional, não licença para prometer infalibilidade.
+		</div>
+
+		<h3>Ato II: Dinâmica — O Movimento</h3>
+		<p>
+			O caminhão está em movimento. A cada 30 segundos (ou menos), o APK envia bursts de telemetria:
+		</p>
+		<ul>
+			<li>Latitude / Longitude (do GPS)</li>
+			<li>Velocidade (em km/h)</li>
+			<li>RPM do motor</li>
+			<li>Massa atual (sensor Bluetooth calibrado)</li>
+			<li>Timestamp (hora local sincronizada)</li>
+		</ul>
+		<p>
+			Se houver rede, os dados podem chegar em tempo real. Se não houver, a proposta técnica prevê buffer local em SQLite. Offline-first aqui significa reduzir perda operacional, não garantir milagre contra qualquer falha.
+		</p>
+		<p>
+			Na sede, o engine valida dados de rota, checkpoint, velocidade e massa. A documentação fala em logs imutáveis e auditoria, mas a comunicação precisa deixar claro que isso depende da implementação, sensores e operação correta.
+		</p>
+		<div class="quote-box">
+			<em>"A vida real não é GPS de verdade. A vida real é: o motorista faz paradas não planejadas e o sistema precisa registrar com clareza. O Ato II detecta quando a massa muda sem explicação."</em>
+		</div>
+
+		<h3>Ato III: Sombra — A Navegação Inercial</h3>
+		<p>
+			No Brasil de 2026, nem tudo é conectado. Um caminhão entra em túnel, perde o sinal GPS. Ou entra em zona rural e não há 4G. O que fazer?
+		</p>
+		<p>
+			Resposta: <strong>Navegar pela inércia.</strong>
+		</p>
+		<p>
+			O Ato III ativa quando o status GPS passa para "PERDIDO". O sistema toma a última velocidade conhecida (78 km/h) e a última direção (260° - sudoeste) e <strong>extrapola</strong>: "Se mantiver essa velocidade por 30 minutos em linha reta, o caminhão estará aproximadamente aqui."
+		</p>
+		<p>
+			No Dashboard, um ícone fantasma (cinzento, opaco, com alpha=0.4) começa a se mover lentamente. Um cronômetro regressivo marca o tempo máximo permitido na sombra (exemplo: esperado 30 min; alerta em 34,5 min). Se exceder, sinal.
+		</p>
+		<p>
+			É lidar com aleatoriedade brasileira: um desvio de rota não planejado agora tem áudio e visual. Transparência real.
+		</p>
+
+		<h3>Ato IV: Massa — A Auditoria de Lavoisier</h3>
+		<p>
+			Lavoisier, químico francês: "Na natureza, nada se cria, nada se perde, tudo se transforma."
+		</p>
+		<p>
+			Corolário brasileiro: se você começou com 30.000 kg e terminou com 29.500 kg, <strong>500 kg ficaram sem registro</strong>.
+		</p>
+		<p>
+			O Ato IV compara a "massa esperada" inicial com a "massa observada" em cada checkpoint. A tolerância é de 2% (600 kg em 30 toneladas). Se a divergência for maior, a UI sinaliza:
+		</p>
+		<ul>
+			<li><strong>Transição de cor:</strong> o quadrado muda de VERDE para VERMELHO (animação 500ms).</li>
+			<li><strong>Som industrial:</strong> "crack_industrial.wav" toca no Dashboard.</li>
+			<li><strong>Rachadura visual:</strong> um SVG zigzagueia sobre o quadrado (efeito traumático).</li>
+			<li><strong>Alerta crítico:</strong> WhatsApp / Push notification para o patrão: "VIOLAÇÃO: Entrega #123 perdeu 1.500 kg no checkpoint 3."</li>
+			<li><strong>Registro de auditoria:</strong> a divergência é registrada para investigação e rastreabilidade.</li>
+		</ul>
+		<h3>Ato V: Céu — A Conclusão Celebrada</h3>
+		<p>
+			Se todos os 4 atos passam (geometria validada, dinâmica monitorada, sombra dentro do esperado, massa íntegra), o 5º ato é celebração.
+		</p>
+		<p>
+			Exemplo real: Entregador A diz "Perdi 500 kg por derramamento." Entregador B diz "Nunca saiu carga." A gestão não sabe. Com o Ato IV, o audit log mostra exatamente em qual checkpoint a massa variou — e se foi gradual ou abrupta.
+		</p>
+		<p>
+			O valor aqui não vem de IA genérica. Vem da combinação de checkpoint, telemetria, massa, dashboard e auditoria operacional.
+		</p>
+
+		<h2>Como o CSO Conversa com Outros Produtos</h2>
+		<p>
+			O CSO pode conversar com outros produtos da Cara Core, mas não deve engolir o nome deles.
+		</p>
+		<p>
+			<strong>Área 51/Reino OIDC:</strong> entram quando identidade, autenticação e autorização precisam ser formalizadas. <strong>Hub:</strong> entra quando a operação é e-commerce, estoque, triagem e retirada. <strong>PDV:</strong> entra quando o ponto principal é venda local.
+		</p>
+		<p>
+			<strong>Circuito Ferradura</strong> forma pessoas para entender lógica e segurança. <strong>Ink Agenda</strong> resolve gestão de estúdio. <strong>ETE/Minerador</strong> resolve simulação educacional em hidrometalurgia. CSO não precisa fingir que é tudo isso.
+		</p>
+		<div class="insight">
+			<strong>O Insight de Viktor:</strong>
+			<p>
+				O Protocolo Amarelinha é uma trilha do CSO para confiança operacional em entregas. Quanto mais claro isso fica, menos risco de vender arquitetura futura como se fosse produto genérico pronto.
+			</p>
+		</div>
+
+		<h2>Roadmap, Não Foguete de Palco</h2>
+		<p>
+			Não devemos anunciar operação de campo se isso não está confirmado na oficina. A documentação mostra arquitetura, schema, cinco atos e direção técnica. Isso já é bastante.
+		</p>
+		<p>
+			O que o mundo pode ver quando a trilha amadurece:
+		</p>
+		<ul>
+			<li>checkpoints configurados com clareza;</li>
+			<li>telemetria recebida e registrada;</li>
+			<li>períodos de sombra tratados com estimativa e alerta;</li>
+			<li>massa auditada com tolerância explícita;</li>
+			<li>relatórios e logs para investigação operacional.</li>
+		</ul>
+
+		<h2>A Reflexão Final</h2>
+		<p>
+			Lucas vê a arquitetura e reconhece o que importa: cinco atos para organizar confiança operacional, sem prometer que software elimina toda incerteza do mundo físico.
+		</p>
+		<p>
+			Ele pensa na oficina como ela é: backend, desktop, frontend, schema, documentação e roadmap. Nada disso precisa virar mito para ter valor.
+		</p>
+		<p>
+			Não em algoritmo que ninguém entende. Mas em lógica transparente, documentação, teste, sensor, operador e auditoria.
+		</p>
+		<div class="quote-box">
+			<em>"Amarelinha é jogo de criança porque ensina geometria sem parecer. O Protocolo Amarelinha é o mesmo: ensina confiança sem parecer. Cada ato é um pulo. Cada checkpoint é um quadrado. E no final, o céu."</em>
+		</div>
+
+		<p>
+			Seja bem-vindo, Lucas. Você conhece os cinco atos. Agora sabe a diferença entre arquitetura promissora e promessa indevida. E essa diferença salva produto.
+		</p>
+
+		<hr>
+
+		<h2>Hashtags</h2>
+		<div class="hash-box">#CaraCore #CSO #ProtocoloAmarelinha #Java21 #Quarkus #JavaFX #SQLite #Telemetria #Rastreabilidade #AuditoriaOperacional #Entregas #SoftwareBoutique</div>
+
+		<hr />
+
+		<h3>Contato</h3>
+		<ul>
+			<li><strong>E-mail:</strong> suporte@caracore.com.br</li>
+			<li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
+			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
+		</ul>
+
+		<p style="text-align:center; font-size:.85rem; color:#6b7280; margin-top:3rem;">
+			<em>Artigo publicado em 14 de novembro de 2026</em><br>
+			© 2026 Cara Core Informática. Todos os direitos reservados.
+		</p>
+	</div>
+</body>
+</html>
+

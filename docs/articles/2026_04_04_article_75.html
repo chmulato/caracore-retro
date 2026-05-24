@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Por Dentro do CaraCore PDV: O Primeiro Sistema Preparado para a Reforma Tributária 2026–2033 — Cara Core</title>
+	<meta name="description" content="Caos tributário, CBS/IBS, Pix Split e automação. Arquitetura do PDV, auditoria e segurança. Por que estar pronto antes importa." />
+	<meta name="author" content="Cara Core Informática" />
+	<link rel="canonical" href="https://retro.caracore.com.br/articles/2026_04_04_article_79.html" />
+	<meta property="og:title" content="Por Dentro do CaraCore PDV: O Primeiro Sistema Preparado para a Reforma Tributária 2026–2033" />
+	<meta property="og:description" content="Autoridade técnica e regulatória: CBS/IBS, Pix Split, arquitetura e auditoria do PDV." />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="https://retro.caracore.com.br/articles/2026_04_04_article_79.html" />
+	<meta property="og:image" content="https://retro.caracore.com.br/articles/assets/img/2026_04_04_article_75_01.png" />
+	<meta property="og:image:alt" content="CaraCore PDV: primeiro sistema preparado para a Reforma Tributária 2026-2033" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Por Dentro do CaraCore PDV: Reforma Tributária 2026–2033" />
+	<meta name="twitter:description" content="CBS/IBS, Pix Split, arquitetura e auditoria do PDV. Por que estar pronto antes importa." />
+	<meta name="twitter:image" content="https://retro.caracore.com.br/articles/assets/img/2026_04_04_article_75_01.png" />
+	<meta name="twitter:image:alt" content="CaraCore PDV: primeiro sistema preparado para a Reforma Tributária 2026-2033" />
+	<link rel="stylesheet" href="assets/css/articles.css" />
+	<style>
+		body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif; line-height:1.65; color:#1f2937; margin:0; }
+		.container { max-width: 980px; margin:0 auto; padding:2rem 1.25rem 4rem; }
+		h1 { line-height:1.2; font-size:clamp(1.9rem,2.4vw,2.5rem); margin-top:0; }
+		h2 { margin-top:2.5rem; line-height:1.3; color:#111827; border-bottom:2px solid #e5e7eb; padding-bottom:.5rem; }
+		h3 { margin-top:1.75rem; color:#374151; }
+		ul,ol { padding-left:1.3rem; }
+		ul li, ol li { margin-bottom:.65rem; }
+		.back-link { text-decoration:none; font-size:.85rem; color:#2563eb; }
+		.note { background:#fef3c7; padding:1rem 1.25rem; border-left:4px solid #d97706; border-radius:6px; margin:1.5rem 0; }
+		.insight { background:#dbeafe; padding:1rem 1.25rem; border-left:4px solid #2563eb; border-radius:6px; margin:1.5rem 0; }
+		.quote-box { background:#f9fafb; padding:1.25rem 1.5rem; border-left:4px solid #6b7280; border-radius:6px; font-style:italic; margin:1.5rem 0; }
+		hr { border:none; border-top:1px solid #d1d5db; margin:3rem 0; }
+		.hash-box { background:#f3f4f6; padding:1rem 1.25rem; border-radius:6px; font-size:.9rem; color:#374151; word-break:break-word; }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<a class="back-link" href="../index.html">&larr; Voltar para publicações</a>
+		<img src="assets/img/2026_04_04_article_75_01.png" alt="CaraCore PDV: primeiro sistema preparado para a Reforma Tributária 2026-2033" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+		<h1>Por Dentro do CaraCore PDV: O Primeiro Sistema Preparado para a Reforma Tributária 2026–2033</h1>
+		<div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
+			<img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
+			<span style="margin-left: 1.5rem;">4 de abril de 2026</span>
+		</div>
+		<div class="note"><strong>Tempo estimado de leitura:</strong> ~8–10 minutos</div>
+
+		<h2>Introdução: O Varejista no Meio do Labirinto</h2>
+		<p>A reforma tributária brasileira (Lei 14.754/2023) desenha um novo regime entre 2026 e 2033: CBS (Contribuição sobre Bens e Serviços) e IBS (Imposto sobre Bens e Serviços) substituem uma penca de tributos federais e estaduais; o Pix ganha função de split de pagamento, repartindo o valor da venda entre lojista, intermediário e fisco. Para o varejista, a mudança não é opcional. Quem não se preparar fica preso ao caos antigo enquanto o resto do mercado já opera no novo.</p>
+		<p>O CaraCore PDV foi pensado desde o início para esse horizonte: não como atualização de última hora, mas como sistema que já nasce alinhado à lógica da reforma. Este artigo explica o cenário atual, o que muda com CBS/IBS e Pix Split, como a arquitetura do PDV suporta conformidade e auditoria, e por que estar pronto antes é vantagem real.</p>
+		<div class="quote-box">
+			<strong>O gancho:</strong> O PDV que ignora a reforma tributária em 2026 não está "atrasado". Está obsoleto.
+		</div>
+		<div class="insight">
+			<strong>A tese:</strong> O CaraCore PDV é o primeiro sistema de ponto de venda desenhado para a reforma 2026–2033: CBS/IBS, Pix Split, arquitetura local e auditoria que o varejista e o fisco podem confiar.
+		</div>
+
+		<h2>1. O Caos Tributário Atual</h2>
+		<p>Hoje o varejo convive com ICMS estadual, PIS, COFINS, ISS (quando aplicável), regimes simplificados, substituição tributária, diferimentos e uma infinidade de alíquotas e regras por estado e por atividade. O mesmo produto pode ter tratamento diferente conforme o destino; a mesma venda pode gerar obrigações em várias esferas. Sistemas legados foram construídos para esse mosaico: muitas tabelas, muitos parâmetros, muita manutenção. Qualquer alteração de lei vira projeto de TI.</p>
+		<p>O custo é operacional e de risco: erro de tributação gera multa e reclamação; retrabalho consome tempo do dono e do contador. O varejista que depende de planilha ou de PDV que "não entende" de imposto fica ainda mais exposto. A reforma não elimina a complexidade de um dia para o outro — há transição —, mas estabelece uma direção clara. Quem tiver sistema preparado para essa direção sai na frente.</p>
+
+		<h2>2. O Que Muda com CBS e IBS</h2>
+		<p>CBS (federal) e IBS (estadual e municipal) unificam a lógica: imposto sobre consumo, com crédito, em cascata. Na prática, o sistema precisa saber calcular o tributo devido por operação, registrar créditos e débitos e gerar a base para apuração e entrega às autoridades. O varejista deixa de conciliar dezenas de regimes para passar a trabalhar com uma estrutura mais previsível — desde que o software suporte.</p>
+		<p>No CaraCore PDV, a lógica de CBS/IBS está incorporada ao fluxo de venda: cada item, cada operação e cada movimento geram o registro adequado. O varejista não precisa "ajustar na mão" depois; o sistema já nasce preparado para o novo desenho. Isso reduz retrabalho, erro e exposição em auditoria.</p>
+
+		<h2>3. Pix Split e Automação</h2>
+		<p>O Pix não é só meio de pagamento. Na reforma, ganha papel de mecanismo de split: parte do valor da transação vai para o vendedor, parte para intermediários (adquirente, bandeira), parte para o fisco. O PDV precisa integrar-se a esse fluxo — enviar os dados corretos, receber a confirmação e manter rastreabilidade de quem recebeu o quê.</p>
+		<p>No CaraCore PDV, o Pix Split é tratado como parte da operação de venda: a automação garante que o valor seja repartido conforme as regras vigentes e que cada parte fique registrada. O operador do caixa não precisa calcular manualmente; o sistema faz a ponte com o ambiente de pagamento e com a exigência fiscal. O resultado é conformidade e menos atrito no dia a dia.</p>
+
+		<h2>4. Arquitetura do PDV</h2>
+		<p>O CaraCore PDV é aplicação desktop (Electron), com banco de dados local (SQLite). Os dados de vendas, estoque e configuração ficam na máquina do estabelecimento; não há dependência de nuvem para o núcleo da operação. Isso traz vantagens concretas para o varejista:</p>
+		<ul>
+			<li><strong>Funcionamento offline:</strong> se a rede cair, o caixa continua vendendo. Sincronização e envio de dados fiscais podem ocorrer quando a conexão voltar.</li>
+			<li><strong>Controle local:</strong> o dono do negócio sabe onde estão os dados. Não fica à mercê de indisponibilidade de servidor de terceiros para abrir o PDV.</li>
+			<li><strong>Conformidade e performance:</strong> operações críticas (abertura de caixa, venda, fechamento) não dependem de latência de internet. O sistema responde rápido e previsível.</li>
+		</ul>
+		<p>A arquitetura foi escolhida para suportar a reforma tributária: cálculos e registros ocorrem no próprio PDV, com estrutura preparada para CBS/IBS e Pix Split, sem depender de módulo externo que "talvez" seja atualizado no futuro.</p>
+
+		<h2>5. Auditoria e Segurança</h2>
+		<p>Rastreabilidade é exigência legal e de gestão. O PDV precisa permitir que cada venda, cada movimento de estoque e cada informação tributária sejam auditáveis: quem fez, quando, com qual valor e em qual regime. O CaraCore PDV mantém esses registros de forma consistente, com dados armazenados localmente e protegidos. Em caso de fiscalização ou dúvida do contador, a base está organizada.</p>
+		<p>Segurança e LGPD andam juntos: dados de clientes e de transações ficam sob controle do estabelecimento; não há envio desnecessário para terceiros. A política é clara: o que é local permanece local, e o que precisa ser enviado (por exemplo, para autoridade fiscal) segue regra explícita. Isso reduz risco de vazamento e dá transparência ao titular dos dados.</p>
+
+		<h2>6. Por Que Estar Pronto Antes Importa</h2>
+		<p>Quem espera a reforma "pegar" para então correr atrás de sistema novo perde tempo e tranquilidade. O varejista que já opera com PDV preparado para 2026–2033 evita retrabalho de migração em cima da hora, reduz erro de tributação e consegue focar no negócio em vez de apagar incêndio fiscal.</p>
+		<p>Estar pronto antes também é vantagem competitiva: o cliente e o contador percebem que o estabelecimento leva a sério conformidade e planejamento. Em um mercado em que muitos ainda vão descobrir o problema na marra, quem já está alinhado se destaca.</p>
+
+		<h2>Conclusão: PDV Como Base da Conformidade</h2>
+		<p>O CaraCore PDV não é um PDV genérico com "módulo de reforma" encaixado depois. Foi desenhado para ser o primeiro sistema de ponto de venda preparado para a reforma tributária 2026–2033: CBS/IBS, Pix Split, arquitetura local e auditoria que o varejista e o fisco podem usar com confiança. O caos tributário atual tem data para ser substituído por uma lógica mais clara; quem tiver a ferramenta certa desde já sai na frente.</p>
+
+		<hr>
+
+		<h2>Hashtags</h2>
+		<div class="hash-box">#CaraCorePDV #ReformaTributaria #CBS #IBS #PixSplit #Varejo #PDV #Auditoria #Conformidade #CaraCore</div>
+
+		<hr />
+
+		<h3>Contato</h3>
+		<ul>
+			<li><strong>E-mail:</strong> suporte@caracore.com.br</li>
+			<li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
+			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
+		</ul>
+
+		<div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
+			<strong>Gostou do conteúdo?</strong><br />
+			<span style="font-size:.85rem;">Conecte-se conosco no LinkedIn para mais conteúdos sobre PDV, reforma tributária e varejo.</span><br />
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Seguir no LinkedIn</a>
+		</div>
+
+		<p style="text-align:center; font-size:.85rem; color:#6b7280; margin-top:3rem;">
+			<em>Artigo publicado em 4 de abril de 2026</em><br>
+			© 2026 Cara Core Informática. Todos os direitos reservados.
+		</p>
+	</div>
+</body>
+</html>
+

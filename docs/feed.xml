@@ -5,9 +5,31 @@
     <link>https://retro.caracore.com.br/</link>
     <description><![CDATA[Coleção de artigos publicados pela Cara Core nas redes, organizada por ano.]]></description>
     <language>pt-BR</language>
-    <lastBuildDate>Thu, 03 Dec 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 18 Dec 2026 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://retro.caracore.com.br/feed.xml" rel="self" type="application/rss+xml" />
     <generator>Cara Core RSS generator</generator>
+
+    <item>
+      <title><![CDATA[Minerador 4.0: Python para Validação Intelectual de Processos Químicos]]></title>
+      <link>https://retro.caracore.com.br/articles/2026_12_18_article_113.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_12_18_article_113.html</guid>
+      <description><![CDATA[Minerador 4.0 como ferramenta em Python para estudar, simular e validar princípios químicos com foco em auditoria técnica e coerência de processos.]]></description>
+      <pubDate>Fri, 18 Dec 2026 12:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Circuito Ferradura: Formação em Python para Auditoria Técnica]]></title>
+      <link>https://retro.caracore.com.br/articles/2026_12_12_article_112.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_12_12_article_112.html</guid>
+      <description><![CDATA[Circuito Ferradura como trilha de domínio de codificação em Python para formar auditores técnicos capazes de validar código humano e código gerado por IA.]]></description>
+      <pubDate>Sat, 12 Dec 2026 12:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Reino OIDC: Formação de Auditores de Identidade Digital]]></title>
+      <link>https://retro.caracore.com.br/articles/2026_12_08_article_111.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_12_08_article_111.html</guid>
+      <description><![CDATA[O Reino OIDC como trilha de formação para domínio de protocolos de identidade, auditoria técnica e validação humana de segurança em sistemas com IA.]]></description>
+      <pubDate>Tue, 08 Dec 2026 12:00:00 +0000</pubDate>
+    </item>
 
     <item>
       <title><![CDATA[O Renascimento da Tecnologia Independente: Produto Real Antes do Discurso]]></title>
