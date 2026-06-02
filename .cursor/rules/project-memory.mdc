@@ -1,0 +1,57 @@
+---
+description: Memória do Retrô Cara Core — caracore-retro; retro.caracore.com.br; artigos LinkedIn por data
+alwaysApply: true
+---
+
+# Memória — caracore-retro (Artigos Retrô)
+
+**Atualizado:** 2026-06-02
+
+## Repositório e papel
+
+- **Repo:** `caracore-retro` (local: `D:\dev\caracore-retro`)
+- **URL:** https://retro.caracore.com.br/
+- **Publicação:** GitHub Pages a partir de **`docs/`**
+- **Função:** Acervo editorial LinkedIn — narrativa Bunker, produtos, formação; **não** é loja nem oficina
+
+## Relação com o ecossistema
+
+- **Índice canônico:** `D:\dev\caracore-site\docs\ECOSYSTEM_MEMORIA.md`
+- **Matriz:** https://www.caracore.com.br/ · portfólio · CTAs para lojas
+- **Sala / campanhas:** https://tools.caracore.com.br/sala/ (repo `caracore-site` / `caracore-mkt`)
+- **Wiki:** https://wiki.caracore.com.br/
+
+## Convenção de artigos
+
+| Item | Padrão |
+|------|--------|
+| HTML | `docs/articles/YYYY_MM_DD_article_NN.html` |
+| Imagem | `docs/articles/assets/img/YYYY_MM_DD_article_NN_01.png` |
+| Prompt IA | `docs/articles/assets/img/YYYY_MM_DD_article_NN_PROMPT_IMAGEM.txt` (16:9 paisagem quando capa) |
+| Índice | `docs/index.html` (tags + data) |
+| RSS | `docs/feed.xml` |
+| Ciclo editorial | `docs/ciclo-ativo.html` |
+
+- **Tempo de leitura:** bloco `.note` (~8 min nos artigos técnicos recentes)
+- **Estilo:** `assets/css/articles.css` + `temporada-i.css` · `quote-box`, `insight`, `note`
+- **Total (jun/2026):** 103 artigos numerados (lacunas históricas na numeração)
+
+## Artigo recente — PDV Rust (114)
+
+- **Data:** 20/12/2026
+- **Ficheiro:** `2026_12_20_article_114.html`
+- **Tema:** Segunda linha PDV Rust + Tauri 2; coexistência com Java; **não** migração forçada
+- **Links no texto:** GitHub Releases, rust-pdv, pdv, portfólio `#pdv-coexistencia`
+
+## Ao publicar artigo novo
+
+1. Criar HTML + entrada em `index.html` + `feed.xml`
+2. Gerar PNG e atualizar prompt `.txt`
+3. Atualizar `ciclo-ativo.html` se fizer parte do ciclo editorial
+4. Atualizar contagem no `README.md` se necessário
+5. Mencionar produto/versão alinhados a `ECOSYSTEM_LOJAS.txt` (matriz)
+
+## Convenções
+
+- Discurso PDV: dois desktops, mesma promessa Bunker; evitar “PDV v3” sozinho e “substitui Java”
+- Versões: v3.1.x Java · v0.1.x Rust (ver matriz jun/2026)
