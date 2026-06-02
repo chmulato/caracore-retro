@@ -16,7 +16,8 @@ alwaysApply: true
 
 ## Relação com o ecossistema
 
-- **Índice canônico:** `D:\dev\caracore-site\docs\ECOSYSTEM_MEMORIA.md`
+- **Iniciar tarefa:** `D:\dev\caracore-site\docs\INICIAR_NOVA_TAREFA.md`
+- **Índice ecossistema:** `D:\dev\caracore-site\docs\ECOSYSTEM_MEMORIA.md`
 - **Matriz:** https://www.caracore.com.br/ · portfólio · CTAs para lojas
 - **Sala / campanhas:** https://tools.caracore.com.br/sala/ (repo `caracore-site` / `caracore-mkt`)
 - **Wiki:** https://wiki.caracore.com.br/
