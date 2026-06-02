@@ -5,10 +5,17 @@
     <link>https://retro.caracore.com.br/</link>
     <description><![CDATA[Coleção de artigos publicados pela Cara Core nas redes, organizada por ano.]]></description>
     <language>pt-BR</language>
-    <lastBuildDate>Fri, 18 Dec 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 20 Dec 2026 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://retro.caracore.com.br/feed.xml" rel="self" type="application/rss+xml" />
     <generator>Cara Core RSS generator</generator>
 
+    <item>
+      <title><![CDATA[Duas Linhas no Balcão: PDV Desktop em Rust e Tauri 2]]></title>
+      <link>https://retro.caracore.com.br/articles/2026_12_20_article_114.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_12_20_article_114.html</guid>
+      <description><![CDATA[Segunda linha desktop do CaraCore PDV: por que avaliar Rust e Tauri 2, comparação honesta com Java e coexistência sem substituição — release v0.1.1.]]></description>
+      <pubDate>Sat, 20 Dec 2026 12:00:00 +0000</pubDate>
+    </item>
     <item>
       <title><![CDATA[Minerador 4.0: Python para Validação Intelectual de Processos Químicos]]></title>
       <link>https://retro.caracore.com.br/articles/2026_12_18_article_113.html</link>

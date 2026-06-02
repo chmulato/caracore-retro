@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Duas Linhas no Balcão: PDV Desktop em Rust e Tauri 2 — Cara Core</title>
+	<meta name="description" content="A nova iniciativa do PDV Desktop em Rust e Tauri 2: por que a Cara Core abriu uma segunda linha, comparação honesta com Java e quando faz sentido avaliar a stack." />
+	<meta name="author" content="Cara Core Informática" />
+	<link rel="canonical" href="https://retro.caracore.com.br/articles/2026_12_20_article_114.html" />
+	<meta property="og:title" content="Duas Linhas no Balcão: PDV Desktop em Rust e Tauri 2" />
+	<meta property="og:description" content="Segunda linha desktop do CaraCore PDV: Rust, Tauri 2, React e SQLite local — coexistência com Java, sem substituição." />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="https://retro.caracore.com.br/articles/2026_12_20_article_114.html" />
+	<meta property="og:image" content="https://retro.caracore.com.br/articles/assets/img/2026_12_20_article_114_01.png" />
+	<meta property="og:image:alt" content="PDV Desktop Rust e Tauri 2 — duas linhas no balcão Cara Core" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Duas Linhas no Balcão: PDV Desktop em Rust e Tauri 2" />
+	<meta name="twitter:description" content="Por que avaliar Rust e Tauri 2 no caixa: comparação técnica e de negócio com a linha Java madura." />
+	<meta name="twitter:image" content="https://retro.caracore.com.br/articles/assets/img/2026_12_20_article_114_01.png" />
+	<link rel="stylesheet" href="assets/css/articles.css" />
+	<link rel="stylesheet" href="assets/css/temporada-i.css" />
+</head>
+<body>
+	<div class="container">
+		<a class="back-link" href="../index.html">&larr; Voltar para publicações</a>
+		<img src="assets/img/2026_12_20_article_114_01.png" alt="PDV Desktop em Rust e Tauri 2 — duas linhas no balcão" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+		<h1>Duas Linhas no Balcão: PDV Desktop em Rust e Tauri 2</h1>
+
+		<div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
+			<img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
+			<span style="margin-left: 1.5rem;">20 de dezembro de 2026</span>
+		</div>
+
+		<div class="note"><strong>Tempo estimado de leitura:</strong> ~8 minutos</div>
+
+		<div class="quote-box">
+			<strong>Ideia central:</strong> não estamos “migrando o PDV para Rust”. Estamos abrindo uma <strong>segunda linha desktop</strong> do mesmo CaraCore PDV — madura em Java, piloto em Rust + Tauri 2 — para quem precisa avaliar outra engenharia no chão da loja, com os mesmos princípios de Bunker e SQLite local.
+		</div>
+
+		<h2>O que mudou em dezembro de 2026</h2>
+		<p>
+			Em 20 de dezembro de 2026, a Cara Core formaliza no retrô o que já vinha sendo construído na oficina: o <strong>Cara Core PDV Desktop (Rust + Tauri 2)</strong>, release <strong>v0.1.1</strong>, com instaladores em português do Brasil e publicação verificada em <a href="https://github.com/chmulato/caracore-rust-pdv-releases/releases" target="_blank" rel="noopener">GitHub Releases</a>.
+		</p>
+		<p>
+			A vitrine comercial continua em <a href="https://rust-pdv.caracore.com.br/" target="_blank" rel="noopener">rust-pdv.caracore.com.br</a>. O caixa maduro, multiplataforma e consolidado permanece em <a href="https://pdv.caracore.com.br/" target="_blank" rel="noopener">pdv.caracore.com.br</a> (canal Java <strong>v3.1.2-free</strong>).
+		</p>
+		<p>
+			Se você chegou até aqui esperando o texto “por que abandonar Java”, pare agora. Este artigo é sobre <strong>por que avaliar Rust e Tauri 2</strong> — e em que cenário essa avaliação faz sentido — sem romper a operação que já funciona.
+		</p>
+
+		<h2>Dois PDVs Desktop, um produto de negócio</h2>
+		<p>
+			O CaraCore PDV é um só na proposta para PME: caixa offline-first, soberania local, continuidade quando a rede falha, preparação para a transição tributária e rotina de loja previsível. O que se multiplica é a <strong>stack de engenharia</strong>, não a promessa comercial.
+		</p>
+		<div class="insight">
+			<strong>Regra de comunicação:</strong> “PDV v3” sozinho confunde. <strong>v3.1.x</strong> é faixa Java; <strong>v0.1.x</strong> é faixa Rust. O posicionamento V3 de negócio (PME, PIX Split 2027) é comum às duas linhas.
+		</div>
+		<p>
+			Por isso falamos em <strong>coexistência</strong>, não em substituição. A matriz institucional resume a comparação em <a href="https://www.caracore.com.br/portfolio.html#pdv-coexistencia" target="_blank" rel="noopener">Como as duas linhas PDV convivem</a>.
+		</p>
+
+		<h2>Por que Rust no núcleo do caixa</h2>
+		<p>
+			Rust entrou na conversa do PDV por razões de engenharia de sistema, não por moda. No balcão, o custo de um bug em memória ou de uma condição de corrida não é abstrato: é fila, é divergência de caixa, é turno perdido.
+		</p>
+		<ul>
+			<li><strong>Segurança de memória em compile time:</strong> o compilador impede classes inteiras de erros que, em outras linguagens, só aparecem sob carga ou após meses em produção.</li>
+			<li><strong>Concorrência explícita:</strong> o modelo de ownership facilita serviços paralelos (impressão, fila fiscal, sincronização) sem “corrigir no susto” com locks espalhados.</li>
+			<li><strong>Performance previsível:</strong> binário nativo enxuto, com menos surpresas de GC em horário de pico no PDV.</li>
+			<li><strong>Contrato de confiabilidade:</strong> o núcleo <code>pdv-core</code> em Rust concentra regras de caixa, auditoria, pagamentos e fronteiras de domínio com testes de regressão — a UI não “inventa” regra de negócio.</li>
+		</ul>
+		<p>
+			Isso não significa que Java seja “lento” ou “inseguro”. Significa que a oficina quis uma <strong>segunda via de validação</strong> com outro compilador, outro runtime e outro perfil de binário — útil para pilotos controlados e para equipes que já dominam ecossistema web + Rust.
+		</p>
+
+		<h2>Por que Tauri 2 na casca desktop</h2>
+		<p>
+			Se Rust responde “como o motor confia nos dados”, Tauri 2 responde “como a loja vê e instala o produto”. A versão 2 consolidou o que buscávamos para desktop brasileiro:
+		</p>
+		<ul>
+			<li><strong>Shell leve:</strong> WebView nativa (WebView2 no Windows) em vez de empacotar um navegador inteiro — instalador menor, boot mais rápido.</li>
+			<li><strong>UI em React + TypeScript:</strong> reaproveita competência de frontend, design system e testes de interface sem prender o time a uma toolkit desktop legada.</li>
+			<li><strong>Instaladores pt-BR:</strong> NSIS para o lojista, MSI pt-BR para TI, ZIP portátil para piloto — mesma linguagem de entrega que o mercado PME já entende.</li>
+			<li><strong>Multiplataforma na mesma oficina:</strong> Windows, Linux e macOS na pipeline de release v0.1.1, alinhada ao discurso Bunker (dados locais, operação no seu ambiente).</li>
+			<li><strong>Fronteira clara:</strong> comandos IPC entre UI e núcleo Rust — a interface pede; o core decide e persiste em SQLite.</li>
+		</ul>
+		<div class="quote-box">
+			<strong>Analogia de oficina:</strong> Tauri é a fachada e o balcão de atendimento; Rust é a cofre e o livro-caixa. O cliente vê fluidez; o auditor vê trilha.
+		</div>
+
+		<h2>Comparação honesta: Java (maduro) × Rust + Tauri (piloto)</h2>
+		<p>
+			A tabela abaixo não elege “vencedor”. Ela orienta <strong>qual linha abrir primeiro</strong> na sua loja ou na sua equipe de TI.
+		</p>
+		<table style="width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:.95rem;">
+				<thead>
+					<tr style="background:#e8f4fd;">
+						<th scope="col" style="border:1px solid #cbd5e1; padding:.6rem .75rem; text-align:left;">Critério</th>
+						<th scope="col" style="border:1px solid #cbd5e1; padding:.6rem .75rem; text-align:left;">PDV Desktop Java</th>
+						<th scope="col" style="border:1px solid #cbd5e1; padding:.6rem .75rem; text-align:left;">PDV Desktop Rust + Tauri 2</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="border:1px solid #cbd5e1; padding:.6rem .75rem;">Maturidade</td>
+						<td style="border:1px solid #cbd5e1; padding:.6rem .75rem;">Canal <strong>v3.1.2-free</strong>, trilhas e wiki consolidados</td>
+						<td style="border:1px solid #cbd5e1; padding:.6rem .75rem;">Release <strong>v0.1.1</strong>, piloto assistido</td>
+					</tr>
+					<tr>
+						<td style="border:1px solid #cbd5e1; padding:.6rem .75rem;">Plataformas</td>
+						<td style="border:1px solid #cbd5e1; padding:.6rem .75rem;">Windows, Linux, macOS — referência madura</td>
+						<td style="border:1px solid #cbd5e1; padding:.6rem .75rem;">Win / Linux / macOS na v0.1.1 — validação em campo</td>
+					</tr>
+					<tr>
+						<td style="border:1px solid #cbd5e1; padding:.6rem .75rem;">Stack</td>
+						<td style="border:1px solid #cbd5e1; padding:.6rem .75rem;">Java 21, JavaFX, Quarkus, SQLite</td>
+						<td style="border:1px solid #cbd5e1; padding:.6rem .75rem;">Rust, Tauri 2, React, SQLite</td>
+					</tr>
+					<tr>
+						<td style="border:1px solid #cbd5e1; padding:.6rem .75rem;">Instalador</td>
+						<td style="border:1px solid #cbd5e1; padding:.6rem .75rem;">Fluxo consolidado na loja Java</td>
+						<td style="border:1px solid #cbd5e1; padding:.6rem .75rem;">NSIS, MSI pt-BR, ZIP + pacotes Linux/macOS</td>
+					</tr>
+					<tr>
+						<td style="border:1px solid #cbd5e1; padding:.6rem .75rem;">Download</td>
+						<td style="border:1px solid #cbd5e1; padding:.6rem .75rem;"><a href="https://pdv.caracore.com.br/" target="_blank" rel="noopener">pdv.caracore.com.br</a></td>
+						<td style="border:1px solid #cbd5e1; padding:.6rem .75rem;"><a href="https://github.com/chmulato/caracore-rust-pdv-releases/releases/latest" target="_blank" rel="noopener">GitHub Releases</a> (oficial)</td>
+					</tr>
+					<tr>
+						<td style="border:1px solid #cbd5e1; padding:.6rem .75rem;">Perfil ideal</td>
+						<td style="border:1px solid #cbd5e1; padding:.6rem .75rem;">Operação consolidada, fiscal e hardware já integrados</td>
+						<td style="border:1px solid #cbd5e1; padding:.6rem .75rem;">Piloto Windows/TI, binário leve, equipe forte em web + Rust</td>
+					</tr>
+					<tr>
+						<td style="border:1px solid #cbd5e1; padding:.6rem .75rem;">Risco de projeto</td>
+						<td style="border:1px solid #cbd5e1; padding:.6rem .75rem;">Baixo — continuidade</td>
+						<td style="border:1px solid #cbd5e1; padding:.6rem .75rem;">Controlado — escopo piloto, suporte Cara Core</td>
+					</tr>
+				</tbody>
+			</table>
+		<p>
+			<strong>Quando priorizar Java:</strong> loja em produção, necessidade de Linux/macOS sem surpresa, integrações fiscais e hardware já homologados no canal maduro.
+		</p>
+		<p>
+			<strong>Quando avaliar Rust + Tauri:</strong> piloto em Windows com MSI pt-BR, equipe que quer UI React com núcleo Rust, ou laboratório de performance e empacotamento antes de escalar.
+		</p>
+
+		<h2>O que “migrar” não significa aqui</h2>
+		<p>
+			Migração, no discurso de nuvem, costuma ser “desligar A, ligar B na mesma noite”. No PDV Cara Core, a segunda linha existe para <strong>aprender sem quebrar o caixa que paga as contas</strong>.
+		</p>
+		<ul>
+			<li>Não há obrigação de trocar o PDV Java por Rust.</li>
+			<li>Não há promessa de “reescrever tudo” para marketing.</li>
+			<li>Há oficina dedicada (<code>caracore-pdv-rust</code>), loja dedicada (rust-pdv) e releases assinadas com SHA256.</li>
+			<li>Há licença <strong>CaraCore Seed</strong> opcional na linha Rust — degradação graciosa quando a chave não está ativa, sem prender a operação básica do piloto.</li>
+		</ul>
+		<p>
+			Se a sua pergunta é “devo migrar?”, reformule: “devo <strong>pilotar</strong> a linha Rust em um terminal paralelo, com rollback simples e o Java intacto?” Para a maioria das PMEs em dezembro de 2026, a resposta ainda começa em <strong>não substituir</strong> — começa em <strong>medir</strong>.
+		</p>
+
+		<h2>Bunker, SQLite e a mesma filosofia</h2>
+		<p>
+			As duas linhas compartilham o que o retrô já defendeu no artigo do apagão: o modem pode cair; o caixa não deveria. SQLite local, fila de operações, fechamento de turno e auditoria não são exclusividade de uma linguagem — são <strong>compromisso de produto</strong>.
+		</p>
+		<p>
+			Rust + Tauri não vendem “nuvem mágica”. Vendem outro caminho para chegar ao mesmo compromisso, com binário enxuto e pipeline de release que a oficina controla — build, manifesto, smoke, publicação.
+		</p>
+
+		<h2>Como experimentar com segurança</h2>
+		<ol>
+			<li>Baixe a release <strong>v0.1.1</strong> pelos <a href="https://github.com/chmulato/caracore-rust-pdv-releases/releases/latest" target="_blank" rel="noopener">releases oficiais</a> e confira o checksum.</li>
+			<li>Leia os formatos (NSIS, MSI, ZIP) na página <a href="https://rust-pdv.caracore.com.br/download.html" target="_blank" rel="noopener">Formatos</a> da loja Rust.</li>
+			<li>Instale em um terminal de teste — não no único caixa da loja na véspera de Natal.</li>
+			<li>Compare tempo de abertura, fluxo de venda, impressão e fechamento com o PDV Java que você já confia.</li>
+			<li>Envie feedback para <strong>suporte@caracore.com.br</strong> com versão, SO e cenário — piloto assistido é parte do desenho.</li>
+		</ol>
+
+		<h2>Conclusão</h2>
+		<p>
+			A iniciativa Rust + Tauri 2 no PDV Desktop não é fuga do Java — é <strong>engenharia paralela com honestidade comercial</strong>. Rust entra pelo contrato de confiabilidade do núcleo; Tauri 2 entra pela casca instalável e pela UI que o time consegue evoluir rápido.
+		</p>
+		<p>
+			Em 2026, a pergunta certa não é “qual stack vence?”. É “qual stack <strong>resolve o seu chão</strong> hoje — e qual você pode pilotar amanhã sem apostar o faturamento?”. Duas linhas no balcão. Um Bunker. Escolha informada.
+		</p>
+
+		<hr>
+		<h2>Hashtags</h2>
+		<div class="hash-box">#CaraCore #PDV #Rust #Tauri2 #Desktop #SoberaniaLocal #BunkerDigital #Java21 #SQLite #Varejo #PME #TecnologiaBrasileira #Coexistencia #ReleaseV011</div>
+
+		<hr />
+		<h3>Contato</h3>
+		<ul>
+			<li><strong>E-mail:</strong> suporte@caracore.com.br</li>
+			<li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
+			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
+		</ul>
+
+		<div style="background:linear-gradient(135deg, #1e3a5f 0%, #c45c26 55%, #2d6a4f 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
+			<strong>PDV Desktop (Rust + Tauri 2) — release v0.1.1</strong><br />
+			<span style="font-size:.85rem;">Download verificado no GitHub · vitrine em rust-pdv.caracore.com.br</span><br />
+			<a href="https://github.com/chmulato/caracore-rust-pdv-releases/releases/latest" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600; margin-right:.5rem;">Baixar no GitHub</a>
+			<a href="https://www.caracore.com.br/portfolio.html#caracore-pdv-rust" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.15); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Ver no portfólio</a>
+		</div>
+
+		<p style="text-align:center; font-size:.85rem; color:#6b7280; margin-top:3rem;">
+			<em>Artigo publicado em 20 de dezembro de 2026</em><br>
+			© 2026 Cara Core Informática. Todos os direitos reservados.
+		</p>
+
+	</div>
+</body>
+</html>
