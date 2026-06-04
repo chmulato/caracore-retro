@@ -10,10 +10,10 @@
     <generator>Cara Core RSS generator</generator>
 
     <item>
-      <title><![CDATA[Duas Linhas no Balcão: PDV Desktop em Rust e Tauri 2]]></title>
+      <title><![CDATA[Quando o Caixa Pede um Segundo Caminho]]></title>
       <link>https://retro.caracore.com.br/articles/2026_12_20_article_114.html</link>
       <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_12_20_article_114.html</guid>
-      <description><![CDATA[PDV em Rust + Tauri 2: segunda linha no balcão, sem substituir o Java. Texto para lojistas e TI — metáforas, piloto v0.1.1 e tabela técnica no final.]]></description>
+      <description><![CDATA[Uma história de descoberta sobre avaliar o novo PDV Cara Core sem trocar tudo de uma vez: primeiro em um computador, depois na rede da loja, sempre com foco na experiência do cliente.]]></description>
       <pubDate>Sat, 20 Dec 2026 12:00:00 +0000</pubDate>
     </item>
     <item>
