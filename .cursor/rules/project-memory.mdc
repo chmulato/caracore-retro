@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Memória — caracore-retro (Artigos Retrô)
 
-**Atualizado:** 2026-06-02
+**Atualizado:** 2026-06-07
 
 ## Repositório e papel
 
@@ -35,7 +35,14 @@ alwaysApply: true
 
 - **Tempo de leitura:** bloco `.note` (~8 min nos artigos técnicos recentes)
 - **Estilo:** `assets/css/articles.css` + `temporada-i.css` · `quote-box`, `insight`, `note`
-- **Total (jun/2026):** 103 artigos numerados (lacunas históricas na numeração)
+- **Total (jun/2026):** 104 artigos numerados (lacunas históricas na numeração)
+
+## Artigo recente — Engenharia B2B / IA (115)
+
+- **Data:** 25/12/2026
+- **Ficheiro:** `2026_12_25_article_115.html`
+- **Tema:** Portal PJ, contratação na era da IA, consultoria boutique, tom pragmático (FinOps/híbrido)
+- **Links no texto:** CNN reportagem, `#engenharia-b2b`, `#decisoes-engenharia`, `suporte-local.html`
 
 ## Artigo recente — PDV Rust (114)
 
