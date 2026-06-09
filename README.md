@@ -1,6 +1,6 @@
-﻿# Artigos Retrô — Cara Core Informática
+# Artigos Retrô — Cara Core Informática
 
-Portal e acervo de artigos publicados no LinkedIn pela Cara Core Informática. Uma coleção de 104 artigos organizados por data, com foco em inovação, engenharia de software, arquitetura, negócios, estratégia e produtos do ecossistema Cara Core.
+Portal e acervo de artigos publicados no LinkedIn pela Cara Core Informática. Uma coleção de 105 artigos organizados por data, com foco em inovação, engenharia de software, arquitetura, negócios, estratégia e produtos do ecossistema Cara Core.
 
 ## 📋 Estrutura
 
@@ -9,7 +9,7 @@ Portal e acervo de artigos publicados no LinkedIn pela Cara Core Informática. U
   - **`ciclo-ativo.html`** — Recorte editorial do ciclo ativo
   - **`feed.xml`** — Feed RSS para inscrição e distribuição
 
-- **`docs/articles/`** — Diretório contendo todos os 104 artigos HTML
+- **`docs/articles/`** — Diretório contendo todos os 105 artigos HTML
   - Convenção de nomenclatura: `YYYY_MM_DD_article_(NN).html` (ex.: `2026_05_23_article_86.html`)
   - Data no nome = data de publicação no calendário estratégico
   - O número do artigo também define o alias da imagem: `article_NN_01.png`
@@ -33,17 +33,17 @@ Os artigos são indexados por temas como:
 - **Data & Analytics**: Dashboard, Performance, Cache, Redis
 - **Business**: SaaS, E-commerce, Compliance, Auditoria
 - **Security & Privacy**: Segurança, LGPD, Criptografia, OIDC
-- **Produtos Cara Core**: Área 51, Reino OIDC, Circuito Ferradura, Minerador 4.0, ETE, PDV, Hub
+- **Produtos Cara Core**: Área 51, Reino OIDC, Circuito Ferradura, Minerador 4.0, ETE, PDV, Hub, Helianto Condominium
 - E muitos outros (50+ tags)
 
 Use a barra de busca em `docs/index.html` para filtrar por tema, tecnologia, produto ou palavra-chave.
 
 ## 📊 Conteúdo
 
-**Total**: 104 artigos (01 a 115; numeração com lacunas históricas)
+**Total**: 105 artigos (01 a 116; numeração com lacunas históricas)
 - **Período**: Fevereiro 2024 — Dezembro 2026
 - **Cobertura**: Publicações regulares semanais
-- **Divisão temporal**: 32 artigos em 2024, 33 em 2025, 37 em 2026
+- **Divisão temporal**: 32 artigos em 2024, 33 em 2025, 38 em 2026
 
 ## 🧭 Ciclo Editorial 2026
 
@@ -53,6 +53,7 @@ O segundo semestre de 2026 inclui uma frente editorial de produtos, com artigos 
 - **Reino OIDC** — Formação conceitual sobre identidade, tokens, fluxos e federação
 - **Circuito Ferradura** — Oficina de lógica, Python, ábaco romano, segurança digital e formação técnica
 - **Minerador 4.0 / ETE** — Campo, Lab, Mercado, hidrometalurgia, terras raras e simulação em Python
+- **Helianto Condominium** — SaaS de administração condominial com soberania de dados, motor financeiro e BolePix
 
 Os artigos de junho e julho de 2026 foram revisados para manter leitura de aproximadamente 6 a 8 minutos, com foco em aplicação prática, clareza técnica e baixa repetição entre textos.
 
@@ -65,6 +66,7 @@ Este repositório é parte do ecossistema Cara Core:
 - **Área 51** — Implementação e suporte para identidade federada empresarial
 - **Circuito Ferradura** — Formação prática em lógica, Python e segurança digital
 - **Minerador 4.0 / ETE** — Engenharia de terras raras, hidrometalurgia e simulação
+- **Helianto Condominium** — SaaS condominial com soberania de dados e liquidação via BolePix
 
 Veja o portfólio completo em https://www.caracore.com.br.
 
