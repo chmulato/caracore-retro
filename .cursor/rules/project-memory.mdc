@@ -64,4 +64,4 @@ alwaysApply: true
 ## Convenções
 
 - Discurso PDV: dois desktops, mesma promessa Bunker; evitar “PDV v3” sozinho e “substitui Java”
-- Versões: v3.1.x Java · v0.1.x Rust (ver matriz jun/2026)
+- Versões: v3.2.2-free Java · v0.1.2 Rust (ver matriz jun/2026)
