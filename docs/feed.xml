@@ -5,9 +5,17 @@
     <link>https://retro.caracore.com.br/</link>
     <description><![CDATA[Coleção de artigos publicados pela Cara Core nas redes, organizada por ano.]]></description>
     <language>pt-BR</language>
-    <lastBuildDate>Tue, 30 Dec 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 05 Jan 2027 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://retro.caracore.com.br/feed.xml" rel="self" type="application/rss+xml" />
     <generator>Cara Core RSS generator</generator>
+
+    <item>
+      <title><![CDATA[Paciência Chinesa e Soberania Local: Como a Cara Core Sobreviverá ao Estouro da Bolha da IA]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_01_05_article_117.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_01_05_article_117.html</guid>
+      <description><![CDATA[O ecossistema circular da IA e a estratégia da Cara Core para prosperar no longo prazo usando stacks eficientes e soberania local.]]></description>
+      <pubDate>Tue, 05 Jan 2027 12:00:00 +0000</pubDate>
+    </item>
 
     <item>
       <title><![CDATA[Helianto Condominium: Engenharia de Elite e Soberania de Dados na Reconstrução do SaaS Condominial]]></title>
