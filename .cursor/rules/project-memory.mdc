@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Memória — caracore-retro (Artigos Retrô)
 
-**Atualizado:** 2026-06-07
+**Atualizado:** 2027-01-05
 
 ## Repositório e papel
 
@@ -38,6 +38,19 @@ alwaysApply: true
 - **Capa inline:** `<img ... style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);">` — padrão artigos 110–115
 - **Prompt IA:** gerar PNG 16:9; exibir inline no frame acima; `og:image` usa o mesmo PNG
 - **Total (jun/2026):** 104 artigos numerados (lacunas históricas na numeração)
+
+## Artigo recente — Fortaleza Digital / IA (117)
+
+- **Data:** 05/01/2027
+- **Ficheiro:** `2027_01_05_article_117.html`
+- **Tema:** Fortaleza digital contra o exagero do mercado de IA, sistemas locais independentes de internet, controle de dados.
+- **Links no texto:** `#pdv-coexistencia`, `#controle-de-dados`, `#sistemas-locais`
+
+## Artigo recente — Helianto Condominium (116)
+
+- **Data:** 30/12/2026
+- **Ficheiro:** `2026_12_30_article_116.html`
+- **Tema:** Helianto Condominium: Java 25, Spring Boot 4, multi-tenancy real, BolePix e soberania de dados.
 
 ## Artigo recente — Engenharia B2B / IA (115)
 
