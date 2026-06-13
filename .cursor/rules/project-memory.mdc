@@ -37,7 +37,7 @@ alwaysApply: true
 - **Estilo:** `assets/css/articles.css` + `temporada-i.css` · `quote-box`, `insight`, `note`
 - **Capa inline:** `<img ... style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);">` — padrão artigos 110–115
 - **Prompt IA:** gerar PNG 16:9; exibir inline no frame acima; `og:image` usa o mesmo PNG
-- **Total (jun/2026):** 104 artigos numerados (lacunas históricas na numeração)
+- **Total (jun/2026):** 117 artigos numerados (lacunas históricas na numeração)
 
 ## Artigo recente — Fortaleza Digital / IA (117)
 
