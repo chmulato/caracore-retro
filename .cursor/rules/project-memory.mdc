@@ -66,6 +66,13 @@ alwaysApply: true
 - **Tema:** Segunda linha PDV Rust + Tauri 2; coexistência com Java; **não** migração forçada
 - **Links no texto:** GitHub Releases, rust-pdv, pdv, portfólio `#pdv-coexistencia`
 
+## Artigos de Destaque — Temporada I (92–95)
+
+- **Artigo 95 (25/07/2026):** *Quando o Login Vira Infraestrutura* (`2026_07_25_article_95.html`). Bastidores de autenticação, OIDC, OAuth 2.1, PKCE e o pacote Python `area51-config` de Área 51.
+- **Artigo 94 (18/07/2026):** *Quando a Escola Ganha uma Pista* (`2026_07_18_article_94.html`). Circuito Ferradura, oficina prática escolar de 40 horas e 6 fases, usando o ábaco romano como máquina de estado física antes de programar em Python.
+- **Artigo 93 (11/07/2026):** *A Picareta Digital no Chão do Lab* (`2026_07_11_article_93.html`). O simulador local desktop do Minerador 4.0, ensinando purificação de Neodímio a partir de Monazita e calculando pontuações de sustentabilidade via Python.
+- **Artigo 92 (04/07/2026):** *Ouro, Prata e Silício* (`2026_07_04_article_92.html`). Lançamento do Minerador 4.0 em Campo Largo (Parque Newton Puppi). As três metáforas da matéria e o lastro físico na tecnologia.
+
 ## Ao publicar artigo novo
 
 1. Criar HTML + entrada em `index.html` + `feed.xml`
