@@ -62,22 +62,48 @@
 		<p>
 			Máquinas de ponto de venda no varejo operam sob condições físicas severas. Elas precisam de inicialização instantânea, latência de resposta em microssegundos para não atrasar o leitor de código de barras e tolerância total a panes físicas de energia. Tentar rodar orquestradores complexos pensados para data centers nesse cenário é ignorar a física do balcão.
 		</p>
+		<p>
+			<strong>Esclarecimento fundamental:</strong> Não estamos sugerindo rodar Kubernetes localmente na loja. Nosso objetivo é comparar o modelo de aplicação web-orquestrado clássico (que roda sob Kubernetes na nuvem) com o modelo soberano de borda local (CaraCore PDV). Se o seu sistema é web, Kubernetes é natural e resolve a escala horizontal distribuída. Se o seu sistema é PDV de loja física, transpor esse modelo de complexidade (seja rodando em cluster remoto ou localmente) é um erro arquitetural grave.
+		</p>
 
-		<h2>O Desperdício de Infraestrutura Local com Kubernetes</h2>
+		<h2>O Desperdício de Infraestrutura Local com Orquestradores</h2>
 		<p>
-			A orquestração de contêineres na nuvem é maravilhosa para lidar com tráfego elástico. No entanto, enfiar um cluster Kubernetes (mesmo distribuições reduzidas como k3s ou MicroK8s) em uma máquina de caixa local de loja física é um absurdo arquitetural.
+			Mesmo distribuições reduzidas de Kubernetes voltadas para borda, como k3s ou MicroK8s, expõem a máquina do caixa a um desperdício inaceitável de recursos. Sem nenhuma transação ativa, o k3s consome cerca de 300MB a 400MB de memória RAM por nó local apenas para manter de pé a infraestrutura de roteamento e ciclo de controle do control plane (como Kubelet, Kube-Proxy, CoreDNS e redes de overlay virtuais via Flannel/Calico).
 		</p>
-		<p>
-			Mesmo sem nenhuma transação ativa, o k3s consome cerca de 300MB a 400MB de memória RAM por nó local. Isso ocorre por conta da presença obrigatória dos seguintes agentes do control plane:
-		</p>
-		<ul>
-			<li><strong>Kubelet e Kube-Proxy:</strong> Agentes de controle de ciclo de vida e roteamento de rede virtual que ficam em loop de checagem de estado constante.</li>
-			<li><strong>CoreDNS:</strong> Servidor de DNS interno de pods consumindo CPU e memória apenas para resolver nomes locais dentro de loops isolados.</li>
-			<li><strong>Overlay Network (Flannel/Calico):</strong> Criação de túneis virtuais VXLAN encapsulando tráfego de rede interna local, o que gera overhead de latência em barramentos I/O do caixa.</li>
-		</ul>
 		<p>
 			Em computadores de balcão com processador dual-core antigo, esse ciclo de controle consome CPU valiosa que deveria estar dedicada a receber a venda do cliente sem atrasos.
 		</p>
+
+		<h2>Tabela Comparativa: Aplicação Web (Kubernetes) vs. PDV Soberano</h2>
+		<p>
+			Veja as diferenças fundamentais de premissas e dependências de arquitetura entre esses dois ecossistemas:
+		</p>
+		<table class="chalkboard-table" style="width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:0.88rem; background:rgba(0,0,0,0.2); border-radius:8px; overflow:hidden;">
+			<thead>
+				<tr style="background:rgba(255,255,255,0.1); border-bottom:2px solid #ccc;">
+					<th style="padding:0.6rem; text-align:left;">Recurso / Premissa</th>
+					<th style="padding:0.6rem; text-align:left;">Aplicação Web (Kubernetes)</th>
+					<th style="padding:0.6rem; text-align:left; color:#4ade80;">PDV Soberano (CaraCore)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+					<td style="padding:0.6rem; font-weight:600;">Dependência de Rede</td>
+					<td style="padding:0.6rem; color:#f87171;">Obrigatória (DNS, sidecars, nuvem)</td>
+					<td style="padding:0.6rem; color:#4ade80; font-weight:600;">Inexistente (Opera 100% offline)</td>
+				</tr>
+				<tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+					<td style="padding:0.6rem; font-weight:600;">Camada de Persistência</td>
+					<td style="padding:0.6rem;">Storage Remoto / DB na Nuvem</td>
+					<td style="padding:0.6rem; color:#4ade80; font-weight:600;">SQLite WAL em disco físico local</td>
+				</tr>
+				<tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+					<td style="padding:0.6rem; font-weight:600;">Orquestração de Nós</td>
+					<td style="padding:0.6rem;">Altamente complexa (Control Plane)</td>
+					<td style="padding:0.6rem; color:#4ade80; font-weight:600;">Zero (Cada caixa é uma ilha autônoma)</td>
+				</tr>
+			</tbody>
+		</table>
 
 		<h2>A Fragilidade da Centralização Forçada e a Realidade das Lojas</h2>
 		<p>
