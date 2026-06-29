@@ -389,3 +389,11 @@ code:not(pre code)::selection { background: #334155; color: #f8fafc; }
     font-size: 0.85rem;
     overflow-x: auto;
 }
+
+/* Enforce 16:9 aspect-ratio on all cover images ending with _01.png */
+img[src*="_01.png"], .article-hero {
+    aspect-ratio: 16 / 9 !important;
+    object-fit: cover !important;
+    width: 300px !important;
+    height: auto !important;
+}
