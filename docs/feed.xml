@@ -5,9 +5,81 @@
     <link>https://retro.caracore.com.br/</link>
     <description><![CDATA[Coleção de artigos publicados pela Cara Core nas redes, organizada por ano.]]></description>
     <language>pt-BR</language>
-    <lastBuildDate>Sun, 10 Jan 2027 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Apr 2027 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://retro.caracore.com.br/feed.xml" rel="self" type="application/rss+xml" />
     <generator>Cara Core RSS generator</generator>
+
+    <item>
+      <title><![CDATA[Canto VIII: O Farol da Telemetria (A Divina Peleja do Caixa Soberano)]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_04_16_article_127.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_04_16_article_127.html</guid>
+      <description><![CDATA[Monitoramento de frotas de PDV usando Spring Boot Actuator, Micrometer e Grafana para detectar latências e filas locais de sincronização.]]></description>
+      <pubDate>Fri, 16 Apr 2027 12:00:00 +0000</pubDate>
+    </item>
+
+    <item>
+      <title><![CDATA[Canto VII: O Templo da Nuvem Central (A Divina Peleja do Caixa Soberano)]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_04_06_article_126.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_04_06_article_126.html</guid>
+      <description><![CDATA[Como o Hub central gerencia a ingestão assíncrona de 3.200 caixas simultâneos usando HTTP 202 e filas na nuvem.]]></description>
+      <pubDate>Tue, 06 Apr 2027 12:00:00 +0000</pubDate>
+    </item>
+
+    <item>
+      <title><![CDATA[Canto VI: A Peleja da Transmissão Resiliente (A Divina Peleja do Caixa Soberano)]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_03_26_article_125.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_03_26_article_125.html</guid>
+      <description><![CDATA[O padrão Transactional Outbox local garantindo a integridade e envio resiliente de vendas físicas mesmo em quedas de internet.]]></description>
+      <pubDate>Fri, 26 Mar 2027 12:00:00 +0000</pubDate>
+    </item>
+
+    <item>
+      <title><![CDATA[Canto V: O Motor Nativo e Threads Virtuais (A Divina Peleja do Caixa Soberano)]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_03_16_article_124.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_03_16_article_124.html</guid>
+      <description><![CDATA[Project Loom e GraalVM Native Image gerenciando concorrência de hardware em caixas simples sem desperdiçar recursos.]]></description>
+      <pubDate>Tue, 16 Mar 2027 12:00:00 +0000</pubDate>
+    </item>
+
+    <item>
+      <title><![CDATA[Canto IV: A Purificação do Código (A Divina Peleja do Caixa Soberano)]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_03_06_article_123.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_03_06_article_123.html</guid>
+      <description><![CDATA[HTML-First: como construir interfaces rápidas com Thymeleaf, JTE e HTMX rodando local no Spring Boot sem usar JS.]]></description>
+      <pubDate>Sat, 06 Mar 2027 12:00:00 +0000</pubDate>
+    </item>
+
+    <item>
+      <title><![CDATA[Canto III: A Redenção do SQLite Local (A Divina Peleja do Caixa Soberano)]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_02_20_article_122.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_02_20_article_122.html</guid>
+      <description><![CDATA[Técnicas de tunagem do SQLite local em modo WAL para obter transações ACID em microssegundos no caixa.]]></description>
+      <pubDate>Sat, 20 Feb 2027 12:00:00 +0000</pubDate>
+    </item>
+
+    <item>
+      <title><![CDATA[Canto II: O Suplício da Nuvem Dependente (A Divina Peleja do Caixa Soberano)]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_02_10_article_121.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_02_10_article_121.html</guid>
+      <description><![CDATA[Por que abolimos o Kubernetes e a rede forçada no balcão de vendas físico para garantir independência de internet.]]></description>
+      <pubDate>Wed, 10 Feb 2027 12:00:00 +0000</pubDate>
+    </item>
+
+    <item>
+      <title><![CDATA[Canto I: O Canto do Electron Faminto (A Divina Peleja do Caixa Soberano)]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_01_30_article_120.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_01_30_article_120.html</guid>
+      <description><![CDATA[A crítica à memória consumida por navegadores embutidos no ponto de venda e a otimização da compilação nativa.]]></description>
+      <pubDate>Sat, 30 Jan 2027 12:00:00 +0000</pubDate>
+    </item>
+
+    <item>
+      <title><![CDATA[A Divina Peleja do Caixa Soberano: Como Escalar 3.200 Lojas Sem o Hype da Web (Chamada da Série)]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_01_20_article_119.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_01_20_article_119.html</guid>
+      <description><![CDATA[Apresentação da série de engenharia de borda e C4 Model no varejo descentralizado sem usar clusters Kubernetes.]]></description>
+      <pubDate>Wed, 20 Jan 2027 12:00:00 +0000</pubDate>
+    </item>
 
     <item>
       <title><![CDATA[O Retorno do Investimento em Silício: O Custo e o ROI da IA na Cara Core Informática]]></title>

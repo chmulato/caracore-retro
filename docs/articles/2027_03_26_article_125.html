@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Canto VI: A Peleja da Transmissão Resiliente — Cara Core</title>
+	<meta name="description" content="Como o padrão Transactional Outbox local garante integridade absoluta de vendas físicas offline." />
+	<meta name="author" content="Cara Core Informática" />
+	<link rel="canonical" href="https://retro.caracore.com.br/articles/2027_03_26_article_125.html" />
+	<meta property="og:title" content="Canto VI: A Peleja da Transmissão Resiliente" />
+	<meta property="og:description" content="Esqueça envios síncronos: como persistir atômicamente e sincronizar dados com a nuvem central usando fila local." />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="https://retro.caracore.com.br/articles/2027_03_26_article_125.html" />
+	<meta property="og:image" content="https://retro.caracore.com.br/articles/assets/img/2027_03_26_article_125_01.png" />
+	<meta property="og:image:alt" content="A Peleja da Transmissão Resiliente" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Canto VI: A Peleja da Transmissão Resiliente" />
+	<meta name="twitter:description" content="O padrão Transactional Outbox e o algoritmo de recuo contra quedas de internet." />
+	<meta name="twitter:image" content="https://retro.caracore.com.br/articles/assets/img/2027_03_26_article_125_01.png" />
+	<link rel="stylesheet" href="assets/css/articles.css" />
+	<link rel="stylesheet" href="assets/css/temporada-i.css" />
+</head>
+<body>
+	<div class="container">
+		<a class="back-link" href="../index.html">&larr; Voltar para publicações</a>
+		<img src="assets/img/2027_03_26_article_125_01.png" alt="A Peleja da Transmissão Resiliente" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+		<h1>Canto VI: A Peleja da Transmissão Resiliente</h1>
+
+		<div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
+			<img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
+			<span style="margin-left: 1.5rem;">26 de março de 2027</span>
+		</div>
+
+		<div class="note"><strong>Tempo de leitura:</strong> 3 minutos</div>
+
+		<div class="quote-box">
+			<strong>Abertura em Cordel:</strong><br>
+			<em>A rede piscou e o sinal deu adeus pro sertão,<br>
+			Se o envio for síncrono, a venda cai logo no chão.<br>
+			Mas guardamos no cofre do Outbox com muito primor,<br>
+			Se a rede falhar, não se altera o humor!<br>
+			A transação salva local, o dinheiro está garantido,<br>
+			E o envio da fila depois é com calma gerido.</em>
+		</div>
+
+		<!-- SEGUNDA IMAGEM: A cara do Mascote (Professor Técnico) -->
+		<figure class="mascot-intro-frame" style="text-align: center; margin: 2rem 0;">
+			<img src="assets/img/2027_03_26_article_125_02.png" alt="Professor Mascote guardando ticket em cofre offline" class="mascot-avatar" style="max-width: 180px; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,0,0,0.15);" />
+			<figcaption style="font-size: 0.85rem; color: #666; font-style: italic; margin-top: 0.5rem;">
+				Professor Mascote assume o controle: "Não tente enviar a venda para a nuvem no fluxo principal do checkout. Grave localmente na tabela de Outbox e use um scheduler com backoff para esvaziar a fila em segundo plano."
+			</figcaption>
+		</figure>
+
+		<hr style="border: 0; border-top: 1px dashe		<hr style="border: 0; border-top: 1px dashed #ccc; margin: 2rem 0;" />
+
+		<h2>O que é Transmissão Resiliente?</h2>
+		<p>
+			Definimos <strong>Transmissão Resiliente</strong> como a capacidade técnica de garantir a entrega íntegra e atômica de transações de negócios entre nós descentralizados (caixas físicos) e a nuvem central, mesmo sob condições severas de instabilidade de sinal de rede, sem nunca paralisar a interface do operador e sem duplicar ou perder registros de vendas.
+		</p>
+
+		<h2>O Perigo do Envio Síncrono Distribuído</h2>
+		<p>
+			A maioria dos sistemas comerciais comete um erro primário de arquitetura: tenta bater na API do servidor central durante a finalização da compra pelo operador de caixa (comunicação síncrona). Se a conexão de internet sofrer uma micro-oscilação de 1 segundo naquele exato instante, o sistema trava ou lança um erro genérico na tela, deixando o operador na dúvida se a venda foi gravada ou não.
+		</p>
+		<p>
+			Fazer chamadas de rede diretas dentro de transações de negócio locais acopla o tempo de resposta do caixa à latência física da internet. No varejo brasileiro de interior, com conexões de rádio ou 4G inconstantes, esse acoplamento síncrono inviabiliza a operação.
+		</p>
+
+		<h2>Comparativo: Síncrono vs. Assíncrono no Caixa</h2>
+		<p>
+			Veja como a escolha da estratégia de transmissão de dados dita o comportamento físico da boca de caixa:
+		</p>
+		<table class="chalkboard-table" style="width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:0.88rem; background:rgba(0,0,0,0.2); border-radius:8px; overflow:hidden;">
+			<thead>
+				<tr style="background:rgba(255,255,255,0.1); border-bottom:2px solid #ccc;">
+					<th style="padding:0.6rem; text-align:left;">Comportamento</th>
+					<th style="padding:0.6rem; text-align:left;">Envio Síncrono Obrigatório</th>
+					<th style="padding:0.6rem; text-align:left; color:#4ade80;">Envio Assíncrono (Outbox)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+					<td style="padding:0.6rem; font-weight:600;">Dependência da Internet</td>
+					<td style="padding:0.6rem; color:#f87171;">100% (Trava se cair)</td>
+					<td style="padding:0.6rem; color:#4ade80; font-weight:600;">Zero para vender (Envia depois)</td>
+				</tr>
+				<tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+					<td style="padding:0.6rem; font-weight:600;">Tempo de Resposta do Cupom</td>
+					<td style="padding:0.6rem; color:#f87171;">Variável (Depende do ping da rede)</td>
+					<td style="padding:0.6rem; color:#4ade80; font-weight:600;">Fixo a 1ms (Gravação local)</td>
+				</tr>
+				<tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+					<td style="padding:0.6rem; font-weight:600;">Garantia de Entrega Única</td>
+					<td style="padding:0.6rem;">Baixa (Duplica se timeout falhar)</td>
+					<td style="padding:0.6rem; color:#4ade80; font-weight:600;">Alta (Idempotência controlada)</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h2>A Solução Definitiva: O Padrão Transactional Outbox</h2>
+		<p>
+			No CaraCore PDV, aplicamos o padrão <strong>Transactional Outbox</strong>. Quando uma venda é concluída, a tabela `Venda` e uma tarefa de sincronização pendente na tabela `OutboxTask` são gravadas localmente no SQLite sob a mesma transação ACID `@Transactional`. 
+		</p>
+		<p>
+			<strong>No modelo assíncrono, o caixa registra a venda localmente e envia depois — sem depender da internet para operar.</strong> A transação local só se confirma se ambos os registros forem salvos no disco físico. Se a gravação falhar, ambas sofrem rollback. Se salvar, a garantia de que a tarefa de envio existe no banco local é de <strong>100%</strong>.
+		</p>
+
+		<h2>Fluxo de Transmissão Resiliente</h2>
+		<p>
+			Abaixo, veja o fluxo de persistência atômica no caixa e transmissão assíncrona tolerante a quedas:
+		</p>
+
+		<div class="mermaid" style="background:#1a1d20; padding:1.5rem; border-radius:8px; margin:1.5rem 0;">
+		graph TD
+			CaixaUI[Operador clica Concluir] -->|Gravação Atômica ACID| DBLocal[(SQLite Local)]
+			DBLocal -->|Tabela Venda| VendaSalva[Venda Registrada]
+			DBLocal -->|Tabela OutboxTask| FilaOutbox[Mensagem na Fila PENDENTE]
+			
+			FilaOutbox -->|Agendador lê a cada 30s| SyncWorker[Sincronizador Spring]
+			SyncWorker -->|Post HTTP Lote| HubCentral[CaraCore Hub Nuvem]
+			
+			HubCentral -->|Validação de Idempotência UUID| Processado[Venda Processada]
+			Processado -->|Retorno HTTP 202 Accepted| SyncWorker
+			SyncWorker -->|Limpa registro local| FilaOutbox
+		</div>
+
+		<h2>Evitando Duplicidade com Idempotência</h2>
+		<p>
+			Para evitar duplicidade de transações caso a conexão caia exatamente no milissegundo em que o servidor processou a venda mas não conseguiu enviar o status de sucesso de volta ao caixa, cada `OutboxTask` carrega um identificador único de transação (UUID v4) gerado na origem. O servidor central (*CaraCore Hub*) rejeita qualquer inserção que apresente um UUID já processado anteriormente, garantindo a integridade absoluta das contas fiscais das lojas.
+		</p>
+
+		<h2>Código na Prática: O Worker de Transmissão com Backoff</h2>
+		<p>
+			Na prática, a transmissão é realizada por um agendador rodando em background que calcula o tempo de recuo (backoff) exponencial para evitar sobrecarregar as antenas 4G locais da loja em caso de quedas prolongadas de sinal:
+		</p>
+		<pre style="background:#1e293b; color:#f8f8f2; padding:1.25rem; border-radius:8px; font-family:'Fira Code', monospace; font-size:0.82rem; overflow-x:auto; margin:1.5rem 0; border:1px solid #334155;">
+@Component
+public class SincronizadorOutbox {
+
+    @Autowired
+    private OutboxRepository outboxRepo;
+    
+    @Autowired
+    private HubClient hubClient;
+
+    @Scheduled(fixedDelay = 30000) // Executa a cada 30 segundos
+    public void processarFila() {
+        List&lt;OutboxTask&gt; pendentes = outboxRepo.findPending(LocalDateTime.now());
+        for (OutboxTask task : pendentes) {
+            try {
+                hubClient.enviar(task.getPayload());
+                outboxRepo.delete(task); // Remove se entregue
+            } catch (Exception e) {
+                // Calcula recuo exponencial para evitar bombardeio à rede caída
+                int tentativas = task.getTentativas() + 1;
+                long delayMinutos = (long) Math.min(Math.pow(2, tentativas), 60); 
+                task.setProximaTentativa(LocalDateTime.now().plusMinutes(delayMinutos));
+                task.setTentativas(tentativas);
+                outboxRepo.save(task);
+            }
+        }
+    }
+}
+		</pre>
+
+		<!-- Fechamento com Tradução Técnica e de Negócios -->
+		<div class="chalkboard">
+			<h3 style="margin-top: 0; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 0.5rem; text-align: center;">
+				⚖️ O Veredito da Bancada (Técnico vs. Negócios)
+			</h3>
+			
+			<div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 1rem;">
+				<!-- Coluna para Técnicos -->
+				<div style="flex: 1; min-width: 280px; border-right: 1px dashed rgba(255,255,255,0.2); padding-right: 1rem;">
+					<h4 style="color: #a7f3d0; margin-top: 0;">💻 Para Técnicos (A Baseline)</h4>
+					<p style="font-family: 'Fira Code', monospace; font-size: 0.85rem; line-height: 1.4; margin-bottom: 0;">
+						A transação única no SQLite garante a escrita atômica local:
+						<br><code>@Transactional public void concluirVenda(Venda v) { repo.save(v); outboxRepo.save(new OutboxTask(v.toJson())); }</code>.
+						O scheduler lê as tarefas ativas (`status = PENDENTE`) e executa a chamada REST. Em caso de falha de rede (`ResourceAccessException`), o listener atualiza o campo `proximaTentativa` com backoff calculado, executando o rollback do envio e preservando o payload inalterado até a conexão voltar.
+					</p>
+				</div>
+				
+				<!-- Coluna para Leigos/Negócios -->
+				<div style="flex: 1; min-width: 280px;">
+					<h4 style="color: #fef08a; margin-top: 0;">👔 Para Negócios (O Retorno)</h4>
+					<p style="font-size: 0.9rem; line-height: 1.4; margin-bottom: 0;">
+						Nenhuma venda é perdida, mesmo se a loja ficar sem internet o dia inteiro. A transação comercial com o cliente no balcão é instantânea e o estoque local é atualizado na hora, permitindo que a operação física continue com estabilidade total.
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<h2>Conclusão do Sincronismo Offline-First</h2>
+		<p>
+			A resiliência operacional reside na inteligência aplicada na borda da aplicação, não na estabilidade da conexão de rede externa. O padrão Transactional Outbox é o alicerce fundamental que permite ao caixa do balcão operar livremente sem se importar com a inconstância da nuvem.
+		</p>
+		<p>
+			Garantida a integridade da escrita e da transmissão assíncrona local, a próxima questão na escalabilidade de 3.200 lojas é a otimização da ingestão na retaguarda. No próximo canto, discutiremos como o Hub Central na nuvem recebe transações massivas sem travar usando programação reativa e HTTP 202.
+		</p>
+
+		<hr>
+		<h2>Hashtags</h2>
+		<div class="hash-box">#CaraCore #OutboxPattern #Resiliencia #TransactionalOutbox #OfflineFirst #Java #SpringBoot #DistributedSystems</div>
+
+		<hr />
+		<h3>Contato</h3>
+		<ul>
+			<li><strong>E-mail:</strong> suporte@caracore.com.br</li>
+			<li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
+			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
+		</ul>
+
+		<div style="background:linear-gradient(135deg, #1e3a5f 0%, #2d6a4f 55%, #4a5568 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
+			<strong>Tem medo de perder dados de faturamento em quedas de rede?</strong><br />
+			<span style="font-size:.85rem;">Conheça o padrão Bunker do CaraCore PDV e garanta a integridade absoluta das transações da sua rede de lojas.</span><br />
+			<a href="https://www.caracore.com.br" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600; margin-right:.5rem;">Proteger Minhas Vendas</a>
+		</div>
+
+		<footer class="site-footer" style="text-align:center; font-size:.85rem; color:#6b7280; margin-top:3rem; border-top:1px dashed #ccc; padding-top:1.5rem;">
+			<p>Artigo anterior: <a href="2027_03_16_article_124.html">Canto V — O Motor Nativo e Threads Virtuais</a> — Próximo: <a href="2027_04_06_article_126.html">Canto VII — O Templo da Nuvem Central</a></p>
+			<p><a href="2027_01_20_article_119.html">Índice da série</a> | © 2027 Cara Core Informática. Todos os direitos reservados.</p>
+		</footer>
+	</div>
+</body>
+</html>

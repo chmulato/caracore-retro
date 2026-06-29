@@ -358,3 +358,34 @@ code:not(pre code)::selection { background: #334155; color: #f8fafc; }
 .visually-hidden { position:absolute !important; width:1px !important; height:1px !important; padding:0 !important; margin:-1px !important; overflow:hidden !important; clip:rect(0 0 0 0) !important; white-space:nowrap !important; border:0 !important; }
 .mermaid-wrap { margin:1rem 0 1.5rem; border:1px solid #e5e7eb; border-radius:12px; background:#ffffff; padding:.75rem .9rem; box-shadow:0 2px 8px rgba(0,0,0,.05); }
 .mermaid-wrap h3 { margin:.25rem 0 .75rem; font-size:1rem; font-weight:600; color:#374151; }
+
+/* Chalkboard (Lousa Verde) Container */
+.chalkboard {
+    background: linear-gradient(180deg, #1c3d27 0%, #112618 100%);
+    color: #f5fff0;
+    padding: 1.25rem 1.4rem;
+    border-radius: 12px;
+    border: 10px solid #5c3a21; /* wooden frame */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15), inset 0 0 0 1px rgba(255,255,255,0.04);
+    text-shadow: 0 1px 0 rgba(255,255,255,0.05);
+    margin: 2rem 0;
+}
+.chalkboard p, .chalkboard li {
+    color: #e6f4ea !important;
+}
+.chalkboard h3, .chalkboard h4 {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+.chalkboard code {
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+/* Mermaid Fallback Contrast Styling */
+.mermaid {
+    color: #e2e8f0 !important;
+    white-space: pre;
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+}
