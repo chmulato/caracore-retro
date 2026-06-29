@@ -40,22 +40,23 @@ Use a barra de busca em `docs/index.html` para filtrar por tema, tecnologia, pro
 
 ## 📊 Conteúdo
 
-**Total**: 105 artigos (01 a 116; numeração com lacunas históricas)
-- **Período**: Fevereiro 2024 — Dezembro 2026
+**Total**: 115 artigos (01 a 128; numeração com lacunas históricas)
+- **Período**: Fevereiro 2024 — Maio 2027
 - **Cobertura**: Publicações regulares semanais
-- **Divisão temporal**: 32 artigos em 2024, 33 em 2025, 38 em 2026
+- **Divisão temporal**: 32 artigos em 2024, 33 em 2025, 38 em 2026, 12 em 2027
 
-## 🧭 Ciclo Editorial 2026
+## 🧭 Ciclo Editorial 2026-2027
 
-O segundo semestre de 2026 inclui uma frente editorial de produtos, com artigos alinhados às oficinas e vitrines do ecossistema:
+O segundo semestre de 2026 e o primeiro semestre de 2027 incluem frentes editoriais de produtos, com artigos alinhados às oficinas e vitrines do ecossistema:
 
 - **Área 51** — Identidade federada, OIDC/OAuth 2.1, PKCE, auditoria, LGPD e acesso governado
 - **Reino OIDC** — Formação conceitual sobre identidade, tokens, fluxos e federação
 - **Circuito Ferradura** — Oficina de lógica, Python, ábaco romano, segurança digital e formação técnica
 - **Minerador 4.0 / ETE** — Campo, Lab, Mercado, hidrometalurgia, terras raras e simulação em Python
 - **Helianto Condominium** — SaaS de administração condominial com soberania de dados, motor financeiro e BolePix
+- **A Divina Peleja do Caixa Soberano** — Série técnica em 9 cantos sobre a arquitetura do CaraCore PDV (borda física offline-first resiliente baseada em Java 25, SQLite WAL, HTML-First/HTMX e Outbox Pattern)
 
-Os artigos de junho e julho de 2026 foram revisados para manter leitura de aproximadamente 6 a 8 minutos, com foco em aplicação prática, clareza técnica e baixa repetição entre textos.
+Os artigos foram revisados para manter leitura objetiva, com foco em aplicação prática, clareza técnica e baixa repetição entre textos.
 
 ## 🔗 Integração com Cara Core
 
@@ -78,7 +79,7 @@ Cada artigo contém:
 - **Tags e categorias** — Para filtros e busca
 - **Link canônico** — URL oficial do artigo
 - **Imagens de capa** — Para redes sociais
-- **Prompts de imagem** — Mantidos em `docs/articles/assets/prompts/`
+- **Prompts de imagem** — Mantidos em `docs/articles/assets/prompts/` e junto com imagens de 2027
 
 ## ✅ Validação
 
@@ -86,7 +87,7 @@ Antes de publicar alterações editoriais relevantes:
 
 - Conferir se `docs/index.html`, `docs/ciclo-ativo.html` e `docs/feed.xml` apontam para os artigos corretos
 - Conferir se `og:image`, `twitter:image` e `<img>` usam `article_NN_01.png`
-- Manter prompts em `docs/articles/assets/prompts/`
+- Manter prompts em `docs/articles/assets/prompts/` ou pastas associadas
 - Validar XML do `feed.xml`
 
 ## 📖 Licença
@@ -95,5 +96,5 @@ Conteúdo © Cara Core Informática. Consulte o arquivo `LICENSE` para mais info
 
 ---
 
-**Última atualização**: Dezembro 2026  
+**Última atualização**: Maio 2027  
 **Manutenção**: [GitHub Repository](https://github.com/chmulato/caracore-retro)
