@@ -76,7 +76,7 @@
 			<thead>
 				<tr style="background:rgba(255,255,255,0.1); border-bottom:2px solid #ccc;">
 					<th style="padding:0.6rem; text-align:left;">Métrica / Recurso</th>
-					<th style="padding:0.6rem; text-align:left; color:#4ade80;">SQLite (WAL)</th>
+					<th style="padding:0.6rem; text-align:left; color:#16a34a;">SQLite (WAL)</th>
 					<th style="padding:0.6rem; text-align:left;">Firebird Embedded</th>
 					<th style="padding:0.6rem; text-align:left;">PostgreSQL (Tuned)</th>
 					<th style="padding:0.6rem; text-align:left;">SQL Server Express</th>
@@ -85,24 +85,24 @@
 			<tbody>
 				<tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
 					<td style="padding:0.6rem; font-weight:600;">Consumo Ocioso de RAM</td>
-					<td style="padding:0.6rem; color:#4ade80; font-weight:600;">~250 KB (em processo)</td>
+					<td style="padding:0.6rem; color:#16a34a; font-weight:600;">~250 KB (em processo)</td>
 					<td style="padding:0.6rem;">~2 MB (em processo)</td>
-					<td style="padding:0.6rem; color:#f87171;">~60 MB (shared_buffers baixos)</td>
-					<td style="padding:0.6rem; color:#f87171;">~250 MB</td>
+					<td style="padding:0.6rem; color:#dc2626;">~60 MB (shared_buffers baixos)</td>
+					<td style="padding:0.6rem; color:#dc2626;">~250 MB</td>
 				</tr>
 				<tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
 					<td style="padding:0.6rem; font-weight:600;">Modo de Execução</td>
-					<td style="padding:0.6rem; color:#4ade80; font-weight:600;">Biblioteca (Direct I/O)</td>
+					<td style="padding:0.6rem; color:#16a34a; font-weight:600;">Biblioteca (Direct I/O)</td>
 					<td style="padding:0.6rem;">Biblioteca (Direct I/O)</td>
-					<td style="padding:0.6rem; color:#f87171;">Processo / TCP Daemon</td>
-					<td style="padding:0.6rem; color:#f87171;">Processo / TCP Daemon</td>
+					<td style="padding:0.6rem; color:#dc2626;">Processo / TCP Daemon</td>
+					<td style="padding:0.6rem; color:#dc2626;">Processo / TCP Daemon</td>
 				</tr>
 				<tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
 					<td style="padding:0.6rem; font-weight:600;">Gravação Concorrente</td>
 					<td style="padding:0.6rem;">Um escritor ativo (WAL)</td>
 					<td style="padding:0.6rem;">Locks de página nativos</td>
-					<td style="padding:0.6rem; color:#4ade80; font-weight:600;">Múltiplos escritores ativos</td>
-					<td style="padding:0.6rem; color:#4ade80; font-weight:600;">Múltiplos escritores ativos</td>
+					<td style="padding:0.6rem; color:#16a34a; font-weight:600;">Múltiplos escritores ativos</td>
+					<td style="padding:0.6rem; color:#16a34a; font-weight:600;">Múltiplos escritores ativos</td>
 				</tr>
 			</tbody>
 		</table>
@@ -150,14 +150,14 @@
 			<tbody>
 				<tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
 					<td style="padding:0.5rem;">Mini PC Intel N100 (SSD NVMe)</td>
-					<td style="padding:0.5rem; text-align:center; color:#f87171;">12.4 ms (bloqueado)</td>
-					<td style="padding:0.5rem; text-align:center; color:#4ade80; font-weight:600;">0.8 ms</td>
+					<td style="padding:0.5rem; text-align:center; color:#dc2626;">12.4 ms (bloqueado)</td>
+					<td style="padding:0.5rem; text-align:center; color:#16a34a; font-weight:600;">0.8 ms</td>
 					<td style="padding:0.5rem; text-align:center;">~1.200 TPS</td>
 				</tr>
 				<tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
 					<td style="padding:0.5rem;">Raspberry Pi 4 4GB (MicroSD Class 10)</td>
-					<td style="padding:0.5rem; text-align:center; color:#f87171;">45.2 ms (bloqueado)</td>
-					<td style="padding:0.5rem; text-align:center; color:#4ade80; font-weight:600;">4.8 ms</td>
+					<td style="padding:0.5rem; text-align:center; color:#dc2626;">45.2 ms (bloqueado)</td>
+					<td style="padding:0.5rem; text-align:center; color:#16a34a; font-weight:600;">4.8 ms</td>
 					<td style="padding:0.5rem; text-align:center;">~200 TPS</td>
 				</tr>
 			</tbody>

@@ -76,24 +76,24 @@
 				<tr style="background:rgba(255,255,255,0.1); border-bottom:2px solid #ccc;">
 					<th style="padding:0.6rem; text-align:left;">Comportamento</th>
 					<th style="padding:0.6rem; text-align:left;">Envio Síncrono Obrigatório</th>
-					<th style="padding:0.6rem; text-align:left; color:#4ade80;">Envio Assíncrono (Outbox)</th>
+					<th style="padding:0.6rem; text-align:left; color:#16a34a;">Envio Assíncrono (Outbox)</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
 					<td style="padding:0.6rem; font-weight:600;">Dependência da Internet</td>
-					<td style="padding:0.6rem; color:#f87171;">100% (Trava se cair)</td>
-					<td style="padding:0.6rem; color:#4ade80; font-weight:600;">Zero para vender (Envia depois)</td>
+					<td style="padding:0.6rem; color:#dc2626;">100% (Trava se cair)</td>
+					<td style="padding:0.6rem; color:#16a34a; font-weight:600;">Zero para vender (Envia depois)</td>
 				</tr>
 				<tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
 					<td style="padding:0.6rem; font-weight:600;">Tempo de Resposta do Cupom</td>
-					<td style="padding:0.6rem; color:#f87171;">Variável (Depende do ping da rede)</td>
-					<td style="padding:0.6rem; color:#4ade80; font-weight:600;">Fixo a 1ms (Gravação local)</td>
+					<td style="padding:0.6rem; color:#dc2626;">Variável (Depende do ping da rede)</td>
+					<td style="padding:0.6rem; color:#16a34a; font-weight:600;">Fixo a 1ms (Gravação local)</td>
 				</tr>
 				<tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
 					<td style="padding:0.6rem; font-weight:600;">Garantia de Entrega Única</td>
 					<td style="padding:0.6rem;">Baixa (Duplica se timeout falhar)</td>
-					<td style="padding:0.6rem; color:#4ade80; font-weight:600;">Alta (Idempotência controlada)</td>
+					<td style="padding:0.6rem; color:#16a34a; font-weight:600;">Alta (Idempotência controlada)</td>
 				</tr>
 			</tbody>
 		</table>
