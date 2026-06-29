@@ -115,7 +115,7 @@
 			Em sistemas de faturamento, a ordem de transmissão é vital. Se o operador registra uma venda e a cancela em seguida, e o evento de cancelamento for enviado e processado pelo Hub Central na nuvem antes da criação da venda original (devido a retentativas paralelas desordenadas), o sistema na nuvem gerará um erro fiscal inconsistente.
 		</p>
 		<p>
-			Para evitar a desordenação, nosso worker processa a fila de forma **estritamente sequencial (Single-threaded FIFO)** com base em uma sequence ID física. Em caso de falha de transmissão, a fila local congela e o sincronizador aguarda a liberação segura da tarefa bloqueada antes de prosseguir com os itens subsequentes.
+			Para evitar a desordenação, nosso worker processa a fila de forma <strong>estritamente sequencial (Single-threaded FIFO)</strong> com base em uma sequence ID física. Em caso de falha de transmissão, a fila local congela e o sincronizador aguarda a liberação segura da tarefa bloqueada antes de prosseguir com os itens subsequentes.
 		</p>
 
 		<h2>Evitando Duplicidade com Idempotência</h2>

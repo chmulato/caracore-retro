@@ -158,7 +158,7 @@ public class HardwareService {
 			Embora permitam escalar tarefas simultâneas, as threads virtuais possuem trade-offs claros que devem ser compreendidos:
 		</p>
 		<ul>
-			<li><strong>Problema de Pinning (Fixação):</strong> Historicamente, o uso de blocos monitor legados (`synchronized`) causava pinning. Sob o **Java 25 (JEP 491)**, o pinning sob monitor locks sincronizados foi resolvido na JVM, permitindo que threads virtuais realizem yield normalmente. Porém, chamadas nativas em C via JNI/FFI ou esperas ativas no ClassLoader ainda prendem (pin) a thread virtual ao núcleo físico da thread carrier, exigindo atenção da equipe técnica.</li>
+			<li><strong>Problema de Pinning (Fixação):</strong> Historicamente, o uso de blocos monitor legados (`synchronized`) causava pinning. Sob o <strong>Java 25 (JEP 491)</strong>, o pinning sob monitor locks sincronizados foi resolvido na JVM, permitindo que threads virtuais realizem yield normalmente. Porém, chamadas nativas em C via JNI/FFI ou esperas ativas no ClassLoader ainda prendem (pin) a thread virtual ao núcleo físico da thread carrier, exigindo atenção da equipe técnica.</li>
 			<li><strong>Vazão (Throughput) vs. Latência de CPU:</strong> As threads virtuais não tornam tarefas brutas de CPU mais rápidas. Elas são projetadas para aumentar a vazão de concorrência em tarefas que passam a maior parte do tempo bloqueadas em I/O (rede e disco). Para processamento CPU-bound puro (como criptografia fiscal pesada), pools de threads tradicionais permanecem mais adequados.</li>
 		</ul>
 

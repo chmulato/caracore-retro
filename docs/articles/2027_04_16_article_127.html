@@ -107,10 +107,10 @@
 
 		<h2>O Modelo Push-Based e a Transmissão de Métricas</h2>
 		<p>
-			Na arquitetura tradicional, o Prometheus opera via modelo de *Pull* (raspando endpoints `/actuator/prometheus` ativamente). Contudo, em 3.200 caixas espalhados geograficamente, todos protegidos por firewalls e redes NAT locais, o servidor Prometheus na nuvem central **não consegue fazer requisições diretas** aos dispositivos físicos de caixa.
+			Na arquitetura tradicional, o Prometheus opera via modelo de *Pull* (raspando endpoints `/actuator/prometheus` ativamente). Contudo, em 3.200 caixas espalhados geograficamente, todos protegidos por firewalls e redes NAT locais, o servidor Prometheus na nuvem central <strong>não consegue fazer requisições diretas</strong> aos dispositivos físicos de caixa.
 		</p>
 		<p>
-			Por isso, o CaraCore PDV adota a **Observabilidade Push-Based**:
+			Por isso, o CaraCore PDV adota a <strong>Observabilidade Push-Based</strong>:
 		</p>
 		<ul>
 			<li><strong>Heartbeat Periódico:</strong> A cada 5 minutos, a aplicação de borda do caixa faz um envio assíncrono muito leve (um JSON pequeno de menos de 1KB) para o servidor central (*CaraCore Hub*).</li>

@@ -32,7 +32,9 @@
 			<span style="margin-left: 1.5rem;">20 de fevereiro de 2027</span>
 		</div>
 
-		<div class="note"><strong>Tempo de leitura:</s		<div class="quote-box">
+		<div class="note"><strong>Tempo de leitura:</strong> 3 minutos</div>
+
+		<div class="quote-box">
 			<strong>Abertura em Cordel:</strong><br>
 			<em>Disseram que banco leve não tinha segurança alguma,<br>
 			Que banco de arquivo único quebra na primeira bruma.<br>
@@ -62,10 +64,10 @@
 
 		<h2>O SQLite e Alternativas de Mercado na Borda</h2>
 		<p>
-			No mercado brasileiro de varejo físico, existem soluções clássicas e eficientes para bancos embarcados, como o **Firebird Embedded** (amplamente utilizado por sua durabilidade de arquivo único). O **DuckDB** surge como outra opção de arquivo único, embora seja focado em consultas analíticas de grande volume (OLAP) e não em transações ACID rápidas de vendas (OLTP).
+			No mercado brasileiro de varejo físico, existem soluções clássicas e eficientes para bancos embarcados, como o <strong>Firebird Embedded</strong> (amplamente utilizado por sua durabilidade de arquivo único). O <strong>DuckDB</strong> surge como outra opção de arquivo único, embora seja focado em consultas analíticas de grande volume (OLAP) e não em transações ACID rápidas de vendas (OLTP).
 		</p>
 		<p>
-			No caixa de varejo, a maior vantagem do <strong>SQLite</strong> é sua simplicidade operacional extrema: ele é apenas um arquivo em disco carregado *in-process* diretamente na JVM. Não há consumo de portas de rede de localhost, nem serviços em segundo plano a serem monitorados pelo sistema operacional.
+			No caixa de varejo, a maior vantagem do <strong>SQLite</strong> é sua simplicidade operacional extrema: ele é apenas um arquivo em disco carregado <i>in-process</i> diretamente na JVM. Não há consumo de portas de rede de localhost, nem serviços em segundo plano a serem monitorados pelo sistema operacional.
 		</p>
 
 		<h2>Tabela Comparativa de Bancos de Dados na Borda</h2>
@@ -109,10 +111,10 @@
 
 		<h2>Tunagem de Concorrência: Ativando o Modo WAL</h2>
 		<p>
-			Por padrão, o SQLite opera em modo **DELETE**, que bloqueia leituras enquanto ocorre uma escrita (modo de lock exclusivo). Em caixas de alto fluxo, leituras paralelas para relatórios locais ou sincronizadores Outbox travariam a tela de vendas frequentemente, gerando falhas de lock.
+			Por padrão, o SQLite opera em modo <strong>DELETE</strong>, que bloqueia leituras enquanto ocorre uma escrita (modo de lock exclusivo). Em caixas de alto fluxo, leituras paralelas para relatórios locais ou sincronizadores Outbox travariam a tela de vendas frequentemente, gerando falhas de lock.
 		</p>
 		<p>
-			Ativando o modo **WAL (Write-Ahead Logging)**, as escritas entram de forma sequencial rápida no arquivo de log temporário `.db-wal` enquanto os leitores consultam o arquivo principal `.db` simultaneamente de forma limpa.
+			Ativando o modo <strong>WAL (Write-Ahead Logging)</strong>, as escritas entram de forma sequencial rápida no arquivo de log temporário `.db-wal` enquanto os leitores consultam o arquivo principal `.db` simultaneamente de forma limpa.
 		</p>
 		<p>
 			Configuramos a concorrência via propriedades do driver JDBC:
@@ -128,7 +130,7 @@
 			Embora o WAL seja robusto, a arquitetura deve mitigar seus riscos conhecidos:
 		</p>
 		<ul>
-			<li><strong>Crescimento Descontrolado do Log:</strong> Se houver uma transação de leitura muito longa aberta em background, o SQLite não consegue consolidar os dados do arquivo `.db-wal` para o `.db` principal. Isso impede o **Checkpoint** automático de esvaziar o log, fazendo o arquivo `.db-wal` crescer até esgotar o disco do caixa.</li>
+			<li><strong>Crescimento Descontrolado do Log:</strong> Se houver uma transação de leitura muito longa aberta em background, o SQLite não consegue consolidar os dados do arquivo `.db-wal` para o `.db` principal. Isso impede o <strong>Checkpoint</strong> automático de esvaziar o log, fazendo o arquivo `.db-wal` crescer até esgotar o disco do caixa.</li>
 			<li><strong>Múltiplos Processos e Corrupção:</strong> Se o arquivo de mapeamento de memória compartilhada `.db-shm` for bloqueado por antivírus agressivos instalados localmente no sistema operacional ou corrompido por falha grave de hardware, o SQLite impedirá o acesso ao banco até que os arquivos temporários sejam recriados.</li>
 			<li><strong>Desempenho em Discos Lentos:</strong> Em mídias muito lentas (como cartões MicroSD Classe 10 de baixa qualidade usados em Raspberry Pi), o processo de Checkpoint pode causar congelamentos breves de milissegundos se o volume de transações pendentes a consolidar for excessivamente alto.</li>
 		</ul>
@@ -168,9 +170,9 @@
 			O SQLite é a ferramenta ideal para a borda autônoma, mas possui limites claros que delimitam o cenário de "quando não usar":
 		</p>
 		<ul>
-			<li><strong>Escrita Concorrente Centralizada:</strong> O SQLite suporta apenas **um único escritor ativo por arquivo**. Se você possui uma loja física onde múltiplos caixas ou operadores precisam gravar dados simultaneamente em um único arquivo de banco compartilhado via rede local (`file sharing`), o banco gerará conflitos frequentes. O SQLite exige um arquivo exclusivo por terminal físico.</li>
+			<li><strong>Escrita Concorrente Centralizada:</strong> O SQLite suporta apenas <strong>um único escritor ativo por arquivo</strong>. Se você possui uma loja física onde múltiplos caixas ou operadores precisam gravar dados simultaneamente em um único arquivo de banco compartilhado via rede local (`file sharing`), o banco gerará conflitos frequentes. O SQLite exige um arquivo exclusivo por terminal físico.</li>
 			<li><strong>Segurança e Permissões Internas:</strong> Não há gerenciamento interno de usuários, privilégios de acesso (roles) ou restrições de tabelas. A segurança física é delegada às permissões de leitura/escrita do sistema operacional na pasta do arquivo.</li>
-			<li><strong>Falta de Replicação Síncrona Nativa:</strong> O SQLite não possui servidor TCP para replicação nativa. Replicação contínua local ou auditorias complexas distribuídas na mesma loja exigem soluções como **Litestream**, **LiteFS** ou tratamento complexo na camada de aplicação.</li>
+			<li><strong>Falta de Replicação Síncrona Nativa:</strong> O SQLite não possui servidor TCP para replicação nativa. Replicação contínua local ou auditorias complexas distribuídas na mesma loja exigem soluções como <strong>Litestream</strong>, <strong>LiteFS</strong> ou tratamento complexo na camada de aplicação.</li>
 		</ul>
 
 		<h2>Código na Prática: Evitando Travamentos no Spring</h2>

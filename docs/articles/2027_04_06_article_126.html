@@ -126,7 +126,7 @@
 			Essa transação de rede inteira consome menos de <strong>50 milissegundos</strong>. O caixa recebe o sinal de sucesso, sabe que o Hub garantiu o recebimento da venda e limpa sua fila local.
 		</p>
 		<p>
-			<strong>Nota de Design (Complexidade Reativa vs. Loom):</strong> Embora o Spring WebFlux garanta alta escala de concorrência com poucas threads de sistema, a programação reativa aumenta a complexidade do código, dificulta a depuração e obscurece stack traces. Sob o **Java 25**, usar o **Spring MVC clássico configurado com Threads Virtuais (Loom)** se consolidou como uma alternativa viável, fornecendo nível de escala reativa equivalente para a recepção HTTP usando o paradigma de programação síncrona/bloqueante tradicional muito mais legível.
+			<strong>Nota de Design (Complexidade Reativa vs. Loom):</strong> Embora o Spring WebFlux garanta alta escala de concorrência com poucas threads de sistema, a programação reativa aumenta a complexidade do código, dificulta a depuração e obscurece stack traces. Sob o <strong>Java 25</strong>, usar o <strong>Spring MVC clássico configurado com Threads Virtuais (Loom)</strong> se consolidou como uma alternativa viável, fornecendo nível de escala reativa equivalente para a recepção HTTP usando o paradigma de programação síncrona/bloqueante tradicional muito mais legível.
 		</p>
 		<p>
 			Na retaguarda, um pool de threads assíncronas do Spring na Nuvem consome os JSONs da *Ingestion Table* de forma cadenciada, atualizando o banco central sem expor a API de recepção à sobrecarga das operações de negócio complexas.

@@ -98,7 +98,7 @@
 			Cada requisição HTTP enviada pela interface do front-end carrega um token JWT contendo a chave do inquilino (`tenant_id`). Nosso back-end intercepta e injeta esse contexto em todas as queries e escritas de banco. Isso estabelece uma barreira intransponível: dados de moradores, boletos e finanças de um condomínio estão matematicamente isolados de terceiros, uma exigência crítica de conformidade com a LGPD.
 		</p>
 		<p>
-			Além disso, implementamos o **LogSanitizer**. Poucos sistemas no mercado higienizam logs em tempo real. O Helianto Condominium faz isso automaticamente — e sem custo de performance. Números de telefone são mascarados, CPFs/CNPJs são omitidos e o IP de cada requisição é criptografado em hash de forma irreversível antes de tocar o disco.
+			Além disso, implementamos o <strong>LogSanitizer</strong>. Poucos sistemas no mercado higienizam logs em tempo real. O Helianto Condominium faz isso automaticamente — e sem custo de performance. Números de telefone são mascarados, CPFs/CNPJs são omitidos e o IP de cada requisição é criptografado em hash de forma irreversível antes de tocar o disco.
 		</p>
 
 		<h2>Notificações e experiência do morador: automação pragmática</h2>
@@ -106,7 +106,7 @@
 			A autonomia do usuário final (morador) é o que garante a aceitação do software. O portal do morador do Helianto Condominium foca em simplicidade mobile-first: acesso rápido a segunda via, cópia do código Pix copia-e-cola e transparência financeira em tempo real (gráficos intuitivos de receitas vs. despesas do condomínio).
 		</p>
 		<p>
-			Para o combate à inadimplência — a maior dor de qualquer síndico —, implementamos a **Régua de Notificação Automática**:
+			Para o combate à inadimplência — a maior dor de qualquer síndico —, implementamos a <strong>Régua de Notificação Automática</strong>:
 		</p>
 		<div class="note">
 			<strong>A Régua de Notificação de Vencimento do Helianto Condominium:</strong><br />
