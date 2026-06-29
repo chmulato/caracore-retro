@@ -52,7 +52,7 @@
 		<figure class="mascot-intro-frame" style="text-align: center; margin: 2rem 0;">
 			<img src="assets/img/2027_02_10_article_121_02.png" alt="Professor Mascote ignorando tempestade de orquestração" class="mascot-avatar" style="max-width: 180px; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,0,0,0.15);" />
 			<figcaption style="font-size: 0.85rem; color: #666; font-style: italic; margin-top: 0.5rem;">
-				Professor Mascote assume o controle: "No mundo físico, o Kubernetes consome 300MB de RAM por nó apenas para avisar que a rede caiu. Uma instância autônoma local não gasta nada e faz o trabalho."
+				Professor Mascote assume o controle: "No mundo físico, distribuições de Kubernetes voltadas para a borda podem consumir mais de 300MB de RAM por nó apenas para manter de pé a infraestrutura de controle local. Uma instância autônoma local não gasta nada e faz o trabalho."
 			</figcaption>
 		</figure>
 
@@ -60,30 +60,30 @@
 
 		<h2>O Problema de Hardware no Ponto de Venda</h2>
 		<p>
-			Máquinas de ponto de venda no varejo operam sob condições físicas severas. Elas precisam de inicialização instantânea, latência de resposta em microssegundos para não atrasar o leitor de código de barras e tolerância total a panes físicas de energia. Tentar rodar orquestradores complexos pensados para data centers nesse cenário é ignorar a física do balcão.
+			Máquinas de ponto de venda no varejo operam sob condições físicas severas. O hardware do PDV é otimizado para inicialização rápida e latência mínima para não atrasar a digitação, não para manter agentes de controle contínuos e laços de reconciliação como kubelet e kube-proxy. Tentar rodar orquestradores complexos pensados para data centers diretamente no dispositivo de PDV é ignorar a física do balcão.
 		</p>
 		<h2>O Modelo Orquestrado vs. Borda Soberana</h2>
 		<p>
-			Não existe cenário em que o Kubernetes — seja rodando de forma remota na nuvem ou forçado localmente na loja física — seja adequado para o ponto de venda. O Kubernetes é excelente no datacenter para orquestrar escala horizontal de aplicações web distribuídas. Mas no caixa do varejo físico, essa transposição de modelo de complexidade é um erro arquitetural grave. A arquitetura de Borda Soberana do CaraCore PDV não compete com clusters; ela substitui completamente a dependência de orquestradores e da rede local.
+			O Kubernetes é excelente no datacenter para orquestrar escala horizontal de aplicações web distribuídas. Mas no dispositivo físico de PDV do caixa, essa transposição de modelo de complexidade é inadequada. A arquitetura de Borda Soberana do CaraCore PDV não compete com clusters; ela substitui a dependência de rede síncrona.
 		</p>
 
 		<h2>O Desperdício de Infraestrutura Local com Orquestradores</h2>
 		<p>
-			Tentar rodar distribuições de Kubernetes voltadas para a borda (como k3s ou MicroK8s) na máquina física do caixa é um desperdício inútil de recursos que ignora a realidade do hardware do varejo brasileiro. Mesmo ocioso, o k3s sequestra entre 300MB e 400MB de RAM apenas para sustentar redes de overlay virtuais (túneis VXLAN), resolução interna de DNS e agentes de controle de ciclo de vida (Kubelet e Kube-proxy).
+			Tentar rodar distribuições de Kubernetes voltadas para a borda (como k3s ou MicroK8s) na máquina física do caixa expõe o dispositivo a um desperdício inútil de recursos que ignora a realidade do varejo brasileiro. Mesmo ocioso, distribuições leves como o k3s podem consumir entre 300MB e 400MB de RAM apenas para sustentar redes de overlay virtuais (túneis VXLAN), resolução interna de DNS e agentes de controle de ciclo de vida, dependendo de quais plugins de rede e ingress estão habilitados.
 		</p>
 		<p>
 			Em computadores de balcão com processador dual-core antigo, esse ciclo de controle consome CPU valiosa que deveria estar dedicada a receber a venda do cliente sem atrasos.
 		</p>
 
-		<h2>Tabela Comparativa: Aplicação Web (Kubernetes) vs. PDV Soberano</h2>
+		<h2>Tabela Comparativa de Dependência de Rede</h2>
 		<p>
-			Veja as diferenças fundamentais de premissas e dependências de arquitetura entre esses dois ecossistemas:
+			A comparação abaixo não é entre produtos equivalentes, mas sim entre <strong>modelos de dependência de rede e orquestração</strong>:
 		</p>
 		<table class="chalkboard-table" style="width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:0.88rem; background:rgba(0,0,0,0.2); border-radius:8px; overflow:hidden;">
 			<thead>
 				<tr style="background:rgba(255,255,255,0.1); border-bottom:2px solid #ccc;">
 					<th style="padding:0.6rem; text-align:left;">Recurso / Premissa</th>
-					<th style="padding:0.6rem; text-align:left;">Aplicação Web (Kubernetes)</th>
+					<th style="padding:0.6rem; text-align:left;">Modelo Web-Orquestrado (Kubernetes)</th>
 					<th style="padding:0.6rem; text-align:left; color:#4ade80;">PDV Soberano (CaraCore)</th>
 				</tr>
 			</thead>
@@ -108,10 +108,10 @@
 
 		<h2>A Fragilidade da Centralização Forçada e a Realidade das Lojas</h2>
 		<p>
-			Estudos de infraestrutura de telecomunicações no varejo físico brasileiro indicam que uma loja média sofre cerca de 14 interrupções de conexão por mês, variando entre oscilações de sinal de modems 4G de contingência, quedas de provedores de fibra regionais e falhas físicas de cabeamento.
+			Estudos internos e relatos de varejistas indicam que lojas brasileiras frequentemente enfrentam múltiplas interrupções de conexão por mês, variando entre oscilações de sinal de modems 4G de contingência, quedas de provedores de fibra regionais e falhas físicas de cabeamento.
 		</p>
 		<p>
-			No modelo centralizado tradicional, cada operação depende diretamente da internet. Cada bip do scanner de código de barras precisa fazer uma viagem de ida e volta à nuvem. A latência da rede vira o principal gargalo físico do caixa e qualquer queda de sinal paralisa imediatamente a operação de vendas.
+			Em arquiteturas centralizadas mal desenhadas, cada operação de checkout pode depender de uma chamada direta à nuvem. A latência da rede vira o principal gargalo físico do caixa e qualquer queda de sinal paralisa imediatamente a operação de vendas.
 		</p>
 		<p>
 			Se um supermercado com faturamento de R$ 10.000 por hora ficar com caixas parados durante 30 minutos em um sábado de pico devido a falha na fibra, o prejuízo direto e imediato em vendas perdidas e insatisfação de clientes na fila ultrapassa o custo de implantação de toda a licença de software local.
@@ -119,15 +119,15 @@
 
 		<h2>Arquitetura e Fluxo de Borda Soberana</h2>
 		<p>
-			O CaraCore PDV adota a <strong>Soberania da Borda</strong>. Definimos soberania como a soma de três pilares: <strong>Autonomia</strong> de execução do caixa, <strong>Resiliência</strong> física a panes e <strong>Isolamento</strong> contra falhas de rede. Cada caixa de balcão funciona como uma ilha autônoma, eliminando pontos únicos de falha na loja.
+			O CaraCore PDV adota a <strong>Soberania da Borda</strong>. Definimos soberania como a soma de três pilares: <strong>Autonomia</strong> de execução do caixa, <strong>Resiliência</strong> física a panes e <strong>Isolamento</strong> contra falhas de rede. Além disso, o modelo garante conformidade com auditoria fiscal local (contingência fiscal satélites SAT/NFC-e), sincronização de estoque assíncrona e prevenção de fraude de forma 100% desconectada.
 		</p>
 		<p>
-			Veja a diferença estrutural de acoplamento de rede na borda:
+			O problema central retratado abaixo não é o Kubernetes em si, mas a insistência em acoplamentos síncronos com a nuvem na hora de registrar a venda:
 		</p>
 
 		<div class="mermaid" style="background:#1a1d20; padding:1.5rem; border-radius:8px; margin:1.5rem 0;">
 		graph LR
-			subgraph Arquitetura_Kubernetes_Acoplada [Modelo Frágil Orquestrado]
+			subgraph Arquitetura_Acoplada [Modelo Frágil Síncrono]
 				CaixaK8s[PDV em Pod] -->|Roteamento Overlay| NetworkProxy[Kube-Proxy / DNS]
 				NetworkProxy -->|Conexão TCP Síncrona Obrigatória| CloudDB[(Banco de Dados Nuvem)]
 			end
@@ -173,7 +173,7 @@
 
 		<h2>Conclusão do Canto da Independência</h2>
 		<p>
-			A eliminação de orquestradores pesados e redes virtuais na borda é o primeiro passo para obter resiliência de caixa no varejo autônomo. Software robusto deve tolerar a falha física e continuar executando sua missão de forma local e autocontida. Não existe cenário em que o Kubernetes — local ou remoto — seja adequado para PDVs. A arquitetura soberana não é uma alternativa ao cluster; é uma alternativa à dependência.
+			A eliminação de orquestradores pesados e redes virtuais na borda é o primeiro passo para obter resiliência de caixa no varejo autônomo. Software robusto deve tolerar a falha física e continuar executando sua missão de forma local e autocontida. Para execução local no dispositivo de caixa, o Kubernetes não se adequa; enquanto para o back-end analítico centralizado na nuvem, ele continua sendo a melhor solução.
 		</p>
 		<p>
 			Com a stack operacional saneada e a rede desacoplada do fluxo de faturamento, a próxima questão crucial da arquitetura física é o armazenamento de dados local. No próximo canto, detalharemos como conseguimos garantir persistência ACID robusta contra quedas de energia no balcão usando um banco local embarcado de alta eficiência.
