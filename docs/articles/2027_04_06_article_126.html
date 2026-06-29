@@ -140,7 +140,7 @@
 				<div style="flex: 1; min-width: 280px; border-right: 1px dashed rgba(255,255,255,0.2); padding-right: 1rem;">
 					<h4 style="color: #a7f3d0; margin-top: 0;">💻 Para Técnicos (A Baseline)</h4>
 					<p style="font-family: 'Fira Code', monospace; font-size: 0.85rem; line-height: 1.4; margin-bottom: 0;">
-						Utilize `@ResponseStatus(HttpStatus.ACCEPTED)` no controller reativo. A gravação assíncrona do payload usa um pool HikariCP tunado: `maximum-pool-size=50` e `minimum-idle=10`. O processamento lógico é orquestrado por um worker `@Component` rodando `@Scheduled(fixedDelay = 1000)` que lê e limpa a tabela de ingestão, garantindo isolamento absoluto de carga.
+						Utilize `@ResponseStatus(HttpStatus.ACCEPTED)` no controller reativo. Como JPA/JDBC são bloqueantes, a gravação na Ingestion Table é delegada ao `Schedulers.boundedElastic()` para evitar o congelamento do loop de eventos do Netty, consumindo um pool HikariCP tunado (`maximum-pool-size=50`). O processamento lógico final é orquestrado por um worker assíncrono `@Scheduled` gradual.
 					</p>
 				</div>
 				

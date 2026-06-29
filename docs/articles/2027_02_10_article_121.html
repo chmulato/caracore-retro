@@ -62,13 +62,14 @@
 		<p>
 			Máquinas de ponto de venda no varejo operam sob condições físicas severas. Elas precisam de inicialização instantânea, latência de resposta em microssegundos para não atrasar o leitor de código de barras e tolerância total a panes físicas de energia. Tentar rodar orquestradores complexos pensados para data centers nesse cenário é ignorar a física do balcão.
 		</p>
+		<h2>O Modelo Orquestrado vs. Borda Soberana</h2>
 		<p>
-			<strong>Esclarecimento fundamental:</strong> Não estamos sugerindo rodar Kubernetes localmente na loja. Nosso objetivo é comparar o modelo de aplicação web-orquestrado clássico (que roda sob Kubernetes na nuvem) com o modelo soberano de borda local (CaraCore PDV). Se o seu sistema é web, Kubernetes é natural e resolve a escala horizontal distribuída. Se o seu sistema é PDV de loja física, transpor esse modelo de complexidade (seja rodando em cluster remoto ou localmente) é um erro arquitetural grave.
+			Não existe cenário em que o Kubernetes — seja rodando de forma remota na nuvem ou forçado localmente na loja física — seja adequado para o ponto de venda. O Kubernetes é excelente no datacenter para orquestrar escala horizontal de aplicações web distribuídas. Mas no caixa do varejo físico, essa transposição de modelo de complexidade é um erro arquitetural grave. A arquitetura de Borda Soberana do CaraCore PDV não compete com clusters; ela substitui completamente a dependência de orquestradores e da rede local.
 		</p>
 
 		<h2>O Desperdício de Infraestrutura Local com Orquestradores</h2>
 		<p>
-			Mesmo distribuições reduzidas de Kubernetes voltadas para borda, como k3s ou MicroK8s, expõem a máquina do caixa a um desperdício inaceitável de recursos. Sem nenhuma transação ativa, o k3s consome cerca de 300MB a 400MB de memória RAM por nó local apenas para manter de pé a infraestrutura de roteamento e ciclo de controle do control plane (como Kubelet, Kube-Proxy, CoreDNS e redes de overlay virtuais via Flannel/Calico).
+			Tentar rodar distribuições de Kubernetes voltadas para a borda (como k3s ou MicroK8s) na máquina física do caixa é um desperdício inútil de recursos que ignora a realidade do hardware do varejo brasileiro. Mesmo ocioso, o k3s sequestra entre 300MB e 400MB de RAM apenas para sustentar redes de overlay virtuais (túneis VXLAN), resolução interna de DNS e agentes de controle de ciclo de vida (Kubelet e Kube-proxy).
 		</p>
 		<p>
 			Em computadores de balcão com processador dual-core antigo, esse ciclo de controle consome CPU valiosa que deveria estar dedicada a receber a venda do cliente sem atrasos.
@@ -172,7 +173,7 @@
 
 		<h2>Conclusão do Canto da Independência</h2>
 		<p>
-			A eliminação de orquestradores pesados e redes virtuais na borda é o primeiro passo para obter resiliência de caixa no varejo autônomo. Software robusto deve tolerar a falha física e continuar executando sua missão de forma local e autocontida.
+			A eliminação de orquestradores pesados e redes virtuais na borda é o primeiro passo para obter resiliência de caixa no varejo autônomo. Software robusto deve tolerar a falha física e continuar executando sua missão de forma local e autocontida. Não existe cenário em que o Kubernetes — local ou remoto — seja adequado para PDVs. A arquitetura soberana não é uma alternativa ao cluster; é uma alternativa à dependência.
 		</p>
 		<p>
 			Com a stack operacional saneada e a rede desacoplada do fluxo de faturamento, a próxima questão crucial da arquitetura física é o armazenamento de dados local. No próximo canto, detalharemos como conseguimos garantir persistência ACID robusta contra quedas de energia no balcão usando um banco local embarcado de alta eficiência.

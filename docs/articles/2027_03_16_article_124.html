@@ -167,7 +167,7 @@ public class HardwareService {
 			No CaraCore PDV, rodando sob o <strong>Java 25</strong>, resolvemos esse problema adotando as <strong>Threads Virtuais (Project Loom)</strong>. Diferente das threads clássicas, as threads virtuais são gerenciadas diretamente pela JVM e não pelo sistema operacional. Elas são extremamente leves (consomem apenas alguns bytes de memória).
 		</p>
 		<p>
-			Quando uma thread virtual precisa realizar uma operação de escrita lenta em disco (SQLite) ou enviar comandos de impressão serial (via `jSerialComm`), a JVM detecta o bloqueio de I/O, retira temporariamente a thread virtual do núcleo físico do processador e o libera para processar outras tarefas. Assim, conseguimos gerenciar centenas de tarefas concorrentes em background sem desperdiçar ciclo de processador.
+			Quando uma thread virtual precisa realizar uma operação de escrita lenta em disco (SQLite) ou efetuar uma chamada de rede assíncrona, a JVM detecta o bloqueio de I/O, retira temporariamente a thread virtual do núcleo físico do processador e o libera para processar outras tarefas. Assim, conseguimos gerenciar centenas de tarefas concorrentes em background sem desperdiçar ciclo de processador.
 		</p>
 
 		<!-- Fechamento com Tradução Técnica e de Negócios -->
@@ -181,7 +181,7 @@ public class HardwareService {
 				<div style="flex: 1; min-width: 280px; border-right: 1px dashed rgba(255,255,255,0.2); padding-right: 1rem;">
 					<h4 style="color: #a7f3d0; margin-top: 0;">💻 Para Técnicos (A Baseline)</h4>
 					<p style="font-family: 'Fira Code', monospace; font-size: 0.85rem; line-height: 1.4; margin-bottom: 0;">
-						Ative o suporte a Threads Virtuais no Spring Boot 3.x com `spring.threads.virtual.enabled=true`. O Spring passará a criar instâncias de `VirtualThread` para processar cada tarefa `@Async` e requisição local. O bloqueio de I/O em conexões seriais USB (`jSerialComm`) passa a realizar o yield automático da thread na JVM sem travar a thread de plataforma subjacente (carrier thread), permitindo concorrência massiva de hardware.
+						Ative o suporte a Threads Virtuais no Spring Boot 3.x com `spring.threads.virtual.enabled=true`. O Spring criará instâncias de `VirtualThread` para cada requisição local. Como drivers seriais baseados em JNI/C (`jSerialComm`) causam o pinning da thread virtual à thread carrier física, encapsulamos as escritas de hardware em um pool de threads de plataforma dedicado, permitindo isolamento total de I/O e concorrência massiva.
 					</p>
 				</div>
 				

@@ -165,7 +165,7 @@
 
 		<h2>Código na Prática: Evitando Travamentos no Spring</h2>
 		<p>
-			Apenas mudar a URL do properties não impede todos os problemas. Na aplicação, as transações de gravação precisam ser rápidas e isoladas. Veja o exemplo de serviço com controle de transação e retentativa de gravação para contornar o erro `ObjectOptimisticLockingFailureException` (que ocorre se duas transações concorrentes tentarem atualizar o mesmo registro de fila Outbox no SQLite ao mesmo tempo):
+			Apenas mudar a URL do properties não impede todos os problemas. Na aplicação, as transações de gravação precisam ser rápidas e isoladas. Veja o exemplo de serviço com controle de transação e retentativa de gravação para contornar o erro `CannotAcquireLockException` (que ocorre se duas transações concorrentes tentarem gravar ou atualizar no SQLite ao mesmo tempo e estourar o limite de `busy_timeout` de arquivo bloqueado):
 		</p>
 		<pre style="background:#1e293b; color:#f8f8f2; padding:1.25rem; border-radius:8px; font-family:'Fira Code', monospace; font-size:0.82rem; overflow-x:auto; margin:1.5rem 0; border:1px solid #334155;">
 @Service
@@ -180,7 +180,7 @@ public class VendaService {
         while (tentativas > 0) {
             try {
                 return repo.save(venda);
-            } catch (ObjectOptimisticLockingFailureException | DataIntegrityViolationException e) {
+            } catch (CannotAcquireLockException | DataIntegrityViolationException e) {
                 tentativas--;
                 if (tentativas == 0) throw e;
                 try { Thread.sleep(100); } catch (InterruptedException ie) { Thread.currentThread().interrupt(); }
