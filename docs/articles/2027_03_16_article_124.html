@@ -155,19 +155,19 @@ public class HardwareService {
 
 		<h2>Limitações Reais das Threads Virtuais</h2>
 		<p>
-			Embora permitam escalar tarefas ao infinito, as threads virtuais têm restrições que devem ser contornadas:
+			Embora permitam escalar tarefas simultâneas, as threads virtuais possuem trade-offs claros que devem ser compreendidos:
 		</p>
 		<ul>
-			<li><strong>Problema de Pinning (Fixação):</strong> Se o seu código contiver blocos sincronizados legados (`synchronized`), ou se chamar bibliotecas em C nativo via JNI/FFI, a thread virtual ficará presa (pinned) à Thread de Plataforma subjacente, impedindo o escalonador de fazer o yield dinâmico. Devemos preferir `ReentrantLock` do pacote `java.util.concurrent.locks`.</li>
-			<li><strong>Operações de CPU Puras:</strong> Elas não trazem nenhuma vantagem para algoritmos que calculam dados puros de CPU sem bloqueio de rede ou disco (CPU-bound). Nesses casos, o overhead de escalonamento virtual pode até reduzir o desempenho.</li>
+			<li><strong>Problema de Pinning (Fixação):</strong> Historicamente, o uso de blocos monitor legados (`synchronized`) causava pinning. Sob o **Java 25 (JEP 491)**, o pinning sob monitor locks sincronizados foi resolvido na JVM, permitindo que threads virtuais realizem yield normalmente. Porém, chamadas nativas em C via JNI/FFI ou esperas ativas no ClassLoader ainda prendem (pin) a thread virtual ao núcleo físico da thread carrier, exigindo atenção da equipe técnica.</li>
+			<li><strong>Vazão (Throughput) vs. Latência de CPU:</strong> As threads virtuais não tornam tarefas brutas de CPU mais rápidas. Elas são projetadas para aumentar a vazão de concorrência em tarefas que passam a maior parte do tempo bloqueadas em I/O (rede e disco). Para processamento CPU-bound puro (como criptografia fiscal pesada), pools de threads tradicionais permanecem mais adequados.</li>
 		</ul>
 
 		<h2>A Revolução das Threads Virtuais (Project Loom)</h2>
 		<p>
-			No CaraCore PDV, rodando sob o <strong>Java 25</strong>, resolvemos esse problema adotando as <strong>Threads Virtuais (Project Loom)</strong>. Diferente das threads clássicas, as threads virtuais são gerenciadas diretamente pela JVM e não pelo sistema operacional. Elas são extremamente leves (consomem apenas alguns bytes de memória).
+			No CaraCore PDV, rodando sob o <strong>Java 25</strong>, resolvemos esse gargalo adotando as <strong>Threads Virtuais (Project Loom)</strong>. Diferente das threads clássicas, as threads virtuais são gerenciadas diretamente pela JVM e não pelo sistema operacional. Elas são extremamente leves (consomem poucos bytes de memória).
 		</p>
 		<p>
-			Quando uma thread virtual precisa realizar uma operação de escrita lenta em disco (SQLite) ou efetuar uma chamada de rede assíncrona, a JVM detecta o bloqueio de I/O, retira temporariamente a thread virtual do núcleo físico do processador e o libera para processar outras tarefas. Assim, conseguimos gerenciar centenas de tarefas concorrentes em background sem desperdiçar ciclo de processador.
+			Quando uma thread virtual realiza uma operação de escrita em disco (SQLite) ou efetua uma chamada de rede assíncrona, a JVM detecta o bloqueio de I/O, retira temporariamente a thread virtual do núcleo físico da thread carrier e o libera para processar outras tarefas. Assim, conseguimos gerenciar centenas de tarefas concorrentes em background de forma eficiente.
 		</p>
 
 		<!-- Fechamento com Tradução Técnica e de Negócios -->

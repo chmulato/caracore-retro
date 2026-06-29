@@ -37,7 +37,7 @@
 		<div class="quote-box">
 			<strong>Abertura em Cordel:</strong><br>
 			<em>A pasta 'node_modules' pesa mais que um caminhão,<br>
-			Pra carregar a tela do caixa, precisa de avião.<br>
+			Na hora da instalação, traz grande provação.<br>
 			Mas limpamos o Purgatório de tanta complicação,<br>
 			HTMX e HTML trazem a salvação!<br>
 			A página atualiza em menos de um piscada de olho,<br>
@@ -48,7 +48,7 @@
 		<figure class="mascot-intro-frame" style="text-align: center; margin: 2rem 0;">
 			<img src="assets/img/2027_03_06_article_123_02.png" alt="Professor Mascote descartando frameworks JS no lixo" class="mascot-avatar" style="max-width: 180px; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,0,0,0.15);" />
 			<figcaption style="font-size: 0.85rem; color: #666; font-style: italic; margin-top: 0.5rem;">
-				Professor Mascote assume o controle: "Você não precisa de um empacotadorWebpack de 500MB e 10 rotas no React apenas para ler itens e somar o subtotal. Use HTML nativo gerado pelo servidor: roda a 1ms no localhost."
+				Professor Mascote assume o controle: "Você não precisa de um empacotador de build pesado e dezenas de rotas no cliente apenas para ler itens e somar o subtotal. Use HTML nativo gerado pelo servidor local."
 			</figcaption>
 		</figure>
 
@@ -56,26 +56,26 @@
 
 		<h2>O que é a Purificação do Código?</h2>
 		<p>
-			Definimos <strong>Purificação do Código</strong> no contexto do ponto de venda local como a remoção sistemática de complexidade acidental. No desenvolvimento moderno de interfaces, essa complexidade é introduzida por compiladores front-end, dependências redundantes e a separação artificial entre cliente e servidor rodando na mesma máquina física do caixa (localhost).
+			Definimos <strong>Purificação do Código</strong> no contexto do ponto de venda local como a remoção sistemática de complexidade acidental. No desenvolvimento de interfaces de caixas, essa complexidade refere-se ao acúmulo de dependências de compilação e a separação artificial entre cliente e servidor rodando dentro do mesmo computador (localhost).
 		</p>
 		<p>
-			Purificar significa aproximar a interface do núcleo do processamento: eliminar serializadores JSON ineficazes, excluir runtimes dinâmicos como Node.js do caixa e usar renderização server-side direta, reduzindo a latência operacional a quase zero.
+			Purificar significa simplificar o fluxo de renderização: eliminar serializações JSON ineficientes e acoplamentos desnecessários de runtimes no dispositivo de caixa, preferindo a renderização direta no servidor local para otimizar o tempo de resposta. Em vários cenários, runtimes baseados em JavaScript ou Node.js (ou deno/bun) prestam serviços essenciais de drivers e integrações locais, mas para o fluxo de renderização e estado do caixa, a simplicidade de templates HTML nativos se mostra mais eficiente.
 		</p>
 
-		<h2>O Labirinto da Complexidade Front-End</h2>
+		<h2>O Labirinto da Complexidade Front-End e as Alternativas</h2>
 		<p>
-			A engenharia de software atual tomou um caminho perigoso: dividiu a interface e a lógica em dois mundos separados (Back-end e Front-end). Para fazer um formulário simples enviar dados a um banco local, agora é comum rodar um servidor Node dedicado, gerenciar estados de stores complexos (Redux/Zustand), tratar serializações JSON e compilar pacotes gigantescos de JavaScript.
+			A arquitetura web clássica dividiu a interface e a lógica em dois mundos separados (Back-end e Front-end). Para fazer um formulário simples enviar dados a um banco local, muitas aplicações de PDV modernas trazem dezenas de bibliotecas client-side pesadas, gerenciam estados de stores em memória e utilizam ciclos complexos de empacotamento.
 		</p>
 		<p>
-			No localhost de uma máquina de caixa, esse overhead de comunicação e processamento de CPU degrada a experiência do operador. O scanner de código de barras registra os produtos mais rápido do que a interface reativa baseada em Virtual DOM consegue processar. O operador sente um travamento visual sutil, o que gera erros operacionais acumulados e atrasos crônicos no balcão.
-		</p>
-
-		<h2>Código na Prática: Complexidade vs. Simplicidade (Antes vs. Depois)</h2>
-		<p>
-			Veja a diferença física entre registrar um item na tela sob o modelo de SPA tradicional (React/API) contra o modelo purificado HTML-First (HTMX/JTE):
+			O uso de Single Page Applications (SPAs) ou frameworks modernos (como React Server Components - RSCs, Solid, Qwik ou SvelteKit) oferece recursos brilhantes para interfaces que demandam estado local complexo, animações ricas, interações de arrastar e soltar (drag-and-drop) ou calculadoras reativas locais de alta frequência. Porém, no localhost de uma máquina de caixa de 2GB de RAM, se o ecossistema SPA não for agressivamente otimizado com bundles reduzidos (na faixa de 50-150KB em produção), o processamento excessivo do Virtual DOM e do compilador em tempo de execução pode gerar micro-travamentos na digitação de itens.
 		</p>
 
-		<h4 style="margin-bottom:0.5rem; color:#374151;">❌ Modelo Tradicional (React + REST API no Caixa)</h4>
+		<h2>Código na Prática: SPA Tradicional vs. JTE + HTMX</h2>
+		<p>
+			Abaixo comparamos uma escrita simples de item sob o modelo SPA REST convencional contra o modelo HTML-First (HTMX/JTE). Esta comparação foca em <strong>modelos de acoplamento de estados</strong>:
+		</p>
+
+		<h4 style="margin-bottom:0.5rem; color:#374151;">❌ Exemplo SPA REST (Chamada Clássica de Client-Side State)</h4>
 		<pre style="background:#1e293b; color:#f8f8f2; padding:1rem; border-radius:8px; font-family:'Fira Code', monospace; font-size:0.8rem; overflow-x:auto; margin-bottom:1rem; border:1px solid #e2e8f0;">
 // Front-end React
 const registrarItem = (id) => {
@@ -89,7 +89,7 @@ const registrarItem = (id) => {
 };
 		</pre>
 
-		<h4 style="margin-bottom:0.5rem; color:#2d6a4f;">✔️ Modelo Purificado (JTE + HTMX no Caixa)</h4>
+		<h4 style="margin-bottom:0.5rem; color:#2d6a4f;">✔️ Exemplo HTML-First (HTMX + JTE / Servidor Local)</h4>
 		<pre style="background:#1c3d27; color:#f5fff0; padding:1rem; border-radius:8px; font-family:'Fira Code', monospace; font-size:0.8rem; overflow-x:auto; margin-bottom:1.5rem; border:1px solid #2d6a4f;">
 &lt;!-- HTML Declarativo do HTMX --&gt;
 &lt;button hx-post="/vendas/itens" 
@@ -102,18 +102,23 @@ const registrarItem = (id) => {
 
 		<h2>Métricas de Complexidade e Build na Borda</h2>
 		<p>
-			A eliminação de runtimes complexos no front-end reflete diretamente nos números de compilação, peso de instalação no caixa e velocidade de execução:
+			<strong>Metodologia do Benchmark:</strong> Testes executados em hardware de caixa modesto (processador dual-core Celeron de 2GB de RAM) rodando build de produção compactado (gzip/brotli ativo) e navegador em modo estrito sem cache. A inicialização de tela monitorou o *cold start* do primeiro carregamento na máquina física local:
 		</p>
 		<ul>
-			<li><strong>Pasta node_modules:</strong> Reduzida de <strong>750 MB</strong> (React/Webpack) para <strong>0 MB</strong> (NPM-Free).</li>
-			<li><strong>Tamanho do Bundle de Tela:</strong> Reduzido de <strong>2.4 MB</strong> de scripts JavaScript compactados para apenas <strong>45 KB</strong> (HTMX local limpo).</li>
-			<li><strong>Tempo de Inicialização de Tela:</strong> Queda de <strong>4.8 segundos</strong> para renderização inicial de SPA para <strong>0.05 segundos</strong> (HTML-First nativo).</li>
+			<li><strong>Tamanho de Instalação node_modules:</strong> Reduzida de <strong>750 MB</strong> (React/Webpack na pasta de build dev) para <strong>0 MB</strong> (NPM-Free no caixa).</li>
+			<li><strong>Tamanho do Bundle Transferido:</strong> Reduzido de <strong>2.4 MB</strong> (bundle SPA React dev não otimizado) para apenas <strong>45 KB</strong> (HTMX local minificado).</li>
+			<li><strong>Tempo de Inicialização de Tela:</strong> Queda de <strong>4.8 segundos</strong> para inicialização inicial da SPA sem cache para <strong>0.05 segundos</strong> (HTML-First nativo servido pelo JTE local).</li>
 		</ul>
 
-		<h2>A Otimização HTML-First com HTMX e JTE/Thymeleaf</h2>
+		<h2>Trade-offs e a Otimização HTML-First</h2>
 		<p>
-			A resposta da Cara Core a esse inchaço é a volta à simplicidade elegante: <strong>HTML-First</strong>. No CaraCore PDV, a renderização de telas é feita diretamente no servidor usando JTE (Java Template Engine) ou Thymeleaf.
+			Embora o padrão HTML-First traga benefícios enormes na latência de inicialização e reduza o overhead de JS na borda, ele possui desvantagens claras a serem consideradas:
 		</p>
+		<ul>
+			<li><strong>Tighter Coupling:</strong> Há um acoplamento maior entre as definições de tela (templates) e o código do back-end, limitando a reutilização de componentes em plataformas totalmente diferentes (como aplicativos móveis).</li>
+			<li><strong>Round-trips Frequentes:</strong> Atualizações simples de tela que não exigem lógica de banco ainda demandam requisições HTTP locais (`localhost`), o que requer uma estruturação inteligente de componentes JTE locais.</li>
+			<li><strong>Complexidade de Testes de UI:</strong> Testes automatizados de interface dependem de renderizações completas do ciclo de templates, exigindo ferramentas de integração para validar a consistência visual.</li>
+		</ul>
 
 		<!-- Fechamento com Tradução Técnica e de Negócios -->
 		<div class="chalkboard">
@@ -142,10 +147,10 @@ const registrarItem = (id) => {
 
 		<h2>Conclusão da Purificação UI</h2>
 		<p>
-			A simplicidade no design de código é a forma definitiva de garantir a longevidade operacional do software. Menos código rodando na borda significa menos pontos potenciais de falha, menos bugs e maior velocidade de resposta no ponto de venda.
+			Buscar a simplicidade no design de código e a redução de dependências desnecessárias na borda ajuda a garantir a estabilidade e a longevidade operacional do software. No CaraCore PDV, a renderização de telas é feita diretamente no servidor usando JTE (Java Template Engine) ou Thymeleaf, mantendo as atualizações de interface eficientes e livres de inchaço.
 		</p>
 		<p>
-			Com a interface saneada rodando HTML nativo a 1ms, o passo seguinte da nossa série é explorar a concorrência leve de drivers locais. No próximo canto, detalharemos como operamos balanças e impressoras locais sob concorrência intensa e sem travar a tela usando as Threads Virtuais do Java 25.
+			Com a interface saneada rodando HTML nativo de forma responsiva, o passo seguinte da nossa série é explorar a concorrência leve de drivers locais. No próximo canto, detalharemos como operamos balanças e impressoras locais sob concorrência intensa e sem travar a tela usando as Threads Virtuais do Java 25.
 		</p>
 
 		<hr>

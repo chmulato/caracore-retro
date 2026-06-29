@@ -105,21 +105,20 @@
 			<li><strong>Versão de Migrations SQL:</strong> Garante que todos os caixas executaram com sucesso a atualização de schemas do SQLite via Flyway.</li>
 		</ul>
 
-		<h2>Heartbeats Simples e Spring Boot Actuator</h2>
+		<h2>O Modelo Push-Based e a Transmissão de Métricas</h2>
 		<p>
-			A Cara Core resolve a observabilidade distribuída combinando o <strong>Spring Boot Actuator</strong> local com um mecanismo leve de <strong>Heartbeat</strong> (pulso de vida).
+			Na arquitetura tradicional, o Prometheus opera via modelo de *Pull* (raspando endpoints `/actuator/prometheus` ativamente). Contudo, em 3.200 caixas espalhados geograficamente, todos protegidos por firewalls e redes NAT locais, o servidor Prometheus na nuvem central **não consegue fazer requisições diretas** aos dispositivos físicos de caixa.
 		</p>
 		<p>
-			A cada 5 minutos, a aplicação de borda do caixa faz um envio assíncrono muito leve de status (um JSON pequeno de menos de 1KB) para o servidor central (*CaraCore Hub*). Esse payload contém:
+			Por isso, o CaraCore PDV adota a **Observabilidade Push-Based**:
 		</p>
 		<ul>
-			<li>O identificador único do caixa e da filial.</li>
-			<li>A versão atual do software rodando.</li>
-			<li>O tamanho atual da fila de tarefas pendentes na tabela `OutboxTask` do SQLite local.</li>
-			<li>O status de uso de memória física e CPU.</li>
+			<li><strong>Heartbeat Periódico:</strong> A cada 5 minutos, a aplicação de borda do caixa faz um envio assíncrono muito leve (um JSON pequeno de menos de 1KB) para o servidor central (*CaraCore Hub*).</li>
+			<li><strong>Proteção de Links Limitados:</strong> Se o link de contingência (4G/3G) estiver degradado ou operando com franquia curta, o sincronizador de telemetria desliga temporariamente os heartbeats secundários de CPU/RAM, concentrando 100% da banda no tráfego vital da fila Outbox de cupons fiscais.</li>
+			<li><strong>Otimização de Recursos do Caixa (2GB RAM):</strong> Coletas frequentes de estatísticas no Actuator podem gerar picos indesejados de GC (Garbage Collector) em computadores antigos. Para mitigar isso, as métricas de saúde são agregadas localmente em memória de forma leve antes de serem despachadas no ping periódico.</li>
 		</ul>
 		<p>
-			Na central, o <strong>Prometheus</strong> lê os dados coletados das tabelas de heartbeats e gera alertas visuais no <strong>Grafana</strong>. Se o painel apontar um tamanho de fila crescendo constantemente em alguma loja específica, o suporte técnico é alertado para abrir um chamado com a operadora de internet local antes que ocorra acúmulo excessivo.
+			Na central, o <strong>Prometheus</strong> expõe as métricas coletadas indiretamente a partir do banco do Hub e gera os alertas visuais no <strong>Grafana</strong>. Se o painel apontar um tamanho de fila crescendo constantemente em alguma loja específica, o suporte técnico sabe que a internet local caiu, abrindo chamados preventivos com as operadoras.
 		</p>
 
 		<!-- Fechamento com Tradução Técnica e de Negócios -->
@@ -135,7 +134,7 @@
 					<p style="font-family: 'Fira Code', monospace; font-size: 0.85rem; line-height: 1.4; margin-bottom: 0;">
 						Exponha as métricas de fila local criando um indicador customizado no Actuator:
 						<br><code>@Component public class OutboxHealthIndicator implements HealthIndicator { ... }</code>.
-						O Micrometer coleta a contagem de registros pendentes no SQLite e a expõe no endpoint `/actuator/health`. O agendador local envia esse JSON no ping periódico para o Hub, permitindo monitoramento centralizado de frota sem expor portas locais do PDV a conexões externas.
+						O Micrometer expõe a contagem de pendências no endpoint `/actuator/health`. O agendador local envia esse JSON no ping periódico para o Hub, permitindo monitoramento centralizado de frota sem expor portas locais do PDV a conexões externas na rede NAT.
 					</p>
 				</div>
 				

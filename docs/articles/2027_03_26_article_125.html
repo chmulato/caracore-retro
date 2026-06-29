@@ -98,41 +98,34 @@
 			</tbody>
 		</table>
 
-		<h2>A Solução Definitiva: O Padrão Transactional Outbox</h2>
+		<h2>A Solução: O Padrão Transactional Outbox e Seus Trade-offs</h2>
 		<p>
-			No CaraCore PDV, aplicamos o padrão <strong>Transactional Outbox</strong>. Quando uma venda é concluída, a tabela `Venda` e uma tarefa de sincronização pendente na tabela `OutboxTask` são gravadas localmente no SQLite sob a mesma transação ACID `@Transactional`. 
+			No CaraCore PDV, aplicamos o padrão <strong>Transactional Outbox</strong>. Quando uma venda é concluída, a tabela `Venda` e uma tarefa de sincronização pendente na tabela `OutboxTask` são gravadas localmente no SQLite sob a mesma transação ACID `@Transactional`. A transação local só se confirma se ambos os registros forem salvos no disco físico.
 		</p>
 		<p>
-			<strong>No modelo assíncrono, o caixa registra a venda localmente e envia depois — sem depender da internet para operar.</strong> A transação local só se confirma se ambos os registros forem salvos no disco físico. Se a gravação falhar, ambas sofrem rollback. Se salvar, a garantia de que a tarefa de envio existe no banco local é de <strong>100%</strong>.
+			Embora esse padrão garanta confiabilidade atômica de 100%, o arquiteto deve estar ciente de duas contrapartidas importantes:
 		</p>
+		<ul>
+			<li><strong>Overhead de Dupla Escrita:</strong> Gravar a entidade de venda e o log de outbox simultaneamente dobra a carga de escrita de I/O em disco. Em caixas que rodam em mídias muito lentas (como MicroSDs antigos de Raspberry Pi), esse aumento de escrita pode degradar as IOPS locais da máquina.</li>
+			<li><strong>Desgaste Físico de Memórias Flash (SD Cards):</strong> O polling contínuo por schedulers executando leituras/gravações constantes no SQLite para checar se há tarefas pendentes pode acelerar o desgaste físico de memórias flash baratas. Resolvemos isso utilizando gatilhos reativos em memória (ApplicationEvents) para acordar o sincronizador apenas quando novas vendas entram na fila, caindo de volta para o polling de disco regular com intervalos de contingência mais longos durante quedas estáveis de link.</li>
+		</ul>
 
-		<h2>Fluxo de Transmissão Resiliente</h2>
+		<h2>Garantindo a Ordem Estrita de Envio (FIFO)</h2>
 		<p>
-			Abaixo, veja o fluxo de persistência atômica no caixa e transmissão assíncrona tolerante a quedas:
+			Em sistemas de faturamento, a ordem de transmissão é vital. Se o operador registra uma venda e a cancela em seguida, e o evento de cancelamento for enviado e processado pelo Hub Central na nuvem antes da criação da venda original (devido a retentativas paralelas desordenadas), o sistema na nuvem gerará um erro fiscal inconsistente.
 		</p>
-
-		<div class="mermaid" style="background:#1a1d20; padding:1.5rem; border-radius:8px; margin:1.5rem 0;">
-		graph TD
-			CaixaUI[Operador clica Concluir] -->|Gravação Atômica ACID| DBLocal[(SQLite Local)]
-			DBLocal -->|Tabela Venda| VendaSalva[Venda Registrada]
-			DBLocal -->|Tabela OutboxTask| FilaOutbox[Mensagem na Fila PENDENTE]
-			
-			FilaOutbox -->|Agendador lê a cada 30s| SyncWorker[Sincronizador Spring]
-			SyncWorker -->|Post HTTP Lote| HubCentral[CaraCore Hub Nuvem]
-			
-			HubCentral -->|Validação de Idempotência UUID| Processado[Venda Processada]
-			Processado -->|Retorno HTTP 202 Accepted| SyncWorker
-			SyncWorker -->|Limpa registro local| FilaOutbox
-		</div>
+		<p>
+			Para evitar a desordenação, nosso worker processa a fila de forma **estritamente sequencial (Single-threaded FIFO)** com base em uma sequence ID física. Em caso de falha de transmissão, a fila local congela e o sincronizador aguarda a liberação segura da tarefa bloqueada antes de prosseguir com os itens subsequentes.
+		</p>
 
 		<h2>Evitando Duplicidade com Idempotência</h2>
 		<p>
 			Para evitar duplicidade de transações caso a conexão caia exatamente no milissegundo em que o servidor processou a venda mas não conseguiu enviar o status de sucesso de volta ao caixa, cada `OutboxTask` carrega um identificador único de transação (UUID v4) gerado na origem. O servidor central (*CaraCore Hub*) rejeita qualquer inserção que apresente um UUID já processado anteriormente, garantindo a integridade absoluta das contas fiscais das lojas.
 		</p>
 
-		<h2>Código na Prática: O Worker de Transmissão com Backoff</h2>
+		<h2>Código na Prática: O Worker de Transmissão com Backoff e FIFO</h2>
 		<p>
-			Na prática, a transmissão é realizada por um agendador rodando em background que calcula o tempo de recuo (backoff) exponencial para evitar sobrecarregar as antenas 4G locais da loja em caso de quedas prolongadas de sinal:
+			Na prática, a transmissão é realizada por um agendador sequencial que calcula o tempo de recuo (backoff) exponencial para evitar sobrecarregar a contingência de dados 4G local da loja em caso de quedas estáveis de sinal, aplicando um teto de 15 minutos para manter a fila responsiva:
 		</p>
 		<pre style="background:#1e293b; color:#f8f8f2; padding:1.25rem; border-radius:8px; font-family:'Fira Code', monospace; font-size:0.82rem; overflow-x:auto; margin:1.5rem 0; border:1px solid #334155;">
 @Component
@@ -144,20 +137,24 @@ public class SincronizadorOutbox {
     @Autowired
     private HubClient hubClient;
 
-    @Scheduled(fixedDelay = 30000) // Executa a cada 30 segundos
+    @Scheduled(fixedDelay = 60000) // Polling espaçado de 60 segundos para poupar o disco em caso de ociosidade
     public void processarFila() {
-        List&lt;OutboxTask&gt; pendentes = outboxRepo.findPending(LocalDateTime.now());
+        // Busca tarefas pendentes ordenadas de forma estrita pela sequência de criação (FIFO)
+        List&lt;OutboxTask&gt; pendentes = outboxRepo.findPendingSortedBySequence(LocalDateTime.now());
         for (OutboxTask task : pendentes) {
             try {
                 hubClient.enviar(task.getPayload());
-                outboxRepo.delete(task); // Remove se entregue
+                outboxRepo.delete(task); // Remove do banco se entregue com sucesso
             } catch (Exception e) {
-                // Calcula recuo exponencial para evitar bombardeio à rede caída
+                // Calcula recuo exponencial com teto limite de 15 minutos para evitar gargalos infinitos na rede
                 int tentativas = task.getTentativas() + 1;
-                long delayMinutos = (long) Math.min(Math.pow(2, tentativas), 60); 
+                long delayMinutos = (long) Math.min(Math.pow(2, tentativas), 15); 
                 task.setProximaTentativa(LocalDateTime.now().plusMinutes(delayMinutos));
                 task.setTentativas(tentativas);
                 outboxRepo.save(task);
+                
+                // Bloqueia e aborta a execução do lote para garantir a FIFO. O próximo loop tratará esta mesma tarefa
+                break; 
             }
         }
     }
@@ -177,7 +174,7 @@ public class SincronizadorOutbox {
 					<p style="font-family: 'Fira Code', monospace; font-size: 0.85rem; line-height: 1.4; margin-bottom: 0;">
 						A transação única no SQLite garante a escrita atômica local:
 						<br><code>@Transactional public void concluirVenda(Venda v) { repo.save(v); outboxRepo.save(new OutboxTask(v.toJson())); }</code>.
-						O scheduler lê as tarefas ativas (`status = PENDENTE`) e executa a chamada REST. Em caso de falha de rede (`ResourceAccessException`), o listener atualiza o campo `proximaTentativa` com backoff calculado, executando o rollback do envio e preservando o payload inalterado até a conexão voltar.
+						O scheduler lê as tarefas ativas (`status = PENDENTE`) na ordem sequencial da sequence ID. Em caso de falha de rede (`ResourceAccessException`), o loop é interrompido para manter a ordenação estrita FIFO, salvando o status de backoff calculado de até 15 minutos na mesma transação.
 					</p>
 				</div>
 				
@@ -185,7 +182,7 @@ public class SincronizadorOutbox {
 				<div style="flex: 1; min-width: 280px;">
 					<h4 style="color: #fef08a; margin-top: 0;">👔 Para Negócios (O Retorno)</h4>
 					<p style="font-size: 0.9rem; line-height: 1.4; margin-bottom: 0;">
-						Nenhuma venda é perdida, mesmo se a loja ficar sem internet o dia inteiro. A transação comercial com o cliente no balcão é instantânea e o estoque local é atualizado na hora, permitindo que a operação física continue com estabilidade total.
+						Segurança contábil e fiscal completa. O cancelamento de um cupom nunca chega na matriz antes do registro de venda, impedindo erros contábeis. A operação no balcão é imune à velocidade da rede local.
 					</p>
 				</div>
 			</div>

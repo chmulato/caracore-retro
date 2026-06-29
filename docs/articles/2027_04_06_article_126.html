@@ -126,7 +126,10 @@
 			Essa transação de rede inteira consome menos de <strong>50 milissegundos</strong>. O caixa recebe o sinal de sucesso, sabe que o Hub garantiu o recebimento da venda e limpa sua fila local.
 		</p>
 		<p>
-			Na retaguarda, um pool de threads assíncronas do Spring na Nuvem consome os JSONs da *Ingestion Table* de forma cadenciada, atualizando o banco central sem nunca expor a API de recepção à sobrecarga das operações de negócio complexas.
+			<strong>Nota de Design (Complexidade Reativa vs. Loom):</strong> Embora o Spring WebFlux garanta alta escala de concorrência com poucas threads de sistema, a programação reativa aumenta a complexidade do código, dificulta a depuração e obscurece stack traces. Sob o **Java 25**, usar o **Spring MVC clássico configurado com Threads Virtuais (Loom)** se consolidou como uma alternativa viável, fornecendo nível de escala reativa equivalente para a recepção HTTP usando o paradigma de programação síncrona/bloqueante tradicional muito mais legível.
+		</p>
+		<p>
+			Na retaguarda, um pool de threads assíncronas do Spring na Nuvem consome os JSONs da *Ingestion Table* de forma cadenciada, atualizando o banco central sem expor a API de recepção à sobrecarga das operações de negócio complexas.
 		</p>
 
 		<!-- Fechamento com Tradução Técnica e de Negócios -->
@@ -140,7 +143,7 @@
 				<div style="flex: 1; min-width: 280px; border-right: 1px dashed rgba(255,255,255,0.2); padding-right: 1rem;">
 					<h4 style="color: #a7f3d0; margin-top: 0;">💻 Para Técnicos (A Baseline)</h4>
 					<p style="font-family: 'Fira Code', monospace; font-size: 0.85rem; line-height: 1.4; margin-bottom: 0;">
-						Utilize `@ResponseStatus(HttpStatus.ACCEPTED)` no controller reativo. Como JPA/JDBC são bloqueantes, a gravação na Ingestion Table é delegada ao `Schedulers.boundedElastic()` para evitar o congelamento do loop de eventos do Netty, consumindo um pool HikariCP tunado (`maximum-pool-size=50`). O processamento lógico final é orquestrado por um worker assíncrono `@Scheduled` gradual.
+						Utilize `@ResponseStatus(HttpStatus.ACCEPTED)` no controller reativo (ou Spring MVC + Loom). Se usar JPA/JDBC reativo híbrido, a gravação na Ingestion Table deve ser delegada ao `Schedulers.boundedElastic()` para evitar o congelamento do loop de eventos do Netty. O processamento lógico final é orquestrado por um worker assíncrono `@Scheduled` gradual.
 					</p>
 				</div>
 				
