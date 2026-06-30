@@ -5,9 +5,17 @@
     <link>https://retro.caracore.com.br/</link>
     <description><![CDATA[Coleção de artigos publicados pela Cara Core nas redes, organizada por ano.]]></description>
     <language>pt-BR</language>
-    <lastBuildDate>Thu, 06 May 2027 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 26 May 2027 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://retro.caracore.com.br/feed.xml" rel="self" type="application/rss+xml" />
     <generator>Cara Core RSS generator</generator>
+
+    <item>
+      <title><![CDATA[A Odisseia da Proposta B2B: Engenharia, Riscos e a Construção de uma Solução Aplicável]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_05_26_article_129.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_05_26_article_129.html</guid>
+      <description><![CDATA[A saga dos bastidores de como uma proposta comercial de software B2B evoluiu para blindar arquitetura, gerenciar riscos técnicos e criar soluções offline-first.]]></description>
+      <pubDate>Wed, 26 May 2027 12:00:00 +0000</pubDate>
+    </item>
 
     <item>
       <title><![CDATA[Canto IX: O Epílogo Clássico (A Divina Peleja do Caixa Soberano)]]></title>
