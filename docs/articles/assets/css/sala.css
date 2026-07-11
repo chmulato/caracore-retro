@@ -1,6 +1,10 @@
-/* Sala de Notícias — estilos para login, feedback e páginas que seguem assets/css */
-/* Manual minimalista, perfil bibliotecária, jovens 16–20 anos. Topo · Navegação à esquerda · Conteúdo · Rodapé. */
-@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+@font-face {
+    font-family: 'Share Tech Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../../../assets/fonts/ShareTechMono.ttf') format('truetype');
+}
 
 :root {
     --sala-bg: #0d1117;
@@ -8,8 +12,8 @@
     --sala-text: #e6edf3;
     --sala-text-muted: #c9d1d9;
     --sala-text-quiet: #8b949e;
-    --sala-gold: #ffd700;
-    --sala-gold-dim: rgba(255, 215, 0, 0.8);
+    --sala-gold: #38bdf8;
+    --sala-gold-dim: rgba(56, 189, 248, 0.85);
     --sala-border: rgba(255, 255, 255, 0.1);
     --sala-nav-width: 220px;
     --sala-font-brand: "Share Tech Mono", ui-monospace, monospace;
@@ -693,3 +697,399 @@ body.sala-login {
 .sala-feedback-box .feedback-form-intro {
     margin-bottom: 1rem;
 }
+
+/* ---------- Retro Blog Index Custom Layout (Soberania e Roadmap) ---------- */
+:root {
+    --brand-soberania: #0A3D62;
+    --brand-roadmap: #E67E22;
+    --brand-ete: #1E8449;
+    --brand-circuito: #F1C40F;
+    --brand-seguranca: #8e44ad;
+    --brand-neutral: #475569;
+}
+
+/* Header layout */
+.retro-header {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    background: linear-gradient(120deg, #0A3D62 0%, #2d425d 100%);
+    border-bottom: 2px solid #38bdf8;
+}
+.retro-header h1 {
+    font-family: var(--sala-font-brand);
+    color: #ffffff;
+    font-size: 2.4rem;
+    margin: 0;
+    letter-spacing: 0.05em;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.retro-header p {
+    font-family: var(--sala-font-brand);
+    color: #38bdf8;
+    font-size: 1.1rem;
+    margin: 0.65rem 0 0;
+    font-weight: 600;
+}
+
+/* Callout positioning card */
+.retro-cta-card {
+    margin: 2rem 0;
+    padding: 1.75rem;
+    background: #f8fafc;
+    border-left: 5px solid var(--brand-soberania);
+    border-radius: 8px;
+    border-top: 1px solid #e2e8f0;
+    border-right: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.retro-cta-card h2 {
+    margin: 0 0 0.85rem;
+    font-size: 1.15rem;
+    color: var(--brand-soberania);
+    font-family: var(--sala-font-brand);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+}
+.retro-cta-card p {
+    margin: 0 auto;
+    color: #334155;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    text-align: justify;
+    max-width: 860px;
+    font-style: italic;
+}
+
+/* Years Blocks Styling */
+.year-group {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+}
+.year-group:nth-child(even) {
+    background: #f0f7ff; /* Azul petróleo suave */
+    border-color: #d0e7ff;
+}
+.year-group:nth-child(odd) {
+    background: #fffaf5; /* Laranja queimado suave */
+    border-color: #ffe8d0;
+}
+.year-group:hover {
+    border-color: #38bdf8;
+}
+.year-title {
+    font-family: var(--sala-font-brand);
+    font-size: 1.8rem;
+    color: #1e293b;
+    margin: 0 0 1.25rem 0;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.35rem;
+    letter-spacing: 0.05em;
+}
+
+/* Months Group */
+.month-group {
+    margin-bottom: 1.75rem;
+}
+.month-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #334155;
+    margin: 0 0 0.75rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.month-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #e2e8f0;
+}
+
+/* List of Articles */
+.article-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.65rem;
+}
+.article-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+.article-item:hover {
+    background: #f8fafc;
+    border-color: #38bdf8;
+    transform: translateX(3px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+.article-date {
+    font-family: var(--sala-font-brand);
+    color: #64748b;
+    font-size: 0.9rem;
+    margin-right: 1.25rem;
+    min-width: 45px;
+}
+.article-title {
+    color: #1e293b;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    flex-grow: 1;
+}
+.article-title:hover {
+    color: #0ea5e9;
+}
+
+/* Badges */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.55rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 4px;
+    margin-left: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-family: var(--sala-font-brand);
+    color: #fff;
+    white-space: nowrap;
+}
+.badge-soberania { background: var(--brand-soberania); border: 1px solid rgba(10, 61, 98, 0.2); }
+.badge-roadmap { background: var(--brand-roadmap); border: 1px solid rgba(230, 126, 34, 0.2); }
+.badge-ete { background: var(--brand-ete); border: 1px solid rgba(30, 132, 73, 0.2); }
+.badge-circuito { background: var(--brand-circuito); color: #000; border: 1px solid rgba(241, 196, 15, 0.2); }
+.badge-seguranca { background: var(--brand-seguranca); border: 1px solid rgba(142, 68, 173, 0.2); }
+.badge-neutral { background: var(--brand-neutral); border: 1px solid rgba(71, 85, 105, 0.2); }
+
+.badge-series {
+    background: linear-gradient(135deg, #0A3D62 0%, #1e3a5f 100%);
+    color: #fff;
+    border: 1px solid #38bdf8;
+    box-shadow: 0 0 4px rgba(56, 189, 248, 0.3);
+}
+
+/* Footer layout */
+.retro-footer-notes {
+    margin-top: 3.5rem;
+    margin-bottom: 3rem;
+    display: grid;
+    gap: 1.25rem;
+    border-top: 2px solid #e2e8f0;
+    padding-top: 2.5rem;
+}
+.retro-footer-note {
+    padding: 1.5rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+}
+.retro-footer-note p {
+    margin: 0.5rem 0 0;
+    color: #334155;
+}
+.retro-footer-note-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--sala-font-brand);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+}
+
+/* Individual blocks colors/identities (Light Theme High Contrast) */
+.retro-footer-note.note-editorial {
+    background: #f0f9ff; /* Light blue tint */
+    border-left: 5px solid var(--brand-soberania);
+    border-color: #bae6fd;
+}
+.retro-footer-note.note-editorial .retro-footer-note-title {
+    color: var(--brand-soberania);
+}
+
+.retro-footer-note.note-lgpd {
+    background: #f0fdf4; /* Light green tint */
+    border-left: 5px solid var(--brand-ete);
+    border-color: #bbf7d0;
+}
+.retro-footer-note.note-lgpd .retro-footer-note-title {
+    color: #166534; /* Dark forest green */
+}
+
+.retro-footer-note.note-roadmap {
+    background: #fff7ed; /* Light orange tint */
+    border-left: 5px solid var(--brand-roadmap);
+    border-color: #ffedd5;
+}
+.retro-footer-note.note-roadmap .retro-footer-note-title {
+    color: #c2410c; /* Dark orange */
+}
+
+/* Centralized links style */
+.retro-footer-note .cycle-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+.retro-footer-note .link-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    background: #ffffff;
+    color: var(--brand-soberania);
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+}
+.retro-footer-note .link-btn:hover {
+    background: var(--brand-soberania);
+    color: #ffffff;
+    border-color: var(--brand-soberania);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Copyright footer style (High contrast light theme) */
+.footer {
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+    border-top: 1px solid #cbd5e1;
+}
+.footer p {
+    color: #475569 !important;
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+    margin: 0.5rem 0 !important;
+}
+.footer p.resguardo {
+    color: #64748b !important;
+    font-size: 0.85rem !important;
+}
+
+/* ---------- Filtros e Busca (Chips) ---------- */
+.filter-section {
+    margin: 1.5rem 0 2rem 0;
+    padding: 1.25rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+.filter-section summary {
+    font-family: var(--sala-font-brand);
+    font-weight: 700;
+    color: #1e293b;
+    cursor: pointer;
+    font-size: 1.15rem;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.filter-section summary::-webkit-details-marker {
+    display: none;
+}
+.filter-section summary::before {
+    content: "▶";
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+}
+.filter-section[open] summary::before {
+    transform: rotate(90deg);
+}
+.summary-count {
+    font-size: 0.9rem;
+    color: #64748b;
+    font-weight: normal;
+}
+.filter-bar {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+.filter-input {
+    width: 100%;
+    padding: 0.85rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #ffffff;
+    color: #1e293b; /* Fonte escura */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    transition: border-color 0.2s;
+}
+.filter-input:focus {
+    outline: none;
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+.chip {
+    padding: 0.4rem 0.85rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 20px;
+    background: #f1f5f9;
+    color: #1e293b; /* Fonte escura para poder ler */
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+.chip:hover {
+    background: #e2e8f0;
+    border-color: #94a3b8;
+}
+.chip[aria-pressed="true"] {
+    background: #38bdf8;
+    color: #ffffff;
+    border-color: #0284c7;
+}
+#resetFilters {
+    background: #e2e8f0;
+    color: #475569;
+    border-color: #cbd5e1;
+    align-self: flex-start;
+}
+#resetFilters:hover {
+    background: #cbd5e1;
+    color: #1e293b;
+}
+.result-count {
+    font-size: 0.95rem;
+    color: #334155;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
