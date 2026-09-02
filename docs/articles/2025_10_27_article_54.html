@@ -4,23 +4,93 @@
     <link rel="icon" type="image/png" href="assets/img/logo.png">
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Implementação técnica de OIDC: Authorization Code + PKCE, validação de ID Token (JWT), integração GitHub Actions → AWS, exemplos práticos em Python e JavaScript">
+    <meta name="author" content="Christian Mulato">
+    <meta property="og:title" content="OIDC na prática — exemplos técnicos e implementação (Parte II)">
+    <meta property="og:description" content="Implementação técnica de OIDC: Authorization Code + PKCE, validação de ID Token (JWT), integração GitHub Actions → AWS, exemplos práticos em Python e JavaScript">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://retro.caracore.com.br/articles/2025_10_27_article_54.html">
+    <meta property="og:image" content="https://retro.caracore.com.br/articles/assets/img/2025_10_27_article_54_01.png">
+    <meta property="og:image:width" content="1536">
+    <meta property="og:image:height" content="1024">
+    <meta property="og:site_name" content="Artigos Retrô — Cara Core Informática">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="OIDC na prática — exemplos técnicos e implementação (Parte II)">
+    <meta name="twitter:description" content="Implementação técnica de OIDC: Authorization Code + PKCE, validação de ID Token (JWT), integração GitHub Actions → AWS, exemplos práticos em Python e JavaScript">
+    <meta name="twitter:image" content="https://retro.caracore.com.br/articles/assets/img/2025_10_27_article_54_01.png">
+    <link rel="canonical" href="https://retro.caracore.com.br/articles/2025_10_27_article_54.html">
+    <meta property="article:published_time" content="2025-10-27">
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "name": "Artigos Retrô — Cara Core Informática",
+    "headline": "OIDC na prática — exemplos técnicos e implementação (Parte II)",
+    "description": "Implementação técnica de OIDC: Authorization Code + PKCE, validação de ID Token (JWT), integração GitHub Actions → AWS, exemplos práticos em Python e JavaScript",
+    "image": "https://retro.caracore.com.br/articles/assets/img/2025_10_27_article_54_01.png",
+    "author": {
+        "@type": "Person",
+        "name": "Christian Mulato"
+    },
+    "datePublished": "2025-10-27",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://retro.caracore.com.br/articles/2025_10_27_article_54.html"
+    }
+}
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <meta property="article:published_time" content="2025-10-27">
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "name": "Artigos Retrô — Cara Core Informática",
+    "headline": "OIDC na prática — exemplos técnicos e implementação (Parte II)",
+    "description": "Implementação técnica de OIDC: Authorization Code + PKCE, validação de ID Token (JWT), integração GitHub Actions → AWS, exemplos práticos em Python e JavaScript",
+    "image": "https://retro.caracore.com.br/articles/assets/img/2025_10_27_article_54_01.png",
+    "author": {
+        "@type": "Person",
+        "name": "Christian Mulato"
+    },
+    "datePublished": "2025-10-27",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://retro.caracore.com.br/articles/2025_10_27_article_54.html"
+    }
+}
+    </script>
 	<title>OIDC na prática — exemplos técnicos e implementação (Parte II) — Cara Core Informática</title>
-	<meta name="description" content="Implementação técnica de OIDC: Authorization Code + PKCE, validação de ID Token (JWT), integração GitHub Actions → AWS, exemplos práticos em Python e JavaScript." />
+	
 	<meta name="keywords" content="OIDC, OAuth 2.0, JWT, PKCE, JWKS, Python, JavaScript, GitHub Actions, AWS, CI/CD, FastAPI, Implementação" />
-	<meta name="author" content="Cara Core Informática" />
-	<link rel="canonical" href="https://retro.caracore.com.br/articles/2025_10_27_article_54.html" />
+	
+	
 	<!-- Open Graph -->
-	<meta property="og:title" content="OIDC na prática — exemplos técnicos e implementação (Parte II)" />
-	<meta property="og:description" content="Guia técnico completo: Authorization Code + PKCE, validação JWT, GitHub Actions → AWS via OIDC. Código real em Python e JavaScript." />
-	<meta property="og:type" content="article" />
-	<meta property="og:url" content="https://retro.caracore.com.br/articles/2025_10_27_article_54.html" />
-	<meta property="og:image" content="https://retro.caracore.com.br/articles/assets/img/2025_10_27_article_54_01.png" />
+	
+	
+	
+	
+	
 	<meta property="og:image:alt" content="Implementação técnica OIDC: código Python, JavaScript e GitHub Actions (Cara Core)" />
 	<!-- Twitter Card -->
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="OIDC na prática — exemplos técnicos e implementação (Parte II)" />
-	<meta name="twitter:description" content="Guia técnico completo: Authorization Code + PKCE, validação JWT, GitHub Actions → AWS via OIDC. Código real em Python e JavaScript." />
-	<meta name="twitter:image" content="https://retro.caracore.com.br/articles/assets/img/2025_10_27_article_54_01.png" />
+	
+	
+	
+	
 	<meta name="twitter:image:alt" content="Implementação técnica OIDC: código Python, JavaScript e GitHub Actions (Cara Core)" />
 	<link rel="stylesheet" href="assets/css/articles.css" />
 	<style>

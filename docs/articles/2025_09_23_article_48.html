@@ -4,22 +4,92 @@
     <link rel="icon" type="image/png" href="assets/img/logo.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Guia prático para planejar a mudança de ferramenta de roteamento REST sem travar o projeto: contratos OpenAPI, separação de camadas, testes e estratégia de migração gradual">
+    <meta name="author" content="Christian Mulato">
+    <meta property="og:title" content="Mudança de ferramenta de roteamento REST: como planejar para não travar seu projeto">
+    <meta property="og:description" content="Guia prático para planejar a mudança de ferramenta de roteamento REST sem travar o projeto: contratos OpenAPI, separação de camadas, testes e estratégia de migração gradual">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://retro.caracore.com.br/articles/2025_09_23_article_48.html">
+    <meta property="og:image" content="https://retro.caracore.com.br/articles/assets/img/2025_09_23_article_48_01.png">
+    <meta property="og:image:width" content="1536">
+    <meta property="og:image:height" content="854">
+    <meta property="og:site_name" content="Artigos Retrô — Cara Core Informática">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mudança de ferramenta de roteamento REST: como planejar para não travar seu projeto">
+    <meta name="twitter:description" content="Guia prático para planejar a mudança de ferramenta de roteamento REST sem travar o projeto: contratos OpenAPI, separação de camadas, testes e estratégia de migração gradual">
+    <meta name="twitter:image" content="https://retro.caracore.com.br/articles/assets/img/2025_09_23_article_48_01.png">
+    <link rel="canonical" href="https://retro.caracore.com.br/articles/2025_09_23_article_48.html">
+    <meta property="article:published_time" content="2025-09-23">
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "name": "Artigos Retrô — Cara Core Informática",
+    "headline": "Mudança de ferramenta de roteamento REST: como planejar para não travar seu projeto",
+    "description": "Guia prático para planejar a mudança de ferramenta de roteamento REST sem travar o projeto: contratos OpenAPI, separação de camadas, testes e estratégia de migração gradual",
+    "image": "https://retro.caracore.com.br/articles/assets/img/2025_09_23_article_48_01.png",
+    "author": {
+        "@type": "Person",
+        "name": "Christian Mulato"
+    },
+    "datePublished": "2025-09-23",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://retro.caracore.com.br/articles/2025_09_23_article_48.html"
+    }
+}
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <meta property="article:published_time" content="2025-09-23">
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "name": "Artigos Retrô — Cara Core Informática",
+    "headline": "Mudança de ferramenta de roteamento REST: como planejar para não travar seu projeto",
+    "description": "Guia prático para planejar a mudança de ferramenta de roteamento REST sem travar o projeto: contratos OpenAPI, separação de camadas, testes e estratégia de migração gradual",
+    "image": "https://retro.caracore.com.br/articles/assets/img/2025_09_23_article_48_01.png",
+    "author": {
+        "@type": "Person",
+        "name": "Christian Mulato"
+    },
+    "datePublished": "2025-09-23",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://retro.caracore.com.br/articles/2025_09_23_article_48.html"
+    }
+}
+    </script>
   <title>Mudança de ferramenta de roteamento REST: como planejar para não travar seu projeto — Cara Core Informática</title>
-  <meta name="description" content="Guia prático para planejar a mudança de ferramenta de roteamento REST sem travar o projeto: contratos OpenAPI, separação de camadas, testes e estratégia de migração gradual." />
+  
   <meta name="keywords" content="REST, Roteamento, OpenAPI, Micronaut, Spring Boot, Camel, Quarkus, API Gateway, Observabilidade, OpenTelemetry, Testes de Contrato" />
-  <meta name="author" content="Cara Core Informática" />
-  <link rel="canonical" href="https://retro.caracore.com.br/articles/2025_09_23_article_48.html" />
+  
+  
   <!-- Open Graph -->
-  <meta property="og:title" content="Mudança de ferramenta de roteamento REST: como planejar para não travar seu projeto" />
-  <meta property="og:description" content="Boas práticas e estratégia de migração na troca de frameworks de roteamento REST com foco em estabilidade e custo." />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://retro.caracore.com.br/articles/2025_09_23_article_48.html" />
-  <meta property="og:image" content="https://retro.caracore.com.br/articles/assets/img/2025_09_23_article_48_01.png" />
+  
+  
+  
+  
+  
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Mudança de ferramenta de roteamento REST: como planejar para não travar seu projeto" />
-  <meta name="twitter:description" content="Planeje e execute a troca de ferramenta de roteamento REST com segurança e visibilidade." />
-  <meta name="twitter:image" content="https://retro.caracore.com.br/articles/assets/img/2025_09_23_article_48_01.png" />
+  
+  
+  
+  
   <link rel="stylesheet" href="assets/css/articles.css" />
   <style>
     body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif; line-height:1.55; color:#1f2937; margin:0; }

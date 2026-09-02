@@ -4,20 +4,90 @@
     <link rel="icon" type="image/png" href="assets/img/logo.png">
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Como o Project Loom (Threads Virtuais) no Java 25 e o GraalVM Native Image garantem concorrência de hardware sem travar caixas simples Este artigo de Christian Mulato contextualiza Canto V: O Motor Nativo e Threads Virtuais, relacionando tecnologia">
+    <meta name="author" content="Christian Mulato">
+    <meta property="og:title" content="Canto V: O Motor Nativo e Threads Virtuais">
+    <meta property="og:description" content="Como o Project Loom (Threads Virtuais) no Java 25 e o GraalVM Native Image garantem concorrência de hardware sem travar caixas simples Este artigo de Christian Mulato contextualiza Canto V: O Motor Nativo e Threads Virtuais, relacionando tecnologia">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://retro.caracore.com.br/articles/2027_03_16_article_124.html">
+    <meta property="og:image" content="https://retro.caracore.com.br/articles/assets/img/2027_03_16_article_124_01.png">
+    <meta property="og:image:width" content="2752">
+    <meta property="og:image:height" content="1536">
+    <meta property="og:site_name" content="Artigos Retrô — Cara Core Informática">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Canto V: O Motor Nativo e Threads Virtuais">
+    <meta name="twitter:description" content="Como o Project Loom (Threads Virtuais) no Java 25 e o GraalVM Native Image garantem concorrência de hardware sem travar caixas simples Este artigo de Christian Mulato contextualiza Canto V: O Motor Nativo e Threads Virtuais, relacionando tecnologia">
+    <meta name="twitter:image" content="https://retro.caracore.com.br/articles/assets/img/2027_03_16_article_124_01.png">
+    <link rel="canonical" href="https://retro.caracore.com.br/articles/2027_03_16_article_124.html">
+    <meta property="article:published_time" content="2027-03-16">
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "name": "Artigos Retrô — Cara Core Informática",
+    "headline": "Canto V: O Motor Nativo e Threads Virtuais",
+    "description": "Como o Project Loom (Threads Virtuais) no Java 25 e o GraalVM Native Image garantem concorrência de hardware sem travar caixas simples Este artigo de Christian Mulato contextualiza Canto V: O Motor Nativo e Threads Virtuais, relacionando tecnologia",
+    "image": "https://retro.caracore.com.br/articles/assets/img/2027_03_16_article_124_01.png",
+    "author": {
+        "@type": "Person",
+        "name": "Christian Mulato"
+    },
+    "datePublished": "2027-03-16",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://retro.caracore.com.br/articles/2027_03_16_article_124.html"
+    }
+}
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <meta property="article:published_time" content="2027-03-16">
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "name": "Artigos Retrô — Cara Core Informática",
+    "headline": "Canto V: O Motor Nativo e Threads Virtuais",
+    "description": "Como o Project Loom (Threads Virtuais) no Java 25 e o GraalVM Native Image garantem concorrência de hardware sem travar caixas simples Este artigo de Christian Mulato contextualiza Canto V: O Motor Nativo e Threads Virtuais, relacionando tecnologia",
+    "image": "https://retro.caracore.com.br/articles/assets/img/2027_03_16_article_124_01.png",
+    "author": {
+        "@type": "Person",
+        "name": "Christian Mulato"
+    },
+    "datePublished": "2027-03-16",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://retro.caracore.com.br/articles/2027_03_16_article_124.html"
+    }
+}
+    </script>
 	<title>Canto V: O Motor Nativo e Threads Virtuais — Cara Core</title>
-	<meta name="description" content="Como o Project Loom (Threads Virtuais) no Java 25 e o GraalVM Native Image garantem concorrência de hardware sem travar caixas simples." />
-	<meta name="author" content="Cara Core Informática" />
-	<link rel="canonical" href="https://retro.caracore.com.br/articles/2027_03_16_article_124.html" />
-	<meta property="og:title" content="Canto V: O Motor Nativo e Threads Virtuais" />
-	<meta property="og:description" content="A revolução do Project Loom na borda: gerenciando drivers e impressoras fiscais sem desperdiçar CPU e memória RAM." />
-	<meta property="og:type" content="article" />
-	<meta property="og:url" content="https://retro.caracore.com.br/articles/2027_03_16_article_124.html" />
-	<meta property="og:image" content="https://retro.caracore.com.br/articles/assets/img/2027_03_16_article_124_01.png" />
+	
+	
+	
+	
+	
+	
+	
+	
 	<meta property="og:image:alt" content="O Motor Nativo e Threads Virtuais" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="Canto V: O Motor Nativo e Threads Virtuais" />
-	<meta name="twitter:description" content="Concorrência leve e hardware embutido gerenciados por threads virtuais sob o Java 25." />
-	<meta name="twitter:image" content="https://retro.caracore.com.br/articles/assets/img/2027_03_16_article_124_01.png" />
+	
+	
+	
+	
 	<link rel="stylesheet" href="assets/css/articles.css" />
 	<link rel="stylesheet" href="assets/css/temporada-i.css" />
 </head>

@@ -4,20 +4,90 @@
     <link rel="icon" type="image/png" href="assets/img/logo.png">
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Como monitorar a saúde de 3.200 caixas de borda distribuídos geograficamente usando Spring Actuator e heartbeats Este artigo de Christian Mulato contextualiza Canto VIII: O Farol da Telemetria, relacionando tecnologia, engenharia e decisões práticas">
+    <meta name="author" content="Christian Mulato">
+    <meta property="og:title" content="Canto VIII: O Farol da Telemetria">
+    <meta property="og:description" content="Como monitorar a saúde de 3.200 caixas de borda distribuídos geograficamente usando Spring Actuator e heartbeats Este artigo de Christian Mulato contextualiza Canto VIII: O Farol da Telemetria, relacionando tecnologia, engenharia e decisões práticas">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://retro.caracore.com.br/articles/2027_04_16_article_127.html">
+    <meta property="og:image" content="https://retro.caracore.com.br/articles/assets/img/2027_04_16_article_127_01.png">
+    <meta property="og:image:width" content="2752">
+    <meta property="og:image:height" content="1536">
+    <meta property="og:site_name" content="Artigos Retrô — Cara Core Informática">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Canto VIII: O Farol da Telemetria">
+    <meta name="twitter:description" content="Como monitorar a saúde de 3.200 caixas de borda distribuídos geograficamente usando Spring Actuator e heartbeats Este artigo de Christian Mulato contextualiza Canto VIII: O Farol da Telemetria, relacionando tecnologia, engenharia e decisões práticas">
+    <meta name="twitter:image" content="https://retro.caracore.com.br/articles/assets/img/2027_04_16_article_127_01.png">
+    <link rel="canonical" href="https://retro.caracore.com.br/articles/2027_04_16_article_127.html">
+    <meta property="article:published_time" content="2027-04-16">
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "name": "Artigos Retrô — Cara Core Informática",
+    "headline": "Canto VIII: O Farol da Telemetria",
+    "description": "Como monitorar a saúde de 3.200 caixas de borda distribuídos geograficamente usando Spring Actuator e heartbeats Este artigo de Christian Mulato contextualiza Canto VIII: O Farol da Telemetria, relacionando tecnologia, engenharia e decisões práticas",
+    "image": "https://retro.caracore.com.br/articles/assets/img/2027_04_16_article_127_01.png",
+    "author": {
+        "@type": "Person",
+        "name": "Christian Mulato"
+    },
+    "datePublished": "2027-04-16",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://retro.caracore.com.br/articles/2027_04_16_article_127.html"
+    }
+}
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <meta property="article:published_time" content="2027-04-16">
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "name": "Artigos Retrô — Cara Core Informática",
+    "headline": "Canto VIII: O Farol da Telemetria",
+    "description": "Como monitorar a saúde de 3.200 caixas de borda distribuídos geograficamente usando Spring Actuator e heartbeats Este artigo de Christian Mulato contextualiza Canto VIII: O Farol da Telemetria, relacionando tecnologia, engenharia e decisões práticas",
+    "image": "https://retro.caracore.com.br/articles/assets/img/2027_04_16_article_127_01.png",
+    "author": {
+        "@type": "Person",
+        "name": "Christian Mulato"
+    },
+    "datePublished": "2027-04-16",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://retro.caracore.com.br/articles/2027_04_16_article_127.html"
+    }
+}
+    </script>
 	<title>Canto VIII: O Farol da Telemetria — Cara Core</title>
-	<meta name="description" content="Como monitorar a saúde de 3.200 caixas de borda distribuídos geograficamente usando Spring Actuator e heartbeats." />
-	<meta name="author" content="Cara Core Informática" />
-	<link rel="canonical" href="https://retro.caracore.com.br/articles/2027_04_16_article_127.html" />
-	<meta property="og:title" content="Canto VIII: O Farol da Telemetria" />
-	<meta property="og:description" content="Observabilidade na borda: garantindo visibilidade central de sistemas offline-first sem sacrificar privacidade e rede." />
-	<meta property="og:type" content="article" />
-	<meta property="og:url" content="https://retro.caracore.com.br/articles/2027_04_16_article_127.html" />
-	<meta property="og:image" content="https://retro.caracore.com.br/articles/assets/img/2027_04_16_article_127_01.png" />
+	
+	
+	
+	
+	
+	
+	
+	
 	<meta property="og:image:alt" content="O Farol da Telemetria" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="Canto VIII: O Farol da Telemetria" />
-	<meta name="twitter:description" content="Heartbeats e métricas ativas na retaguarda central da Cara Core." />
-	<meta name="twitter:image" content="https://retro.caracore.com.br/articles/assets/img/2027_04_16_article_127_01.png" />
+	
+	
+	
+	
 	<link rel="stylesheet" href="assets/css/articles.css" />
 	<link rel="stylesheet" href="assets/css/temporada-i.css" />
 </head>
