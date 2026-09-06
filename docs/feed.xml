@@ -5,9 +5,17 @@
     <link>https://retro.caracore.com.br/</link>
     <description><![CDATA[Coleção de artigos publicados pela Cara Core nas redes, organizada por ano.]]></description>
     <language>pt-BR</language>
-    <lastBuildDate>Wed, 26 May 2027 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 30 May 2027 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://retro.caracore.com.br/feed.xml" rel="self" type="application/rss+xml" />
     <generator>Cara Core RSS generator</generator>
+
+    <item>
+      <title><![CDATA[Java 25 (Quarkus) vs. Rust (Tauri 2) no Balcão: Onde Fica o Gargalo Quando Ambos Usam SQLite?]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_05_30_article_130.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_05_30_article_130.html</guid>
+      <description><![CDATA[Análise comparativa de engenharia entre as duas linhas de PDV Desktop da Cara Core Informática: footprint de memória (30MB vs 200MB), latência determinística sem GC, IPC vs loopback HTTP e o gargalo real de I/O no SQLite local.]]></description>
+      <pubDate>Sun, 30 May 2027 12:00:00 +0000</pubDate>
+    </item>
 
     <item>
       <title><![CDATA[A Odisseia da Proposta B2B: Engenharia, Riscos e a Construção de uma Solução Aplicável]]></title>
