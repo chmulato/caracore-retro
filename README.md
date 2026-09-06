@@ -40,10 +40,10 @@ Use a barra de busca em `docs/index.html` para filtrar por tema, tecnologia, pro
 
 ## 📊 Conteúdo
 
-**Total**: 115 artigos (01 a 128; numeração com lacunas históricas)
+**Total**: 130 artigos (01 a 130)
 - **Período**: Fevereiro 2024 — Maio 2027
 - **Cobertura**: Publicações regulares semanais
-- **Divisão temporal**: 32 artigos em 2024, 33 em 2025, 38 em 2026, 12 em 2027
+- **Divisão temporal**: 32 artigos em 2024, 33 em 2025, 51 em 2026, 14 em 2027
 
 ## 🧭 Ciclo Editorial 2026-2027
 
