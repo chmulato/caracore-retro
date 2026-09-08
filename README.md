@@ -1,15 +1,14 @@
 # Artigos Retrô — Cara Core Informática
 
-Portal e acervo de artigos publicados no LinkedIn pela Cara Core Informática. Uma coleção de 131 artigos organizados por data, com foco em inovação, engenharia de software, arquitetura, negócios, estratégia e produtos do ecossistema Cara Core.
+Portal e acervo de artigos publicados no LinkedIn pela Cara Core Informática. Uma coleção de 132 artigos organizados por data, com foco em inovação, engenharia de software, arquitetura, negócios, estratégia e produtos do ecossistema Cara Core.
 
 ## 📋 Estrutura
 
 - **`docs/`** — Pasta publicada pelo GitHub Pages
   - **`index.html`** — Página principal com listagem completa e filtros de busca
-  - **`ciclo-ativo.html`** — Recorte editorial do ciclo ativo
   - **`feed.xml`** — Feed RSS para inscrição e distribuição
 
-- **`docs/articles/`** — Diretório contendo todos os 131 artigos HTML
+- **`docs/articles/`** — Diretório contendo todos os 132 artigos HTML
   - Convenção de nomenclatura: `YYYY_MM_DD_article_(NN).html` (ex.: `2026_05_23_article_86.html`)
   - Data no nome = data de publicação no calendário estratégico
   - O número do artigo também define o alias da imagem: `article_NN_01.png`
@@ -40,10 +39,10 @@ Use a barra de busca em `docs/index.html` para filtrar por tema, tecnologia, pro
 
 ## 📊 Conteúdo
 
-**Total**: 131 artigos (01 a 131)
+**Total**: 132 artigos (01 a 132)
 - **Período**: Fevereiro 2024 — Junho 2027
 - **Cobertura**: Publicações regulares semanais
-- **Divisão temporal**: 32 artigos em 2024, 33 em 2025, 51 em 2026, 15 em 2027
+- **Divisão temporal**: 32 artigos em 2024, 33 em 2025, 51 em 2026, 16 em 2027
 
 ## 🧭 Ciclo Editorial 2026-2027
 
@@ -85,7 +84,7 @@ Cada artigo contém:
 
 Antes de publicar alterações editoriais relevantes:
 
-- Conferir se `docs/index.html`, `docs/ciclo-ativo.html` e `docs/feed.xml` apontam para os artigos corretos
+- Conferir se `docs/index.html` e `docs/feed.xml` apontam para os artigos corretos
 - Conferir se `og:image`, `twitter:image` e `<img>` usam `article_NN_01.png`
 - Manter prompts em `docs/articles/assets/prompts/` ou pastas associadas
 - Validar XML do `feed.xml`
