@@ -373,7 +373,8 @@ code:not(pre code)::selection { background: #334155; color: #f8fafc; }
 .chalkboard p, .chalkboard li {
     color: #e6f4ea !important;
 }
-.chalkboard h3, .chalkboard h4 {
+.chalkboard h2, .chalkboard h3, .chalkboard h4 {
+    color: #f5fff0;
     text-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
 .chalkboard code {

@@ -5,9 +5,17 @@
     <link>https://retro.caracore.com.br/</link>
     <description><![CDATA[Coleção de artigos publicados pela Cara Core nas redes, organizada por ano.]]></description>
     <language>pt-BR</language>
-    <lastBuildDate>Sun, 30 May 2027 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 05 Jun 2027 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://retro.caracore.com.br/feed.xml" rel="self" type="application/rss+xml" />
     <generator>Cara Core RSS generator</generator>
+
+    <item>
+      <title><![CDATA[PDVs honestos para pequenos negócios: começar simples e crescer sem promessa vazia]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_06_05_article_131.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_06_05_article_131.html</guid>
+      <description><![CDATA[Como um PDV pode ser honesto e viável para pequenos negócios ao entregar um fluxo simples, declarar seus limites e oferecer uma evolução responsável para a operação fiscal.]]></description>
+      <pubDate>Sat, 05 Jun 2027 12:00:00 +0000</pubDate>
+    </item>
 
     <item>
       <title><![CDATA[Java 25 (Quarkus) vs. Rust (Tauri 2) no Balcão: Onde Fica o Gargalo Quando Ambos Usam SQLite?]]></title>
