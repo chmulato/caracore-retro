@@ -5,9 +5,17 @@
     <link>https://retro.caracore.com.br/</link>
     <description><![CDATA[Coleção de artigos publicados pela Cara Core nas redes, organizada por ano.]]></description>
     <language>pt-BR</language>
-    <lastBuildDate>Thu, 10 Jun 2027 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 14 Jun 2027 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://retro.caracore.com.br/feed.xml" rel="self" type="application/rss+xml" />
     <generator>Cara Core RSS generator</generator>
+
+    <item>
+      <title><![CDATA[Três motores e o resto é brinco: a conta de US$ 20 e a treta da transparência]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_06_14_article_133.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_06_14_article_133.html</guid>
+      <description><![CDATA[A conta de US$ 20 por mês, o envelope de US$ 800 e a decisão de deixar PDV, CSO e Hub mandarem na fila — enquanto o resto do portfólio cede. Transparência de funding dá treta. Continua sendo o método.]]></description>
+      <pubDate>Mon, 14 Jun 2027 12:00:00 +0000</pubDate>
+    </item>
 
     <item>
       <title><![CDATA[Do decantador ao neodímio: por que a lógica do esgoto explica o refino de terras raras]]></title>
