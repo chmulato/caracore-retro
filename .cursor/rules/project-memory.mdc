@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Memória — caracore-retro (Artigos Retrô)
 
-**Atualizado:** 2027-06-14
+**Atualizado:** 2027-06-18
 
 ## Repositório e papel
 
@@ -36,7 +36,14 @@ alwaysApply: true
 - **Estilo:** `assets/css/articles.css` + `temporada-i.css` · `quote-box`, `insight`, `note`
 - **Capa inline:** `<img ... style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);">` — padrão artigos 110–115
 - **Prompt IA:** gerar PNG 16:9; exibir inline no frame acima; `og:image` usa o mesmo PNG
-- **Total (jun/2027):** 133 artigos numerados (lacunas históricas na numeração)
+- **Total (jun/2027):** 134 artigos numerados (lacunas históricas na numeração)
+
+## Artigo recente — Sobriedade técnica / IA (134)
+
+- **Data:** 18/06/2027
+- **Ficheiro:** `2027_06_18_article_134.html`
+- **Tema:** IA como motor de produtividade, arquitetura proporcional, soberania local, offline-first e Bunker Digital.
+- **Capa:** `2027_06_18_article_134_01.png`
 
 ## Artigo recente — Três motores / Funding (133)
 
