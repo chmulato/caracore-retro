@@ -100,6 +100,47 @@ ul li, ol li {
 	margin: 1.5rem 0;
 }
 
+.cordel-box {
+	background: linear-gradient(135deg, #fff7db 0%, #fef3c7 100%);
+	border: 1px solid #f5c451;
+	border-left: 5px solid #b45309;
+	border-radius: 10px;
+	padding: 1.15rem 1.25rem;
+	margin: 1.5rem 0;
+	box-shadow: 0 2px 10px rgba(180, 83, 9, 0.08);
+}
+
+.cordel-box strong {
+	color: #7c2d12;
+	letter-spacing: 0.02em;
+}
+
+.cordel-box p {
+	margin: 0.7rem 0 0;
+	line-height: 1.7;
+	font-style: italic;
+	color: #4b5563;
+}
+
+.chapter-close {
+	background: linear-gradient(135deg, #ecfeff 0%, #dbeafe 100%);
+	border: 1px solid #93c5fd;
+	border-left: 5px solid #2563eb;
+	border-radius: 10px;
+	padding: 1.1rem 1.25rem;
+	margin: 2rem 0 1.5rem;
+}
+
+.chapter-close h3 {
+	margin-top: 0;
+	color: #1d4ed8;
+}
+
+.chapter-close p {
+	margin-bottom: 0;
+	color: #1f2937;
+}
+
 .quote-box pre {
 	font-style: normal;
 	background-color: #1f2937;
