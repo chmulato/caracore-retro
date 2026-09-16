@@ -1,6 +1,6 @@
 # Artigos Retrô — Cara Core Informática
 
-Portal e acervo de artigos publicados no LinkedIn pela Cara Core Informática. Uma coleção de 137 artigos organizados por data, com foco em inovação, engenharia de software, arquitetura, negócios, estratégia e produtos do ecossistema Cara Core.
+Portal e acervo de artigos publicados no LinkedIn pela Cara Core Informática. Uma coleção de 138 artigos organizados por data, com foco em inovação, engenharia de software, arquitetura, negócios, estratégia e produtos do ecossistema Cara Core.
 
 ## 📋 Estrutura
 
@@ -8,7 +8,7 @@ Portal e acervo de artigos publicados no LinkedIn pela Cara Core Informática. U
   - **`index.html`** — Página principal com listagem completa e filtros de busca
   - **`feed.xml`** — Feed RSS para inscrição e distribuição
 
-  - **`docs/articles/`** — Diretório contendo todos os 137 artigos HTML
+  - **`docs/articles/`** — Diretório contendo todos os 138 artigos HTML
   - Convenção de nomenclatura: `YYYY_MM_DD_article_(NN).html` (ex.: `2026_05_23_article_86.html`)
   - Data no nome = data de publicação no calendário estratégico
   - O número do artigo também define o alias da imagem: `article_NN_01.png`
@@ -39,10 +39,10 @@ Use a barra de busca em `docs/index.html` para filtrar por tema, tecnologia, pro
 
 ## 📊 Conteúdo
 
-**Total**: 137 artigos (01 a 137)
+**Total**: 138 artigos (01 a 138)
 - **Período**: Fevereiro 2024 — Julho 2027
 - **Cobertura**: Publicações regulares semanais
-- **Divisão temporal**: 32 artigos em 2024, 33 em 2025, 51 em 2026, 21 em 2027
+- **Divisão temporal**: 32 artigos em 2024, 33 em 2025, 51 em 2026, 22 em 2027
 
 ## 🧭 Ciclo Editorial 2026-2027
 
@@ -54,7 +54,8 @@ O segundo semestre de 2026 e o primeiro semestre de 2027 incluem frentes editori
 - **Minerador 4.0 / ETE** — Campo, Lab, Mercado, hidrometalurgia, terras raras e simulação em Python
 - **Helianto Condominium** — SaaS de administração condominial com soberania de dados, motor financeiro e BolePix
 - **A Divina Peleja do Caixa Soberano** — Série técnica em 9 cantos sobre a arquitetura do CaraCore PDV (borda física offline-first resiliente baseada em Java 25, SQLite WAL, HTML-First/HTMX e Outbox Pattern)
-- **Trilogia do PDV** — três artigos de 2027 conectando a bagagem profissional de automação fiscal, a maturação em produto e o planejamento de continuidade em Java e Rust para uma operação local resiliente
+- **Trilogia do PDV** — Três artigos de 2027 conectando a bagagem profissional de automação fiscal, a maturação em produto e o planejamento de continuidade em Java e Rust para uma operação local resiliente
+- **Sobriedade Técnica e Pragmatismo** — Reflexões de meio de 2027 sobre a era da IA, transparência de funding B2B (os três motores da Cara Core) e a superação da síndrome do front-end pesado em favor de arquiteturas HTML-First para os 5.500 municípios
 
 Os artigos foram revisados para manter leitura objetiva, com foco em aplicação prática, clareza técnica e baixa repetição entre textos.
 

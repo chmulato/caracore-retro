@@ -5,9 +5,17 @@
     <link>https://retro.caracore.com.br/</link>
     <description><![CDATA[Coleção de artigos publicados pela Cara Core nas redes, organizada por ano.]]></description>
     <language>pt-BR</language>
-    <lastBuildDate>Mon, 05 Jul 2027 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 10 Jul 2027 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://retro.caracore.com.br/feed.xml" rel="self" type="application/rss+xml" />
     <generator>Cara Core RSS generator</generator>
+
+    <item>
+      <title><![CDATA[A Síndrome do Front-End Pesado: Quando a Arquitetura Esquece os 5.500 Municípios]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_07_10_article_138.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_07_10_article_138.html</guid>
+      <description><![CDATA[Quando a arquitetura corporativa esquece os 5.500 municípios brasileiros: o custo invisível das SPAs pesadas e a volta da engenharia que entrega sem complicação.]]></description>
+      <pubDate>Sat, 10 Jul 2027 12:00:00 +0000</pubDate>
+    </item>
 
     <item>
       <title><![CDATA[O Próximo Balcão: Java, Rust e a Continuidade do Cara Core PDV]]></title>
