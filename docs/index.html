@@ -51,21 +51,6 @@
     
     
     
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "Artigos Retrô — Cara Core Informática",
-    "headline": "Artigos Retrô — Cara Core Informática",
-    "description": "Artigos retrô da Cara Core Informática sobre engenharia de software, automação, soberania digital, produtos locais, arquitetura resiliente e decisões técnicas aplicadas a negócios reais.",
-    "image": "https://retro.caracore.com.br/articles/assets/img/social-default.png",
-    "author": {
-        "@type": "Person",
-        "name": "Christian Mulato"
-    }
-}
-    </script>
-    
     <link rel="alternate" type="application/rss+xml" title="Artigos Retrô — Cara Core Informática" href="https://retro.caracore.com.br/feed.xml">
         <link rel="stylesheet" href="assets/css/sala.css">
         <link rel="stylesheet" href="assets/css/articles.css">
@@ -138,7 +123,7 @@
             <details>
                 <summary>
                     <span>Fase I (2024): A Germinação da Independência</span>
-                    <span class="retro-accordion-badge badge-2024">VBA & Excel</span>
+                    <span class="retro-accordion-badge badge-phase-origem">VBA & Excel</span>
                 </summary>
                 <div class="retro-accordion-content">
                     <p><strong>Evolução do Blog:</strong> Foco em automações burocráticas locais usando programação VBA e ferramentas MS Office. O blog apresenta tutoriais práticos sobre consolidação de despesas, geração de faturamento em PDF e envio automático via Outlook.</p>
@@ -149,7 +134,7 @@
             <details>
                 <summary>
                     <span>Fase II (2025): A Experimentação de Infraestrutura</span>
-                    <span class="retro-accordion-badge badge-2025">Python & Cloud</span>
+                    <span class="retro-accordion-badge badge-phase-exploracao">Python & Cloud</span>
                 </summary>
                 <div class="retro-accordion-content">
                     <p><strong>Evolução do Blog:</strong> Transição técnica para Python e introdução de infraestrutura em nuvem (AWS CDK, EC2, RDS) e fluxos de CI/CD via GitHub Actions, com os primeiros artigos sobre controle de identidade OIDC/OAuth.</p>
@@ -160,7 +145,7 @@
             <details>
                 <summary>
                     <span>Fase III (2026): A Consolidação da Arquitetura Canônica</span>
-                    <span class="retro-accordion-badge badge-2026">Java & SQLite local</span>
+                    <span class="retro-accordion-badge badge-phase-consolidacao">Java & SQLite local</span>
                 </summary>
                 <div class="retro-accordion-content">
                     <p><strong>Evolução do Blog:</strong> Foco em Java 21, JavaFX, SQLite local e Rust. Lançamento oficial dos produtos da boutique de software: o PDV resiliente offline, o simulador de processos químicos (Minerador 4.0) e a segurança federada (Área 51).</p>
@@ -171,7 +156,7 @@
             <details>
                 <summary>
                     <span>Fase IV (2027): A Integração e Telemetria</span>
-                    <span class="retro-accordion-badge badge-2027">Java 25 & WAL Mode</span>
+                    <span class="retro-accordion-badge badge-phase-integracao">Java 25 & WAL Mode</span>
                 </summary>
                 <div class="retro-accordion-content">
                     <p><strong>Evolução do Blog:</strong> Transição para Java 25, Threads Virtuais (Loom) e o modo WAL no SQLite. Conclusão da saga técnica <em>"A Divina Peleja do Caixa Soberano"</em>, da <em>Trilogia do PDV</em> (da bagagem ao próximo balcão com Java e Rust) e dos ensaios de sobriedade técnica, transparência de funding B2B e arquitetura pragmática (HTML-First vs. a síndrome do front-end pesado para 5.500 municípios).</p>
@@ -320,7 +305,7 @@
 
         <!-- Ano mais recente primeiro -->
         <div class="year-group">
-            <h2 class="year-title">2027</div>
+            <h2 class="year-title">2027</h2>
             <div class="month-group">
                 <h3 class="month-title">Julho</h3>
                 <ul class="article-list">
@@ -496,7 +481,7 @@
             </div>
         </div>
         <div class="year-group">
-            <h2 class="year-title">2026</div>
+            <h2 class="year-title">2026</h2>
             <div class="month-group">
                 <h3 class="month-title">Dezembro</h3>
                 <ul class="article-list">
@@ -858,7 +843,10 @@
                     </li>
                 </ul>
             </div>
-            <h2 class="year-title">2025</div>
+        </div>
+
+        <div class="year-group">
+            <h2 class="year-title">2025</h2>
             <div class="month-group">
                 <h3 class="month-title">Dezembro</h3>
                 <ul class="article-list">
@@ -1100,7 +1088,7 @@
         </div>
 
         <div class="year-group">
-            <h2 class="year-title">2024</div>
+            <h2 class="year-title">2024</h2>
             
             <div class="month-group">
                 <h3 class="month-title">Outubro</h3>
@@ -1522,9 +1510,7 @@
                     const tags = tagsAttr.split(',').map(t => t.trim().toLowerCase());
                     
                     const badgeContainer = document.createElement('span');
-                    badgeContainer.style.display = 'inline-flex';
-                    badgeContainer.style.gap = '0.35rem';
-                    badgeContainer.style.marginLeft = '0.5rem';
+                    badgeContainer.className = 'article-meta-badges';
                     
                     if (tags.includes('pdv') || tags.includes('soberania') || tags.includes('caixa soberano')) {
                         const badge = document.createElement('span');
@@ -1563,8 +1549,7 @@
                         seriesBadge.className = 'badge badge-series';
                         seriesBadge.textContent = 'Série 📜';
                         badgeContainer.appendChild(seriesBadge);
-                        li.style.borderLeft = '4px solid var(--sala-gold)';
-                        li.style.background = 'rgba(56, 189, 248, 0.03)';
+                        li.classList.add('article-item-series');
                     }
                     
                     li.appendChild(badgeContainer);

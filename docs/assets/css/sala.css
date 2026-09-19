@@ -17,6 +17,32 @@
     --sala-border: rgba(255, 255, 255, 0.1);
     --sala-nav-width: 220px;
     --sala-font-brand: "Share Tech Mono", ui-monospace, monospace;
+
+    --brand-soberania: #0a3d62;
+    --brand-roadmap: #e67e22;
+    --brand-ete: #1e8449;
+    --brand-circuito: #f1c40f;
+    --brand-seguranca: #8e44ad;
+    --brand-neutral: #475569;
+
+    --index-surface: #f8fafc;
+    --index-surface-elevated: #ffffff;
+    --index-border: #d6e0ec;
+    --index-border-strong: #c0d0e0;
+    --index-text: #1f2d3d;
+    --index-text-muted: #4b5f73;
+
+    --index-space-1: 0.5rem;
+    --index-space-2: 0.75rem;
+    --index-space-3: 1rem;
+    --index-space-4: 1.5rem;
+    --index-space-5: 2rem;
+    --index-space-6: 3rem;
+
+    --index-title-font: var(--sala-font-brand);
+    --index-title-size: clamp(0.95rem, 0.75rem + 0.35vw, 1.12rem);
+    --index-title-line: 1.35;
+    --index-title-weight: 700;
 }
 
 /* ---------- Layout padrão: topo, nav esquerda, meio, rodapé (todas as páginas internas) ---------- */
@@ -699,20 +725,12 @@ body.sala-login {
 }
 
 /* ---------- Retro Blog Index Custom Layout (Soberania e Roadmap) ---------- */
-:root {
-    --brand-soberania: #0A3D62;
-    --brand-roadmap: #E67E22;
-    --brand-ete: #1E8449;
-    --brand-circuito: #F1C40F;
-    --brand-seguranca: #8e44ad;
-    --brand-neutral: #475569;
-}
 
 /* Header layout */
 .retro-header {
     text-align: center;
     padding: 2.5rem 1rem;
-    background: linear-gradient(120deg, #0A3D62 0%, #2d425d 100%);
+    background: linear-gradient(120deg, #0a3d62 0%, #2d425d 100%);
     border-bottom: 2px solid #38bdf8;
 }
 .retro-header h1 {
@@ -764,51 +782,44 @@ body.sala-login {
 }
 
 /* Years Blocks Styling */
-.year-group {
+.sala-page .year-group {
     background: #f8fafc;
     border: 1px solid #e2e8f0;
     border-radius: 12px;
-    padding: 1.5rem;
-    margin-bottom: 2.5rem;
+    padding: var(--index-space-4);
+    margin-bottom: var(--index-space-6);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
     transition: all 0.3s ease;
 }
-.year-group:nth-child(even) {
-    background: #f0f7ff; /* Azul petróleo suave */
-    border-color: #d0e7ff;
+.sala-page .year-group:hover {
+    border-color: var(--index-border-strong);
 }
-.year-group:nth-child(odd) {
-    background: #fffaf5; /* Laranja queimado suave */
-    border-color: #ffe8d0;
-}
-.year-group:hover {
-    border-color: #38bdf8;
-}
-.year-title {
-    font-family: var(--sala-font-brand);
-    font-size: 1.8rem;
-    color: #1e293b;
-    margin: 0 0 1.25rem 0;
-    border-bottom: 2px solid #e2e8f0;
+.sala-page .year-title {
+    font-family: var(--index-title-font);
+    font-size: clamp(1.7rem, 1.35rem + 1vw, 2.2rem);
+    font-weight: 700;
+    color: var(--index-text);
+    margin: 0 0 var(--index-space-4) 0;
+    border-bottom: 2px solid #d7e4f0;
     padding-bottom: 0.35rem;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.03em;
 }
 
 /* Months Group */
-.month-group {
-    margin-bottom: 1.75rem;
+.sala-page .month-group {
+    margin-bottom: var(--index-space-5);
 }
-.month-title {
-    font-family: var(--sala-font-brand);
-    font-size: 1.1rem;
+.sala-page .month-title {
+    font-family: var(--index-title-font);
+    font-size: clamp(1rem, 0.9rem + 0.35vw, 1.25rem);
     font-weight: 700;
-    color: #334155;
+    color: var(--index-text-muted);
     margin: 0 0 0.75rem 0;
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
-.month-title::after {
+.sala-page .month-title::after {
     content: "";
     flex: 1;
     height: 1px;
@@ -816,71 +827,97 @@ body.sala-login {
 }
 
 /* List of Articles */
-.article-list {
+.sala-page .article-list {
     list-style: none;
     padding: 0;
     margin: 0;
     display: grid;
-    gap: 0.65rem;
+    gap: var(--index-space-2);
 }
-.article-item {
-    display: flex;
+.sala-page .article-item {
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1fr) auto;
     align-items: center;
-    padding: 0.75rem 1rem;
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
+    column-gap: var(--index-space-3);
+    row-gap: var(--index-space-1);
+    min-height: 5.25rem;
+    padding: 0.85rem 1rem;
+    background: var(--index-surface-elevated);
+    border: 1px solid var(--index-border);
     border-radius: 8px;
     transition: all 0.2s ease;
 }
-.article-item:hover {
-    background: #f8fafc;
-    border-color: #38bdf8;
-    transform: translateX(3px);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+.sala-page .article-item:hover {
+    background: #f8fbff;
+    border-color: #9fc3e6;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(29, 61, 89, 0.08);
 }
-.article-date {
-    font-family: var(--sala-font-brand);
-    color: #64748b;
-    font-size: 0.9rem;
-    margin-right: 1.25rem;
-    min-width: 45px;
+.sala-page .article-date {
+    font-family: var(--index-title-font);
+    color: #5f7387;
+    font-size: 0.92rem;
+    min-width: 0;
+    text-align: left;
+    align-self: start;
+    padding-top: 0.18rem;
 }
-.article-title {
-    font-family: var(--sala-font-brand);
-    color: #1e293b;
+.sala-page .article-title {
+    font-family: var(--index-title-font);
+    color: var(--index-text);
     text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 600;
-    flex-grow: 1;
+    font-size: var(--index-title-size);
+    font-weight: var(--index-title-weight);
+    line-height: var(--index-title-line);
+    letter-spacing: 0.01em;
+    margin: 0;
+    align-self: start;
+    max-width: 100%;
+    overflow-wrap: anywhere;
 }
-.article-title:hover {
+.sala-page .article-title:hover {
     color: #0ea5e9;
 }
 
+.sala-page .article-meta-badges {
+    display: inline-flex;
+    gap: 0.35rem;
+    justify-self: end;
+    align-self: start;
+    flex-wrap: wrap;
+}
+
+.sala-page .article-item-series {
+    border-left: 4px solid var(--sala-gold);
+    background: rgba(56, 189, 248, 0.05);
+}
+
 /* Badges */
-.badge {
+.sala-page .badge {
     display: inline-flex;
     align-items: center;
-    padding: 0.25rem 0.55rem;
+    min-height: 1.6rem;
+    padding: 0.25rem 0.6rem;
     font-size: 0.7rem;
     font-weight: 700;
-    border-radius: 4px;
-    margin-left: 0.75rem;
+    line-height: 1;
+    border-radius: 999px;
     text-transform: uppercase;
     letter-spacing: 0.03em;
-    font-family: var(--sala-font-brand);
+    font-family: var(--index-title-font);
     color: #fff;
     white-space: nowrap;
 }
-.badge-soberania { background: var(--brand-soberania); border: 1px solid rgba(10, 61, 98, 0.2); }
-.badge-roadmap { background: var(--brand-roadmap); border: 1px solid rgba(230, 126, 34, 0.2); }
-.badge-ete { background: var(--brand-ete); border: 1px solid rgba(30, 132, 73, 0.2); }
-.badge-circuito { background: var(--brand-circuito); color: #000; border: 1px solid rgba(241, 196, 15, 0.2); }
-.badge-seguranca { background: var(--brand-seguranca); border: 1px solid rgba(142, 68, 173, 0.2); }
-.badge-neutral { background: var(--brand-neutral); border: 1px solid rgba(71, 85, 105, 0.2); }
 
-.badge-series {
-    background: linear-gradient(135deg, #0A3D62 0%, #1e3a5f 100%);
+.sala-page .badge-soberania { background: var(--brand-soberania); border: 1px solid rgba(10, 61, 98, 0.2); }
+.sala-page .badge-roadmap { background: var(--brand-roadmap); border: 1px solid rgba(230, 126, 34, 0.2); }
+.sala-page .badge-ete { background: var(--brand-ete); border: 1px solid rgba(30, 132, 73, 0.2); }
+.sala-page .badge-circuito { background: var(--brand-circuito); color: #000; border: 1px solid rgba(241, 196, 15, 0.2); }
+.sala-page .badge-seguranca { background: var(--brand-seguranca); border: 1px solid rgba(142, 68, 173, 0.2); }
+.sala-page .badge-neutral { background: var(--brand-neutral); border: 1px solid rgba(71, 85, 105, 0.2); }
+
+.sala-page .badge-series {
+    background: linear-gradient(135deg, #0a3d62 0%, #1e3a5f 100%);
     color: #fff;
     border: 1px solid #38bdf8;
     box-shadow: 0 0 4px rgba(56, 189, 248, 0.3);
@@ -1093,5 +1130,46 @@ body.sala-login {
     color: #334155;
     font-weight: 600;
     margin-top: 0.5rem;
+}
+
+.sala-page .is-hidden {
+    display: none !important;
+}
+
+.badge-phase-origem { background-color: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+.badge-phase-exploracao { background-color: #fef3c7; color: #92400e; border: 1px solid #fde047; }
+.badge-phase-consolidacao { background-color: #dcfce7; color: #166534; border: 1px solid #86efac; }
+.badge-phase-integracao { background-color: #e0f2fe; color: #075985; border: 1px solid #7dd3fc; }
+
+@media (max-width: 1024px) {
+    .sala-page .year-group {
+        margin-bottom: var(--index-space-5);
+    }
+}
+
+@media (max-width: 768px) {
+    .sala-page .article-item {
+        grid-template-columns: 4.25rem minmax(0, 1fr);
+    }
+
+    .sala-page .article-meta-badges {
+        grid-column: 1 / -1;
+        justify-self: start;
+    }
+}
+
+@media (max-width: 520px) {
+    .sala-page .article-item {
+        min-height: 0;
+        padding: 0.8rem;
+        grid-template-columns: 1fr;
+    }
+
+    .sala-page .article-date,
+    .sala-page .article-title,
+    .sala-page .article-meta-badges {
+        grid-column: 1;
+        justify-self: start;
+    }
 }
 
