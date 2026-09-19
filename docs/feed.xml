@@ -5,9 +5,17 @@
     <link>https://retro.caracore.com.br/</link>
     <description><![CDATA[Coleção de artigos publicados pela Cara Core nas redes, organizada por ano.]]></description>
     <language>pt-BR</language>
-    <lastBuildDate>Sat, 10 Jul 2027 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 14 Jul 2027 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://retro.caracore.com.br/feed.xml" rel="self" type="application/rss+xml" />
     <generator>Cara Core RSS generator</generator>
+
+    <item>
+      <title><![CDATA[Quando a Conta Chega: Como a Cara Core Aprendeu a Controlar Custos de Tecnologia com FinOps]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_07_14_article_139.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_07_14_article_139.html</guid>
+      <description><![CDATA[Como a Cara Core aprendeu a controlar custos de tecnologia com FinOps, produtividade medida e responsabilidade financeira entre 2024 e 2026.]]></description>
+      <pubDate>Wed, 14 Jul 2027 12:00:00 +0000</pubDate>
+    </item>
 
     <item>
       <title><![CDATA[A Síndrome do Front-End Pesado: Quando a Arquitetura Esquece os 5.500 Municípios]]></title>
