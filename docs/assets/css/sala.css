@@ -799,6 +799,7 @@ body.sala-login {
     margin-bottom: 1.75rem;
 }
 .month-title {
+    font-family: var(--sala-font-brand);
     font-size: 1.1rem;
     font-weight: 700;
     color: #334155;
@@ -845,6 +846,7 @@ body.sala-login {
     min-width: 45px;
 }
 .article-title {
+    font-family: var(--sala-font-brand);
     color: #1e293b;
     text-decoration: none;
     font-size: 0.95rem;
