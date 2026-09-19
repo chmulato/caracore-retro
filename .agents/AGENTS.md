@@ -2,6 +2,16 @@
 
 Este arquivo serve como o manual de alinhamento e contexto para qualquer Inteligência Artificial ou assistente de codificação que trabalhe neste repositório.
 
+## 🧾 Estado de retomada — 2026-09-19
+
+- **Papel do repositório:** portal histórico e acervo editorial estático; não confundir com oficina de produto nem com a matriz institucional.
+- **Conteúdo declarado:** 139 artigos HTML em `docs/articles/`, organizados por data e número, com publicação pelo GitHub Pages em `retro.caracore.com.br`.
+- **Fonte da verdade operacional:** este `AGENTS.md`; visão pública e inventário editorial em `README.md`.
+- **Validação registrada:** `retro-full-validation.txt` contém uma execução anterior da suíte `test_blog.py` com `docs/index.html` aprovado, `docs/articles.html` aprovado com avisos, e muitos artigos reprovados por BOM/byte extra antes do `DOCTYPE`.
+- **Saúde atual:** **amarela/vermelha na integridade HTML**, não por dependências externas: a pendência principal é normalizar encoding/início do documento nos artigos antigos e revisar os avisos de SEO de `docs/articles.html`.
+- **Regra para a próxima manutenção:** antes de alterar conteúdo em massa, executar `python test_blog.py`, contabilizar falhas por causa (BOM, byte extra, SEO, recurso quebrado) e validar novamente; não declarar “100% saudável” enquanto os erros de encoding permanecerem.
+- **Preservação editorial:** corrigir a estrutura sem reescrever o texto, as datas, os aliases de imagens ou a ordem do acervo. Não remover BOM/bytes em lote sem conferir o diff e o encoding resultante.
+
 ## 🧭 Visão Geral do Projeto
 O `caracore-retro` é o portal histórico e acervo de artigos estratégicos e técnicos da **Cara Core Informática**. O repositório abriga os textos publicados no LinkedIn, organizados por ano em arquivos HTML individuais em `docs/articles/`. 
 
