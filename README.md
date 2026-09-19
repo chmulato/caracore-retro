@@ -1,6 +1,6 @@
 # Artigos Retrô — Cara Core Informática
 
-Portal e acervo de artigos publicados no LinkedIn pela Cara Core Informática. Uma coleção de 138 artigos organizados por data, com foco em inovação, engenharia de software, arquitetura, negócios, estratégia e produtos do ecossistema Cara Core.
+Portal e acervo de artigos publicados no LinkedIn pela Cara Core Informática. Uma coleção de 139 artigos organizados por data, com foco em inovação, engenharia de software, arquitetura, negócios, estratégia e produtos do ecossistema Cara Core.
 
 ## 📋 Estrutura
 
@@ -8,7 +8,7 @@ Portal e acervo de artigos publicados no LinkedIn pela Cara Core Informática. U
   - **`index.html`** — Página principal com listagem completa e filtros de busca
   - **`feed.xml`** — Feed RSS para inscrição e distribuição
 
-  - **`docs/articles/`** — Diretório contendo todos os 138 artigos HTML
+  - **`docs/articles/`** — Diretório contendo todos os 139 artigos HTML
   - Convenção de nomenclatura: `YYYY_MM_DD_article_(NN).html` (ex.: `2026_05_23_article_86.html`)
   - Data no nome = data de publicação no calendário estratégico
   - O número do artigo também define o alias da imagem: `article_NN_01.png`
@@ -39,10 +39,10 @@ Use a barra de busca em `docs/index.html` para filtrar por tema, tecnologia, pro
 
 ## 📊 Conteúdo
 
-**Total**: 138 artigos (01 a 138)
+**Total**: 139 artigos (01 a 139)
 - **Período**: Fevereiro 2024 — Julho 2027
 - **Cobertura**: Publicações regulares semanais
-- **Divisão temporal**: 32 artigos em 2024, 33 em 2025, 51 em 2026, 22 em 2027
+- **Divisão temporal**: 32 artigos em 2024, 33 em 2025, 51 em 2026, 23 em 2027
 
 ## 🧭 Ciclo Editorial 2026-2027
 
