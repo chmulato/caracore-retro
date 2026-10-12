@@ -9,18 +9,30 @@ class BlogHTMLParser(HTMLParser):
         self.filepath = filepath
         self.errors = []
         self.h1_count = 0
+        self.main_count = 0
         self.has_meta_desc = False
         self.has_canonical = False
+        self.has_noindex = False
+        self.has_meta_refresh = False
         
     def handle_starttag(self, tag, attrs):
         attrs_dict = dict(attrs)
         
         if tag == 'h1':
             self.h1_count += 1
+
+        if tag == 'main':
+            self.main_count += 1
             
         if tag == 'meta' and attrs_dict.get('name') == 'description':
             if attrs_dict.get('content'):
                 self.has_meta_desc = True
+
+        if tag == 'meta' and attrs_dict.get('name', '').lower() == 'robots':
+            self.has_noindex = 'noindex' in attrs_dict.get('content', '').lower()
+
+        if tag == 'meta' and attrs_dict.get('http-equiv', '').lower() == 'refresh':
+            self.has_meta_refresh = True
                 
         if tag == 'link' and attrs_dict.get('rel') == 'canonical':
             if attrs_dict.get('href'):
@@ -51,6 +63,11 @@ class BlogHTMLParser(HTMLParser):
         parsed = urllib.parse.urlparse(val)
         is_asset = tag in ['link', 'script', 'img'] or (tag == 'a' and val.lower().endswith(('.ttf', '.woff', '.woff2', '.png', '.jpg', '.jpeg', '.svg')))
         
+        if parsed.netloc:
+            if is_asset:
+                self.errors.append(f"EXTERNAL ASSET FOUND: <{tag} {attr}=\"{val}\"> should be local.")
+            return
+
         if parsed.scheme in ['http', 'https']:
             if is_asset:
                 self.errors.append(f"EXTERNAL ASSET FOUND: <{tag} {attr}=\"{val}\"> should be local.")
@@ -60,13 +77,19 @@ class BlogHTMLParser(HTMLParser):
             self.errors.append(f"ABSOLUTE FILE:// PATH FOUND: <{tag} {attr}=\"{val}\"> must be relative.")
             return
             
-        if os.path.isabs(val):
+        if parsed.path.startswith('/'):
+            docs_root = os.path.abspath('docs')
+            clean_path = parsed.path.lstrip('/')
+            target_path = os.path.abspath(os.path.join(docs_root, clean_path))
+            if os.path.commonpath([docs_root, target_path]) != docs_root:
+                self.errors.append(f"ROOT-RELATIVE PATH ESCAPES DOCS: <{tag} {attr}=\"{val}\">")
+                return
+        elif os.path.isabs(val):
             self.errors.append(f"ABSOLUTE PATH FOUND: <{tag} {attr}=\"{val}\"> must be relative.")
             return
-            
-        file_dir = os.path.dirname(self.filepath)
-        clean_path = parsed.path
-        target_path = os.path.abspath(os.path.join(file_dir, clean_path))
+        else:
+            file_dir = os.path.dirname(self.filepath)
+            target_path = os.path.abspath(os.path.join(file_dir, parsed.path))
         
         if tag == 'a' and not val.endswith(('.html', '.png', '.jpg', '.css', '.js', '.ttf')):
             if not os.path.exists(target_path) and (val.startswith('www.') or '.' in val):
@@ -112,16 +135,19 @@ def test_html_files():
         if parser.errors:
             file_errors.extend(parser.errors)
             
-        if parser.h1_count == 0:
+        if parser.h1_count == 0 and not parser.has_meta_refresh:
             print(f"  [WARN] {fpath} - SEO: Missing <h1> heading tag.")
         elif parser.h1_count > 1:
             file_errors.append(f"SEO: Found multiple <h1> tags ({parser.h1_count}). Only one <h1> is allowed.")
             
-        if not parser.has_meta_desc:
+        if not parser.has_meta_desc and not parser.has_meta_refresh:
             print(f"  [WARN] {fpath} - SEO: Missing <meta name=\"description\"> tag.")
             
-        if not parser.has_canonical:
+        if not parser.has_canonical and not parser.has_noindex:
             print(f"  [WARN] {fpath} - SEO: Missing <link rel=\"canonical\"> tag.")
+
+        if parser.has_meta_refresh and not parser.has_canonical:
+            file_errors.append("SEO: Redirect page must declare its canonical destination.")
             
         if file_errors:
             print(f"🔴 {fpath} - FAILED:")

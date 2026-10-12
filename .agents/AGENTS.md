@@ -63,3 +63,4 @@ O repositório possui uma suíte de testes de integridade em **`test_blog.py`**.
   - Não há caminhos absolutos de arquivo (`file://` ou pastas locais da máquina do desenvolvedor).
   - Todas as rotas relativas, imagens e recursos linkados existem no repositório.
   - A hierarquia de títulos e metadados de SEO obedece às regras.
+* Para uma validação única do índice editorial e smoke test HTTP local, execute `python tools/validate_site.py`; use `--url http://127.0.0.1:PORT/` para validar um preview existente. A inspeção visual e funcional ainda precisa ser feita no navegador.

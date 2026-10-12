@@ -41,6 +41,7 @@ Use a barra de busca em `docs/index.html` para filtrar por tema, tecnologia, pro
 
 **Total**: 139 artigos (01 a 139)
 - **Período**: Fevereiro 2024 — Julho 2027
+- **Calendário público**: artigos futuros permanecem visíveis no índice e no RSS, conforme o planejamento editorial
 - **Cobertura**: Publicações regulares semanais
 - **Divisão temporal**: 32 artigos em 2024, 33 em 2025, 51 em 2026, 23 em 2027
 
@@ -86,10 +87,15 @@ Cada artigo contém:
 
 Antes de publicar alterações editoriais relevantes:
 
+- Executar `python tools/validate_site.py` para conferir cards, resumos, capas, categorias, ordem/datas do RSS, breakpoints declarados, recursos servidos por HTTP local, landmarks dos artigos e a suíte de integridade
+- Para sincronizar ou regenerar o feed RSS padronizado com metadados visuais, categorias e enclosures: `python tools/generate_feed.py`
+- Para testar um preview já iniciado ou uma URL publicada, executar `python tools/validate_site.py --url http://127.0.0.1:8766/`
 - Conferir se `docs/index.html` e `docs/feed.xml` apontam para os artigos corretos
 - Conferir se `og:image`, `twitter:image` e `<img>` usam a mesma capa local `article_NN_01.png`
 - Manter prompts em `docs/articles/assets/prompts/` ou pastas associadas
 - Validar XML do `feed.xml`
+
+O validador não substitui homologação visual e funcional em navegador: confirme também a renderização responsiva, a operação dos filtros e a acessibilidade por teclado.
 
 ## 📖 Licença
 
