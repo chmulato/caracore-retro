@@ -8,7 +8,7 @@
     <copyright><![CDATA[© Cara Core Informática. Todos os direitos reservados.]]></copyright>
     <managingEditor>suporte@caracore.com.br (Christian Mulato)</managingEditor>
     <webMaster>suporte@caracore.com.br (Christian Mulato)</webMaster>
-    <lastBuildDate>Wed, 14 Jul 2027 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 18 Jul 2027 12:00:00 +0000</lastBuildDate>
     <category><![CDATA[Tecnologia]]></category>
     <docs>https://www.rssboard.org/rss-specification</docs>
     <generator>Cara Core RSS generator</generator>
@@ -18,6 +18,28 @@
       <title><![CDATA[Artigos Retrô — Cara Core Informática]]></title>
       <link>https://retro.caracore.com.br/</link>
     </image>
+
+    <item>
+      <title><![CDATA[40 horas contra 7 dias: o que o BioReator 4.0 acerta e o que ainda separa a tela do tanque]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_07_18_article_140.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_07_18_article_140.html</guid>
+      <description><![CDATA[Reproduzimos as equações do BioReator 4.0 para explicar o que a simulação de Bradyrhizobium japonicum acerta, onde diverge da planta e quais melhorias vêm a seguir.]]></description>
+      <dc:creator><![CDATA[Christian Mulato]]></dc:creator>
+      <pubDate>Sun, 18 Jul 2027 12:00:00 +0000</pubDate>
+      <category><![CDATA[Mineração e ETE]]></category>
+      <category><![CDATA[Deep Tech]]></category>
+      <category><![CDATA[Bioreator]]></category>
+      <category><![CDATA[Fermentação]]></category>
+      <category><![CDATA[Bradyrhizobium]]></category>
+      <category><![CDATA[Bioprocessos]]></category>
+      <category><![CDATA[Ete]]></category>
+      <category><![CDATA[Ensino De Engenharia Química]]></category>
+      <category><![CDATA[Bioinsumos]]></category>
+      <enclosure url="https://retro.caracore.com.br/articles/assets/img/2027_07_18_article_140_01.png" length="5574165" type="image/png" />
+      <media:content url="https://retro.caracore.com.br/articles/assets/img/2027_07_18_article_140_01.png" medium="image" type="image/png" width="2752" height="1536">
+        <media:thumbnail url="https://retro.caracore.com.br/articles/assets/img/2027_07_18_article_140_01.png" width="2752" height="1536" />
+      </media:content>
+    </item>
 
     <item>
       <title><![CDATA[Quando a Conta Chega: Como a Cara Core Aprendeu a Controlar Custos de Tecnologia com FinOps]]></title>
