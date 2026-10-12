@@ -5,14 +5,15 @@ alwaysApply: true
 
 # Memória — caracore-retro (Artigos Retrô)
 
-**Atualizado:** 2027-06-18
+**Atualizado:** 2027-07-14
 
 ## Repositório e papel
 
-- **Repo:** `caracore-retro` (local: `D:\dev\caracore-retro`)
+- **Repo:** `caracore-retro` (local: `D:\dev\caracore-retro` ou path correspondente)
 - **URL:** https://retro.caracore.com.br/
-- **Publicação:** GitHub Pages a partir de **`docs/`**
+- **Publicação:** GitHub Pages a partir de **`docs/`** via GitHub Actions (`.github/workflows/deploy.yml`)
 - **Função:** Acervo editorial LinkedIn — narrativa Bunker, produtos, formação; **não** é loja nem oficina
+- **Formato Visual:** Revista digital moderna focada em descoberta visual, capas 16:9, categorização temática e resumos
 
 ## Relação com o ecossistema
 
@@ -22,21 +23,59 @@ alwaysApply: true
 - **Sala / campanhas:** https://tools.caracore.com.br/sala/ (repo `caracore-site` / `caracore-mkt`)
 - **Wiki:** https://wiki.caracore.com.br/
 
-## Convenção de artigos
+## Convenção de artigos e catálogo
 
 | Item | Padrão |
 |------|--------|
-| HTML | `docs/articles/YYYY_MM_DD_article_NN.html` |
-| Imagem | `docs/articles/assets/img/YYYY_MM_DD_article_NN_01.png` |
+| HTML do Artigo | `docs/articles/YYYY_MM_DD_article_NN.html` (com `<main class="container">` e `<h1>` único) |
+| Imagem de Capa | `docs/articles/assets/img/YYYY_MM_DD_article_NN_01.png` |
 | Prompt IA | `docs/articles/assets/prompts/YYYY_MM_DD_article_NN.txt` (16:9 paisagem quando capa) |
-| Índice | `docs/index.html` (tags + data) |
-| RSS | `docs/feed.xml` (gerado/validado com capas, enclosures, categorias e `tools/generate_feed.py`) |
+| Índice (Revista) | `docs/index.html` (Hero em destaque, cards 16:9, tags, data e `data-summary`) |
+| CSS Editorial | `docs/assets/css/editorial.css` (grade responsiva 3/2/1 colunas, paleta Bunker/Retrô) |
+| JS de Decoração | `docs/assets/js/editorial-index.js` (enriquecimento visual dinâmico e categorias) |
+| RSS 2.0 | `docs/feed.xml` (gerado/validado com capas, enclosures, Media RSS e categorias via `tools/generate_feed.py`) |
 
 - **Tempo de leitura:** bloco `.note` (~8 min nos artigos técnicos recentes)
-- **Estilo:** `assets/css/articles.css` + `temporada-i.css` · `quote-box`, `insight`, `note`
-- **Capa inline:** `<img ... style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);">` — padrão artigos 110–115
-- **Prompt IA:** gerar PNG 16:9; exibir inline no frame acima; `og:image` usa o mesmo PNG
-- **Total (jun/2027):** 134 artigos numerados (lacunas históricas na numeração)
+- **Estilo dos artigos:** `assets/css/articles.css` + `temporada-i.css` · `quote-box`, `insight`, `note`
+- **Capa inline no artigo:** `<img ... style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);">`
+- **Prompt IA:** gerar PNG 16:9; exibir inline no frame acima; `og:image`, `twitter:image` e RSS usam o mesmo PNG
+- **Total de artigos:** 139 artigos catalogados (2024–2027; mantendo visíveis artigos do calendário editorial futuro)
+
+## Categorias Visuais da Revista
+
+1. **PDV:** varejo, automação comercial, balcão, caixas offline-first, terminal de venda, Java 25 e Rust.
+2. **Identidade Digital:** segurança, autenticação, OIDC, OAuth 2.1, PKCE, credenciais descentralizadas, Área 51.
+3. **Roadmap:** planejamento, governança, direção estratégica, FinOps, portfólio, logística.
+4. **Circuito:** educação técnica, formação profissional, oficinas práticas, lógica, Python.
+5. **Mineração e ETE:** química industrial, processos, tratamento de efluentes, terras raras, Minerador 4.0.
+6. *(Fallback)* **Tecnologia:** engenharia de software geral, ferramentas, infraestrutura.
+
+## Artigos Recentes — Julho/2027
+
+### Artigo 139 (14/07/2027) — Quando a Conta Chega: FinOps e Custos
+- **Ficheiro:** `2027_07_14_article_139.html`
+- **Tema:** FinOps, produtividade medida, governança de custos em cloud vs. local, responsabilidade financeira.
+- **Capa:** `2027_07_14_article_139_01.png`
+
+### Artigo 138 (10/07/2027) — A Síndrome do Front-End Pesado
+- **Ficheiro:** `2027_07_10_article_138.html`
+- **Tema:** HTML-First (HTMX/Quarkus) contra o inchaço de SPAs nos 5.500 municípios; sustentabilidade de software.
+- **Capa:** `2027_07_10_article_138_01.png`
+
+### Artigo 137 (05/07/2027) — O Próximo Balcão (Java, Rust e PDV)
+- **Ficheiro:** `2027_07_05_article_137.html`
+- **Tema:** Trilogia do PDV — uso da bagagem de automação para sustentar arquitetura local e resiliente com Java e Rust.
+- **Capa:** `2027_07_05_article_137_01.png`
+
+### Artigo 136 (28/06/2027) — Quando a Bagagem Virou Produto
+- **Ficheiro:** `2027_06_28_article_136.html`
+- **Tema:** História e evolução do Cara Core PDV a partir de operações reais de cadastro, caixa e emissão de notas.
+- **Capa:** `2027_06_28_article_136_01.png`
+
+### Artigo 135 (21/06/2027) — Antes do Caixa: A Bagagem que Virou Engenharia
+- **Ficheiro:** `2027_06_21_article_135.html`
+- **Tema:** Automação fiscal, arquivos SAP e regras de auditoria que alicerçaram a visão de produtos da Cara Core.
+- **Capa:** `2027_06_21_article_135_01.png`
 
 ## Artigo recente — Sobriedade técnica / IA (134)
 
@@ -88,10 +127,19 @@ alwaysApply: true
 
 ## Ao publicar artigo novo
 
-1. Criar HTML + entrada em `index.html` (incluindo `data-summary` igual ao `<meta name="description">`) + `feed.xml`
-2. Gerar PNG e atualizar prompt `.txt`
-3. Atualizar contagem no `README.md` se necessário
-4. Mencionar produto/versão alinhados a `ECOSYSTEM_LOJAS.txt` (matriz)
+1. Criar HTML do artigo em `docs/articles/` com `<main class="container">`, `<h1>` único, canonical e `<meta name="description">`.
+2. Adicionar entrada em `docs/index.html` com `data-tags`, data legível e `data-summary` alinhado à meta description.
+3. Gerar imagem de capa PNG 16:9 em `docs/articles/assets/img/YYYY_MM_DD_article_NN_01.png` e prompt em `docs/articles/assets/prompts/`.
+4. Executar `python tools/generate_feed.py` para regenerar `docs/feed.xml` com as novas capas, dimensões, enclosures e categorias.
+5. Executar `python tools/validate_site.py` para validar 100% das integridades (deve passar sem falhas ou avisos).
+6. Executar `python test_blog.py` para conferir conformidade semântica e offline-first.
+7. Atualizar contagem de artigos neste arquivo e no `README.md`.
+8. Mencionar produto/versão alinhados a `ECOSYSTEM_LOJAS.txt` (matriz).
+
+## Portão de CI/CD e Homologação
+
+- Pipeline GitHub Actions em `.github/workflows/deploy.yml`: o job `deploy` só roda se o job `validate` passar integralmente.
+- Agente compartilhado de homologação em `.github/agents/qa-homologacao.agent.md` para inspeção visual, responsiva e de acessibilidade via navegador.
 
 ## Convenções
 
