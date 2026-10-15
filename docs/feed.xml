@@ -8,7 +8,7 @@
     <copyright><![CDATA[© Cara Core Informática. Todos os direitos reservados.]]></copyright>
     <managingEditor>suporte@caracore.com.br (Christian Mulato)</managingEditor>
     <webMaster>suporte@caracore.com.br (Christian Mulato)</webMaster>
-    <lastBuildDate>Sun, 18 Jul 2027 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 21 Jul 2027 12:00:00 +0000</lastBuildDate>
     <category><![CDATA[Tecnologia]]></category>
     <docs>https://www.rssboard.org/rss-specification</docs>
     <generator>Cara Core RSS generator</generator>
@@ -18,6 +18,32 @@
       <title><![CDATA[Artigos Retrô — Cara Core Informática]]></title>
       <link>https://retro.caracore.com.br/</link>
     </image>
+
+    <item>
+      <title><![CDATA[Da Sintaxe à Orquestração: A IA no Ciclo de Modernização da Cara Core]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_07_21_article_141.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_07_21_article_141.html</guid>
+      <description><![CDATA[Como agentes de IA apoiam a evolução das soluções desktop e de gestão da Cara Core, incluindo o futuro processamento local de dados sensíveis no Gestão de Transporte.]]></description>
+      <dc:creator><![CDATA[Christian Mulato]]></dc:creator>
+      <pubDate>Wed, 21 Jul 2027 12:00:00 +0000</pubDate>
+      <category><![CDATA[PDV]]></category>
+      <category><![CDATA[Ia Generativa]]></category>
+      <category><![CDATA[Agentes De Ia]]></category>
+      <category><![CDATA[Engenharia De Software]]></category>
+      <category><![CDATA[Modernizacao De Sistemas]]></category>
+      <category><![CDATA[Qualidade De Software]]></category>
+      <category><![CDATA[Desenvolvimento De Software]]></category>
+      <category><![CDATA[Privacidade]]></category>
+      <category><![CDATA[Arquitetura]]></category>
+      <category><![CDATA[Pdv Desktop]]></category>
+      <category><![CDATA[Gestao De Frotas]]></category>
+      <category><![CDATA[Gestao De Transporte]]></category>
+      <category><![CDATA[Dados Locais]]></category>
+      <enclosure url="https://retro.caracore.com.br/articles/assets/img/2027_07_21_article_141_01.png" length="5265334" type="image/png" />
+      <media:content url="https://retro.caracore.com.br/articles/assets/img/2027_07_21_article_141_01.png" medium="image" type="image/png" width="2752" height="1536">
+        <media:thumbnail url="https://retro.caracore.com.br/articles/assets/img/2027_07_21_article_141_01.png" width="2752" height="1536" />
+      </media:content>
+    </item>
 
     <item>
       <title><![CDATA[40 horas contra 7 dias: o que o BioReator 4.0 acerta e o que ainda separa a tela do tanque]]></title>

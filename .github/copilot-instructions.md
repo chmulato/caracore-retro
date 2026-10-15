@@ -6,7 +6,7 @@ Você está trabalhando no repositório **`caracore-retro`**, o acervo editorial
 
 ## 📌 Contexto e Papel do Repositório
 
-- **O que é:** Revista digital de artigos tecnológicos e estratégicos publicados pela Cara Core, organizados cronologicamente (139 artigos cobrindo 2024–2027).
+- **O que é:** Revista digital de artigos tecnológicos e estratégicos publicados pela Cara Core, organizados cronologicamente (141 artigos cobrindo 2024–2027).
 - **O que NÃO é:** Não é loja, nem oficina de produtos, nem a matriz institucional (`caracore.com.br`).
 - **Formato Visual:** Revista digital moderna com foco em descoberta visual (estilo Medium / Substack / Apple News), com Hero em destaque no topo, grade responsiva de cards (3/2/1 colunas), proporção 16:9 nas capas e badges de categoria visual.
 
@@ -50,7 +50,7 @@ Ao realizar alterações no catálogo, artigos ou estilos:
 
 2. **`python tools/validate_site.py`**
    - Validador estático, estrutural e smoke test HTTP local.
-   - Valida os 139 artigos, landmarks `<main>`, hierarquia `<h1>`, integridade de capas, correspondência do RSS e links.
+   - Valida os 141 artigos, landmarks `<main>`, hierarquia `<h1>`, integridade de capas, correspondência do RSS e links.
    - Deve sempre terminar com **APROVADO** (0 falhas e 0 avisos).
    - Suporta validação remota: `python tools/validate_site.py --url https://retro.caracore.com.br/`.
 
