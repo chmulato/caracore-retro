@@ -64,7 +64,9 @@
         const imageName = titleLink.getAttribute('href')
             .replace(/^articles\//, 'articles/assets/img/')
             .replace(/\.html$/, '_01.png');
+        const responsiveCover = imageName.endsWith('2027_07_21_article_141_01.png');
         const cover = document.createElement('a');
+        const picture = document.createElement('picture');
         const image = document.createElement('img');
         const content = document.createElement('div');
         const categoryLabel = createTextElement('span', 'editorial-category', category);
@@ -75,11 +77,27 @@
         cover.className = 'editorial-cover';
         cover.href = titleLink.getAttribute('href');
         cover.setAttribute('aria-label', `Ler artigo: ${title}`);
+        if (responsiveCover) {
+            const mobileSource = document.createElement('source');
+            const desktopSource = document.createElement('source');
+            mobileSource.type = 'image/webp';
+            mobileSource.media = '(max-width: 680px)';
+            mobileSource.srcset = imageName.replace('_01.png', '_01_720.webp');
+            desktopSource.type = 'image/webp';
+            desktopSource.srcset = imageName.replace('_01.png', '_01_1600.webp');
+            picture.append(mobileSource, desktopSource);
+        }
         image.src = imageName;
+        image.width = 2752;
+        image.height = 1536;
         image.alt = '';
         image.loading = isFeatured ? 'eager' : 'lazy';
         image.decoding = 'async';
-        cover.appendChild(image);
+        if (isFeatured) {
+            image.fetchPriority = 'high';
+        }
+        picture.appendChild(image);
+        cover.appendChild(picture);
 
         content.className = 'editorial-card-content';
         titleLink.textContent = title;
