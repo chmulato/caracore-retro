@@ -48,7 +48,11 @@
 <body>
     <main class="container">
         <a class="back-link" href="../index.html">&larr; Voltar para publicações</a>
-        <img src="assets/img/2027_07_18_article_140_01.png" alt="Ilustração editorial de um biorreator e monitor CRT, com uma linha do tempo de 40 horas contra 7 dias" style="width:100%;max-width:min(300px,45vw);height:auto;float:right;margin:0 0 1.5rem 2rem;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.08);">
+        <picture class="article-hero">
+            <source type="image/webp" media="(max-width: 680px)" srcset="assets/img/2027_07_18_article_140_01_720.webp">
+            <source type="image/webp" srcset="assets/img/2027_07_18_article_140_01_1600.webp">
+            <img src="assets/img/2027_07_18_article_140_01.png" alt="Ilustração editorial de um biorreator e monitor CRT, com uma linha do tempo de 40 horas contra 7 dias">
+        </picture>
         <h1>40 horas contra 7 dias: o que o BioReator 4.0 acerta e o que ainda separa a tela do tanque</h1>
         <div class="linkedin-box" style="margin-bottom:1.5rem;display:flex;align-items:center;">
             <img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%;max-width:40px;margin-right:10px;">
@@ -102,7 +106,11 @@
             </table>
         </div>
         <figure class="chart-block">
-            <img src="assets/img/2027_07_18_article_140_02.png" alt="Gráfico calculado independentemente: biomassa cresce até 8,6 gramas por litro, substrato cai a zero perto de 40 horas e o oxigênio dissolvido cai para aproximadamente 16 por cento da saturação" style="display:block;width:100%;height:auto;border-radius:12px;">
+            <picture>
+                <source type="image/webp" media="(max-width: 680px)" srcset="assets/img/2027_07_18_article_140_02_720.webp">
+                <source type="image/webp" srcset="assets/img/2027_07_18_article_140_02_1600.webp">
+                <img src="assets/img/2027_07_18_article_140_02.png" alt="Gráfico calculado independentemente: biomassa cresce até 8,6 gramas por litro, substrato cai a zero perto de 40 horas e o oxigênio dissolvido cai para aproximadamente 16 por cento da saturação" style="display:block;width:100%;height:auto;border-radius:12px;">
+            </picture>
             <figcaption>Reprodução numérica independente das equações e parâmetros do perfil. As curvas não são dados experimentais nem captura de tela do aplicativo.</figcaption>
         </figure>
         <p>No modelo, o alerta de OD abaixo de 20% aparece por volta de 38 h; o substrato se esgota em aproximadamente 39,4 h e X estabiliza perto de 8,6 g/L. O rendimento fecha pela relação imposta entre X e S. Isso demonstra consistência interna dos balanços; não demonstra que uma cultura real produziria 8,6 g/L de biomassa viável.</p>

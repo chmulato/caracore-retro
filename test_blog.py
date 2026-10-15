@@ -208,12 +208,75 @@ def test_css_files():
     return all_passed
 
 
+def test_responsive_article_images():
+    all_passed = True
+    image_directory = os.path.join('docs', 'articles', 'assets', 'img')
+    article_files = [
+        path for path in os.listdir('docs/articles')
+        if re.fullmatch(r'20\d{2}_\d{2}_\d{2}_article_\d+\.html', path)
+    ]
+    print("\n=== TESTING RESPONSIVE ARTICLE IMAGES ===")
+
+    for filename in article_files:
+        filepath = os.path.join('docs', 'articles', filename)
+        with open(filepath, 'r', encoding='utf-8') as article:
+            content = article.read()
+
+        expected_images = set(re.findall(
+            r'<img\b[^>]*\bsrc=["\']assets/img/(\d{4}_\d{2}_\d{2}_article_\d+_\d+\.png)["\']',
+            content,
+            re.IGNORECASE,
+        ))
+        responsive_pictures = {}
+        for picture in re.finditer(
+            r'<picture\b[^>]*>(.*?)</picture>',
+            content,
+            re.IGNORECASE | re.DOTALL,
+        ):
+            picture_content = picture.group(1)
+            fallback = re.search(
+                r'<img\b[^>]*\bsrc=["\']assets/img/(\d{4}_\d{2}_\d{2}_article_\d+_\d+\.png)["\']',
+                picture_content,
+                re.IGNORECASE,
+            )
+            if fallback:
+                responsive_pictures[fallback.group(1)] = re.findall(
+                    r'<source\b[^>]*\bsrcset=["\']([^"\']+)["\'][^>]*>',
+                    picture_content,
+                    re.IGNORECASE,
+                )
+
+        all_valid = True
+        for image in expected_images:
+            basename = os.path.splitext(image)[0]
+            sources = responsive_pictures.get(image, [])
+            expected_sources = (f"{basename}_720.webp", f"{basename}_1600.webp")
+            if tuple(os.path.basename(source) for source in sources) != expected_sources:
+                print(f"🔴 {filepath} - FAILED: {image} is missing responsive WebP sources.")
+                all_passed = all_valid = False
+                continue
+
+            missing = [
+                source for source in sources
+                if not os.path.exists(os.path.join(os.path.dirname(filepath), source))
+            ]
+            if missing:
+                print(f"🔴 {filepath} - FAILED: missing responsive assets: {', '.join(missing)}")
+                all_passed = all_valid = False
+
+        if all_valid:
+            print(f"🟢 {filepath} - PASSED ({len(expected_images)} article images)")
+
+    return all_passed
+
+
 if __name__ == '__main__':
     html_ok = test_html_files()
     css_ok = test_css_files()
+    responsive_images_ok = test_responsive_article_images()
     
     print("\n=== TEST SUMMARY ===")
-    if html_ok and css_ok:
+    if html_ok and css_ok and responsive_images_ok:
         print("🟢 ALL ACTIVE BLOG FILES PASSED! The blog is 100% healthy, sovereign, and offline-compatible.")
         exit(0)
     else:

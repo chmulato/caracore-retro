@@ -11,11 +11,11 @@ Portal e acervo de artigos publicados no LinkedIn pela Cara Core Informática. U
   - **`docs/articles/`** — Diretório contendo todos os 141 artigos HTML
   - Convenção de nomenclatura: `YYYY_MM_DD_article_(NN).html` (ex.: `2026_05_23_article_86.html`)
   - Data no nome = data de publicação no calendário estratégico
-  - O número do artigo também define o alias da imagem: `article_NN_01.png`
+  - O número do artigo também define o alias das imagens: `article_NN_01.png`, `article_NN_02.png` etc.
 
   - **`docs/articles/assets/`** — Recursos compartilhados
     - `css/` — Estilos dos artigos
-    - `img/` — Imagens e gráficos dos artigos; HTML publicado deve apontar para `article_NN_01.png`
+    - `img/` — Imagens e gráficos dos artigos; PNGs originais são fallback e têm variantes WebP responsivas de até 720 e 1600 px
     - `js/` — Scripts de funcionalidade
     - `prompts/` — Prompts usados para geração de imagens dos artigos
 
@@ -89,6 +89,7 @@ Cada artigo contém:
 Antes de publicar alterações editoriais relevantes:
 
 - Executar `python tools/validate_site.py` para conferir cards, resumos, capas, categorias, ordem/datas do RSS, breakpoints declarados, recursos servidos por HTTP local, landmarks dos artigos e a suíte de integridade
+- Executar `python tools/generate_responsive_images.py` ao adicionar ou atualizar imagens de artigos; gera variantes WebP para imagens 01, 02, 03 etc. e atualiza os elementos `<picture>`
 - Para sincronizar ou regenerar o feed RSS padronizado com metadados visuais, categorias e enclosures: `python tools/generate_feed.py`
 - Para testar um preview já iniciado ou uma URL publicada, executar `python tools/validate_site.py --url http://127.0.0.1:8766/`
 - Conferir se `docs/index.html` e `docs/feed.xml` apontam para os artigos corretos

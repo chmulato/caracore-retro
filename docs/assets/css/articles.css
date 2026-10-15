@@ -288,9 +288,17 @@ code:not(pre code)::selection { background: #334155; color: #f8fafc; }
 
 /* --- Article specific reusable classes (refactoring inline styles) --- */
 .article-hero {
-    max-width:300px;
-    float:right;
-    margin:0 0 1.5rem 2rem;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: min(300px, calc(100vw - 4rem));
+    float: right;
+    margin: 0 0 1.5rem 2rem;
+}
+.article-hero img {
+    display: block;
+    width: 100%;
+    height: auto;
     border-radius:12px;
     box-shadow:0 2px 12px rgba(0,0,0,.08);
 }
