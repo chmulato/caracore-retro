@@ -8,7 +8,7 @@
     <copyright><![CDATA[© Cara Core Informática. Todos os direitos reservados.]]></copyright>
     <managingEditor>suporte@caracore.com.br (Christian Mulato)</managingEditor>
     <webMaster>suporte@caracore.com.br (Christian Mulato)</webMaster>
-    <lastBuildDate>Wed, 21 Jul 2027 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 28 Jul 2027 12:00:00 +0000</lastBuildDate>
     <category><![CDATA[Tecnologia]]></category>
     <docs>https://www.rssboard.org/rss-specification</docs>
     <generator>Cara Core RSS generator</generator>
@@ -18,6 +18,32 @@
       <title><![CDATA[Artigos Retrô — Cara Core Informática]]></title>
       <link>https://retro.caracore.com.br/</link>
     </image>
+
+    <item>
+      <title><![CDATA[A Ilusão da Velocidade: O Desafio do DeepSeek Flash v4 e a Engenharia Real do CaraCore Hub]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_07_28_article_142.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_07_28_article_142.html</guid>
+      <description><![CDATA[Como a alta velocidade do DeepSeek Flash v4 colidiu com os 2.555 testes, o banco SQLite local em modo WAL e os gates implacáveis de empacotamento do CaraCore Hub.]]></description>
+      <dc:creator><![CDATA[Christian Mulato]]></dc:creator>
+      <pubDate>Wed, 28 Jul 2027 12:00:00 +0000</pubDate>
+      <category><![CDATA[Roadmap]]></category>
+      <category><![CDATA[Hub]]></category>
+      <category><![CDATA[Deepseek Flash]]></category>
+      <category><![CDATA[Ia Generativa]]></category>
+      <category><![CDATA[Agentes De Ia]]></category>
+      <category><![CDATA[Engenharia De Software]]></category>
+      <category><![CDATA[Testes Automatizados]]></category>
+      <category><![CDATA[Sqlite Wal]]></category>
+      <category><![CDATA[Java25]]></category>
+      <category><![CDATA[Tomcat]]></category>
+      <category><![CDATA[Software Honesto]]></category>
+      <category><![CDATA[Qualidade De Software]]></category>
+      <category><![CDATA[Dados Locais]]></category>
+      <enclosure url="https://retro.caracore.com.br/articles/assets/img/2027_07_28_article_142_01.png" length="6514257" type="image/png" />
+      <media:content url="https://retro.caracore.com.br/articles/assets/img/2027_07_28_article_142_01.png" medium="image" type="image/png" width="2752" height="1536">
+        <media:thumbnail url="https://retro.caracore.com.br/articles/assets/img/2027_07_28_article_142_01.png" width="2752" height="1536" />
+      </media:content>
+    </item>
 
     <item>
       <title><![CDATA[Da Sintaxe à Orquestração: A IA no Ciclo de Modernização da Cara Core]]></title>
@@ -765,7 +791,7 @@
       <title><![CDATA[Seis Pilares Alinhados]]></title>
       <link>https://retro.caracore.com.br/articles/2026_11_30_article_109.html</link>
       <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_11_30_article_109.html</guid>
-      <description><![CDATA[Fechamento transparente do portfólio Cara Core: cada produto em seu escopo real, sem transformar oficina em promessa universal Este artigo de Christian Mulato contextualiza Seis Pilares Alinhados, relacionando tecnologia, engenharia e decisões prátic]]></description>
+      <description><![CDATA[O marco de fechamento do portfólio Cara Core: quando o software deixa os exageros de lado e cada um dos seis pilares assume com transparência seu escopo e valor de entrega.]]></description>
       <dc:creator><![CDATA[Christian Mulato]]></dc:creator>
       <pubDate>Mon, 30 Nov 2026 12:00:00 +0000</pubDate>
       <category><![CDATA[PDV]]></category>
@@ -781,6 +807,7 @@
       <category><![CDATA[Cso]]></category>
       <category><![CDATA[Amarelinha]]></category>
       <category><![CDATA[Transparência]]></category>
+      <category><![CDATA[Roadmap]]></category>
       <enclosure url="https://retro.caracore.com.br/articles/assets/img/2026_11_30_article_109_01.png" length="2209698" type="image/png" />
       <media:content url="https://retro.caracore.com.br/articles/assets/img/2026_11_30_article_109_01.png" medium="image" type="image/png" width="1024" height="1024">
         <media:thumbnail url="https://retro.caracore.com.br/articles/assets/img/2026_11_30_article_109_01.png" width="1024" height="1024" />
@@ -791,10 +818,10 @@
       <title><![CDATA[Amarelinha: Os Cinco Atos]]></title>
       <link>https://retro.caracore.com.br/articles/2026_11_14_article_108.html</link>
       <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_11_14_article_108.html</guid>
-      <description><![CDATA[Protocolo Amarelinha dentro do CSO: trilha evolutiva para entregas, checkpoints, telemetria, massa, sombra e auditoria operacional Este artigo de Christian Mulato contextualiza Amarelinha: Os Cinco Atos, relacionando tecnologia, engenharia e decisões]]></description>
+      <description><![CDATA[A anatomia do Protocolo Amarelinha no CSO: uma trilha arquitetural em cinco atos para rastreabilidade de entregas, telemetria de rotas e auditoria operacional soberana.]]></description>
       <dc:creator><![CDATA[Christian Mulato]]></dc:creator>
       <pubDate>Sat, 14 Nov 2026 12:00:00 +0000</pubDate>
-      <category><![CDATA[Tecnologia]]></category>
+      <category><![CDATA[Roadmap]]></category>
       <category><![CDATA[Cso]]></category>
       <category><![CDATA[Protocolo Amarelinha]]></category>
       <category><![CDATA[Cinco Atos]]></category>
@@ -807,6 +834,7 @@
       <category><![CDATA[Javafx]]></category>
       <category><![CDATA[Sqlite]]></category>
       <category><![CDATA[Oficina]]></category>
+      <category><![CDATA[Logística]]></category>
       <enclosure url="https://retro.caracore.com.br/articles/assets/img/2026_11_14_article_108_01.png" length="1799005" type="image/png" />
       <media:content url="https://retro.caracore.com.br/articles/assets/img/2026_11_14_article_108_01.png" medium="image" type="image/png" width="1024" height="1024">
         <media:thumbnail url="https://retro.caracore.com.br/articles/assets/img/2026_11_14_article_108_01.png" width="1024" height="1024" />
@@ -817,7 +845,7 @@
       <title><![CDATA[Epílogo: O Acerto de Contas]]></title>
       <link>https://retro.caracore.com.br/articles/2026_11_07_article_107.html</link>
       <guid isPermaLink="true">https://retro.caracore.com.br/articles/2026_11_07_article_107.html</guid>
-      <description><![CDATA[O portfólio Cara Core visto com transparência: PDV, Ink, Circuito, ETE/Minerador, Área 51/Reino OIDC, Hub e CSO em seus escopos reais Este artigo de Christian Mulato contextualiza Epílogo: O Acerto de Contas, relacionando tecnologia, engenharia e dec]]></description>
+      <description><![CDATA[O balanço honesto do ecossistema Cara Core: separar produto de metáfora, alinhar cada oficina técnica ao seu escopo real e consolidar a confiança de quem constrói em solo.]]></description>
       <dc:creator><![CDATA[Christian Mulato]]></dc:creator>
       <pubDate>Sat, 07 Nov 2026 12:00:00 +0000</pubDate>
       <category><![CDATA[PDV]]></category>
@@ -832,6 +860,8 @@
       <category><![CDATA[Reino Oidc]]></category>
       <category><![CDATA[Produtos]]></category>
       <category><![CDATA[Oficinas]]></category>
+      <category><![CDATA[Transparência]]></category>
+      <category><![CDATA[Roadmap]]></category>
       <enclosure url="https://retro.caracore.com.br/articles/assets/img/2026_11_07_article_107_01.png" length="1674589" type="image/png" />
       <media:content url="https://retro.caracore.com.br/articles/assets/img/2026_11_07_article_107_01.png" medium="image" type="image/png" width="1024" height="1024">
         <media:thumbnail url="https://retro.caracore.com.br/articles/assets/img/2026_11_07_article_107_01.png" width="1024" height="1024" />
