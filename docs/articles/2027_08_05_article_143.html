@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="icon" type="image/png" href="assets/img/logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Uma reflexão atemporal sobre a virada histórica da linha 3.2.12 para o CaraCore PDV v4: soberania de dados na borda física, recálculo tributário de IBS/CBS em tempo real e a disciplina de software honesto que resiste ao teste do tempo.">
+    <meta name="keywords" content="CaraCore PDV, ponto de venda, varejo, Java 25, SQLite WAL, HTML-First, HTMX, Qute, Reforma Tributária, IBS CBS, soberania de dados, engenharia de software, software honesto, Sonda de Promessas, offline-first">
+    <meta name="author" content="Christian Mulato">
+    <meta property="og:title" content="A Passagem do Bastão: O que o 8 de Novembro Ensinou à Engenharia do CaraCore PDV">
+    <meta property="og:description" content="Uma reflexão atemporal sobre a virada histórica da linha 3.2.12 para o CaraCore PDV v4: soberania de dados na borda física, recálculo tributário de IBS/CBS em tempo real e a disciplina de software honesto que resiste ao teste do tempo.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://retro.caracore.com.br/articles/2027_08_05_article_143.html">
+    <meta property="og:image" content="https://retro.caracore.com.br/articles/assets/img/2027_08_05_article_143_01.png">
+    <meta property="og:image:width" content="1920">
+    <meta property="og:image:height" content="1080">
+    <meta property="og:image:alt" content="Estação de caixa de varejo com monitor exibindo interface sóbria de vendas e dois blocos conceituais simbolizando a transição da linha 3.2.12 para a arquitetura v4 soberana">
+    <meta property="og:site_name" content="Artigos Retrô — Cara Core Informática">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="A Passagem do Bastão: O que o 8 de Novembro Ensinou à Engenharia do CaraCore PDV">
+    <meta name="twitter:description" content="Uma reflexão atemporal sobre a virada histórica da linha 3.2.12 para o CaraCore PDV v4: soberania de dados na borda física, recálculo tributário de IBS/CBS em tempo real e a disciplina de software honesto que resiste ao teste do tempo.">
+    <meta name="twitter:image" content="https://retro.caracore.com.br/articles/assets/img/2027_08_05_article_143_01.png">
+    <link rel="canonical" href="https://retro.caracore.com.br/articles/2027_08_05_article_143.html">
+    <meta property="article:published_time" content="2027-08-05">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "A Passagem do Bastão: O que o 8 de Novembro Ensinou à Engenharia do CaraCore PDV",
+      "description": "Uma reflexão atemporal sobre a virada histórica da linha 3.2.12 para o CaraCore PDV v4: soberania de dados na borda física, recálculo tributário de IBS/CBS em tempo real e a disciplina de software honesto que resiste ao teste do tempo.",
+      "image": "https://retro.caracore.com.br/articles/assets/img/2027_08_05_article_143_01.png",
+      "datePublished": "2027-08-05",
+      "author": {
+        "@type": "Person",
+        "name": "Christian Mulato"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Cara Core Informática"
+      },
+      "mainEntityOfPage": "https://retro.caracore.com.br/articles/2027_08_05_article_143.html"
+    }
+    </script>
+    <title>A Passagem do Bastão: O que o 8 de Novembro Ensinou ao CaraCore PDV — Cara Core</title>
+    <link rel="stylesheet" href="assets/css/articles.css">
+    <link rel="stylesheet" href="assets/css/temporada-i.css">
+</head>
+<body>
+    <main class="container">
+        <a class="back-link" href="../index.html">&larr; Voltar para publicações</a>
+        <picture class="article-hero">
+            <source type="image/webp" media="(max-width: 680px)" srcset="assets/img/2027_08_05_article_143_01_720.webp">
+            <source type="image/webp" srcset="assets/img/2027_08_05_article_143_01_1600.webp">
+            <img src="assets/img/2027_08_05_article_143_01.png" alt="Estação de caixa de varejo com monitor exibindo interface sóbria de vendas e dois blocos conceituais simbolizando a transição da linha 3.2.12 para a arquitetura v4 soberana" />
+        </picture>
+        <h1>A Passagem do Bastão: O que o 8 de Novembro Ensinou à Engenharia do CaraCore PDV</h1>
+        <div class="linkedin-box" style="margin-bottom:1.5rem;display:flex;align-items:center;">
+            <img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%;max-width:40px;margin-right:10px;">
+            <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Christian Mulato · Cara Core Informática</a>
+            <span style="margin-left:1.5rem;">5 de agosto de 2027</span>
+        </div>
+        <div class="note"><strong>Tempo estimado de leitura:</strong> ~9 minutos</div>
+        <div class="quote-box"><strong>A ideia central:</strong> na engenharia de software corporativo de solo real, o valor de um sistema não se mede pelo ruído do lançamento, mas pela solenidade com que uma versão honrada passa o bastão para a próxima. O marco de 8 de novembro de 2026 no CaraCore PDV provou que soberania de dados, migração sem perdas e código que audita o próprio discurso resistem incólumes à passagem dos anos.</div>
+        <div class="cordel-box">
+            <strong>Roteiro em cordel:</strong>
+            <p>O tempo corre veloz no relógio da estação,<br>
+            o comércio pede ordem, certeza e precisão.<br>
+            A linha três descansou com seu dever cumprido,<br>
+            nenhum centavo de venda no caminho foi perdido.<br>
+            Entrou a quatro em solo, serena e soberana,<br>
+            gravando no arquivo local a lida da semana.<br>
+            Quem bipa o pão no balcão não quer saber de ilusão:<br>
+            quer código que não trave e honre o chão do sertão.</p>
+        </div>
+
+        <h2>O peso de uma data gravada em pedra</h2>
+        <p>No desenvolvimento de sistemas voltados ao varejo de balcão, cronogramas frequentemente oscilam entre a promessa comercial vazia e o adiamento indefinido. Quando cravamos em nossa governança que o dia <strong>8 de novembro de 2026</strong> marcaria simultaneamente o encerramento da manutenção oficial da série histórica <strong>v3.2.12-Free</strong> e a entrada em solo do <strong>CaraCore PDV v4.0.0 (General Availability)</strong>, sabíamos que aquela data não aceitaria concessões. Não era um anúncio de intenções; era um compromisso de custódia com milhares de postos de trabalho espalhados pelos 5.500 municípios brasileiros.</p>
+        <p>Olhando hoje em retrospectiva atemporal, aquele dia não simbolizou apenas a substituição de um instalador por outro. Ele consagrou uma filosofia de engenharia que recusa os modismos efêmeros da tecnologia: <em>a certeza de que o caixa de um pequeno comércio deve ser um bastião de soberania operacional, imune à instabilidade de conexões externas e leal à integridade absoluta do dado gravado em disco</em>.</p>
+
+        <h2>A despedida honrosa da v3.2.12 e a regra de ouro da migração</h2>
+        <p>Sistemas maduros não devem ser abandonados às pressas, nem empurrados para a obsolescência forçada. A versão 3.2.12 cumpriu com bravura o seu papel: entregou estabilidade a milhares de comerciantes que precisavam de um controle de vendas honesto, sem mensalidades abusivas e sem amarras contratuais. Mas todo ciclo de engenharia chega ao ponto em que manter código legado acumulado torna-se um desserviço à segurança do usuário.</p>
+        <p>A transição de 8 de novembro obedeceu ao que chamamos na Cara Core de <strong>Regra de Ouro da Continuidade</strong>: <em>nenhum lojista fica para trás e nenhuma venda passada é violada</em>. O motor de migração da v4.0.0 foi calibrado para ler a base de dados histórica (migrações 047 até 052) e promover o esquema silenciosamente para a nova estrutura, sem exigir conhecimentos técnicos do operador. O lojista que abriu a v4 pela primeira vez encontrou seu saldo, seus clientes e cada item de estoque exatamente onde deveriam estar. Respeitar o passado do comerciante é o primeiro mandamento de quem constrói software para durar décadas.</p>
+
+        <picture>
+            <source type="image/webp" media="(max-width: 680px)" srcset="assets/img/2027_08_05_article_143_02_720.webp">
+            <source type="image/webp" srcset="assets/img/2027_08_05_article_143_02_1600.webp">
+            <img src="assets/img/2027_08_05_article_143_02.png" alt="Balcão de comércio com tela de ponto de venda e cubos conceituais simbolizando a harmonia entre o legado histórico e a inovação segura" />
+        </picture>
+
+        <h2>Os alicerces da Borda Soberana na v4</h2>
+        <p>O que fez da v4.0.0 um salto arquitetural irrevogável foi a consolidação de escolhas técnicas que hoje parecem óbvias, mas que exigiram imensa coragem contra o consenso raso da indústria:</p>
+        <ul>
+            <li><strong>Java 25 embutido e empacotamento autocontido:</strong> Entregar um runtime de 176 MB que não depende de Java pré-instalado na máquina, de permissões de administrador complexas ou de configurações obscuras de variáveis de ambiente. Extrair e rodar.</li>
+            <li><strong>SQLite local em modo WAL (Write-Ahead Logging):</strong> Em vez de submeter o caixa a bancos relacionais pesados que consomem memória desnecessária ou forçar chamadas de rede para a nuvem a cada bip do scanner, os dados repousam no arquivo local <code>./data/caracore-pdv.db</code>. Concorrência atômica, leituras ultrarrápidas e gravações blindadas contra quedas repentinas de energia.</li>
+            <li><strong>A vitória do HTML-First com Launcher no Edge:</strong> Rejeitamos o caminho fácil de empacotar um navegador inteiro com frameworks pesados de JavaScript que transformam um simples fechamento de caixa em lentidão. O launcher no Edge nativo consome fração mínima de recursos e entrega resposta instantânea de interface.</li>
+        </ul>
+
+        <h2>A antecipação da Reforma Tributária: IBS e CBS no balcão</h2>
+        <p>Enquanto grande parte do ecossistema de software fiscal brasileiro ainda debatia em comissões teóricas como modelar a transição tributária, o CaraCore PDV v4 entrou em solo com a projeção de <strong>IBS e CBS calculada dinamicamente item a item</strong>. E fez isso sem impor burocracia desnecessária ao operador de caixa.</p>
+        <p>A cada produto registrado pelo leitor de código de barras, um fragmento leve gerado pelo template Qute/HTMX recalcula em microssegundos os subtotais e a carga estimada dos novos tributos no rodapé da venda. Não há recarregamento de página, não há atraso perceptual entre o bipe e a exibição do total. O comerciante de bairro passou a visualizar o futuro tributário do país em seu próprio balcão, com transparência e clareza absoluta, antes mesmo da vigência obrigatória.</p>
+
+        <div class="insight">
+            <strong>As quatro lições atemporais da virada de 8 de Novembro</strong>
+            <ol>
+                <li><strong>O teste que audita a promessa (A Sonda de Promessas):</strong> Nunca confie apenas na palavra da equipe de produto. O script <code>sonda_promessas_v4.py</code> mediu 21 alegações do manual e da vitrine diretamente contra os binários compilados (20 aprovadas, 0 reprovadas), eliminando discrepâncias antes do primeiro download público.</li>
+                <li><strong>O fim do falso teste sintético:</strong> Abandonar suítes que rodam sobre bancos voláteis em memória (<code>drop-and-create</code>). Quem mascara o schema real esconde bugs de tipagem (como datas salvas como INTEGER em colunas TEXT) que só explodiriam no computador do cliente.</li>
+                <li><strong>A cerimônia criptográfica da custódia:</strong> Pacotes de produção devem carregar assinatura dupla em chaves Ed25519 independentes (<code>pdv-release-2026-a</code> e <code>pdv-release-2026-b</code>), com chaves privadas decifradas unicamente em memória e integridade verificada antes da distribuição.</li>
+                <li><strong>Sobriedade diante do pânico de segurança:</strong> Rejeitar slogans de marketing que prometem "zero vulnerabilidades". Fazer triagem honesta de dependências (OSV) byte a byte, tratando riscos reais sem criar falsas ilusões.</li>
+            </ol>
+        </div>
+
+        <h2>O chão de fábrica e o valor do software honesto</h2>
+        <p>O que nos ensinou o dia 8 de novembro de 2026, e que permanece tão vivo e atual em agosto de 2027, é que a engenharia de software ganha dignidade quando se recusa a ser efêmera. Em um tempo saturado de interfaces descartáveis e serviços em nuvem que cobram pedágio a cada respiração do pequeno empreendedor, construir uma ferramenta de caixa sólida, silenciosa e autossuficiente é um ato de respeito ao trabalho alheio.</p>
+        <p>A linha v3.2.12 cumpriu sua jornada com honra; a v4.0.0 assumiu o posto com o vigor da nova arquitetura e abriu caminho para os passos seguintes de integração responsável e desacoplada. No final das contas, quando as luzes da loja se apagam e o comerciante fecha o caixa no fim do expediente, o que importa não é a linguagem da moda ou o jargão do momento: é a certeza de que o dinheiro bateu, o relatório foi emitido e os dados permanecem em segurança sob o seu próprio teto.</p>
+
+        <hr>
+        <h2>Hashtags</h2>
+        <div class="hash-box">#CaraCore #CaraCorePDV #EngenhariaDeSoftware #SoberaniaDeDados #OfflineFirst #Java25 #SQLite #ReformaTributária #IBS #CBS #SoftwareHonesto #VarejoIndependente #ArquiteturaDeSistemas</div>
+
+        <hr>
+        <h3>Contato e Links</h3>
+        <ul>
+            <li><strong>Loja do CaraCore PDV:</strong> <a href="https://pdv.caracore.com.br" target="_blank" rel="noopener">pdv.caracore.com.br</a></li>
+            <li><strong>Empresa:</strong> <a href="https://caracore.com.br/" target="_blank" rel="noopener">Cara Core Informática</a></li>
+            <li><strong>E-mail:</strong> suporte@caracore.com.br</li>
+            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
+        </ul>
+
+        <div style="background:linear-gradient(135deg, #0b1f3a 0%, #1e3a5f 55%, #10b981 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
+            <strong>No balcão de varejo, a estabilidade é a forma mais alta de respeito.</strong><br>
+            <span style="font-size:.85rem;">Conheça a arquitetura offline-first do CaraCore PDV e opere com independência total.</span><br>
+            <a href="https://pdv.caracore.com.br" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Conhecer o CaraCore PDV v4</a>
+        </div>
+
+        <p style="text-align:center; font-size:.85rem; color:#6b7280; margin-top:3rem;">
+            <em>Artigo publicado em 5 de agosto de 2027</em><br>
+            © 2027 Cara Core Informática. Todos os direitos reservados.
+        </p>
+    </main>
+</body>
+</html>
+

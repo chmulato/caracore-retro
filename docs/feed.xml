@@ -8,7 +8,7 @@
     <copyright><![CDATA[© Cara Core Informática. Todos os direitos reservados.]]></copyright>
     <managingEditor>suporte@caracore.com.br (Christian Mulato)</managingEditor>
     <webMaster>suporte@caracore.com.br (Christian Mulato)</webMaster>
-    <lastBuildDate>Wed, 28 Jul 2027 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 05 Aug 2027 12:00:00 +0000</lastBuildDate>
     <category><![CDATA[Tecnologia]]></category>
     <docs>https://www.rssboard.org/rss-specification</docs>
     <generator>Cara Core RSS generator</generator>
@@ -18,6 +18,32 @@
       <title><![CDATA[Artigos Retrô — Cara Core Informática]]></title>
       <link>https://retro.caracore.com.br/</link>
     </image>
+
+    <item>
+      <title><![CDATA[A Passagem do Bastão: O que o 8 de Novembro Ensinou à Engenharia do CaraCore PDV]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_08_05_article_143.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_08_05_article_143.html</guid>
+      <description><![CDATA[Uma reflexão atemporal sobre a virada histórica da linha 3.2.12 para o CaraCore PDV v4: soberania de dados na borda física, recálculo tributário de IBS/CBS em tempo real e a disciplina de software honesto que resiste ao teste do tempo.]]></description>
+      <dc:creator><![CDATA[Christian Mulato]]></dc:creator>
+      <pubDate>Thu, 05 Aug 2027 12:00:00 +0000</pubDate>
+      <category><![CDATA[PDV]]></category>
+      <category><![CDATA[Caracore Pdv]]></category>
+      <category><![CDATA[Ponto De Venda]]></category>
+      <category><![CDATA[Varejo]]></category>
+      <category><![CDATA[Java 25]]></category>
+      <category><![CDATA[Sqlite Wal]]></category>
+      <category><![CDATA[Html-First]]></category>
+      <category><![CDATA[Reforma Tributaria]]></category>
+      <category><![CDATA[Ibs Cbs]]></category>
+      <category><![CDATA[Soberania De Dados]]></category>
+      <category><![CDATA[Engenharia De Software]]></category>
+      <category><![CDATA[Software Honesto]]></category>
+      <category><![CDATA[Offline-First]]></category>
+      <enclosure url="https://retro.caracore.com.br/articles/assets/img/2027_08_05_article_143_01.png" length="3014139" type="image/png" />
+      <media:content url="https://retro.caracore.com.br/articles/assets/img/2027_08_05_article_143_01.png" medium="image" type="image/png" width="2752" height="1536">
+        <media:thumbnail url="https://retro.caracore.com.br/articles/assets/img/2027_08_05_article_143_01.png" width="2752" height="1536" />
+      </media:content>
+    </item>
 
     <item>
       <title><![CDATA[A Ilusão da Velocidade: O Desafio do DeepSeek Flash v4 e a Engenharia Real do CaraCore Hub]]></title>
