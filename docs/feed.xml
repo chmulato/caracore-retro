@@ -8,7 +8,7 @@
     <copyright><![CDATA[© Cara Core Informática. Todos os direitos reservados.]]></copyright>
     <managingEditor>suporte@caracore.com.br (Christian Mulato)</managingEditor>
     <webMaster>suporte@caracore.com.br (Christian Mulato)</webMaster>
-    <lastBuildDate>Thu, 05 Aug 2027 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Aug 2027 12:00:00 +0000</lastBuildDate>
     <category><![CDATA[Tecnologia]]></category>
     <docs>https://www.rssboard.org/rss-specification</docs>
     <generator>Cara Core RSS generator</generator>
@@ -18,6 +18,33 @@
       <title><![CDATA[Artigos Retrô — Cara Core Informática]]></title>
       <link>https://retro.caracore.com.br/</link>
     </image>
+
+    <item>
+      <title><![CDATA[O Software Camaleão: A Metamorfose do Ink Agenda e a Soberania da Hora Marcada]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_08_12_article_144.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_08_12_article_144.html</guid>
+      <description><![CDATA[Como uma ferramenta desenhada para estúdios de tatuagem desvendou a física comum dos atendimentos de alto valor, expandiu para consultórios e salões de luxo sem duplicar código, e se consolidou como o quarto pilar do ecossistema Cara Core.]]></description>
+      <dc:creator><![CDATA[Christian Mulato]]></dc:creator>
+      <pubDate>Thu, 12 Aug 2027 12:00:00 +0000</pubDate>
+      <category><![CDATA[Tecnologia]]></category>
+      <category><![CDATA[Ink Agenda]]></category>
+      <category><![CDATA[Software Camaleao]]></category>
+      <category><![CDATA[Produto Metamorfico]]></category>
+      <category><![CDATA[Java25]]></category>
+      <category><![CDATA[Javafx]]></category>
+      <category><![CDATA[Sqlite Wal]]></category>
+      <category><![CDATA[Agendamento Offline]]></category>
+      <category><![CDATA[Soberania De Dados]]></category>
+      <category><![CDATA[Dados Locais]]></category>
+      <category><![CDATA[Estudio De Tatuagem]]></category>
+      <category><![CDATA[Odontologia]]></category>
+      <category><![CDATA[Estetica De Luxo]]></category>
+      <category><![CDATA[Software Honesto]]></category>
+      <enclosure url="https://retro.caracore.com.br/articles/assets/img/2027_08_12_article_144_01.png" length="2435671" type="image/png" />
+      <media:content url="https://retro.caracore.com.br/articles/assets/img/2027_08_12_article_144_01.png" medium="image" type="image/png" width="1920" height="1080">
+        <media:thumbnail url="https://retro.caracore.com.br/articles/assets/img/2027_08_12_article_144_01.png" width="1920" height="1080" />
+      </media:content>
+    </item>
 
     <item>
       <title><![CDATA[A Passagem do Bastão: O que o 8 de Novembro Ensinou à Engenharia do CaraCore PDV]]></title>

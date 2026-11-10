@@ -39,11 +39,11 @@ Use a barra de busca em `docs/index.html` para filtrar por tema, tecnologia, pro
 
 ## 📊 Conteúdo
 
-**Total**: 143 artigos (01 a 143)
+**Total**: 144 artigos (01 a 144)
 - **Período**: Fevereiro 2024 — Agosto 2027
 - **Calendário público**: artigos futuros permanecem visíveis no índice e no RSS, conforme o planejamento editorial
 - **Cobertura**: Publicações regulares semanais
-- **Divisão temporal**: 32 artigos em 2024, 33 em 2025, 51 em 2026, 27 em 2027
+- **Divisão temporal**: 32 artigos em 2024, 33 em 2025, 51 em 2026, 28 em 2027
 
 ## 🧭 Ciclo Editorial 2026-2027
 
