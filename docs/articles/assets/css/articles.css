@@ -403,13 +403,17 @@ code:not(pre code)::selection { background: #334155; color: #f8fafc; }
     word-break: break-all !important;
 }
 
-/* Mermaid Fallback Contrast Styling */
+/* Mermaid Fallback Contrast Styling (texto cru enquanto o diagrama não renderiza) */
 .mermaid {
     color: #e2e8f0 !important;
     white-space: pre;
     font-family: 'Fira Mono', 'Consolas', monospace;
     font-size: 0.85rem;
     overflow-x: auto;
+}
+/* Cartões claros: 61 e 63 usam .mermaid-wrap branco; os demais usam fundo #1a1d20 */
+.mermaid-wrap .mermaid {
+    color: #334155 !important;
 }
 
 /* Enforce 16:9 aspect-ratio on all cover images ending with _01.png */

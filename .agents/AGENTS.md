@@ -26,11 +26,12 @@ Este arquivo serve como o manual de alinhamento e contexto para qualquer Intelig
 O `caracore-retro` é o portal histórico e acervo de artigos estratégicos e técnicos da **Cara Core Informática**. O repositório abriga os textos publicados no LinkedIn, organizados por ano em arquivos HTML individuais em `docs/articles/`. 
 
 ## 🤖 Identidade Visual do Mascote Oficial
-Nosso mascote técnico que conduz os leitores em boxes explicativos deve seguir estritamente o seguinte visual:
-- **Estilo:** Pixel art (estilo retrô 16-bit).
-- **Cores principais:** Laranja (corpo/cabelo espetado) e Azul (macacão/vestimenta).
-- **Detalhes característicos:** Cabelo espetado/arrepiado, sorriso largo e simpático, e uma **engrenagem** estampada no peito do macacão azul.
-- Qualquer prompt de geração de imagem para o mascote deve incorporar esta descrição para manter a consistência da identidade de marca.
+O mascote oficial da Cara Core é o **Gaspar**, do repositório `caracore-mascote`: um fantasminha verde-limão que flutua e conduz os leitores nos boxes explicativos. Nas ilustrações do blog ele aparece em **pixel art retrô 16-bit**, para manter o estilo da série.
+- **Estilo:** pixel art retrô (16-bit), com pixels nítidos e paleta limitada.
+- **Corpo:** fantasminha verde-limão, contorno arredondado, sem pernas e com a base ondulada.
+- **Rosto:** olhos grandes azul-escuros com brilho, sobrancelhas finas e sorriso pequeno e simpático.
+- **Detalhes:** braços curtos e arredondados; no material 3D oficial há brilho suave e leve translucidez.
+- A referência canônica do personagem é `caracore-mascote/assets/gaspar.png`. Qualquer prompt de geração de imagem deve partir dela e adaptar **apenas o estilo** (pixel art), nunca outro personagem ou outra paleta.
 
 ## ✍️ Padrões de Formatação e Escrita nos Artigos
 Ao modificar ou criar novos artigos HTML, siga estas diretrizes de formatação:
