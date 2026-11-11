@@ -780,6 +780,19 @@ body.sala-login {
     max-width: 860px;
     font-style: italic;
 }
+.retro-cta-card ul {
+    margin: 0 auto;
+    max-width: 860px;
+    color: #334155;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+.retro-cta-card li {
+    margin: 0.4rem 0;
+}
+.retro-cta-card li::marker {
+    color: var(--brand-soberania);
+}
 
 /* Years Blocks Styling */
 .sala-page .year-group {
