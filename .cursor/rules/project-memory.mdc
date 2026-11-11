@@ -141,6 +141,16 @@ alwaysApply: true
 - Pipeline GitHub Actions em `.github/workflows/deploy.yml`: o job `deploy` só roda se o job `validate` passar integralmente.
 - Agente compartilhado de homologação em `.github/agents/qa-homologacao.agent.md` para inspeção visual, responsiva e de acessibilidade via navegador.
 
+## Integração LinkedIn — publicação automática (registrado em 10/11/2026)
+
+- **App LinkedIn:** «Artigos Retrô» · escopo `w_member_social` (60 dias de validade) + `openid`, `profile`, `email`
+- **Secrets do repo:** `LINKEDIN_ACCESS_TOKEN` + `LINKEDIN_AUTHOR_URN` = `urn:li:person:T1Qv_OE1K3` (o `sub` é pairwise por app — nunca reutilizar URN de outro app)
+- **Token atual:** gerado em **10/11/2026**, expira **~09/01/2027** → renovar até **05/01/2027** (gerador: https://www.linkedin.com/developers/tools/oauth/token-generator, marcar os três escopos; lembrete `.ics` em Downloads)
+- **Fluxo:** `deploy.yml` (validate → deploy → publish-linkedin). Script `tools/publish_linkedin.py`; modos: diff do push (padrão), `--latest`, `--article N` — os dois últimos via `workflow_dispatch` com input `article` (disparos sequenciais: o grupo de concorrência `pages` cancela simultâneos)
+- **Regras da API:** header `LinkedIn-Version: 202601` é obrigatório; thumbnail da capa sobe pela Images API (`initializeUpload` → PUT) a partir do `og:image` — LinkedIn não faz scraping; **nunca** colocar URL solta no commentary (o markdown corrompe `_`); tokens só existem como secret — nunca em chat/argv/arquivo
+- **Privacidade:** página `docs/privacidade.html` (URL a manter cadastrada nas Settings do app LinkedIn)
+- **Status:** posts 143 e 144 publicados com thumbnail em 10/11/2026 (`urn:li:share:7526091630282596352`, `urn:li:share:7526092112099082241`); validação ponta a ponta OK — dry-run verde, 904 checks do `validate_site.py`
+
 ## Convenções
 
 - Discurso PDV: dois desktops, mesma promessa Bunker; evitar “PDV v3” sozinho e “substitui Java”
