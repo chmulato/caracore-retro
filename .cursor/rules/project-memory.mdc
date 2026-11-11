@@ -149,7 +149,7 @@ alwaysApply: true
 - **Fluxo:** `deploy.yml` (validate → deploy → publish-linkedin). Script `tools/publish_linkedin.py`; modos: diff do push (padrão), `--latest`, `--article N` — os dois últimos via `workflow_dispatch` com input `article` (disparos sequenciais: o grupo de concorrência `pages` cancela simultâneos)
 - **Regras da API:** header `LinkedIn-Version: 202601` é obrigatório; thumbnail da capa sobe pela Images API (`initializeUpload` → PUT) a partir do `og:image` — LinkedIn não faz scraping; **nunca** colocar URL solta no commentary (o markdown corrompe `_`); tokens só existem como secret — nunca em chat/argv/arquivo
 - **Privacidade:** página `docs/privacidade.html` (URL a manter cadastrada nas Settings do app LinkedIn)
-- **Status:** posts 143 e 144 publicados com thumbnail em 10/11/2026 (`urn:li:share:7526091630282596352`, `urn:li:share:7526092112099082241`); validação ponta a ponta OK — dry-run verde, 904 checks do `validate_site.py`
+- **Status:** posts 143 e 144 publicados com thumbnail em 10/11/2026 (`urn:li:share:7526091630282596352`, `urn:li:share:7526092112099082241`) e **imagem confirmada no card** pela atividade do perfil no mesmo dia; validação ponta a ponta OK — dry-run verde, 904 checks do `validate_site.py`
 
 ## Convenções
 
