@@ -37,6 +37,7 @@ DOCS = ROOT / "docs"
 ARTICLES = DOCS / "articles"
 SITE = "https://retro.caracore.com.br"
 API = "https://api.linkedin.com/rest/posts"
+IMAGES_API = "https://api.linkedin.com/rest/images?action=initializeUpload"
 COMMENTARY_LIMIT = 3000
 ARTICLE_RE = re.compile(r"^docs/articles/\d{4}_\d{2}_\d{2}_article_\d+\.html$")
 TAG_RE = re.compile(r"<meta\b[^>]*>", re.I | re.S)
@@ -48,6 +49,7 @@ class Share:
     title: str
     description: str
     url: str
+    image_url: str
     hashtags: list[str]
     commentary: str
 
@@ -123,10 +125,11 @@ def parse_article(path: Path) -> Share:
         description = meta_content(source, "description", "name")
     if not url:
         url = f"{SITE}/articles/{path.name}"
+    image_url = meta_content(source, "og:image", "property")
     keywords = meta_content(source, "keywords", "name")
     hashtags = hashtags_from_keywords(keywords)
     commentary = build_commentary(title, description, hashtags)
-    return Share(title=title, description=description, url=url,
+    return Share(title=title, description=description, url=url, image_url=image_url,
                  hashtags=hashtags, commentary=commentary)
 
 
@@ -148,7 +151,64 @@ def latest_article() -> Path | None:
     return candidates[-1] if candidates else None
 
 
-def post_article(share: Share, token: str, author_urn: str) -> tuple[bool, str]:
+def upload_thumbnail(image_url: str, token: str, author_urn: str) -> tuple[str | None, str]:
+    """Sobe a imagem do artigo para o LinkedIn e devolve o image URN.
+
+    O LinkedIn nao faz scraping de URL: o thumbnail do card de artigo precisa
+    ser um urn:li:image: obtido pelo fluxo em duas etapas da Images API
+    (initializeUpload -> PUT dos bytes). Falha devolve (None, motivo) — o post
+    segue sem thumbnail.
+    """
+    try:
+        with urllib.request.urlopen(image_url, timeout=30) as response:
+            image_bytes = response.read()
+    except (urllib.error.URLError, OSError) as error:
+        return None, f"download da imagem falhou: {error}"
+
+    init_request = urllib.request.Request(
+        IMAGES_API,
+        data=json.dumps(
+            {"initializeUploadRequest": {"owner": author_urn}}
+        ).encode("utf-8"),
+        method="POST",
+        headers={
+            "Authorization": f"Bearer {token}",
+            "Content-Type": "application/json",
+            "X-Restli-Protocol-Version": "2.0.0",
+            "LinkedIn-Version": "202601",
+        },
+    )
+    try:
+        with urllib.request.urlopen(init_request, timeout=30) as response:
+            init = json.loads(response.read().decode("utf-8"))["value"]
+        upload_request = urllib.request.Request(
+            init["uploadUrl"],
+            data=image_bytes,
+            method="PUT",
+            headers={
+                "Authorization": f"Bearer {token}",
+                "Content-Type": "application/octet-stream",
+            },
+        )
+        with urllib.request.urlopen(upload_request, timeout=60):
+            pass
+        return init["image"], ""
+    except urllib.error.HTTPError as error:
+        detail = error.read().decode("utf-8", "replace")[:200]
+        return None, f"upload da imagem falhou: HTTP {error.code}: {detail}"
+    except urllib.error.URLError as error:
+        return None, f"upload da imagem falhou: {error.reason}"
+
+
+def post_article(share: Share, token: str, author_urn: str,
+                 image_urn: str | None = None) -> tuple[bool, str]:
+    article = {
+        "source": share.url,
+        "title": share.title,
+        "description": share.description,
+    }
+    if image_urn:
+        article["thumbnail"] = image_urn
     payload = {
         "author": author_urn,
         "commentary": share.commentary,
@@ -158,13 +218,7 @@ def post_article(share: Share, token: str, author_urn: str) -> tuple[bool, str]:
             "targetEntities": [],
             "thirdPartyDistributionChannels": [],
         },
-        "content": {
-            "article": {
-                "source": share.url,
-                "title": share.title,
-                "description": share.description,
-            }
-        },
+        "content": {"article": article},
         "lifecycleState": "PUBLISHED",
         "isReshareDisabledByAuthor": False,
     }
@@ -230,15 +284,22 @@ def main() -> int:
             share = parse_article(path)
             print(f"\n=== {path.name} ===")
             print(share.commentary)
+            print(f"[thumbnail] {share.image_url or '(sem og:image)'}")
         print(f"\n{len(paths)} postagem(ns) simulada(s).")
         return 0
 
     failures = 0
     for path in paths:
         share = parse_article(path)
-        ok, detail = post_article(share, token, author_urn)
+        image_urn = None
+        if share.image_url:
+            image_urn, image_detail = upload_thumbnail(share.image_url, token, author_urn)
+            if not image_urn:
+                print(f"AVISO: {share.url} segue sem thumbnail — {image_detail}")
+        ok, detail = post_article(share, token, author_urn, image_urn)
         status = "PUBLICADO" if ok else "FALHOU"
-        print(f"{status}: {share.url} {detail}".rstrip())
+        suffix = " [com thumbnail]" if ok and image_urn else ""
+        print(f"{status}{suffix}: {share.url} {detail}".rstrip())
         if not ok:
             failures += 1
     return 1 if failures else 0
