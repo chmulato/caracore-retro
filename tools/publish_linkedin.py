@@ -40,6 +40,7 @@ API = "https://api.linkedin.com/rest/posts"
 COMMENTARY_LIMIT = 3000
 ARTICLE_RE = re.compile(r"^docs/articles/\d{4}_\d{2}_\d{2}_article_\d+\.html$")
 TAG_RE = re.compile(r"<meta\b[^>]*>", re.I | re.S)
+LINKEDIN_SPECIAL_CHARS = re.compile(r"([\\*_~()\[\]<>{}@|])")
 
 
 @dataclass
@@ -77,17 +78,40 @@ def hashtags_from_keywords(keywords: str, limit: int = 3) -> list[str]:
     return result
 
 
-def build_commentary(title: str, description: str, url: str, hashtags: list[str]) -> str:
-    tail = " ".join(hashtags)
-    body = "\n".join(
-        [title, "", description, "", url] + ([""] if tail else []) + ([tail] if tail else [])
-    )
+def escape_linkedin_text(text: str) -> str:
+    """Escapa caracteres reservados do 'Little Text Format' do LinkedIn.
+
+    Sem isso, sequencias como par de "_" sao interpretadas como marcacao
+    (ex.: italico) e o texto sai corrompido.
+    """
+    return LINKEDIN_SPECIAL_CHARS.sub(r"\\\1", text)
+
+
+def build_commentary(title: str, description: str, hashtags: list[str]) -> str:
+    """Monta o comentario do post.
+
+    A URL nao entra como texto solto: o card de artigo (content.article.source)
+    ja exibe o link, e URLs com "_" no commentary sao corrompidas pelo parser
+    de marcacao do LinkedIn.
+    """
+    safe_title = escape_linkedin_text(title)
+    safe_tail = " ".join(escape_linkedin_text(tag) for tag in hashtags)
+
+    def assemble(safe_description: str) -> str:
+        return "\n".join(
+            [safe_title, "", safe_description]
+            + ([""] if safe_tail else [])
+            + ([safe_tail] if safe_tail else [])
+        )
+
+    safe_description = escape_linkedin_text(description)
+    body = assemble(safe_description)
     if len(body) <= COMMENTARY_LIMIT:
         return body
-    fixed = len(title) + len(url) + len(tail) + 6
+    fixed = len(safe_title) + len(safe_tail) + 5
     budget = max(80, COMMENTARY_LIMIT - fixed)
-    cut = description[:budget].rsplit(" ", 1)[0].rstrip(",;:") + "…"
-    return build_commentary(title, cut, url, hashtags)
+    cut = safe_description[:budget].rsplit(" ", 1)[0].rstrip(",;:") + "…"
+    return assemble(cut)
 
 
 def parse_article(path: Path) -> Share:
@@ -101,7 +125,7 @@ def parse_article(path: Path) -> Share:
         url = f"{SITE}/articles/{path.name}"
     keywords = meta_content(source, "keywords", "name")
     hashtags = hashtags_from_keywords(keywords)
-    commentary = build_commentary(title, description, url, hashtags)
+    commentary = build_commentary(title, description, hashtags)
     return Share(title=title, description=description, url=url,
                  hashtags=hashtags, commentary=commentary)
 
