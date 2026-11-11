@@ -13,9 +13,10 @@ Sem credenciais roda em DRY-RUN: mostra exatamente o que seria postado e sai 0.
 É assim que a esteira fica verde até os secrets serem cadastrados no GitHub.
 
 Modos:
-  (padrão)   artigos adicionados em HEAD^..HEAD (uso na esteira)
-  --latest   artigo mais recente do acervo (uso manual)
-  --dry-run  força o dry-run mesmo com credenciais
+  (padrão)     artigos adicionados em HEAD^..HEAD (uso na esteira)
+  --latest     artigo mais recente do acervo (uso manual)
+  --article N  artigo número N do acervo (uso manual)
+  --dry-run    força o dry-run mesmo com credenciais
 """
 from __future__ import annotations
 
@@ -174,11 +175,16 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--latest", action="store_true",
                         help="publica o artigo mais recente em vez do diff do push")
+    parser.add_argument("--article", metavar="N",
+                        help="publica o artigo número N em vez do diff do push")
     parser.add_argument("--dry-run", action="store_true",
                         help="força o dry-run mesmo com credenciais")
     args = parser.parse_args()
 
-    if args.latest:
+    if args.article:
+        candidates = sorted(ARTICLES.glob(f"*_article_{args.article}.html"))
+        paths = candidates[:1]
+    elif args.latest:
         article = latest_article()
         paths = [article] if article else []
     else:
