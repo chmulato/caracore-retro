@@ -5,6 +5,11 @@ on:
     branches:
       - master
   workflow_dispatch:
+    inputs:
+      article:
+        description: "Numero do artigo para publicar (latest = mais recente; vazio = diff do push)"
+        required: false
+        default: ""
 
 permissions:
   contents: read
@@ -56,7 +61,7 @@ jobs:
 
   publish-linkedin:
     needs: deploy
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -73,4 +78,10 @@ jobs:
         env:
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
           LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
-        run: python tools/publish_linkedin.py
+          PUBLISH_ARTICLE: ${{ inputs.article }}
+        run: |
+          case "$PUBLISH_ARTICLE" in
+            "") python tools/publish_linkedin.py ;;
+            latest) python tools/publish_linkedin.py --latest ;;
+            *) python tools/publish_linkedin.py --article "$PUBLISH_ARTICLE" ;;
+          esac
