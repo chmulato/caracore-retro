@@ -152,6 +152,7 @@ def post_article(share: Share, token: str, author_urn: str) -> tuple[bool, str]:
             "Authorization": f"Bearer {token}",
             "Content-Type": "application/json",
             "X-Restli-Protocol-Version": "2.0.0",
+            "LinkedIn-Version": "202601",
         },
     )
     try:
