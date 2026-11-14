@@ -30,18 +30,25 @@ import unicodedata
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
+from datetime import date, datetime, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 ARTICLES = DOCS / "articles"
+PUBLISHED_LEDGER_PATH = ROOT / "linkedin_published.json"
 SITE = "https://retro.caracore.com.br"
 API = "https://api.linkedin.com/rest/posts"
 IMAGES_API = "https://api.linkedin.com/rest/images?action=initializeUpload"
 COMMENTARY_LIMIT = 3000
 ARTICLE_RE = re.compile(r"^docs/articles/\d{4}_\d{2}_\d{2}_article_\d+\.html$")
+ARTICLE_NAME_RE = re.compile(r"^(\d{4})_(\d{2})_(\d{2})_article_\d+\.html$")
 TAG_RE = re.compile(r"<meta\b[^>]*>", re.I | re.S)
 LINKEDIN_SPECIAL_CHARS = re.compile(r"([\\*_~()\[\]<>{}@|])")
+SCHEDULE_START = date(2026, 11, 15)
+SCHEDULE_END = date(2026, 12, 31)
+SCHEDULE_TIMEZONE = ZoneInfo("America/Sao_Paulo")
 
 
 @dataclass
@@ -143,7 +150,66 @@ def added_articles() -> list[Path]:
     except (subprocess.CalledProcessError, FileNotFoundError):
         return []
     files = sorted(line.strip() for line in out.splitlines() if line.strip())
-    return [ROOT / f for f in files if ARTICLE_RE.match(f)]
+    return [
+        ROOT / f
+        for f in files
+        if ARTICLE_RE.match(f) and not in_scheduled_window(ROOT / f)
+    ]
+
+
+def article_date(path: Path) -> date | None:
+    match = ARTICLE_NAME_RE.match(path.name)
+    if not match:
+        return None
+    try:
+        return date(*(int(part) for part in match.groups()))
+    except ValueError:
+        return None
+
+
+def in_scheduled_window(path: Path) -> bool:
+    published_on = article_date(path)
+    return published_on is not None and SCHEDULE_START <= published_on <= SCHEDULE_END
+
+
+def scheduled_articles(today: date, directory: Path = ARTICLES) -> list[Path]:
+    if not SCHEDULE_START <= today <= SCHEDULE_END:
+        return []
+    return sorted(
+        path
+        for path in directory.glob("*_article_*.html")
+        if article_date(path) == today
+    )
+
+
+def article_key(path: Path) -> str:
+    return path.relative_to(ROOT).as_posix()
+
+
+def load_published_ledger() -> dict[str, str]:
+    if not PUBLISHED_LEDGER_PATH.exists():
+        return {}
+    try:
+        ledger = json.loads(PUBLISHED_LEDGER_PATH.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as error:
+        raise RuntimeError("linkedin_published.json contem JSON invalido") from error
+    if not isinstance(ledger, dict):
+        raise RuntimeError("linkedin_published.json deve conter um objeto JSON")
+    return ledger
+
+
+def save_published_ledger(ledger: dict[str, str]) -> None:
+    ordered = dict(sorted(ledger.items()))
+    PUBLISHED_LEDGER_PATH.write_text(
+        json.dumps(ordered, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+
+def unpublished_articles(
+    paths: list[Path], ledger: dict[str, str], force: bool = False
+) -> list[Path]:
+    return [path for path in paths if force or article_key(path) not in ledger]
 
 
 def latest_article() -> Path | None:
@@ -252,12 +318,17 @@ def post_article(share: Share, token: str, author_urn: str,
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--latest", action="store_true",
-                        help="publica o artigo mais recente em vez do diff do push")
-    parser.add_argument("--article", metavar="N",
-                        help="publica o artigo número N em vez do diff do push")
+    selection = parser.add_mutually_exclusive_group()
+    selection.add_argument("--latest", action="store_true",
+                           help="publica o artigo mais recente em vez do diff do push")
+    selection.add_argument("--article", metavar="N",
+                           help="publica o artigo número N em vez do diff do push")
+    selection.add_argument("--due-today", action="store_true",
+                           help="seleciona artigos com data editorial de hoje")
     parser.add_argument("--dry-run", action="store_true",
                         help="força o dry-run mesmo com credenciais")
+    parser.add_argument("--force", action="store_true",
+                        help="ignora o ledger e republica os artigos selecionados")
     args = parser.parse_args()
 
     if args.article:
@@ -266,8 +337,19 @@ def main() -> int:
     elif args.latest:
         article = latest_article()
         paths = [article] if article else []
+    elif args.due_today:
+        today = datetime.now(SCHEDULE_TIMEZONE).date()
+        paths = scheduled_articles(today)
+        print(f"Selecionando artigos editoriais de {today.isoformat()}.")
     else:
         paths = added_articles()
+
+    ledger = load_published_ledger()
+    for path in paths:
+        key = article_key(path)
+        if key in ledger and not args.force:
+            print(f"JA PUBLICADO: {path.name} ({ledger[key]})")
+    paths = unpublished_articles(paths, ledger, args.force)
 
     if not paths:
         print("Nenhum artigo novo detectado; nada a publicar.")
@@ -302,6 +384,11 @@ def main() -> int:
         print(f"{status}{suffix}: {share.url} {detail}".rstrip())
         if not ok:
             failures += 1
+        elif not dry_run:
+            ledger[article_key(path)] = datetime.now(timezone.utc).strftime(
+                "%Y-%m-%dT%H:%M:%SZ"
+            )
+            save_published_ledger(ledger)
     return 1 if failures else 0
 
 
