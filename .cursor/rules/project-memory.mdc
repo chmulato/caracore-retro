@@ -39,7 +39,7 @@ alwaysApply: true
 - **Estilo dos artigos:** `assets/css/articles.css` + `temporada-i.css` · `quote-box`, `insight`, `note`
 - **Capa inline no artigo:** `<img ... style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);">`
 - **Prompt IA:** gerar PNG 16:9; exibir inline no frame acima; `og:image`, `twitter:image` e RSS usam o mesmo PNG
-- **Total de artigos:** 139 artigos catalogados (2024–2027; mantendo visíveis artigos do calendário editorial futuro)
+- **Total de artigos:** 146 artigos catalogados (2024–2027; mantendo visíveis artigos do calendário editorial futuro)
 
 ## Categorias Visuais da Revista
 
@@ -49,6 +49,18 @@ alwaysApply: true
 4. **Circuito:** educação técnica, formação profissional, oficinas práticas, lógica, Python.
 5. **Mineração e ETE:** química industrial, processos, tratamento de efluentes, terras raras, Minerador 4.0.
 6. *(Fallback)* **Tecnologia:** engenharia de software geral, ferramentas, infraestrutura.
+
+## Artigos Recentes — Agosto/2027
+
+### Artigo 146 (25/08/2027) — Entre o Balcão e a Portaria
+- **Ficheiro:** `2027_08_25_article_146.html`
+- **Tema:** CaraCore Hub no PUDO Clássico; PUDO Condomínio como proposta em planejamento, ainda não implementada.
+- **Capa:** `2027_08_25_article_146_01.png`
+
+### Artigo 145 (17/08/2027) — Três Ferramentas, Papéis Claros
+- **Ficheiro:** `2027_08_17_article_145.html`
+- **Tema:** Papéis complementares de Gaspar, Ink Agenda e CaraCore PDV, sem sugerir uma integração geral entre os produtos.
+- **Capa:** `2027_08_17_article_145_01.png`
 
 ## Artigos Recentes — Julho/2027
 

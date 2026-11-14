@@ -8,7 +8,7 @@
     <copyright><![CDATA[© Cara Core Informática. Todos os direitos reservados.]]></copyright>
     <managingEditor>suporte@caracore.com.br (Christian Mulato)</managingEditor>
     <webMaster>suporte@caracore.com.br (Christian Mulato)</webMaster>
-    <lastBuildDate>Thu, 12 Aug 2027 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 25 Aug 2027 12:00:00 +0000</lastBuildDate>
     <category><![CDATA[Tecnologia]]></category>
     <docs>https://www.rssboard.org/rss-specification</docs>
     <generator>Cara Core RSS generator</generator>
@@ -18,6 +18,59 @@
       <title><![CDATA[Artigos Retrô — Cara Core Informática]]></title>
       <link>https://retro.caracore.com.br/</link>
     </image>
+
+    <item>
+      <title><![CDATA[Entre o Balcão e a Portaria: O CaraCore Hub e os Dois Contextos do PUDO]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_08_25_article_146.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_08_25_article_146.html</guid>
+      <description><![CDATA[O CaraCore Hub organiza o PUDO Clássico com dados locais. O PUDO Condomínio é uma proposta em planejamento, com desafios próprios de identidade e custódia.]]></description>
+      <dc:creator><![CDATA[Christian Mulato]]></dc:creator>
+      <pubDate>Wed, 25 Aug 2027 12:00:00 +0000</pubDate>
+      <category><![CDATA[Roadmap]]></category>
+      <category><![CDATA[Hub]]></category>
+      <category><![CDATA[Pudo]]></category>
+      <category><![CDATA[Pudo Classico]]></category>
+      <category><![CDATA[Pudo Condominio]]></category>
+      <category><![CDATA[Logistica]]></category>
+      <category><![CDATA[Ponto De Retirada]]></category>
+      <category><![CDATA[Gestao Logistica]]></category>
+      <category><![CDATA[Sqlite]]></category>
+      <category><![CDATA[Dados Locais]]></category>
+      <category><![CDATA[Offline-First]]></category>
+      <category><![CDATA[Custodia]]></category>
+      <category><![CDATA[Software Honesto]]></category>
+      <enclosure url="https://retro.caracore.com.br/articles/assets/img/2027_08_25_article_146_01.png" length="2821845" type="image/png" />
+      <media:content url="https://retro.caracore.com.br/articles/assets/img/2027_08_25_article_146_01.png" medium="image" type="image/png" width="2752" height="1536">
+        <media:thumbnail url="https://retro.caracore.com.br/articles/assets/img/2027_08_25_article_146_01.png" width="2752" height="1536" />
+      </media:content>
+    </item>
+
+    <item>
+      <title><![CDATA[Três Ferramentas, Papéis Claros: Gaspar, Ink Agenda e CaraCore PDV]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_08_17_article_145.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_08_17_article_145.html</guid>
+      <description><![CDATA[Como Gaspar, Ink Agenda e CaraCore PDV apoiam rotinas diferentes de um pequeno negócio, com papéis claros e sem fingir que formam um único sistema.]]></description>
+      <dc:creator><![CDATA[Christian Mulato]]></dc:creator>
+      <pubDate>Tue, 17 Aug 2027 12:00:00 +0000</pubDate>
+      <category><![CDATA[PDV]]></category>
+      <category><![CDATA[Gaspar]]></category>
+      <category><![CDATA[Mascote]]></category>
+      <category><![CDATA[Ink Agenda]]></category>
+      <category><![CDATA[Cara Core Pdv]]></category>
+      <category><![CDATA[Ponto De Venda]]></category>
+      <category><![CDATA[Agenda De Atendimentos]]></category>
+      <category><![CDATA[Mercado Pago]]></category>
+      <category><![CDATA[Plugnotas]]></category>
+      <category><![CDATA[Privacidade]]></category>
+      <category><![CDATA[Soberania De Dados]]></category>
+      <category><![CDATA[Software Local]]></category>
+      <category><![CDATA[Integração]]></category>
+      <category><![CDATA[Software Honesto]]></category>
+      <enclosure url="https://retro.caracore.com.br/articles/assets/img/2027_08_17_article_145_01.png" length="2923385" type="image/png" />
+      <media:content url="https://retro.caracore.com.br/articles/assets/img/2027_08_17_article_145_01.png" medium="image" type="image/png" width="2752" height="1536">
+        <media:thumbnail url="https://retro.caracore.com.br/articles/assets/img/2027_08_17_article_145_01.png" width="2752" height="1536" />
+      </media:content>
+    </item>
 
     <item>
       <title><![CDATA[O Software Camaleão: A Metamorfose do Ink Agenda e a Soberania da Hora Marcada]]></title>

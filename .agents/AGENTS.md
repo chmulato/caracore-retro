@@ -5,17 +5,17 @@ Este arquivo serve como o manual de alinhamento e contexto para qualquer Intelig
 ## 🧾 Estado Atual e Diretrizes Operacionais (Homologado para Produção — Outubro/2026)
 
 - **Papel do repositório:** portal histórico e acervo editorial estático no modelo de revista digital moderna; não confundir com oficina de produto nem com a matriz institucional.
-- **Conteúdo declarado:** 141 artigos HTML em `docs/articles/`, organizados por data e número, com publicação contínua pelo GitHub Pages em `retro.caracore.com.br`.
+- **Conteúdo declarado:** 146 artigos HTML em `docs/articles/`, organizados por data e número, com publicação contínua pelo GitHub Pages em `retro.caracore.com.br`.
 - **Contexto de produtos:** PDV, HUB e CSO são soluções desktop; Gestão de Frotas faz parte do portfólio; Gestão de Transporte está planejado com uma parte local para preservar dados sensíveis no ambiente do cliente.
 - **Fonte da verdade operacional:** este `AGENTS.md`, `.cursor/rules/project-memory.mdc` e `README.md`.
 - **Saúde do projeto:** **100% Verde / Aprovado**. As 886 verificações automatizadas de `tools/validate_site.py` e todos os arquivos em `test_blog.py` passam com zero falhas e zero avisos.
 - **Modelo Revista Digital:** A página inicial (`docs/index.html`) opera com foco em descoberta visual:
   - Hero em destaque (`#featured-article`) exibindo o artigo mais recente com imagem ampliada e CTA direto.
   - Grade responsiva de cards visuais (3 colunas em desktop, 2 em tablet, 1 em mobile).
-  - Capas 16:9 padronizadas para todos os 141 artigos.
+  - Capas 16:9 padronizadas para todos os 146 artigos.
   - 5 Categorias visuais: `PDV`, `Identidade Digital`, `Roadmap`, `Circuito`, `Mineração e ETE` (+ fallback `Tecnologia`).
   - Camada de apresentação e comportamento isolada em `docs/assets/css/editorial.css` e `docs/assets/js/editorial-index.js`.
-- **Semântica e Acessibilidade:** Todos os 141 artigos utilizam o landmark semântico `<main class="container">`, `<h1>` único no cabeçalho, canonical e `<meta name="description">`.
+- **Semântica e Acessibilidade:** Todos os 146 artigos utilizam o landmark semântico `<main class="container">`, `<h1>` único no cabeçalho, canonical e `<meta name="description">`.
 - **Feed RSS 2.0 (`docs/feed.xml`):** Enriquecido com metadados do canal (logotipo, copyright, atom:link canônico) e de cada item (capa em `<enclosure>` com bytes reais, Media RSS `<media:content>` com largura/altura, categorização editorial e criador). Deve ser gerado ou atualizado via `python tools/generate_feed.py`.
 - **Gate de Deploy (CI/CD):** O workflow `.github/workflows/deploy.yml` executa compilação e `python tools/validate_site.py` no job `validate`; o job `deploy` só é acionado se a validação estiver 100% aprovada.
 - **Publicação no LinkedIn (CI/CD):** O job `publish-linkedin` roda após o `deploy` em pushes para `master` e chama `python tools/publish_linkedin.py`, que detecta os artigos novos do push (`git diff --diff-filter=A HEAD^ HEAD`) e posta um «article share» por artigo na API REST do LinkedIn. Credenciais via secrets: `LINKEDIN_ACCESS_TOKEN` (OAuth 2.0 com escopo `w_member_social`; tokens de membro expiram em 60 dias e precisam de renovação) e `LINKEDIN_AUTHOR_URN` (`urn:li:person:<id>`). Sem os secrets o job executa em dry-run — mostra o que postaria e sai verde.
