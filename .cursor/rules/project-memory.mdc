@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Memória — caracore-retro (Artigos Retrô)
 
-**Atualizado:** 2027-07-14
+**Atualizado:** 2026-11-14
 
 ## Repositório e papel
 
@@ -61,6 +61,14 @@ alwaysApply: true
 - **Ficheiro:** `2027_08_17_article_145.html`
 - **Tema:** Papéis complementares de Gaspar, Ink Agenda e CaraCore PDV, sem sugerir uma integração geral entre os produtos.
 - **Capa:** `2027_08_17_article_145_01.png`
+
+## Publicações e agenda verificadas — 14/11/2026
+
+- Artigos 145 e 146 estão no blog público; o workflow GitHub Actions `43593863756` concluiu `validate`, `deploy` e `publish-linkedin` após o commit `b9c9609`.
+- LinkedIn: artigo 145 `urn:li:share:7527343782082535424`; artigo 146 `urn:li:share:7527343790320431105`.
+- URLs: `https://retro.caracore.com.br/articles/2027_08_17_article_145.html` e `https://retro.caracore.com.br/articles/2027_08_25_article_146.html` (HTTP 200 verificado).
+- Artigo 108 (14/11) publicado com atraso pelo workflow `43596519937`: `urn:li:share:7527351856835133440`; ledger atualizado no commit do bot `76ff62a`.
+- Agenda no workflow `.github/workflows/deploy.yml`: artigos 109–116 nas datas 30/11, 03/12, 08/12, 12/12, 18/12, 20/12, 25/12 e 30/12, sempre às 07h30 `America/Sao_Paulo`. Seletor limitado ao ano de 2026; o Actions pode iniciar após 07h30 por fila. Todas as páginas agendadas responderam HTTP 200.
 
 ## Artigos Recentes — Julho/2027
 
