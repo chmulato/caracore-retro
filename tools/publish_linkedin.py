@@ -7,7 +7,11 @@ na API REST do LinkedIn (escopo w_member_social).
 
 Credenciais por variável de ambiente (secrets do repositório):
   LINKEDIN_ACCESS_TOKEN — token OAuth 2.0 com escopo w_member_social
+                          (w_organization_social quando o autor é organização)
   LINKEDIN_AUTHOR_URN   — urn:li:person:<id> (ou urn:li:organization:<id>)
+
+Cada canal (perfil pessoal e página da empresa) usa o próprio ledger via
+--ledger, para que a publicação de um não bloqueie a do outro.
 
 Sem credenciais roda em DRY-RUN: mostra exatamente o que seria postado e sai 0.
 É assim que a esteira fica verde até os secrets serem cadastrados no GitHub.
@@ -186,21 +190,22 @@ def article_key(path: Path) -> str:
     return path.relative_to(ROOT).as_posix()
 
 
-def load_published_ledger() -> dict[str, str]:
-    if not PUBLISHED_LEDGER_PATH.exists():
+def load_published_ledger(path: Path = PUBLISHED_LEDGER_PATH) -> dict[str, str]:
+    if not path.exists():
         return {}
     try:
-        ledger = json.loads(PUBLISHED_LEDGER_PATH.read_text(encoding="utf-8"))
+        ledger = json.loads(path.read_text(encoding="utf-8"))
     except json.JSONDecodeError as error:
-        raise RuntimeError("linkedin_published.json contem JSON invalido") from error
+        raise RuntimeError(f"{path.name} contem JSON invalido") from error
     if not isinstance(ledger, dict):
-        raise RuntimeError("linkedin_published.json deve conter um objeto JSON")
+        raise RuntimeError(f"{path.name} deve conter um objeto JSON")
     return ledger
 
 
-def save_published_ledger(ledger: dict[str, str]) -> None:
+def save_published_ledger(ledger: dict[str, str],
+                          path: Path = PUBLISHED_LEDGER_PATH) -> None:
     ordered = dict(sorted(ledger.items()))
-    PUBLISHED_LEDGER_PATH.write_text(
+    path.write_text(
         json.dumps(ordered, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
@@ -305,10 +310,12 @@ def post_article(share: Share, token: str, author_urn: str,
             return True, post_id
     except urllib.error.HTTPError as error:
         if error.code in (401, 403):
+            scope = ("w_organization_social" if ":organization:" in author_urn
+                     else "w_member_social")
             return False, (
                 f"HTTP {error.code}: token inválido/expirado ou sem escopo "
-                "w_member_social. Tokens de membro expiram em 60 dias; "
-                "renove no LinkedIn Developer Portal."
+                f"{scope}. Tokens expiram em 60 dias; renove no LinkedIn "
+                "Developer Portal."
             )
         detail = error.read().decode("utf-8", "replace")[:200]
         return False, f"HTTP {error.code}: {detail}"
@@ -329,7 +336,13 @@ def main() -> int:
                         help="força o dry-run mesmo com credenciais")
     parser.add_argument("--force", action="store_true",
                         help="ignora o ledger e republica os artigos selecionados")
+    parser.add_argument("--ledger", metavar="ARQUIVO",
+                        default=str(PUBLISHED_LEDGER_PATH),
+                        help="ledger de publicações (um por canal)")
     args = parser.parse_args()
+    ledger_path = Path(args.ledger)
+    if not ledger_path.is_absolute():
+        ledger_path = ROOT / ledger_path
 
     if args.article:
         candidates = sorted(ARTICLES.glob(f"*_article_{args.article}.html"))
@@ -344,7 +357,7 @@ def main() -> int:
     else:
         paths = added_articles()
 
-    ledger = load_published_ledger()
+    ledger = load_published_ledger(ledger_path)
     for path in paths:
         key = article_key(path)
         if key in ledger and not args.force:
@@ -360,8 +373,8 @@ def main() -> int:
     dry_run = args.dry_run or not (token and author_urn)
 
     if dry_run:
-        print("MODO DRY-RUN — cadastre os secrets LINKEDIN_ACCESS_TOKEN e "
-              "LINKEDIN_AUTHOR_URN no GitHub para publicar de verdade.")
+        print(f"MODO DRY-RUN ({ledger_path.name}) — cadastre as credenciais do "
+              "canal no GitHub para publicar de verdade.")
         for path in paths:
             share = parse_article(path)
             print(f"\n=== {path.name} ===")
@@ -388,7 +401,7 @@ def main() -> int:
             ledger[article_key(path)] = datetime.now(timezone.utc).strftime(
                 "%Y-%m-%dT%H:%M:%SZ"
             )
-            save_published_ledger(ledger)
+            save_published_ledger(ledger, ledger_path)
     return 1 if failures else 0
 
 
