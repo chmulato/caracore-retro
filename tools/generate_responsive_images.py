@@ -12,11 +12,11 @@ IMAGE_DIR = ARTICLE_DIR / "assets" / "img"
 MAX_WIDTHS = (720, 1600)
 
 IMAGE_PATTERN = re.compile(
-    r'<img\b(?=[^>]*\bsrc=["\']assets/img/(\d{4}_\d{2}_\d{2}_article_\d+_\d+\.png)["\'])[^>]*>',
+    r'<img\b(?=[^>]*\bsrc=["\']assets/img/((?:\d{4}_\d{2}_\d{2}_)?article_\d+_\d+\.png)["\'])[^>]*>',
     re.IGNORECASE,
 )
 ARTICLE_IMAGE_PATTERN = re.compile(
-    r'<img\b[^>]*\bsrc=["\']assets/img/(\d{4}_\d{2}_\d{2}_article_\d+_\d+\.png)["\']',
+    r'<img\b[^>]*\bsrc=["\']assets/img/((?:\d{4}_\d{2}_\d{2}_)?article_\d+_\d+\.png)["\']',
     re.IGNORECASE,
 )
 STYLE_PATTERN = re.compile(r'\s+style=["\']([^"\']*)["\']', re.IGNORECASE)

@@ -157,6 +157,15 @@ def parse_index(source: str) -> IndexData:
     return parser.data
 
 
+def article_cover_path(href: str) -> str:
+    match = ARTICLE_PATH.fullmatch(href)
+    if match:
+        image_alias = f"articles/assets/img/article_{match.group(4)}_01.png"
+        if (DOCS / image_alias).is_file():
+            return image_alias
+    return f"articles/assets/img/{Path(href).stem}_01.png"
+
+
 def inspect_feed(validator: Validator, article_hrefs: list[str]) -> None:
     feed_path = DOCS / "feed.xml"
     try:
@@ -418,7 +427,7 @@ def inspect_index(validator: Validator) -> tuple[IndexData, str, str]:
                     f"Título principal em {Path(card.href).name}",
                     f"{article_data.h1_count} <h1>",
                 )
-        cover_path = f"articles/assets/img/{Path(card.href).stem}_01.png"
+        cover_path = article_cover_path(card.href)
         covers.append(cover_path)
         cover_file = local_path(cover_path)
         validator.check(
@@ -463,7 +472,7 @@ def inspect_index(validator: Validator) -> tuple[IndexData, str, str]:
         "Interação de categorias ligada ao arquivo",
     )
     featured_href = data.cards[0].href if data.cards else ""
-    featured_cover = f"articles/assets/img/{Path(featured_href).stem}_01.png" if featured_href else ""
+    featured_cover = article_cover_path(featured_href) if featured_href else ""
     return data, featured_href, featured_cover
 
 

@@ -232,7 +232,7 @@ def test_responsive_article_images():
             content = article.read()
 
         expected_images = set(re.findall(
-            r'<img\b[^>]*\bsrc=["\']assets/img/(\d{4}_\d{2}_\d{2}_article_\d+_\d+\.png)["\']',
+            r'<img\b[^>]*\bsrc=["\']assets/img/((?:\d{4}_\d{2}_\d{2}_)?article_\d+_\d+\.png)["\']',
             content,
             re.IGNORECASE,
         ))
@@ -244,7 +244,7 @@ def test_responsive_article_images():
         ):
             picture_content = picture.group(1)
             fallback = re.search(
-                r'<img\b[^>]*\bsrc=["\']assets/img/(\d{4}_\d{2}_\d{2}_article_\d+_\d+\.png)["\']',
+                r'<img\b[^>]*\bsrc=["\']assets/img/((?:\d{4}_\d{2}_\d{2}_)?article_\d+_\d+\.png)["\']',
                 picture_content,
                 re.IGNORECASE,
             )

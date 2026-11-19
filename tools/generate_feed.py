@@ -153,7 +153,9 @@ def build_feed_xml(articles: list[ArticleItem]) -> str:
         pub_date_str = format_datetime(pub_dt)
 
         article_url = f"{SITE_URL}/{article.href}"
-        img_rel = article.href.replace("articles/", "articles/assets/img/").replace(".html", "_01.png")
+        image_alias = f"articles/assets/img/article_{m.group(4)}_01.png"
+        dated_image = article.href.replace("articles/", "articles/assets/img/").replace(".html", "_01.png")
+        img_rel = image_alias if (DOCS / image_alias).exists() else dated_image
         img_file = DOCS / img_rel
         if not img_file.exists():
             raise FileNotFoundError(f"Imagem de capa não encontrada: {img_file}")

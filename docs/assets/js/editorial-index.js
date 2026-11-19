@@ -1,6 +1,9 @@
 (function () {
     const feature = document.getElementById('featured-article');
     const items = Array.from(document.querySelectorAll('.article-item'));
+    const coverByArticle = {
+        'articles/2027_09_07_article_148.html': 'article_148_01.png'
+    };
     const categoryRules = [
         {
             name: 'PDV',
@@ -61,9 +64,12 @@
 
         const title = titleLink.textContent.trim();
         const category = getCategory(item);
-        const imageName = titleLink.getAttribute('href')
+        const imageName = coverByArticle[titleLink.getAttribute('href')] || titleLink.getAttribute('href')
             .replace(/^articles\//, 'articles/assets/img/')
             .replace(/\.html$/, '_01.png');
+        const imagePath = imageName.startsWith('articles/assets/img/')
+            ? imageName
+            : `articles/assets/img/${imageName}`;
         const cover = document.createElement('a');
         const picture = document.createElement('picture');
         const image = document.createElement('img');
@@ -80,11 +86,11 @@
         const desktopSource = document.createElement('source');
         mobileSource.type = 'image/webp';
         mobileSource.media = '(max-width: 680px)';
-        mobileSource.srcset = imageName.replace('_01.png', '_01_720.webp');
+        mobileSource.srcset = imagePath.replace('_01.png', '_01_720.webp');
         desktopSource.type = 'image/webp';
-        desktopSource.srcset = imageName.replace('_01.png', '_01_1600.webp');
+        desktopSource.srcset = imagePath.replace('_01.png', '_01_1600.webp');
         picture.append(mobileSource, desktopSource);
-        image.src = imageName;
+        image.src = imagePath;
         image.alt = '';
         image.loading = isFeatured ? 'eager' : 'lazy';
         image.decoding = 'async';
