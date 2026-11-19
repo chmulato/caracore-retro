@@ -50,6 +50,9 @@ class ApprovalTests(unittest.TestCase):
     def test_approved(self):
         self.check([review(), review(environments=[{"name": "outro"}])])
 
+    def test_approved_with_other_reviewer_for_same_environment(self):
+        self.check([review(), review(user={"id": 43}, comment="Approved by another reviewer")])
+
     def test_missing_wrong_or_multiple_approvals_fail(self):
         variants = [[], [review(user={"id": 43})],
                     [review(comment="APROVO " + "f" * 64)],
