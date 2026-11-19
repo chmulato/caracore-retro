@@ -5,7 +5,14 @@ alwaysApply: true
 
 # Memória — caracore-retro (Artigos Retrô)
 
-**Atualizado:** 2026-11-14
+**Atualizado:** 2026-11-19
+
+## SEO publicado — 19/11/2026
+
+- Commit `7016f65` publicado; deploy `44611247538` e Pages `44611247365` concluídos com sucesso.
+- Sitemap público: 150 URLs. O artigo 148 (`2027_09_07_article_148.html`) responde HTTP 200, declara `datePublished` `2027-09-07` e sua imagem responde HTTP 200.
+- Os jobs pós-deploy do LinkedIn terminaram sem novas postagens; Facebook não foi acionado.
+- Registro completo do alinhamento entre os três sites: `caracore-site/docs/INDEXACAO_SEO.md`.
 
 ## Repositório e papel
 
@@ -39,7 +46,7 @@ alwaysApply: true
 - **Estilo dos artigos:** `assets/css/articles.css` + `temporada-i.css` · `quote-box`, `insight`, `note`
 - **Capa inline no artigo:** `<img ... style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);">`
 - **Prompt IA:** gerar PNG 16:9; exibir inline no frame acima; `og:image`, `twitter:image` e RSS usam o mesmo PNG
-- **Total de artigos:** 146 artigos catalogados (2024–2027; mantendo visíveis artigos do calendário editorial futuro)
+- **Total de artigos:** 148 artigos catalogados (2024–2027; mantendo visíveis artigos do calendário editorial futuro)
 
 ## Categorias Visuais da Revista
 
