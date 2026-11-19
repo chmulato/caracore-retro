@@ -4,6 +4,7 @@ import argparse
 from collections import Counter
 from dataclasses import dataclass, field
 from email.utils import parsedate_to_datetime
+from html import escape
 from html.parser import HTMLParser
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -28,6 +29,9 @@ REQUIRED_CATEGORIES = {
     "Mineração e ETE",
 }
 HTTP_TIMEOUT_SECONDS = 10
+SITE_URL = "https://retro.caracore.com.br"
+SITEMAP_NS = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
+ROBOTS_CONTENT = f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n"
 
 
 @dataclass
@@ -100,6 +104,26 @@ class IndexParser(HTMLParser):
     def handle_data(self, data: str) -> None:
         if self._capture:
             self._text.append(data)
+
+
+class SitemapPageParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.canonicals: list[str] = []
+        self.noindex = False
+        self.redirect = False
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        attributes = dict(attrs)
+        if tag == "link" and "canonical" in (attributes.get("rel") or "").lower().split():
+            self.canonicals.append(attributes.get("href") or "")
+        if tag == "meta":
+            name = (attributes.get("name") or "").lower()
+            content = (attributes.get("content") or "").lower()
+            if name in {"robots", "googlebot"} and re.search(r"\bnoindex\b", content):
+                self.noindex = True
+            if (attributes.get("http-equiv") or "").lower() == "refresh":
+                self.redirect = True
 
 
 class QuietRequestHandler(SimpleHTTPRequestHandler):
@@ -247,6 +271,71 @@ def local_path(relative_path: str) -> Path | None:
     return resolved
 
 
+def sitemap_urls(article_hrefs: list[str]) -> list[str]:
+    return [f"{SITE_URL}/", f"{SITE_URL}/privacidade.html"] + [
+        f"{SITE_URL}/{href}" for href in article_hrefs
+    ]
+
+
+def build_sitemap(article_hrefs: list[str]) -> str:
+    entries = [f"  <url><loc>{escape(url)}</loc></url>" for url in sitemap_urls(article_hrefs)]
+    return "\n".join([
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+        *entries,
+        "</urlset>",
+        "",
+    ])
+
+
+def inspect_sitemap_pages(validator: Validator, article_hrefs: list[str]) -> None:
+    valid_hrefs = bool(article_hrefs) and all(ARTICLE_PATH.fullmatch(href) for href in article_hrefs)
+    unique_hrefs = len(article_hrefs) == len(set(article_hrefs))
+    validator.check(valid_hrefs, "URLs do catálogo para o sitemap")
+    validator.check(unique_hrefs, "URLs do catálogo sem duplicação para o sitemap")
+    if not valid_hrefs or not unique_hrefs:
+        return
+
+    invalid_pages = []
+    for relative, url in zip(["index.html", "privacidade.html", *article_hrefs], sitemap_urls(article_hrefs)):
+        path = local_path(relative)
+        try:
+            if path is None:
+                raise OSError("caminho inválido")
+            page = SitemapPageParser()
+            page.feed(path.read_text(encoding="utf-8-sig"))
+            page.close()
+        except (OSError, UnicodeError) as error:
+            invalid_pages.append(f"{relative}: {error}")
+            continue
+        if page.canonicals != [url] or page.noindex or page.redirect:
+            invalid_pages.append(f"{relative}: canonical, noindex ou redirecionamento")
+    validator.check(not invalid_pages, "Páginas do sitemap são canônicas e indexáveis", ", ".join(invalid_pages[:5]))
+
+
+def inspect_sitemap(validator: Validator, article_hrefs: list[str]) -> None:
+    inspect_sitemap_pages(validator, article_hrefs)
+    try:
+        root = ElementTree.parse(DOCS / "sitemap.xml").getroot()
+    except (ElementTree.ParseError, OSError) as error:
+        validator.check(False, "Sitemap XML válido", str(error))
+        root = None
+    if root is not None:
+        entries = root.findall(f"{SITEMAP_NS}url")
+        locations = [entry.findtext(f"{SITEMAP_NS}loc", default="").strip() for entry in entries]
+        validator.check(root.tag == f"{SITEMAP_NS}urlset", "Namespace do sitemap")
+        validator.check(all(len(entry.findall(f"{SITEMAP_NS}loc")) == 1 for entry in entries), "Uma URL por entrada do sitemap")
+        validator.check(len(locations) == len(set(locations)), "Sitemap sem URLs duplicadas")
+        validator.check(locations == sitemap_urls(article_hrefs), "Sitemap corresponde ao catálogo", f"{len(locations)} URLs")
+        validator.check(not root.findall(f".//{SITEMAP_NS}lastmod"), "Sitemap sem datas de alteração não verificadas")
+    try:
+        robots = (DOCS / "robots.txt").read_text(encoding="utf-8")
+    except (OSError, UnicodeError) as error:
+        validator.check(False, "Robots do sitemap", str(error))
+    else:
+        validator.check(robots == ROBOTS_CONTENT, "Robots do sitemap")
+
+
 def inspect_index(validator: Validator) -> tuple[IndexData, str, str]:
     index_path = DOCS / "index.html"
     try:
@@ -294,6 +383,7 @@ def inspect_index(validator: Validator) -> tuple[IndexData, str, str]:
     duplicate_hrefs = [href for href, count in Counter(hrefs).items() if count > 1]
     validator.check(not duplicate_hrefs, "Links de artigo sem duplicação", ", ".join(duplicate_hrefs))
     inspect_feed(validator, hrefs)
+    inspect_sitemap(validator, hrefs)
     print(
         f"  Catálogo: {len(data.cards)} artigos, "
         f"{len(data.categories)} categorias visuais e {len(set(hrefs))} links únicos."
@@ -415,7 +505,7 @@ def http_smoke_test(
         str(len(served_index.cards)),
     )
 
-    required_resources = [*data.stylesheets, *data.scripts, "feed.xml", featured_href, featured_cover]
+    required_resources = [*data.stylesheets, *data.scripts, "feed.xml", "robots.txt", "sitemap.xml", featured_href, featured_cover]
     checked: set[str] = set()
     for resource in required_resources:
         if not resource or resource in checked:
@@ -506,7 +596,23 @@ def main() -> int:
         "--url",
         help="Valida também um preview ou site já publicado; sem esta opção, inicia um servidor local temporário.",
     )
+    parser.add_argument(
+        "--write-sitemap",
+        action="store_true",
+        help="Atualiza apenas o sitemap a partir do catálogo, sem alterar o RSS.",
+    )
     args = parser.parse_args()
+
+    if args.write_sitemap:
+        data = parse_index((DOCS / "index.html").read_text(encoding="utf-8-sig"))
+        hrefs = [card.href for card in data.cards]
+        validator = Validator()
+        inspect_sitemap_pages(validator, hrefs)
+        if validator.failures:
+            return 1
+        (DOCS / "sitemap.xml").write_text(build_sitemap(hrefs), encoding="utf-8", newline="\n")
+        print(f"Sitemap atualizado: {len(sitemap_urls(hrefs))} URLs.")
+        return 0
 
     validator = Validator()
     print("Validação estática do blog:")

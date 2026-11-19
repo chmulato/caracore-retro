@@ -1,7 +1,16 @@
+from contextlib import redirect_stdout
+from io import StringIO
 import os
+from pathlib import Path
 import re
 from html.parser import HTMLParser
+from tempfile import TemporaryDirectory
+import unittest
+from unittest.mock import patch
 import urllib.parse
+import xml.etree.ElementTree as ET
+
+from tools import validate_site as site
 
 class BlogHTMLParser(HTMLParser):
     def __init__(self, filepath):
@@ -268,6 +277,67 @@ def test_responsive_article_images():
             print(f"🟢 {filepath} - PASSED ({len(expected_images)} article images)")
 
     return all_passed
+
+
+class SitemapTests(unittest.TestCase):
+    def setUp(self):
+        self.temporary = TemporaryDirectory()
+        self.addCleanup(self.temporary.cleanup)
+        self.docs = Path(self.temporary.name)
+        (self.docs / 'articles').mkdir()
+        self.href = 'articles/2099_01_01_article_1.html'
+        self.article = self.docs / self.href
+        self.write_page(self.docs / 'index.html', f'{site.SITE_URL}/')
+        self.write_page(self.docs / 'privacidade.html', f'{site.SITE_URL}/privacidade.html')
+        self.write_page(self.article, f'{site.SITE_URL}/{self.href}')
+        (self.docs / 'robots.txt').write_text(site.ROBOTS_CONTENT, encoding='utf-8')
+        self.sitemap = self.docs / 'sitemap.xml'
+        self.body = site.build_sitemap([self.href])
+        self.sitemap.write_text(self.body, encoding='utf-8')
+
+    def write_page(self, path, url, extra=''):
+        path.write_text(f'<link href="{url}" rel="canonical">{extra}', encoding='utf-8')
+
+    def check_sitemap(self):
+        validator = site.Validator()
+        with patch.object(site, 'DOCS', self.docs), redirect_stdout(StringIO()):
+            site.inspect_sitemap(validator, [self.href])
+        return validator.failures
+
+    def test_valid_sitemap_contains_future_article_without_lastmod(self):
+        self.assertEqual(self.check_sitemap(), [])
+        root = ET.fromstring(self.body)
+        locations = [entry.findtext(f'{site.SITEMAP_NS}loc') for entry in root]
+        self.assertIn(f'{site.SITE_URL}/{self.href}', locations)
+        self.assertFalse(root.findall(f'.//{site.SITEMAP_NS}lastmod'))
+
+    def test_rejects_missing_duplicate_and_invalid_sitemap(self):
+        for body in [
+            self.body.replace(f'  <url><loc>{site.SITE_URL}/{self.href}</loc></url>\n', ''),
+            self.body.replace('</urlset>', f'  <url><loc>{site.SITE_URL}/</loc></url>\n</urlset>'),
+            '<urlset',
+        ]:
+            with self.subTest(body=body):
+                self.sitemap.write_text(body, encoding='utf-8')
+                self.assertTrue(self.check_sitemap())
+
+    def test_rejects_noindex_redirect_and_wrong_canonical(self):
+        url = f'{site.SITE_URL}/{self.href}'
+        for canonical, extra in [
+            (url, '<meta content="noindex, follow" name="robots">'),
+            (url, '<meta content="0; url=/" http-equiv="refresh">'),
+            (f'{site.SITE_URL}/', ''),
+        ]:
+            with self.subTest(canonical=canonical, extra=extra):
+                self.write_page(self.article, canonical, extra)
+                self.assertTrue(self.check_sitemap())
+
+    def test_rejects_missing_article_or_robots(self):
+        self.article.unlink()
+        self.assertTrue(self.check_sitemap())
+        self.write_page(self.article, f'{site.SITE_URL}/{self.href}')
+        (self.docs / 'robots.txt').unlink()
+        self.assertTrue(self.check_sitemap())
 
 
 if __name__ == '__main__':

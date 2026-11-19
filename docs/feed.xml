@@ -20,22 +20,20 @@
     </image>
 
     <item>
-      <title><![CDATA[Como manter os dados da frota sem depender da internet]]></title>
+      <title><![CDATA[Gestão de frotas online: como agir quando a internet falha]]></title>
       <link>https://retro.caracore.com.br/articles/2027_08_31_article_147.html</link>
       <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_08_31_article_147.html</guid>
-      <description><![CDATA[Veja como manter registros de frota acessíveis, preparar cópias e organizar o trabalho quando a conexão falha.]]></description>
+      <description><![CDATA[O CSO Gestão de Frotas depende de internet. Veja como preparar registros provisórios e retomar a rotina quando a conexão voltar.]]></description>
       <dc:creator><![CDATA[Christian Mulato]]></dc:creator>
       <pubDate>Tue, 31 Aug 2027 12:00:00 +0000</pubDate>
       <category><![CDATA[Tecnologia]]></category>
       <category><![CDATA[Gestao De Frotas]]></category>
+      <category><![CDATA[Cso Gestao De Frotas]]></category>
+      <category><![CDATA[Sistema Online]]></category>
+      <category><![CDATA[Saas]]></category>
       <category><![CDATA[Continuidade Operacional]]></category>
       <category><![CDATA[Internet]]></category>
-      <category><![CDATA[Dados Locais]]></category>
-      <category><![CDATA[Autonomia Tecnologica]]></category>
-      <category><![CDATA[Software Local]]></category>
-      <category><![CDATA[Nuvem]]></category>
-      <category><![CDATA[Exportacao]]></category>
-      <category><![CDATA[Backup]]></category>
+      <category><![CDATA[Registro Manual]]></category>
       <category><![CDATA[Abastecimento]]></category>
       <enclosure url="https://retro.caracore.com.br/articles/assets/img/2027_08_31_article_147_01.png" length="2502872" type="image/png" />
       <media:content url="https://retro.caracore.com.br/articles/assets/img/2027_08_31_article_147_01.png" medium="image" type="image/png" width="2752" height="1536">

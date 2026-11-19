@@ -1,0 +1,74 @@
+name: Revisão de campanha para Facebook
+
+on:
+  workflow_dispatch:
+    inputs:
+      article:
+        description: "Número do artigo"
+        required: true
+        type: string
+      page:
+        description: "Identificador numérico da página"
+        required: true
+        type: string
+      when:
+        description: "Data e hora de São Paulo: AAAA-MM-DDTHH:MM"
+        required: true
+        type: string
+      message:
+        description: "Chamada para o Facebook; deixe vazia para receber uma sugestão"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  revisao:
+    if: github.ref == 'refs/heads/master' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    outputs:
+      digest: ${{ steps.preview.outputs.digest }}
+    env:
+      ARTICLE_NUMBER: ${{ inputs.article }}
+      FACEBOOK_PAGE_ID: ${{ inputs.page }}
+      PUBLISH_AT: ${{ inputs.when }}
+      FACEBOOK_MESSAGE: ${{ inputs.message }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - id: preview
+        name: Apresentar conteúdo e identificação para revisão
+        run: python -m tools.facebook_campaign preview
+
+  agendamento:
+    needs: revisao
+    environment: facebook
+    permissions:
+      actions: read
+      contents: write
+    runs-on: ubuntu-latest
+    env:
+      ARTICLE_NUMBER: ${{ inputs.article }}
+      FACEBOOK_PAGE_ID: ${{ inputs.page }}
+      PUBLISH_AT: ${{ inputs.when }}
+      FACEBOOK_MESSAGE: ${{ inputs.message }}
+      APPROVED_DIGEST: ${{ needs.revisao.outputs.digest }}
+      FACEBOOK_REVIEWER_ID: ${{ vars.FACEBOOK_REVIEWER_ID }}
+      FACEBOOK_PAGE_TOKEN: ${{ secrets.FACEBOOK_PAGE_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Conferir aprovação e reservar antes de agendar
+        run: python -m tools.facebook_campaign agendar
