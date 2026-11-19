@@ -61,6 +61,15 @@ O segundo semestre de 2026 e o primeiro semestre de 2027 incluem frentes editori
 
 Os artigos foram revisados para manter leitura objetiva, com foco em aplicação prática, clareza técnica e baixa repetição entre textos.
 
+## Chamadas no Facebook
+
+- **Frequência definida em 19/11/2026:** terças e quintas, às **09h de Brasília** (`America/Sao_Paulo`). A preparação e a conferência dos rascunhos recusam outros dias e horários.
+- Cada chamada exige revisão individual de texto, link, imagem, Página, data e hora, com aprovação pelo identificador exato da campanha no GitHub. Definir a frequência não aprova conteúdos nem cria uma fila automática.
+- O agendamento continua manual, uma campanha por execução de `.github/workflows/facebook.yml`, com antecedência entre 15 minutos e menos de 30 dias. Sem chamada aprovada, o horário fica vazio; não há compensação automática de horário perdido.
+- Artigos futuros não são antecipados. O histórico conferido e a reserva por artigo/Página evitam repetições; o artigo 147 permanece bloqueado.
+- Essa frequência vale somente para o Facebook: não altera as datas do blog nem a agenda do LinkedIn.
+- Para publicar correções no blog sem postar no LinkedIn, inclua `[skip linkedin]` na mensagem do último commit do push. A validação e o site continuam sendo publicados; os dois canais do LinkedIn são ignorados somente nesse push. A agenda existente permanece inalterada.
+
 ## 🔗 Integração com Cara Core
 
 Este repositório é parte do ecossistema Cara Core:

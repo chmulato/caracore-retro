@@ -1,0 +1,40 @@
+{
+  "pagina_id": "1657316127663973",
+  "conferido": true,
+  "publicacoes": {
+    "147": "1756509286482858"
+  },
+  "verificacao": {
+    "data": "2026-11-19",
+    "metodo": "Consulta autenticada, somente leitura, no Meta Business Suite da Cara Core Informática.",
+    "escopo": "Publicações atualmente acessíveis na aba Publicados, com período Total e carregamento da lista até estabilizar em 45 registros. Não comprova ausência de publicações apagadas, ocultas ou indisponíveis nesta interface.",
+    "publicados_url": "https://business.facebook.com/latest/posts/published_posts?business_id=5716091488453063&asset_id=1657316127663973",
+    "periodo_exibido": "Total: 31 de mar de 2019 a 18 de nov de 2026",
+    "ressalva_periodo": "Apesar do fim de período exibido, a lista também mostrou a publicação do artigo 147 datada de 19 de novembro de 2026. O seletor informa Horário do Pacífico; não foi presumido o fuso do horário de cada post.",
+    "quantidade_publicados": 45,
+    "artigo_147": {
+      "post_id": "1756509286482858",
+      "permalink": "https://facebook.com/caracoreinformatica/posts/pfbid02vXx9mpi8nkhW1Gd4swzy5U8JR6hpMnuJBsQdemNbEh52Vfnu4hc5vrhwgJQp3ym6l",
+      "link_do_artigo": "https://retro.caracore.com.br/articles/2027_08_31_article_147.html",
+      "data_hora_exibida": "Quinta, 19 de novembro de 2026 às 11:39",
+      "observacao": "Publicação existente confirmada pelo detalhe do post e seu link. Deve continuar bloqueada contra repetição."
+    },
+    "programados": {
+      "url": "https://business.facebook.com/latest/posts/scheduled_posts?asset_id=1657316127663973&business_id=5716091488453063",
+      "resultado_exibido": "Nenhum post programado"
+    },
+    "rascunhos": {
+      "url": "https://business.facebook.com/latest/posts/draft_posts?asset_id=1657316127663973&business_id=5716091488453063",
+      "periodo_exibido": "Total: 31 de mar de 2019 a 18 de nov de 2026",
+      "resultado_exibido": "Nenhuma atividade durante esse intervalo de datas"
+    },
+    "candidato_conferido": {
+      "artigo": "18",
+      "url": "https://retro.caracore.com.br/articles/2024_06_23_article_18.html",
+      "data_editorial": "2024-06-23",
+      "resultado": "Nenhuma correspondência de URL, número ou título encontrada nos 45 posts acessíveis; nenhuma publicação programada e nenhum rascunho exibido no período Total.",
+      "estado": "CANDIDATO_NAO_APROVADO"
+    },
+    "limites": "Conferência do histórico não é aprovação de campanha, teste de validade do token nem prova de publicação pela automação. Reconsultar a Página antes do teste se houver novas publicações manuais."
+  }
+}

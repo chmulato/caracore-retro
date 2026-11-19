@@ -87,7 +87,7 @@ class CampaignTests(unittest.TestCase):
             "<meta property='article:published_time' content='2026-11-30'></head></html>",
             encoding="utf-8")
         self.inputs = {"ARTICLE_NUMBER": "109", "FACEBOOK_PAGE_ID": "123",
-                       "PUBLISH_AT": "2026-11-30T07:30", "FACEBOOK_MESSAGE": "Chamada do Facebook"}
+                       "PUBLISH_AT": "2026-12-01T09:00", "FACEBOOK_MESSAGE": "Chamada do Facebook"}
         self.draft = campaign.draft_from_inputs(self.inputs, self.root)
         self.digest = self.draft["sha256_conteudo"]
         self.events = []
@@ -116,6 +116,30 @@ class CampaignTests(unittest.TestCase):
         self.assertEqual(actions[5:], ["send", "GET", "POST", "PATCH"])
         self.assertIn("refs/heads/facebook-reservas/p123/a109", self.api.refs)
         self.assertEqual(self.graph.sends, 1)
+
+    def test_thursday_campaign_keeps_approval_and_schedules_once(self):
+        draft = campaign.draft_from_inputs(dict(self.inputs, PUBLISH_AT="2026-12-03T09:00"), self.root)
+        self.api.digest = draft["sha256_conteudo"]
+        self.assertEqual(self.run_publish(draft=draft, digest=self.api.digest), "123_456")
+        self.assertEqual(self.graph.sends, 1)
+        self.assertIn(("send", int(datetime(2026, 12, 3, 12, tzinfo=timezone.utc).timestamp())), self.events)
+
+    def test_off_calendar_campaign_never_calls_github_or_meta(self):
+        for when in ("2026-12-02T09:00", "2026-12-01T12:00"):
+            with self.subTest(when=when):
+                draft = json.loads(json.dumps(self.draft))
+                content = draft["conteudo"]
+                content["data_hora_local"] = when
+                content["data_hora_utc"] = facebook_drafts.local_time(when).astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+                draft["sha256_conteudo"] = facebook_drafts.content_digest(content)
+                self.events.clear()
+                self.api = FakeGithub(draft["sha256_conteudo"], self.events)
+                self.graph = FakeFacebook(self.events)
+                with self.assertRaisesRegex(ValueError, "tercas e quintas"):
+                    self.run_publish(draft=draft, digest=self.api.digest)
+                self.assertEqual(self.events, [])
+                self.assertEqual(self.graph.sends, 0)
+                self.assertFalse(self.api.refs)
 
     def test_second_execution_cannot_repeat(self):
         self.run_publish()
@@ -262,7 +286,7 @@ class CampaignTests(unittest.TestCase):
         self.assertNotIn("<script>", summary)
         self.assertIn("APROVO " + draft["sha256_conteudo"], summary)
         self.assertIn("prévia real do link no Facebook", summary)
-        self.assertIn("2026-11-30T07:30", summary)
+        self.assertIn("2026-12-01T09:00", summary)
         self.assertIn(hashlib.sha256(self.image.read_bytes()).hexdigest(), summary)
 
     def test_live_site_content_matches_or_blocks(self):

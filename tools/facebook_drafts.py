@@ -85,6 +85,8 @@ def prepare(article: Path, page_id: str, when: str, message: str | None = None,
     scheduled = local_time(when)
     if scheduled.date() < editorial_date:
         raise ValueError("A data pretendida antecede a data editorial do artigo.")
+    if scheduled.weekday() not in (1, 3) or (scheduled.hour, scheduled.minute) != (9, 0):
+        raise ValueError("Agende nas tercas e quintas, as 09:00 no horario de Brasilia (America/Sao_Paulo).")
 
     article_bytes = article.read_bytes()
     metadata = ArticleMetadata()
@@ -166,7 +168,7 @@ def main() -> int:
     create = commands.add_parser("preparar", help="gera JSON de rascunho na saida padrao")
     create.add_argument("--artigo", required=True, help="numero do artigo")
     create.add_argument("--pagina", required=True, help="identificador numerico da pagina")
-    create.add_argument("--quando", required=True, help="data e hora local: AAAA-MM-DDTHH:MM")
+    create.add_argument("--quando", required=True, help="tercas/quintas as 09:00 de Brasilia: AAAA-MM-DDTHH:MM")
     create.add_argument("--texto", type=Path, help="arquivo UTF-8 com a chamada personalizada")
     check = commands.add_parser("verificar", help="confere o rascunho e os arquivos locais")
     check.add_argument("arquivo", type=Path)

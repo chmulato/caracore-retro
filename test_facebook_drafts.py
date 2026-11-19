@@ -31,7 +31,7 @@ class FacebookDraftTests(unittest.TestCase):
             encoding="utf-8",
         )
 
-    def draft(self, page: str = "123456", when: str = "2026-11-30T07:30",
+    def draft(self, page: str = "123456", when: str = "2026-12-01T09:00",
               message: str | None = None) -> dict:
         return facebook_drafts.prepare(self.article, page, when, message, self.root)
 
@@ -42,7 +42,7 @@ class FacebookDraftTests(unittest.TestCase):
         self.assertIn("E na sua rotina", content["mensagem"])
         self.assertIn("Título & contexto", content["mensagem"])
         self.assertIn(content["link"], content["mensagem"])
-        self.assertEqual(content["data_hora_utc"], "2026-11-30T10:30:00Z")
+        self.assertEqual(content["data_hora_utc"], "2026-12-01T12:00:00Z")
         self.assertIn("nao foram conferidos", draft["aviso"])
         facebook_drafts.verify(draft, self.root)
 
@@ -88,13 +88,29 @@ class FacebookDraftTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "nao e um rascunho"):
             facebook_drafts.verify(draft, self.root)
 
+    def test_accepts_tuesdays_and_thursdays_at_nine_in_brasilia(self) -> None:
+        for day in ("2026-12-01", "2026-12-03", "2027-01-05", "2027-01-07"):
+            with self.subTest(day=day):
+                draft = self.draft(when=f"{day}T09:00")
+                self.assertEqual(draft["conteudo"]["fuso"], "America/Sao_Paulo")
+                self.assertEqual(draft["conteudo"]["data_hora_utc"], f"{day}T12:00:00Z")
+                self.assertEqual(draft["estado"], "RASCUNHO_NAO_APROVADO")
+                facebook_drafts.verify(draft, self.root)
+
+    def test_rejects_other_weekdays_and_times(self) -> None:
+        for when in ("2026-11-30T09:00", "2026-12-02T09:00", "2026-12-04T09:00",
+                     "2026-12-05T09:00", "2026-12-06T09:00", "2026-12-01T08:59",
+                     "2026-12-01T09:01", "2026-12-03T12:00"):
+            with self.subTest(when=when), self.assertRaisesRegex(ValueError, "tercas e quintas"):
+                self.draft(when=when)
+
     def test_rejects_date_before_article_date(self) -> None:
         with self.assertRaisesRegex(ValueError, "antecede"):
-            self.draft(when="2026-11-29T23:59")
+            self.draft(when="2026-11-26T09:00")
 
     def test_rejects_invalid_page_time_and_empty_message(self) -> None:
         for arguments in ({"page": "pagina"}, {"when": "2026-11-30T7:30"},
-                          {"when": "2026-11-30T07:30Z"}, {"message": "   "}):
+                          {"when": "2026-12-01T09:00Z"}, {"message": "   "}):
             with self.subTest(arguments=arguments), self.assertRaises(ValueError):
                 self.draft(**arguments)
 
@@ -138,7 +154,7 @@ class FacebookDraftTests(unittest.TestCase):
     def test_command_prepares_a_real_article_without_publishing(self) -> None:
         result = subprocess.run(
             [sys.executable, str(facebook_drafts.ROOT / "tools" / "facebook_drafts.py"),
-             "preparar", "--artigo", "109", "--pagina", "123456", "--quando", "2026-11-30T07:30"],
+             "preparar", "--artigo", "109", "--pagina", "123456", "--quando", "2026-12-01T09:00"],
             capture_output=True, text=True, encoding="utf-8", check=True,
         )
         draft = json.loads(result.stdout)
