@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <link rel="icon" type="image/png" href="assets/img/logo.png">
+<head>    <link rel="icon" type="image/png" href="assets/img/logo.png">
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="A história real de como implementamos OpenID Connect do zero, os obstáculos enfrentados e as lições valiosas aprendidas no caminho Este artigo de Christian Mulato contextualiza A Jornada OIDC: Como Transformamos a Autenticação da Cara Core em uma Ave">
@@ -23,74 +22,56 @@
     <script type="application/ld+json">
     {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "name": "Artigos Retrô — Cara Core Informática",
-    "headline": "A Jornada OIDC: Como Transformamos a Autenticação da Cara Core em uma Aventura de Aprendizado",
-    "description": "A história real de como implementamos OpenID Connect do zero, os obstáculos enfrentados e as lições valiosas aprendidas no caminho Este artigo de Christian Mulato contextualiza A Jornada OIDC: Como Transformamos a Autenticação da Cara Core em uma Ave",
-    "image": "https://retro.caracore.com.br/articles/assets/img/2025_10_31_article_55_01.png",
-    "author": {
-        "@type": "Person",
-        "name": "Christian Mulato"
-    },
-    "datePublished": "2025-10-31",
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://retro.caracore.com.br/articles/2025_10_31_article_55.html"
-    }
-}
-    </script>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <meta property="article:published_time" content="2025-10-31">
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "name": "Artigos Retrô — Cara Core Informática",
-    "headline": "A Jornada OIDC: Como Transformamos a Autenticação da Cara Core em uma Aventura de Aprendizado",
-    "description": "A história real de como implementamos OpenID Connect do zero, os obstáculos enfrentados e as lições valiosas aprendidas no caminho Este artigo de Christian Mulato contextualiza A Jornada OIDC: Como Transformamos a Autenticação da Cara Core em uma Ave",
-    "image": "https://retro.caracore.com.br/articles/assets/img/2025_10_31_article_55_01.png",
-    "author": {
-        "@type": "Person",
-        "name": "Christian Mulato"
-    },
-    "datePublished": "2025-10-31",
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://retro.caracore.com.br/articles/2025_10_31_article_55.html"
-    }
+    "@graph": [
+        {
+            "@id": "https://retro.caracore.com.br/articles/2025_10_31_article_55.html#blogposting",
+            "@type": "BlogPosting",
+            "url": "https://retro.caracore.com.br/articles/2025_10_31_article_55.html",
+            "name": "A Jornada OIDC: Como Transformamos a Autenticação da Cara Core em uma Aventura de Aprendizado",
+            "headline": "A Jornada OIDC: Como Transformamos a Autenticação da Cara Core em uma Aventura de Aprendizado",
+            "description": "A história real de como implementamos OpenID Connect do zero, os obstáculos enfrentados e as lições valiosas aprendidas no caminho Este artigo de Christian Mulato contextualiza A Jornada OIDC: Como Transformamos a Autenticação da Cara Core em uma Ave",
+            "image": "https://retro.caracore.com.br/articles/assets/img/2025_10_31_article_55_01.png",
+            "inLanguage": "pt-BR",
+            "author": {
+                "@type": "Person",
+                "name": "Christian Mulato"
+            },
+            "datePublished": "2025-10-31",
+            "mainEntityOfPage": {
+                "@id": "https://retro.caracore.com.br/articles/2025_10_31_article_55.html#webpage"
+            },
+            "publisher": {
+                "@id": "https://caracore.com.br/#organization"
+            },
+            "isPartOf": {
+                "@id": "https://retro.caracore.com.br/#blog"
+            }
+        },
+        {
+            "@id": "https://retro.caracore.com.br/articles/2025_10_31_article_55.html#webpage",
+            "@type": "WebPage",
+            "url": "https://retro.caracore.com.br/articles/2025_10_31_article_55.html",
+            "name": "A Jornada OIDC: Como Transformamos a Autenticação da Cara Core — Cara Core Informática",
+            "description": "A história real de como implementamos OpenID Connect do zero, os obstáculos enfrentados e as lições valiosas aprendidas no caminho Este artigo de Christian Mulato contextualiza A Jornada OIDC: Como Transformamos a Autenticação da Cara Core em uma Ave",
+            "inLanguage": "pt-BR",
+            "isPartOf": {
+                "@id": "https://retro.caracore.com.br/#website"
+            },
+            "publisher": {
+                "@id": "https://caracore.com.br/#organization"
+            },
+            "mainEntity": {
+                "@id": "https://retro.caracore.com.br/articles/2025_10_31_article_55.html#blogposting"
+            }
+        }
+    ]
 }
     </script>
 	<title>A Jornada OIDC: Como Transformamos a Autenticação da Cara Core — Cara Core Informática</title>
-	
 	<meta name="keywords" content="OIDC, OAuth2, autenticação, JavaScript, segurança web, OpenID Connect, Google Auth, Microsoft Entra, implementação real" />
-	
-	
 	<!-- Open Graph -->
-	
-	
-	
-	
-	
 	<meta property="og:image:alt" content="Jornada OIDC: implementação real com Google Auth, Microsoft Entra e debugging (Cara Core)" />
 	<!-- Twitter Card -->
-	
-	
-	
-	
 	<meta name="twitter:image:alt" content="Jornada OIDC: implementação real com Google Auth, Microsoft Entra e debugging (Cara Core)" />
 	<link rel="stylesheet" href="assets/css/articles.css" />
 	<style>

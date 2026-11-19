@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <link rel="icon" type="image/png" href="assets/img/logo.png">
-    
-    
+<head>    <link rel="icon" type="image/png" href="assets/img/logo.png">
     <meta charset="UTF-8">
     <title>Artigos Retrô — Cara Core Informática</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,32 +22,55 @@
     <script type="application/ld+json">
     {
     "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "Artigos Retrô — Cara Core Informática",
-    "headline": "Artigos Retrô — Cara Core Informática",
-    "description": "Artigos retrô da Cara Core Informática sobre engenharia de software, automação, soberania digital, produtos locais, arquitetura resiliente e decisões técnicas aplicadas a negócios reais.",
-    "image": "https://retro.caracore.com.br/articles/assets/img/social-default.png",
-    "author": {
-        "@type": "Person",
-        "name": "Christian Mulato"
-    }
+    "@graph": [
+        {
+            "@id": "https://retro.caracore.com.br/#website",
+            "@type": "WebSite",
+            "url": "https://retro.caracore.com.br/",
+            "name": "Artigos Retrô — Cara Core Informática",
+            "description": "Artigos retrô da Cara Core Informática sobre engenharia de software, automação, soberania digital, produtos locais, arquitetura resiliente e decisões técnicas aplicadas a negócios reais.",
+            "inLanguage": "pt-br",
+            "publisher": {
+                "@id": "https://caracore.com.br/#organization"
+            }
+        },
+        {
+            "@id": "https://retro.caracore.com.br/#blog",
+            "@type": "Blog",
+            "url": "https://retro.caracore.com.br/",
+            "name": "Artigos Retrô — Cara Core Informática",
+            "description": "Artigos retrô da Cara Core Informática sobre engenharia de software, automação, soberania digital, produtos locais, arquitetura resiliente e decisões técnicas aplicadas a negócios reais.",
+            "author": {
+                "@type": "Person",
+                "name": "Christian Mulato"
+            },
+            "publisher": {
+                "@id": "https://caracore.com.br/#organization"
+            },
+            "isPartOf": {
+                "@id": "https://retro.caracore.com.br/#website"
+            }
+        },
+        {
+            "@id": "https://retro.caracore.com.br/#webpage",
+            "@type": "WebPage",
+            "url": "https://retro.caracore.com.br/",
+            "name": "Artigos Retrô — Cara Core Informática",
+            "description": "Artigos retrô da Cara Core Informática sobre engenharia de software, automação, soberania digital, produtos locais, arquitetura resiliente e decisões técnicas aplicadas a negócios reais.",
+            "inLanguage": "pt-br",
+            "isPartOf": {
+                "@id": "https://retro.caracore.com.br/#website"
+            },
+            "publisher": {
+                "@id": "https://caracore.com.br/#organization"
+            },
+            "mainEntity": {
+                "@id": "https://retro.caracore.com.br/#blog"
+            }
+        }
+    ]
 }
     </script>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <link rel="alternate" type="application/rss+xml" title="Artigos Retrô — Cara Core Informática" href="https://retro.caracore.com.br/feed.xml">
         <link rel="stylesheet" href="assets/css/sala.css">
         <link rel="stylesheet" href="assets/css/articles.css">

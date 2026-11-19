@@ -69,7 +69,8 @@ Cada template HTML deve seguir o padrão W3C e otimização para leitores de tel
 1. **Tag `<main>` Semântica:** O conteúdo principal do blog deve ser envelopado por `<main class="container">` em substituição a `<div>`s genéricas.
 2. **Hierarquia de Headings:** Use apenas um `<h1>` por página (no header). Títulos de agrupamento anual usam `<h2>` e títulos mensais usam `<h3>` (com reset de margem superior no CSS para manter consistência visual).
 3. **Meta Tags de SEO:** Garanta que todas as páginas públicas possuam as tags `<meta name="description">` e `<link rel="canonical">` preenchidas de forma única e descritiva.
-4. **Interactive Elements:** Chips e botões interativos devem ter `type="button"` e campos de texto devem ter `aria-label` descritiva.
+4. **Dados estruturados:** Cada URL do sitemap deve ter exatamente um grafo JSON-LD `schema.org` e um nó `WebPage` com `@id` `<canonical>#webpage`, título, descrição, idioma e referências estáveis. A home também declara `WebSite` e `Blog`; os artigos têm um único `BlogPosting`, com `datePublished` e `article:published_time` concordantes. O publicador referencia a `Organization` canônica `https://caracore.com.br/#organization`. Gere os metadados por `tools/social_metadata.py`; não copie blocos JSON-LD nem `article:published_time`.
+5. **Interactive Elements:** Chips e botões interativos devem ter `type="button"` e campos de texto devem ter `aria-label` descritiva.
 
 ## 🧪 Validação e Testes Automatizados
 O repositório possui uma suíte de testes de integridade em **`test_blog.py`**.
@@ -79,3 +80,4 @@ O repositório possui uma suíte de testes de integridade em **`test_blog.py`**.
   - Todas as rotas relativas, imagens e recursos linkados existem no repositório.
   - A hierarquia de títulos e metadados de SEO obedece às regras.
 * Para uma validação única do índice editorial e smoke test HTTP local, execute `python tools/validate_site.py`; use `--url http://127.0.0.1:PORT/` para validar um preview existente. A inspeção visual e funcional ainda precisa ser feita no navegador.
+* Para o contrato de metadados, sitemap e JSON-LD de todas as URLs, execute `python tools/validate_social_metadata.py`.

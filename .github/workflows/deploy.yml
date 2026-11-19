@@ -35,8 +35,14 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Test social metadata generator
+        run: python -m unittest discover -s tools -p "test_social_metadata.py"
+
       - name: Validate blog before publishing
         run: python tools/validate_site.py
+
+      - name: Validate sitemap metadata and JSON-LD
+        run: python tools/validate_social_metadata.py
 
   deploy:
     needs: validate

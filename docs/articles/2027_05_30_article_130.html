@@ -1,42 +1,70 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <link rel="icon" type="image/png" href="assets/img/logo.png">
+<head>    <link rel="icon" type="image/png" href="assets/img/logo.png">
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Análise comparativa de engenharia entre as duas linhas de PDV Desktop da Cara Core Informática: footprint de memória (30MB vs 200MB), latência determinística sem GC, IPC vs loopback HTTP e o gargalo real de I/O no SQLite local.">
+    <meta name="description" content="Análise comparativa de engenharia entre as duas linhas de PDV Desktop da Cara Core Informática: footprint de memória (30MB vs 200MB), latência determinística sem GC, IPC vs loopback HTTP e o gargalo real de I/O no SQLite local">
     <meta name="author" content="Christian Mulato">
     <meta property="og:title" content="Java 25 (Quarkus) vs. Rust (Tauri 2) no Balcão: Onde Fica o Gargalo Quando Ambos Usam SQLite?">
-    <meta property="og:description" content="Análise comparativa de engenharia entre as duas linhas de PDV Desktop da Cara Core Informática: footprint de memória (30MB vs 200MB), latência determinística sem GC, IPC vs loopback HTTP e o gargalo real de I/O no SQLite local.">
+    <meta property="og:description" content="Análise comparativa de engenharia entre as duas linhas de PDV Desktop da Cara Core Informática: footprint de memória (30MB vs 200MB), latência determinística sem GC, IPC vs loopback HTTP e o gargalo real de I/O no SQLite local">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://retro.caracore.com.br/articles/2027_05_30_article_130.html">
     <meta property="og:image" content="https://retro.caracore.com.br/articles/assets/img/2027_05_30_article_130_01.png">
-    <meta property="og:image:width" content="1024">
-    <meta property="og:image:height" content="1024">
+    <meta property="og:image:width" content="2752">
+    <meta property="og:image:height" content="1536">
     <meta property="og:site_name" content="Artigos Retrô — Cara Core Informática">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Java 25 (Quarkus) vs. Rust (Tauri 2) no Balcão: Onde Fica o Gargalo Quando Ambos Usam SQLite?">
-    <meta name="twitter:description" content="Análise comparativa de engenharia entre as duas linhas de PDV Desktop da Cara Core Informática: footprint de memória (30MB vs 200MB), latência determinística sem GC, IPC vs loopback HTTP e o gargalo real de I/O no SQLite local.">
+    <meta name="twitter:description" content="Análise comparativa de engenharia entre as duas linhas de PDV Desktop da Cara Core Informática: footprint de memória (30MB vs 200MB), latência determinística sem GC, IPC vs loopback HTTP e o gargalo real de I/O no SQLite local">
     <meta name="twitter:image" content="https://retro.caracore.com.br/articles/assets/img/2027_05_30_article_130_01.png">
     <link rel="canonical" href="https://retro.caracore.com.br/articles/2027_05_30_article_130.html">
     <meta property="article:published_time" content="2027-05-30">
     <script type="application/ld+json">
     {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "name": "Artigos Retrô — Cara Core Informática",
-    "headline": "Java 25 (Quarkus) vs. Rust (Tauri 2) no Balcão: Onde Fica o Gargalo Quando Ambos Usam SQLite?",
-    "description": "Análise comparativa de engenharia entre as duas linhas de PDV Desktop da Cara Core Informática: footprint de memória (30MB vs 200MB), latência determinística sem GC, IPC vs loopback HTTP e o gargalo real de I/O no SQLite local.",
-    "image": "https://retro.caracore.com.br/articles/assets/img/2027_05_30_article_130_01.png",
-    "author": {
-        "@type": "Person",
-        "name": "Christian Mulato"
-    },
-    "datePublished": "2027-05-30",
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://retro.caracore.com.br/articles/2027_05_30_article_130.html"
-    }
+    "@graph": [
+        {
+            "@id": "https://retro.caracore.com.br/articles/2027_05_30_article_130.html#blogposting",
+            "@type": "BlogPosting",
+            "url": "https://retro.caracore.com.br/articles/2027_05_30_article_130.html",
+            "name": "Java 25 (Quarkus) vs. Rust (Tauri 2) no Balcão: Onde Fica o Gargalo Quando Ambos Usam SQLite?",
+            "headline": "Java 25 (Quarkus) vs. Rust (Tauri 2) no Balcão: Onde Fica o Gargalo Quando Ambos Usam SQLite?",
+            "description": "Análise comparativa de engenharia entre as duas linhas de PDV Desktop da Cara Core Informática: footprint de memória (30MB vs 200MB), latência determinística sem GC, IPC vs loopback HTTP e o gargalo real de I/O no SQLite local",
+            "image": "https://retro.caracore.com.br/articles/assets/img/2027_05_30_article_130_01.png",
+            "inLanguage": "pt-BR",
+            "author": {
+                "@type": "Person",
+                "name": "Christian Mulato"
+            },
+            "datePublished": "2027-05-30",
+            "mainEntityOfPage": {
+                "@id": "https://retro.caracore.com.br/articles/2027_05_30_article_130.html#webpage"
+            },
+            "publisher": {
+                "@id": "https://caracore.com.br/#organization"
+            },
+            "isPartOf": {
+                "@id": "https://retro.caracore.com.br/#blog"
+            }
+        },
+        {
+            "@id": "https://retro.caracore.com.br/articles/2027_05_30_article_130.html#webpage",
+            "@type": "WebPage",
+            "url": "https://retro.caracore.com.br/articles/2027_05_30_article_130.html",
+            "name": "Java 25 (Quarkus) vs. Rust (Tauri 2) no Balcão: Onde Fica o Gargalo Quando Ambos Usam SQLite? — Cara Core",
+            "description": "Análise comparativa de engenharia entre as duas linhas de PDV Desktop da Cara Core Informática: footprint de memória (30MB vs 200MB), latência determinística sem GC, IPC vs loopback HTTP e o gargalo real de I/O no SQLite local",
+            "inLanguage": "pt-BR",
+            "isPartOf": {
+                "@id": "https://retro.caracore.com.br/#website"
+            },
+            "publisher": {
+                "@id": "https://caracore.com.br/#organization"
+            },
+            "mainEntity": {
+                "@id": "https://retro.caracore.com.br/articles/2027_05_30_article_130.html#blogposting"
+            }
+        }
+    ]
 }
     </script>
 	<title>Java 25 (Quarkus) vs. Rust (Tauri 2) no Balcão: Onde Fica o Gargalo Quando Ambos Usam SQLite? — Cara Core</title>

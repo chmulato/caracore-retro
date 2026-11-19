@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <link rel="icon" type="image/png" href="assets/img/logo.png">
+<head>    <link rel="icon" type="image/png" href="assets/img/logo.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Entenda OIDC com analogias simples: como sair do caos de senhas múltiplas para uma identidade única e segura. Guia para leigos com casos reais Este artigo de Christian Mulato contextualiza OIDC descomplicado — como acabar com o caos de senhas (Parte">
@@ -23,74 +22,56 @@
     <script type="application/ld+json">
     {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "name": "Artigos Retrô — Cara Core Informática",
-    "headline": "OIDC descomplicado — como acabar com o caos de senhas (Parte I)",
-    "description": "Entenda OIDC com analogias simples: como sair do caos de senhas múltiplas para uma identidade única e segura. Guia para leigos com casos reais Este artigo de Christian Mulato contextualiza OIDC descomplicado — como acabar com o caos de senhas (Parte",
-    "image": "https://retro.caracore.com.br/articles/assets/img/2025_10_15_article_52_01.png",
-    "author": {
-        "@type": "Person",
-        "name": "Christian Mulato"
-    },
-    "datePublished": "2025-10-15",
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://retro.caracore.com.br/articles/2025_10_15_article_52.html"
-    }
-}
-    </script>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <meta property="article:published_time" content="2025-10-15">
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "name": "Artigos Retrô — Cara Core Informática",
-    "headline": "OIDC descomplicado — como acabar com o caos de senhas (Parte I)",
-    "description": "Entenda OIDC com analogias simples: como sair do caos de senhas múltiplas para uma identidade única e segura. Guia para leigos com casos reais Este artigo de Christian Mulato contextualiza OIDC descomplicado — como acabar com o caos de senhas (Parte",
-    "image": "https://retro.caracore.com.br/articles/assets/img/2025_10_15_article_52_01.png",
-    "author": {
-        "@type": "Person",
-        "name": "Christian Mulato"
-    },
-    "datePublished": "2025-10-15",
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://retro.caracore.com.br/articles/2025_10_15_article_52.html"
-    }
+    "@graph": [
+        {
+            "@id": "https://retro.caracore.com.br/articles/2025_10_15_article_52.html#blogposting",
+            "@type": "BlogPosting",
+            "url": "https://retro.caracore.com.br/articles/2025_10_15_article_52.html",
+            "name": "OIDC descomplicado — como acabar com o caos de senhas (Parte I)",
+            "headline": "OIDC descomplicado — como acabar com o caos de senhas (Parte I)",
+            "description": "Entenda OIDC com analogias simples: como sair do caos de senhas múltiplas para uma identidade única e segura. Guia para leigos com casos reais Este artigo de Christian Mulato contextualiza OIDC descomplicado — como acabar com o caos de senhas (Parte",
+            "image": "https://retro.caracore.com.br/articles/assets/img/2025_10_15_article_52_01.png",
+            "inLanguage": "pt-BR",
+            "author": {
+                "@type": "Person",
+                "name": "Christian Mulato"
+            },
+            "datePublished": "2025-10-15",
+            "mainEntityOfPage": {
+                "@id": "https://retro.caracore.com.br/articles/2025_10_15_article_52.html#webpage"
+            },
+            "publisher": {
+                "@id": "https://caracore.com.br/#organization"
+            },
+            "isPartOf": {
+                "@id": "https://retro.caracore.com.br/#blog"
+            }
+        },
+        {
+            "@id": "https://retro.caracore.com.br/articles/2025_10_15_article_52.html#webpage",
+            "@type": "WebPage",
+            "url": "https://retro.caracore.com.br/articles/2025_10_15_article_52.html",
+            "name": "OIDC descomplicado — como acabar com o caos de senhas (Parte I) — Cara Core Informática",
+            "description": "Entenda OIDC com analogias simples: como sair do caos de senhas múltiplas para uma identidade única e segura. Guia para leigos com casos reais Este artigo de Christian Mulato contextualiza OIDC descomplicado — como acabar com o caos de senhas (Parte",
+            "inLanguage": "pt-BR",
+            "isPartOf": {
+                "@id": "https://retro.caracore.com.br/#website"
+            },
+            "publisher": {
+                "@id": "https://caracore.com.br/#organization"
+            },
+            "mainEntity": {
+                "@id": "https://retro.caracore.com.br/articles/2025_10_15_article_52.html#blogposting"
+            }
+        }
+    ]
 }
     </script>
   <title>OIDC descomplicado — como acabar com o caos de senhas (Parte I) — Cara Core Informática</title>
-  
   <meta name="keywords" content="OIDC, OAuth 2.0, JWT, SSO, PKCE, JWKS, GitHub Actions, AWS, CI/CD, OpenID Connect" />
-  
-  
   <!-- Open Graph -->
-  
-  
-  
-  
-  
   <meta property="og:image:alt" content="Fluxo OIDC com ID Token e integração GitHub Actions → AWS por OIDC (cores Cara Core)" />
   <!-- Twitter Card -->
-  
-  
-  
-  
   <meta name="twitter:image:alt" content="Fluxo OIDC com ID Token e integração GitHub Actions → AWS por OIDC (cores Cara Core)" />
   <link rel="stylesheet" href="assets/css/articles.css" />
   <style>
@@ -125,17 +106,6 @@
     blockquote { font-style: italic; border-left: 3px solid #e5e7eb; padding-left: 1.25rem; margin-left: 0; }
     @media (max-width:640px){ pre { font-size:.78rem; border-width:9px; padding:.85rem .9rem; } .chalkboard { border-width:9px; padding:.85rem .9rem; } }
   </style>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "OIDC descomplicado — do caos de senhas ao login federado seguro (com exemplos práticos)",
-    "author": {"@type": "Organization", "name": "Cara Core Informática"},
-    "datePublished": "2025-10-15",
-    "image": "https://retro.caracore.com.br/articles/assets/img/2025_10_15_article_52_01.png",
-    "publisher": {"@type":"Organization","name":"Cara Core Informática"}
-  }
-  </script>
   </head>
 <body>
   <main class="container">
