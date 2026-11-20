@@ -79,6 +79,7 @@ Os artigos foram revisados para manter leitura objetiva, com foco em aplicação
 - O Planejador/API só aceitam datas até 30 dias à frente. Em 20/11, com o horário padrão do compositor, 20/12 estava desabilitado no seletor (19/12 era o último dia selecionável); por isso #113 (22/12) e #114 (24/12) ainda não apareciam na semana mostrada pelo usuário.
 - A automação os enviará quando entrarem na janela. Previsão das primeiras execuções elegíveis: #113 em 24/11, #114 em 26/11, #115 em 01/12, #116 em 03/12, #117 em 08/12, #118 em 15/12, #119 em 24/12, #120 em 05/01/2027, #121 em 14/01 e #122 em 26/01; todas às 06h de Brasília. A confirmação da execução, não a previsão, comprova presença no Planejador.
 - Estado, evidências, tabela completa de datas, reservas já confirmadas e cuidados para retomar estão em [`caracore-site/docs/ECOSYSTEM_MEMORIA.md`](../caracore-site/docs/ECOSYSTEM_MEMORIA.md), na seção “Campanha Facebook do Retrô”.
+- Para publicar somente documentação ou ajustes do blog sem tentar cross-post no LinkedIn, inclua `[skip linkedin]` na mensagem do último commit do push.
 
 ## 🔗 Integração com Cara Core
 
