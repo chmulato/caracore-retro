@@ -185,6 +185,22 @@ class FacebookAPI:
         if status != 200 or not isinstance(data, dict) or data.get("id") != page_id:
             raise CampaignError("A credencial nao confirmou o acesso a pagina escolhida.")
 
+    def diagnose_page(self, page_id: str) -> dict:
+        if not re.fullmatch(r"[1-9][0-9]*", page_id):
+            raise CampaignError("Identificador da pagina invalido.")
+        status, data = self.request("GET", f"/{API_VERSION}/me?fields=id")
+        data = data if isinstance(data, dict) else {}
+        error = data.get("error")
+        error = error if isinstance(error, dict) else {}
+        code, subcode = error.get("code"), error.get("error_subcode")
+        identity_present = isinstance(data.get("id"), str) and bool(re.fullmatch(r"[1-9][0-9]*", data["id"]))
+        return {
+            "http_status": status,
+            "page_matches": status == 200 and identity_present and data["id"] == page_id,
+            "error_code": code if type(code) is int and 0 <= code <= 2147483647 else None,
+            "error_subcode": subcode if type(subcode) is int and 0 <= subcode <= 2147483647 else None,
+        }
+
     def schedule(self, content: dict, timestamp: int) -> str:
         status, data = self.request("POST", f"/{API_VERSION}/{content['pagina_id']}/feed", {
             "message": content["mensagem"], "link": content["link"],
@@ -234,8 +250,19 @@ def publish(draft: dict, approved_digest: str, env: dict[str, str], api, graph,
 def main() -> int:
     env = dict(os.environ)
     try:
-        if len(sys.argv) != 2 or sys.argv[1] not in ("preview", "agendar"):
-            raise CampaignError("Use preview ou agendar na esteira do GitHub.")
+        if len(sys.argv) != 2 or sys.argv[1] not in ("preview", "agendar", "diagnosticar"):
+            raise CampaignError("Use preview, agendar ou diagnosticar na esteira do GitHub.")
+        if sys.argv[1] == "diagnosticar":
+            validate_run(env, facebook_drafts.ROOT)
+            result = FacebookAPI(env.get("FACEBOOK_PAGE_TOKEN", "")).diagnose_page(env.get("FACEBOOK_PAGE_ID", ""))
+            report = json.dumps(result, ensure_ascii=True, sort_keys=True)
+            print("Diagnostico somente leitura; nenhum agendamento ou publicacao foi solicitado.")
+            print(report)
+            summary = env.get("GITHUB_STEP_SUMMARY")
+            if summary:
+                with open(summary, "a", encoding="utf-8") as file:
+                    file.write("## Diagnostico Facebook: somente leitura\n\n```json\n" + report + "\n```\n")
+            return 0 if result["page_matches"] else 1
         draft = draft_from_inputs(env)
         facebook_drafts.verify(draft)
         if sys.argv[1] == "preview":

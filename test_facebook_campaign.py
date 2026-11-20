@@ -1,4 +1,5 @@
 import hashlib
+import io
 import json
 import tempfile
 import threading
@@ -351,6 +352,122 @@ class FacebookTransportTests(unittest.TestCase):
         with self.assertRaises(campaign.CampaignError):
             api.check_page("123")
         self.assertEqual(connect.call_count, 2)
+
+
+class FacebookDiagnosticTests(unittest.TestCase):
+    @patch("tools.facebook_campaign.http.client.HTTPSConnection")
+    def test_identity_diagnosis_uses_one_get_and_never_prints_returned_id(self, connect):
+        for status, body, matches in [
+            (200, {"id": "123"}, True),
+            (200, {"id": "999"}, False),
+            (200, {"id": 123}, False),
+            (200, {"id": "segredo"}, False),
+            (200, [], False),
+            (302, {"id": "123"}, False),
+        ]:
+            with self.subTest(status=status, body=body):
+                connect.reset_mock()
+                response = MagicMock(status=status)
+                response.read.return_value = json.dumps(body).encode()
+                connect.return_value.getresponse.return_value = response
+                result = campaign.FacebookAPI("segredo").diagnose_page("123")
+                self.assertEqual(result, {"http_status": status, "page_matches": matches,
+                                         "error_code": None, "error_subcode": None})
+                self.assertNotIn("segredo", json.dumps(result))
+                connect.assert_called_once_with("graph.facebook.com", timeout=30)
+                connect.return_value.request.assert_called_once()
+                args, kwargs = connect.return_value.request.call_args
+                self.assertEqual(args, ("GET", "/v27.0/me?fields=id"))
+                self.assertIsNone(kwargs["body"])
+                connect.return_value.close.assert_called_once()
+
+    @patch("tools.facebook_campaign.http.client.HTTPSConnection")
+    def test_error_diagnosis_only_includes_bounded_integer_codes(self, connect):
+        for code, subcode, expected_code, expected_subcode in [
+            (190, 463, 190, 463), (10, None, 10, None),
+            ("segredo", "segredo", None, None),
+            (True, False, None, None), (-1, 2 ** 40, None, None),
+        ]:
+            with self.subTest(code=code, subcode=subcode):
+                response = MagicMock(status=400)
+                response.read.return_value = json.dumps({"access_token": "segredo", "error": {
+                    "code": code, "error_subcode": subcode, "message": "Bearer segredo",
+                    "type": "segredo", "fbtrace_id": "segredo",
+                }}).encode()
+                connect.return_value.getresponse.return_value = response
+                result = campaign.FacebookAPI("segredo").diagnose_page("123")
+                self.assertEqual(result, {"http_status": 400, "page_matches": False,
+                                         "error_code": expected_code, "error_subcode": expected_subcode})
+                self.assertNotIn("segredo", json.dumps(result))
+
+    @patch("tools.facebook_campaign.http.client.HTTPSConnection")
+    def test_invalid_page_never_contacts_meta(self, connect):
+        for page in ("", "0123", "123?access_token=segredo"):
+            with self.subTest(page=page), self.assertRaises(campaign.CampaignError):
+                campaign.FacebookAPI("segredo").diagnose_page(page)
+        connect.assert_not_called()
+
+    @patch("tools.facebook_campaign.http.client.HTTPSConnection")
+    def test_diagnostic_command_bypasses_all_publication_paths(self, connect):
+        response = MagicMock(status=200)
+        response.read.return_value = b'{"id":"123","access_token":"segredo"}'
+        connect.return_value.getresponse.return_value = response
+        with tempfile.TemporaryDirectory() as folder:
+            summary = Path(folder) / "summary.txt"
+            env = {"FACEBOOK_PAGE_TOKEN": "segredo", "FACEBOOK_PAGE_ID": "123",
+                   "GITHUB_STEP_SUMMARY": str(summary)}
+            with patch.dict(campaign.os.environ, env, clear=True), \
+                    patch.object(campaign.sys, "argv", ["facebook_campaign", "diagnosticar"]), \
+                    patch.object(campaign, "validate_run", return_value=("55", BASE, 42)) as validate, \
+                    patch.object(campaign, "draft_from_inputs") as draft, \
+                    patch.object(campaign, "publish") as publish, \
+                    patch.object(facebook_github, "GithubAPI") as github, \
+                    patch.object(campaign.sys, "stdout", new_callable=io.StringIO) as output:
+                self.assertEqual(campaign.main(), 0)
+                validate.assert_called_once()
+                draft.assert_not_called()
+                publish.assert_not_called()
+                github.assert_not_called()
+                self.assertNotIn("segredo", output.getvalue() + summary.read_text(encoding="utf-8"))
+                self.assertIn('"page_matches": true', output.getvalue())
+                self.assertEqual(connect.return_value.request.call_count, 1)
+                self.assertEqual(connect.return_value.request.call_args.args[0], "GET")
+
+    @patch("tools.facebook_campaign.http.client.HTTPSConnection")
+    def test_diagnostic_command_returns_failure_with_safe_meta_codes(self, connect):
+        response = MagicMock(status=400)
+        response.read.return_value = b'{"error":{"code":190,"error_subcode":463,"message":"Bearer segredo"}}'
+        connect.return_value.getresponse.return_value = response
+        with patch.dict(campaign.os.environ, {"FACEBOOK_PAGE_TOKEN": "segredo", "FACEBOOK_PAGE_ID": "123"}, clear=True), \
+                patch.object(campaign.sys, "argv", ["facebook_campaign", "diagnosticar"]), \
+                patch.object(campaign, "validate_run", return_value=("55", BASE, 42)), \
+                patch.object(campaign.sys, "stdout", new_callable=io.StringIO) as output:
+            self.assertEqual(campaign.main(), 1)
+            result = json.loads(output.getvalue().splitlines()[-1])
+            self.assertEqual(result["error_code"], 190)
+            self.assertEqual(result["error_subcode"], 463)
+            self.assertFalse(result["page_matches"])
+            self.assertNotIn("segredo", output.getvalue())
+
+    @patch("tools.facebook_campaign.http.client.HTTPSConnection")
+    def test_diagnostic_command_reports_failure_without_raw_exception(self, connect):
+        connect.return_value.request.side_effect = ValueError("Bearer segredo")
+        with patch.dict(campaign.os.environ, {"FACEBOOK_PAGE_TOKEN": "segredo", "FACEBOOK_PAGE_ID": "123"}, clear=True), \
+                patch.object(campaign.sys, "argv", ["facebook_campaign", "diagnosticar"]), \
+                patch.object(campaign, "validate_run", return_value=("55", BASE, 42)), \
+                patch.object(campaign.sys, "stderr", new_callable=io.StringIO) as output:
+            self.assertEqual(campaign.main(), 1)
+            self.assertNotIn("segredo", output.getvalue())
+            self.assertIn("Nao foi possivel confirmar", output.getvalue())
+            self.assertEqual(connect.return_value.request.call_count, 1)
+
+    @patch("tools.facebook_campaign.http.client.HTTPSConnection")
+    def test_diagnostic_requires_official_run_before_accessing_token(self, connect):
+        with patch.dict(campaign.os.environ, {}, clear=True), \
+                patch.object(campaign.sys, "argv", ["facebook_campaign", "diagnosticar"]), \
+                patch.object(campaign.sys, "stderr", new_callable=io.StringIO):
+            self.assertEqual(campaign.main(), 1)
+            connect.assert_not_called()
 
 
 if __name__ == "__main__":
