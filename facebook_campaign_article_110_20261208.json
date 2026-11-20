@@ -1,0 +1,22 @@
+{
+  "estado": "RASCUNHO_NAO_APROVADO",
+  "conteudo": {
+    "versao": 1,
+    "rede": "facebook-pagina",
+    "pagina_id": "1657316127663973",
+    "artigo": "docs/articles/2026_12_03_article_110.html",
+    "data_editorial": "2026-12-03",
+    "data_hora_local": "2026-12-08T09:00",
+    "fuso": "America/Sao_Paulo",
+    "data_hora_utc": "2026-12-08T12:00:00Z",
+    "mensagem": "Tecnologia independente precisa ser contra a nuvem?\n\nO texto propõe escolher ferramentas conforme a necessidade: trabalhar localmente quando isso ajuda, cuidar dos backups e usar IA sem abrir mão da responsabilidade humana. O ponto principal é explicar o que já existe e o que ainda está em desenvolvimento.\n\nLeia no blog Retrô:\nhttps://retro.caracore.com.br/articles/2026_12_03_article_110.html",
+    "link": "https://retro.caracore.com.br/articles/2026_12_03_article_110.html",
+    "titulo_previa": "O Renascimento da Tecnologia Independente: Produto Real Antes do Discurso",
+    "descricao_previa": "Tecnologia independente na Cara Core: portfólio real, oficinas, produtos locais, Java 21, Python, SQLite, OIDC e IA como apoio, sem vender promessa fora de escopo",
+    "imagem_url": "https://retro.caracore.com.br/articles/assets/img/2026_12_03_article_110_01.png",
+    "imagem_sha256": "a83d5a6dc129cb1f351848ba9e99ac8648772c8df64eb1a5bee5fa4e076191fe",
+    "artigo_sha256": "feb42fbe1b8d4ae81b62933b36e421e8ea85aa27feeaaea08f713fef0fc24eb0"
+  },
+  "sha256_conteudo": "44b03ebd174a6cda4c14f4128fee54d12c060c2184619684f372a97309619d6c",
+  "aviso": "A previa real no Facebook e o conteudo publicado no site nao foram conferidos. Revisao editorial: NÃO APROVAR antes de revisão do artigo. Catálogo repete PDV Java 21/JavaFX, certificação sem comprovação, Hub genérico e CSO com telemetria/checkpoints sem separar planejamento; Ink fica restrito a tatuagem."
+}

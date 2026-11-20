@@ -1,0 +1,22 @@
+{
+  "estado": "RASCUNHO_NAO_APROVADO",
+  "conteudo": {
+    "versao": 1,
+    "rede": "facebook-pagina",
+    "pagina_id": "1657316127663973",
+    "artigo": "docs/articles/2026_12_12_article_112.html",
+    "data_editorial": "2026-12-12",
+    "data_hora_local": "2026-12-15T09:00",
+    "fuso": "America/Sao_Paulo",
+    "data_hora_utc": "2026-12-15T12:00:00Z",
+    "mensagem": "A IA escreveu o código. Quem confere se ele resolve o problema?\n\nO artigo reúne perguntas úteis para revisar um programa: ele funciona além dos exemplos simples? Foi testado? Trata entradas erradas? A proposta é valorizar o aprendizado de lógica e Python como apoio ao julgamento humano, não apenas à produção mais rápida de código.\n\nLeia no blog Retrô:\nhttps://retro.caracore.com.br/articles/2026_12_12_article_112.html",
+    "link": "https://retro.caracore.com.br/articles/2026_12_12_article_112.html",
+    "titulo_previa": "Circuito Ferradura: Formação em Python para Auditoria Técnica",
+    "descricao_previa": "Circuito Ferradura como trilha de domínio de codificação em Python para formar auditores técnicos capazes de validar código humano e código gerado por IA",
+    "imagem_url": "https://retro.caracore.com.br/articles/assets/img/2026_12_12_article_112_01.png",
+    "imagem_sha256": "c839bba98abe635d34883714aa2ae092529ea42c91cc8302d3174a0ecea629ab",
+    "artigo_sha256": "d34dbd5c6b1175bf5e0332bc8a20516df1c13b503b38c7a1ce1a4feb130f17a4"
+  },
+  "sha256_conteudo": "3f3b14879fc381e98923cae82d9f6b52705be8eaaae9bf903bdd22a286a97ce5",
+  "aviso": "A previa real no Facebook e o conteudo publicado no site nao foram conferidos. Revisao editorial: NÃO APROVAR antes de revisar a promessa de que aprender Python por si só qualifica para auditar sistemas ou fiscalizar equipes com segurança. Conferir título e prévia junto com o corpo."
+}

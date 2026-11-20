@@ -1,0 +1,22 @@
+{
+  "estado": "RASCUNHO_NAO_APROVADO",
+  "conteudo": {
+    "versao": 1,
+    "rede": "facebook-pagina",
+    "pagina_id": "1657316127663973",
+    "artigo": "docs/articles/2026_11_14_article_108.html",
+    "data_editorial": "2026-11-14",
+    "data_hora_local": "2026-12-01T09:00",
+    "fuso": "America/Sao_Paulo",
+    "data_hora_utc": "2026-12-01T12:00:00Z",
+    "mensagem": "Se a informação parou de chegar, o mapa ainda conta a verdade?\n\nOs cinco atos da Amarelinha convidam a separar posição observada de estimativa, conferir diferenças de carga antes de concluir e reconhecer o que falta saber. É uma reflexão sobre confiança nos dados, não anúncio de GPS ou sensores disponíveis no CSO Frotas.\n\nLeia no blog Retrô:\nhttps://retro.caracore.com.br/articles/2026_11_14_article_108.html",
+    "link": "https://retro.caracore.com.br/articles/2026_11_14_article_108.html",
+    "titulo_previa": "Amarelinha: Os Cinco Atos",
+    "descricao_previa": "Amarelinha em cinco atos: um ensaio sobre rastreabilidade, dados ausentes e conferência de cargas, sem confundir ideias futuras com o CSO Frotas disponível.",
+    "imagem_url": "https://retro.caracore.com.br/articles/assets/img/2026_11_14_article_108_01.png",
+    "imagem_sha256": "e947e9f6442d1397eb1af120e25c0b8f8bee7f7cefba6189c02e7419ee46de59",
+    "artigo_sha256": "1d198b2d049211c38202daa5f9927f4a201af2db30615808858bdd63aa12c4d7"
+  },
+  "sha256_conteudo": "4f26709330443943aa45324516f6ce363dbd9abcfab38e65185f1c7784db0640",
+  "aviso": "A previa real no Facebook e o conteudo publicado no site nao foram conferidos. Revisao editorial: texto corrigido localmente; falta publicar a correção no blog, conferir a prévia e obter aprovação individual. O artigo é um ensaio, não anúncio de rastreamento disponível."
+}

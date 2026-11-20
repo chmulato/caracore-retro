@@ -1,6 +1,9 @@
 name: Revisão de campanha para Facebook
 
 on:
+  schedule:
+    - cron: "0 6 * * 2,4"
+      timezone: "America/Sao_Paulo"
   workflow_dispatch:
     inputs:
       article:
@@ -25,7 +28,7 @@ permissions:
 
 jobs:
   revisao:
-    if: github.ref == 'refs/heads/master' && github.run_attempt == 1
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/master' && github.run_attempt == 1
     runs-on: ubuntu-latest
     outputs:
       digest: ${{ steps.preview.outputs.digest }}
@@ -72,3 +75,23 @@ jobs:
           python-version: "3.x"
       - name: Conferir aprovação e reservar antes de agendar
         run: python -m tools.facebook_campaign agendar
+
+  automatico:
+    if: github.event_name == 'schedule' && github.ref == 'refs/heads/master' && github.run_attempt == 1
+    environment: facebook-auto
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    env:
+      FACEBOOK_PAGE_TOKEN: ${{ secrets.FACEBOOK_PAGE_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Agendar a campanha da fila para hoje
+        run: python -m tools.facebook_campaign publicar-dia

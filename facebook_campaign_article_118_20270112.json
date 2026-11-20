@@ -1,0 +1,22 @@
+{
+  "estado": "RASCUNHO_NAO_APROVADO",
+  "conteudo": {
+    "versao": 1,
+    "rede": "facebook-pagina",
+    "pagina_id": "1657316127663973",
+    "artigo": "docs/articles/2027_01_10_article_118.html",
+    "data_editorial": "2027-01-10",
+    "data_hora_local": "2027-01-12T09:00",
+    "fuso": "America/Sao_Paulo",
+    "data_hora_utc": "2027-01-12T12:00:00Z",
+    "mensagem": "Quanto custa usar IA na engenharia — e como avaliar se o investimento compensa? O artigo apresenta uma auditoria interna de 15 meses, com custos de Copilot e Cursor, métricas e uma leitura de FinOps. Os números são da experiência descrita no texto, não uma garantia de ROI para outros negócios.\n\nQue custos você considera ao avaliar uma ferramenta?\n\nLeia “O Retorno do Investimento em Silício: O Custo e o ROI da IA na Cara Core Informática” no blog Retrô:\nhttps://retro.caracore.com.br/articles/2027_01_10_article_118.html",
+    "link": "https://retro.caracore.com.br/articles/2027_01_10_article_118.html",
+    "titulo_previa": "O Retorno do Investimento em Silício: O Custo e o ROI da IA na Cara Core Informática",
+    "descricao_previa": "Uma auditoria interna de 15 meses reúne custos do GitHub Copilot e do Cursor, métricas de tempo e decisões de FinOps. O artigo explica como a Cara Core avalia o retorno do uso de IA na engenharia",
+    "imagem_url": "https://retro.caracore.com.br/articles/assets/img/2027_01_10_article_118_01.png",
+    "imagem_sha256": "c50535077e9ba6b82eb8a5bf3590325f8a83bae99b849cb239ccc3898a0f5363",
+    "artigo_sha256": "6792036364033d1abc0aeae60aaf74b140098e5f9d8eb0f5079fbecd087ef243"
+  },
+  "sha256_conteudo": "09310ac94f3ca6bbf8cb8bc14920e4a47f228cfa76125df7e94357372e53a3e9",
+  "aviso": "A previa real no Facebook e o conteudo publicado no site nao foram conferidos."
+}

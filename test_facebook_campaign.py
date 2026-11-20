@@ -5,7 +5,7 @@ import tempfile
 import threading
 import unittest
 from concurrent.futures import ThreadPoolExecutor
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
@@ -124,6 +124,48 @@ class CampaignTests(unittest.TestCase):
         self.assertEqual(self.run_publish(draft=draft, digest=self.api.digest), "123_456")
         self.assertEqual(self.graph.sends, 1)
         self.assertIn(("send", int(datetime(2026, 12, 3, 12, tzinfo=timezone.utc).timestamp())), self.events)
+
+    def test_automatic_campaign_skips_manual_approval_but_keeps_reservation(self):
+        env = {
+            "GITHUB_ACTIONS": "true", "GITHUB_EVENT_NAME": "schedule",
+            "GITHUB_REPOSITORY": campaign.REPOSITORY, "GITHUB_REF": "refs/heads/master",
+            "GITHUB_RUN_ATTEMPT": "1", "GITHUB_RUN_ID": "55", "GITHUB_SHA": BASE,
+        }
+        with patch.object(campaign, "validate_run", return_value=("55", BASE, None)):
+            self.assertEqual(campaign.publish(
+                self.draft, self.digest, env, self.api, self.graph, self.root,
+                self.fetch, NOW, automatic=True,
+            ), "123_456")
+        self.assertFalse(any(
+            isinstance(path, str) and path.endswith("/approvals")
+            for _, path in self.events
+        ))
+        self.assertIn("refs/heads/facebook-reservas/p123/a109", self.api.refs)
+        self.assertEqual(self.graph.sends, 1)
+
+    def test_campaign_queue_selects_only_the_due_local_date(self):
+        campaign_path = self.root / "facebook_campaign_article_109_20261201.json"
+        campaign_path.write_text(json.dumps({
+            **self.draft,
+            "aviso": "NÃO APROVAR",
+        }), encoding="utf-8")
+        self.assertEqual(campaign.campaign_for_date(date(2026, 12, 1), self.root), campaign_path)
+        self.assertIsNone(campaign.campaign_for_date(date(2026, 12, 3), self.root))
+        loaded = campaign.draft_from_campaign_file(campaign_path, self.root)
+        self.assertEqual(loaded, self.draft)
+
+    def test_campaign_queue_rejects_ambiguous_dates(self):
+        for number in ("109", "110"):
+            path = self.root / f"facebook_campaign_article_{number}_20261201.json"
+            path.write_text(json.dumps({
+                **self.draft,
+                "conteudo": {
+                    **self.draft["conteudo"],
+                    "artigo": f"docs/articles/2026_11_30_article_{number}.html",
+                },
+            }), encoding="utf-8")
+        with self.assertRaisesRegex(campaign.CampaignError, "mais de uma campanha"):
+            campaign.campaign_for_date(date(2026, 12, 1), self.root)
 
     def test_off_calendar_campaign_never_calls_github_or_meta(self):
         for when in ("2026-12-02T09:00", "2026-12-01T12:00"):
@@ -309,6 +351,20 @@ class CampaignTests(unittest.TestCase):
                 changed = dict(env, **{key: value})
                 with self.subTest(key=key), self.assertRaises(campaign.CampaignError):
                     campaign.validate_run(changed, self.root)
+
+    def test_scheduled_run_requires_schedule_event_but_not_reviewer(self):
+        env = {
+            "GITHUB_ACTIONS": "true", "GITHUB_EVENT_NAME": "schedule",
+            "GITHUB_REPOSITORY": campaign.REPOSITORY, "GITHUB_REF": "refs/heads/master",
+            "GITHUB_RUN_ATTEMPT": "1", "GITHUB_RUN_ID": "55", "GITHUB_SHA": BASE,
+        }
+        process = MagicMock(returncode=0, stdout=BASE + "\n")
+        with patch.object(campaign.subprocess, "run", return_value=process):
+            self.assertEqual(campaign.validate_run(env, self.root, automatic=True),
+                             ("55", BASE, None))
+            with self.assertRaises(campaign.CampaignError):
+                campaign.validate_run(dict(env, GITHUB_EVENT_NAME="workflow_dispatch"),
+                                      self.root, automatic=True)
 
 
 class FacebookTransportTests(unittest.TestCase):

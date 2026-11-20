@@ -64,10 +64,12 @@ Os artigos foram revisados para manter leitura objetiva, com foco em aplicação
 ## Chamadas no Facebook
 
 - **Frequência definida em 19/11/2026:** terças e quintas, às **09h de Brasília** (`America/Sao_Paulo`). A preparação e a conferência dos rascunhos recusam outros dias e horários.
-- Cada chamada exige revisão individual de texto, link, imagem, Página, data e hora, com aprovação pelo identificador exato da campanha no GitHub. Definir a frequência não aprova conteúdos nem cria uma fila automática.
-- O agendamento continua manual, uma campanha por execução de `.github/workflows/facebook.yml`, com antecedência entre 15 minutos e menos de 30 dias. Sem chamada aprovada, o horário fica vazio; não há compensação automática de horário perdido.
-- Artigos futuros não são antecipados. O histórico conferido e a reserva por artigo/Página evitam repetições; o artigo 147 permanece bloqueado.
-- Essa frequência vale somente para o Facebook: não altera as datas do blog nem a agenda do LinkedIn.
+- O workflow `.github/workflows/facebook.yml` consulta a fila às 06h e agenda na Meta, para as 09h, a campanha com data local correspondente. A fila deve estar versionada no repositório; arquivos apenas locais não são acessíveis ao GitHub Actions.
+- O job automático usa o ambiente GitHub `facebook-auto`, restrito a `master`, com o segredo `FACEBOOK_PAGE_TOKEN`; o acionamento manual continua usando o ambiente protegido `facebook`.
+- A automação usa os dados e o digest dos arquivos `facebook_campaign_article_*.json`; o campo `aviso` é informativo e não bloqueia a publicação automática. Antes do envio, artigo e imagem publicados são comparados aos arquivos locais, a Página é confirmada e uma reserva no GitHub impede duplicatas. Falhas de validação não publicam a campanha.
+- Sem campanha para a data, o horário é ignorado, sem escolher outro artigo nem compensar depois. Mais de uma campanha para a mesma data ou dados inconsistentes fazem a execução falhar sem publicar. A Meta exige antecedência de 15 minutos a menos de 30 dias.
+- O acionamento manual por `workflow_dispatch` continua disponível e mantém a revisão e aprovação individual. Essa frequência vale somente para o Facebook: não altera as datas do blog nem a agenda do LinkedIn.
+- Um artigo pode ser compartilhado no Facebook antes da data editorial se já estiver publicado no blog e passar pela verificação de conteúdo; isso não altera as datas do blog ou do LinkedIn. O histórico conferido e a reserva por artigo/Página evitam repetições; o artigo 147 permanece bloqueado.
 - Para publicar correções no blog sem postar no LinkedIn, inclua `[skip linkedin]` na mensagem do último commit do push. A validação e o site continuam sendo publicados; os dois canais do LinkedIn são ignorados somente nesse push. A agenda existente permanece inalterada.
 
 ## 🔗 Integração com Cara Core

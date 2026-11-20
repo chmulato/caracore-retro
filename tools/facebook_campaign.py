@@ -9,7 +9,7 @@ import os
 import re
 import subprocess
 import sys
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import urlencode, urlsplit
 
@@ -102,23 +102,28 @@ def review_summary(draft: dict) -> str:
     )
 
 
-def validate_run(env: dict[str, str], root: Path) -> tuple[str, str, int]:
-    if (env.get("GITHUB_ACTIONS") != "true" or env.get("GITHUB_EVENT_NAME") != "workflow_dispatch"
+def validate_run(
+    env: dict[str, str], root: Path, automatic: bool = False
+) -> tuple[str, str, int | None]:
+    expected_event = "schedule" if automatic else "workflow_dispatch"
+    if (env.get("GITHUB_ACTIONS") != "true"
+            or env.get("GITHUB_EVENT_NAME") != expected_event
             or env.get("GITHUB_REPOSITORY") != REPOSITORY
             or env.get("GITHUB_REF") != "refs/heads/master"
             or env.get("GITHUB_RUN_ATTEMPT") != "1"):
-        raise CampaignError("Esta campanha exige uma nova execucao manual na master oficial.")
+        raise CampaignError("Esta campanha exige uma nova execucao autorizada na master oficial.")
     run_id, sha, reviewer = (env.get("GITHUB_RUN_ID", ""), env.get("GITHUB_SHA", ""),
                              env.get("FACEBOOK_REVIEWER_ID", ""))
     if (not re.fullmatch(r"[1-9][0-9]*", run_id)
-            or not re.fullmatch(r"[0-9a-f]{40}", sha)
-            or not re.fullmatch(r"[1-9][0-9]*", reviewer)):
+            or not re.fullmatch(r"[0-9a-f]{40}", sha)):
+        raise CampaignError("Dados da execucao estao ausentes ou invalidos.")
+    if not automatic and not re.fullmatch(r"[1-9][0-9]*", reviewer):
         raise CampaignError("Dados da execucao ou do revisor estao ausentes ou invalidos.")
     result = subprocess.run(["git", "rev-parse", "HEAD"], cwd=root, capture_output=True,
                             text=True, check=False)
     if result.returncode != 0 or result.stdout.strip() != sha:
         raise CampaignError("O codigo da execucao diverge do commit apresentado para revisao.")
-    return run_id, sha, int(reviewer)
+    return run_id, sha, None if automatic else int(reviewer)
 
 
 def verify_history(page_id: str, article_number: str, root: Path) -> None:
@@ -149,6 +154,56 @@ def validate_schedule(draft: dict, now: datetime) -> int:
     if not timedelta(minutes=15) <= remaining <= timedelta(days=29, hours=23, minutes=55):
         raise CampaignError("O horario deve estar entre 15 minutos e menos de 30 dias no futuro.")
     return int(scheduled.timestamp())
+
+
+def campaign_for_date(day: date, root: Path = facebook_drafts.ROOT) -> Path | None:
+    matches = []
+    for path in sorted(root.glob("facebook_campaign_article_*.json")):
+        try:
+            campaign_data = json.loads(path.read_text(encoding="utf-8"))
+            content = campaign_data["conteudo"]
+            scheduled = facebook_drafts.local_time(content["data_hora_local"])
+        except (OSError, UnicodeError, json.JSONDecodeError, KeyError, TypeError, ValueError) as error:
+            raise CampaignError(f"Campanha invalida na fila: {path.name}.") from error
+        if scheduled.date() == day:
+            matches.append(path)
+    if len(matches) > 1:
+        raise CampaignError(f"Ha mais de uma campanha na fila para {day.isoformat()}.")
+    return matches[0] if matches else None
+
+
+def draft_from_campaign_file(path: Path, root: Path = facebook_drafts.ROOT) -> dict:
+    try:
+        campaign_data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as error:
+        raise CampaignError(f"Nao foi possivel ler a campanha {path.name}.") from error
+    if not isinstance(campaign_data, dict):
+        raise CampaignError(f"Campanha invalida na fila: {path.name}.")
+    content = campaign_data.get("conteudo")
+    if campaign_data.get("estado") != "RASCUNHO_NAO_APROVADO" or not isinstance(content, dict):
+        raise CampaignError(f"Campanha invalida na fila: {path.name}.")
+    article = content.get("artigo")
+    if not isinstance(article, str) or not article.startswith("docs/articles/"):
+        raise CampaignError(f"Artigo invalido na campanha {path.name}.")
+    article_name = article.removeprefix("docs/articles/")
+    match = facebook_drafts.ARTICLE_NAME.fullmatch(article_name)
+    if article != f"docs/articles/{article_name}" or not match:
+        raise CampaignError(f"Artigo invalido na campanha {path.name}.")
+    fields = ("pagina_id", "data_hora_local", "mensagem")
+    if any(not isinstance(content.get(key), str) for key in fields):
+        raise CampaignError(f"Conteudo invalido na campanha {path.name}.")
+    env = {
+        "ARTICLE_NUMBER": str(int(match.group(4))),
+        "FACEBOOK_PAGE_ID": content["pagina_id"],
+        "PUBLISH_AT": content["data_hora_local"],
+        "FACEBOOK_MESSAGE": content["mensagem"],
+    }
+    draft = draft_from_inputs(env, root)
+    facebook_drafts.verify(draft, root)
+    if (draft["conteudo"] != content
+            or campaign_data.get("sha256_conteudo") != draft["sha256_conteudo"]):
+        raise CampaignError(f"A campanha {path.name} diverge dos arquivos atuais.")
+    return draft
 
 
 class FacebookAPI:
@@ -214,13 +269,16 @@ class FacebookAPI:
 
 def publish(draft: dict, approved_digest: str, env: dict[str, str], api, graph,
             root: Path = facebook_drafts.ROOT, fetch=site_bytes,
-            now: datetime | None = None) -> str:
+            now: datetime | None = None, automatic: bool = False) -> str:
     facebook_drafts.verify(draft, root)
     digest = draft["sha256_conteudo"]
     if approved_digest != digest:
         raise CampaignError("O conteudo diverge da versao apresentada para aprovacao.")
-    run_id, sha, reviewer_id = validate_run(env, root)
-    facebook_github.check_approval(api, run_id, ENVIRONMENT, reviewer_id, digest)
+    run_id, sha, reviewer_id = validate_run(env, root, automatic)
+    if not automatic:
+        if reviewer_id is None:
+            raise CampaignError("Revisor ausente na aprovacao manual.")
+        facebook_github.check_approval(api, run_id, ENVIRONMENT, reviewer_id, digest)
     validate_schedule(draft, now or datetime.now(timezone.utc))
     verify_published(draft, fetch)
     content = draft["conteudo"]
@@ -247,11 +305,35 @@ def publish(draft: dict, approved_digest: str, env: dict[str, str], api, graph,
     return remote_id
 
 
+def publish_due_campaign(env: dict[str, str], root: Path = facebook_drafts.ROOT) -> int:
+    validate_run(env, root, automatic=True)
+    now = datetime.now(timezone.utc)
+    today = now.astimezone(facebook_drafts.ZONE).date()
+    path = campaign_for_date(today, root)
+    if path is None:
+        print(f"Nenhuma campanha na fila para {today.isoformat()}; horario ignorado.")
+        return 0
+    draft = draft_from_campaign_file(path, root)
+    github_token = env.get("GITHUB_TOKEN", "")
+    page_token = env.get("FACEBOOK_PAGE_TOKEN", "")
+    if not github_token or not page_token:
+        raise CampaignError("Credenciais de GitHub ou da pagina ausentes.")
+    api = facebook_github.GithubAPI(REPOSITORY, github_token)
+    remote_id = publish(
+        draft, draft["sha256_conteudo"], env, api, FacebookAPI(page_token),
+        root=root, now=now, automatic=True,
+    )
+    print(f"A Meta aceitou o agendamento da campanha {path.name}; ID {remote_id}.")
+    return 0
+
+
 def main() -> int:
     env = dict(os.environ)
     try:
-        if len(sys.argv) != 2 or sys.argv[1] not in ("preview", "agendar", "diagnosticar"):
-            raise CampaignError("Use preview, agendar ou diagnosticar na esteira do GitHub.")
+        if len(sys.argv) != 2 or sys.argv[1] not in ("preview", "agendar", "diagnosticar", "publicar-dia"):
+            raise CampaignError("Comando invalido para a esteira do GitHub.")
+        if sys.argv[1] == "publicar-dia":
+            return publish_due_campaign(env)
         if sys.argv[1] == "diagnosticar":
             validate_run(env, facebook_drafts.ROOT)
             result = FacebookAPI(env.get("FACEBOOK_PAGE_TOKEN", "")).diagnose_page(env.get("FACEBOOK_PAGE_ID", ""))

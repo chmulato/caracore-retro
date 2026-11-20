@@ -1,0 +1,22 @@
+{
+  "estado": "RASCUNHO_NAO_APROVADO",
+  "conteudo": {
+    "versao": 1,
+    "rede": "facebook-pagina",
+    "pagina_id": "1657316127663973",
+    "artigo": "docs/articles/2026_11_30_article_109.html",
+    "data_editorial": "2026-11-30",
+    "data_hora_local": "2026-12-03T09:00",
+    "fuso": "America/Sao_Paulo",
+    "data_hora_utc": "2026-12-03T12:00:00Z",
+    "mensagem": "Você consegue distinguir o que um sistema entrega daquilo que ele apenas promete?\n\nO artigo defende uma regra simples: explicar para quem cada produto serve, qual problema resolve e quais são seus limites. Uma reflexão sobre transparência na escolha de software, sem transformar todo projeto em solução para tudo.\n\nLeia no blog Retrô:\nhttps://retro.caracore.com.br/articles/2026_11_30_article_109.html",
+    "link": "https://retro.caracore.com.br/articles/2026_11_30_article_109.html",
+    "titulo_previa": "Seis Pilares Alinhados",
+    "descricao_previa": "O marco de fechamento do portfólio Cara Core: quando o software deixa os exageros de lado e cada um dos seis pilares assume com transparência seu escopo e valor de entrega",
+    "imagem_url": "https://retro.caracore.com.br/articles/assets/img/2026_11_30_article_109_01.png",
+    "imagem_sha256": "68553b827796ff6c653917a7fa14abe779efb3136bf615e9a01f421c2914cf74",
+    "artigo_sha256": "9c0e71d209e920f4c737d820d2600ef2bac4bc0cc7992958a54e75f057d70db7"
+  },
+  "sha256_conteudo": "25b86002b1af2dca7264e3452b3f995a83879abc623857090e921aa1e25c869f",
+  "aviso": "A previa real no Facebook e o conteudo publicado no site nao foram conferidos. Revisao editorial: NÃO APROVAR antes de revisão do artigo. Corrigir descrição Java 21/JavaFX do PDV, certificação do Circuito sem comprovação, escopos de Ink/Hub/CSO e pseudolog apresentado como revisão concluída. Conferir também a contagem dos pilares."
+}

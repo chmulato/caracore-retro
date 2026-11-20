@@ -1,0 +1,22 @@
+{
+  "estado": "RASCUNHO_NAO_APROVADO",
+  "conteudo": {
+    "versao": 1,
+    "rede": "facebook-pagina",
+    "pagina_id": "1657316127663973",
+    "artigo": "docs/articles/2026_12_08_article_111.html",
+    "data_editorial": "2026-12-08",
+    "data_hora_local": "2026-12-10T09:00",
+    "fuso": "America/Sao_Paulo",
+    "data_hora_utc": "2026-12-10T12:00:00Z",
+    "mensagem": "Um login funcionar significa que ele é seguro?\n\nO artigo apresenta perguntas importantes sobre quem pode entrar, quais permissões recebe e quando o acesso deve expirar. A reflexão é sobre entender esses mecanismos para revisar soluções sugeridas por pessoas ou por IA, em vez de confiar apenas na aparência de funcionamento.\n\nLeia no blog Retrô:\nhttps://retro.caracore.com.br/articles/2026_12_08_article_111.html",
+    "link": "https://retro.caracore.com.br/articles/2026_12_08_article_111.html",
+    "titulo_previa": "Reino OIDC: Formação de Auditores de Identidade Digital",
+    "descricao_previa": "O Reino OIDC como trilha de formação para domínio de protocolos de identidade, auditoria técnica e validação humana de segurança em sistemas com IA Este artigo de Christian Mulato contextualiza Reino OIDC: Formação de Auditores de Identidade Digital",
+    "imagem_url": "https://retro.caracore.com.br/articles/assets/img/2026_12_08_article_111_01.png",
+    "imagem_sha256": "2ff1a42530b7d5224ba5ec014929c87486366468c1bcfd06f05d942bba9fd445",
+    "artigo_sha256": "78581cf1c2a54bb2f6e043cdaf321e9088acfdaeb5a7b3373f29eb8155795bfb"
+  },
+  "sha256_conteudo": "67c20cd3ae40975e279c0b08dff0d7537972c54ff1d405f6069be6fa2f1dd3d5",
+  "aviso": "A previa real no Facebook e o conteudo publicado no site nao foram conferidos. Revisao editorial: NÃO APROVAR antes de revisar a promessa de formação profissional no título, nos metadados e no corpo. Estudo de identidade não comprova qualificação profissional como auditor."
+}

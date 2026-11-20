@@ -1,0 +1,22 @@
+{
+  "estado": "RASCUNHO_NAO_APROVADO",
+  "conteudo": {
+    "versao": 1,
+    "rede": "facebook-pagina",
+    "pagina_id": "1657316127663973",
+    "artigo": "docs/articles/2027_01_30_article_120.html",
+    "data_editorial": "2027-01-30",
+    "data_hora_local": "2027-02-02T09:00",
+    "fuso": "America/Sao_Paulo",
+    "data_hora_utc": "2027-02-02T12:00:00Z",
+    "mensagem": "Electron e WebView2 podem embutir um navegador completo em um sistema de caixa. Este artigo discute o possível custo em memória e compara caminhos arquiteturais para o varejo, sem tratar uma cifra isolada como regra para todo hardware.\n\nVocê mede o uso de memória no ambiente real?\n\nLeia “Canto I: O Canto do Electron Faminto” no blog Retrô:\nhttps://retro.caracore.com.br/articles/2027_01_30_article_120.html",
+    "link": "https://retro.caracore.com.br/articles/2027_01_30_article_120.html",
+    "titulo_previa": "Canto I: O Canto do Electron Faminto",
+    "descricao_previa": "O primeiro canto discute o custo de embutir um navegador no sistema de caixa, o possível impacto sobre a memória e alternativas de arquitetura para o varejo. Uma análise técnica sobre limites de hardware e desempenho",
+    "imagem_url": "https://retro.caracore.com.br/articles/assets/img/2027_01_30_article_120_01.png",
+    "imagem_sha256": "1f517c898e28e12f34c56520d9fb8cfd317bc94a22cd4f73e0a56ffb783bb4dc",
+    "artigo_sha256": "5138af1b44879d1dd7fdc6e56e053a887c6d8870dcf4c372a621d0b977915d5e"
+  },
+  "sha256_conteudo": "06d5b0b1e26f021ad235b1a9f90986cf3e8258ab5df7230844efca6f30c32ba5",
+  "aviso": "A previa real no Facebook e o conteudo publicado no site nao foram conferidos."
+}

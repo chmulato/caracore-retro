@@ -2,7 +2,16 @@
   "pagina_id": "1657316127663973",
   "conferido": true,
   "publicacoes": {
-    "147": "1756509286482858"
+    "147": "1756509286482858",
+    "148": "1757608476372939"
+  },
+  "ultima_publicacao_confirmada": {
+    "artigo": "148",
+    "pagina_id": "1657316127663973",
+    "post_id": "1657316127663973_1757608476372939",
+    "permalink": "https://www.facebook.com/1757608419706278/posts/1757608476372939",
+    "confirmado_em_utc": "2026-11-20T11:49:23Z",
+    "workflow_run_id": "44730154482"
   },
   "verificacao": {
     "data": "2026-11-19",
