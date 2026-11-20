@@ -81,9 +81,15 @@ def check_approval(api, run_id: str, environment: str, reviewer_id: int, digest:
             raise GithubError("Aprovacao nao comprovada.")
         if any(item["name"] == environment for item in environments):
             matches.append(record)
-    if len(matches) != 1:
+    if not matches:
         raise GithubError("Aprovacao nao comprovada.")
-    record = matches[0]
+    if any(not isinstance(record.get("user"), dict)
+           or type(record["user"].get("id")) is not int for record in matches):
+        raise GithubError("Aprovacao nao comprovada.")
+    reviewer_matches = [record for record in matches if record["user"]["id"] == reviewer_id]
+    if len(reviewer_matches) != 1:
+        raise GithubError("Aprovacao nao comprovada.")
+    record = reviewer_matches[0]
     user = record.get("user")
     comment = record.get("comment")
     if (record.get("state") != "approved" or not isinstance(user, dict)
