@@ -3,7 +3,9 @@ import json
 import unittest
 from unittest.mock import MagicMock, patch
 
-from tools.facebook_github import GithubAPI, GithubError, check_approval, reserve, record_received
+from tools.facebook_github import (
+    GithubAPI, GithubError, check_approval, record_received, reservation_status, reserve,
+)
 
 
 BASE = "a" * 40
@@ -98,6 +100,54 @@ class ReservationTests(unittest.TestCase):
         self.assertEqual(json.loads(commit["message"]), {"estado": "ID_RECEBIDO", "remote_id": "123_456"})
         self.assertEqual(api.calls[5], ("PATCH", ROOT + "/git/refs/" + REF,
                                        {"sha": SCHEDULED, "force": False}))
+
+    def test_reservation_status_distinguishes_missing_pending_and_received(self):
+        api = FakeAPI([(404, {})])
+        self.assertIsNone(reservation_status(api, "123", "148", DIGEST))
+        self.assertEqual(api.calls, [("GET", ROOT + "/git/ref/" + REF, None)])
+
+        reserved_record = {
+            "estado": "RESERVADO", "rede": "facebook", "page_id": "123",
+            "article_number": "148", "digest": DIGEST, "run_id": "55",
+        }
+        api = FakeAPI([
+            (200, confirmation(RESERVATION)),
+            (200, {"sha": RESERVATION, "message": json.dumps(reserved_record)}),
+        ])
+        self.assertEqual(
+            reservation_status(api, "123", "148", DIGEST),
+            {"estado": "RESERVADO", "digest": DIGEST},
+        )
+
+        api = FakeAPI([
+            (200, confirmation(SCHEDULED)),
+            (200, {"sha": SCHEDULED, "message": json.dumps({
+                "estado": "ID_RECEBIDO", "remote_id": "123_456",
+            }), "parents": [{"sha": RESERVATION}]}),
+            (200, {"sha": RESERVATION, "message": json.dumps(reserved_record)}),
+        ])
+        self.assertEqual(
+            reservation_status(api, "123", "148", DIGEST),
+            {"estado": "ID_RECEBIDO", "digest": DIGEST, "remote_id": "123_456"},
+        )
+
+    def test_reservation_status_rejects_mismatched_or_unverifiable_records(self):
+        wrong_digest = dict(
+            estado="RESERVADO", rede="facebook", page_id="123",
+            article_number="148", digest="f" * 64, run_id="55",
+        )
+        cases = [
+            [(200, {"ref": "refs/heads/other", "object": {"sha": RESERVATION}})],
+            [(200, confirmation(RESERVATION)),
+             (200, {"sha": RESERVATION, "message": json.dumps(wrong_digest)})],
+            [(200, confirmation(SCHEDULED)),
+             (200, {"sha": SCHEDULED, "message": json.dumps({
+                 "estado": "ID_RECEBIDO", "remote_id": "123_456",
+             }), "parents": []})],
+        ]
+        for responses in cases:
+            with self.subTest(responses=responses), self.assertRaises(GithubError):
+                reservation_status(FakeAPI(responses), "123", "148", DIGEST)
 
     def test_conflicts_ambiguous_results_and_mismatches_fail_without_retry(self):
         for result in [(422, {"message": "already exists"}), (500, {}),

@@ -19,6 +19,8 @@ REPOSITORY = "chmulato/caracore-retro"
 ENVIRONMENT = "facebook"
 API_VERSION = "v27.0"
 MAX_SITE_BYTES = 20 * 1024 * 1024
+MIN_SCHEDULE_LEAD = timedelta(minutes=15)
+MAX_SCHEDULE_LEAD = timedelta(days=29, hours=23, minutes=55)
 
 
 class CampaignError(RuntimeError):
@@ -105,9 +107,13 @@ def review_summary(draft: dict) -> str:
 def validate_run(
     env: dict[str, str], root: Path, automatic: bool = False
 ) -> tuple[str, str, int | None]:
-    expected_event = "schedule" if automatic else "workflow_dispatch"
+    event = env.get("GITHUB_EVENT_NAME")
+    valid_event = (
+        event == "schedule"
+        or (event == "workflow_dispatch" and env.get("FACEBOOK_FILL_WINDOW") == "true")
+    ) if automatic else event == "workflow_dispatch"
     if (env.get("GITHUB_ACTIONS") != "true"
-            or env.get("GITHUB_EVENT_NAME") != expected_event
+            or not valid_event
             or env.get("GITHUB_REPOSITORY") != REPOSITORY
             or env.get("GITHUB_REF") != "refs/heads/master"
             or env.get("GITHUB_RUN_ATTEMPT") != "1"):
@@ -151,7 +157,7 @@ def validate_schedule(draft: dict, now: datetime) -> int:
     if now.tzinfo is None:
         raise CampaignError("Relogio da execucao sem fuso horario.")
     remaining = scheduled - now.astimezone(timezone.utc)
-    if not timedelta(minutes=15) <= remaining <= timedelta(days=29, hours=23, minutes=55):
+    if not MIN_SCHEDULE_LEAD <= remaining <= MAX_SCHEDULE_LEAD:
         raise CampaignError("O horario deve estar entre 15 minutos e menos de 30 dias no futuro.")
     return int(scheduled.timestamp())
 
@@ -204,6 +210,33 @@ def draft_from_campaign_file(path: Path, root: Path = facebook_drafts.ROOT) -> d
             or campaign_data.get("sha256_conteudo") != draft["sha256_conteudo"]):
         raise CampaignError(f"A campanha {path.name} diverge dos arquivos atuais.")
     return draft
+
+
+def load_campaign_queue(root: Path = facebook_drafts.ROOT) -> list[tuple[Path, dict, datetime]]:
+    campaigns = []
+    seen_dates = set()
+    seen_articles = set()
+    for path in sorted(root.glob("facebook_campaign_article_*.json")):
+        draft = draft_from_campaign_file(path, root)
+        content = draft["conteudo"]
+        article_match = facebook_drafts.ARTICLE_NAME.fullmatch(Path(content["artigo"]).name)
+        if not article_match:
+            raise CampaignError(f"Artigo invalido na campanha {path.name}.")
+        article_number = str(int(article_match.group(4)))
+        scheduled = facebook_drafts.local_time(content["data_hora_local"])
+        expected_name = (
+            f"facebook_campaign_article_{article_number}_{scheduled:%Y%m%d}.json"
+        )
+        if path.name != expected_name:
+            raise CampaignError(f"Nome de arquivo diverge da campanha: {path.name}.")
+        if scheduled.date() in seen_dates:
+            raise CampaignError(f"Ha mais de uma campanha na fila para {scheduled.date().isoformat()}.")
+        if article_number in seen_articles:
+            raise CampaignError(f"Artigo {article_number} aparece mais de uma vez na fila.")
+        seen_dates.add(scheduled.date())
+        seen_articles.add(article_number)
+        campaigns.append((path, draft, scheduled))
+    return campaigns
 
 
 class FacebookAPI:
@@ -327,13 +360,87 @@ def publish_due_campaign(env: dict[str, str], root: Path = facebook_drafts.ROOT)
     return 0
 
 
+def fill_campaign_window(
+    env: dict[str, str], root: Path = facebook_drafts.ROOT, now: datetime | None = None
+) -> int:
+    validate_run(env, root, automatic=True)
+    now = now or datetime.now(timezone.utc)
+    if now.tzinfo is None:
+        raise CampaignError("Relogio da execucao sem fuso horario.")
+    now = now.astimezone(timezone.utc)
+    queue = load_campaign_queue(root)
+    in_window = [
+        (path, draft, scheduled)
+        for path, draft, scheduled in queue
+        if scheduled.astimezone(timezone.utc) - now <= MAX_SCHEDULE_LEAD
+    ]
+    if not in_window:
+        print("Nenhuma campanha dentro da janela de agendamento da Meta.")
+        return 0
+    github_token = env.get("GITHUB_TOKEN", "")
+    page_token = env.get("FACEBOOK_PAGE_TOKEN", "")
+    if not github_token or not page_token:
+        raise CampaignError("Credenciais de GitHub ou da pagina ausentes.")
+    api = facebook_github.GithubAPI(REPOSITORY, github_token)
+    graph = FacebookAPI(page_token)
+    pending = []
+    already_scheduled = 0
+    for path, draft, scheduled in in_window:
+        content = draft["conteudo"]
+        article_match = facebook_drafts.ARTICLE_NAME.fullmatch(Path(content["artigo"]).name)
+        if not article_match:
+            raise CampaignError(f"Artigo invalido na campanha {path.name}.")
+        article_number = str(int(article_match.group(4)))
+        reservation = facebook_github.reservation_status(
+            api, content["pagina_id"], article_number, draft["sha256_conteudo"],
+        )
+        if reservation is not None:
+            if reservation["estado"] != "ID_RECEBIDO":
+                raise CampaignError(
+                    f"A campanha {path.name} tem reserva sem confirmacao da Meta; "
+                    "verificacao manual necessaria."
+                )
+            print(f"Campanha ja agendada: {path.name}; ID {reservation['remote_id']}.")
+            already_scheduled += 1
+            continue
+        try:
+            validate_schedule(draft, now)
+        except CampaignError as error:
+            raise CampaignError(
+                f"A campanha {path.name} perdeu a janela minima da Meta; "
+                "verificacao manual necessaria."
+            ) from error
+        verify_history(content["pagina_id"], article_number, root)
+        verify_published(draft)
+        pending.append((path, draft))
+
+    if pending:
+        graph.check_page(pending[0][1]["conteudo"]["pagina_id"])
+    scheduled_count = 0
+    for path, draft in pending:
+        remote_id = publish(
+            draft, draft["sha256_conteudo"], env, api, graph,
+            root=root, automatic=True,
+        )
+        print(f"A Meta aceitou o agendamento da campanha {path.name}; ID {remote_id}.")
+        scheduled_count += 1
+    print(
+        f"Janela atualizada: {scheduled_count} novo(s) agendamento(s); "
+        f"{already_scheduled} ja confirmado(s)."
+    )
+    return 0
+
+
 def main() -> int:
     env = dict(os.environ)
     try:
-        if len(sys.argv) != 2 or sys.argv[1] not in ("preview", "agendar", "diagnosticar", "publicar-dia"):
+        if len(sys.argv) != 2 or sys.argv[1] not in (
+                "preview", "agendar", "diagnosticar", "publicar-dia", "preencher-janela"):
             raise CampaignError("Comando invalido para a esteira do GitHub.")
         if sys.argv[1] == "publicar-dia":
             return publish_due_campaign(env)
+        if sys.argv[1] == "preencher-janela":
+            return fill_campaign_window(env)
         if sys.argv[1] == "diagnosticar":
             validate_run(env, facebook_drafts.ROOT)
             result = FacebookAPI(env.get("FACEBOOK_PAGE_TOKEN", "")).diagnose_page(env.get("FACEBOOK_PAGE_ID", ""))

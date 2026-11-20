@@ -6,17 +6,22 @@ on:
       timezone: "America/Sao_Paulo"
   workflow_dispatch:
     inputs:
+      preencher_janela:
+        description: "Preencher a janela movel de agendamentos aprovados"
+        required: false
+        default: false
+        type: boolean
       article:
         description: "Número do artigo"
-        required: true
+        required: false
         type: string
       page:
         description: "Identificador numérico da página"
-        required: true
+        required: false
         type: string
       when:
         description: "Data e hora de São Paulo: AAAA-MM-DDTHH:MM"
-        required: true
+        required: false
         type: string
       message:
         description: "Chamada para o Facebook; deixe vazia para receber uma sugestão"
@@ -28,7 +33,7 @@ permissions:
 
 jobs:
   revisao:
-    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/master' && github.run_attempt == 1
+    if: github.event_name == 'workflow_dispatch' && inputs.preencher_janela != true && github.ref == 'refs/heads/master' && github.run_attempt == 1
     runs-on: ubuntu-latest
     outputs:
       digest: ${{ steps.preview.outputs.digest }}
@@ -77,13 +82,18 @@ jobs:
         run: python -m tools.facebook_campaign agendar
 
   automatico:
-    if: github.event_name == 'schedule' && github.ref == 'refs/heads/master' && github.run_attempt == 1
+    if: >-
+      github.ref == 'refs/heads/master' &&
+      github.run_attempt == 1 &&
+      (github.event_name == 'schedule' ||
+      (github.event_name == 'workflow_dispatch' && inputs.preencher_janela == true))
     environment: facebook-auto
     permissions:
       contents: write
     runs-on: ubuntu-latest
     env:
       FACEBOOK_PAGE_TOKEN: ${{ secrets.FACEBOOK_PAGE_TOKEN }}
+      FACEBOOK_FILL_WINDOW: ${{ inputs.preencher_janela }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
@@ -93,5 +103,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-      - name: Agendar a campanha da fila para hoje
-        run: python -m tools.facebook_campaign publicar-dia
+      - name: Preencher a janela movel de agendamentos da Meta
+        run: python -m tools.facebook_campaign preencher-janela

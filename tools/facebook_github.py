@@ -120,6 +120,66 @@ def _confirmed(data: object, ref: str, sha: str) -> bool:
     return isinstance(obj, dict) and obj.get("sha") == sha
 
 
+def _commit_record(api, sha: str) -> tuple[dict, dict]:
+    if not _valid(_SHA, sha):
+        raise GithubError("Estado da reserva invalido.")
+    status, data = api.request("GET", f"{_root(api)}/git/commits/{sha}")
+    if (status != 200 or not isinstance(data, dict) or data.get("sha") != sha
+            or not isinstance(data.get("message"), str)):
+        raise GithubError("Estado da reserva nao comprovado.")
+    try:
+        record = json.loads(data["message"])
+    except (UnicodeError, json.JSONDecodeError) as error:
+        raise GithubError("Estado da reserva nao comprovado.") from error
+    if not isinstance(record, dict):
+        raise GithubError("Estado da reserva nao comprovado.")
+    return data, record
+
+
+def reservation_status(api, page_id: str, article_number: str, digest: str) -> dict | None:
+    if (not _valid(_DIGITS, page_id) or not _valid(_DIGITS, article_number)
+            or not _valid(_DIGEST, digest)
+            or (len(page_id) > 1 and page_id.startswith("0"))
+            or (len(article_number) > 1 and article_number.startswith("0"))
+            or article_number == "147"):
+        raise GithubError("Dados de reserva invalidos.")
+    ref = f"heads/facebook-reservas/p{page_id}/a{article_number}"
+    status, data = api.request("GET", f"{_root(api)}/git/ref/{ref}")
+    if status == 404:
+        return None
+    obj = data.get("object") if isinstance(data, dict) else None
+    sha = obj.get("sha") if isinstance(obj, dict) else None
+    if status != 200 or not _valid(_SHA, sha) or not _confirmed(data, ref, sha):
+        raise GithubError("Estado da reserva nao comprovado.")
+    commit, record = _commit_record(api, sha)
+
+    def is_matching_reservation(candidate: dict) -> bool:
+        return (
+            candidate.get("estado") == "RESERVADO"
+            and candidate.get("rede") == "facebook"
+            and candidate.get("page_id") == page_id
+            and candidate.get("article_number") == article_number
+            and candidate.get("digest") == digest
+            and _valid(_DIGITS, candidate.get("run_id"))
+        )
+
+    if record.get("estado") == "RESERVADO":
+        if not is_matching_reservation(record):
+            raise GithubError("Reserva existente diverge da campanha; verificacao manual necessaria.")
+        return {"estado": "RESERVADO", "digest": digest}
+    if record.get("estado") != "ID_RECEBIDO":
+        raise GithubError("Estado da reserva desconhecido; verificacao manual necessaria.")
+    remote_id = record.get("remote_id")
+    parents = commit.get("parents")
+    if (not _valid(_REMOTE_ID, remote_id) or not isinstance(parents, list) or len(parents) != 1
+            or not isinstance(parents[0], dict) or not _valid(_SHA, parents[0].get("sha"))):
+        raise GithubError("Agendamento registrado invalido; verificacao manual necessaria.")
+    _, reservation = _commit_record(api, parents[0]["sha"])
+    if not is_matching_reservation(reservation):
+        raise GithubError("Agendamento existente diverge da campanha; verificacao manual necessaria.")
+    return {"estado": "ID_RECEBIDO", "digest": digest, "remote_id": remote_id}
+
+
 def reserve(api, page_id: str, article_number: str, digest: str, run_id: str, base_sha: str) -> tuple[str, str]:
     if (not _valid(_DIGITS, page_id) or not _valid(_DIGITS, article_number)
             or not _valid(_DIGEST, digest) or not _valid(_DIGITS, run_id)
