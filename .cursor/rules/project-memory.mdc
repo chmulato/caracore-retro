@@ -5,7 +5,16 @@ alwaysApply: true
 
 # Memória — caracore-retro (Artigos Retrô)
 
-**Atualizado:** 2026-11-19
+**Atualizado:** 2026-11-20
+
+## Campanha Facebook até fevereiro/2027 — 20/11/2026
+
+- **Fila aprovada:** artigos #107–#122, terça/quinta às 09h (`America/Sao_Paulo`), em `facebook_campaign_article_*.json`. Commit da extensão #121–#122: `b89c642`; deploy Pages `44737098411` concluído. Não houve publicação imediata.
+- **Confirmados pela Meta:** #107 (26/11), #108 (01/12), #109 (03/12), #110 (08/12), #111 (10/12) e #112 (15/12). #113–#122 ainda não tinham reserva/ID confirmado em 20/11; permanecer na fila local não significa estar no Planner.
+- **Limite:** a Pages API e o seletor do Planejador aceitam até 30 dias futuros; em 20/11, com o horário padrão do compositor, 20/12 estava desabilitado (19/12 era o último dia selecionável). Por isso a semana 20–26/12 aparecia vazia: #113 é 22/12 e #114 é 24/12. Não alterar datas nem tentar contornar o limite pela interface.
+- **Automação:** `.github/workflows/facebook.yml` roda terças e quintas às 06h e preenche a janela móvel com publicações para 09h. Os horários previstos para entrada no Planner são registrados na seção “Campanha Facebook do Retrô” de `caracore-site/docs/ECOSYSTEM_MEMORIA.md`; só log de confirmação da Meta + reserva `ID_RECEBIDO` comprovam o agendamento.
+- **Idempotência:** antes de qualquer reenvio, conferir `facebook-reservas/p1657316127663973/a<artigo>` e o Planejador. `ID_RECEBIDO` com digest igual significa já agendado; reserva pendente/divergente bloqueia retry até conferência manual. Nunca repetir uma chamada com resultado incerto.
+- **Operação e testes:** detalhes em `README.md` (“Chamadas no Facebook”); implementação em `tools/facebook_campaign.py` e `tools/facebook_github.py`. Em 20/11 passaram 68 testes focados de campanha/rascunhos/reservas e 2 testes de metadados. O ambiente automático é `facebook-auto`; o agendamento individual manual usa o ambiente protegido `facebook`.
 
 ## SEO publicado — 19/11/2026
 
