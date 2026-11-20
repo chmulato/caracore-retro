@@ -71,21 +71,21 @@ def local_time(value: str) -> datetime:
 
 
 def prepare(article: Path, page_id: str, when: str, message: str | None = None,
-            root: Path = ROOT) -> dict:
+            root: Path = ROOT, immediate: bool = False) -> dict:
     match = ARTICLE_NAME.fullmatch(article.name)
     articles_dir = (root / "docs" / "articles").resolve()
     if not match or article.resolve().parent != articles_dir:
         raise ValueError("Arquivo de artigo invalido.")
     if not re.fullmatch(r"[0-9]+", page_id):
         raise ValueError("O identificador da pagina deve conter apenas numeros.")
+    if type(immediate) is not bool:
+        raise ValueError("O modo de publicacao e invalido.")
     try:
         editorial_date = date(*(int(part) for part in match.groups()[:3]))
     except ValueError as error:
         raise ValueError("Data editorial invalida no nome do artigo.") from error
     scheduled = local_time(when)
-    if scheduled.date() < editorial_date:
-        raise ValueError("A data pretendida antecede a data editorial do artigo.")
-    if scheduled.weekday() not in (1, 3) or (scheduled.hour, scheduled.minute) != (9, 0):
+    if not immediate and (scheduled.weekday() not in (1, 3) or (scheduled.hour, scheduled.minute) != (9, 0)):
         raise ValueError("Agende nas tercas e quintas, as 09:00 no horario de Brasilia (America/Sao_Paulo).")
 
     article_bytes = article.read_bytes()
@@ -136,6 +136,8 @@ def prepare(article: Path, page_id: str, when: str, message: str | None = None,
         "imagem_sha256": sha256(image_bytes),
         "artigo_sha256": sha256(article_bytes),
     }
+    if immediate:
+        content["modo_publicacao"] = "imediata"
     return {
         "estado": "RASCUNHO_NAO_APROVADO",
         "conteudo": content,
@@ -154,8 +156,12 @@ def verify(draft: dict, root: Path = ROOT) -> None:
         name = content["artigo"].removeprefix("docs/articles/")
         if content["artigo"] != f"docs/articles/{name}" or not ARTICLE_NAME.fullmatch(name):
             raise ValueError("Arquivo de artigo invalido.")
+        mode = content.get("modo_publicacao")
+        if mode not in (None, "imediata"):
+            raise ValueError("Modo de publicacao invalido.")
         current = prepare(root / "docs" / "articles" / name, content["pagina_id"],
-                          content["data_hora_local"], content["mensagem"], root)
+                          content["data_hora_local"], content["mensagem"], root,
+                          immediate=mode == "imediata")
     except (KeyError, AttributeError, TypeError) as error:
         raise ValueError("Conteudo do rascunho invalido.") from error
     if current["conteudo"] != content:

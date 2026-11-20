@@ -104,9 +104,11 @@ class FacebookDraftTests(unittest.TestCase):
             with self.subTest(when=when), self.assertRaisesRegex(ValueError, "tercas e quintas"):
                 self.draft(when=when)
 
-    def test_rejects_date_before_article_date(self) -> None:
-        with self.assertRaisesRegex(ValueError, "antecede"):
-            self.draft(when="2026-11-26T09:00")
+    def test_accepts_facebook_date_before_editorial_date(self) -> None:
+        draft = self.draft(when="2026-11-26T09:00")
+        self.assertEqual(draft["conteudo"]["data_editorial"], "2026-11-30")
+        self.assertEqual(draft["conteudo"]["data_hora_local"], "2026-11-26T09:00")
+        facebook_drafts.verify(draft, self.root)
 
     def test_rejects_invalid_page_time_and_empty_message(self) -> None:
         for arguments in ({"page": "pagina"}, {"when": "2026-11-30T7:30"},
