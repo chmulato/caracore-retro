@@ -1,0 +1,22 @@
+{
+  "estado": "RASCUNHO_NAO_APROVADO",
+  "conteudo": {
+    "versao": 1,
+    "rede": "facebook-pagina",
+    "pagina_id": "1657316127663973",
+    "artigo": "docs/articles/2027_02_20_article_122.html",
+    "data_editorial": "2027-02-20",
+    "data_hora_local": "2027-02-23T09:00",
+    "fuso": "America/Sao_Paulo",
+    "data_hora_utc": "2027-02-23T12:00:00Z",
+    "mensagem": "SQLite com WAL pode simplificar a persistência local do PDV, mas não elimina limites de concorrência. O Canto III aborda tunagem, checkpoints, comportamento de leitura e escrita e cenários em que o SQLite não é indicado, além de comparar alternativas como Firebird e bancos servidores locais.\n\nQual trade-off pesa mais no seu caixa: simplicidade ou escrita concorrente?\n\nLeia “Canto III: A Redenção do SQLite Local” no blog Retrô:\nhttps://retro.caracore.com.br/articles/2027_02_20_article_122.html",
+    "link": "https://retro.caracore.com.br/articles/2027_02_20_article_122.html",
+    "titulo_previa": "Canto III: A Redenção do SQLite Local",
+    "descricao_previa": "O Canto III analisa o SQLite em modo WAL no ponto de venda, incluindo concorrência, checkpoints, limites de escrita e alternativas para a persistência local",
+    "imagem_url": "https://retro.caracore.com.br/articles/assets/img/2027_02_20_article_122_01.png",
+    "imagem_sha256": "5fbabddef1e5a20611d791fb2313c125e5185ff44392a32a51178e891f993294",
+    "artigo_sha256": "3bda4c99f539945a23aad9156b2180f69102c65e5474c8c629f140f8cbcc5dd6"
+  },
+  "sha256_conteudo": "1c8cfbd5e777547e15f304f6427c9e141823286348d4f212db67a38b8d4892e5",
+  "aviso": "A previa real no Facebook e o conteudo publicado no site nao foram conferidos."
+}
