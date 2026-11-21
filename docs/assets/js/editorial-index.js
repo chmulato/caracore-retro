@@ -2,7 +2,7 @@
     const feature = document.getElementById('featured-article');
     const items = Array.from(document.querySelectorAll('.article-item'));
     const coverByArticle = {
-        'articles/2027_09_07_article_148.html': 'article_148_01.png'
+        'articles/2027_09_07_article_148.html': '2027_09_07_article_148_01.png'
     };
     const categoryRules = [
         {

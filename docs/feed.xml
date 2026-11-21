@@ -8,7 +8,7 @@
     <copyright><![CDATA[© Cara Core Informática. Todos os direitos reservados.]]></copyright>
     <managingEditor>suporte@caracore.com.br (Christian Mulato)</managingEditor>
     <webMaster>suporte@caracore.com.br (Christian Mulato)</webMaster>
-    <lastBuildDate>Tue, 07 Sep 2027 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 Sep 2027 12:00:00 +0000</lastBuildDate>
     <category><![CDATA[Tecnologia]]></category>
     <docs>https://www.rssboard.org/rss-specification</docs>
     <generator>Cara Core RSS generator</generator>
@@ -18,6 +18,25 @@
       <title><![CDATA[Artigos Retrô — Cara Core Informática]]></title>
       <link>https://retro.caracore.com.br/</link>
     </image>
+
+    <item>
+      <title><![CDATA[O que tem dentro da caixa: como saber o que um sistema faz no dia em que você instala]]></title>
+      <link>https://retro.caracore.com.br/articles/2027_09_15_article_149.html</link>
+      <guid isPermaLink="true">https://retro.caracore.com.br/articles/2027_09_15_article_149.html</guid>
+      <description><![CDATA[Feito, empacotado e instalado são três estados diferentes. Entenda como conferir o que um programa realmente faz na versão que você baixa hoje para a loja.]]></description>
+      <dc:creator><![CDATA[Christian Mulato]]></dc:creator>
+      <pubDate>Wed, 15 Sep 2027 12:00:00 +0000</pubDate>
+      <category><![CDATA[PDV]]></category>
+      <category><![CDATA[Hub]]></category>
+      <category><![CDATA[Gaspar]]></category>
+      <category><![CDATA[Software Local]]></category>
+      <category><![CDATA[Transparencia]]></category>
+      <category><![CDATA[Pequeno Negocio]]></category>
+      <enclosure url="https://retro.caracore.com.br/articles/assets/img/2027_09_15_article_149_01.png" length="3513453" type="image/png" />
+      <media:content url="https://retro.caracore.com.br/articles/assets/img/2027_09_15_article_149_01.png" medium="image" type="image/png" width="2752" height="1536">
+        <media:thumbnail url="https://retro.caracore.com.br/articles/assets/img/2027_09_15_article_149_01.png" width="2752" height="1536" />
+      </media:content>
+    </item>
 
     <item>
       <title><![CDATA[Os Quatro Trabalhões: uma oficina de IA com os pés no chão]]></title>
@@ -33,9 +52,9 @@
       <category><![CDATA[Revisao Humana]]></category>
       <category><![CDATA[Software Local]]></category>
       <category><![CDATA[Autonomia Digital]]></category>
-      <enclosure url="https://retro.caracore.com.br/articles/assets/img/article_148_01.png" length="3467505" type="image/png" />
-      <media:content url="https://retro.caracore.com.br/articles/assets/img/article_148_01.png" medium="image" type="image/png" width="1792" height="1024">
-        <media:thumbnail url="https://retro.caracore.com.br/articles/assets/img/article_148_01.png" width="1792" height="1024" />
+      <enclosure url="https://retro.caracore.com.br/articles/assets/img/2027_09_07_article_148_01.png" length="3467505" type="image/png" />
+      <media:content url="https://retro.caracore.com.br/articles/assets/img/2027_09_07_article_148_01.png" medium="image" type="image/png" width="1792" height="1024">
+        <media:thumbnail url="https://retro.caracore.com.br/articles/assets/img/2027_09_07_article_148_01.png" width="1792" height="1024" />
       </media:content>
     </item>
 

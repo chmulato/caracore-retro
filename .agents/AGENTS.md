@@ -5,21 +5,21 @@ Este arquivo serve como o manual de alinhamento e contexto para qualquer Intelig
 ## 🧾 Estado Atual e Diretrizes Operacionais (Homologado para Produção — Outubro/2026)
 
 - **Papel do repositório:** portal histórico e acervo editorial estático no modelo de revista digital moderna; não confundir com oficina de produto nem com a matriz institucional.
-- **Conteúdo declarado:** 148 artigos HTML em `docs/articles/`, organizados por data e número, com publicação contínua pelo GitHub Pages em `retro.caracore.com.br`.
+- **Conteúdo declarado:** 149 artigos HTML em `docs/articles/`, organizados por data e número, com publicação contínua pelo GitHub Pages em `retro.caracore.com.br`.
 - **Publicação verificada em 14/11/2026:** artigos [145 — Gaspar, Ink Agenda e CaraCore PDV](../docs/articles/2027_08_17_article_145.html) e [146 — CaraCore Hub e os dois contextos do PUDO](../docs/articles/2027_08_25_article_146.html) no blog (HTTP 200). Commit `b9c9609`; workflow `43593863756` concluiu `validate`, `deploy` e `publish-linkedin`. LinkedIn: artigo 145 `urn:li:share:7527343782082535424`; artigo 146 `urn:li:share:7527343790320431105`.
 - **Artigo 108 publicado com atraso em 14/11/2026:** workflow `43596519937`, sucesso com thumbnail, LinkedIn `urn:li:share:7527351856835133440`; publicação registrada no ledger pelo commit `76ff62a`.
 - **Facebook — campanha ativa até fevereiro/2027 (atualização 20/11):** a fila aprovada #107–#122 usa uma janela móvel limitada a 30 dias pela Meta. Apenas campanhas com ID confirmado pela Meta estão no Planejador; JSON na fila não é confirmação. Consulte o estado e a previsão de cada artigo em `caracore-site/docs/ECOSYSTEM_MEMORIA.md` e as regras operacionais no `README.md`. Antes de qualquer reenvio manual, confira a reserva `facebook-reservas` e o Planejador; uma reserva pendente pode representar uma chamada já aceita pela Meta.
 - **Agenda LinkedIn até 31/12/2026:** #109 (30/11), #110 (03/12), #111 (08/12), #112 (12/12), #113 (18/12), #114 (20/12), #115 (25/12) e #116 (30/12), às 07h30 `America/Sao_Paulo`. Workflow `43596389605` validou o deploy após ativação. O início pode atrasar na fila do Actions; a seleção por código impede publicação agendada fora de 2026 e push não antecipa esses artigos. URLs dos oito artigos verificadas com HTTP 200.
 - **Contexto de produtos:** PDV, HUB e CSO são soluções desktop; Gestão de Frotas faz parte do portfólio; Gestão de Transporte está planejado com uma parte local para preservar dados sensíveis no ambiente do cliente.
 - **Fonte da verdade operacional:** este `AGENTS.md`, `.cursor/rules/project-memory.mdc` e `README.md`.
-- **Saúde do projeto:** **100% Verde / Aprovado**. As 916 verificações automatizadas de `tools/validate_site.py` e todos os arquivos em `test_blog.py` passam com zero falhas e zero avisos (verificação de 14/11/2026).
+- **Saúde do projeto:** **100% Verde / Aprovado**. As 945 verificações automatizadas de `tools/validate_site.py` e todos os arquivos em `test_blog.py` passam com zero falhas e zero avisos (verificação de 21/11/2026).
 - **Modelo Revista Digital:** A página inicial (`docs/index.html`) opera com foco em descoberta visual:
   - Hero em destaque (`#featured-article`) exibindo o artigo mais recente com imagem ampliada e CTA direto.
   - Grade responsiva de cards visuais (3 colunas em desktop, 2 em tablet, 1 em mobile).
-  - Capas 16:9 padronizadas para todos os 148 artigos.
+  - Capas 16:9 padronizadas para todos os 149 artigos.
   - 5 Categorias visuais: `PDV`, `Identidade Digital`, `Roadmap`, `Circuito`, `Mineração e ETE` (+ fallback `Tecnologia`).
   - Camada de apresentação e comportamento isolada em `docs/assets/css/editorial.css` e `docs/assets/js/editorial-index.js`.
-- **Semântica e Acessibilidade:** Todos os 148 artigos utilizam o landmark semântico `<main class="container">`, `<h1>` único no cabeçalho, canonical e `<meta name="description">`.
+- **Semântica e Acessibilidade:** Todos os 149 artigos utilizam o landmark semântico `<main class="container">`, `<h1>` único no cabeçalho, canonical e `<meta name="description">`.
 - **Feed RSS 2.0 (`docs/feed.xml`):** Enriquecido com metadados do canal (logotipo, copyright, atom:link canônico) e de cada item (capa em `<enclosure>` com bytes reais, Media RSS `<media:content>` com largura/altura, categorização editorial e criador). Deve ser gerado ou atualizado via `python tools/generate_feed.py`.
 - **Gate de Deploy (CI/CD):** O workflow `.github/workflows/deploy.yml` executa compilação e `python tools/validate_site.py` no job `validate`; o job `deploy` só é acionado se a validação estiver 100% aprovada.
 - **Publicação no LinkedIn — página da empresa (CI/CD):** o job `publish-linkedin-company` roda depois de `publish-linkedin`, no mesmo workflow, e posta os mesmos artigos na página **Cara Core Informática** (`urn:li:organization:16249601`) com ledger próprio, `linkedin_company_published.json`. Usa os secrets `LINKEDIN_ORG_ACCESS_TOKEN` (escopo `w_organization_social`) e `LINKEDIN_ORG_URN`; **sem eles o canal fica dormente em dry-run** (aviso no log, esteira verde). Ledger por canal via `python tools/publish_linkedin.py --ledger <arquivo>`.

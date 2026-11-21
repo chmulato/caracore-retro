@@ -1,6 +1,6 @@
 # Artigos Retrô — Cara Core Informática
 
-Portal e acervo de artigos publicados no LinkedIn pela Cara Core Informática. Uma coleção de 148 artigos organizados por data, com foco em inovação, engenharia de software, arquitetura, negócios, estratégia e produtos do ecossistema Cara Core.
+Portal e acervo de artigos publicados no LinkedIn pela Cara Core Informática. Uma coleção de 149 artigos organizados por data, com foco em inovação, engenharia de software, arquitetura, negócios, estratégia e produtos do ecossistema Cara Core.
 
 ## 📋 Estrutura
 
@@ -8,10 +8,10 @@ Portal e acervo de artigos publicados no LinkedIn pela Cara Core Informática. U
   - **`index.html`** — Página principal com listagem completa e filtros de busca
   - **`feed.xml`** — Feed RSS para inscrição e distribuição
 
-  - **`docs/articles/`** — Diretório contendo todos os 148 artigos HTML
+  - **`docs/articles/`** — Diretório contendo todos os 149 artigos HTML
   - Convenção de nomenclatura: `YYYY_MM_DD_article_(NN).html` (ex.: `2026_05_23_article_86.html`)
   - Data no nome = data de publicação no calendário estratégico
-  - O número do artigo também define o alias das imagens: `article_NN_01.png`, `article_NN_02.png` etc.
+  - O nome das imagens acompanha o nome do artigo: `YYYY_MM_DD_article_NN_01.png`, `YYYY_MM_DD_article_NN_02.png` etc.
 
   - **`docs/articles/assets/`** — Recursos compartilhados
     - `css/` — Estilos dos artigos
@@ -39,11 +39,11 @@ Use a barra de busca em `docs/index.html` para filtrar por tema, tecnologia, pro
 
 ## 📊 Conteúdo
 
-**Total**: 148 artigos (01 a 148)
+**Total**: 149 artigos (01 a 149)
 - **Período**: Fevereiro 2024 — Setembro 2027
 - **Calendário público**: artigos futuros permanecem visíveis no índice e no RSS, conforme o planejamento editorial
 - **Cobertura**: Publicações regulares semanais
-- **Divisão temporal**: 32 artigos em 2024, 33 em 2025, 51 em 2026, 32 em 2027
+- **Divisão temporal**: 32 artigos em 2024, 33 em 2025, 51 em 2026, 33 em 2027
 
 ## 🧭 Ciclo Editorial 2026-2027
 
@@ -113,7 +113,7 @@ Antes de publicar alterações editoriais relevantes:
 - Para sincronizar ou regenerar o feed RSS padronizado com metadados visuais, categorias e enclosures: `python tools/generate_feed.py`
 - Para testar um preview já iniciado ou uma URL publicada, executar `python tools/validate_site.py --url http://127.0.0.1:8766/`
 - Conferir se `docs/index.html` e `docs/feed.xml` apontam para os artigos corretos
-- Conferir se `og:image`, `twitter:image` e `<img>` usam a mesma capa local `article_NN_01.png`
+- Conferir se `og:image`, `twitter:image` e `<img>` usam a mesma capa local `YYYY_MM_DD_article_NN_01.png`
 - Manter prompts em `docs/articles/assets/prompts/` ou pastas associadas
 - Validar XML do `feed.xml`
 

@@ -53,9 +53,9 @@ alwaysApply: true
 
 - **Tempo de leitura:** bloco `.note` (~8 min nos artigos técnicos recentes)
 - **Estilo dos artigos:** `assets/css/articles.css` + `temporada-i.css` · `quote-box`, `insight`, `note`
-- **Capa inline no artigo:** `<img ... style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);">`
+- **Capa no artigo:** `<picture class="article-hero">` — `<source type="image/webp" media="(max-width: 680px)" srcset="..._01_720.webp">`, `<source type="image/webp" srcset="..._01_1600.webp">` e `<img src="..._01.png">` de reserva. Os 149 artigos usam este padrão; nenhum usa `<img>` com `float:right` (medido em 21/11/2026)
 - **Prompt IA:** gerar PNG 16:9; exibir inline no frame acima; `og:image`, `twitter:image` e RSS usam o mesmo PNG
-- **Total de artigos:** 148 artigos catalogados (2024–2027; mantendo visíveis artigos do calendário editorial futuro)
+- **Total de artigos:** 149 artigos catalogados (2024–2027; mantendo visíveis artigos do calendário editorial futuro)
 
 ## Categorias Visuais da Revista
 
