@@ -236,6 +236,64 @@ class CampaignTests(unittest.TestCase):
             campaign.fill_campaign_window(env, self.root, NOW)
         self.assertEqual(self.graph.sends, 0)
 
+    def test_one_stale_campaign_does_not_block_the_rest_of_the_queue(self):
+        stale = json.loads(json.dumps(self.draft))
+        when = "2026-11-19T21:00"
+        stale["conteudo"]["data_hora_local"] = when
+        stale["conteudo"]["data_hora_utc"] = facebook_drafts.local_time(when).astimezone(
+            timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        stale["sha256_conteudo"] = facebook_drafts.content_digest(stale["conteudo"])
+        queue = [
+            (self.root / "facebook_campaign_article_109_20261119.json", stale,
+             facebook_drafts.local_time(when)),
+            (self.root / "facebook_campaign_article_109_20261201.json", self.draft,
+             facebook_drafts.local_time("2026-12-01T09:00")),
+        ]
+        env = {
+            "GITHUB_ACTIONS": "true", "GITHUB_EVENT_NAME": "schedule",
+            "GITHUB_REPOSITORY": campaign.REPOSITORY, "GITHUB_REF": "refs/heads/master",
+            "GITHUB_RUN_ATTEMPT": "1", "GITHUB_RUN_ID": "55", "GITHUB_SHA": BASE,
+            "FACEBOOK_PAGE_TOKEN": "token", "GITHUB_TOKEN": "github-token",
+        }
+        with patch.object(campaign, "validate_run", return_value=("55", BASE, None)), \
+                patch.object(campaign, "load_campaign_queue", return_value=queue), \
+                patch.object(facebook_github, "reservation_status", return_value=None), \
+                patch.object(campaign, "verify_published"), \
+                patch.object(facebook_github, "GithubAPI", return_value=self.api), \
+                patch.object(campaign, "FacebookAPI", return_value=self.graph), \
+                self.assertRaisesRegex(campaign.CampaignError, "ja passou"):
+            campaign.fill_campaign_window(env, self.root, NOW)
+        self.assertEqual(self.graph.sends, 1)
+        self.assertIn("refs/heads/facebook-reservas/p123/a109", self.api.refs)
+
+    def test_one_divergent_reservation_does_not_block_the_rest_of_the_queue(self):
+        queue = [
+            (self.root / "facebook_campaign_article_109_20261203.json", self.draft,
+             facebook_drafts.local_time("2026-12-03T09:00")),
+            (self.root / "facebook_campaign_article_109_20261201.json", self.draft,
+             facebook_drafts.local_time("2026-12-01T09:00")),
+        ]
+        env = {
+            "GITHUB_ACTIONS": "true", "GITHUB_EVENT_NAME": "schedule",
+            "GITHUB_REPOSITORY": campaign.REPOSITORY, "GITHUB_REF": "refs/heads/master",
+            "GITHUB_RUN_ATTEMPT": "1", "GITHUB_RUN_ID": "55", "GITHUB_SHA": BASE,
+            "FACEBOOK_PAGE_TOKEN": "token", "GITHUB_TOKEN": "github-token",
+        }
+        with patch.object(campaign, "validate_run", return_value=("55", BASE, None)), \
+                patch.object(campaign, "load_campaign_queue", return_value=queue), \
+                patch.object(facebook_github, "reservation_status", side_effect=[
+                    facebook_github.GithubError(
+                        "Reserva existente diverge da campanha; verificacao manual necessaria."),
+                    None,
+                ]) as status, \
+                patch.object(campaign, "verify_published"), \
+                patch.object(facebook_github, "GithubAPI", return_value=self.api), \
+                patch.object(campaign, "FacebookAPI", return_value=self.graph), \
+                self.assertRaisesRegex(campaign.CampaignError, "20261203"):
+            campaign.fill_campaign_window(env, self.root, NOW)
+        self.assertEqual(status.call_count, 2)
+        self.assertEqual(self.graph.sends, 1)
+
     def test_off_calendar_campaign_never_calls_github_or_meta(self):
         for when in ("2026-12-02T09:00", "2026-12-01T12:00"):
             with self.subTest(when=when):

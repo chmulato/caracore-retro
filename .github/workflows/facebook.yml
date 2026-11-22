@@ -32,6 +32,17 @@ permissions:
   contents: read
 
 jobs:
+  repeticao:
+    if: github.event_name == 'workflow_dispatch' && github.run_attempt != 1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Esta repetição não agenda nem publica
+        run: |
+          echo "Tentativa número ${GITHUB_RUN_ATTEMPT} desta execução."
+          echo "Por proteção, só a primeira tentativa vale: a aprovação antiga expira junto com a prévia."
+          echo "Gere uma execução nova em Actions > Revisão de campanha para Facebook > Run workflow."
+          exit 1
+
   revisao:
     if: github.event_name == 'workflow_dispatch' && inputs.preencher_janela != true && github.ref == 'refs/heads/master' && github.run_attempt == 1
     runs-on: ubuntu-latest

@@ -1,8 +1,7 @@
-"""Revisa e publica uma unica chamada imediata do artigo 148 no Facebook."""
+"""Revisa e publica uma chamada imediata de um artigo do Retro no Facebook."""
 from __future__ import annotations
 
 import html
-import json
 import os
 import re
 import subprocess
@@ -13,36 +12,41 @@ from urllib.parse import urlsplit
 
 from tools import facebook_campaign, facebook_drafts, facebook_github
 
-ARTICLE_NUMBER = "148"
 PAGE_ID = "1657316127663973"
-MESSAGE = (
-    "Quatro ajudantes, uma oficina e uma regra: a pessoa responsável revisa. "
-    "Entenda como dividir tarefas de IA sem confundir trabalho local com operação offline.\n\n"
-    "E na sua rotina, esse assunto também faz diferença?\n\n"
-    "Leia ‘Os Quatro Trabalhões: uma oficina de IA com os pés no chão’ no blog Retrô:\n"
-    "https://retro.caracore.com.br/articles/2027_09_07_article_148.html"
-)
 MAX_APPROVAL_AGE = timedelta(minutes=15)
 FACEBOOK_HOSTS = {"facebook.com", "www.facebook.com"}
 
 
-def build_draft(when: str, root: Path = facebook_drafts.ROOT) -> dict:
+def article_number(env: dict[str, str]) -> str:
+    value = env.get("ARTICLE_NUMBER", "")
+    if not re.fullmatch(r"[1-9][0-9]*", value):
+        raise facebook_campaign.CampaignError("Informe o numero do artigo, sem zeros iniciais.")
+    return value
+
+
+def article_message(env: dict[str, str]) -> str | None:
+    message = env.get("FACEBOOK_MESSAGE", "")
+    if message and not message.strip():
+        raise facebook_campaign.CampaignError("A chamada nao pode conter apenas espacos.")
+    return message or None
+
+
+def build_draft(when: str, number: str, message: str | None,
+                root: Path = facebook_drafts.ROOT) -> dict:
     if not re.fullmatch(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}", when):
         raise facebook_campaign.CampaignError("Horario da revisao invalido.")
     matches = [
         path for path in (root / "docs" / "articles").glob("*_article_*.html")
         if (match := facebook_drafts.ARTICLE_NAME.fullmatch(path.name))
-        and str(int(match.group(4))) == ARTICLE_NUMBER
+        and str(int(match.group(4))) == number
     ]
     if len(matches) != 1:
-        raise facebook_campaign.CampaignError("Artigo 148 nao encontrado ou numero duplicado.")
+        raise facebook_campaign.CampaignError(f"Artigo {number} nao encontrado ou numero duplicado.")
     try:
-        draft = facebook_drafts.prepare(
-            matches[0], PAGE_ID, when, MESSAGE, root, immediate=True,
-        )
+        draft = facebook_drafts.prepare(matches[0], PAGE_ID, when, message, root, immediate=True)
         facebook_drafts.verify(draft, root)
     except ValueError as error:
-        raise facebook_campaign.CampaignError("Rascunho do artigo 148 invalido.") from error
+        raise facebook_campaign.CampaignError(f"Rascunho do artigo {number} invalido.") from error
     return draft
 
 
@@ -67,10 +71,11 @@ def validate_dispatch(env: dict[str, str], root: Path) -> tuple[str, str]:
 def review_summary(draft: dict) -> str:
     content = draft["conteudo"]
     digest = draft["sha256_conteudo"]
+    number = facebook_drafts.ARTICLE_NAME.fullmatch(Path(content["artigo"]).name).group(4)
     return (
         "## Revisao de publicacao imediata: Facebook\n\n"
         f"**Pagina:** Cara Core Informatica (`{PAGE_ID}`)  \n"
-        f"**Artigo:** {ARTICLE_NUMBER}  \n"
+        f"**Artigo:** {int(number)}  \n"
         f"**Modo:** publicacao imediata, exclusivamente no Facebook  \n"
         f"**Link:** {content['link']}  \n"
         f"**Imagem da previa:** {content['imagem_url']}  \n"
@@ -78,12 +83,21 @@ def review_summary(draft: dict) -> str:
         f"**SHA-256 do artigo:** `{content['artigo_sha256']}`  \n"
         f"**SHA-256 da chamada:** `{digest}`\n\n"
         f"### Chamada\n\n<pre>{html.escape(content['mensagem'])}</pre>\n\n"
-        "A publicacao sera enviada uma unica vez depois da aprovacao do ambiente protegido `facebook`.\n"
-        f"Use o comentario exato `APROVO {digest}` nessa aprovacao.\n"
+        "A publicacao sera enviada uma unica vez depois da aprovacao do ambiente protegido `facebook`.\n\n"
+        "Na tela **Review pending deployments**: escolha o ambiente `facebook`, **apague** o texto "
+        "que ja estiver escrito no campo de comentario e cole a linha inteira abaixo. Qualquer outro "
+        "texto, inclusive um ok sem o codigo, e recusado antes de qualquer envio.\n\n"
+        f"```\nAPROVO {digest}\n```\n\n"
+        f"Validade: ate `{expiry(content)}` (hora de Brasilia). Depois disso, gere uma nova execucao.\n"
     )
 
 
-def verify_not_already_published(graph, article_url: str) -> None:
+def expiry(content: dict) -> str:
+    prepared = facebook_drafts.local_time(content["data_hora_local"])
+    return (prepared + MAX_APPROVAL_AGE).strftime("%Y-%m-%d %H:%M")
+
+
+def verify_not_already_published(graph, article_url: str, number: str) -> None:
     try:
         status, data = graph.request(
             "GET",
@@ -107,7 +121,7 @@ def verify_not_already_published(graph, article_url: str) -> None:
         message = record.get("message")
         if isinstance(message, str) and article_url in message:
             raise facebook_campaign.CampaignError(
-                "O artigo 148 ja aparece nos posts recentes do Facebook."
+                f"O artigo {number} ja aparece nos posts recentes do Facebook."
             )
         attachments = record.get("attachments")
         attachment_items = attachments.get("data") if isinstance(attachments, dict) else None
@@ -122,15 +136,17 @@ def verify_not_already_published(graph, article_url: str) -> None:
                 )
             if attachment.get("url") == article_url:
                 raise facebook_campaign.CampaignError(
-                    "O artigo 148 ja aparece nos posts recentes do Facebook."
+                    f"O artigo {number} ja aparece nos posts recentes do Facebook."
                 )
 
 
 def preview(env: dict[str, str], root: Path = facebook_drafts.ROOT) -> int:
+    number = article_number(env)
+    message = article_message(env)
     validate_dispatch(env, root)
     now = datetime.now(facebook_drafts.ZONE).replace(second=0, microsecond=0)
     when = now.strftime("%Y-%m-%dT%H:%M")
-    draft = build_draft(when, root)
+    draft = build_draft(when, number, message, root)
     facebook_campaign.verify_published(draft)
     summary, output = env.get("GITHUB_STEP_SUMMARY"), env.get("GITHUB_OUTPUT")
     if not summary or not output:
@@ -139,7 +155,13 @@ def preview(env: dict[str, str], root: Path = facebook_drafts.ROOT) -> int:
         file.write(review_summary(draft))
     with open(output, "a", encoding="utf-8") as file:
         file.write(f"digest={draft['sha256_conteudo']}\nwhen={when}\n")
-    print("Previa conferida; nada foi enviado a Meta.")
+    digest = draft["sha256_conteudo"]
+    print("Previa conferida no blog publicado; nada foi enviado a Meta.")
+    print("Para aprovar, abra a execucao, clique em Review pending deployments, escolha o ambiente")
+    print("facebook, apague o texto do campo de comentario e cole exatamente esta linha:")
+    print(f"APROVO {digest}")
+    print(f"Validade da aprovacao: ate {expiry(draft['conteudo'])} (hora de Brasilia).")
+    print("Passado o prazo ou alterado o artigo, gere uma nova execucao; o digest muda a cada minuto.")
     return 0
 
 
@@ -155,10 +177,11 @@ def publish(
     facebook_drafts.verify(draft, root)
     content = draft["conteudo"]
     digest = draft["sha256_conteudo"]
+    number = article_number(env)
+    match = facebook_drafts.ARTICLE_NAME.fullmatch(Path(content["artigo"]).name)
     if (approved_digest != digest or content.get("modo_publicacao") != "imediata"
             or content.get("rede") != "facebook-pagina" or content.get("pagina_id") != PAGE_ID
-            or content.get("artigo") != "docs/articles/2027_09_07_article_148.html"
-            or content.get("mensagem") != MESSAGE):
+            or not match or str(int(match.group(4))) != number):
         raise facebook_campaign.CampaignError("A campanha diverge da publicacao autorizada.")
 
     run_id, sha, reviewer_id = facebook_campaign.validate_run(env, root)
@@ -177,11 +200,11 @@ def publish(
         )
 
     facebook_campaign.verify_published(draft)
-    facebook_campaign.verify_history(PAGE_ID, ARTICLE_NUMBER, root)
+    facebook_campaign.verify_history(PAGE_ID, number, root)
     graph.check_page(PAGE_ID)
-    verify_not_already_published(graph, content["link"])
+    verify_not_already_published(graph, content["link"], number)
     ref, reservation_sha = facebook_github.reserve(
-        api, PAGE_ID, ARTICLE_NUMBER, digest, run_id, sha,
+        api, PAGE_ID, number, digest, run_id, sha,
     )
     try:
         status, data = graph.request(
@@ -237,8 +260,8 @@ def main() -> int:
         if sys.argv[1] == "preview":
             return preview(env)
 
-        when = env.get("PUBLISH_AT", "")
-        draft = build_draft(when)
+        number = article_number(env)
+        draft = build_draft(env.get("PUBLISH_AT", ""), number, article_message(env))
         github_token = env.get("GITHUB_TOKEN", "")
         page_token = env.get("FACEBOOK_PAGE_TOKEN", "")
         if not github_token or not page_token:

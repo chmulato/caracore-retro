@@ -1,0 +1,22 @@
+{
+  "estado": "RASCUNHO_NAO_APROVADO",
+  "conteudo": {
+    "versao": 1,
+    "rede": "facebook-pagina",
+    "pagina_id": "1657316127663973",
+    "artigo": "docs/articles/2027_09_15_article_149.html",
+    "data_editorial": "2027-09-15",
+    "data_hora_local": "2026-11-24T09:00",
+    "fuso": "America/Sao_Paulo",
+    "data_hora_utc": "2026-11-24T12:00:00Z",
+    "mensagem": "Feito, empacotado e instalado são três estados diferentes. Entenda como conferir o que um programa realmente faz na versão que você baixa hoje para a loja.\n\nE na sua rotina, esse assunto também faz diferença?\n\nLeia ‘O que tem dentro da caixa: como saber o que um sistema faz no dia em que você instala’ no blog Retrô:\nhttps://retro.caracore.com.br/articles/2027_09_15_article_149.html",
+    "link": "https://retro.caracore.com.br/articles/2027_09_15_article_149.html",
+    "titulo_previa": "O que tem dentro da caixa: como saber o que um sistema faz no dia em que você instala",
+    "descricao_previa": "Feito, empacotado e instalado são três estados diferentes. Entenda como conferir o que um programa realmente faz na versão que você baixa hoje para a loja.",
+    "imagem_url": "https://retro.caracore.com.br/articles/assets/img/2027_09_15_article_149_01.png",
+    "imagem_sha256": "e28cded2b12108c2892174f66d286aecf4a019892345272e16485f709cf2c196",
+    "artigo_sha256": "9bac020b1108480fc48b9a2ed104c1917284608f9a9454abff0f0b4981eb607d"
+  },
+  "sha256_conteudo": "62ba4ee040411cbe340760c306f0a6f13ba3d10bb0cba4e9f940c341967b08fa",
+  "aviso": "A previa real no Facebook e o conteudo publicado no site nao foram conferidos. Revisao editorial: chamada conferida na previa de 21/11/2026, identica ao texto gerado do artigo; a esteira reconfere os bytes publicados antes de agendar."
+}

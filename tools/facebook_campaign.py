@@ -384,6 +384,7 @@ def fill_campaign_window(
     api = facebook_github.GithubAPI(REPOSITORY, github_token)
     graph = FacebookAPI(page_token)
     pending = []
+    blocked = []
     already_scheduled = 0
     for path, draft, scheduled in in_window:
         content = draft["conteudo"]
@@ -391,27 +392,38 @@ def fill_campaign_window(
         if not article_match:
             raise CampaignError(f"Artigo invalido na campanha {path.name}.")
         article_number = str(int(article_match.group(4)))
-        reservation = facebook_github.reservation_status(
-            api, content["pagina_id"], article_number, draft["sha256_conteudo"],
-        )
+        try:
+            reservation = facebook_github.reservation_status(
+                api, content["pagina_id"], article_number, draft["sha256_conteudo"],
+            )
+        except facebook_github.GithubError as error:
+            blocked.append((path.name, str(error)))
+            continue
         if reservation is not None:
             if reservation["estado"] != "ID_RECEBIDO":
-                raise CampaignError(
-                    f"A campanha {path.name} tem reserva sem confirmacao da Meta; "
-                    "verificacao manual necessaria."
-                )
+                blocked.append((
+                    path.name,
+                    "reserva sem confirmacao da Meta; verificacao manual necessaria.",
+                ))
+                continue
             print(f"Campanha ja agendada: {path.name}; ID {reservation['remote_id']}.")
             already_scheduled += 1
             continue
         try:
             validate_schedule(draft, now)
+        except CampaignError:
+            blocked.append((path.name, (
+                "a data editorial da campanha ja passou; retire o arquivo ou grave uma nova campanha"
+                if scheduled <= now else
+                "faltam menos de 15 minutos para o horario; a Meta recusa o agendamento"
+            )))
+            continue
+        try:
+            verify_history(content["pagina_id"], article_number, root)
+            verify_published(draft)
         except CampaignError as error:
-            raise CampaignError(
-                f"A campanha {path.name} perdeu a janela minima da Meta; "
-                "verificacao manual necessaria."
-            ) from error
-        verify_history(content["pagina_id"], article_number, root)
-        verify_published(draft)
+            blocked.append((path.name, str(error)))
+            continue
         pending.append((path, draft))
 
     if pending:
@@ -428,6 +440,23 @@ def fill_campaign_window(
         f"Janela atualizada: {scheduled_count} novo(s) agendamento(s); "
         f"{already_scheduled} ja confirmado(s)."
     )
+    if blocked:
+        motivos = "\n".join(f"- {name}: {motivo}" for name, motivo in blocked)
+        print(f"{len(blocked)} campanha(s) ficaram bloqueadas, sem envio:")
+        print(motivos)
+        summary = env.get("GITHUB_STEP_SUMMARY")
+        if summary:
+            with open(summary, "a", encoding="utf-8") as file:
+                file.write(
+                    "\n## Campanhas bloqueadas\n\n"
+                    f"Foram agendados {scheduled_count} posts; {len(blocked)} ficaram bloqueados"
+                    " e nenhum deles foi enviado.\n\n"
+                    f"{motivos}\n"
+                )
+        raise CampaignError(
+            f"{len(blocked)} campanha(s) bloqueada(s), sem envio; as demais foram agendadas. "
+            "Cada uma volta a bloquear as proximas execucoes ate a conferencia manual.\n" + motivos
+        )
     return 0
 
 

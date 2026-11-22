@@ -68,28 +68,50 @@ def _root(api) -> str:
 
 def check_approval(api, run_id: str, environment: str, reviewer_id: int, digest: str) -> None:
     if not _valid(_DIGITS, run_id) or not _valid(_DIGEST, digest) or not isinstance(environment, str) or not environment or not isinstance(reviewer_id, int) or isinstance(reviewer_id, bool) or reviewer_id <= 0:
-        raise GithubError("Dados de aprovacao invalidos.")
+        raise GithubError("Aprovacao recusada: dados da revisao estao ausentes ou invalidos.")
     status, records = api.request("GET", f"{_root(api)}/actions/runs/{run_id}/approvals")
-    if status != 200 or not isinstance(records, list):
-        raise GithubError("Aprovacao nao comprovada.")
+    if status != 200:
+        raise GithubError(f"Aprovacao recusada: o GitHub respondeu {status} ao consultar a aprovacao.")
+    if not isinstance(records, list):
+        raise GithubError("Aprovacao recusada: a lista de aprovacoes nao pode ser lida.")
     matches = []
     for record in records:
         if not isinstance(record, dict) or not isinstance(record.get("environments"), list):
-            raise GithubError("Aprovacao nao comprovada.")
+            raise GithubError("Aprovacao recusada: um registro de aprovacao nao lista ambientes.")
         environments = record["environments"]
         if any(not isinstance(item, dict) or not isinstance(item.get("name"), str) for item in environments):
-            raise GithubError("Aprovacao nao comprovada.")
+            raise GithubError("Aprovacao recusada: um ambiente de aprovacao nao pode ser lido.")
         if any(item["name"] == environment for item in environments):
             matches.append(record)
+    if not matches:
+        raise GithubError(
+            f"Aprovacao recusada: esta execucao nao tem aprovacao do ambiente '{environment}'."
+        )
     if len(matches) != 1:
-        raise GithubError("Aprovacao nao comprovada.")
+        raise GithubError(
+            f"Aprovacao recusada: ha {len(matches)} aprovacoes do ambiente "
+            f"'{environment}'; espera-se uma unica."
+        )
     record = matches[0]
     user = record.get("user")
     comment = record.get("comment")
-    if (record.get("state") != "approved" or not isinstance(user, dict)
-            or type(user.get("id")) is not int or user["id"] != reviewer_id
-            or not isinstance(comment, str) or comment.strip() != "APROVO " + digest):
-        raise GithubError("Aprovacao nao comprovada.")
+    if record.get("state") != "approved":
+        raise GithubError(
+            "Aprovacao recusada: o ambiente esta como "
+            f"'{record.get('state')}'; e preciso clicar em Approve and deploy."
+        )
+    if not isinstance(user, dict) or type(user.get("id")) is not int or user["id"] != reviewer_id:
+        raise GithubError("Aprovacao recusada: quem aprovou nao e o revisor autorizado desta pagina.")
+    if not isinstance(comment, str):
+        raise GithubError(
+            "Aprovacao recusada: a aprovacao foi enviada sem comentario. Cole a linha inteira "
+            "APROVO <digest> no campo de comentario do ambiente."
+        )
+    if comment.strip() != "APROVO " + digest:
+        raise GithubError(
+            "Aprovacao recusada: o comentario nao e a linha exata APROVO <digest> desta execucao. "
+            "Gere uma nova execucao e cole o codigo inteiro, sem trocar o texto por um ok."
+        )
 
 
 def _tree(api, sha: str) -> str:

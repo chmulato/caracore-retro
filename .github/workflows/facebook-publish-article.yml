@@ -1,0 +1,77 @@
+name: Publicar artigo do Retro no Facebook (imediato)
+
+on:
+  workflow_dispatch:
+    inputs:
+      article:
+        description: "Número do artigo (ex.: 149)"
+        required: true
+        type: string
+      message:
+        description: "Chamada; deixe vazia para usar o texto sugerido pelo próprio artigo"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  repeticao:
+    if: github.run_attempt != 1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Esta repetição não publica
+        run: |
+          echo "Tentativa número ${GITHUB_RUN_ATTEMPT} desta execução."
+          echo "Por proteção, só a primeira tentativa pode publicar: a aprovação antiga não vale mais."
+          echo "Abra Actions > Publicar artigo do Retro no Facebook (imediato) > Run workflow e gere uma execução nova."
+          echo "A prévia recalcula o código de aprovação a cada minuto; aprove dentro do prazo mostrado no log."
+          exit 1
+
+  revisao:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/master' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    outputs:
+      digest: ${{ steps.preview.outputs.digest }}
+      when: ${{ steps.preview.outputs.when }}
+    env:
+      ARTICLE_NUMBER: ${{ inputs.article }}
+      FACEBOOK_MESSAGE: ${{ inputs.message }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - id: preview
+        name: Conferir conteúdo publicado e apresentar a chamada
+        run: python -m tools.facebook_publish_article preview
+
+  publicar:
+    needs: revisao
+    if: github.ref == 'refs/heads/master' && github.run_attempt == 1
+    environment: facebook
+    permissions:
+      actions: read
+      contents: write
+    runs-on: ubuntu-latest
+    env:
+      ARTICLE_NUMBER: ${{ inputs.article }}
+      FACEBOOK_MESSAGE: ${{ inputs.message }}
+      PUBLISH_AT: ${{ needs.revisao.outputs.when }}
+      APPROVED_DIGEST: ${{ needs.revisao.outputs.digest }}
+      FACEBOOK_REVIEWER_ID: ${{ vars.FACEBOOK_REVIEWER_ID }}
+      FACEBOOK_PAGE_TOKEN: ${{ secrets.FACEBOOK_PAGE_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Confirmar aprovação exata, reservar e publicar uma vez
+        run: python -m tools.facebook_publish_article publicar
