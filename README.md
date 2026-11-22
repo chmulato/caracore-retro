@@ -87,6 +87,14 @@ Os artigos foram revisados para manter leitura objetiva, com foco em aplicação
 - **Se o 149 for publicado antes por outra rota, retire o arquivo da fila.** A reserva guarda o código-hash da prévia que a publicou; o arquivo `facebook_campaign_article_149_20261124.json` tem outro código e a cadência passa a listá-lo como "reserva diverge" em cada execução até o arquivo sair.
 - **Risco medido para terça:** o cron é 06h, e a campanha do 149 é 09h do mesmo dia. Se o runner atrasar além das 08h45, os 15 minutos mínimos da Meta não são cumpridos e essa campanha entra na lista de bloqueadas — sem impedir as outras.
 
+### Pré-voo da terça, medido em 22/11/2026 (somente leitura, nada executado)
+
+- Simulei o gatilho de terça (24/11 às 06h de Brasília) com o código de `tools/facebook_campaign.py` sobre a fila atual de 17 campanhas e as reservas remotas. Resultado esperado da execução: **entram no agendamento** #113 (22/12, 28 dias de antecedência) e **149** (24/11 às 09h, 3 horas); **pulam** por já terem reserva #107–#112; **aguardam a janela de ~30 dias** #114–#122 — o #114 (24/12) entra na quinta, 26/11. **Nenhuma campanha está com a data passada**, então a execução fecha verde se o runner começar antes das 08h45.
+- Reservas conferidas no remoto em 22/11: `a107`–`a112` e `a148`. **Não existe `a149`** — o post de terça ainda não foi agendado.
+- **Correção de enquadramento** em relação à nota de 21/11: o #107 (26/11 às 09h) **já está agendado** na Meta desde 20/11. Na quinta a cadência apenas imprime "já agendada"; o que se confere na quinta é o post aparecendo na Página, não um agendamento novo.
+- **O que a reserva prova e o que não prova:** a ref com `ID_RECEBIDO` prova que a Meta aceitou o agendamento. Ela não prova o post visível na Página depois das 09h — isso se vê na própria Página, ou pelo `facebook-diagnostics.yml`, que pede o clique de aprovação no ambiente `facebook`. Só depois desses dois fatos a chave `149` entra em `facebook_publication_history.json`.
+- Duas conferências automáticas, ambas somente leitura, ficaram marcadas para terça: **08h35** (ainda há janela de resgate? se não, o motivo e a rota imediata) e **09h45** (reserva, execução e o que falta provar).
+
 ### Estado da campanha em 20/11/2026
 
 - A fila aprovada cobre os artigos **#107–#122**, de 26/11/2026 a 23/02/2027. As datas são terças ou quintas, às 09h (`America/Sao_Paulo`).
