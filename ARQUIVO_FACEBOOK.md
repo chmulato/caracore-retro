@@ -20,9 +20,9 @@ Texto **realocado, não apagado**. Eram as regras operacionais e os estados medi
 
   Cada um deles tinha `{"estado":"ID_RECEBIDO","remote_id":…}`; os sete `remote_id` foram copiados na conversa de 24/11/2026 e não se repetem aqui.
 
-## O que ainda existe dentro da Meta (pendência do dono, não deste repo)
+## O que ficou vivo dentro da Meta (e é intenção publicar)
 
-Apagar ref, workflow ou ambiente **não cancela nada do lado da Meta**. Continuam agendados e confirmados lá os posts de 26/11, 01/12, 03/12, 08/12, 10/12 e 15/12, mais a campanha da reserva `a148`. O cancelamento é no Calendário do Business Suite da Página Cara Core Informática (id `1657316127663973`).
+Apagar ref, workflow, ambiente ou chave **nunca cancelou nada do lado da Meta**. As sete campanhas confirmadas antes do corte — 26/11, 01/12, 03/12, 08/12, 10/12, 15/12 e a reserva `a148`, na Página Cara Core Informática (id `1657316127663973`) — **vão ser publicadas nas datas próprias**. Decisão do dono em 24/11/2026: publicar, só não mais por esta automação. Portanto não há cancelamento pendente; o que muda é o registro: `facebook_publication_history.json` passa a receber link e data escritos à mão, porque a esteira que os gravava não existe mais.
 
 ## O que ficou no repositório, como registro e não como automação
 
